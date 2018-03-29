@@ -19,7 +19,7 @@
 			"showByDefault": true
 		},
 		"edit-link": {
-			"base": "https://github.com/libopenstorage/libopenstorage.github.io/tree/master",
+			"base": "https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs",
 			"label": "Edit this page"
 		},
 		"github" : {
