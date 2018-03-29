@@ -17,7 +17,7 @@
     
             
                 
-                <link rel="stylesheet" href="gitbook/gitbook-plugin-codegroup/code.group.css">
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-codetabs/codetabs.css">
                 
             
                 
@@ -216,46 +216,16 @@
 <p>this</p>
 <h2 id="another">Another</h2>
 <p>Example</p>
-<p><div id="dee87cb28335a3608f7cb140c0cce95e" class="gbcg gbcg-codegroup" data-remember-tabs="false">
-  <div class="gbcg-tab-selectors">
-    <a id="select-go-0-203733a077f3ee2d88a640c3898d95b9" class="gbcg-selector gbcg-active" data-tab="go-0-203733a077f3ee2d88a640c3898d95b9">Go</a>
-    <a id="select-python-1-73b135735a03fd7bd24945c1948fa298" class="gbcg-selector" data-tab="python-1-73b135735a03fd7bd24945c1948fa298">Python</a>
-  </div>
-  <div class="gbcg-tab-contents">
-    <div id="gbcg-tab-container">
-      <div id="go-0-203733a077f3ee2d88a640c3898d95b9" class="gbcg-tab-item gbcb-Go">
-        <pre class="language-"><code class="lang-go">fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>&quot;Hello<span class="token punctuation">)</span>
+<p><div class="codetabs"><div class="codetabs-header"><div class="tab active" data-codetab="0">Python</div><div class="tab" data-codetab="1">JavaScript</div><div class="tab" data-codetab="2">HTML</div></div><div class="codetabs-body"><div class="tab active" data-codetab="0"><pre class="language-"><code class="lang-py">msg <span class="token operator">=</span> <span class="token string">&quot;Hello World&quot;</span>
+<span class="token keyword">print</span> msg</code></pre></div><div class="tab" data-codetab="1"><pre class="language-"><code class="lang-js"><span class="token keyword">var</span> msg <span class="token operator">=</span> <span class="token string">&quot;Hello World&quot;</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>msg<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div><div class="tab" data-codetab="2"><pre class="language-"><code class="lang-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>b</span><span class="token punctuation">&gt;</span></span>Hello World<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>b</span><span class="token punctuation">&gt;</span></span></code></pre></div></div></div></p>
+<p><div class="codetabs"><div class="codetabs-header"><div class="tab active" data-codetab="0">Golang</div><div class="tab" data-codetab="1">Python</div></div><div class="codetabs-body"><div class="tab active" data-codetab="0"><pre class="language-"><code class="lang-go">fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;Hello&quot;</span><span class="token punctuation">)</span>
 a <span class="token operator">:=</span> <span class="token number">3</span>
 <span class="token keyword">go</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    sync<span class="token punctuation">.</span><span class="token function">Mutext</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-</code></pre>
-      </div>
-    </div>
-    <div class="gbcg-tab-item-cntr">
-      <div>
-        <h3 class="gbcg-tabname go-0-203733a077f3ee2d88a640c3898d95b9" id="go">Go</h3>
-        <div id="go-0-203733a077f3ee2d88a640c3898d95b9" class="gbcg-tab-item gbcb-Go">
-          <pre class="language-"><code class="lang-go">fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>&quot;Hello<span class="token punctuation">)</span>
-a <span class="token operator">:=</span> <span class="token number">3</span>
-<span class="token keyword">go</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    sync<span class="token punctuation">.</span><span class="token function">Mutext</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-</code></pre>
-        </div>
-      </div>
-      <div>
-        <h3 class="gbcg-tabname python-1-73b135735a03fd7bd24945c1948fa298" id="python">Python</h3>
-        <div id="python-1-73b135735a03fd7bd24945c1948fa298" class="gbcg-tab-item gbcb-Python">
-          <pre class="language-"><code class="lang-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&apos;Hello&apos;</span><span class="token punctuation">)</span>
+	sync<span class="token punctuation">.</span><span class="token function">Mutext</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre></div><div class="tab" data-codetab="1"><pre class="language-"><code class="lang-py"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&apos;Hello&apos;</span><span class="token punctuation">)</span>
 <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
-</code></pre>
-        </div>
-      </div>
-    </div>
-  </div>
-</div></p>
+	<span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span></code></pre></div></div></div></p>
 
                                 
                                 </section>
@@ -299,7 +269,7 @@ a <span class="token operator">:=</span> <span class="token number">3</span>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"More Info","level":"1.1.2","depth":2,"next":{"title":"Last","level":"1.2","depth":1,"path":"Last.md","ref":"Last.md","articles":[]},"previous":{"title":"Test Code","level":"1.1.1","depth":2,"path":"Code.md","ref":"Code.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codegroup","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"before-first","selector":".markdown-section h1, .markdown-section h2","showByDefault":true},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"codegroup":{"defaultTabName":"Code","rememberTabs":"false","tabNameSeperator":"::"},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"More.md","mtime":"2018-03-29T19:51:07.831Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-03-29T20:19:08.226Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"More Info","level":"1.1.2","depth":2,"next":{"title":"Last","level":"1.2","depth":1,"path":"Last.md","ref":"Last.md","articles":[]},"previous":{"title":"Test Code","level":"1.1.1","depth":2,"path":"Code.md","ref":"Code.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"before-first","selector":".markdown-section h1, .markdown-section h2","showByDefault":true},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"More.md","mtime":"2018-03-29T20:29:21.551Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-03-29T20:29:37.998Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
@@ -309,7 +279,7 @@ a <span class="token operator">:=</span> <span class="token number">3</span>
     <script src="gitbook/theme.js"></script>
     
         
-        <script src="gitbook/gitbook-plugin-codegroup/code.group.js"></script>
+        <script src="gitbook/gitbook-plugin-codetabs/codetabs.js"></script>
         
     
         
