@@ -1,5 +1,4 @@
 {
-	"root": "./docs",
 	"gitbook": ">=3.2.1",
 	"title": "OpenStorage API",
 	"plugins": [
