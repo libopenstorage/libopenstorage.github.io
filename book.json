@@ -1,0 +1,34 @@
+{
+	"root": "./docs",
+	"gitbook": ">=3.2.1",
+	"title": "OpenStorage API",
+	"plugins": [
+		"codegroup",
+		"copy-code-button",
+		"toggle-chapters",
+		"toggle-headers",
+		"edit-link", 
+		"prism", 
+		"github", 
+		"page-toc",
+		"-highlight", 
+		"-sharing"
+	],
+	"pluginsConfig": {
+		"page-toc": {
+			"selector": ".markdown-section h1, .markdown-section h2",
+			"position": "before-first",
+			"showByDefault": true
+		},
+		"edit-link": {
+			"base": "https://github.com/libopenstorage/openstorage/tree/master",
+			"label": "Edit this page"
+		},
+		"github" : {
+			"url" : "https://github.com/libopenstorage/openstorage/"
+		},
+		"theme-default": {
+			"showLevel": true
+		}
+	}
+}
