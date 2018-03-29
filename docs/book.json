@@ -3,7 +3,6 @@
 	"title": "OpenStorage API",
 	"plugins": [
 		"codegroup",
-		"copy-code-button",
 		"toggle-chapters",
 		"toggle-headers",
 		"edit-link", 

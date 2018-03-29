@@ -13,7 +13,6 @@ go func() {
 	sync.Mutext()
 }
 ```
-
 ```python::Python
 print('Hello')
 for i in [1,2,3]:
