@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Volumes · OpenStorage API</title>
+        <title>setsize · OpenStorage API</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -69,10 +69,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../Code.html" />
+    <link rel="next" href="status.html" />
     
     
-    <link rel="prev" href="../clusters/versions.html" />
+    <link rel="prev" href="remove.html" />
     
 
     </head>
@@ -125,9 +125,9 @@
         
         
     
-        <li class="chapter " data-level="2.1" data-path="../clusters/">
+        <li class="chapter " data-level="2.1" data-path="./">
             
-                <a href="../clusters/">
+                <a href="./">
             
                     
                         <b>2.1.</b>
@@ -141,9 +141,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="2.1.1" data-path="../clusters/alerts.html">
+        <li class="chapter " data-level="2.1.1" data-path="alerts.html">
             
-                <a href="../clusters/alerts.html">
+                <a href="alerts.html">
             
                     
                         <b>2.1.1.</b>
@@ -156,9 +156,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.2" data-path="../clusters/enumerate.html">
+        <li class="chapter " data-level="2.1.2" data-path="enumerate.html">
             
-                <a href="../clusters/enumerate.html">
+                <a href="enumerate.html">
             
                     
                         <b>2.1.2.</b>
@@ -171,9 +171,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.3" data-path="../clusters/getnodeidfromip.html">
+        <li class="chapter " data-level="2.1.3" data-path="getnodeidfromip.html">
             
-                <a href="../clusters/getnodeidfromip.html">
+                <a href="getnodeidfromip.html">
             
                     
                         <b>2.1.3.</b>
@@ -186,9 +186,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.4" data-path="../clusters/inspect.html">
+        <li class="chapter " data-level="2.1.4" data-path="inspect.html">
             
-                <a href="../clusters/inspect.html">
+                <a href="inspect.html">
             
                     
                         <b>2.1.4.</b>
@@ -201,9 +201,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.5" data-path="../clusters/remove.html">
+        <li class="chapter " data-level="2.1.5" data-path="remove.html">
             
-                <a href="../clusters/remove.html">
+                <a href="remove.html">
             
                     
                         <b>2.1.5.</b>
@@ -216,9 +216,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.6" data-path="../clusters/setsize.html">
+        <li class="chapter active" data-level="2.1.6" data-path="setsize.html">
             
-                <a href="../clusters/setsize.html">
+                <a href="setsize.html">
             
                     
                         <b>2.1.6.</b>
@@ -231,9 +231,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.7" data-path="../clusters/status.html">
+        <li class="chapter " data-level="2.1.7" data-path="status.html">
             
-                <a href="../clusters/status.html">
+                <a href="status.html">
             
                     
                         <b>2.1.7.</b>
@@ -246,9 +246,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.8" data-path="../clusters/versions.html">
+        <li class="chapter " data-level="2.1.8" data-path="versions.html">
             
-                <a href="../clusters/versions.html">
+                <a href="versions.html">
             
                     
                         <b>2.1.8.</b>
@@ -266,9 +266,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="2.2" data-path="./">
+        <li class="chapter " data-level="2.2" data-path="../volumes/">
             
-                <a href="./">
+                <a href="../volumes/">
             
                     
                         <b>2.2.</b>
@@ -369,7 +369,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Volumes</a>
+        <a href=".." >setsize</a>
     </h1>
 </div>
 
@@ -384,7 +384,14 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="volumes">Volumes</h1>
+                                <h1 id="set-size">Set Size</h1>
+<p>Sets the maximum number of nodes in a cluster.</p>
+<h2 id="example">Example</h2>
+<p><div class="codetabs"><div class="codetabs-header"><div class="tab active" data-codetab="0">Golang</div><div class="tab" data-codetab="1">Python</div></div><div class="codetabs-body"><div class="tab active" data-codetab="0"><pre class="language-"><code class="lang-go">err <span class="token operator">:=</span> m<span class="token punctuation">.</span><span class="token function">SetSize</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span>
+<span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span></code></pre></div><div class="tab" data-codetab="1"><pre class="language-"><code class="lang-py">TBD</code></pre></div></div></div></p>
+<h2 id="reference">Reference</h2>
 
                                 
                                 </section>
@@ -412,12 +419,12 @@
 
             
                 
-                <a href="../clusters/versions.html" class="navigation navigation-prev " aria-label="Previous page: versions">
+                <a href="remove.html" class="navigation navigation-prev " aria-label="Previous page: remove">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="../Code.html" class="navigation navigation-next " aria-label="Next page: _Website tests">
+                <a href="status.html" class="navigation navigation-next " aria-label="Next page: status">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -428,7 +435,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Volumes","level":"2.2","depth":1,"next":{"title":"_Website tests","level":"3.1","depth":1,"path":"Code.md","ref":"Code.md","articles":[{"title":"_WebTest","level":"3.1.1","depth":2,"path":"More.md","ref":"More.md","articles":[]},{"title":"Last","level":"3.1.2","depth":2,"path":"Last.md","ref":"Last.md","articles":[]}]},"previous":{"title":"versions","level":"2.1.8","depth":2,"path":"clusters/versions.md","ref":"clusters/versions.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"before-first","selector":".markdown-section h1, .markdown-section h2","showByDefault":true},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"volumes/README.md","mtime":"2018-03-31T01:31:51.997Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-04-02T20:25:35.215Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"setsize","level":"2.1.6","depth":2,"next":{"title":"status","level":"2.1.7","depth":2,"path":"clusters/status.md","ref":"clusters/status.md","articles":[]},"previous":{"title":"remove","level":"2.1.5","depth":2,"path":"clusters/remove.md","ref":"clusters/remove.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"before-first","selector":".markdown-section h1, .markdown-section h2","showByDefault":true},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"clusters/setsize.md","mtime":"2018-04-02T19:59:51.070Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-04-02T20:25:35.215Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

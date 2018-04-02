@@ -28,8 +28,34 @@ TBD
 ### ClearAlert
 ClearAlert clears an alert for the given resource.
 
+#### Example
+
+{% codetabs name="Golang", type="go" -%}
+resp, err := m.ClearAlert(
+                api.ResourceType_RESOURCE_TYPE_VOLUME,
+                somAlertId)
+if err != nil {
+    return nil
+}
+{%- language name="Python", type="py" -%}
+TBD
+{%- endcodetabs %}
+
 ### EraseAlert
 EraseAlert erases an alert for the given resource.
+
+#### Example
+
+{% codetabs name="Golang", type="go" -%}
+resp, err := m.EraseAlert(
+                api.ResourceType_RESOURCE_TYPE_VOLUME,
+                somAlertId)
+if err != nil {
+    return nil
+}
+{%- language name="Python", type="py" -%}
+TBD
+{%- endcodetabs %}
 
 ## Reference
 * [Golang](https://godoc.org/github.com/libopenstorage/openstorage/cluster#ClusterAlerts)

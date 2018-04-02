@@ -1,10 +1,10 @@
-# Get Node ID from IP
-Returns the ID of a node for a specified management or storage IP.
+# Set Size
+Sets the maximum number of nodes in a cluster.
 
 ## Example
 
 {% codetabs name="Golang", type="go" -%}
-nodeId, err := m.GetNodeIdFromIp(someIp)
+err := m.SetSize(1000)
 if err != nil {
     return nil
 }

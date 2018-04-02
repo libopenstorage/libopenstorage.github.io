@@ -201,12 +201,42 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.5" data-path="status.html">
+        <li class="chapter " data-level="2.1.5" data-path="remove.html">
+            
+                <a href="remove.html">
+            
+                    
+                        <b>2.1.5.</b>
+                    
+                    remove
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.6" data-path="setsize.html">
+            
+                <a href="setsize.html">
+            
+                    
+                        <b>2.1.6.</b>
+                    
+                    setsize
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.7" data-path="status.html">
             
                 <a href="status.html">
             
                     
-                        <b>2.1.5.</b>
+                        <b>2.1.7.</b>
                     
                     status
             
@@ -216,12 +246,12 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.6" data-path="versions.html">
+        <li class="chapter " data-level="2.1.8" data-path="versions.html">
             
                 <a href="versions.html">
             
                     
-                        <b>2.1.6.</b>
+                        <b>2.1.8.</b>
                     
                     versions
             
@@ -355,7 +385,19 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="enumerate">Enumerate</h1>
-<h2 id="interface">Interface</h2>
+<p>Enumerate is used to list all the nodes in the cluster.</p>
+<h2 id="example">Example</h2>
+<p><div class="codetabs"><div class="codetabs-header"><div class="tab active" data-codetab="0">Golang</div><div class="tab" data-codetab="1">Python</div></div><div class="codetabs-body"><div class="tab active" data-codetab="0"><pre class="language-"><code class="lang-go">clusterInfo<span class="token punctuation">,</span> err <span class="token operator">:=</span> m<span class="token punctuation">.</span><span class="token function">Enumerate</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span>
+fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;Cluster ID:%s\n&quot;</span><span class="token punctuation">,</span> clusterInfo<span class="token punctuation">.</span>Id<span class="token punctuation">)</span>
+<span class="token keyword">for</span> <span class="token boolean">_</span><span class="token punctuation">,</span> node <span class="token operator">:=</span> <span class="token keyword">range</span> clusterInfo<span class="token punctuation">.</span>Nodes <span class="token punctuation">{</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;ID:=%d MgmtIP=%s DataIP=%s\n&quot;</span><span class="token punctuation">,</span>
+        node<span class="token punctuation">.</span>Id<span class="token punctuation">,</span>
+        node<span class="token punctuation">.</span>MgmtIp<span class="token punctuation">,</span>
+        node<span class="token punctuation">.</span>DataIp<span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre></div><div class="tab" data-codetab="1"><pre class="language-"><code class="lang-py">TBD</code></pre></div></div></div></p>
 <h2 id="reference">Reference</h2>
 
                                 
@@ -400,7 +442,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"enumerate","level":"2.1.2","depth":2,"next":{"title":"get node id from ip","level":"2.1.3","depth":2,"path":"clusters/getnodeidfromip.md","ref":"clusters/getnodeidfromip.md","articles":[]},"previous":{"title":"alerts","level":"2.1.1","depth":2,"path":"clusters/alerts.md","ref":"clusters/alerts.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"before-first","selector":".markdown-section h1, .markdown-section h2","showByDefault":true},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"clusters/enumerate.md","mtime":"2018-03-28T21:40:56.662Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-03-28T22:00:19.342Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"enumerate","level":"2.1.2","depth":2,"next":{"title":"get node id from ip","level":"2.1.3","depth":2,"path":"clusters/getnodeidfromip.md","ref":"clusters/getnodeidfromip.md","articles":[]},"previous":{"title":"alerts","level":"2.1.1","depth":2,"path":"clusters/alerts.md","ref":"clusters/alerts.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"before-first","selector":".markdown-section h1, .markdown-section h2","showByDefault":true},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"clusters/enumerate.md","mtime":"2018-04-02T19:46:46.417Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-04-02T20:25:35.215Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

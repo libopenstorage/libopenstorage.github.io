@@ -7,6 +7,8 @@
 	* [enumerate](clusters/enumerate.md)
 	* [get node id from ip](clusters/getnodeidfromip.md)
 	* [inspect](clusters/inspect.md)
+	* [remove](clusters/remove.md)
+	* [setsize](clusters/setsize.md)
 	* [status](clusters/status.md)
 	* [versions](clusters/versions.md)
 * [Volumes](volumes/README.md)
