@@ -1,7 +1,11 @@
 ### Concepts
 * [Introduction](README.md)
+* [Status](status.md)
+* [Architecture](arch.md)
+* [Installing](installing.md)
 
 ### Reference
+* [Overview](reference.md)
 * [Clusters](clusters/README.md)
 	* [alerts](clusters/alerts.md)
 	* [enumerate](clusters/enumerate.md)
