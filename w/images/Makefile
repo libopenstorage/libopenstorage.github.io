@@ -1,6 +1,6 @@
 HAS_DITAA := $(shell command -v ditaa 2> /dev/null)
 
-DITAA_IMAGES := arch.png sdk.png
+DITAA_IMAGES := arch.png
 DITAA_SRCS := $(patsubst %.png,%.ditaa,$(DITAA_IMAGES))
 
 all: $(DITAA_IMAGES)

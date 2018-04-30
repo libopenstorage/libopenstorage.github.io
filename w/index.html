@@ -1070,11 +1070,39 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="openstorage-library-api">OpenStorage Library API</h1>
-<p><img src="images/sdk.png" alt="sdk.png"></p>
 <h2 id="introduction">Introduction</h2>
-<p>Welcome to the <em>OpenStorage Library API</em> documentation. Here you will find the API functions, examples, and references to multiple client libraries which can communicate with a OpenStorage REST server.</p>
-<h2 id="status">Status</h2>
-<p>This document is under heavy development. Please check back for the latest changes.</p>
+<p>Welcome to the <em>OpenStorage Library API</em> documentation. Here you will find the
+API functions, examples, and references to multiple client libraries which can
+communicate with a OpenStorage REST server.</p>
+<h2 id="quick-example">Quick Example</h2>
+<p>Here is a super quick example of how to get cluster information from an OpenStorage
+server using a mock container running the gRPC server and using <a href="https://github.com/grpc-ecosystem/polyglot" target="_blank">Polyglot</a> as the gRPC client.</p>
+<pre class="language-"><code>$ docker run -d -p 9100:9100 openstorage/mock-sdk-server
+$ wget https://github.com/grpc-ecosystem/polyglot/releases/download/v1.6.0/polyglot.jar
+$ echo {} | java -jar polyglot.jar \
+  --command=call \
+  --endpoint=localhost:9100 \
+  --full_method=openstorage.api.OpenStorageCluster/Enumerate
+</code></pre><p>Results in:</p>
+<pre class="language-"><code class="lang-yaml"><span class="token punctuation">{</span> 
+  <span class="token key atrule">&quot;cluster&quot;</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token key atrule">&quot;status&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;STATUS_OK&quot;</span><span class="token punctuation">,</span>
+    <span class="token key atrule">&quot;id&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;deadbeeef&quot;</span><span class="token punctuation">,</span>
+    <span class="token key atrule">&quot;nodeId&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;1&quot;</span><span class="token punctuation">,</span>
+    <span class="token key atrule">&quot;nodes&quot;</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+      <span class="token key atrule">&quot;id&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;1&quot;</span><span class="token punctuation">,</span>
+      <span class="token key atrule">&quot;cpu&quot;</span><span class="token punctuation">:</span> <span class="token number">0.4993757802746567</span><span class="token punctuation">,</span>
+      <span class="token key atrule">&quot;memTotal&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;8320278528&quot;</span><span class="token punctuation">,</span>
+      <span class="token key atrule">&quot;memUsed&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;1895813120&quot;</span><span class="token punctuation">,</span>
+      <span class="token key atrule">&quot;memFree&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;6424465408&quot;</span><span class="token punctuation">,</span>
+      <span class="token key atrule">&quot;status&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;STATUS_OK&quot;</span><span class="token punctuation">,</span>
+      <span class="token key atrule">&quot;mgmtIp&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;172.17.0.2&quot;</span><span class="token punctuation">,</span>
+      <span class="token key atrule">&quot;dataIp&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;172.17.0.2&quot;</span><span class="token punctuation">,</span>
+      <span class="token key atrule">&quot;hostname&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;42f9d528292c&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
 
                                 
                                 </section>
@@ -1114,7 +1142,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"Status","level":"1.2","depth":1,"path":"status.md","ref":"status.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"livereload":{},"search":{},"page-toc":{"position":"before-first","selector":".markdown-section h1, .markdown-section h2","showByDefault":true},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"README.md","mtime":"2018-04-30T12:11:47.342Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-04-30T12:11:57.898Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"Status","level":"1.2","depth":1,"path":"status.md","ref":"status.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"before-first","selector":".markdown-section h1, .markdown-section h2","showByDefault":true},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"README.md","mtime":"2018-04-30T14:02:51.884Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-04-30T14:03:56.330Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
@@ -1149,10 +1177,6 @@
     
         
         <script src="gitbook/gitbook-plugin-page-toc/page-toc.js"></script>
-        
-    
-        
-        <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
         
     
         
