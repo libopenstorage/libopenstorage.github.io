@@ -15,3 +15,6 @@ and Portworx drivers.
 
 OpenStorage API calls are ment to be idempotent to ensure consistency across calls, unless
 otherwise specified.
+
+## Error Handling
+All API calls use the [standard gRPC status](https://github.com/grpc/grpc/blob/master/src/proto/grpc/status/status.proto).

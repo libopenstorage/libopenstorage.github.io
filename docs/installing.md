@@ -15,28 +15,33 @@ sources. Here is a full example:
 package main
 
 import (
-        "context"
-        "fmt"
-        "os"
+    "context"
+    "fmt"
+    "os"
 
-        "github.com/libopenstorage/openstorage/api"
-        "google.golang.org/grpc"
+    "github.com/libopenstorage/openstorage/api"
+    "google.golang.org/grpc"
+    "google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 func main() {
-        conn, err := grpc.Dial("localhost:9100", grpc.WithInsecure())
-        if err != nil {
-                fmt.Println(err)
-                os.Exit(1)
-        }
+    conn, err := grpc.Dial("localhost:9100", grpc.WithInsecure())
+    if err != nil {
+        fmt.Printf("Error: %v\n", err)
+        os.Exit(1)
+    }
 
-        c := api.NewOpenStorageClusterClient(conn)
-        r, err := c.Enumerate(context.Background(), &api.ClusterEnumerateRequest{})
-        if err != nil {
-                fmt.Println(err)
-                os.Exit(1)
-        }
-        fmt.Println(r)
+    c := api.NewOpenStorageClusterClient(conn)
+    r, err := c.Enumerate(context.Background(), &api.ClusterEnumerateRequest{})
+    if err != nil {
+        serverError, _ := status.FromError(err)
+        fmt.Printf("Error, code=%v, msg=%v\n",
+            serverError.Code(),
+            serverError.Message())
+        os.Exit(uint32(serverError.Code()))
+    }
+    fmt.Println(r)
 }
 ```
 
@@ -52,7 +57,6 @@ You will need the files `api*.py` copied to your path.  Here is a full example:
 #   pip install grpcio grpcio-tools
 #
 # Then copy the api*.py files to the directory as your client
-#   
 # More info: https://grpc.io/docs/quickstart/python.html
 #
 import grpc
@@ -64,12 +68,20 @@ channel = grpc.insecure_channel('localhost:9100')
 client = api_pb2_grpc.OpenStorageClusterStub(channel)
 
 # Get cluster information
-en_resp = client.Enumerate(api_pb2.ClusterEnumerateRequest())
-print en_resp
+try:
+    en_resp = client.Enumerate(api_pb2.ClusterEnumerateRequest())
+except grpc.RpcError as e:
+    print('Enumerate failed: code={0} msg={1}'.format(e.code(), e.details()))
+else:
+    print(en_resp)
 
 # Get node info
-n_resp = client.Inspect(api_pb2.ClusterInspectRequest(node_id=en_resp.cluster.nodes[0].id))
-print n_resp
+try:
+    n_resp = client.Inspect(api_pb2.ClusterInspectRequest(node_id=en_resp.cluster.nodes[0].id))
+except grpc.RpcError as e:
+    print('Inspect failed: code={0} msg={1}'.format(e.code(), e.details()))
+else:
+    print(n_resp)
 ```
 
 We may some day provide a python `pip` package, but do not have one at the moment.
