@@ -1,9 +1,12 @@
 all: build
 
-build:
+images:
+	$(MAKE) -C docs/images
+
+build: images
 	gitbook build docs/ w
 
-serve:
+serve: images
 	gitbook serve docs/ w
 
 # If you have updated any plugins in docs/book.json from https://plugins.gitbook.com/
@@ -12,4 +15,4 @@ update-modules:
 	cd docs && rm -rf node_modules && gitbook install
 
 
-.PHONY: all build serve
+.PHONY: all build serve images
