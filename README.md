@@ -22,6 +22,13 @@ To serve locally on `http://localhost:4000` while editing, run:
 make serve
 ```
 
+## Generating API Documentation
+To generate it, you will need to download
+[protoc-gen-doc.tar.gz](https://github.com/lpabon/protoc-gen-doc/releases/download/v1.1.0.1/protoc-gen-doc.tar.gz),
+untar and add the file to your path.
+
+Then type `make api` to generate the API documentation.
+
 ## More information
 * [Gitbook](https://toolchain.gitbook.com/)
 * Examples gitbook json setup

@@ -16,5 +16,9 @@ and Portworx drivers.
 OpenStorage API calls are ment to be idempotent to ensure consistency across calls, unless
 otherwise specified.
 
+## Protocol Buffers gRPC Source File
+The gRPC bindings are created from [`api/api.proto`](https://github.com/libopenstorage/openstorage/blob/master/api/api.proto) file
+available in the OpenStorage github repo.
+
 ## Error Handling
 All API calls use the [standard gRPC status](https://github.com/grpc/grpc/blob/master/src/proto/grpc/status/status.proto).

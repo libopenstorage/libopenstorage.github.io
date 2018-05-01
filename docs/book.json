@@ -5,18 +5,18 @@
 		"codetabs",
 		"toggle-chapters",
 		"toggle-headers",
-		"edit-link", 
-		"prism", 
-		"github", 
+		"edit-link",
+		"prism",
+		"github",
 		"page-toc",
-		"-highlight", 
+		"-highlight",
 		"-sharing"
 	],
 	"pluginsConfig": {
 		"page-toc": {
 			"selector": ".markdown-section h1, .markdown-section h2",
-			"position": "before-first",
-			"showByDefault": true
+			"position": "top",
+			"showByDefault": false
 		},
 		"edit-link": {
 			"base": "https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs",
