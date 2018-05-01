@@ -221,11 +221,11 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="openstorage-library-api">OpenStorage Library API</h1>
+                                <h1 id="openstorage-api">OpenStorage API</h1>
 <h2 id="introduction">Introduction</h2>
-<p>Welcome to the <em>OpenStorage Library API</em> documentation. Here you will find the
+<p>Welcome to the <em>OpenStorage API</em> documentation. Here you will find the
 API functions, examples, and references to multiple client libraries which can
-communicate with a OpenStorage REST server.</p>
+communicate with an OpenStorage server.</p>
 <h2 id="quick-example">Quick Example</h2>
 <p>Here is a super quick example of how to get cluster information from an OpenStorage
 server using a mock container running the gRPC server and using <a href="https://github.com/grpc-ecosystem/polyglot" target="_blank">Polyglot</a> as the gRPC client.</p>
@@ -236,7 +236,7 @@ $ echo {} | java -jar polyglot.jar \
   --endpoint=localhost:9100 \
   --full_method=openstorage.api.OpenStorageCluster/Enumerate
 </code></pre><p>Results in:</p>
-<pre class="language-"><code class="lang-yaml"><span class="token punctuation">{</span> 
+<pre class="language-"><code class="lang-yaml"><span class="token punctuation">{</span>
   <span class="token key atrule">&quot;cluster&quot;</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
     <span class="token key atrule">&quot;status&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;STATUS_OK&quot;</span><span class="token punctuation">,</span>
     <span class="token key atrule">&quot;id&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;deadbeeef&quot;</span><span class="token punctuation">,</span>
@@ -294,7 +294,7 @@ $ echo {} | java -jar polyglot.jar \
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"Status","level":"1.2","depth":1,"path":"status.md","ref":"status.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"README.md","mtime":"2018-04-30T14:02:51.884Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-01T08:07:11.152Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"Status","level":"1.2","depth":1,"path":"status.md","ref":"status.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"README.md","mtime":"2018-05-01T08:41:37.526Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-01T08:41:47.361Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

@@ -1,10 +1,10 @@
-# OpenStorage Library API
+# OpenStorage API
 
 
 ## Introduction
-Welcome to the _OpenStorage Library API_ documentation. Here you will find the
+Welcome to the _OpenStorage API_ documentation. Here you will find the
 API functions, examples, and references to multiple client libraries which can
-communicate with a OpenStorage REST server.
+communicate with an OpenStorage server.
 
 ## Quick Example
 Here is a super quick example of how to get cluster information from an OpenStorage
@@ -22,7 +22,7 @@ $ echo {} | java -jar polyglot.jar \
 Results in:
 
 ```yaml
-{ 
+{
   "cluster": {
     "status": "STATUS_OK",
     "id": "deadbeeef",
