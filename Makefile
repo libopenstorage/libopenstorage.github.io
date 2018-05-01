@@ -29,4 +29,4 @@ update-modules:
 	cd docs && rm -rf node_modules && gitbook install
 
 
-.PHONY: all build serve images
+.PHONY: all build serve images api
