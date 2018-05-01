@@ -39,7 +39,7 @@ func main() {
         fmt.Printf("Error, code=%v, msg=%v\n",
             serverError.Code(),
             serverError.Message())
-        os.Exit(uint32(serverError.Code()))
+        os.Exit(1)
     }
     fmt.Println(r)
 }
