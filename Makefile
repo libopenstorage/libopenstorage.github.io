@@ -1,5 +1,5 @@
 HAS_PROTOC := $(shell command -v protoc 2> /dev/null)
-HAS_PROTOGENDOC :=- $(shell command -v protoc-gen-doc 2> /dev/null)
+HAS_PROTOGENDOC := $(shell command -v protoc-gen-doc 2> /dev/null)
 all: build
 
 images:
