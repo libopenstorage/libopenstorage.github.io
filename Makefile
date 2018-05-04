@@ -20,7 +20,8 @@ ifndef HAS_PROTOGENDOC
 endif
 	curl https://raw.githubusercontent.com/libopenstorage/openstorage/master/api/api.proto \
 		--output api.proto --silent
-	protoc -I. api.proto --doc_out=docs/ --doc_opt=./template/sdk.tmpl,generated-api.md
+	protoc -I. -I $(GOPATH)/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
+		--doc_out=docs/ --doc_opt=./template/sdk.tmpl,generated-api.md api.proto
 	rm -f api.proto
 
 # If you have updated any plugins in docs/book.json from https://plugins.gitbook.com/

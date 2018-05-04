@@ -5,6 +5,7 @@
 
 - Services
     - [OpenStorageCluster](#openstorageapiopenstoragecluster)
+    - [OpenStorageVolume](#openstorageapiopenstoragevolume)
   
 
 
@@ -31,6 +32,8 @@
     - [GroupSnapCreateRequest.LabelsEntry](#groupsnapcreaterequestlabelsentry)
     - [GroupSnapCreateResponse](#groupsnapcreateresponse)
     - [GroupSnapCreateResponse.SnapshotsEntry](#groupsnapcreateresponsesnapshotsentry)
+    - [OpenStorageVolumeCreateRequest](#openstoragevolumecreaterequest)
+    - [OpenStorageVolumeCreateResponse](#openstoragevolumecreateresponse)
     - [ReplicaSet](#replicaset)
     - [RuntimeStateMap](#runtimestatemap)
     - [RuntimeStateMap.RuntimeStateEntry](#runtimestatemapruntimestateentry)
@@ -48,15 +51,31 @@
     - [Volume](#volume)
     - [Volume.AttachInfoEntry](#volumeattachinfoentry)
     - [VolumeConsumer](#volumeconsumer)
+    - [VolumeCreateFromVolumeIDRequest](#volumecreatefromvolumeidrequest)
+    - [VolumeCreateFromVolumeIDResponse](#volumecreatefromvolumeidresponse)
     - [VolumeCreateRequest](#volumecreaterequest)
     - [VolumeCreateResponse](#volumecreateresponse)
+    - [VolumeDeleteRequest](#volumedeleterequest)
+    - [VolumeDeleteResponse](#volumedeleteresponse)
+    - [VolumeEnumerateRequest](#volumeenumeraterequest)
+    - [VolumeEnumerateResponse](#volumeenumerateresponse)
     - [VolumeInfo](#volumeinfo)
+    - [VolumeInspectRequest](#volumeinspectrequest)
+    - [VolumeInspectResponse](#volumeinspectresponse)
     - [VolumeLocator](#volumelocator)
     - [VolumeLocator.VolumeLabelsEntry](#volumelocatorvolumelabelsentry)
     - [VolumeResponse](#volumeresponse)
     - [VolumeSetRequest](#volumesetrequest)
     - [VolumeSetRequest.OptionsEntry](#volumesetrequestoptionsentry)
     - [VolumeSetResponse](#volumesetresponse)
+    - [VolumeSnapshotCreateRequest](#volumesnapshotcreaterequest)
+    - [VolumeSnapshotCreateRequest.LabelsEntry](#volumesnapshotcreaterequestlabelsentry)
+    - [VolumeSnapshotCreateResponse](#volumesnapshotcreateresponse)
+    - [VolumeSnapshotEnumerateRequest](#volumesnapshotenumeraterequest)
+    - [VolumeSnapshotEnumerateRequest.LabelsEntry](#volumesnapshotenumeraterequestlabelsentry)
+    - [VolumeSnapshotEnumerateResponse](#volumesnapshotenumerateresponse)
+    - [VolumeSnapshotRestoreRequest](#volumesnapshotrestorerequest)
+    - [VolumeSnapshotRestoreResponse](#volumesnapshotrestoreresponse)
     - [VolumeSpec](#volumespec)
     - [VolumeSpec.VolumeLabelsEntry](#volumespecvolumelabelsentry)
     - [VolumeStateAction](#volumestateaction)
@@ -120,6 +139,59 @@ Clear the alert for a given resource
     **returns** [ClusterAlertEraseResponse](#clusteralerteraseresponse)
    
 Erases an alert for a given resource
+ <!-- end methods -->
+# OpenStorageVolume {#openstorageapiopenstoragevolume}
+
+
+## Create 
+
+> **rpc** Create([OpenStorageVolumeCreateRequest](#openstoragevolumecreaterequest))
+    **returns** [OpenStorageVolumeCreateResponse](#openstoragevolumecreateresponse)
+   
+Creates a new volume
+## CreateFromVolumeID 
+
+> **rpc** CreateFromVolumeID([VolumeCreateFromVolumeIDRequest](#volumecreatefromvolumeidrequest))
+    **returns** [VolumeCreateFromVolumeIDResponse](#volumecreatefromvolumeidresponse)
+   
+CreateFromVolumeID creates a new volume cloned from an existing volume
+## Delete 
+
+> **rpc** Delete([VolumeDeleteRequest](#volumedeleterequest))
+    **returns** [VolumeDeleteResponse](#volumedeleteresponse)
+   
+Delete a volume
+## Inspect 
+
+> **rpc** Inspect([VolumeInspectRequest](#volumeinspectrequest))
+    **returns** [VolumeInspectResponse](#volumeinspectresponse)
+   
+Get information on a volume
+## Enumerate 
+
+> **rpc** Enumerate([VolumeEnumerateRequest](#volumeenumeraterequest))
+    **returns** [VolumeEnumerateResponse](#volumeenumerateresponse)
+   
+Get a list of volumes
+## SnapshotCreate 
+
+> **rpc** SnapshotCreate([VolumeSnapshotCreateRequest](#volumesnapshotcreaterequest))
+    **returns** [VolumeSnapshotCreateResponse](#volumesnapshotcreateresponse)
+   
+Create a snapshot of a volume. This creates an immutable (read-only),
+point-in-time snapshot of a volume.
+## SnapshotRestore 
+
+> **rpc** SnapshotRestore([VolumeSnapshotRestoreRequest](#volumesnapshotrestorerequest))
+    **returns** [VolumeSnapshotRestoreResponse](#volumesnapshotrestoreresponse)
+   
+Restores a volume to a specified snapshot
+## SnapshotEnumerate 
+
+> **rpc** SnapshotEnumerate([VolumeSnapshotEnumerateRequest](#volumesnapshotenumeraterequest))
+    **returns** [VolumeSnapshotEnumerateResponse](#volumesnapshotenumerateresponse)
+   
+List the number of snapshots for a specific volume
  <!-- end methods -->
  <!-- end services -->
 
@@ -388,6 +460,29 @@ in: body Required: true |
 | ----- | ---- | ----------- |
 | key |  [string](#string) | none |
 | value |  [SnapCreateResponse](#snapcreateresponse) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## OpenStorageVolumeCreateRequest {#openstoragevolumecreaterequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| name |  [string](#string) | Unique name of the volume. This will be used for idempotency. |
+| spec |  [VolumeSpec](#volumespec) | Volume specification |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## OpenStorageVolumeCreateResponse {#openstoragevolumecreateresponse}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id |  [string](#string) | Id of new volume |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -672,6 +767,30 @@ swagger: model
  <!-- end HasFields -->
 
 
+## VolumeCreateFromVolumeIDRequest {#volumecreatefromvolumeidrequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| name |  [string](#string) | Unique name of the volume. This will be used for idempotency. |
+| parent_id |  [string](#string) | Parent volume id, if specified will create a new volume as a clone of the parent. |
+| spec |  [VolumeSpec](#volumespec) | Volume specification |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## VolumeCreateFromVolumeIDResponse {#volumecreatefromvolumeidresponse}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id |  [string](#string) | Id of new volume |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
 ## VolumeCreateRequest {#volumecreaterequest}
 VolumeCreateRequest is a structure that has the locator, source and spec
 to create a volume
@@ -704,6 +823,45 @@ in: body Required: true |
  <!-- end HasFields -->
 
 
+## VolumeDeleteRequest {#volumedeleterequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id |  [string](#string) | Id of volume to delete |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## VolumeDeleteResponse {#volumedeleteresponse}
+
+
+ <!-- end HasFields -->
+
+
+## VolumeEnumerateRequest {#volumeenumeraterequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| locator |  [VolumeLocator](#volumelocator) | Volumes to match to this locator. If not provided, all volumes will be returned. |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## VolumeEnumerateResponse {#volumeenumerateresponse}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volumes | repeated [Volume](#volume) | List of volumes matching label |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
 ## VolumeInfo {#volumeinfo}
 VolumeInfo
 swagger:model
@@ -714,6 +872,28 @@ swagger:model
 | volume_id |  [string](#string) | none |
 | path |  [string](#string) | none |
 | storage |  [VolumeSpec](#volumespec) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## VolumeInspectRequest {#volumeinspectrequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id |  [string](#string) | Id of volume to inspect |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## VolumeInspectResponse {#volumeinspectresponse}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume |  [Volume](#volume) | Information about the volume |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -799,6 +979,94 @@ in: body Required: true |
 
 in: body Required: true |
  <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## VolumeSnapshotCreateRequest {#volumesnapshotcreaterequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id |  [string](#string) | Id of volume to take the snapshot from |
+| labels | repeated [VolumeSnapshotCreateRequest.LabelsEntry](#volumesnapshotcreaterequestlabelsentry) | Labels to apply to snapshot |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## VolumeSnapshotCreateRequest.LabelsEntry {#volumesnapshotcreaterequestlabelsentry}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key |  [string](#string) | none |
+| value |  [string](#string) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## VolumeSnapshotCreateResponse {#volumesnapshotcreateresponse}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| snapshot_id |  [string](#string) | Id of immutable snapshot |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## VolumeSnapshotEnumerateRequest {#volumesnapshotenumeraterequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id |  [string](#string) | Id of volume |
+| labels | repeated [VolumeSnapshotEnumerateRequest.LabelsEntry](#volumesnapshotenumeraterequestlabelsentry) | Labels from snapshot |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## VolumeSnapshotEnumerateRequest.LabelsEntry {#volumesnapshotenumeraterequestlabelsentry}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key |  [string](#string) | none |
+| value |  [string](#string) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## VolumeSnapshotEnumerateResponse {#volumesnapshotenumerateresponse}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| snapshots | repeated [Volume](#volume) | List of immutable snapshots |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## VolumeSnapshotRestoreRequest {#volumesnapshotrestorerequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id |  [string](#string) | Id of volume |
+| snapshot_id |  [string](#string) | Snapshot id to apply to `volume_id` |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## VolumeSnapshotRestoreResponse {#volumesnapshotrestoreresponse}
+
+
  <!-- end HasFields -->
 
 

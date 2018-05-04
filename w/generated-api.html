@@ -226,6 +226,7 @@
 <ul>
 <li>Services<ul>
 <li><a href="#openstorageapiopenstoragecluster">OpenStorageCluster</a></li>
+<li><a href="#openstorageapiopenstoragevolume">OpenStorageVolume</a></li>
 </ul>
 </li>
 </ul>
@@ -253,6 +254,8 @@
 <li><a href="#groupsnapcreaterequestlabelsentry">GroupSnapCreateRequest.LabelsEntry</a></li>
 <li><a href="#groupsnapcreateresponse">GroupSnapCreateResponse</a></li>
 <li><a href="#groupsnapcreateresponsesnapshotsentry">GroupSnapCreateResponse.SnapshotsEntry</a></li>
+<li><a href="#openstoragevolumecreaterequest">OpenStorageVolumeCreateRequest</a></li>
+<li><a href="#openstoragevolumecreateresponse">OpenStorageVolumeCreateResponse</a></li>
 <li><a href="#replicaset">ReplicaSet</a></li>
 <li><a href="#runtimestatemap">RuntimeStateMap</a></li>
 <li><a href="#runtimestatemapruntimestateentry">RuntimeStateMap.RuntimeStateEntry</a></li>
@@ -270,15 +273,31 @@
 <li><a href="#volume">Volume</a></li>
 <li><a href="#volumeattachinfoentry">Volume.AttachInfoEntry</a></li>
 <li><a href="#volumeconsumer">VolumeConsumer</a></li>
+<li><a href="#volumecreatefromvolumeidrequest">VolumeCreateFromVolumeIDRequest</a></li>
+<li><a href="#volumecreatefromvolumeidresponse">VolumeCreateFromVolumeIDResponse</a></li>
 <li><a href="#volumecreaterequest">VolumeCreateRequest</a></li>
 <li><a href="#volumecreateresponse">VolumeCreateResponse</a></li>
+<li><a href="#volumedeleterequest">VolumeDeleteRequest</a></li>
+<li><a href="#volumedeleteresponse">VolumeDeleteResponse</a></li>
+<li><a href="#volumeenumeraterequest">VolumeEnumerateRequest</a></li>
+<li><a href="#volumeenumerateresponse">VolumeEnumerateResponse</a></li>
 <li><a href="#volumeinfo">VolumeInfo</a></li>
+<li><a href="#volumeinspectrequest">VolumeInspectRequest</a></li>
+<li><a href="#volumeinspectresponse">VolumeInspectResponse</a></li>
 <li><a href="#volumelocator">VolumeLocator</a></li>
 <li><a href="#volumelocatorvolumelabelsentry">VolumeLocator.VolumeLabelsEntry</a></li>
 <li><a href="#volumeresponse">VolumeResponse</a></li>
 <li><a href="#volumesetrequest">VolumeSetRequest</a></li>
 <li><a href="#volumesetrequestoptionsentry">VolumeSetRequest.OptionsEntry</a></li>
 <li><a href="#volumesetresponse">VolumeSetResponse</a></li>
+<li><a href="#volumesnapshotcreaterequest">VolumeSnapshotCreateRequest</a></li>
+<li><a href="#volumesnapshotcreaterequestlabelsentry">VolumeSnapshotCreateRequest.LabelsEntry</a></li>
+<li><a href="#volumesnapshotcreateresponse">VolumeSnapshotCreateResponse</a></li>
+<li><a href="#volumesnapshotenumeraterequest">VolumeSnapshotEnumerateRequest</a></li>
+<li><a href="#volumesnapshotenumeraterequestlabelsentry">VolumeSnapshotEnumerateRequest.LabelsEntry</a></li>
+<li><a href="#volumesnapshotenumerateresponse">VolumeSnapshotEnumerateResponse</a></li>
+<li><a href="#volumesnapshotrestorerequest">VolumeSnapshotRestoreRequest</a></li>
+<li><a href="#volumesnapshotrestoreresponse">VolumeSnapshotRestoreResponse</a></li>
 <li><a href="#volumespec">VolumeSpec</a></li>
 <li><a href="#volumespecvolumelabelsentry">VolumeSpec.VolumeLabelsEntry</a></li>
 <li><a href="#volumestateaction">VolumeStateAction</a></li>
@@ -340,6 +359,57 @@
     <strong>returns</strong> <a href="#clusteralerteraseresponse">ClusterAlertEraseResponse</a></p>
 </blockquote>
 <p>Erases an alert for a given resource
+ <!-- end methods --></p>
+<h1 id="openstorageapiopenstoragevolume">OpenStorageVolume </h1>
+<h2 id="create">Create</h2>
+<blockquote>
+<p><strong>rpc</strong> Create(<a href="#openstoragevolumecreaterequest">OpenStorageVolumeCreateRequest</a>)
+    <strong>returns</strong> <a href="#openstoragevolumecreateresponse">OpenStorageVolumeCreateResponse</a></p>
+</blockquote>
+<p>Creates a new volume</p>
+<h2 id="createfromvolumeid">CreateFromVolumeID</h2>
+<blockquote>
+<p><strong>rpc</strong> CreateFromVolumeID(<a href="#volumecreatefromvolumeidrequest">VolumeCreateFromVolumeIDRequest</a>)
+    <strong>returns</strong> <a href="#volumecreatefromvolumeidresponse">VolumeCreateFromVolumeIDResponse</a></p>
+</blockquote>
+<p>CreateFromVolumeID creates a new volume cloned from an existing volume</p>
+<h2 id="delete">Delete</h2>
+<blockquote>
+<p><strong>rpc</strong> Delete(<a href="#volumedeleterequest">VolumeDeleteRequest</a>)
+    <strong>returns</strong> <a href="#volumedeleteresponse">VolumeDeleteResponse</a></p>
+</blockquote>
+<p>Delete a volume</p>
+<h2 id="inspect">Inspect</h2>
+<blockquote>
+<p><strong>rpc</strong> Inspect(<a href="#volumeinspectrequest">VolumeInspectRequest</a>)
+    <strong>returns</strong> <a href="#volumeinspectresponse">VolumeInspectResponse</a></p>
+</blockquote>
+<p>Get information on a volume</p>
+<h2 id="enumerate">Enumerate</h2>
+<blockquote>
+<p><strong>rpc</strong> Enumerate(<a href="#volumeenumeraterequest">VolumeEnumerateRequest</a>)
+    <strong>returns</strong> <a href="#volumeenumerateresponse">VolumeEnumerateResponse</a></p>
+</blockquote>
+<p>Get a list of volumes</p>
+<h2 id="snapshotcreate">SnapshotCreate</h2>
+<blockquote>
+<p><strong>rpc</strong> SnapshotCreate(<a href="#volumesnapshotcreaterequest">VolumeSnapshotCreateRequest</a>)
+    <strong>returns</strong> <a href="#volumesnapshotcreateresponse">VolumeSnapshotCreateResponse</a></p>
+</blockquote>
+<p>Create a snapshot of a volume. This creates an immutable (read-only),
+point-in-time snapshot of a volume.</p>
+<h2 id="snapshotrestore">SnapshotRestore</h2>
+<blockquote>
+<p><strong>rpc</strong> SnapshotRestore(<a href="#volumesnapshotrestorerequest">VolumeSnapshotRestoreRequest</a>)
+    <strong>returns</strong> <a href="#volumesnapshotrestoreresponse">VolumeSnapshotRestoreResponse</a></p>
+</blockquote>
+<p>Restores a volume to a specified snapshot</p>
+<h2 id="snapshotenumerate">SnapshotEnumerate</h2>
+<blockquote>
+<p><strong>rpc</strong> SnapshotEnumerate(<a href="#volumesnapshotenumeraterequest">VolumeSnapshotEnumerateRequest</a>)
+    <strong>returns</strong> <a href="#volumesnapshotenumerateresponse">VolumeSnapshotEnumerateResponse</a></p>
+</blockquote>
+<p>List the number of snapshots for a specific volume
  <!-- end methods -->
  <!-- end services --></p>
 <h1 id="messages">Messages</h1>
@@ -826,6 +896,49 @@ swagger:response groupSnapCreateResponse</p>
 <td>value</td>
 <td><a href="#snapcreateresponse">SnapCreateResponse</a></td>
 <td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="openstoragevolumecreaterequest">OpenStorageVolumeCreateRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td><a href="#string">string</a></td>
+<td>Unique name of the volume. This will be used for idempotency.</td>
+</tr>
+<tr>
+<td>spec</td>
+<td><a href="#volumespec">VolumeSpec</a></td>
+<td>Volume specification</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="openstoragevolumecreateresponse">OpenStorageVolumeCreateResponse </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume_id</td>
+<td><a href="#string">string</a></td>
+<td>Id of new volume</td>
 </tr>
 </tbody>
 </table>
@@ -1562,6 +1675,54 @@ swagger: model</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
+<h2 id="volumecreatefromvolumeidrequest">VolumeCreateFromVolumeIDRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td><a href="#string">string</a></td>
+<td>Unique name of the volume. This will be used for idempotency.</td>
+</tr>
+<tr>
+<td>parent_id</td>
+<td><a href="#string">string</a></td>
+<td>Parent volume id, if specified will create a new volume as a clone of the parent.</td>
+</tr>
+<tr>
+<td>spec</td>
+<td><a href="#volumespec">VolumeSpec</a></td>
+<td>Volume specification</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="volumecreatefromvolumeidresponse">VolumeCreateFromVolumeIDResponse </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume_id</td>
+<td><a href="#string">string</a></td>
+<td>Id of new volume</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
 <h2 id="volumecreaterequest">VolumeCreateRequest </h2>
 <p>VolumeCreateRequest is a structure that has the locator, source and spec
 to create a volume
@@ -1618,6 +1779,65 @@ swagger:response volumeCreateResponse</p>
 <p>in: body Required: true |
  <!-- end Fields -->
  <!-- end HasFields --></p>
+<h2 id="volumedeleterequest">VolumeDeleteRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume_id</td>
+<td><a href="#string">string</a></td>
+<td>Id of volume to delete</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="volumedeleteresponse">VolumeDeleteResponse </h2>
+ <!-- end HasFields -->
+<h2 id="volumeenumeraterequest">VolumeEnumerateRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>locator</td>
+<td><a href="#volumelocator">VolumeLocator</a></td>
+<td>Volumes to match to this locator. If not provided, all volumes will be returned.</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="volumeenumerateresponse">VolumeEnumerateResponse </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volumes</td>
+<td>repeated <a href="#volume">Volume</a></td>
+<td>List of volumes matching label</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
 <h2 id="volumeinfo">VolumeInfo </h2>
 <p>VolumeInfo
 swagger:model</p>
@@ -1644,6 +1864,44 @@ swagger:model</p>
 <td>storage</td>
 <td><a href="#volumespec">VolumeSpec</a></td>
 <td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="volumeinspectrequest">VolumeInspectRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume_id</td>
+<td><a href="#string">string</a></td>
+<td>Id of volume to inspect</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="volumeinspectresponse">VolumeInspectResponse </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume</td>
+<td><a href="#volume">Volume</a></td>
+<td>Information about the volume</td>
 </tr>
 </tbody>
 </table>
@@ -1806,6 +2064,166 @@ swagger:response volumeSetResponse</p>
 <p>in: body Required: true |
  <!-- end Fields -->
  <!-- end HasFields --></p>
+<h2 id="volumesnapshotcreaterequest">VolumeSnapshotCreateRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume_id</td>
+<td><a href="#string">string</a></td>
+<td>Id of volume to take the snapshot from</td>
+</tr>
+<tr>
+<td>labels</td>
+<td>repeated <a href="#volumesnapshotcreaterequestlabelsentry">VolumeSnapshotCreateRequest.LabelsEntry</a></td>
+<td>Labels to apply to snapshot</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="volumesnapshotcreaterequestlabelsentry">VolumeSnapshotCreateRequest.LabelsEntry </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="#string">string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="#string">string</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="volumesnapshotcreateresponse">VolumeSnapshotCreateResponse </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>snapshot_id</td>
+<td><a href="#string">string</a></td>
+<td>Id of immutable snapshot</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="volumesnapshotenumeraterequest">VolumeSnapshotEnumerateRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume_id</td>
+<td><a href="#string">string</a></td>
+<td>Id of volume</td>
+</tr>
+<tr>
+<td>labels</td>
+<td>repeated <a href="#volumesnapshotenumeraterequestlabelsentry">VolumeSnapshotEnumerateRequest.LabelsEntry</a></td>
+<td>Labels from snapshot</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="volumesnapshotenumeraterequestlabelsentry">VolumeSnapshotEnumerateRequest.LabelsEntry </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="#string">string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="#string">string</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="volumesnapshotenumerateresponse">VolumeSnapshotEnumerateResponse </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>snapshots</td>
+<td>repeated <a href="#volume">Volume</a></td>
+<td>List of immutable snapshots</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="volumesnapshotrestorerequest">VolumeSnapshotRestoreRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume_id</td>
+<td><a href="#string">string</a></td>
+<td>Id of volume</td>
+</tr>
+<tr>
+<td>snapshot_id</td>
+<td><a href="#string">string</a></td>
+<td>Snapshot id to apply to <code>volume_id</code></td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="volumesnapshotrestoreresponse">VolumeSnapshotRestoreResponse </h2>
+ <!-- end HasFields -->
 <h2 id="volumespec">VolumeSpec </h2>
 <p>VolumeSpec has the properties needed to create a volume.
 swagger:model</p>
@@ -2765,7 +3183,7 @@ swagger:model</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"API Refernce","level":"1.5","depth":1,"previous":{"title":"Installing","level":"1.4","depth":1,"path":"installing.md","ref":"installing.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"generated-api.md","mtime":"2018-05-01T08:02:51.913Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-01T08:43:18.730Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"API Refernce","level":"1.5","depth":1,"previous":{"title":"Installing","level":"1.4","depth":1,"path":"installing.md","ref":"installing.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"generated-api.md","mtime":"2018-05-04T08:48:28.602Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-04T08:48:29.495Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
