@@ -272,6 +272,9 @@
 <li><a href="#storageresource">StorageResource</a></li>
 <li><a href="#volume">Volume</a></li>
 <li><a href="#volumeattachinfoentry">Volume.AttachInfoEntry</a></li>
+<li><a href="#volumeattachrequest">VolumeAttachRequest</a></li>
+<li><a href="#volumeattachrequestoptionsentry">VolumeAttachRequest.OptionsEntry</a></li>
+<li><a href="#volumeattachresponse">VolumeAttachResponse</a></li>
 <li><a href="#volumeconsumer">VolumeConsumer</a></li>
 <li><a href="#volumecreatefromvolumeidrequest">VolumeCreateFromVolumeIDRequest</a></li>
 <li><a href="#volumecreatefromvolumeidresponse">VolumeCreateFromVolumeIDResponse</a></li>
@@ -279,6 +282,8 @@
 <li><a href="#volumecreateresponse">VolumeCreateResponse</a></li>
 <li><a href="#volumedeleterequest">VolumeDeleteRequest</a></li>
 <li><a href="#volumedeleteresponse">VolumeDeleteResponse</a></li>
+<li><a href="#volumedetachrequest">VolumeDetachRequest</a></li>
+<li><a href="#volumedetachresponse">VolumeDetachResponse</a></li>
 <li><a href="#volumeenumeraterequest">VolumeEnumerateRequest</a></li>
 <li><a href="#volumeenumerateresponse">VolumeEnumerateResponse</a></li>
 <li><a href="#volumeinfo">VolumeInfo</a></li>
@@ -286,6 +291,9 @@
 <li><a href="#volumeinspectresponse">VolumeInspectResponse</a></li>
 <li><a href="#volumelocator">VolumeLocator</a></li>
 <li><a href="#volumelocatorvolumelabelsentry">VolumeLocator.VolumeLabelsEntry</a></li>
+<li><a href="#volumemountrequest">VolumeMountRequest</a></li>
+<li><a href="#volumemountrequestoptionsentry">VolumeMountRequest.OptionsEntry</a></li>
+<li><a href="#volumemountresponse">VolumeMountResponse</a></li>
 <li><a href="#volumeresponse">VolumeResponse</a></li>
 <li><a href="#volumesetrequest">VolumeSetRequest</a></li>
 <li><a href="#volumesetrequestoptionsentry">VolumeSetRequest.OptionsEntry</a></li>
@@ -301,6 +309,9 @@
 <li><a href="#volumespec">VolumeSpec</a></li>
 <li><a href="#volumespecvolumelabelsentry">VolumeSpec.VolumeLabelsEntry</a></li>
 <li><a href="#volumestateaction">VolumeStateAction</a></li>
+<li><a href="#volumeunmountrequest">VolumeUnmountRequest</a></li>
+<li><a href="#volumeunmountrequestoptionsentry">VolumeUnmountRequest.OptionsEntry</a></li>
+<li><a href="#volumeunmountresponse">VolumeUnmountResponse</a></li>
 </ul>
 </li>
 </ul>
@@ -332,31 +343,31 @@
 <h2 id="enumerate">Enumerate</h2>
 <blockquote>
 <p><strong>rpc</strong> Enumerate(<a href="#clusterenumeraterequest">ClusterEnumerateRequest</a>)
-    <strong>returns</strong> <a href="#clusterenumerateresponse">ClusterEnumerateResponse</a></p>
+    <a href="#clusterenumerateresponse">ClusterEnumerateResponse</a></p>
 </blockquote>
 <p>Enumerate lists all the nodes in the cluster.</p>
 <h2 id="inspect">Inspect</h2>
 <blockquote>
 <p><strong>rpc</strong> Inspect(<a href="#clusterinspectrequest">ClusterInspectRequest</a>)
-    <strong>returns</strong> <a href="#clusterinspectresponse">ClusterInspectResponse</a></p>
+    <a href="#clusterinspectresponse">ClusterInspectResponse</a></p>
 </blockquote>
 <p>Inspect the node given a UUID.</p>
 <h2 id="alertenumerate">AlertEnumerate</h2>
 <blockquote>
 <p><strong>rpc</strong> AlertEnumerate(<a href="#clusteralertenumeraterequest">ClusterAlertEnumerateRequest</a>)
-    <strong>returns</strong> <a href="#clusteralertenumerateresponse">ClusterAlertEnumerateResponse</a></p>
+    <a href="#clusteralertenumerateresponse">ClusterAlertEnumerateResponse</a></p>
 </blockquote>
 <p>Get a list of alerts from the storage cluster</p>
 <h2 id="alertclear">AlertClear</h2>
 <blockquote>
 <p><strong>rpc</strong> AlertClear(<a href="#clusteralertclearrequest">ClusterAlertClearRequest</a>)
-    <strong>returns</strong> <a href="#clusteralertclearresponse">ClusterAlertClearResponse</a></p>
+    <a href="#clusteralertclearresponse">ClusterAlertClearResponse</a></p>
 </blockquote>
 <p>Clear the alert for a given resource</p>
 <h2 id="alerterase">AlertErase</h2>
 <blockquote>
 <p><strong>rpc</strong> AlertErase(<a href="#clusteralerteraserequest">ClusterAlertEraseRequest</a>)
-    <strong>returns</strong> <a href="#clusteralerteraseresponse">ClusterAlertEraseResponse</a></p>
+    <a href="#clusteralerteraseresponse">ClusterAlertEraseResponse</a></p>
 </blockquote>
 <p>Erases an alert for a given resource
  <!-- end methods --></p>
@@ -364,52 +375,76 @@
 <h2 id="create">Create</h2>
 <blockquote>
 <p><strong>rpc</strong> Create(<a href="#openstoragevolumecreaterequest">OpenStorageVolumeCreateRequest</a>)
-    <strong>returns</strong> <a href="#openstoragevolumecreateresponse">OpenStorageVolumeCreateResponse</a></p>
+    <a href="#openstoragevolumecreateresponse">OpenStorageVolumeCreateResponse</a></p>
 </blockquote>
 <p>Creates a new volume</p>
 <h2 id="createfromvolumeid">CreateFromVolumeID</h2>
 <blockquote>
 <p><strong>rpc</strong> CreateFromVolumeID(<a href="#volumecreatefromvolumeidrequest">VolumeCreateFromVolumeIDRequest</a>)
-    <strong>returns</strong> <a href="#volumecreatefromvolumeidresponse">VolumeCreateFromVolumeIDResponse</a></p>
+    <a href="#volumecreatefromvolumeidresponse">VolumeCreateFromVolumeIDResponse</a></p>
 </blockquote>
 <p>CreateFromVolumeID creates a new volume cloned from an existing volume</p>
 <h2 id="delete">Delete</h2>
 <blockquote>
 <p><strong>rpc</strong> Delete(<a href="#volumedeleterequest">VolumeDeleteRequest</a>)
-    <strong>returns</strong> <a href="#volumedeleteresponse">VolumeDeleteResponse</a></p>
+    <a href="#volumedeleteresponse">VolumeDeleteResponse</a></p>
 </blockquote>
 <p>Delete a volume</p>
 <h2 id="inspect">Inspect</h2>
 <blockquote>
 <p><strong>rpc</strong> Inspect(<a href="#volumeinspectrequest">VolumeInspectRequest</a>)
-    <strong>returns</strong> <a href="#volumeinspectresponse">VolumeInspectResponse</a></p>
+    <a href="#volumeinspectresponse">VolumeInspectResponse</a></p>
 </blockquote>
 <p>Get information on a volume</p>
 <h2 id="enumerate">Enumerate</h2>
 <blockquote>
 <p><strong>rpc</strong> Enumerate(<a href="#volumeenumeraterequest">VolumeEnumerateRequest</a>)
-    <strong>returns</strong> <a href="#volumeenumerateresponse">VolumeEnumerateResponse</a></p>
+    <a href="#volumeenumerateresponse">VolumeEnumerateResponse</a></p>
 </blockquote>
 <p>Get a list of volumes</p>
 <h2 id="snapshotcreate">SnapshotCreate</h2>
 <blockquote>
 <p><strong>rpc</strong> SnapshotCreate(<a href="#volumesnapshotcreaterequest">VolumeSnapshotCreateRequest</a>)
-    <strong>returns</strong> <a href="#volumesnapshotcreateresponse">VolumeSnapshotCreateResponse</a></p>
+    <a href="#volumesnapshotcreateresponse">VolumeSnapshotCreateResponse</a></p>
 </blockquote>
 <p>Create a snapshot of a volume. This creates an immutable (read-only),
 point-in-time snapshot of a volume.</p>
 <h2 id="snapshotrestore">SnapshotRestore</h2>
 <blockquote>
 <p><strong>rpc</strong> SnapshotRestore(<a href="#volumesnapshotrestorerequest">VolumeSnapshotRestoreRequest</a>)
-    <strong>returns</strong> <a href="#volumesnapshotrestoreresponse">VolumeSnapshotRestoreResponse</a></p>
+    <a href="#volumesnapshotrestoreresponse">VolumeSnapshotRestoreResponse</a></p>
 </blockquote>
 <p>Restores a volume to a specified snapshot</p>
 <h2 id="snapshotenumerate">SnapshotEnumerate</h2>
 <blockquote>
 <p><strong>rpc</strong> SnapshotEnumerate(<a href="#volumesnapshotenumeraterequest">VolumeSnapshotEnumerateRequest</a>)
-    <strong>returns</strong> <a href="#volumesnapshotenumerateresponse">VolumeSnapshotEnumerateResponse</a></p>
+    <a href="#volumesnapshotenumerateresponse">VolumeSnapshotEnumerateResponse</a></p>
 </blockquote>
-<p>List the number of snapshots for a specific volume
+<p>List the number of snapshots for a specific volume</p>
+<h2 id="attach">Attach</h2>
+<blockquote>
+<p><strong>rpc</strong> Attach(<a href="#volumeattachrequest">VolumeAttachRequest</a>)
+    <a href="#volumeattachresponse">VolumeAttachResponse</a></p>
+</blockquote>
+<p>Attach device to host</p>
+<h2 id="detach">Detach</h2>
+<blockquote>
+<p><strong>rpc</strong> Detach(<a href="#volumedetachrequest">VolumeDetachRequest</a>)
+    <a href="#volumedetachresponse">VolumeDetachResponse</a></p>
+</blockquote>
+<p>Detaches the volume from the node.</p>
+<h2 id="mount">Mount</h2>
+<blockquote>
+<p><strong>rpc</strong> Mount(<a href="#volumemountrequest">VolumeMountRequest</a>)
+    <a href="#volumemountresponse">VolumeMountResponse</a></p>
+</blockquote>
+<p>Attaches the volume to a node.</p>
+<h2 id="unmount">Unmount</h2>
+<blockquote>
+<p><strong>rpc</strong> Unmount(<a href="#volumeunmountrequest">VolumeUnmountRequest</a>)
+    <a href="#volumeunmountresponse">VolumeUnmountResponse</a></p>
+</blockquote>
+<p>Unmount volume at specified path
  <!-- end methods -->
  <!-- end services --></p>
 <h1 id="messages">Messages</h1>
@@ -427,7 +462,7 @@ swagger:model</p>
 <tbody>
 <tr>
 <td>ReqestKV</td>
-<td>repeated <a href="#activerequestreqestkventry">ActiveRequest.ReqestKVEntry</a></td>
+<td><a href="#activerequestreqestkventry">map ActiveRequest.ReqestKVEntry</a></td>
 <td>none</td>
 </tr>
 </tbody>
@@ -446,12 +481,12 @@ swagger:model</p>
 <tbody>
 <tr>
 <td>key</td>
-<td><a href="#int64">int64</a></td>
+<td><a href="#int64"> int64</a></td>
 <td>none</td>
 </tr>
 <tr>
 <td>value</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>none</td>
 </tr>
 </tbody>
@@ -472,12 +507,12 @@ swagger:model</p>
 <tbody>
 <tr>
 <td>RequestCount</td>
-<td><a href="#int64">int64</a></td>
+<td><a href="#int64"> int64</a></td>
 <td>none</td>
 </tr>
 <tr>
 <td>ActiveRequest</td>
-<td>repeated <a href="#activerequest">ActiveRequest</a></td>
+<td><a href="#activerequest">repeated ActiveRequest</a></td>
 <td>none</td>
 </tr>
 </tbody>
@@ -498,52 +533,52 @@ swagger:model</p>
 <tbody>
 <tr>
 <td>id</td>
-<td><a href="#int64">int64</a></td>
+<td><a href="#int64"> int64</a></td>
 <td>Id for Alert</td>
 </tr>
 <tr>
 <td>severity</td>
-<td><a href="#severitytype">SeverityType</a></td>
+<td><a href="#severitytype"> SeverityType</a></td>
 <td>Severity of the Alert</td>
 </tr>
 <tr>
 <td>alert_type</td>
-<td><a href="#int64">int64</a></td>
+<td><a href="#int64"> int64</a></td>
 <td>AlertType user defined alert type</td>
 </tr>
 <tr>
 <td>message</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>Message describing the Alert</td>
 </tr>
 <tr>
 <td>timestamp</td>
-<td><a href="#googleprotobuftimestamp">google.protobuf.Timestamp</a></td>
+<td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
 <td>Timestamp when Alert occured</td>
 </tr>
 <tr>
 <td>resource_id</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>ResourceId where Alert occured</td>
 </tr>
 <tr>
 <td>resource</td>
-<td><a href="#resourcetype">ResourceType</a></td>
+<td><a href="#resourcetype"> ResourceType</a></td>
 <td>Resource where Alert occured</td>
 </tr>
 <tr>
 <td>cleared</td>
-<td><a href="#bool">bool</a></td>
+<td><a href="#bool"> bool</a></td>
 <td>Cleared Flag</td>
 </tr>
 <tr>
 <td>ttl</td>
-<td><a href="#uint64">uint64</a></td>
+<td><a href="#uint64"> uint64</a></td>
 <td>TTL in seconds for this Alert</td>
 </tr>
 <tr>
 <td>unique_tag</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>UniqueTag helps identify a unique alert for a given resouce</td>
 </tr>
 </tbody>
@@ -564,7 +599,7 @@ swagger:model</p>
 <tbody>
 <tr>
 <td>alert</td>
-<td>repeated <a href="#alert">Alert</a></td>
+<td><a href="#alert">repeated Alert</a></td>
 <td>none</td>
 </tr>
 </tbody>
@@ -583,12 +618,12 @@ swagger:model</p>
 <tbody>
 <tr>
 <td>resource</td>
-<td><a href="#resourcetype">ResourceType</a></td>
+<td><a href="#resourcetype"> ResourceType</a></td>
 <td>Type of resource (required)</td>
 </tr>
 <tr>
 <td>alert_id</td>
-<td><a href="#int64">int64</a></td>
+<td><a href="#int64"> int64</a></td>
 <td>Id of alert as returned by ClusterEnumerateAlertResponse (required)</td>
 </tr>
 </tbody>
@@ -609,17 +644,17 @@ swagger:model</p>
 <tbody>
 <tr>
 <td>time_start</td>
-<td><a href="#googleprotobuftimestamp">google.protobuf.Timestamp</a></td>
+<td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
 <td>Start time of alerts (required)</td>
 </tr>
 <tr>
 <td>time_end</td>
-<td><a href="#googleprotobuftimestamp">google.protobuf.Timestamp</a></td>
+<td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
 <td>End time of alerts (required)</td>
 </tr>
 <tr>
 <td>resource</td>
-<td><a href="#resourcetype">ResourceType</a></td>
+<td><a href="#resourcetype"> ResourceType</a></td>
 <td>Type of resource (required)</td>
 </tr>
 </tbody>
@@ -638,7 +673,7 @@ swagger:model</p>
 <tbody>
 <tr>
 <td>alerts</td>
-<td><a href="#alerts">Alerts</a></td>
+<td><a href="#alerts"> Alerts</a></td>
 <td>Information on the alerts requested</td>
 </tr>
 </tbody>
@@ -657,12 +692,12 @@ swagger:model</p>
 <tbody>
 <tr>
 <td>resource</td>
-<td><a href="#resourcetype">ResourceType</a></td>
+<td><a href="#resourcetype"> ResourceType</a></td>
 <td>Type of resource (required)</td>
 </tr>
 <tr>
 <td>alert_id</td>
-<td><a href="#int64">int64</a></td>
+<td><a href="#int64"> int64</a></td>
 <td>Id of alert as returned by ClusterEnumerateAlertResponse (required)</td>
 </tr>
 </tbody>
@@ -685,7 +720,7 @@ swagger:model</p>
 <tbody>
 <tr>
 <td>cluster</td>
-<td><a href="#storagecluster">StorageCluster</a></td>
+<td><a href="#storagecluster"> StorageCluster</a></td>
 <td>Cluster information</td>
 </tr>
 </tbody>
@@ -704,7 +739,7 @@ swagger:model</p>
 <tbody>
 <tr>
 <td>node_id</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>Id of node to inspect (required)</td>
 </tr>
 </tbody>
@@ -723,7 +758,7 @@ swagger:model</p>
 <tbody>
 <tr>
 <td>node</td>
-<td><a href="#storagenode">StorageNode</a></td>
+<td><a href="#storagenode"> StorageNode</a></td>
 <td>Node information</td>
 </tr>
 </tbody>
@@ -744,7 +779,7 @@ swagger:response clusterResponse</p>
 <tbody>
 <tr>
 <td>error</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>Error code</td>
 </tr>
 </tbody>
@@ -769,12 +804,12 @@ swagger:model</p>
 <tbody>
 <tr>
 <td>path</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>none</td>
 </tr>
 <tr>
 <td>kind</td>
-<td><a href="#graphdriverchangetype">GraphDriverChangeType</a></td>
+<td><a href="#graphdriverchangetype"> GraphDriverChangeType</a></td>
 <td>none</td>
 </tr>
 </tbody>
@@ -796,7 +831,7 @@ swagger:model</p>
 <tbody>
 <tr>
 <td>id</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>Id common identifier across volumes that have the same group.</td>
 </tr>
 </tbody>
@@ -817,12 +852,12 @@ swagger:model</p>
 <tbody>
 <tr>
 <td>id</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>none</td>
 </tr>
 <tr>
 <td>Labels</td>
-<td>repeated <a href="#groupsnapcreaterequestlabelsentry">GroupSnapCreateRequest.LabelsEntry</a></td>
+<td><a href="#groupsnapcreaterequestlabelsentry">map GroupSnapCreateRequest.LabelsEntry</a></td>
 <td>none</td>
 </tr>
 </tbody>
@@ -841,12 +876,12 @@ swagger:model</p>
 <tbody>
 <tr>
 <td>key</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>none</td>
 </tr>
 <tr>
 <td>value</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>none</td>
 </tr>
 </tbody>
@@ -867,13 +902,13 @@ swagger:response groupSnapCreateResponse</p>
 <tbody>
 <tr>
 <td>snapshots</td>
-<td>repeated <a href="#groupsnapcreateresponsesnapshotsentry">GroupSnapCreateResponse.SnapshotsEntry</a></td>
+<td><a href="#groupsnapcreateresponsesnapshotsentry">map GroupSnapCreateResponse.SnapshotsEntry</a></td>
 <td>Created snapshots</td>
 </tr>
 </tbody>
 </table>
 <p>in: body Required: true |
-| error |  <a href="#string">string</a> | Error message</p>
+| error | <a href="#string"> string</a> | Error message</p>
 <p>in: body Required: true |
  <!-- end Fields -->
  <!-- end HasFields --></p>
@@ -889,12 +924,12 @@ swagger:response groupSnapCreateResponse</p>
 <tbody>
 <tr>
 <td>key</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>none</td>
 </tr>
 <tr>
 <td>value</td>
-<td><a href="#snapcreateresponse">SnapCreateResponse</a></td>
+<td><a href="#snapcreateresponse"> SnapCreateResponse</a></td>
 <td>none</td>
 </tr>
 </tbody>
@@ -913,12 +948,12 @@ swagger:response groupSnapCreateResponse</p>
 <tbody>
 <tr>
 <td>name</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>Unique name of the volume. This will be used for idempotency.</td>
 </tr>
 <tr>
 <td>spec</td>
-<td><a href="#volumespec">VolumeSpec</a></td>
+<td><a href="#volumespec"> VolumeSpec</a></td>
 <td>Volume specification</td>
 </tr>
 </tbody>
@@ -937,7 +972,7 @@ swagger:response groupSnapCreateResponse</p>
 <tbody>
 <tr>
 <td>volume_id</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>Id of new volume</td>
 </tr>
 </tbody>
@@ -959,7 +994,7 @@ swagger:model</p>
 <tbody>
 <tr>
 <td>nodes</td>
-<td>repeated <a href="#string">string</a></td>
+<td><a href="#string">repeated string</a></td>
 <td>none</td>
 </tr>
 </tbody>
@@ -981,7 +1016,7 @@ swagger:model</p>
 <tbody>
 <tr>
 <td>runtime_state</td>
-<td>repeated <a href="#runtimestatemapruntimestateentry">RuntimeStateMap.RuntimeStateEntry</a></td>
+<td><a href="#runtimestatemapruntimestateentry">map RuntimeStateMap.RuntimeStateEntry</a></td>
 <td>none</td>
 </tr>
 </tbody>
@@ -1000,12 +1035,12 @@ swagger:model</p>
 <tbody>
 <tr>
 <td>key</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>none</td>
 </tr>
 <tr>
 <td>value</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>none</td>
 </tr>
 </tbody>
@@ -1026,17 +1061,17 @@ swagger:parameters snapVolume</p>
 <tbody>
 <tr>
 <td>id</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>volume id</td>
 </tr>
 <tr>
 <td>locator</td>
-<td><a href="#volumelocator">VolumeLocator</a></td>
+<td><a href="#volumelocator"> VolumeLocator</a></td>
 <td>none</td>
 </tr>
 <tr>
 <td>readonly</td>
-<td><a href="#bool">bool</a></td>
+<td><a href="#bool"> bool</a></td>
 <td>none</td>
 </tr>
 </tbody>
@@ -1057,7 +1092,7 @@ swagger:response snapCreateResponse</p>
 <tbody>
 <tr>
 <td>volume_create_response</td>
-<td><a href="#volumecreateresponse">VolumeCreateResponse</a></td>
+<td><a href="#volumecreateresponse"> VolumeCreateResponse</a></td>
 <td>VolumeCreateResponse</td>
 </tr>
 </tbody>
@@ -1080,12 +1115,12 @@ swagger:model</p>
 <tbody>
 <tr>
 <td>parent</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>A volume id, if specified will create a clone of the parent.</td>
 </tr>
 <tr>
 <td>seed</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>Seed will seed the volume from the specified URI Any additional config for the source comes from the labels in the spec</td>
 </tr>
 </tbody>
@@ -1106,52 +1141,52 @@ swagger:model</p>
 <tbody>
 <tr>
 <td>reads</td>
-<td><a href="#uint64">uint64</a></td>
+<td><a href="#uint64"> uint64</a></td>
 <td>Reads completed successfully</td>
 </tr>
 <tr>
 <td>read_ms</td>
-<td><a href="#uint64">uint64</a></td>
+<td><a href="#uint64"> uint64</a></td>
 <td>Time spent in reads in ms</td>
 </tr>
 <tr>
 <td>read_bytes</td>
-<td><a href="#uint64">uint64</a></td>
+<td><a href="#uint64"> uint64</a></td>
 <td>none</td>
 </tr>
 <tr>
 <td>writes</td>
-<td><a href="#uint64">uint64</a></td>
+<td><a href="#uint64"> uint64</a></td>
 <td>Writes completed successfully</td>
 </tr>
 <tr>
 <td>write_ms</td>
-<td><a href="#uint64">uint64</a></td>
+<td><a href="#uint64"> uint64</a></td>
 <td>Time spent in writes in ms</td>
 </tr>
 <tr>
 <td>write_bytes</td>
-<td><a href="#uint64">uint64</a></td>
+<td><a href="#uint64"> uint64</a></td>
 <td>none</td>
 </tr>
 <tr>
 <td>io_progress</td>
-<td><a href="#uint64">uint64</a></td>
+<td><a href="#uint64"> uint64</a></td>
 <td>IOs curently in progress</td>
 </tr>
 <tr>
 <td>io_ms</td>
-<td><a href="#uint64">uint64</a></td>
+<td><a href="#uint64"> uint64</a></td>
 <td>Time spent doing IOs ms</td>
 </tr>
 <tr>
 <td>bytes_used</td>
-<td><a href="#uint64">uint64</a></td>
+<td><a href="#uint64"> uint64</a></td>
 <td>BytesUsed</td>
 </tr>
 <tr>
 <td>interval_ms</td>
-<td><a href="#uint64">uint64</a></td>
+<td><a href="#uint64"> uint64</a></td>
 <td>Interval in ms during which stats were collected</td>
 </tr>
 </tbody>
@@ -1171,22 +1206,22 @@ swagger:model</p>
 <tbody>
 <tr>
 <td>status</td>
-<td><a href="#status">Status</a></td>
+<td><a href="#status"> Status</a></td>
 <td>Status of the cluster</td>
 </tr>
 <tr>
 <td>id</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>Id of the cluster</td>
 </tr>
 <tr>
 <td>node_id</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>NodeId is the id of the node servicing these requests</td>
 </tr>
 <tr>
 <td>nodes</td>
-<td>repeated <a href="#storagenode">StorageNode</a></td>
+<td><a href="#storagenode">repeated StorageNode</a></td>
 <td>Nodes are a list of all the nodes on the cluster</td>
 </tr>
 </tbody>
@@ -1206,67 +1241,67 @@ swagger:model</p>
 <tbody>
 <tr>
 <td>id</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>Id of the node</td>
 </tr>
 <tr>
 <td>cpu</td>
-<td><a href="#double">double</a></td>
+<td><a href="#double"> double</a></td>
 <td>Cpu usage of the node</td>
 </tr>
 <tr>
 <td>mem_total</td>
-<td><a href="#uint64">uint64</a></td>
+<td><a href="#uint64"> uint64</a></td>
 <td>Total memory of the node</td>
 </tr>
 <tr>
 <td>mem_used</td>
-<td><a href="#uint64">uint64</a></td>
+<td><a href="#uint64"> uint64</a></td>
 <td>Used memory of the node</td>
 </tr>
 <tr>
 <td>mem_free</td>
-<td><a href="#uint64">uint64</a></td>
+<td><a href="#uint64"> uint64</a></td>
 <td>Free memory of the node</td>
 </tr>
 <tr>
 <td>avg_load</td>
-<td><a href="#int64">int64</a></td>
+<td><a href="#int64"> int64</a></td>
 <td>Average load (percentage)</td>
 </tr>
 <tr>
 <td>status</td>
-<td><a href="#status">Status</a></td>
+<td><a href="#status"> Status</a></td>
 <td>Node status</td>
 </tr>
 <tr>
 <td>disks</td>
-<td>repeated <a href="#storagenodedisksentry">StorageNode.DisksEntry</a></td>
+<td><a href="#storagenodedisksentry">map StorageNode.DisksEntry</a></td>
 <td>List of disks on the node</td>
 </tr>
 <tr>
 <td>pools</td>
-<td>repeated <a href="#storagepool">StoragePool</a></td>
+<td><a href="#storagepool">repeated StoragePool</a></td>
 <td>List of storage pools this node supports</td>
 </tr>
 <tr>
 <td>mgmt_ip</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>Management IP</td>
 </tr>
 <tr>
 <td>data_ip</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>Data IP</td>
 </tr>
 <tr>
 <td>hostname</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>Hostname of the node</td>
 </tr>
 <tr>
 <td>node_labels</td>
-<td>repeated <a href="#storagenodenodelabelsentry">StorageNode.NodeLabelsEntry</a></td>
+<td><a href="#storagenodenodelabelsentry">map StorageNode.NodeLabelsEntry</a></td>
 <td>User defined labels for the node</td>
 </tr>
 </tbody>
@@ -1285,12 +1320,12 @@ swagger:model</p>
 <tbody>
 <tr>
 <td>key</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>none</td>
 </tr>
 <tr>
 <td>value</td>
-<td><a href="#storageresource">StorageResource</a></td>
+<td><a href="#storageresource"> StorageResource</a></td>
 <td>none</td>
 </tr>
 </tbody>
@@ -1309,12 +1344,12 @@ swagger:model</p>
 <tbody>
 <tr>
 <td>key</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>none</td>
 </tr>
 <tr>
 <td>value</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>none</td>
 </tr>
 </tbody>
@@ -1334,37 +1369,37 @@ swagger:model</p>
 <tbody>
 <tr>
 <td>ID</td>
-<td><a href="#int32">int32</a></td>
+<td><a href="#int32"> int32</a></td>
 <td>ID pool ID</td>
 </tr>
 <tr>
 <td>Cos</td>
-<td><a href="#costype">CosType</a></td>
+<td><a href="#costype"> CosType</a></td>
 <td>Cos reflects the capabilities of this drive pool</td>
 </tr>
 <tr>
 <td>Medium</td>
-<td><a href="#storagemedium">StorageMedium</a></td>
+<td><a href="#storagemedium"> StorageMedium</a></td>
 <td>Medium underlying storage type</td>
 </tr>
 <tr>
 <td>RaidLevel</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>RaidLevel storage raid level</td>
 </tr>
 <tr>
 <td>TotalSize</td>
-<td><a href="#uint64">uint64</a></td>
+<td><a href="#uint64"> uint64</a></td>
 <td>TotalSize of the pool</td>
 </tr>
 <tr>
 <td>Used</td>
-<td><a href="#uint64">uint64</a></td>
+<td><a href="#uint64"> uint64</a></td>
 <td>Used size of the pool</td>
 </tr>
 <tr>
 <td>labels</td>
-<td>repeated <a href="#storagepoollabelsentry">StoragePool.LabelsEntry</a></td>
+<td><a href="#storagepoollabelsentry">map StoragePool.LabelsEntry</a></td>
 <td>Labels is a list of user defined name-value pairs</td>
 </tr>
 </tbody>
@@ -1383,12 +1418,12 @@ swagger:model</p>
 <tbody>
 <tr>
 <td>key</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>none</td>
 </tr>
 <tr>
 <td>value</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>none</td>
 </tr>
 </tbody>
@@ -1409,67 +1444,67 @@ swagger:model</p>
 <tbody>
 <tr>
 <td>id</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>Id is the LUN identifier.</td>
 </tr>
 <tr>
 <td>path</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>Path device path for this storage resource.</td>
 </tr>
 <tr>
 <td>medium</td>
-<td><a href="#storagemedium">StorageMedium</a></td>
+<td><a href="#storagemedium"> StorageMedium</a></td>
 <td>Storage medium.</td>
 </tr>
 <tr>
 <td>online</td>
-<td><a href="#bool">bool</a></td>
+<td><a href="#bool"> bool</a></td>
 <td>True if this device is online.</td>
 </tr>
 <tr>
 <td>iops</td>
-<td><a href="#uint64">uint64</a></td>
+<td><a href="#uint64"> uint64</a></td>
 <td>IOPS</td>
 </tr>
 <tr>
 <td>seq_write</td>
-<td><a href="#double">double</a></td>
+<td><a href="#double"> double</a></td>
 <td>SeqWrite</td>
 </tr>
 <tr>
 <td>seq_read</td>
-<td><a href="#double">double</a></td>
+<td><a href="#double"> double</a></td>
 <td>SeqRead</td>
 </tr>
 <tr>
 <td>randRW</td>
-<td><a href="#double">double</a></td>
+<td><a href="#double"> double</a></td>
 <td>RandRW</td>
 </tr>
 <tr>
 <td>size</td>
-<td><a href="#uint64">uint64</a></td>
+<td><a href="#uint64"> uint64</a></td>
 <td>Total size in bytes.</td>
 </tr>
 <tr>
 <td>used</td>
-<td><a href="#uint64">uint64</a></td>
+<td><a href="#uint64"> uint64</a></td>
 <td>Physical Bytes used.</td>
 </tr>
 <tr>
 <td>rotation_speed</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>True if this device is rotational.</td>
 </tr>
 <tr>
 <td>last_scan</td>
-<td><a href="#googleprotobuftimestamp">google.protobuf.Timestamp</a></td>
+<td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
 <td>Timestamp of last time this device was scanned.</td>
 </tr>
 <tr>
 <td>metadata</td>
-<td><a href="#bool">bool</a></td>
+<td><a href="#bool"> bool</a></td>
 <td>True if dedicated for metadata.</td>
 </tr>
 </tbody>
@@ -1491,112 +1526,112 @@ swagger:model</p>
 <tbody>
 <tr>
 <td>id</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>Self referential volume ID.</td>
 </tr>
 <tr>
 <td>source</td>
-<td><a href="#source">Source</a></td>
+<td><a href="#source"> Source</a></td>
 <td>Source specified seed data for the volume.</td>
 </tr>
 <tr>
 <td>group</td>
-<td><a href="#group">Group</a></td>
+<td><a href="#group"> Group</a></td>
 <td>Group volumes in the same group have the same group id.</td>
 </tr>
 <tr>
 <td>readonly</td>
-<td><a href="#bool">bool</a></td>
+<td><a href="#bool"> bool</a></td>
 <td>Readonly is true if this volume is to be mounted with readonly access.</td>
 </tr>
 <tr>
 <td>locator</td>
-<td><a href="#volumelocator">VolumeLocator</a></td>
+<td><a href="#volumelocator"> VolumeLocator</a></td>
 <td>User specified locator</td>
 </tr>
 <tr>
 <td>ctime</td>
-<td><a href="#googleprotobuftimestamp">google.protobuf.Timestamp</a></td>
+<td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
 <td>Volume creation time</td>
 </tr>
 <tr>
 <td>spec</td>
-<td><a href="#volumespec">VolumeSpec</a></td>
+<td><a href="#volumespec"> VolumeSpec</a></td>
 <td>User specified VolumeSpec</td>
 </tr>
 <tr>
 <td>usage</td>
-<td><a href="#uint64">uint64</a></td>
+<td><a href="#uint64"> uint64</a></td>
 <td>Usage is bytes consumed by vtheis volume.</td>
 </tr>
 <tr>
 <td>last_scan</td>
-<td><a href="#googleprotobuftimestamp">google.protobuf.Timestamp</a></td>
+<td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
 <td>LastScan is the time when an integrity check was run.</td>
 </tr>
 <tr>
 <td>format</td>
-<td><a href="#fstype">FSType</a></td>
+<td><a href="#fstype"> FSType</a></td>
 <td>Format specifies the filesytem for this volume.</td>
 </tr>
 <tr>
 <td>status</td>
-<td><a href="#volumestatus">VolumeStatus</a></td>
+<td><a href="#volumestatus"> VolumeStatus</a></td>
 <td>Status is the availability status of this volume.</td>
 </tr>
 <tr>
 <td>state</td>
-<td><a href="#volumestate">VolumeState</a></td>
+<td><a href="#volumestate"> VolumeState</a></td>
 <td>State is the current runtime state of this volume.</td>
 </tr>
 <tr>
 <td>attached_on</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>AttachedOn is the node instance identifier for clustered systems.</td>
 </tr>
 <tr>
 <td>attached_state</td>
-<td><a href="#attachstate">AttachState</a></td>
+<td><a href="#attachstate"> AttachState</a></td>
 <td>AttachedState shows whether the device is attached for internal or external use.</td>
 </tr>
 <tr>
 <td>device_path</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>DevicePath is the device exported by block device implementations.</td>
 </tr>
 <tr>
 <td>secure_device_path</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>SecureDevicePath is the device path for an encrypted volume.</td>
 </tr>
 <tr>
 <td>attach_path</td>
-<td>repeated <a href="#string">string</a></td>
+<td><a href="#string">repeated string</a></td>
 <td>AttachPath is the mounted path in the host namespace.</td>
 </tr>
 <tr>
 <td>attach_info</td>
-<td>repeated <a href="#volumeattachinfoentry">Volume.AttachInfoEntry</a></td>
+<td><a href="#volumeattachinfoentry">map Volume.AttachInfoEntry</a></td>
 <td>AttachInfo is a list of name value mappings that provides attach information.</td>
 </tr>
 <tr>
 <td>replica_sets</td>
-<td>repeated <a href="#replicaset">ReplicaSet</a></td>
+<td><a href="#replicaset">repeated ReplicaSet</a></td>
 <td>ReplicatSets storage for this volumefor clustered storage arrays.</td>
 </tr>
 <tr>
 <td>runtime_state</td>
-<td>repeated <a href="#runtimestatemap">RuntimeStateMap</a></td>
+<td><a href="#runtimestatemap">repeated RuntimeStateMap</a></td>
 <td>RuntimeState is a lst of name value mapping of driver specific runtime information.</td>
 </tr>
 <tr>
 <td>error</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>Error is the Last recorded error.</td>
 </tr>
 <tr>
 <td>volume_consumers</td>
-<td>repeated <a href="#volumeconsumer">VolumeConsumer</a></td>
+<td><a href="#volumeconsumer">repeated VolumeConsumer</a></td>
 <td>VolumeConsumers are entities that consume this volume</td>
 </tr>
 </tbody>
@@ -1615,13 +1650,80 @@ swagger:model</p>
 <tbody>
 <tr>
 <td>key</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>none</td>
 </tr>
 <tr>
 <td>value</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="volumeattachrequest">VolumeAttachRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of volume</td>
+</tr>
+<tr>
+<td>options</td>
+<td><a href="#volumeattachrequestoptionsentry">map VolumeAttachRequest.OptionsEntry</a></td>
+<td>Options for attaching volume, right now only passphrase options is supported</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="volumeattachrequestoptionsentry">VolumeAttachRequest.OptionsEntry </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="volumeattachresponse">VolumeAttachResponse </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>device_path</td>
+<td><a href="#string"> string</a></td>
+<td>Device path where device is exported</td>
 </tr>
 </tbody>
 </table>
@@ -1643,32 +1745,32 @@ swagger: model</p>
 <tbody>
 <tr>
 <td>name</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>Name is the name of the volume consumer</td>
 </tr>
 <tr>
 <td>namespace</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>Namespace is the namespace of the volume consumer</td>
 </tr>
 <tr>
 <td>type</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>Type is the type of the consumer. E.g a Kubernetes pod</td>
 </tr>
 <tr>
 <td>node_id</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>NodeID is the identifier of the node on which the consumer is running. This identifier would be from the perspective of the container runtime or orchestrator under which the volume consumer resides. For example, NodeID can be name of a minion in Kubernetes.</td>
 </tr>
 <tr>
 <td>owner_name</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>OwnerName is the name of the entity who owns this volume consumer</td>
 </tr>
 <tr>
 <td>owner_type</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>OwnerType is the type of the entity who owns this volume consumer. The type would be from the perspective of the container runtime or the orchestrator under which the volume consumer resides. For e.g OwnerType can be a Deployment in Kubernetes.</td>
 </tr>
 </tbody>
@@ -1687,17 +1789,17 @@ swagger: model</p>
 <tbody>
 <tr>
 <td>name</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>Unique name of the volume. This will be used for idempotency.</td>
 </tr>
 <tr>
 <td>parent_id</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>Parent volume id, if specified will create a new volume as a clone of the parent.</td>
 </tr>
 <tr>
 <td>spec</td>
-<td><a href="#volumespec">VolumeSpec</a></td>
+<td><a href="#volumespec"> VolumeSpec</a></td>
 <td>Volume specification</td>
 </tr>
 </tbody>
@@ -1716,7 +1818,7 @@ swagger: model</p>
 <tbody>
 <tr>
 <td>volume_id</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>Id of new volume</td>
 </tr>
 </tbody>
@@ -1738,17 +1840,17 @@ swagger:model</p>
 <tbody>
 <tr>
 <td>locator</td>
-<td><a href="#volumelocator">VolumeLocator</a></td>
+<td><a href="#volumelocator"> VolumeLocator</a></td>
 <td>User specified volume name and labels</td>
 </tr>
 <tr>
 <td>source</td>
-<td><a href="#source">Source</a></td>
+<td><a href="#source"> Source</a></td>
 <td>Source to create volume</td>
 </tr>
 <tr>
 <td>spec</td>
-<td><a href="#volumespec">VolumeSpec</a></td>
+<td><a href="#volumespec"> VolumeSpec</a></td>
 <td>The storage spec for the volume</td>
 </tr>
 </tbody>
@@ -1769,13 +1871,13 @@ swagger:response volumeCreateResponse</p>
 <tbody>
 <tr>
 <td>id</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>ID of the newly created volume</td>
 </tr>
 </tbody>
 </table>
 <p>in: body Required: true |
-| volume_response |  <a href="#volumeresponse">VolumeResponse</a> | Volume Response</p>
+| volume_response | <a href="#volumeresponse"> VolumeResponse</a> | Volume Response</p>
 <p>in: body Required: true |
  <!-- end Fields -->
  <!-- end HasFields --></p>
@@ -1791,7 +1893,7 @@ swagger:response volumeCreateResponse</p>
 <tbody>
 <tr>
 <td>volume_id</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>Id of volume to delete</td>
 </tr>
 </tbody>
@@ -1799,6 +1901,27 @@ swagger:response volumeCreateResponse</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="volumedeleteresponse">VolumeDeleteResponse </h2>
+ <!-- end HasFields -->
+<h2 id="volumedetachrequest">VolumeDetachRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of the volume</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="volumedetachresponse">VolumeDetachResponse </h2>
  <!-- end HasFields -->
 <h2 id="volumeenumeraterequest">VolumeEnumerateRequest </h2>
 <table>
@@ -1812,7 +1935,7 @@ swagger:response volumeCreateResponse</p>
 <tbody>
 <tr>
 <td>locator</td>
-<td><a href="#volumelocator">VolumeLocator</a></td>
+<td><a href="#volumelocator"> VolumeLocator</a></td>
 <td>Volumes to match to this locator. If not provided, all volumes will be returned.</td>
 </tr>
 </tbody>
@@ -1831,7 +1954,7 @@ swagger:response volumeCreateResponse</p>
 <tbody>
 <tr>
 <td>volumes</td>
-<td>repeated <a href="#volume">Volume</a></td>
+<td><a href="#volume">repeated Volume</a></td>
 <td>List of volumes matching label</td>
 </tr>
 </tbody>
@@ -1852,17 +1975,17 @@ swagger:model</p>
 <tbody>
 <tr>
 <td>volume_id</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>none</td>
 </tr>
 <tr>
 <td>path</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>none</td>
 </tr>
 <tr>
 <td>storage</td>
-<td><a href="#volumespec">VolumeSpec</a></td>
+<td><a href="#volumespec"> VolumeSpec</a></td>
 <td>none</td>
 </tr>
 </tbody>
@@ -1881,7 +2004,7 @@ swagger:model</p>
 <tbody>
 <tr>
 <td>volume_id</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>Id of volume to inspect</td>
 </tr>
 </tbody>
@@ -1900,7 +2023,7 @@ swagger:model</p>
 <tbody>
 <tr>
 <td>volume</td>
-<td><a href="#volume">Volume</a></td>
+<td><a href="#volume"> Volume</a></td>
 <td>Information about the volume</td>
 </tr>
 </tbody>
@@ -1922,12 +2045,12 @@ swagger:model</p>
 <tbody>
 <tr>
 <td>name</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>User friendly identifier</td>
 </tr>
 <tr>
 <td>volume_labels</td>
-<td>repeated <a href="#volumelocatorvolumelabelsentry">VolumeLocator.VolumeLabelsEntry</a></td>
+<td><a href="#volumelocatorvolumelabelsentry">map VolumeLocator.VolumeLabelsEntry</a></td>
 <td>A set of name-value pairs that acts as search filters</td>
 </tr>
 </tbody>
@@ -1946,17 +2069,72 @@ swagger:model</p>
 <tbody>
 <tr>
 <td>key</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>none</td>
 </tr>
 <tr>
 <td>value</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>none</td>
 </tr>
 </tbody>
 </table>
  <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="volumemountrequest">VolumeMountRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of the volume</td>
+</tr>
+<tr>
+<td>mount_path</td>
+<td><a href="#string"> string</a></td>
+<td>Mount path for mounting the volume.</td>
+</tr>
+<tr>
+<td>options</td>
+<td><a href="#volumemountrequestoptionsentry">map VolumeMountRequest.OptionsEntry</a></td>
+<td>Additional options</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="volumemountrequestoptionsentry">VolumeMountRequest.OptionsEntry </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="volumemountresponse">VolumeMountResponse </h2>
  <!-- end HasFields -->
 <h2 id="volumeresponse">VolumeResponse </h2>
 <p>VolumeResponse is a structure that wraps an error.
@@ -1972,7 +2150,7 @@ swagger:response volumeResponse</p>
 <tbody>
 <tr>
 <td>error</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>Error message</td>
 </tr>
 </tbody>
@@ -1994,22 +2172,22 @@ swagger:model</p>
 <tbody>
 <tr>
 <td>locator</td>
-<td><a href="#volumelocator">VolumeLocator</a></td>
+<td><a href="#volumelocator"> VolumeLocator</a></td>
 <td>User specified volume name and labels</td>
 </tr>
 <tr>
 <td>spec</td>
-<td><a href="#volumespec">VolumeSpec</a></td>
+<td><a href="#volumespec"> VolumeSpec</a></td>
 <td>The storage spec for the volume</td>
 </tr>
 <tr>
 <td>action</td>
-<td><a href="#volumestateaction">VolumeStateAction</a></td>
+<td><a href="#volumestateaction"> VolumeStateAction</a></td>
 <td>State modification on this volume.</td>
 </tr>
 <tr>
 <td>options</td>
-<td>repeated <a href="#volumesetrequestoptionsentry">VolumeSetRequest.OptionsEntry</a></td>
+<td><a href="#volumesetrequestoptionsentry">map VolumeSetRequest.OptionsEntry</a></td>
 <td>additional options required for the Set operation.</td>
 </tr>
 </tbody>
@@ -2028,12 +2206,12 @@ swagger:model</p>
 <tbody>
 <tr>
 <td>key</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>none</td>
 </tr>
 <tr>
 <td>value</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>none</td>
 </tr>
 </tbody>
@@ -2054,13 +2232,13 @@ swagger:response volumeSetResponse</p>
 <tbody>
 <tr>
 <td>volume</td>
-<td><a href="#volume">Volume</a></td>
+<td><a href="#volume"> Volume</a></td>
 <td>Volume</td>
 </tr>
 </tbody>
 </table>
 <p>in: body Required: true |
-| volume_response |  <a href="#volumeresponse">VolumeResponse</a> | VolumeResponse</p>
+| volume_response | <a href="#volumeresponse"> VolumeResponse</a> | VolumeResponse</p>
 <p>in: body Required: true |
  <!-- end Fields -->
  <!-- end HasFields --></p>
@@ -2076,12 +2254,12 @@ swagger:response volumeSetResponse</p>
 <tbody>
 <tr>
 <td>volume_id</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>Id of volume to take the snapshot from</td>
 </tr>
 <tr>
 <td>labels</td>
-<td>repeated <a href="#volumesnapshotcreaterequestlabelsentry">VolumeSnapshotCreateRequest.LabelsEntry</a></td>
+<td><a href="#volumesnapshotcreaterequestlabelsentry">map VolumeSnapshotCreateRequest.LabelsEntry</a></td>
 <td>Labels to apply to snapshot</td>
 </tr>
 </tbody>
@@ -2100,12 +2278,12 @@ swagger:response volumeSetResponse</p>
 <tbody>
 <tr>
 <td>key</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>none</td>
 </tr>
 <tr>
 <td>value</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>none</td>
 </tr>
 </tbody>
@@ -2124,7 +2302,7 @@ swagger:response volumeSetResponse</p>
 <tbody>
 <tr>
 <td>snapshot_id</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>Id of immutable snapshot</td>
 </tr>
 </tbody>
@@ -2143,12 +2321,12 @@ swagger:response volumeSetResponse</p>
 <tbody>
 <tr>
 <td>volume_id</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>Id of volume</td>
 </tr>
 <tr>
 <td>labels</td>
-<td>repeated <a href="#volumesnapshotenumeraterequestlabelsentry">VolumeSnapshotEnumerateRequest.LabelsEntry</a></td>
+<td><a href="#volumesnapshotenumeraterequestlabelsentry">map VolumeSnapshotEnumerateRequest.LabelsEntry</a></td>
 <td>Labels from snapshot</td>
 </tr>
 </tbody>
@@ -2167,12 +2345,12 @@ swagger:response volumeSetResponse</p>
 <tbody>
 <tr>
 <td>key</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>none</td>
 </tr>
 <tr>
 <td>value</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>none</td>
 </tr>
 </tbody>
@@ -2191,7 +2369,7 @@ swagger:response volumeSetResponse</p>
 <tbody>
 <tr>
 <td>snapshots</td>
-<td>repeated <a href="#volume">Volume</a></td>
+<td><a href="#volume">repeated Volume</a></td>
 <td>List of immutable snapshots</td>
 </tr>
 </tbody>
@@ -2210,12 +2388,12 @@ swagger:response volumeSetResponse</p>
 <tbody>
 <tr>
 <td>volume_id</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>Id of volume</td>
 </tr>
 <tr>
 <td>snapshot_id</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>Snapshot id to apply to <code>volume_id</code></td>
 </tr>
 </tbody>
@@ -2238,122 +2416,122 @@ swagger:model</p>
 <tbody>
 <tr>
 <td>ephemeral</td>
-<td><a href="#bool">bool</a></td>
+<td><a href="#bool"> bool</a></td>
 <td>Ephemeral storage</td>
 </tr>
 <tr>
 <td>size</td>
-<td><a href="#uint64">uint64</a></td>
+<td><a href="#uint64"> uint64</a></td>
 <td>Size specifies the thin provisioned volume size.</td>
 </tr>
 <tr>
 <td>format</td>
-<td><a href="#fstype">FSType</a></td>
+<td><a href="#fstype"> FSType</a></td>
 <td>Format specifies the filesystem for this volume.</td>
 </tr>
 <tr>
 <td>block_size</td>
-<td><a href="#int64">int64</a></td>
+<td><a href="#int64"> int64</a></td>
 <td>BlockSize for the filesystem.</td>
 </tr>
 <tr>
 <td>ha_level</td>
-<td><a href="#int64">int64</a></td>
+<td><a href="#int64"> int64</a></td>
 <td>HaLevel specifies the number of copies of data.</td>
 </tr>
 <tr>
 <td>cos</td>
-<td><a href="#costype">CosType</a></td>
+<td><a href="#costype"> CosType</a></td>
 <td>Cos specifies the relative class of service.</td>
 </tr>
 <tr>
 <td>io_profile</td>
-<td><a href="#ioprofile">IoProfile</a></td>
+<td><a href="#ioprofile"> IoProfile</a></td>
 <td>IoProfile provides a hint about application using this volume.</td>
 </tr>
 <tr>
 <td>dedupe</td>
-<td><a href="#bool">bool</a></td>
+<td><a href="#bool"> bool</a></td>
 <td>Dedupe specifies if the volume data is to be de-duplicated.</td>
 </tr>
 <tr>
 <td>snapshot_interval</td>
-<td><a href="#uint32">uint32</a></td>
+<td><a href="#uint32"> uint32</a></td>
 <td>SnapshotInterval in minutes, set to 0 to disable snapshots</td>
 </tr>
 <tr>
 <td>volume_labels</td>
-<td>repeated <a href="#volumespecvolumelabelsentry">VolumeSpec.VolumeLabelsEntry</a></td>
+<td><a href="#volumespecvolumelabelsentry">map VolumeSpec.VolumeLabelsEntry</a></td>
 <td>VolumeLabels configuration labels</td>
 </tr>
 <tr>
 <td>shared</td>
-<td><a href="#bool">bool</a></td>
+<td><a href="#bool"> bool</a></td>
 <td>Shared is true if this volume can be remotely accessed.</td>
 </tr>
 <tr>
 <td>replica_set</td>
-<td><a href="#replicaset">ReplicaSet</a></td>
+<td><a href="#replicaset"> ReplicaSet</a></td>
 <td>ReplicaSet is the desired set of nodes for the volume data.</td>
 </tr>
 <tr>
 <td>aggregation_level</td>
-<td><a href="#uint32">uint32</a></td>
+<td><a href="#uint32"> uint32</a></td>
 <td>Aggregatiokn level Specifies the number of parts the volume can be aggregated from.</td>
 </tr>
 <tr>
 <td>encrypted</td>
-<td><a href="#bool">bool</a></td>
+<td><a href="#bool"> bool</a></td>
 <td>Encrypted is true if this volume will be cryptographically secured.</td>
 </tr>
 <tr>
 <td>passphrase</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>Passphrase for an encrypted volume</td>
 </tr>
 <tr>
 <td>snapshot_schedule</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>SnapshotSchedule a well known string that specifies when snapshots should be taken.</td>
 </tr>
 <tr>
 <td>scale</td>
-<td><a href="#uint32">uint32</a></td>
+<td><a href="#uint32"> uint32</a></td>
 <td>Scale allows autocreation of volumes.</td>
 </tr>
 <tr>
 <td>sticky</td>
-<td><a href="#bool">bool</a></td>
+<td><a href="#bool"> bool</a></td>
 <td>Sticky volumes cannot be deleted until the flag is removed.</td>
 </tr>
 <tr>
 <td>group</td>
-<td><a href="#group">Group</a></td>
+<td><a href="#group"> Group</a></td>
 <td>Group identifies a consistency group</td>
 </tr>
 <tr>
 <td>group_enforced</td>
-<td><a href="#bool">bool</a></td>
+<td><a href="#bool"> bool</a></td>
 <td>GroupEnforced is true if consistency group creation is enforced.</td>
 </tr>
 <tr>
 <td>compressed</td>
-<td><a href="#bool">bool</a></td>
+<td><a href="#bool"> bool</a></td>
 <td>Compressed is true if this volume is to be compressed.</td>
 </tr>
 <tr>
 <td>cascaded</td>
-<td><a href="#bool">bool</a></td>
+<td><a href="#bool"> bool</a></td>
 <td>Cascaded is true if this volume can be populated on any node from an external source.</td>
 </tr>
 <tr>
 <td>journal</td>
-<td><a href="#bool">bool</a></td>
+<td><a href="#bool"> bool</a></td>
 <td>Journal is true if data for the volume goes into the journal.</td>
 </tr>
 <tr>
 <td>sharedv4</td>
-<td><a href="#bool">bool</a></td>
+<td><a href="#bool"> bool</a></td>
 <td>Sharedv4 is true if this volume can be accessed via sharedv4.</td>
 </tr>
 </tbody>
@@ -2372,12 +2550,12 @@ swagger:model</p>
 <tbody>
 <tr>
 <td>key</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>none</td>
 </tr>
 <tr>
 <td>value</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>none</td>
 </tr>
 </tbody>
@@ -2398,27 +2576,82 @@ swagger:model</p>
 <tbody>
 <tr>
 <td>attach</td>
-<td><a href="#volumeactionparam">VolumeActionParam</a></td>
+<td><a href="#volumeactionparam"> VolumeActionParam</a></td>
 <td>Attach or Detach volume</td>
 </tr>
 <tr>
 <td>mount</td>
-<td><a href="#volumeactionparam">VolumeActionParam</a></td>
+<td><a href="#volumeactionparam"> VolumeActionParam</a></td>
 <td>Mount or unmount volume</td>
 </tr>
 <tr>
 <td>mount_path</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>MountPath Path where the device is mounted</td>
 </tr>
 <tr>
 <td>device_path</td>
-<td><a href="#string">string</a></td>
+<td><a href="#string"> string</a></td>
 <td>DevicePath Path returned in attach</td>
 </tr>
 </tbody>
 </table>
  <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="volumeunmountrequest">VolumeUnmountRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of volume</td>
+</tr>
+<tr>
+<td>mount_path</td>
+<td><a href="#string"> string</a></td>
+<td>MountPath for device</td>
+</tr>
+<tr>
+<td>options</td>
+<td><a href="#volumeunmountrequestoptionsentry">map VolumeUnmountRequest.OptionsEntry</a></td>
+<td>Options to unmount device</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="volumeunmountrequestoptionsentry">VolumeUnmountRequest.OptionsEntry </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="volumeunmountresponse">VolumeUnmountResponse </h2>
  <!-- end HasFields -->
  <!-- end messages -->
 <h1 id="enums">Enums</h1>
@@ -2435,21 +2668,22 @@ swagger:model</p>
 <tr>
 <td>ALERT_ACTION_TYPE_NONE</td>
 <td>0</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>ALERT_ACTION_TYPE_DELETE</td>
 <td>1</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>ALERT_ACTION_TYPE_CREATE</td>
 <td>2</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>ALERT_ACTION_TYPE_UPDATE</td>
 <td>3</td>
+<td>none</td>
 </tr>
 </tbody>
 </table>
@@ -2510,21 +2744,22 @@ swagger:model</p>
 <tr>
 <td>NONE</td>
 <td>0</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>LOW</td>
 <td>1</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>MEDIUM</td>
 <td>2</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>HIGH</td>
 <td>3</td>
+<td>none</td>
 </tr>
 </tbody>
 </table>
@@ -2541,31 +2776,32 @@ swagger:model</p>
 <tr>
 <td>DRIVER_TYPE_NONE</td>
 <td>0</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>DRIVER_TYPE_FILE</td>
 <td>1</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>DRIVER_TYPE_BLOCK</td>
 <td>2</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>DRIVER_TYPE_OBJECT</td>
 <td>3</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>DRIVER_TYPE_CLUSTERED</td>
 <td>4</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>DRIVER_TYPE_GRAPH</td>
 <td>5</td>
+<td>none</td>
 </tr>
 </tbody>
 </table>
@@ -2582,41 +2818,42 @@ swagger:model</p>
 <tr>
 <td>FS_TYPE_NONE</td>
 <td>0</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>FS_TYPE_BTRFS</td>
 <td>1</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>FS_TYPE_EXT4</td>
 <td>2</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>FS_TYPE_FUSE</td>
 <td>3</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>FS_TYPE_NFS</td>
 <td>4</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>FS_TYPE_VFS</td>
 <td>5</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>FS_TYPE_XFS</td>
 <td>6</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>FS_TYPE_ZFS</td>
 <td>7</td>
+<td>none</td>
 </tr>
 </tbody>
 </table>
@@ -2633,21 +2870,22 @@ swagger:model</p>
 <tr>
 <td>GRAPH_DRIVER_CHANGE_TYPE_NONE</td>
 <td>0</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>GRAPH_DRIVER_CHANGE_TYPE_MODIFIED</td>
 <td>1</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>GRAPH_DRIVER_CHANGE_TYPE_ADDED</td>
 <td>2</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>GRAPH_DRIVER_CHANGE_TYPE_DELETED</td>
 <td>3</td>
+<td>none</td>
 </tr>
 </tbody>
 </table>
@@ -2664,26 +2902,27 @@ swagger:model</p>
 <tr>
 <td>IO_PROFILE_SEQUENTIAL</td>
 <td>0</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>IO_PROFILE_RANDOM</td>
 <td>1</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>IO_PROFILE_DB</td>
 <td>2</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>IO_PROFILE_DB_REMOTE</td>
 <td>3</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>IO_PROFILE_CMS</td>
 <td>4</td>
+<td>none</td>
 </tr>
 </tbody>
 </table>
@@ -2700,12 +2939,12 @@ swagger:model</p>
 <tr>
 <td>OP_FLAGS_UNKNOWN</td>
 <td>0</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>OP_FLAGS_NONE</td>
 <td>1</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>OP_FLAGS_DETACH_FORCE</td>
@@ -2727,26 +2966,27 @@ swagger:model</p>
 <tr>
 <td>RESOURCE_TYPE_NONE</td>
 <td>0</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>RESOURCE_TYPE_VOLUME</td>
 <td>1</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>RESOURCE_TYPE_NODE</td>
 <td>2</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>RESOURCE_TYPE_CLUSTER</td>
 <td>3</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>RESOURCE_TYPE_DRIVE</td>
 <td>4</td>
+<td>none</td>
 </tr>
 </tbody>
 </table>
@@ -2763,21 +3003,22 @@ swagger:model</p>
 <tr>
 <td>SEVERITY_TYPE_NONE</td>
 <td>0</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>SEVERITY_TYPE_ALARM</td>
 <td>1</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>SEVERITY_TYPE_WARNING</td>
 <td>2</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>SEVERITY_TYPE_NOTIFY</td>
 <td>3</td>
+<td>none</td>
 </tr>
 </tbody>
 </table>
@@ -2794,72 +3035,72 @@ swagger:model</p>
 <tr>
 <td>STATUS_NONE</td>
 <td>0</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>STATUS_INIT</td>
 <td>1</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>STATUS_OK</td>
 <td>2</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>STATUS_OFFLINE</td>
 <td>3</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>STATUS_ERROR</td>
 <td>4</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>STATUS_NOT_IN_QUORUM</td>
 <td>5</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>STATUS_DECOMMISSION</td>
 <td>6</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>STATUS_MAINTENANCE</td>
 <td>7</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>STATUS_STORAGE_DOWN</td>
 <td>8</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>STATUS_STORAGE_DEGRADED</td>
 <td>9</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>STATUS_NEEDS_REBOOT</td>
 <td>10</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>STATUS_STORAGE_REBALANCE</td>
 <td>11</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>STATUS_STORAGE_DRIVE_REPLACE</td>
 <td>12</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>STATUS_NOT_IN_QUORUM_NO_STORAGE</td>
 <td>13</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>STATUS_MAX</td>
@@ -2908,7 +3149,7 @@ swagger:model</p>
 <tr>
 <td>VOLUME_ACTION_PARAM_NONE</td>
 <td>0</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>VOLUME_ACTION_PARAM_OFF</td>
@@ -2936,7 +3177,7 @@ swagger:model</p>
 <tr>
 <td>VOLUME_STATE_NONE</td>
 <td>0</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>VOLUME_STATE_PENDING</td>
@@ -2999,7 +3240,7 @@ swagger:model</p>
 <tr>
 <td>VOLUME_STATUS_NONE</td>
 <td>0</td>
-<td></td>
+<td>none</td>
 </tr>
 <tr>
 <td>VOLUME_STATUS_NOT_PRESENT</td>
@@ -3183,7 +3424,7 @@ swagger:model</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"API Refernce","level":"1.5","depth":1,"previous":{"title":"Installing","level":"1.4","depth":1,"path":"installing.md","ref":"installing.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"generated-api.md","mtime":"2018-05-04T08:48:28.602Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-04T08:48:29.495Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"API Refernce","level":"1.5","depth":1,"previous":{"title":"Installing","level":"1.4","depth":1,"path":"installing.md","ref":"installing.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"generated-api.md","mtime":"2018-05-07T20:00:54.220Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-07T20:00:55.138Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

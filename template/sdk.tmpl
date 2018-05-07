@@ -27,11 +27,11 @@
 {{.Description}}
 
 {{range .Methods -}}
-## {{.Name}} 
+## {{.Name}}
 
 > **rpc** {{.Name}}([{{.RequestLongType}}](#{{.RequestLongType | lower | replace "." ""}}))
-    **returns** [{{.ResponseLongType}}](#{{.ResponseLongType | lower | replace "." ""}})
-   
+    [{{.ResponseLongType}}](#{{.ResponseLongType | lower | replace "." ""}})
+
 {{ .Description}}
 {{end}} <!-- end methods -->
 {{end}} <!-- end services -->
@@ -46,7 +46,7 @@
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 {{range .Fields -}}
-  | {{.Name}} | {{.Label}} [{{.LongType}}](#{{.LongType | lower | replace "." ""}}) | {{if .Description}}{{nobr .Description}}{{if .DefaultValue}} Default: {{.DefaultValue}}{{end}}{{else}}none{{end}} |
+	| {{.Name}} | [{{if .IsMap}}map {{else}}{{.Label}} {{end}}{{.LongType}}](#{{.LongType | lower | replace "." ""}}) | {{if .Description}}{{nobr .Description}}{{if .DefaultValue}} Default: {{.DefaultValue}}{{end}}{{else}}none{{end}} |
 {{end}} <!-- end Fields -->
 {{end}} <!-- end HasFields -->
 {{end}} <!-- end messages -->
@@ -60,7 +60,7 @@
 | Name | Number | Description |
 | ---- | ------ | ----------- |
 {{range .Values -}}
-  | {{.Name}} | {{.Number}} | {{nobr .Description}} |
+	| {{.Name}} | {{.Number}} | {{if .Description}}{{nobr .Description}}{{else}}none{{end}} |
 {{end}}
 
 {{end}} <!-- end Enums -->
