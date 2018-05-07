@@ -94,8 +94,12 @@ OpenStorage provides mock SDK server as a container which can be run using the
 command:
 
 ```
-$ docker run -d -p 9100:9100 openstorage/mock-sdk-server
+$ docker run --rm -d -p 9110:9110 -p 9100:9100 openstorage/mock-sdk-server
 ```
+
+Port 9110 is the REST gRPC Gateway location for all REST calls. Port 9100 is
+the gRPC port.
 
 This will run OpenStorage server with an in-memory driver implementation called
 `fake`. You can then point your gRPC client to `localhost:9100`.
+
