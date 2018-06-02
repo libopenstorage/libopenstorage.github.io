@@ -5,6 +5,7 @@
 
 - Services
     - [OpenStorageCluster](#openstorageapiopenstoragecluster)
+    - [OpenStorageCredentials](#openstorageapiopenstoragecredentials)
     - [OpenStorageVolume](#openstorageapiopenstoragevolume)
   
 
@@ -15,28 +16,75 @@
     - [ActiveRequests](#activerequests)
     - [Alert](#alert)
     - [Alerts](#alerts)
-    - [ClusterAlertClearRequest](#clusteralertclearrequest)
-    - [ClusterAlertClearResponse](#clusteralertclearresponse)
-    - [ClusterAlertEnumerateRequest](#clusteralertenumeraterequest)
-    - [ClusterAlertEnumerateResponse](#clusteralertenumerateresponse)
-    - [ClusterAlertEraseRequest](#clusteralerteraserequest)
-    - [ClusterAlertEraseResponse](#clusteralerteraseresponse)
-    - [ClusterEnumerateRequest](#clusterenumeraterequest)
-    - [ClusterEnumerateResponse](#clusterenumerateresponse)
-    - [ClusterInspectRequest](#clusterinspectrequest)
-    - [ClusterInspectResponse](#clusterinspectresponse)
+    - [AzureCredential](#azurecredential)
     - [ClusterResponse](#clusterresponse)
+    - [GoogleCredential](#googlecredential)
     - [GraphDriverChanges](#graphdriverchanges)
     - [Group](#group)
     - [GroupSnapCreateRequest](#groupsnapcreaterequest)
     - [GroupSnapCreateRequest.LabelsEntry](#groupsnapcreaterequestlabelsentry)
     - [GroupSnapCreateResponse](#groupsnapcreateresponse)
     - [GroupSnapCreateResponse.SnapshotsEntry](#groupsnapcreateresponsesnapshotsentry)
-    - [OpenStorageVolumeCreateRequest](#openstoragevolumecreaterequest)
-    - [OpenStorageVolumeCreateResponse](#openstoragevolumecreateresponse)
+    - [ObjectstoreInfo](#objectstoreinfo)
     - [ReplicaSet](#replicaset)
     - [RuntimeStateMap](#runtimestatemap)
     - [RuntimeStateMap.RuntimeStateEntry](#runtimestatemapruntimestateentry)
+    - [S3Credential](#s3credential)
+    - [SdkClusterAlertClearRequest](#sdkclusteralertclearrequest)
+    - [SdkClusterAlertClearResponse](#sdkclusteralertclearresponse)
+    - [SdkClusterAlertEnumerateRequest](#sdkclusteralertenumeraterequest)
+    - [SdkClusterAlertEnumerateResponse](#sdkclusteralertenumerateresponse)
+    - [SdkClusterAlertEraseRequest](#sdkclusteralerteraserequest)
+    - [SdkClusterAlertEraseResponse](#sdkclusteralerteraseresponse)
+    - [SdkClusterEnumerateRequest](#sdkclusterenumeraterequest)
+    - [SdkClusterEnumerateResponse](#sdkclusterenumerateresponse)
+    - [SdkClusterInspectRequest](#sdkclusterinspectrequest)
+    - [SdkClusterInspectResponse](#sdkclusterinspectresponse)
+    - [SdkCredentialCreateAWSRequest](#sdkcredentialcreateawsrequest)
+    - [SdkCredentialCreateAWSResponse](#sdkcredentialcreateawsresponse)
+    - [SdkCredentialCreateAzureRequest](#sdkcredentialcreateazurerequest)
+    - [SdkCredentialCreateAzureResponse](#sdkcredentialcreateazureresponse)
+    - [SdkCredentialCreateGoogleRequest](#sdkcredentialcreategooglerequest)
+    - [SdkCredentialCreateGoogleResponse](#sdkcredentialcreategoogleresponse)
+    - [SdkCredentialDeleteRequest](#sdkcredentialdeleterequest)
+    - [SdkCredentialDeleteResponse](#sdkcredentialdeleteresponse)
+    - [SdkCredentialEnumerateAWSRequest](#sdkcredentialenumerateawsrequest)
+    - [SdkCredentialEnumerateAWSResponse](#sdkcredentialenumerateawsresponse)
+    - [SdkCredentialEnumerateAzureRequest](#sdkcredentialenumerateazurerequest)
+    - [SdkCredentialEnumerateAzureResponse](#sdkcredentialenumerateazureresponse)
+    - [SdkCredentialEnumerateGoogleRequest](#sdkcredentialenumerategooglerequest)
+    - [SdkCredentialEnumerateGoogleResponse](#sdkcredentialenumerategoogleresponse)
+    - [SdkCredentialValidateRequest](#sdkcredentialvalidaterequest)
+    - [SdkCredentialValidateResponse](#sdkcredentialvalidateresponse)
+    - [SdkVolumeAttachRequest](#sdkvolumeattachrequest)
+    - [SdkVolumeAttachRequest.OptionsEntry](#sdkvolumeattachrequestoptionsentry)
+    - [SdkVolumeAttachResponse](#sdkvolumeattachresponse)
+    - [SdkVolumeCreateFromVolumeIdRequest](#sdkvolumecreatefromvolumeidrequest)
+    - [SdkVolumeCreateFromVolumeIdResponse](#sdkvolumecreatefromvolumeidresponse)
+    - [SdkVolumeCreateRequest](#sdkvolumecreaterequest)
+    - [SdkVolumeCreateResponse](#sdkvolumecreateresponse)
+    - [SdkVolumeDeleteRequest](#sdkvolumedeleterequest)
+    - [SdkVolumeDeleteResponse](#sdkvolumedeleteresponse)
+    - [SdkVolumeDetachRequest](#sdkvolumedetachrequest)
+    - [SdkVolumeDetachResponse](#sdkvolumedetachresponse)
+    - [SdkVolumeEnumerateRequest](#sdkvolumeenumeraterequest)
+    - [SdkVolumeEnumerateResponse](#sdkvolumeenumerateresponse)
+    - [SdkVolumeInspectRequest](#sdkvolumeinspectrequest)
+    - [SdkVolumeInspectResponse](#sdkvolumeinspectresponse)
+    - [SdkVolumeMountRequest](#sdkvolumemountrequest)
+    - [SdkVolumeMountRequest.OptionsEntry](#sdkvolumemountrequestoptionsentry)
+    - [SdkVolumeMountResponse](#sdkvolumemountresponse)
+    - [SdkVolumeSnapshotCreateRequest](#sdkvolumesnapshotcreaterequest)
+    - [SdkVolumeSnapshotCreateRequest.LabelsEntry](#sdkvolumesnapshotcreaterequestlabelsentry)
+    - [SdkVolumeSnapshotCreateResponse](#sdkvolumesnapshotcreateresponse)
+    - [SdkVolumeSnapshotEnumerateRequest](#sdkvolumesnapshotenumeraterequest)
+    - [SdkVolumeSnapshotEnumerateRequest.LabelsEntry](#sdkvolumesnapshotenumeraterequestlabelsentry)
+    - [SdkVolumeSnapshotEnumerateResponse](#sdkvolumesnapshotenumerateresponse)
+    - [SdkVolumeSnapshotRestoreRequest](#sdkvolumesnapshotrestorerequest)
+    - [SdkVolumeSnapshotRestoreResponse](#sdkvolumesnapshotrestoreresponse)
+    - [SdkVolumeUnmountRequest](#sdkvolumeunmountrequest)
+    - [SdkVolumeUnmountRequest.OptionsEntry](#sdkvolumeunmountrequestoptionsentry)
+    - [SdkVolumeUnmountResponse](#sdkvolumeunmountresponse)
     - [SnapCreateRequest](#snapcreaterequest)
     - [SnapCreateResponse](#snapcreateresponse)
     - [Source](#source)
@@ -50,46 +98,19 @@
     - [StorageResource](#storageresource)
     - [Volume](#volume)
     - [Volume.AttachInfoEntry](#volumeattachinfoentry)
-    - [VolumeAttachRequest](#volumeattachrequest)
-    - [VolumeAttachRequest.OptionsEntry](#volumeattachrequestoptionsentry)
-    - [VolumeAttachResponse](#volumeattachresponse)
     - [VolumeConsumer](#volumeconsumer)
-    - [VolumeCreateFromVolumeIDRequest](#volumecreatefromvolumeidrequest)
-    - [VolumeCreateFromVolumeIDResponse](#volumecreatefromvolumeidresponse)
     - [VolumeCreateRequest](#volumecreaterequest)
     - [VolumeCreateResponse](#volumecreateresponse)
-    - [VolumeDeleteRequest](#volumedeleterequest)
-    - [VolumeDeleteResponse](#volumedeleteresponse)
-    - [VolumeDetachRequest](#volumedetachrequest)
-    - [VolumeDetachResponse](#volumedetachresponse)
-    - [VolumeEnumerateRequest](#volumeenumeraterequest)
-    - [VolumeEnumerateResponse](#volumeenumerateresponse)
     - [VolumeInfo](#volumeinfo)
-    - [VolumeInspectRequest](#volumeinspectrequest)
-    - [VolumeInspectResponse](#volumeinspectresponse)
     - [VolumeLocator](#volumelocator)
     - [VolumeLocator.VolumeLabelsEntry](#volumelocatorvolumelabelsentry)
-    - [VolumeMountRequest](#volumemountrequest)
-    - [VolumeMountRequest.OptionsEntry](#volumemountrequestoptionsentry)
-    - [VolumeMountResponse](#volumemountresponse)
     - [VolumeResponse](#volumeresponse)
     - [VolumeSetRequest](#volumesetrequest)
     - [VolumeSetRequest.OptionsEntry](#volumesetrequestoptionsentry)
     - [VolumeSetResponse](#volumesetresponse)
-    - [VolumeSnapshotCreateRequest](#volumesnapshotcreaterequest)
-    - [VolumeSnapshotCreateRequest.LabelsEntry](#volumesnapshotcreaterequestlabelsentry)
-    - [VolumeSnapshotCreateResponse](#volumesnapshotcreateresponse)
-    - [VolumeSnapshotEnumerateRequest](#volumesnapshotenumeraterequest)
-    - [VolumeSnapshotEnumerateRequest.LabelsEntry](#volumesnapshotenumeraterequestlabelsentry)
-    - [VolumeSnapshotEnumerateResponse](#volumesnapshotenumerateresponse)
-    - [VolumeSnapshotRestoreRequest](#volumesnapshotrestorerequest)
-    - [VolumeSnapshotRestoreResponse](#volumesnapshotrestoreresponse)
     - [VolumeSpec](#volumespec)
     - [VolumeSpec.VolumeLabelsEntry](#volumespecvolumelabelsentry)
     - [VolumeStateAction](#volumestateaction)
-    - [VolumeUnmountRequest](#volumeunmountrequest)
-    - [VolumeUnmountRequest.OptionsEntry](#volumeunmountrequestoptionsentry)
-    - [VolumeUnmountResponse](#volumeunmountresponse)
   
 
 
@@ -122,109 +143,164 @@
 
 ## Enumerate
 
-> **rpc** Enumerate([ClusterEnumerateRequest](#clusterenumeraterequest))
-    [ClusterEnumerateResponse](#clusterenumerateresponse)
+> **rpc** Enumerate([SdkClusterEnumerateRequest](#sdkclusterenumeraterequest))
+    [SdkClusterEnumerateResponse](#sdkclusterenumerateresponse)
 
 Enumerate lists all the nodes in the cluster.
 ## Inspect
 
-> **rpc** Inspect([ClusterInspectRequest](#clusterinspectrequest))
-    [ClusterInspectResponse](#clusterinspectresponse)
+> **rpc** Inspect([SdkClusterInspectRequest](#sdkclusterinspectrequest))
+    [SdkClusterInspectResponse](#sdkclusterinspectresponse)
 
 Inspect the node given a UUID.
 ## AlertEnumerate
 
-> **rpc** AlertEnumerate([ClusterAlertEnumerateRequest](#clusteralertenumeraterequest))
-    [ClusterAlertEnumerateResponse](#clusteralertenumerateresponse)
+> **rpc** AlertEnumerate([SdkClusterAlertEnumerateRequest](#sdkclusteralertenumeraterequest))
+    [SdkClusterAlertEnumerateResponse](#sdkclusteralertenumerateresponse)
 
 Get a list of alerts from the storage cluster
 ## AlertClear
 
-> **rpc** AlertClear([ClusterAlertClearRequest](#clusteralertclearrequest))
-    [ClusterAlertClearResponse](#clusteralertclearresponse)
+> **rpc** AlertClear([SdkClusterAlertClearRequest](#sdkclusteralertclearrequest))
+    [SdkClusterAlertClearResponse](#sdkclusteralertclearresponse)
 
 Clear the alert for a given resource
 ## AlertErase
 
-> **rpc** AlertErase([ClusterAlertEraseRequest](#clusteralerteraserequest))
-    [ClusterAlertEraseResponse](#clusteralerteraseresponse)
+> **rpc** AlertErase([SdkClusterAlertEraseRequest](#sdkclusteralerteraserequest))
+    [SdkClusterAlertEraseResponse](#sdkclusteralerteraseresponse)
 
 Erases an alert for a given resource
+ <!-- end methods -->
+# OpenStorageCredentials {#openstorageapiopenstoragecredentials}
+
+
+## CreateForAWS
+
+> **rpc** CreateForAWS([SdkCredentialCreateAWSRequest](#sdkcredentialcreateawsrequest))
+    [SdkCredentialCreateAWSResponse](#sdkcredentialcreateawsresponse)
+
+Create credential for AWS S3 and if valid ,
+returns a unique identifier
+## CreateForAzure
+
+> **rpc** CreateForAzure([SdkCredentialCreateAzureRequest](#sdkcredentialcreateazurerequest))
+    [SdkCredentialCreateAzureResponse](#sdkcredentialcreateazureresponse)
+
+Create credential for Azure and if valid ,
+returns a unique identifier
+## CreateForGoogle
+
+> **rpc** CreateForGoogle([SdkCredentialCreateGoogleRequest](#sdkcredentialcreategooglerequest))
+    [SdkCredentialCreateGoogleResponse](#sdkcredentialcreategoogleresponse)
+
+Create credential for Google and if valid ,
+returns a unique identifier
+## EnumerateForAWS
+
+> **rpc** EnumerateForAWS([SdkCredentialEnumerateAWSRequest](#sdkcredentialenumerateawsrequest))
+    [SdkCredentialEnumerateAWSResponse](#sdkcredentialenumerateawsresponse)
+
+EnumerateForAWS lists the configured AWS credentials
+## EnumerateForAzure
+
+> **rpc** EnumerateForAzure([SdkCredentialEnumerateAzureRequest](#sdkcredentialenumerateazurerequest))
+    [SdkCredentialEnumerateAzureResponse](#sdkcredentialenumerateazureresponse)
+
+EnumerateForAzure lists the configured Azure credentials
+## EnumerateForGoogle
+
+> **rpc** EnumerateForGoogle([SdkCredentialEnumerateGoogleRequest](#sdkcredentialenumerategooglerequest))
+    [SdkCredentialEnumerateGoogleResponse](#sdkcredentialenumerategoogleresponse)
+
+EnumerateForGoogle lists the configured Google credentials
+## CredentialDelete
+
+> **rpc** CredentialDelete([SdkCredentialDeleteRequest](#sdkcredentialdeleterequest))
+    [SdkCredentialDeleteResponse](#sdkcredentialdeleteresponse)
+
+Delete a specified credential
+## CredentialValidate
+
+> **rpc** CredentialValidate([SdkCredentialValidateRequest](#sdkcredentialvalidaterequest))
+    [SdkCredentialValidateResponse](#sdkcredentialvalidateresponse)
+
+Validate a specified credential
  <!-- end methods -->
 # OpenStorageVolume {#openstorageapiopenstoragevolume}
 
 
 ## Create
 
-> **rpc** Create([OpenStorageVolumeCreateRequest](#openstoragevolumecreaterequest))
-    [OpenStorageVolumeCreateResponse](#openstoragevolumecreateresponse)
+> **rpc** Create([SdkVolumeCreateRequest](#sdkvolumecreaterequest))
+    [SdkVolumeCreateResponse](#sdkvolumecreateresponse)
 
 Creates a new volume
-## CreateFromVolumeID
+## CreateFromVolumeId
 
-> **rpc** CreateFromVolumeID([VolumeCreateFromVolumeIDRequest](#volumecreatefromvolumeidrequest))
-    [VolumeCreateFromVolumeIDResponse](#volumecreatefromvolumeidresponse)
+> **rpc** CreateFromVolumeId([SdkVolumeCreateFromVolumeIdRequest](#sdkvolumecreatefromvolumeidrequest))
+    [SdkVolumeCreateFromVolumeIdResponse](#sdkvolumecreatefromvolumeidresponse)
 
-CreateFromVolumeID creates a new volume cloned from an existing volume
+CreateFromVolumeId creates a new volume cloned from an existing volume
 ## Delete
 
-> **rpc** Delete([VolumeDeleteRequest](#volumedeleterequest))
-    [VolumeDeleteResponse](#volumedeleteresponse)
+> **rpc** Delete([SdkVolumeDeleteRequest](#sdkvolumedeleterequest))
+    [SdkVolumeDeleteResponse](#sdkvolumedeleteresponse)
 
 Delete a volume
 ## Inspect
 
-> **rpc** Inspect([VolumeInspectRequest](#volumeinspectrequest))
-    [VolumeInspectResponse](#volumeinspectresponse)
+> **rpc** Inspect([SdkVolumeInspectRequest](#sdkvolumeinspectrequest))
+    [SdkVolumeInspectResponse](#sdkvolumeinspectresponse)
 
 Get information on a volume
 ## Enumerate
 
-> **rpc** Enumerate([VolumeEnumerateRequest](#volumeenumeraterequest))
-    [VolumeEnumerateResponse](#volumeenumerateresponse)
+> **rpc** Enumerate([SdkVolumeEnumerateRequest](#sdkvolumeenumeraterequest))
+    [SdkVolumeEnumerateResponse](#sdkvolumeenumerateresponse)
 
 Get a list of volumes
 ## SnapshotCreate
 
-> **rpc** SnapshotCreate([VolumeSnapshotCreateRequest](#volumesnapshotcreaterequest))
-    [VolumeSnapshotCreateResponse](#volumesnapshotcreateresponse)
+> **rpc** SnapshotCreate([SdkVolumeSnapshotCreateRequest](#sdkvolumesnapshotcreaterequest))
+    [SdkVolumeSnapshotCreateResponse](#sdkvolumesnapshotcreateresponse)
 
 Create a snapshot of a volume. This creates an immutable (read-only),
 point-in-time snapshot of a volume.
 ## SnapshotRestore
 
-> **rpc** SnapshotRestore([VolumeSnapshotRestoreRequest](#volumesnapshotrestorerequest))
-    [VolumeSnapshotRestoreResponse](#volumesnapshotrestoreresponse)
+> **rpc** SnapshotRestore([SdkVolumeSnapshotRestoreRequest](#sdkvolumesnapshotrestorerequest))
+    [SdkVolumeSnapshotRestoreResponse](#sdkvolumesnapshotrestoreresponse)
 
 Restores a volume to a specified snapshot
 ## SnapshotEnumerate
 
-> **rpc** SnapshotEnumerate([VolumeSnapshotEnumerateRequest](#volumesnapshotenumeraterequest))
-    [VolumeSnapshotEnumerateResponse](#volumesnapshotenumerateresponse)
+> **rpc** SnapshotEnumerate([SdkVolumeSnapshotEnumerateRequest](#sdkvolumesnapshotenumeraterequest))
+    [SdkVolumeSnapshotEnumerateResponse](#sdkvolumesnapshotenumerateresponse)
 
 List the number of snapshots for a specific volume
 ## Attach
 
-> **rpc** Attach([VolumeAttachRequest](#volumeattachrequest))
-    [VolumeAttachResponse](#volumeattachresponse)
+> **rpc** Attach([SdkVolumeAttachRequest](#sdkvolumeattachrequest))
+    [SdkVolumeAttachResponse](#sdkvolumeattachresponse)
 
 Attach device to host
 ## Detach
 
-> **rpc** Detach([VolumeDetachRequest](#volumedetachrequest))
-    [VolumeDetachResponse](#volumedetachresponse)
+> **rpc** Detach([SdkVolumeDetachRequest](#sdkvolumedetachrequest))
+    [SdkVolumeDetachResponse](#sdkvolumedetachresponse)
 
 Detaches the volume from the node.
 ## Mount
 
-> **rpc** Mount([VolumeMountRequest](#volumemountrequest))
-    [VolumeMountResponse](#volumemountresponse)
+> **rpc** Mount([SdkVolumeMountRequest](#sdkvolumemountrequest))
+    [SdkVolumeMountResponse](#sdkvolumemountresponse)
 
 Attaches the volume to a node.
 ## Unmount
 
-> **rpc** Unmount([VolumeUnmountRequest](#volumeunmountrequest))
-    [VolumeUnmountResponse](#volumeunmountresponse)
+> **rpc** Unmount([SdkVolumeUnmountRequest](#sdkvolumeunmountrequest))
+    [SdkVolumeUnmountResponse](#sdkvolumeunmountresponse)
 
 Unmount volume at specified path
  <!-- end methods -->
@@ -303,101 +379,15 @@ swagger:model
  <!-- end HasFields -->
 
 
-## ClusterAlertClearRequest {#clusteralertclearrequest}
+## AzureCredential {#azurecredential}
 
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| resource | [ ResourceType](#resourcetype) | Type of resource (required) |
-| alert_id | [ int64](#int64) | Id of alert as returned by ClusterEnumerateAlertResponse (required) |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## ClusterAlertClearResponse {#clusteralertclearresponse}
-
-
- <!-- end HasFields -->
-
-
-## ClusterAlertEnumerateRequest {#clusteralertenumeraterequest}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| time_start | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | Start time of alerts (required) |
-| time_end | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | End time of alerts (required) |
-| resource | [ ResourceType](#resourcetype) | Type of resource (required) |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## ClusterAlertEnumerateResponse {#clusteralertenumerateresponse}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| alerts | [ Alerts](#alerts) | Information on the alerts requested |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## ClusterAlertEraseRequest {#clusteralerteraserequest}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| resource | [ ResourceType](#resourcetype) | Type of resource (required) |
-| alert_id | [ int64](#int64) | Id of alert as returned by ClusterEnumerateAlertResponse (required) |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## ClusterAlertEraseResponse {#clusteralerteraseresponse}
-
-
- <!-- end HasFields -->
-
-
-## ClusterEnumerateRequest {#clusterenumeraterequest}
-
-
- <!-- end HasFields -->
-
-
-## ClusterEnumerateResponse {#clusterenumerateresponse}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| cluster | [ StorageCluster](#storagecluster) | Cluster information |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## ClusterInspectRequest {#clusterinspectrequest}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| node_id | [ string](#string) | Id of node to inspect (required) |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## ClusterInspectResponse {#clusterinspectresponse}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| node | [ StorageNode](#storagenode) | Node information |
+| credential_id | [ string](#string) | Cred Type |
+| account_name | [ string](#string) | Account name |
+| account_key | [ string](#string) | Account key |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -412,6 +402,19 @@ swagger:response clusterResponse
 | error | [ string](#string) | Error code
 
 in: body |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## GoogleCredential {#googlecredential}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| credential_id | [ string](#string) | none |
+| project_id | [ string](#string) | Project ID |
+| json_key | [ string](#string) | JSON Key |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -499,25 +502,24 @@ in: body Required: true |
  <!-- end HasFields -->
 
 
-## OpenStorageVolumeCreateRequest {#openstoragevolumecreaterequest}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| name | [ string](#string) | Unique name of the volume. This will be used for idempotency. |
-| spec | [ VolumeSpec](#volumespec) | Volume specification |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## OpenStorageVolumeCreateResponse {#openstoragevolumecreateresponse}
-
+## ObjectstoreInfo {#objectstoreinfo}
+ObjectstoreInfo is a structure that has current objectstore info
+swagger:model
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| volume_id | [ string](#string) | Id of new volume |
+| uuid | [ string](#string) | UUID of objectstore |
+| volume_id | [ string](#string) | VolumeID of volume used by object store |
+| enabled | [ bool](#bool) | Enable/Disable created objectstore |
+| status | [ string](#string) | Status of objectstore running/failed |
+| action | [ int64](#int64) | Action being taken on this objectstore |
+| access_key | [ string](#string) | AccessKey for login into objectstore |
+| secret_key | [ string](#string) | SecretKey for login into objectstore |
+| endpoints | [repeated string](#string) | Endpoints for accessing objectstore |
+| current_endPoint | [ string](#string) | CurrentEndpoint on which objectstore server is accessible |
+| access_port | [ int64](#int64) | AccessPort is objectstore server port |
+| region | [ string](#string) | Region for this objectstore |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -557,6 +559,596 @@ swagger:model
 | key | [ string](#string) | none |
 | value | [ string](#string) | none |
  <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## S3Credential {#s3credential}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| credential_id | [ string](#string) | Id of the credentials |
+| access_key | [ string](#string) | Access key |
+| secret_key | [ string](#string) | Secret key |
+| endpoint | [ string](#string) | Endpoint |
+| region | [ string](#string) | Region |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkClusterAlertClearRequest {#sdkclusteralertclearrequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| resource | [ ResourceType](#resourcetype) | Type of resource (required) |
+| alert_id | [ int64](#int64) | Id of alert as returned by ClusterEnumerateAlertResponse (required) |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkClusterAlertClearResponse {#sdkclusteralertclearresponse}
+
+
+ <!-- end HasFields -->
+
+
+## SdkClusterAlertEnumerateRequest {#sdkclusteralertenumeraterequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| time_start | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | Start time of alerts (required) |
+| time_end | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | End time of alerts (required) |
+| resource | [ ResourceType](#resourcetype) | Type of resource (required) |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkClusterAlertEnumerateResponse {#sdkclusteralertenumerateresponse}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| alerts | [ Alerts](#alerts) | Information on the alerts requested |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkClusterAlertEraseRequest {#sdkclusteralerteraserequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| resource | [ ResourceType](#resourcetype) | Type of resource (required) |
+| alert_id | [ int64](#int64) | Id of alert as returned by ClusterEnumerateAlertResponse (required) |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkClusterAlertEraseResponse {#sdkclusteralerteraseresponse}
+
+
+ <!-- end HasFields -->
+
+
+## SdkClusterEnumerateRequest {#sdkclusterenumeraterequest}
+
+
+ <!-- end HasFields -->
+
+
+## SdkClusterEnumerateResponse {#sdkclusterenumerateresponse}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| cluster | [ StorageCluster](#storagecluster) | Cluster information |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkClusterInspectRequest {#sdkclusterinspectrequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| node_id | [ string](#string) | Id of node to inspect (required) |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkClusterInspectResponse {#sdkclusterinspectresponse}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| node | [ StorageNode](#storagenode) | Node information |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCredentialCreateAWSRequest {#sdkcredentialcreateawsrequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| credential | [ S3Credential](#s3credential) | AWS S3 Credential |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCredentialCreateAWSResponse {#sdkcredentialcreateawsresponse}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| credential_id | [ string](#string) | Id of the credentials |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCredentialCreateAzureRequest {#sdkcredentialcreateazurerequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| credential | [ AzureCredential](#azurecredential) | Azure Credential |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCredentialCreateAzureResponse {#sdkcredentialcreateazureresponse}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| credential_id | [ string](#string) | Id of the credentials |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCredentialCreateGoogleRequest {#sdkcredentialcreategooglerequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| credential | [ GoogleCredential](#googlecredential) | Google Credential |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCredentialCreateGoogleResponse {#sdkcredentialcreategoogleresponse}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| credential_id | [ string](#string) | Id of the credentials |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCredentialDeleteRequest {#sdkcredentialdeleterequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| credential_id | [ string](#string) | ID for credentials |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCredentialDeleteResponse {#sdkcredentialdeleteresponse}
+
+
+ <!-- end HasFields -->
+
+
+## SdkCredentialEnumerateAWSRequest {#sdkcredentialenumerateawsrequest}
+should enumerate accept anything?
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| credential_id | [ string](#string) | Id of the credentials |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCredentialEnumerateAWSResponse {#sdkcredentialenumerateawsresponse}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| credential | [repeated S3Credential](#s3credential) | Array of Credentials for AWS |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCredentialEnumerateAzureRequest {#sdkcredentialenumerateazurerequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| credential_id | [ string](#string) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCredentialEnumerateAzureResponse {#sdkcredentialenumerateazureresponse}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| credential | [repeated AzureCredential](#azurecredential) | List of Credentials for Azure |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCredentialEnumerateGoogleRequest {#sdkcredentialenumerategooglerequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| credential_id | [ string](#string) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCredentialEnumerateGoogleResponse {#sdkcredentialenumerategoogleresponse}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| credential | [repeated GoogleCredential](#googlecredential) | List of Credentials for Google |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCredentialValidateRequest {#sdkcredentialvalidaterequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| credential_id | [ string](#string) | Id of the credentials |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCredentialValidateResponse {#sdkcredentialvalidateresponse}
+
+
+ <!-- end HasFields -->
+
+
+## SdkVolumeAttachRequest {#sdkvolumeattachrequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id | [ string](#string) | Id of volume |
+| options | [map SdkVolumeAttachRequest.OptionsEntry](#sdkvolumeattachrequestoptionsentry) | Options for attaching volume, right now only passphrase options is supported |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVolumeAttachRequest.OptionsEntry {#sdkvolumeattachrequestoptionsentry}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [ string](#string) | none |
+| value | [ string](#string) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVolumeAttachResponse {#sdkvolumeattachresponse}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| device_path | [ string](#string) | Device path where device is exported |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVolumeCreateFromVolumeIdRequest {#sdkvolumecreatefromvolumeidrequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| name | [ string](#string) | Unique name of the volume. This will be used for idempotency. |
+| parent_id | [ string](#string) | Parent volume id, if specified will create a new volume as a clone of the parent. |
+| spec | [ VolumeSpec](#volumespec) | Volume specification |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVolumeCreateFromVolumeIdResponse {#sdkvolumecreatefromvolumeidresponse}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id | [ string](#string) | Id of new volume |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVolumeCreateRequest {#sdkvolumecreaterequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| name | [ string](#string) | Unique name of the volume. This will be used for idempotency. |
+| spec | [ VolumeSpec](#volumespec) | Volume specification |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVolumeCreateResponse {#sdkvolumecreateresponse}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id | [ string](#string) | Id of new volume |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVolumeDeleteRequest {#sdkvolumedeleterequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id | [ string](#string) | Id of volume to delete |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVolumeDeleteResponse {#sdkvolumedeleteresponse}
+
+
+ <!-- end HasFields -->
+
+
+## SdkVolumeDetachRequest {#sdkvolumedetachrequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id | [ string](#string) | Id of the volume |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVolumeDetachResponse {#sdkvolumedetachresponse}
+
+
+ <!-- end HasFields -->
+
+
+## SdkVolumeEnumerateRequest {#sdkvolumeenumeraterequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| locator | [ VolumeLocator](#volumelocator) | Volumes to match to this locator. If not provided, all volumes will be returned. |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVolumeEnumerateResponse {#sdkvolumeenumerateresponse}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volumes | [repeated Volume](#volume) | List of volumes matching label |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVolumeInspectRequest {#sdkvolumeinspectrequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id | [ string](#string) | Id of volume to inspect |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVolumeInspectResponse {#sdkvolumeinspectresponse}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume | [ Volume](#volume) | Information about the volume |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVolumeMountRequest {#sdkvolumemountrequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id | [ string](#string) | Id of the volume |
+| mount_path | [ string](#string) | Mount path for mounting the volume. |
+| options | [map SdkVolumeMountRequest.OptionsEntry](#sdkvolumemountrequestoptionsentry) | Additional options |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVolumeMountRequest.OptionsEntry {#sdkvolumemountrequestoptionsentry}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [ string](#string) | none |
+| value | [ string](#string) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVolumeMountResponse {#sdkvolumemountresponse}
+
+
+ <!-- end HasFields -->
+
+
+## SdkVolumeSnapshotCreateRequest {#sdkvolumesnapshotcreaterequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id | [ string](#string) | Id of volume to take the snapshot from |
+| labels | [map SdkVolumeSnapshotCreateRequest.LabelsEntry](#sdkvolumesnapshotcreaterequestlabelsentry) | Labels to apply to snapshot |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVolumeSnapshotCreateRequest.LabelsEntry {#sdkvolumesnapshotcreaterequestlabelsentry}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [ string](#string) | none |
+| value | [ string](#string) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVolumeSnapshotCreateResponse {#sdkvolumesnapshotcreateresponse}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| snapshot_id | [ string](#string) | Id of immutable snapshot |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVolumeSnapshotEnumerateRequest {#sdkvolumesnapshotenumeraterequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id | [ string](#string) | Id of volume |
+| labels | [map SdkVolumeSnapshotEnumerateRequest.LabelsEntry](#sdkvolumesnapshotenumeraterequestlabelsentry) | Labels from snapshot |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVolumeSnapshotEnumerateRequest.LabelsEntry {#sdkvolumesnapshotenumeraterequestlabelsentry}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [ string](#string) | none |
+| value | [ string](#string) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVolumeSnapshotEnumerateResponse {#sdkvolumesnapshotenumerateresponse}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| snapshots | [repeated Volume](#volume) | List of immutable snapshots |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVolumeSnapshotRestoreRequest {#sdkvolumesnapshotrestorerequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id | [ string](#string) | Id of volume |
+| snapshot_id | [ string](#string) | Snapshot id to apply to `volume_id` |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVolumeSnapshotRestoreResponse {#sdkvolumesnapshotrestoreresponse}
+
+
+ <!-- end HasFields -->
+
+
+## SdkVolumeUnmountRequest {#sdkvolumeunmountrequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id | [ string](#string) | Id of volume |
+| mount_path | [ string](#string) | MountPath for device |
+| options | [map SdkVolumeUnmountRequest.OptionsEntry](#sdkvolumeunmountrequestoptionsentry) | Options to unmount device |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVolumeUnmountRequest.OptionsEntry {#sdkvolumeunmountrequestoptionsentry}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [ string](#string) | none |
+| value | [ string](#string) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVolumeUnmountResponse {#sdkvolumeunmountresponse}
+
+
  <!-- end HasFields -->
 
 
@@ -783,41 +1375,6 @@ swagger:model
  <!-- end HasFields -->
 
 
-## VolumeAttachRequest {#volumeattachrequest}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| volume_id | [ string](#string) | Id of volume |
-| options | [map VolumeAttachRequest.OptionsEntry](#volumeattachrequestoptionsentry) | Options for attaching volume, right now only passphrase options is supported |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## VolumeAttachRequest.OptionsEntry {#volumeattachrequestoptionsentry}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| key | [ string](#string) | none |
-| value | [ string](#string) | none |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## VolumeAttachResponse {#volumeattachresponse}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| device_path | [ string](#string) | Device path where device is exported |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
 ## VolumeConsumer {#volumeconsumer}
 VolumeConsumer identifies a consumer for a Volume. An example of a VolumeConsumer
 would be a Pod in Kubernetes who has mounted the PersistentVolumeClaim for the
@@ -833,30 +1390,6 @@ swagger: model
 | node_id | [ string](#string) | NodeID is the identifier of the node on which the consumer is running. This identifier would be from the perspective of the container runtime or orchestrator under which the volume consumer resides. For example, NodeID can be name of a minion in Kubernetes. |
 | owner_name | [ string](#string) | OwnerName is the name of the entity who owns this volume consumer |
 | owner_type | [ string](#string) | OwnerType is the type of the entity who owns this volume consumer. The type would be from the perspective of the container runtime or the orchestrator under which the volume consumer resides. For e.g OwnerType can be a Deployment in Kubernetes. |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## VolumeCreateFromVolumeIDRequest {#volumecreatefromvolumeidrequest}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| name | [ string](#string) | Unique name of the volume. This will be used for idempotency. |
-| parent_id | [ string](#string) | Parent volume id, if specified will create a new volume as a clone of the parent. |
-| spec | [ VolumeSpec](#volumespec) | Volume specification |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## VolumeCreateFromVolumeIDResponse {#volumecreatefromvolumeidresponse}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| volume_id | [ string](#string) | Id of new volume |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -893,62 +1426,6 @@ in: body Required: true |
  <!-- end HasFields -->
 
 
-## VolumeDeleteRequest {#volumedeleterequest}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| volume_id | [ string](#string) | Id of volume to delete |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## VolumeDeleteResponse {#volumedeleteresponse}
-
-
- <!-- end HasFields -->
-
-
-## VolumeDetachRequest {#volumedetachrequest}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| volume_id | [ string](#string) | Id of the volume |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## VolumeDetachResponse {#volumedetachresponse}
-
-
- <!-- end HasFields -->
-
-
-## VolumeEnumerateRequest {#volumeenumeraterequest}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| locator | [ VolumeLocator](#volumelocator) | Volumes to match to this locator. If not provided, all volumes will be returned. |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## VolumeEnumerateResponse {#volumeenumerateresponse}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| volumes | [repeated Volume](#volume) | List of volumes matching label |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
 ## VolumeInfo {#volumeinfo}
 VolumeInfo
 swagger:model
@@ -959,28 +1436,6 @@ swagger:model
 | volume_id | [ string](#string) | none |
 | path | [ string](#string) | none |
 | storage | [ VolumeSpec](#volumespec) | none |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## VolumeInspectRequest {#volumeinspectrequest}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| volume_id | [ string](#string) | Id of volume to inspect |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## VolumeInspectResponse {#volumeinspectresponse}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| volume | [ Volume](#volume) | Information about the volume |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -1008,37 +1463,6 @@ swagger:model
 | key | [ string](#string) | none |
 | value | [ string](#string) | none |
  <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## VolumeMountRequest {#volumemountrequest}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| volume_id | [ string](#string) | Id of the volume |
-| mount_path | [ string](#string) | Mount path for mounting the volume. |
-| options | [map VolumeMountRequest.OptionsEntry](#volumemountrequestoptionsentry) | Additional options |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## VolumeMountRequest.OptionsEntry {#volumemountrequestoptionsentry}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| key | [ string](#string) | none |
-| value | [ string](#string) | none |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## VolumeMountResponse {#volumemountresponse}
-
-
  <!-- end HasFields -->
 
 
@@ -1097,94 +1521,6 @@ in: body Required: true |
 
 in: body Required: true |
  <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## VolumeSnapshotCreateRequest {#volumesnapshotcreaterequest}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| volume_id | [ string](#string) | Id of volume to take the snapshot from |
-| labels | [map VolumeSnapshotCreateRequest.LabelsEntry](#volumesnapshotcreaterequestlabelsentry) | Labels to apply to snapshot |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## VolumeSnapshotCreateRequest.LabelsEntry {#volumesnapshotcreaterequestlabelsentry}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| key | [ string](#string) | none |
-| value | [ string](#string) | none |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## VolumeSnapshotCreateResponse {#volumesnapshotcreateresponse}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| snapshot_id | [ string](#string) | Id of immutable snapshot |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## VolumeSnapshotEnumerateRequest {#volumesnapshotenumeraterequest}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| volume_id | [ string](#string) | Id of volume |
-| labels | [map VolumeSnapshotEnumerateRequest.LabelsEntry](#volumesnapshotenumeraterequestlabelsentry) | Labels from snapshot |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## VolumeSnapshotEnumerateRequest.LabelsEntry {#volumesnapshotenumeraterequestlabelsentry}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| key | [ string](#string) | none |
-| value | [ string](#string) | none |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## VolumeSnapshotEnumerateResponse {#volumesnapshotenumerateresponse}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| snapshots | [repeated Volume](#volume) | List of immutable snapshots |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## VolumeSnapshotRestoreRequest {#volumesnapshotrestorerequest}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| volume_id | [ string](#string) | Id of volume |
-| snapshot_id | [ string](#string) | Snapshot id to apply to `volume_id` |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## VolumeSnapshotRestoreResponse {#volumesnapshotrestoreresponse}
-
-
  <!-- end HasFields -->
 
 
@@ -1247,37 +1583,6 @@ swagger:model
 | mount_path | [ string](#string) | MountPath Path where the device is mounted |
 | device_path | [ string](#string) | DevicePath Path returned in attach |
  <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## VolumeUnmountRequest {#volumeunmountrequest}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| volume_id | [ string](#string) | Id of volume |
-| mount_path | [ string](#string) | MountPath for device |
-| options | [map VolumeUnmountRequest.OptionsEntry](#volumeunmountrequestoptionsentry) | Options to unmount device |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## VolumeUnmountRequest.OptionsEntry {#volumeunmountrequestoptionsentry}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| key | [ string](#string) | none |
-| value | [ string](#string) | none |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## VolumeUnmountResponse {#volumeunmountresponse}
-
-
  <!-- end HasFields -->
  <!-- end messages -->
 

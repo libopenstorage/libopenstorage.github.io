@@ -226,6 +226,7 @@
 <ul>
 <li>Services<ul>
 <li><a href="#openstorageapiopenstoragecluster">OpenStorageCluster</a></li>
+<li><a href="#openstorageapiopenstoragecredentials">OpenStorageCredentials</a></li>
 <li><a href="#openstorageapiopenstoragevolume">OpenStorageVolume</a></li>
 </ul>
 </li>
@@ -237,28 +238,75 @@
 <li><a href="#activerequests">ActiveRequests</a></li>
 <li><a href="#alert">Alert</a></li>
 <li><a href="#alerts">Alerts</a></li>
-<li><a href="#clusteralertclearrequest">ClusterAlertClearRequest</a></li>
-<li><a href="#clusteralertclearresponse">ClusterAlertClearResponse</a></li>
-<li><a href="#clusteralertenumeraterequest">ClusterAlertEnumerateRequest</a></li>
-<li><a href="#clusteralertenumerateresponse">ClusterAlertEnumerateResponse</a></li>
-<li><a href="#clusteralerteraserequest">ClusterAlertEraseRequest</a></li>
-<li><a href="#clusteralerteraseresponse">ClusterAlertEraseResponse</a></li>
-<li><a href="#clusterenumeraterequest">ClusterEnumerateRequest</a></li>
-<li><a href="#clusterenumerateresponse">ClusterEnumerateResponse</a></li>
-<li><a href="#clusterinspectrequest">ClusterInspectRequest</a></li>
-<li><a href="#clusterinspectresponse">ClusterInspectResponse</a></li>
+<li><a href="#azurecredential">AzureCredential</a></li>
 <li><a href="#clusterresponse">ClusterResponse</a></li>
+<li><a href="#googlecredential">GoogleCredential</a></li>
 <li><a href="#graphdriverchanges">GraphDriverChanges</a></li>
 <li><a href="#group">Group</a></li>
 <li><a href="#groupsnapcreaterequest">GroupSnapCreateRequest</a></li>
 <li><a href="#groupsnapcreaterequestlabelsentry">GroupSnapCreateRequest.LabelsEntry</a></li>
 <li><a href="#groupsnapcreateresponse">GroupSnapCreateResponse</a></li>
 <li><a href="#groupsnapcreateresponsesnapshotsentry">GroupSnapCreateResponse.SnapshotsEntry</a></li>
-<li><a href="#openstoragevolumecreaterequest">OpenStorageVolumeCreateRequest</a></li>
-<li><a href="#openstoragevolumecreateresponse">OpenStorageVolumeCreateResponse</a></li>
+<li><a href="#objectstoreinfo">ObjectstoreInfo</a></li>
 <li><a href="#replicaset">ReplicaSet</a></li>
 <li><a href="#runtimestatemap">RuntimeStateMap</a></li>
 <li><a href="#runtimestatemapruntimestateentry">RuntimeStateMap.RuntimeStateEntry</a></li>
+<li><a href="#s3credential">S3Credential</a></li>
+<li><a href="#sdkclusteralertclearrequest">SdkClusterAlertClearRequest</a></li>
+<li><a href="#sdkclusteralertclearresponse">SdkClusterAlertClearResponse</a></li>
+<li><a href="#sdkclusteralertenumeraterequest">SdkClusterAlertEnumerateRequest</a></li>
+<li><a href="#sdkclusteralertenumerateresponse">SdkClusterAlertEnumerateResponse</a></li>
+<li><a href="#sdkclusteralerteraserequest">SdkClusterAlertEraseRequest</a></li>
+<li><a href="#sdkclusteralerteraseresponse">SdkClusterAlertEraseResponse</a></li>
+<li><a href="#sdkclusterenumeraterequest">SdkClusterEnumerateRequest</a></li>
+<li><a href="#sdkclusterenumerateresponse">SdkClusterEnumerateResponse</a></li>
+<li><a href="#sdkclusterinspectrequest">SdkClusterInspectRequest</a></li>
+<li><a href="#sdkclusterinspectresponse">SdkClusterInspectResponse</a></li>
+<li><a href="#sdkcredentialcreateawsrequest">SdkCredentialCreateAWSRequest</a></li>
+<li><a href="#sdkcredentialcreateawsresponse">SdkCredentialCreateAWSResponse</a></li>
+<li><a href="#sdkcredentialcreateazurerequest">SdkCredentialCreateAzureRequest</a></li>
+<li><a href="#sdkcredentialcreateazureresponse">SdkCredentialCreateAzureResponse</a></li>
+<li><a href="#sdkcredentialcreategooglerequest">SdkCredentialCreateGoogleRequest</a></li>
+<li><a href="#sdkcredentialcreategoogleresponse">SdkCredentialCreateGoogleResponse</a></li>
+<li><a href="#sdkcredentialdeleterequest">SdkCredentialDeleteRequest</a></li>
+<li><a href="#sdkcredentialdeleteresponse">SdkCredentialDeleteResponse</a></li>
+<li><a href="#sdkcredentialenumerateawsrequest">SdkCredentialEnumerateAWSRequest</a></li>
+<li><a href="#sdkcredentialenumerateawsresponse">SdkCredentialEnumerateAWSResponse</a></li>
+<li><a href="#sdkcredentialenumerateazurerequest">SdkCredentialEnumerateAzureRequest</a></li>
+<li><a href="#sdkcredentialenumerateazureresponse">SdkCredentialEnumerateAzureResponse</a></li>
+<li><a href="#sdkcredentialenumerategooglerequest">SdkCredentialEnumerateGoogleRequest</a></li>
+<li><a href="#sdkcredentialenumerategoogleresponse">SdkCredentialEnumerateGoogleResponse</a></li>
+<li><a href="#sdkcredentialvalidaterequest">SdkCredentialValidateRequest</a></li>
+<li><a href="#sdkcredentialvalidateresponse">SdkCredentialValidateResponse</a></li>
+<li><a href="#sdkvolumeattachrequest">SdkVolumeAttachRequest</a></li>
+<li><a href="#sdkvolumeattachrequestoptionsentry">SdkVolumeAttachRequest.OptionsEntry</a></li>
+<li><a href="#sdkvolumeattachresponse">SdkVolumeAttachResponse</a></li>
+<li><a href="#sdkvolumecreatefromvolumeidrequest">SdkVolumeCreateFromVolumeIdRequest</a></li>
+<li><a href="#sdkvolumecreatefromvolumeidresponse">SdkVolumeCreateFromVolumeIdResponse</a></li>
+<li><a href="#sdkvolumecreaterequest">SdkVolumeCreateRequest</a></li>
+<li><a href="#sdkvolumecreateresponse">SdkVolumeCreateResponse</a></li>
+<li><a href="#sdkvolumedeleterequest">SdkVolumeDeleteRequest</a></li>
+<li><a href="#sdkvolumedeleteresponse">SdkVolumeDeleteResponse</a></li>
+<li><a href="#sdkvolumedetachrequest">SdkVolumeDetachRequest</a></li>
+<li><a href="#sdkvolumedetachresponse">SdkVolumeDetachResponse</a></li>
+<li><a href="#sdkvolumeenumeraterequest">SdkVolumeEnumerateRequest</a></li>
+<li><a href="#sdkvolumeenumerateresponse">SdkVolumeEnumerateResponse</a></li>
+<li><a href="#sdkvolumeinspectrequest">SdkVolumeInspectRequest</a></li>
+<li><a href="#sdkvolumeinspectresponse">SdkVolumeInspectResponse</a></li>
+<li><a href="#sdkvolumemountrequest">SdkVolumeMountRequest</a></li>
+<li><a href="#sdkvolumemountrequestoptionsentry">SdkVolumeMountRequest.OptionsEntry</a></li>
+<li><a href="#sdkvolumemountresponse">SdkVolumeMountResponse</a></li>
+<li><a href="#sdkvolumesnapshotcreaterequest">SdkVolumeSnapshotCreateRequest</a></li>
+<li><a href="#sdkvolumesnapshotcreaterequestlabelsentry">SdkVolumeSnapshotCreateRequest.LabelsEntry</a></li>
+<li><a href="#sdkvolumesnapshotcreateresponse">SdkVolumeSnapshotCreateResponse</a></li>
+<li><a href="#sdkvolumesnapshotenumeraterequest">SdkVolumeSnapshotEnumerateRequest</a></li>
+<li><a href="#sdkvolumesnapshotenumeraterequestlabelsentry">SdkVolumeSnapshotEnumerateRequest.LabelsEntry</a></li>
+<li><a href="#sdkvolumesnapshotenumerateresponse">SdkVolumeSnapshotEnumerateResponse</a></li>
+<li><a href="#sdkvolumesnapshotrestorerequest">SdkVolumeSnapshotRestoreRequest</a></li>
+<li><a href="#sdkvolumesnapshotrestoreresponse">SdkVolumeSnapshotRestoreResponse</a></li>
+<li><a href="#sdkvolumeunmountrequest">SdkVolumeUnmountRequest</a></li>
+<li><a href="#sdkvolumeunmountrequestoptionsentry">SdkVolumeUnmountRequest.OptionsEntry</a></li>
+<li><a href="#sdkvolumeunmountresponse">SdkVolumeUnmountResponse</a></li>
 <li><a href="#snapcreaterequest">SnapCreateRequest</a></li>
 <li><a href="#snapcreateresponse">SnapCreateResponse</a></li>
 <li><a href="#source">Source</a></li>
@@ -272,46 +320,19 @@
 <li><a href="#storageresource">StorageResource</a></li>
 <li><a href="#volume">Volume</a></li>
 <li><a href="#volumeattachinfoentry">Volume.AttachInfoEntry</a></li>
-<li><a href="#volumeattachrequest">VolumeAttachRequest</a></li>
-<li><a href="#volumeattachrequestoptionsentry">VolumeAttachRequest.OptionsEntry</a></li>
-<li><a href="#volumeattachresponse">VolumeAttachResponse</a></li>
 <li><a href="#volumeconsumer">VolumeConsumer</a></li>
-<li><a href="#volumecreatefromvolumeidrequest">VolumeCreateFromVolumeIDRequest</a></li>
-<li><a href="#volumecreatefromvolumeidresponse">VolumeCreateFromVolumeIDResponse</a></li>
 <li><a href="#volumecreaterequest">VolumeCreateRequest</a></li>
 <li><a href="#volumecreateresponse">VolumeCreateResponse</a></li>
-<li><a href="#volumedeleterequest">VolumeDeleteRequest</a></li>
-<li><a href="#volumedeleteresponse">VolumeDeleteResponse</a></li>
-<li><a href="#volumedetachrequest">VolumeDetachRequest</a></li>
-<li><a href="#volumedetachresponse">VolumeDetachResponse</a></li>
-<li><a href="#volumeenumeraterequest">VolumeEnumerateRequest</a></li>
-<li><a href="#volumeenumerateresponse">VolumeEnumerateResponse</a></li>
 <li><a href="#volumeinfo">VolumeInfo</a></li>
-<li><a href="#volumeinspectrequest">VolumeInspectRequest</a></li>
-<li><a href="#volumeinspectresponse">VolumeInspectResponse</a></li>
 <li><a href="#volumelocator">VolumeLocator</a></li>
 <li><a href="#volumelocatorvolumelabelsentry">VolumeLocator.VolumeLabelsEntry</a></li>
-<li><a href="#volumemountrequest">VolumeMountRequest</a></li>
-<li><a href="#volumemountrequestoptionsentry">VolumeMountRequest.OptionsEntry</a></li>
-<li><a href="#volumemountresponse">VolumeMountResponse</a></li>
 <li><a href="#volumeresponse">VolumeResponse</a></li>
 <li><a href="#volumesetrequest">VolumeSetRequest</a></li>
 <li><a href="#volumesetrequestoptionsentry">VolumeSetRequest.OptionsEntry</a></li>
 <li><a href="#volumesetresponse">VolumeSetResponse</a></li>
-<li><a href="#volumesnapshotcreaterequest">VolumeSnapshotCreateRequest</a></li>
-<li><a href="#volumesnapshotcreaterequestlabelsentry">VolumeSnapshotCreateRequest.LabelsEntry</a></li>
-<li><a href="#volumesnapshotcreateresponse">VolumeSnapshotCreateResponse</a></li>
-<li><a href="#volumesnapshotenumeraterequest">VolumeSnapshotEnumerateRequest</a></li>
-<li><a href="#volumesnapshotenumeraterequestlabelsentry">VolumeSnapshotEnumerateRequest.LabelsEntry</a></li>
-<li><a href="#volumesnapshotenumerateresponse">VolumeSnapshotEnumerateResponse</a></li>
-<li><a href="#volumesnapshotrestorerequest">VolumeSnapshotRestoreRequest</a></li>
-<li><a href="#volumesnapshotrestoreresponse">VolumeSnapshotRestoreResponse</a></li>
 <li><a href="#volumespec">VolumeSpec</a></li>
 <li><a href="#volumespecvolumelabelsentry">VolumeSpec.VolumeLabelsEntry</a></li>
 <li><a href="#volumestateaction">VolumeStateAction</a></li>
-<li><a href="#volumeunmountrequest">VolumeUnmountRequest</a></li>
-<li><a href="#volumeunmountrequestoptionsentry">VolumeUnmountRequest.OptionsEntry</a></li>
-<li><a href="#volumeunmountresponse">VolumeUnmountResponse</a></li>
 </ul>
 </li>
 </ul>
@@ -342,107 +363,160 @@
 <h1 id="openstorageapiopenstoragecluster">OpenStorageCluster </h1>
 <h2 id="enumerate">Enumerate</h2>
 <blockquote>
-<p><strong>rpc</strong> Enumerate(<a href="#clusterenumeraterequest">ClusterEnumerateRequest</a>)
-    <a href="#clusterenumerateresponse">ClusterEnumerateResponse</a></p>
+<p><strong>rpc</strong> Enumerate(<a href="#sdkclusterenumeraterequest">SdkClusterEnumerateRequest</a>)
+    <a href="#sdkclusterenumerateresponse">SdkClusterEnumerateResponse</a></p>
 </blockquote>
 <p>Enumerate lists all the nodes in the cluster.</p>
 <h2 id="inspect">Inspect</h2>
 <blockquote>
-<p><strong>rpc</strong> Inspect(<a href="#clusterinspectrequest">ClusterInspectRequest</a>)
-    <a href="#clusterinspectresponse">ClusterInspectResponse</a></p>
+<p><strong>rpc</strong> Inspect(<a href="#sdkclusterinspectrequest">SdkClusterInspectRequest</a>)
+    <a href="#sdkclusterinspectresponse">SdkClusterInspectResponse</a></p>
 </blockquote>
 <p>Inspect the node given a UUID.</p>
 <h2 id="alertenumerate">AlertEnumerate</h2>
 <blockquote>
-<p><strong>rpc</strong> AlertEnumerate(<a href="#clusteralertenumeraterequest">ClusterAlertEnumerateRequest</a>)
-    <a href="#clusteralertenumerateresponse">ClusterAlertEnumerateResponse</a></p>
+<p><strong>rpc</strong> AlertEnumerate(<a href="#sdkclusteralertenumeraterequest">SdkClusterAlertEnumerateRequest</a>)
+    <a href="#sdkclusteralertenumerateresponse">SdkClusterAlertEnumerateResponse</a></p>
 </blockquote>
 <p>Get a list of alerts from the storage cluster</p>
 <h2 id="alertclear">AlertClear</h2>
 <blockquote>
-<p><strong>rpc</strong> AlertClear(<a href="#clusteralertclearrequest">ClusterAlertClearRequest</a>)
-    <a href="#clusteralertclearresponse">ClusterAlertClearResponse</a></p>
+<p><strong>rpc</strong> AlertClear(<a href="#sdkclusteralertclearrequest">SdkClusterAlertClearRequest</a>)
+    <a href="#sdkclusteralertclearresponse">SdkClusterAlertClearResponse</a></p>
 </blockquote>
 <p>Clear the alert for a given resource</p>
 <h2 id="alerterase">AlertErase</h2>
 <blockquote>
-<p><strong>rpc</strong> AlertErase(<a href="#clusteralerteraserequest">ClusterAlertEraseRequest</a>)
-    <a href="#clusteralerteraseresponse">ClusterAlertEraseResponse</a></p>
+<p><strong>rpc</strong> AlertErase(<a href="#sdkclusteralerteraserequest">SdkClusterAlertEraseRequest</a>)
+    <a href="#sdkclusteralerteraseresponse">SdkClusterAlertEraseResponse</a></p>
 </blockquote>
 <p>Erases an alert for a given resource
+ <!-- end methods --></p>
+<h1 id="openstorageapiopenstoragecredentials">OpenStorageCredentials </h1>
+<h2 id="createforaws">CreateForAWS</h2>
+<blockquote>
+<p><strong>rpc</strong> CreateForAWS(<a href="#sdkcredentialcreateawsrequest">SdkCredentialCreateAWSRequest</a>)
+    <a href="#sdkcredentialcreateawsresponse">SdkCredentialCreateAWSResponse</a></p>
+</blockquote>
+<p>Create credential for AWS S3 and if valid ,
+returns a unique identifier</p>
+<h2 id="createforazure">CreateForAzure</h2>
+<blockquote>
+<p><strong>rpc</strong> CreateForAzure(<a href="#sdkcredentialcreateazurerequest">SdkCredentialCreateAzureRequest</a>)
+    <a href="#sdkcredentialcreateazureresponse">SdkCredentialCreateAzureResponse</a></p>
+</blockquote>
+<p>Create credential for Azure and if valid ,
+returns a unique identifier</p>
+<h2 id="createforgoogle">CreateForGoogle</h2>
+<blockquote>
+<p><strong>rpc</strong> CreateForGoogle(<a href="#sdkcredentialcreategooglerequest">SdkCredentialCreateGoogleRequest</a>)
+    <a href="#sdkcredentialcreategoogleresponse">SdkCredentialCreateGoogleResponse</a></p>
+</blockquote>
+<p>Create credential for Google and if valid ,
+returns a unique identifier</p>
+<h2 id="enumerateforaws">EnumerateForAWS</h2>
+<blockquote>
+<p><strong>rpc</strong> EnumerateForAWS(<a href="#sdkcredentialenumerateawsrequest">SdkCredentialEnumerateAWSRequest</a>)
+    <a href="#sdkcredentialenumerateawsresponse">SdkCredentialEnumerateAWSResponse</a></p>
+</blockquote>
+<p>EnumerateForAWS lists the configured AWS credentials</p>
+<h2 id="enumerateforazure">EnumerateForAzure</h2>
+<blockquote>
+<p><strong>rpc</strong> EnumerateForAzure(<a href="#sdkcredentialenumerateazurerequest">SdkCredentialEnumerateAzureRequest</a>)
+    <a href="#sdkcredentialenumerateazureresponse">SdkCredentialEnumerateAzureResponse</a></p>
+</blockquote>
+<p>EnumerateForAzure lists the configured Azure credentials</p>
+<h2 id="enumerateforgoogle">EnumerateForGoogle</h2>
+<blockquote>
+<p><strong>rpc</strong> EnumerateForGoogle(<a href="#sdkcredentialenumerategooglerequest">SdkCredentialEnumerateGoogleRequest</a>)
+    <a href="#sdkcredentialenumerategoogleresponse">SdkCredentialEnumerateGoogleResponse</a></p>
+</blockquote>
+<p>EnumerateForGoogle lists the configured Google credentials</p>
+<h2 id="credentialdelete">CredentialDelete</h2>
+<blockquote>
+<p><strong>rpc</strong> CredentialDelete(<a href="#sdkcredentialdeleterequest">SdkCredentialDeleteRequest</a>)
+    <a href="#sdkcredentialdeleteresponse">SdkCredentialDeleteResponse</a></p>
+</blockquote>
+<p>Delete a specified credential</p>
+<h2 id="credentialvalidate">CredentialValidate</h2>
+<blockquote>
+<p><strong>rpc</strong> CredentialValidate(<a href="#sdkcredentialvalidaterequest">SdkCredentialValidateRequest</a>)
+    <a href="#sdkcredentialvalidateresponse">SdkCredentialValidateResponse</a></p>
+</blockquote>
+<p>Validate a specified credential
  <!-- end methods --></p>
 <h1 id="openstorageapiopenstoragevolume">OpenStorageVolume </h1>
 <h2 id="create">Create</h2>
 <blockquote>
-<p><strong>rpc</strong> Create(<a href="#openstoragevolumecreaterequest">OpenStorageVolumeCreateRequest</a>)
-    <a href="#openstoragevolumecreateresponse">OpenStorageVolumeCreateResponse</a></p>
+<p><strong>rpc</strong> Create(<a href="#sdkvolumecreaterequest">SdkVolumeCreateRequest</a>)
+    <a href="#sdkvolumecreateresponse">SdkVolumeCreateResponse</a></p>
 </blockquote>
 <p>Creates a new volume</p>
-<h2 id="createfromvolumeid">CreateFromVolumeID</h2>
+<h2 id="createfromvolumeid">CreateFromVolumeId</h2>
 <blockquote>
-<p><strong>rpc</strong> CreateFromVolumeID(<a href="#volumecreatefromvolumeidrequest">VolumeCreateFromVolumeIDRequest</a>)
-    <a href="#volumecreatefromvolumeidresponse">VolumeCreateFromVolumeIDResponse</a></p>
+<p><strong>rpc</strong> CreateFromVolumeId(<a href="#sdkvolumecreatefromvolumeidrequest">SdkVolumeCreateFromVolumeIdRequest</a>)
+    <a href="#sdkvolumecreatefromvolumeidresponse">SdkVolumeCreateFromVolumeIdResponse</a></p>
 </blockquote>
-<p>CreateFromVolumeID creates a new volume cloned from an existing volume</p>
+<p>CreateFromVolumeId creates a new volume cloned from an existing volume</p>
 <h2 id="delete">Delete</h2>
 <blockquote>
-<p><strong>rpc</strong> Delete(<a href="#volumedeleterequest">VolumeDeleteRequest</a>)
-    <a href="#volumedeleteresponse">VolumeDeleteResponse</a></p>
+<p><strong>rpc</strong> Delete(<a href="#sdkvolumedeleterequest">SdkVolumeDeleteRequest</a>)
+    <a href="#sdkvolumedeleteresponse">SdkVolumeDeleteResponse</a></p>
 </blockquote>
 <p>Delete a volume</p>
 <h2 id="inspect">Inspect</h2>
 <blockquote>
-<p><strong>rpc</strong> Inspect(<a href="#volumeinspectrequest">VolumeInspectRequest</a>)
-    <a href="#volumeinspectresponse">VolumeInspectResponse</a></p>
+<p><strong>rpc</strong> Inspect(<a href="#sdkvolumeinspectrequest">SdkVolumeInspectRequest</a>)
+    <a href="#sdkvolumeinspectresponse">SdkVolumeInspectResponse</a></p>
 </blockquote>
 <p>Get information on a volume</p>
 <h2 id="enumerate">Enumerate</h2>
 <blockquote>
-<p><strong>rpc</strong> Enumerate(<a href="#volumeenumeraterequest">VolumeEnumerateRequest</a>)
-    <a href="#volumeenumerateresponse">VolumeEnumerateResponse</a></p>
+<p><strong>rpc</strong> Enumerate(<a href="#sdkvolumeenumeraterequest">SdkVolumeEnumerateRequest</a>)
+    <a href="#sdkvolumeenumerateresponse">SdkVolumeEnumerateResponse</a></p>
 </blockquote>
 <p>Get a list of volumes</p>
 <h2 id="snapshotcreate">SnapshotCreate</h2>
 <blockquote>
-<p><strong>rpc</strong> SnapshotCreate(<a href="#volumesnapshotcreaterequest">VolumeSnapshotCreateRequest</a>)
-    <a href="#volumesnapshotcreateresponse">VolumeSnapshotCreateResponse</a></p>
+<p><strong>rpc</strong> SnapshotCreate(<a href="#sdkvolumesnapshotcreaterequest">SdkVolumeSnapshotCreateRequest</a>)
+    <a href="#sdkvolumesnapshotcreateresponse">SdkVolumeSnapshotCreateResponse</a></p>
 </blockquote>
 <p>Create a snapshot of a volume. This creates an immutable (read-only),
 point-in-time snapshot of a volume.</p>
 <h2 id="snapshotrestore">SnapshotRestore</h2>
 <blockquote>
-<p><strong>rpc</strong> SnapshotRestore(<a href="#volumesnapshotrestorerequest">VolumeSnapshotRestoreRequest</a>)
-    <a href="#volumesnapshotrestoreresponse">VolumeSnapshotRestoreResponse</a></p>
+<p><strong>rpc</strong> SnapshotRestore(<a href="#sdkvolumesnapshotrestorerequest">SdkVolumeSnapshotRestoreRequest</a>)
+    <a href="#sdkvolumesnapshotrestoreresponse">SdkVolumeSnapshotRestoreResponse</a></p>
 </blockquote>
 <p>Restores a volume to a specified snapshot</p>
 <h2 id="snapshotenumerate">SnapshotEnumerate</h2>
 <blockquote>
-<p><strong>rpc</strong> SnapshotEnumerate(<a href="#volumesnapshotenumeraterequest">VolumeSnapshotEnumerateRequest</a>)
-    <a href="#volumesnapshotenumerateresponse">VolumeSnapshotEnumerateResponse</a></p>
+<p><strong>rpc</strong> SnapshotEnumerate(<a href="#sdkvolumesnapshotenumeraterequest">SdkVolumeSnapshotEnumerateRequest</a>)
+    <a href="#sdkvolumesnapshotenumerateresponse">SdkVolumeSnapshotEnumerateResponse</a></p>
 </blockquote>
 <p>List the number of snapshots for a specific volume</p>
 <h2 id="attach">Attach</h2>
 <blockquote>
-<p><strong>rpc</strong> Attach(<a href="#volumeattachrequest">VolumeAttachRequest</a>)
-    <a href="#volumeattachresponse">VolumeAttachResponse</a></p>
+<p><strong>rpc</strong> Attach(<a href="#sdkvolumeattachrequest">SdkVolumeAttachRequest</a>)
+    <a href="#sdkvolumeattachresponse">SdkVolumeAttachResponse</a></p>
 </blockquote>
 <p>Attach device to host</p>
 <h2 id="detach">Detach</h2>
 <blockquote>
-<p><strong>rpc</strong> Detach(<a href="#volumedetachrequest">VolumeDetachRequest</a>)
-    <a href="#volumedetachresponse">VolumeDetachResponse</a></p>
+<p><strong>rpc</strong> Detach(<a href="#sdkvolumedetachrequest">SdkVolumeDetachRequest</a>)
+    <a href="#sdkvolumedetachresponse">SdkVolumeDetachResponse</a></p>
 </blockquote>
 <p>Detaches the volume from the node.</p>
 <h2 id="mount">Mount</h2>
 <blockquote>
-<p><strong>rpc</strong> Mount(<a href="#volumemountrequest">VolumeMountRequest</a>)
-    <a href="#volumemountresponse">VolumeMountResponse</a></p>
+<p><strong>rpc</strong> Mount(<a href="#sdkvolumemountrequest">SdkVolumeMountRequest</a>)
+    <a href="#sdkvolumemountresponse">SdkVolumeMountResponse</a></p>
 </blockquote>
 <p>Attaches the volume to a node.</p>
 <h2 id="unmount">Unmount</h2>
 <blockquote>
-<p><strong>rpc</strong> Unmount(<a href="#volumeunmountrequest">VolumeUnmountRequest</a>)
-    <a href="#volumeunmountresponse">VolumeUnmountResponse</a></p>
+<p><strong>rpc</strong> Unmount(<a href="#sdkvolumeunmountrequest">SdkVolumeUnmountRequest</a>)
+    <a href="#sdkvolumeunmountresponse">SdkVolumeUnmountResponse</a></p>
 </blockquote>
 <p>Unmount volume at specified path
  <!-- end methods -->
@@ -606,7 +680,7 @@ swagger:model</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
-<h2 id="clusteralertclearrequest">ClusterAlertClearRequest </h2>
+<h2 id="azurecredential">AzureCredential </h2>
 <table>
 <thead>
 <tr>
@@ -617,149 +691,19 @@ swagger:model</p>
 </thead>
 <tbody>
 <tr>
-<td>resource</td>
-<td><a href="#resourcetype"> ResourceType</a></td>
-<td>Type of resource (required)</td>
-</tr>
-<tr>
-<td>alert_id</td>
-<td><a href="#int64"> int64</a></td>
-<td>Id of alert as returned by ClusterEnumerateAlertResponse (required)</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="clusteralertclearresponse">ClusterAlertClearResponse </h2>
- <!-- end HasFields -->
-<h2 id="clusteralertenumeraterequest">ClusterAlertEnumerateRequest </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>time_start</td>
-<td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
-<td>Start time of alerts (required)</td>
-</tr>
-<tr>
-<td>time_end</td>
-<td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
-<td>End time of alerts (required)</td>
-</tr>
-<tr>
-<td>resource</td>
-<td><a href="#resourcetype"> ResourceType</a></td>
-<td>Type of resource (required)</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="clusteralertenumerateresponse">ClusterAlertEnumerateResponse </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>alerts</td>
-<td><a href="#alerts"> Alerts</a></td>
-<td>Information on the alerts requested</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="clusteralerteraserequest">ClusterAlertEraseRequest </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>resource</td>
-<td><a href="#resourcetype"> ResourceType</a></td>
-<td>Type of resource (required)</td>
-</tr>
-<tr>
-<td>alert_id</td>
-<td><a href="#int64"> int64</a></td>
-<td>Id of alert as returned by ClusterEnumerateAlertResponse (required)</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="clusteralerteraseresponse">ClusterAlertEraseResponse </h2>
- <!-- end HasFields -->
-<h2 id="clusterenumeraterequest">ClusterEnumerateRequest </h2>
- <!-- end HasFields -->
-<h2 id="clusterenumerateresponse">ClusterEnumerateResponse </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>cluster</td>
-<td><a href="#storagecluster"> StorageCluster</a></td>
-<td>Cluster information</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="clusterinspectrequest">ClusterInspectRequest </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>node_id</td>
+<td>credential_id</td>
 <td><a href="#string"> string</a></td>
-<td>Id of node to inspect (required)</td>
+<td>Cred Type</td>
 </tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="clusterinspectresponse">ClusterInspectResponse </h2>
-<table>
-<thead>
 <tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
+<td>account_name</td>
+<td><a href="#string"> string</a></td>
+<td>Account name</td>
 </tr>
-</thead>
-<tbody>
 <tr>
-<td>node</td>
-<td><a href="#storagenode"> StorageNode</a></td>
-<td>Node information</td>
+<td>account_key</td>
+<td><a href="#string"> string</a></td>
+<td>Account key</td>
 </tr>
 </tbody>
 </table>
@@ -787,6 +731,35 @@ swagger:response clusterResponse</p>
 <p>in: body |
  <!-- end Fields -->
  <!-- end HasFields --></p>
+<h2 id="googlecredential">GoogleCredential </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>credential_id</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>project_id</td>
+<td><a href="#string"> string</a></td>
+<td>Project ID</td>
+</tr>
+<tr>
+<td>json_key</td>
+<td><a href="#string"> string</a></td>
+<td>JSON Key</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
 <h2 id="graphdriverchanges">GraphDriverChanges </h2>
 <p>GraphDriverChanges represent a list of changes between the filesystem layers
 specified by the ID and Parent.  // Parent may be an empty string, in which
@@ -936,7 +909,9 @@ swagger:response groupSnapCreateResponse</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
-<h2 id="openstoragevolumecreaterequest">OpenStorageVolumeCreateRequest </h2>
+<h2 id="objectstoreinfo">ObjectstoreInfo </h2>
+<p>ObjectstoreInfo is a structure that has current objectstore info
+swagger:model</p>
 <table>
 <thead>
 <tr>
@@ -947,33 +922,59 @@ swagger:response groupSnapCreateResponse</p>
 </thead>
 <tbody>
 <tr>
-<td>name</td>
+<td>uuid</td>
 <td><a href="#string"> string</a></td>
-<td>Unique name of the volume. This will be used for idempotency.</td>
+<td>UUID of objectstore</td>
 </tr>
-<tr>
-<td>spec</td>
-<td><a href="#volumespec"> VolumeSpec</a></td>
-<td>Volume specification</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="openstoragevolumecreateresponse">OpenStorageVolumeCreateResponse </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
 <tr>
 <td>volume_id</td>
 <td><a href="#string"> string</a></td>
-<td>Id of new volume</td>
+<td>VolumeID of volume used by object store</td>
+</tr>
+<tr>
+<td>enabled</td>
+<td><a href="#bool"> bool</a></td>
+<td>Enable/Disable created objectstore</td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="#string"> string</a></td>
+<td>Status of objectstore running/failed</td>
+</tr>
+<tr>
+<td>action</td>
+<td><a href="#int64"> int64</a></td>
+<td>Action being taken on this objectstore</td>
+</tr>
+<tr>
+<td>access_key</td>
+<td><a href="#string"> string</a></td>
+<td>AccessKey for login into objectstore</td>
+</tr>
+<tr>
+<td>secret_key</td>
+<td><a href="#string"> string</a></td>
+<td>SecretKey for login into objectstore</td>
+</tr>
+<tr>
+<td>endpoints</td>
+<td><a href="#string">repeated string</a></td>
+<td>Endpoints for accessing objectstore</td>
+</tr>
+<tr>
+<td>current_endPoint</td>
+<td><a href="#string"> string</a></td>
+<td>CurrentEndpoint on which objectstore server is accessible</td>
+</tr>
+<tr>
+<td>access_port</td>
+<td><a href="#int64"> int64</a></td>
+<td>AccessPort is objectstore server port</td>
+</tr>
+<tr>
+<td>region</td>
+<td><a href="#string"> string</a></td>
+<td>Region for this objectstore</td>
 </tr>
 </tbody>
 </table>
@@ -1046,6 +1047,1021 @@ swagger:model</p>
 </tbody>
 </table>
  <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="s3credential">S3Credential </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>credential_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of the credentials</td>
+</tr>
+<tr>
+<td>access_key</td>
+<td><a href="#string"> string</a></td>
+<td>Access key</td>
+</tr>
+<tr>
+<td>secret_key</td>
+<td><a href="#string"> string</a></td>
+<td>Secret key</td>
+</tr>
+<tr>
+<td>endpoint</td>
+<td><a href="#string"> string</a></td>
+<td>Endpoint</td>
+</tr>
+<tr>
+<td>region</td>
+<td><a href="#string"> string</a></td>
+<td>Region</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkclusteralertclearrequest">SdkClusterAlertClearRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>resource</td>
+<td><a href="#resourcetype"> ResourceType</a></td>
+<td>Type of resource (required)</td>
+</tr>
+<tr>
+<td>alert_id</td>
+<td><a href="#int64"> int64</a></td>
+<td>Id of alert as returned by ClusterEnumerateAlertResponse (required)</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkclusteralertclearresponse">SdkClusterAlertClearResponse </h2>
+ <!-- end HasFields -->
+<h2 id="sdkclusteralertenumeraterequest">SdkClusterAlertEnumerateRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>time_start</td>
+<td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
+<td>Start time of alerts (required)</td>
+</tr>
+<tr>
+<td>time_end</td>
+<td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
+<td>End time of alerts (required)</td>
+</tr>
+<tr>
+<td>resource</td>
+<td><a href="#resourcetype"> ResourceType</a></td>
+<td>Type of resource (required)</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkclusteralertenumerateresponse">SdkClusterAlertEnumerateResponse </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>alerts</td>
+<td><a href="#alerts"> Alerts</a></td>
+<td>Information on the alerts requested</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkclusteralerteraserequest">SdkClusterAlertEraseRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>resource</td>
+<td><a href="#resourcetype"> ResourceType</a></td>
+<td>Type of resource (required)</td>
+</tr>
+<tr>
+<td>alert_id</td>
+<td><a href="#int64"> int64</a></td>
+<td>Id of alert as returned by ClusterEnumerateAlertResponse (required)</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkclusteralerteraseresponse">SdkClusterAlertEraseResponse </h2>
+ <!-- end HasFields -->
+<h2 id="sdkclusterenumeraterequest">SdkClusterEnumerateRequest </h2>
+ <!-- end HasFields -->
+<h2 id="sdkclusterenumerateresponse">SdkClusterEnumerateResponse </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cluster</td>
+<td><a href="#storagecluster"> StorageCluster</a></td>
+<td>Cluster information</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkclusterinspectrequest">SdkClusterInspectRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>node_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of node to inspect (required)</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkclusterinspectresponse">SdkClusterInspectResponse </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>node</td>
+<td><a href="#storagenode"> StorageNode</a></td>
+<td>Node information</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcredentialcreateawsrequest">SdkCredentialCreateAWSRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>credential</td>
+<td><a href="#s3credential"> S3Credential</a></td>
+<td>AWS S3 Credential</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcredentialcreateawsresponse">SdkCredentialCreateAWSResponse </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>credential_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of the credentials</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcredentialcreateazurerequest">SdkCredentialCreateAzureRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>credential</td>
+<td><a href="#azurecredential"> AzureCredential</a></td>
+<td>Azure Credential</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcredentialcreateazureresponse">SdkCredentialCreateAzureResponse </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>credential_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of the credentials</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcredentialcreategooglerequest">SdkCredentialCreateGoogleRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>credential</td>
+<td><a href="#googlecredential"> GoogleCredential</a></td>
+<td>Google Credential</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcredentialcreategoogleresponse">SdkCredentialCreateGoogleResponse </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>credential_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of the credentials</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcredentialdeleterequest">SdkCredentialDeleteRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>credential_id</td>
+<td><a href="#string"> string</a></td>
+<td>ID for credentials</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcredentialdeleteresponse">SdkCredentialDeleteResponse </h2>
+ <!-- end HasFields -->
+<h2 id="sdkcredentialenumerateawsrequest">SdkCredentialEnumerateAWSRequest </h2>
+<p>should enumerate accept anything?</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>credential_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of the credentials</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcredentialenumerateawsresponse">SdkCredentialEnumerateAWSResponse </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>credential</td>
+<td><a href="#s3credential">repeated S3Credential</a></td>
+<td>Array of Credentials for AWS</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcredentialenumerateazurerequest">SdkCredentialEnumerateAzureRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>credential_id</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcredentialenumerateazureresponse">SdkCredentialEnumerateAzureResponse </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>credential</td>
+<td><a href="#azurecredential">repeated AzureCredential</a></td>
+<td>List of Credentials for Azure</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcredentialenumerategooglerequest">SdkCredentialEnumerateGoogleRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>credential_id</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcredentialenumerategoogleresponse">SdkCredentialEnumerateGoogleResponse </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>credential</td>
+<td><a href="#googlecredential">repeated GoogleCredential</a></td>
+<td>List of Credentials for Google</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcredentialvalidaterequest">SdkCredentialValidateRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>credential_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of the credentials</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcredentialvalidateresponse">SdkCredentialValidateResponse </h2>
+ <!-- end HasFields -->
+<h2 id="sdkvolumeattachrequest">SdkVolumeAttachRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of volume</td>
+</tr>
+<tr>
+<td>options</td>
+<td><a href="#sdkvolumeattachrequestoptionsentry">map SdkVolumeAttachRequest.OptionsEntry</a></td>
+<td>Options for attaching volume, right now only passphrase options is supported</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkvolumeattachrequestoptionsentry">SdkVolumeAttachRequest.OptionsEntry </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkvolumeattachresponse">SdkVolumeAttachResponse </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>device_path</td>
+<td><a href="#string"> string</a></td>
+<td>Device path where device is exported</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkvolumecreatefromvolumeidrequest">SdkVolumeCreateFromVolumeIdRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td><a href="#string"> string</a></td>
+<td>Unique name of the volume. This will be used for idempotency.</td>
+</tr>
+<tr>
+<td>parent_id</td>
+<td><a href="#string"> string</a></td>
+<td>Parent volume id, if specified will create a new volume as a clone of the parent.</td>
+</tr>
+<tr>
+<td>spec</td>
+<td><a href="#volumespec"> VolumeSpec</a></td>
+<td>Volume specification</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkvolumecreatefromvolumeidresponse">SdkVolumeCreateFromVolumeIdResponse </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of new volume</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkvolumecreaterequest">SdkVolumeCreateRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td><a href="#string"> string</a></td>
+<td>Unique name of the volume. This will be used for idempotency.</td>
+</tr>
+<tr>
+<td>spec</td>
+<td><a href="#volumespec"> VolumeSpec</a></td>
+<td>Volume specification</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkvolumecreateresponse">SdkVolumeCreateResponse </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of new volume</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkvolumedeleterequest">SdkVolumeDeleteRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of volume to delete</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkvolumedeleteresponse">SdkVolumeDeleteResponse </h2>
+ <!-- end HasFields -->
+<h2 id="sdkvolumedetachrequest">SdkVolumeDetachRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of the volume</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkvolumedetachresponse">SdkVolumeDetachResponse </h2>
+ <!-- end HasFields -->
+<h2 id="sdkvolumeenumeraterequest">SdkVolumeEnumerateRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>locator</td>
+<td><a href="#volumelocator"> VolumeLocator</a></td>
+<td>Volumes to match to this locator. If not provided, all volumes will be returned.</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkvolumeenumerateresponse">SdkVolumeEnumerateResponse </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volumes</td>
+<td><a href="#volume">repeated Volume</a></td>
+<td>List of volumes matching label</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkvolumeinspectrequest">SdkVolumeInspectRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of volume to inspect</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkvolumeinspectresponse">SdkVolumeInspectResponse </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume</td>
+<td><a href="#volume"> Volume</a></td>
+<td>Information about the volume</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkvolumemountrequest">SdkVolumeMountRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of the volume</td>
+</tr>
+<tr>
+<td>mount_path</td>
+<td><a href="#string"> string</a></td>
+<td>Mount path for mounting the volume.</td>
+</tr>
+<tr>
+<td>options</td>
+<td><a href="#sdkvolumemountrequestoptionsentry">map SdkVolumeMountRequest.OptionsEntry</a></td>
+<td>Additional options</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkvolumemountrequestoptionsentry">SdkVolumeMountRequest.OptionsEntry </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkvolumemountresponse">SdkVolumeMountResponse </h2>
+ <!-- end HasFields -->
+<h2 id="sdkvolumesnapshotcreaterequest">SdkVolumeSnapshotCreateRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of volume to take the snapshot from</td>
+</tr>
+<tr>
+<td>labels</td>
+<td><a href="#sdkvolumesnapshotcreaterequestlabelsentry">map SdkVolumeSnapshotCreateRequest.LabelsEntry</a></td>
+<td>Labels to apply to snapshot</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkvolumesnapshotcreaterequestlabelsentry">SdkVolumeSnapshotCreateRequest.LabelsEntry </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkvolumesnapshotcreateresponse">SdkVolumeSnapshotCreateResponse </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>snapshot_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of immutable snapshot</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkvolumesnapshotenumeraterequest">SdkVolumeSnapshotEnumerateRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of volume</td>
+</tr>
+<tr>
+<td>labels</td>
+<td><a href="#sdkvolumesnapshotenumeraterequestlabelsentry">map SdkVolumeSnapshotEnumerateRequest.LabelsEntry</a></td>
+<td>Labels from snapshot</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkvolumesnapshotenumeraterequestlabelsentry">SdkVolumeSnapshotEnumerateRequest.LabelsEntry </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkvolumesnapshotenumerateresponse">SdkVolumeSnapshotEnumerateResponse </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>snapshots</td>
+<td><a href="#volume">repeated Volume</a></td>
+<td>List of immutable snapshots</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkvolumesnapshotrestorerequest">SdkVolumeSnapshotRestoreRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of volume</td>
+</tr>
+<tr>
+<td>snapshot_id</td>
+<td><a href="#string"> string</a></td>
+<td>Snapshot id to apply to <code>volume_id</code></td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkvolumesnapshotrestoreresponse">SdkVolumeSnapshotRestoreResponse </h2>
+ <!-- end HasFields -->
+<h2 id="sdkvolumeunmountrequest">SdkVolumeUnmountRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of volume</td>
+</tr>
+<tr>
+<td>mount_path</td>
+<td><a href="#string"> string</a></td>
+<td>MountPath for device</td>
+</tr>
+<tr>
+<td>options</td>
+<td><a href="#sdkvolumeunmountrequestoptionsentry">map SdkVolumeUnmountRequest.OptionsEntry</a></td>
+<td>Options to unmount device</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkvolumeunmountrequestoptionsentry">SdkVolumeUnmountRequest.OptionsEntry </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkvolumeunmountresponse">SdkVolumeUnmountResponse </h2>
  <!-- end HasFields -->
 <h2 id="snapcreaterequest">SnapCreateRequest </h2>
 <p>SnapCreateRequest specifies a request to create a snapshot of given volume.
@@ -1662,73 +2678,6 @@ swagger:model</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
-<h2 id="volumeattachrequest">VolumeAttachRequest </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>volume_id</td>
-<td><a href="#string"> string</a></td>
-<td>Id of volume</td>
-</tr>
-<tr>
-<td>options</td>
-<td><a href="#volumeattachrequestoptionsentry">map VolumeAttachRequest.OptionsEntry</a></td>
-<td>Options for attaching volume, right now only passphrase options is supported</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="volumeattachrequestoptionsentry">VolumeAttachRequest.OptionsEntry </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>key</td>
-<td><a href="#string"> string</a></td>
-<td>none</td>
-</tr>
-<tr>
-<td>value</td>
-<td><a href="#string"> string</a></td>
-<td>none</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="volumeattachresponse">VolumeAttachResponse </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>device_path</td>
-<td><a href="#string"> string</a></td>
-<td>Device path where device is exported</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
 <h2 id="volumeconsumer">VolumeConsumer </h2>
 <p>VolumeConsumer identifies a consumer for a Volume. An example of a VolumeConsumer
 would be a Pod in Kubernetes who has mounted the PersistentVolumeClaim for the
@@ -1772,54 +2721,6 @@ swagger: model</p>
 <td>owner_type</td>
 <td><a href="#string"> string</a></td>
 <td>OwnerType is the type of the entity who owns this volume consumer. The type would be from the perspective of the container runtime or the orchestrator under which the volume consumer resides. For e.g OwnerType can be a Deployment in Kubernetes.</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="volumecreatefromvolumeidrequest">VolumeCreateFromVolumeIDRequest </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>name</td>
-<td><a href="#string"> string</a></td>
-<td>Unique name of the volume. This will be used for idempotency.</td>
-</tr>
-<tr>
-<td>parent_id</td>
-<td><a href="#string"> string</a></td>
-<td>Parent volume id, if specified will create a new volume as a clone of the parent.</td>
-</tr>
-<tr>
-<td>spec</td>
-<td><a href="#volumespec"> VolumeSpec</a></td>
-<td>Volume specification</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="volumecreatefromvolumeidresponse">VolumeCreateFromVolumeIDResponse </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>volume_id</td>
-<td><a href="#string"> string</a></td>
-<td>Id of new volume</td>
 </tr>
 </tbody>
 </table>
@@ -1881,86 +2782,6 @@ swagger:response volumeCreateResponse</p>
 <p>in: body Required: true |
  <!-- end Fields -->
  <!-- end HasFields --></p>
-<h2 id="volumedeleterequest">VolumeDeleteRequest </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>volume_id</td>
-<td><a href="#string"> string</a></td>
-<td>Id of volume to delete</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="volumedeleteresponse">VolumeDeleteResponse </h2>
- <!-- end HasFields -->
-<h2 id="volumedetachrequest">VolumeDetachRequest </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>volume_id</td>
-<td><a href="#string"> string</a></td>
-<td>Id of the volume</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="volumedetachresponse">VolumeDetachResponse </h2>
- <!-- end HasFields -->
-<h2 id="volumeenumeraterequest">VolumeEnumerateRequest </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>locator</td>
-<td><a href="#volumelocator"> VolumeLocator</a></td>
-<td>Volumes to match to this locator. If not provided, all volumes will be returned.</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="volumeenumerateresponse">VolumeEnumerateResponse </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>volumes</td>
-<td><a href="#volume">repeated Volume</a></td>
-<td>List of volumes matching label</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
 <h2 id="volumeinfo">VolumeInfo </h2>
 <p>VolumeInfo
 swagger:model</p>
@@ -1987,44 +2808,6 @@ swagger:model</p>
 <td>storage</td>
 <td><a href="#volumespec"> VolumeSpec</a></td>
 <td>none</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="volumeinspectrequest">VolumeInspectRequest </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>volume_id</td>
-<td><a href="#string"> string</a></td>
-<td>Id of volume to inspect</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="volumeinspectresponse">VolumeInspectResponse </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>volume</td>
-<td><a href="#volume"> Volume</a></td>
-<td>Information about the volume</td>
 </tr>
 </tbody>
 </table>
@@ -2080,61 +2863,6 @@ swagger:model</p>
 </tbody>
 </table>
  <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="volumemountrequest">VolumeMountRequest </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>volume_id</td>
-<td><a href="#string"> string</a></td>
-<td>Id of the volume</td>
-</tr>
-<tr>
-<td>mount_path</td>
-<td><a href="#string"> string</a></td>
-<td>Mount path for mounting the volume.</td>
-</tr>
-<tr>
-<td>options</td>
-<td><a href="#volumemountrequestoptionsentry">map VolumeMountRequest.OptionsEntry</a></td>
-<td>Additional options</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="volumemountrequestoptionsentry">VolumeMountRequest.OptionsEntry </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>key</td>
-<td><a href="#string"> string</a></td>
-<td>none</td>
-</tr>
-<tr>
-<td>value</td>
-<td><a href="#string"> string</a></td>
-<td>none</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="volumemountresponse">VolumeMountResponse </h2>
  <!-- end HasFields -->
 <h2 id="volumeresponse">VolumeResponse </h2>
 <p>VolumeResponse is a structure that wraps an error.
@@ -2242,166 +2970,6 @@ swagger:response volumeSetResponse</p>
 <p>in: body Required: true |
  <!-- end Fields -->
  <!-- end HasFields --></p>
-<h2 id="volumesnapshotcreaterequest">VolumeSnapshotCreateRequest </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>volume_id</td>
-<td><a href="#string"> string</a></td>
-<td>Id of volume to take the snapshot from</td>
-</tr>
-<tr>
-<td>labels</td>
-<td><a href="#volumesnapshotcreaterequestlabelsentry">map VolumeSnapshotCreateRequest.LabelsEntry</a></td>
-<td>Labels to apply to snapshot</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="volumesnapshotcreaterequestlabelsentry">VolumeSnapshotCreateRequest.LabelsEntry </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>key</td>
-<td><a href="#string"> string</a></td>
-<td>none</td>
-</tr>
-<tr>
-<td>value</td>
-<td><a href="#string"> string</a></td>
-<td>none</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="volumesnapshotcreateresponse">VolumeSnapshotCreateResponse </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>snapshot_id</td>
-<td><a href="#string"> string</a></td>
-<td>Id of immutable snapshot</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="volumesnapshotenumeraterequest">VolumeSnapshotEnumerateRequest </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>volume_id</td>
-<td><a href="#string"> string</a></td>
-<td>Id of volume</td>
-</tr>
-<tr>
-<td>labels</td>
-<td><a href="#volumesnapshotenumeraterequestlabelsentry">map VolumeSnapshotEnumerateRequest.LabelsEntry</a></td>
-<td>Labels from snapshot</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="volumesnapshotenumeraterequestlabelsentry">VolumeSnapshotEnumerateRequest.LabelsEntry </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>key</td>
-<td><a href="#string"> string</a></td>
-<td>none</td>
-</tr>
-<tr>
-<td>value</td>
-<td><a href="#string"> string</a></td>
-<td>none</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="volumesnapshotenumerateresponse">VolumeSnapshotEnumerateResponse </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>snapshots</td>
-<td><a href="#volume">repeated Volume</a></td>
-<td>List of immutable snapshots</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="volumesnapshotrestorerequest">VolumeSnapshotRestoreRequest </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>volume_id</td>
-<td><a href="#string"> string</a></td>
-<td>Id of volume</td>
-</tr>
-<tr>
-<td>snapshot_id</td>
-<td><a href="#string"> string</a></td>
-<td>Snapshot id to apply to <code>volume_id</code></td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="volumesnapshotrestoreresponse">VolumeSnapshotRestoreResponse </h2>
- <!-- end HasFields -->
 <h2 id="volumespec">VolumeSpec </h2>
 <p>VolumeSpec has the properties needed to create a volume.
 swagger:model</p>
@@ -2597,61 +3165,6 @@ swagger:model</p>
 </tbody>
 </table>
  <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="volumeunmountrequest">VolumeUnmountRequest </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>volume_id</td>
-<td><a href="#string"> string</a></td>
-<td>Id of volume</td>
-</tr>
-<tr>
-<td>mount_path</td>
-<td><a href="#string"> string</a></td>
-<td>MountPath for device</td>
-</tr>
-<tr>
-<td>options</td>
-<td><a href="#volumeunmountrequestoptionsentry">map VolumeUnmountRequest.OptionsEntry</a></td>
-<td>Options to unmount device</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="volumeunmountrequestoptionsentry">VolumeUnmountRequest.OptionsEntry </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>key</td>
-<td><a href="#string"> string</a></td>
-<td>none</td>
-</tr>
-<tr>
-<td>value</td>
-<td><a href="#string"> string</a></td>
-<td>none</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="volumeunmountresponse">VolumeUnmountResponse </h2>
  <!-- end HasFields -->
  <!-- end messages -->
 <h1 id="enums">Enums</h1>
@@ -3424,7 +3937,7 @@ swagger:model</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"API Refernce","level":"1.5","depth":1,"previous":{"title":"Installing","level":"1.4","depth":1,"path":"installing.md","ref":"installing.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"generated-api.md","mtime":"2018-05-07T20:00:54.220Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-07T20:26:35.679Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"API Refernce","level":"1.5","depth":1,"previous":{"title":"Installing","level":"1.4","depth":1,"path":"installing.md","ref":"installing.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"generated-api.md","mtime":"2018-06-02T16:57:12.977Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-02T16:57:21.033Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
