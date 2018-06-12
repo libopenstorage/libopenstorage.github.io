@@ -4,8 +4,11 @@
 
 
 - Services
+    - [OpenStorageCloudBackup](#openstorageapiopenstoragecloudbackup)
     - [OpenStorageCluster](#openstorageapiopenstoragecluster)
     - [OpenStorageCredentials](#openstorageapiopenstoragecredentials)
+    - [OpenStorageObjectstore](#openstorageapiopenstorageobjectstore)
+    - [OpenStorageSchedulePolicy](#openstorageapiopenstorageschedulepolicy)
     - [OpenStorageVolume](#openstorageapiopenstoragevolume)
   
 
@@ -30,6 +33,29 @@
     - [RuntimeStateMap](#runtimestatemap)
     - [RuntimeStateMap.RuntimeStateEntry](#runtimestatemapruntimestateentry)
     - [S3Credential](#s3credential)
+    - [SdkCloudBackupCatalogRequest](#sdkcloudbackupcatalogrequest)
+    - [SdkCloudBackupCatalogResponse](#sdkcloudbackupcatalogresponse)
+    - [SdkCloudBackupCreateRequest](#sdkcloudbackupcreaterequest)
+    - [SdkCloudBackupCreateResponse](#sdkcloudbackupcreateresponse)
+    - [SdkCloudBackupDeleteAllRequest](#sdkcloudbackupdeleteallrequest)
+    - [SdkCloudBackupDeleteAllResponse](#sdkcloudbackupdeleteallresponse)
+    - [SdkCloudBackupDeleteRequest](#sdkcloudbackupdeleterequest)
+    - [SdkCloudBackupDeleteResponse](#sdkcloudbackupdeleteresponse)
+    - [SdkCloudBackupEnumerateRequest](#sdkcloudbackupenumeraterequest)
+    - [SdkCloudBackupEnumerateResponse](#sdkcloudbackupenumerateresponse)
+    - [SdkCloudBackupHistoryItem](#sdkcloudbackuphistoryitem)
+    - [SdkCloudBackupHistoryRequest](#sdkcloudbackuphistoryrequest)
+    - [SdkCloudBackupHistoryResponse](#sdkcloudbackuphistoryresponse)
+    - [SdkCloudBackupInfo](#sdkcloudbackupinfo)
+    - [SdkCloudBackupInfo.MetadataEntry](#sdkcloudbackupinfometadataentry)
+    - [SdkCloudBackupRestoreRequest](#sdkcloudbackuprestorerequest)
+    - [SdkCloudBackupRestoreResponse](#sdkcloudbackuprestoreresponse)
+    - [SdkCloudBackupStateChangeRequest](#sdkcloudbackupstatechangerequest)
+    - [SdkCloudBackupStateChangeResponse](#sdkcloudbackupstatechangeresponse)
+    - [SdkCloudBackupStatus](#sdkcloudbackupstatus)
+    - [SdkCloudBackupStatusRequest](#sdkcloudbackupstatusrequest)
+    - [SdkCloudBackupStatusResponse](#sdkcloudbackupstatusresponse)
+    - [SdkCloudBackupStatusResponse.StatusesEntry](#sdkcloudbackupstatusresponsestatusesentry)
     - [SdkClusterAlertClearRequest](#sdkclusteralertclearrequest)
     - [SdkClusterAlertClearResponse](#sdkclusteralertclearresponse)
     - [SdkClusterAlertEnumerateRequest](#sdkclusteralertenumeraterequest)
@@ -56,6 +82,25 @@
     - [SdkCredentialEnumerateGoogleResponse](#sdkcredentialenumerategoogleresponse)
     - [SdkCredentialValidateRequest](#sdkcredentialvalidaterequest)
     - [SdkCredentialValidateResponse](#sdkcredentialvalidateresponse)
+    - [SdkObjectstoreCreateRequest](#sdkobjectstorecreaterequest)
+    - [SdkObjectstoreCreateResponse](#sdkobjectstorecreateresponse)
+    - [SdkObjectstoreDeleteRequest](#sdkobjectstoredeleterequest)
+    - [SdkObjectstoreDeleteResponse](#sdkobjectstoredeleteresponse)
+    - [SdkObjectstoreInspectRequest](#sdkobjectstoreinspectrequest)
+    - [SdkObjectstoreInspectResponse](#sdkobjectstoreinspectresponse)
+    - [SdkObjectstoreUpdateRequest](#sdkobjectstoreupdaterequest)
+    - [SdkObjectstoreUpdateResponse](#sdkobjectstoreupdateresponse)
+    - [SdkSchedulePolicy](#sdkschedulepolicy)
+    - [SdkSchedulePolicyCreateRequest](#sdkschedulepolicycreaterequest)
+    - [SdkSchedulePolicyCreateResponse](#sdkschedulepolicycreateresponse)
+    - [SdkSchedulePolicyDeleteRequest](#sdkschedulepolicydeleterequest)
+    - [SdkSchedulePolicyDeleteResponse](#sdkschedulepolicydeleteresponse)
+    - [SdkSchedulePolicyEnumerateRequest](#sdkschedulepolicyenumeraterequest)
+    - [SdkSchedulePolicyEnumerateResponse](#sdkschedulepolicyenumerateresponse)
+    - [SdkSchedulePolicyInspectRequest](#sdkschedulepolicyinspectrequest)
+    - [SdkSchedulePolicyInspectResponse](#sdkschedulepolicyinspectresponse)
+    - [SdkSchedulePolicyUpdateRequest](#sdkschedulepolicyupdaterequest)
+    - [SdkSchedulePolicyUpdateResponse](#sdkschedulepolicyupdateresponse)
     - [SdkVolumeAttachRequest](#sdkvolumeattachrequest)
     - [SdkVolumeAttachRequest.OptionsEntry](#sdkvolumeattachrequestoptionsentry)
     - [SdkVolumeAttachResponse](#sdkvolumeattachresponse)
@@ -125,6 +170,9 @@
     - [IoProfile](#ioprofile)
     - [OperationFlags](#operationflags)
     - [ResourceType](#resourcetype)
+    - [SdkCloudBackupOpType](#sdkcloudbackupoptype)
+    - [SdkCloudBackupRequestedState](#sdkcloudbackuprequestedstate)
+    - [SdkCloudBackupStatusType](#sdkcloudbackupstatustype)
     - [SeverityType](#severitytype)
     - [Status](#status)
     - [StorageMedium](#storagemedium)
@@ -138,6 +186,64 @@
 
 
 
+# OpenStorageCloudBackup {#openstorageapiopenstoragecloudbackup}
+
+
+## Create
+
+> **rpc** Create([SdkCloudBackupCreateRequest](#sdkcloudbackupcreaterequest))
+    [SdkCloudBackupCreateResponse](#sdkcloudbackupcreateresponse)
+
+Create
+## Restore
+
+> **rpc** Restore([SdkCloudBackupRestoreRequest](#sdkcloudbackuprestorerequest))
+    [SdkCloudBackupRestoreResponse](#sdkcloudbackuprestoreresponse)
+
+Restore
+## Delete
+
+> **rpc** Delete([SdkCloudBackupDeleteRequest](#sdkcloudbackupdeleterequest))
+    [SdkCloudBackupDeleteResponse](#sdkcloudbackupdeleteresponse)
+
+Delete
+## DeleteAll
+
+> **rpc** DeleteAll([SdkCloudBackupDeleteAllRequest](#sdkcloudbackupdeleteallrequest))
+    [SdkCloudBackupDeleteAllResponse](#sdkcloudbackupdeleteallresponse)
+
+DeleteAll
+## Enumerate
+
+> **rpc** Enumerate([SdkCloudBackupEnumerateRequest](#sdkcloudbackupenumeraterequest))
+    [SdkCloudBackupEnumerateResponse](#sdkcloudbackupenumerateresponse)
+
+Enumerate
+## Status
+
+> **rpc** Status([SdkCloudBackupStatusRequest](#sdkcloudbackupstatusrequest))
+    [SdkCloudBackupStatusResponse](#sdkcloudbackupstatusresponse)
+
+Status
+## Catalog
+
+> **rpc** Catalog([SdkCloudBackupCatalogRequest](#sdkcloudbackupcatalogrequest))
+    [SdkCloudBackupCatalogResponse](#sdkcloudbackupcatalogresponse)
+
+Catalog
+## History
+
+> **rpc** History([SdkCloudBackupHistoryRequest](#sdkcloudbackuphistoryrequest))
+    [SdkCloudBackupHistoryResponse](#sdkcloudbackuphistoryresponse)
+
+History
+## StateChange
+
+> **rpc** StateChange([SdkCloudBackupStateChangeRequest](#sdkcloudbackupstatechangerequest))
+    [SdkCloudBackupStateChangeResponse](#sdkcloudbackupstatechangeresponse)
+
+StateChange
+ <!-- end methods -->
 # OpenStorageCluster {#openstorageapiopenstoragecluster}
 
 
@@ -226,6 +332,68 @@ Delete a specified credential
     [SdkCredentialValidateResponse](#sdkcredentialvalidateresponse)
 
 Validate a specified credential
+ <!-- end methods -->
+# OpenStorageObjectstore {#openstorageapiopenstorageobjectstore}
+
+
+## Inspect
+
+> **rpc** Inspect([SdkObjectstoreInspectRequest](#sdkobjectstoreinspectrequest))
+    [SdkObjectstoreInspectResponse](#sdkobjectstoreinspectresponse)
+
+Inspect returns current status of objectstore
+## Create
+
+> **rpc** Create([SdkObjectstoreCreateRequest](#sdkobjectstorecreaterequest))
+    [SdkObjectstoreCreateResponse](#sdkobjectstorecreateresponse)
+
+Creates objectstore on specified volume
+## Delete
+
+> **rpc** Delete([SdkObjectstoreDeleteRequest](#sdkobjectstoredeleterequest))
+    [SdkObjectstoreDeleteResponse](#sdkobjectstoredeleteresponse)
+
+Deletes objectstore by id
+## Update
+
+> **rpc** Update([SdkObjectstoreUpdateRequest](#sdkobjectstoreupdaterequest))
+    [SdkObjectstoreUpdateResponse](#sdkobjectstoreupdateresponse)
+
+Updates provided objectstore status
+ <!-- end methods -->
+# OpenStorageSchedulePolicy {#openstorageapiopenstorageschedulepolicy}
+
+
+## Create
+
+> **rpc** Create([SdkSchedulePolicyCreateRequest](#sdkschedulepolicycreaterequest))
+    [SdkSchedulePolicyCreateResponse](#sdkschedulepolicycreateresponse)
+
+Create Schedule Policy for snapshots
+## Update
+
+> **rpc** Update([SdkSchedulePolicyUpdateRequest](#sdkschedulepolicyupdaterequest))
+    [SdkSchedulePolicyUpdateResponse](#sdkschedulepolicyupdateresponse)
+
+Update Schedule Policy
+## Enumerate
+
+> **rpc** Enumerate([SdkSchedulePolicyEnumerateRequest](#sdkschedulepolicyenumeraterequest))
+    [SdkSchedulePolicyEnumerateResponse](#sdkschedulepolicyenumerateresponse)
+
+
+## Inspect
+
+> **rpc** Inspect([SdkSchedulePolicyInspectRequest](#sdkschedulepolicyinspectrequest))
+    [SdkSchedulePolicyInspectResponse](#sdkschedulepolicyinspectresponse)
+
+Inspect Schedule Policy
+## Delete
+
+> **rpc** Delete([SdkSchedulePolicyDeleteRequest](#sdkschedulepolicydeleterequest))
+    [SdkSchedulePolicyDeleteResponse](#sdkschedulepolicydeleteresponse)
+
+Delete Schedule Policy
  <!-- end methods -->
 # OpenStorageVolume {#openstorageapiopenstoragevolume}
 
@@ -577,6 +745,273 @@ swagger:model
  <!-- end HasFields -->
 
 
+## SdkCloudBackupCatalogRequest {#sdkcloudbackupcatalogrequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| backup_id | [ string](#string) | Id of the backup |
+| credential_uuid | [ string](#string) | is the credential for cloud |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCloudBackupCatalogResponse {#sdkcloudbackupcatalogresponse}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| contents | [repeated string](#string) | Contents is listing of backup contents |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCloudBackupCreateRequest {#sdkcloudbackupcreaterequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id | [ string](#string) | VolumeID of the volume for which cloudbackup is requested |
+| credential_uuid | [ string](#string) | CredentialUUID is cloud credential to be used for backup |
+| full | [ bool](#bool) | Full indicates if full backup is desired even though incremental is possible |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCloudBackupCreateResponse {#sdkcloudbackupcreateresponse}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| backup_id | [ string](#string) | Id of the backup created |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCloudBackupDeleteAllRequest {#sdkcloudbackupdeleteallrequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| src_volume_id | [ string](#string) | id of the volume for the request |
+| credential_uuid | [ string](#string) | CredentialUUID is the credential for cloud to be used for the request |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCloudBackupDeleteAllResponse {#sdkcloudbackupdeleteallresponse}
+
+
+ <!-- end HasFields -->
+
+
+## SdkCloudBackupDeleteRequest {#sdkcloudbackupdeleterequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| backup_id | [ string](#string) | ID is the ID of the cloud backup |
+| credential_uuid | [ string](#string) | CredentialUUID is the credential for cloud to be used for the request |
+| force | [ bool](#bool) | Force Delete cloudbackup even if there are dependencies |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCloudBackupDeleteResponse {#sdkcloudbackupdeleteresponse}
+
+
+ <!-- end HasFields -->
+
+
+## SdkCloudBackupEnumerateRequest {#sdkcloudbackupenumeraterequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| src_volume_id | [ string](#string) | Optional source id of the volume for the request |
+| cluster_id | [ string](#string) | ClusterID is the optional clusterID for the request |
+| credential_uuid | [ string](#string) | CredentialUUID is the credential for cloud to be used for the request |
+| all | [ bool](#bool) | All if set to true, backups for all clusters in the cloud are processed |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCloudBackupEnumerateResponse {#sdkcloudbackupenumerateresponse}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| backups | [repeated SdkCloudBackupInfo](#sdkcloudbackupinfo) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCloudBackupHistoryItem {#sdkcloudbackuphistoryitem}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| src_volume_id | [ string](#string) | SrcVolumeID is volume ID which was backedup |
+| timestamp | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | TimeStamp is the time at which either backup completed/failed |
+| status | [ SdkCloudBackupStatusType](#sdkcloudbackupstatustype) | Status indicates whether backup was completed/failed |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCloudBackupHistoryRequest {#sdkcloudbackuphistoryrequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| src_volume_id | [ string](#string) | volumeID for which history of backup/restore is being requested (optional) If not provided, it will return the history for all volumes. |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCloudBackupHistoryResponse {#sdkcloudbackuphistoryresponse}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| history_list | [repeated SdkCloudBackupHistoryItem](#sdkcloudbackuphistoryitem) | HistoryList is list of past backup/restores in the cluster |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCloudBackupInfo {#sdkcloudbackupinfo}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [ string](#string) | ID is the ID of the cloud backup |
+| src_volume_id | [ string](#string) | Source volumeID of the backup |
+| src_volume_name | [ string](#string) | Name of the sourceVolume of the backup |
+| timestamp | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | Timestamp is the timestamp at which the source volume was backed up to cloud |
+| metadata | [map SdkCloudBackupInfo.MetadataEntry](#sdkcloudbackupinfometadataentry) | Metadata associated with the backup |
+| status | [ SdkCloudBackupStatusType](#sdkcloudbackupstatustype) | Status indicates the status of the backup |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCloudBackupInfo.MetadataEntry {#sdkcloudbackupinfometadataentry}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [ string](#string) | none |
+| value | [ string](#string) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCloudBackupRestoreRequest {#sdkcloudbackuprestorerequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| backup_id | [ string](#string) | Backup ID being restored |
+| restore_volume_name | [ string](#string) | Optional volume Name of the new volume to be created in the cluster for restoring the cloudbackup |
+| credential_uuid | [ string](#string) | The credential to be used for restore operation |
+| node_id | [ string](#string) | Optional for provisioning restore volume (ResoreVolumeName should not be specified) |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCloudBackupRestoreResponse {#sdkcloudbackuprestoreresponse}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| restore_volume_id | [ string](#string) | VolumeID to which the backup is being restored |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCloudBackupStateChangeRequest {#sdkcloudbackupstatechangerequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| src_volume_id | [ string](#string) | SrcVolumeID is volume ID on which backup/restore state change is being requested |
+| requested_state | [ SdkCloudBackupRequestedState](#sdkcloudbackuprequestedstate) | RequestedState is desired state of the op can be pause/resume/stop |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCloudBackupStateChangeResponse {#sdkcloudbackupstatechangeresponse}
+
+
+ <!-- end HasFields -->
+
+
+## SdkCloudBackupStatus {#sdkcloudbackupstatus}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| backup_id | [ string](#string) | ID is the ID for the operation |
+| optype | [ SdkCloudBackupOpType](#sdkcloudbackupoptype) | OpType indicates if this is a backup or restore |
+| status | [ SdkCloudBackupStatusType](#sdkcloudbackupstatustype) | State indicates if the op is currently active/done/failed |
+| bytes_done | [ uint64](#uint64) | BytesDone indicates total Bytes uploaded/downloaded |
+| start_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | StartTime indicates Op's start time |
+| completed_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | CompletedTime indicates Op's completed time |
+| node_id | [ string](#string) | NodeID is the ID of the node where this Op is active |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCloudBackupStatusRequest {#sdkcloudbackupstatusrequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| src_volume_id | [ string](#string) | SrcVolumeID optional volumeID to list status of backup/restore |
+| local | [ bool](#bool) | Local indicates if only those backups/restores that are active on current node must be returned |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCloudBackupStatusResponse {#sdkcloudbackupstatusresponse}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| statuses | [map SdkCloudBackupStatusResponse.StatusesEntry](#sdkcloudbackupstatusresponsestatusesentry) | statuses is list of currently active/failed/done backup/restores |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCloudBackupStatusResponse.StatusesEntry {#sdkcloudbackupstatusresponsestatusesentry}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [ string](#string) | none |
+| value | [ SdkCloudBackupStatus](#sdkcloudbackupstatus) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
 ## SdkClusterAlertClearRequest {#sdkclusteralertclearrequest}
 
 
@@ -837,6 +1272,187 @@ should enumerate accept anything?
 
 
 ## SdkCredentialValidateResponse {#sdkcredentialvalidateresponse}
+
+
+ <!-- end HasFields -->
+
+
+## SdkObjectstoreCreateRequest {#sdkobjectstorecreaterequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_name | [ string](#string) | Volume on which objectstore will be running |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkObjectstoreCreateResponse {#sdkobjectstorecreateresponse}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| objectstore_status | [ ObjectstoreInfo](#objectstoreinfo) | Created objecstore status |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkObjectstoreDeleteRequest {#sdkobjectstoredeleterequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| objectstore_id | [ string](#string) | Objectstore ID to delete |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkObjectstoreDeleteResponse {#sdkobjectstoredeleteresponse}
+
+
+ <!-- end HasFields -->
+
+
+## SdkObjectstoreInspectRequest {#sdkobjectstoreinspectrequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| objectstore_id | [ string](#string) | ObjecstoreID to query objestore status |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkObjectstoreInspectResponse {#sdkobjectstoreinspectresponse}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| objectstore_status | [ ObjectstoreInfo](#objectstoreinfo) | Objectstore status |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkObjectstoreUpdateRequest {#sdkobjectstoreupdaterequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| objectstore_id | [ string](#string) | Objectstore Id to update |
+| enable | [ bool](#bool) | enable/disable objectstore |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkObjectstoreUpdateResponse {#sdkobjectstoreupdateresponse}
+
+
+ <!-- end HasFields -->
+
+
+## SdkSchedulePolicy {#sdkschedulepolicy}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| name | [ string](#string) | Name of the schedule policy |
+| schedule | [ string](#string) | Schedule string in yaml |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkSchedulePolicyCreateRequest {#sdkschedulepolicycreaterequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| SchedulePolicy | [ SdkSchedulePolicy](#sdkschedulepolicy) | Schedule Policy |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkSchedulePolicyCreateResponse {#sdkschedulepolicycreateresponse}
+
+
+ <!-- end HasFields -->
+
+
+## SdkSchedulePolicyDeleteRequest {#sdkschedulepolicydeleterequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| name | [ string](#string) | Name of the schedule policy |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkSchedulePolicyDeleteResponse {#sdkschedulepolicydeleteresponse}
+
+
+ <!-- end HasFields -->
+
+
+## SdkSchedulePolicyEnumerateRequest {#sdkschedulepolicyenumeraterequest}
+
+
+ <!-- end HasFields -->
+
+
+## SdkSchedulePolicyEnumerateResponse {#sdkschedulepolicyenumerateresponse}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| policies | [repeated SdkSchedulePolicy](#sdkschedulepolicy) | List of Schedule Policy |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkSchedulePolicyInspectRequest {#sdkschedulepolicyinspectrequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| name | [ string](#string) | Name of the schedule Policy |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkSchedulePolicyInspectResponse {#sdkschedulepolicyinspectresponse}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| policy | [ SdkSchedulePolicy](#sdkschedulepolicy) | List of Schedule Policy |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkSchedulePolicyUpdateRequest {#sdkschedulepolicyupdaterequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| SchedulePolicy | [ SdkSchedulePolicy](#sdkschedulepolicy) | Schedule Policy |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkSchedulePolicyUpdateResponse {#sdkschedulepolicyupdateresponse}
 
 
  <!-- end HasFields -->
@@ -1718,6 +2334,48 @@ swagger:model
 | RESOURCE_TYPE_NODE | 2 | none |
 | RESOURCE_TYPE_CLUSTER | 3 | none |
 | RESOURCE_TYPE_DRIVE | 4 | none |
+
+
+
+
+## SdkCloudBackupOpType {#sdkcloudbackupoptype}
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| SdkCloudBackupOpTypeUnknown | 0 | none |
+| SdkCloudBackupOpTypeBackupOp | 1 | none |
+| SdkCloudBackupOpTypeRestoreOp | 2 | none |
+
+
+
+
+## SdkCloudBackupRequestedState {#sdkcloudbackuprequestedstate}
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| SdkCloudBackupRequestedStateUnknown | 0 | none |
+| SdkCloudBackupRequestedStatePause | 1 | none |
+| SdkCloudBackupRequestedStateResume | 2 | none |
+| SdkCloudBackupRequestedStateStop | 3 | none |
+
+
+
+
+## SdkCloudBackupStatusType {#sdkcloudbackupstatustype}
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| SdkCloudBackupStatusTypeUnknown | 0 | none |
+| SdkCloudBackupStatusTypeNotStarted | 1 | none |
+| SdkCloudBackupStatusTypeDone | 2 | none |
+| SdkCloudBackupStatusTypeAborted | 3 | none |
+| SdkCloudBackupStatusTypePaused | 4 | none |
+| SdkCloudBackupStatusTypeStopped | 5 | none |
+| SdkCloudBackupStatusTypeActive | 6 | none |
+| SdkCloudBackupStatusTypeFailed | 7 | none |
 
 
 

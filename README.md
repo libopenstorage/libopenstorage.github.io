@@ -23,9 +23,12 @@ make serve
 ```
 
 ## Generating API Documentation
-To generate it, you will need to download
-[protoc-gen-doc.tar.gz](https://github.com/lpabon/protoc-gen-doc/releases/download/v1.1.0.1/protoc-gen-doc.tar.gz),
-untar and add the file to your path.
+To generate it, you will need to install protoc-gen-doc
+
+```
+go get -u github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc
+```
+
 
 Then type `make api` to generate the API documentation.
 

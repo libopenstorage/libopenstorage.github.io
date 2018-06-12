@@ -225,8 +225,11 @@
 <h1 id="table-of-contents">Table of Contents</h1>
 <ul>
 <li>Services<ul>
+<li><a href="#openstorageapiopenstoragecloudbackup">OpenStorageCloudBackup</a></li>
 <li><a href="#openstorageapiopenstoragecluster">OpenStorageCluster</a></li>
 <li><a href="#openstorageapiopenstoragecredentials">OpenStorageCredentials</a></li>
+<li><a href="#openstorageapiopenstorageobjectstore">OpenStorageObjectstore</a></li>
+<li><a href="#openstorageapiopenstorageschedulepolicy">OpenStorageSchedulePolicy</a></li>
 <li><a href="#openstorageapiopenstoragevolume">OpenStorageVolume</a></li>
 </ul>
 </li>
@@ -252,6 +255,29 @@
 <li><a href="#runtimestatemap">RuntimeStateMap</a></li>
 <li><a href="#runtimestatemapruntimestateentry">RuntimeStateMap.RuntimeStateEntry</a></li>
 <li><a href="#s3credential">S3Credential</a></li>
+<li><a href="#sdkcloudbackupcatalogrequest">SdkCloudBackupCatalogRequest</a></li>
+<li><a href="#sdkcloudbackupcatalogresponse">SdkCloudBackupCatalogResponse</a></li>
+<li><a href="#sdkcloudbackupcreaterequest">SdkCloudBackupCreateRequest</a></li>
+<li><a href="#sdkcloudbackupcreateresponse">SdkCloudBackupCreateResponse</a></li>
+<li><a href="#sdkcloudbackupdeleteallrequest">SdkCloudBackupDeleteAllRequest</a></li>
+<li><a href="#sdkcloudbackupdeleteallresponse">SdkCloudBackupDeleteAllResponse</a></li>
+<li><a href="#sdkcloudbackupdeleterequest">SdkCloudBackupDeleteRequest</a></li>
+<li><a href="#sdkcloudbackupdeleteresponse">SdkCloudBackupDeleteResponse</a></li>
+<li><a href="#sdkcloudbackupenumeraterequest">SdkCloudBackupEnumerateRequest</a></li>
+<li><a href="#sdkcloudbackupenumerateresponse">SdkCloudBackupEnumerateResponse</a></li>
+<li><a href="#sdkcloudbackuphistoryitem">SdkCloudBackupHistoryItem</a></li>
+<li><a href="#sdkcloudbackuphistoryrequest">SdkCloudBackupHistoryRequest</a></li>
+<li><a href="#sdkcloudbackuphistoryresponse">SdkCloudBackupHistoryResponse</a></li>
+<li><a href="#sdkcloudbackupinfo">SdkCloudBackupInfo</a></li>
+<li><a href="#sdkcloudbackupinfometadataentry">SdkCloudBackupInfo.MetadataEntry</a></li>
+<li><a href="#sdkcloudbackuprestorerequest">SdkCloudBackupRestoreRequest</a></li>
+<li><a href="#sdkcloudbackuprestoreresponse">SdkCloudBackupRestoreResponse</a></li>
+<li><a href="#sdkcloudbackupstatechangerequest">SdkCloudBackupStateChangeRequest</a></li>
+<li><a href="#sdkcloudbackupstatechangeresponse">SdkCloudBackupStateChangeResponse</a></li>
+<li><a href="#sdkcloudbackupstatus">SdkCloudBackupStatus</a></li>
+<li><a href="#sdkcloudbackupstatusrequest">SdkCloudBackupStatusRequest</a></li>
+<li><a href="#sdkcloudbackupstatusresponse">SdkCloudBackupStatusResponse</a></li>
+<li><a href="#sdkcloudbackupstatusresponsestatusesentry">SdkCloudBackupStatusResponse.StatusesEntry</a></li>
 <li><a href="#sdkclusteralertclearrequest">SdkClusterAlertClearRequest</a></li>
 <li><a href="#sdkclusteralertclearresponse">SdkClusterAlertClearResponse</a></li>
 <li><a href="#sdkclusteralertenumeraterequest">SdkClusterAlertEnumerateRequest</a></li>
@@ -278,6 +304,25 @@
 <li><a href="#sdkcredentialenumerategoogleresponse">SdkCredentialEnumerateGoogleResponse</a></li>
 <li><a href="#sdkcredentialvalidaterequest">SdkCredentialValidateRequest</a></li>
 <li><a href="#sdkcredentialvalidateresponse">SdkCredentialValidateResponse</a></li>
+<li><a href="#sdkobjectstorecreaterequest">SdkObjectstoreCreateRequest</a></li>
+<li><a href="#sdkobjectstorecreateresponse">SdkObjectstoreCreateResponse</a></li>
+<li><a href="#sdkobjectstoredeleterequest">SdkObjectstoreDeleteRequest</a></li>
+<li><a href="#sdkobjectstoredeleteresponse">SdkObjectstoreDeleteResponse</a></li>
+<li><a href="#sdkobjectstoreinspectrequest">SdkObjectstoreInspectRequest</a></li>
+<li><a href="#sdkobjectstoreinspectresponse">SdkObjectstoreInspectResponse</a></li>
+<li><a href="#sdkobjectstoreupdaterequest">SdkObjectstoreUpdateRequest</a></li>
+<li><a href="#sdkobjectstoreupdateresponse">SdkObjectstoreUpdateResponse</a></li>
+<li><a href="#sdkschedulepolicy">SdkSchedulePolicy</a></li>
+<li><a href="#sdkschedulepolicycreaterequest">SdkSchedulePolicyCreateRequest</a></li>
+<li><a href="#sdkschedulepolicycreateresponse">SdkSchedulePolicyCreateResponse</a></li>
+<li><a href="#sdkschedulepolicydeleterequest">SdkSchedulePolicyDeleteRequest</a></li>
+<li><a href="#sdkschedulepolicydeleteresponse">SdkSchedulePolicyDeleteResponse</a></li>
+<li><a href="#sdkschedulepolicyenumeraterequest">SdkSchedulePolicyEnumerateRequest</a></li>
+<li><a href="#sdkschedulepolicyenumerateresponse">SdkSchedulePolicyEnumerateResponse</a></li>
+<li><a href="#sdkschedulepolicyinspectrequest">SdkSchedulePolicyInspectRequest</a></li>
+<li><a href="#sdkschedulepolicyinspectresponse">SdkSchedulePolicyInspectResponse</a></li>
+<li><a href="#sdkschedulepolicyupdaterequest">SdkSchedulePolicyUpdateRequest</a></li>
+<li><a href="#sdkschedulepolicyupdateresponse">SdkSchedulePolicyUpdateResponse</a></li>
 <li><a href="#sdkvolumeattachrequest">SdkVolumeAttachRequest</a></li>
 <li><a href="#sdkvolumeattachrequestoptionsentry">SdkVolumeAttachRequest.OptionsEntry</a></li>
 <li><a href="#sdkvolumeattachresponse">SdkVolumeAttachResponse</a></li>
@@ -348,6 +393,9 @@
 <li><a href="#ioprofile">IoProfile</a></li>
 <li><a href="#operationflags">OperationFlags</a></li>
 <li><a href="#resourcetype">ResourceType</a></li>
+<li><a href="#sdkcloudbackupoptype">SdkCloudBackupOpType</a></li>
+<li><a href="#sdkcloudbackuprequestedstate">SdkCloudBackupRequestedState</a></li>
+<li><a href="#sdkcloudbackupstatustype">SdkCloudBackupStatusType</a></li>
 <li><a href="#severitytype">SeverityType</a></li>
 <li><a href="#status">Status</a></li>
 <li><a href="#storagemedium">StorageMedium</a></li>
@@ -360,6 +408,62 @@
 <ul>
 <li><a href="#scalar-value-types">Scalar Value Types</a></li>
 </ul>
+<h1 id="openstorageapiopenstoragecloudbackup">OpenStorageCloudBackup </h1>
+<h2 id="create">Create</h2>
+<blockquote>
+<p><strong>rpc</strong> Create(<a href="#sdkcloudbackupcreaterequest">SdkCloudBackupCreateRequest</a>)
+    <a href="#sdkcloudbackupcreateresponse">SdkCloudBackupCreateResponse</a></p>
+</blockquote>
+<p>Create</p>
+<h2 id="restore">Restore</h2>
+<blockquote>
+<p><strong>rpc</strong> Restore(<a href="#sdkcloudbackuprestorerequest">SdkCloudBackupRestoreRequest</a>)
+    <a href="#sdkcloudbackuprestoreresponse">SdkCloudBackupRestoreResponse</a></p>
+</blockquote>
+<p>Restore</p>
+<h2 id="delete">Delete</h2>
+<blockquote>
+<p><strong>rpc</strong> Delete(<a href="#sdkcloudbackupdeleterequest">SdkCloudBackupDeleteRequest</a>)
+    <a href="#sdkcloudbackupdeleteresponse">SdkCloudBackupDeleteResponse</a></p>
+</blockquote>
+<p>Delete</p>
+<h2 id="deleteall">DeleteAll</h2>
+<blockquote>
+<p><strong>rpc</strong> DeleteAll(<a href="#sdkcloudbackupdeleteallrequest">SdkCloudBackupDeleteAllRequest</a>)
+    <a href="#sdkcloudbackupdeleteallresponse">SdkCloudBackupDeleteAllResponse</a></p>
+</blockquote>
+<p>DeleteAll</p>
+<h2 id="enumerate">Enumerate</h2>
+<blockquote>
+<p><strong>rpc</strong> Enumerate(<a href="#sdkcloudbackupenumeraterequest">SdkCloudBackupEnumerateRequest</a>)
+    <a href="#sdkcloudbackupenumerateresponse">SdkCloudBackupEnumerateResponse</a></p>
+</blockquote>
+<p>Enumerate</p>
+<h2 id="status">Status</h2>
+<blockquote>
+<p><strong>rpc</strong> Status(<a href="#sdkcloudbackupstatusrequest">SdkCloudBackupStatusRequest</a>)
+    <a href="#sdkcloudbackupstatusresponse">SdkCloudBackupStatusResponse</a></p>
+</blockquote>
+<p>Status</p>
+<h2 id="catalog">Catalog</h2>
+<blockquote>
+<p><strong>rpc</strong> Catalog(<a href="#sdkcloudbackupcatalogrequest">SdkCloudBackupCatalogRequest</a>)
+    <a href="#sdkcloudbackupcatalogresponse">SdkCloudBackupCatalogResponse</a></p>
+</blockquote>
+<p>Catalog</p>
+<h2 id="history">History</h2>
+<blockquote>
+<p><strong>rpc</strong> History(<a href="#sdkcloudbackuphistoryrequest">SdkCloudBackupHistoryRequest</a>)
+    <a href="#sdkcloudbackuphistoryresponse">SdkCloudBackupHistoryResponse</a></p>
+</blockquote>
+<p>History</p>
+<h2 id="statechange">StateChange</h2>
+<blockquote>
+<p><strong>rpc</strong> StateChange(<a href="#sdkcloudbackupstatechangerequest">SdkCloudBackupStateChangeRequest</a>)
+    <a href="#sdkcloudbackupstatechangeresponse">SdkCloudBackupStateChangeResponse</a></p>
+</blockquote>
+<p>StateChange
+ <!-- end methods --></p>
 <h1 id="openstorageapiopenstoragecluster">OpenStorageCluster </h1>
 <h2 id="enumerate">Enumerate</h2>
 <blockquote>
@@ -444,6 +548,63 @@ returns a unique identifier</p>
     <a href="#sdkcredentialvalidateresponse">SdkCredentialValidateResponse</a></p>
 </blockquote>
 <p>Validate a specified credential
+ <!-- end methods --></p>
+<h1 id="openstorageapiopenstorageobjectstore">OpenStorageObjectstore </h1>
+<h2 id="inspect">Inspect</h2>
+<blockquote>
+<p><strong>rpc</strong> Inspect(<a href="#sdkobjectstoreinspectrequest">SdkObjectstoreInspectRequest</a>)
+    <a href="#sdkobjectstoreinspectresponse">SdkObjectstoreInspectResponse</a></p>
+</blockquote>
+<p>Inspect returns current status of objectstore</p>
+<h2 id="create">Create</h2>
+<blockquote>
+<p><strong>rpc</strong> Create(<a href="#sdkobjectstorecreaterequest">SdkObjectstoreCreateRequest</a>)
+    <a href="#sdkobjectstorecreateresponse">SdkObjectstoreCreateResponse</a></p>
+</blockquote>
+<p>Creates objectstore on specified volume</p>
+<h2 id="delete">Delete</h2>
+<blockquote>
+<p><strong>rpc</strong> Delete(<a href="#sdkobjectstoredeleterequest">SdkObjectstoreDeleteRequest</a>)
+    <a href="#sdkobjectstoredeleteresponse">SdkObjectstoreDeleteResponse</a></p>
+</blockquote>
+<p>Deletes objectstore by id</p>
+<h2 id="update">Update</h2>
+<blockquote>
+<p><strong>rpc</strong> Update(<a href="#sdkobjectstoreupdaterequest">SdkObjectstoreUpdateRequest</a>)
+    <a href="#sdkobjectstoreupdateresponse">SdkObjectstoreUpdateResponse</a></p>
+</blockquote>
+<p>Updates provided objectstore status
+ <!-- end methods --></p>
+<h1 id="openstorageapiopenstorageschedulepolicy">OpenStorageSchedulePolicy </h1>
+<h2 id="create">Create</h2>
+<blockquote>
+<p><strong>rpc</strong> Create(<a href="#sdkschedulepolicycreaterequest">SdkSchedulePolicyCreateRequest</a>)
+    <a href="#sdkschedulepolicycreateresponse">SdkSchedulePolicyCreateResponse</a></p>
+</blockquote>
+<p>Create Schedule Policy for snapshots</p>
+<h2 id="update">Update</h2>
+<blockquote>
+<p><strong>rpc</strong> Update(<a href="#sdkschedulepolicyupdaterequest">SdkSchedulePolicyUpdateRequest</a>)
+    <a href="#sdkschedulepolicyupdateresponse">SdkSchedulePolicyUpdateResponse</a></p>
+</blockquote>
+<p>Update Schedule Policy</p>
+<h2 id="enumerate">Enumerate</h2>
+<blockquote>
+<p><strong>rpc</strong> Enumerate(<a href="#sdkschedulepolicyenumeraterequest">SdkSchedulePolicyEnumerateRequest</a>)
+    <a href="#sdkschedulepolicyenumerateresponse">SdkSchedulePolicyEnumerateResponse</a></p>
+</blockquote>
+<h2 id="inspect">Inspect</h2>
+<blockquote>
+<p><strong>rpc</strong> Inspect(<a href="#sdkschedulepolicyinspectrequest">SdkSchedulePolicyInspectRequest</a>)
+    <a href="#sdkschedulepolicyinspectresponse">SdkSchedulePolicyInspectResponse</a></p>
+</blockquote>
+<p>Inspect Schedule Policy</p>
+<h2 id="delete">Delete</h2>
+<blockquote>
+<p><strong>rpc</strong> Delete(<a href="#sdkschedulepolicydeleterequest">SdkSchedulePolicyDeleteRequest</a>)
+    <a href="#sdkschedulepolicydeleteresponse">SdkSchedulePolicyDeleteResponse</a></p>
+</blockquote>
+<p>Delete Schedule Policy
  <!-- end methods --></p>
 <h1 id="openstorageapiopenstoragevolume">OpenStorageVolume </h1>
 <h2 id="create">Create</h2>
@@ -1087,6 +1248,537 @@ swagger:model</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
+<h2 id="sdkcloudbackupcatalogrequest">SdkCloudBackupCatalogRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>backup_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of the backup</td>
+</tr>
+<tr>
+<td>credential_uuid</td>
+<td><a href="#string"> string</a></td>
+<td>is the credential for cloud</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcloudbackupcatalogresponse">SdkCloudBackupCatalogResponse </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>contents</td>
+<td><a href="#string">repeated string</a></td>
+<td>Contents is listing of backup contents</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcloudbackupcreaterequest">SdkCloudBackupCreateRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume_id</td>
+<td><a href="#string"> string</a></td>
+<td>VolumeID of the volume for which cloudbackup is requested</td>
+</tr>
+<tr>
+<td>credential_uuid</td>
+<td><a href="#string"> string</a></td>
+<td>CredentialUUID is cloud credential to be used for backup</td>
+</tr>
+<tr>
+<td>full</td>
+<td><a href="#bool"> bool</a></td>
+<td>Full indicates if full backup is desired even though incremental is possible</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcloudbackupcreateresponse">SdkCloudBackupCreateResponse </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>backup_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of the backup created</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcloudbackupdeleteallrequest">SdkCloudBackupDeleteAllRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>src_volume_id</td>
+<td><a href="#string"> string</a></td>
+<td>id of the volume for the request</td>
+</tr>
+<tr>
+<td>credential_uuid</td>
+<td><a href="#string"> string</a></td>
+<td>CredentialUUID is the credential for cloud to be used for the request</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcloudbackupdeleteallresponse">SdkCloudBackupDeleteAllResponse </h2>
+ <!-- end HasFields -->
+<h2 id="sdkcloudbackupdeleterequest">SdkCloudBackupDeleteRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>backup_id</td>
+<td><a href="#string"> string</a></td>
+<td>ID is the ID of the cloud backup</td>
+</tr>
+<tr>
+<td>credential_uuid</td>
+<td><a href="#string"> string</a></td>
+<td>CredentialUUID is the credential for cloud to be used for the request</td>
+</tr>
+<tr>
+<td>force</td>
+<td><a href="#bool"> bool</a></td>
+<td>Force Delete cloudbackup even if there are dependencies</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcloudbackupdeleteresponse">SdkCloudBackupDeleteResponse </h2>
+ <!-- end HasFields -->
+<h2 id="sdkcloudbackupenumeraterequest">SdkCloudBackupEnumerateRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>src_volume_id</td>
+<td><a href="#string"> string</a></td>
+<td>Optional source id of the volume for the request</td>
+</tr>
+<tr>
+<td>cluster_id</td>
+<td><a href="#string"> string</a></td>
+<td>ClusterID is the optional clusterID for the request</td>
+</tr>
+<tr>
+<td>credential_uuid</td>
+<td><a href="#string"> string</a></td>
+<td>CredentialUUID is the credential for cloud to be used for the request</td>
+</tr>
+<tr>
+<td>all</td>
+<td><a href="#bool"> bool</a></td>
+<td>All if set to true, backups for all clusters in the cloud are processed</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcloudbackupenumerateresponse">SdkCloudBackupEnumerateResponse </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>backups</td>
+<td><a href="#sdkcloudbackupinfo">repeated SdkCloudBackupInfo</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcloudbackuphistoryitem">SdkCloudBackupHistoryItem </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>src_volume_id</td>
+<td><a href="#string"> string</a></td>
+<td>SrcVolumeID is volume ID which was backedup</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
+<td>TimeStamp is the time at which either backup completed/failed</td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="#sdkcloudbackupstatustype"> SdkCloudBackupStatusType</a></td>
+<td>Status indicates whether backup was completed/failed</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcloudbackuphistoryrequest">SdkCloudBackupHistoryRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>src_volume_id</td>
+<td><a href="#string"> string</a></td>
+<td>volumeID for which history of backup/restore is being requested (optional) If not provided, it will return the history for all volumes.</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcloudbackuphistoryresponse">SdkCloudBackupHistoryResponse </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>history_list</td>
+<td><a href="#sdkcloudbackuphistoryitem">repeated SdkCloudBackupHistoryItem</a></td>
+<td>HistoryList is list of past backup/restores in the cluster</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcloudbackupinfo">SdkCloudBackupInfo </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td><a href="#string"> string</a></td>
+<td>ID is the ID of the cloud backup</td>
+</tr>
+<tr>
+<td>src_volume_id</td>
+<td><a href="#string"> string</a></td>
+<td>Source volumeID of the backup</td>
+</tr>
+<tr>
+<td>src_volume_name</td>
+<td><a href="#string"> string</a></td>
+<td>Name of the sourceVolume of the backup</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
+<td>Timestamp is the timestamp at which the source volume was backed up to cloud</td>
+</tr>
+<tr>
+<td>metadata</td>
+<td><a href="#sdkcloudbackupinfometadataentry">map SdkCloudBackupInfo.MetadataEntry</a></td>
+<td>Metadata associated with the backup</td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="#sdkcloudbackupstatustype"> SdkCloudBackupStatusType</a></td>
+<td>Status indicates the status of the backup</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcloudbackupinfometadataentry">SdkCloudBackupInfo.MetadataEntry </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcloudbackuprestorerequest">SdkCloudBackupRestoreRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>backup_id</td>
+<td><a href="#string"> string</a></td>
+<td>Backup ID being restored</td>
+</tr>
+<tr>
+<td>restore_volume_name</td>
+<td><a href="#string"> string</a></td>
+<td>Optional volume Name of the new volume to be created in the cluster for restoring the cloudbackup</td>
+</tr>
+<tr>
+<td>credential_uuid</td>
+<td><a href="#string"> string</a></td>
+<td>The credential to be used for restore operation</td>
+</tr>
+<tr>
+<td>node_id</td>
+<td><a href="#string"> string</a></td>
+<td>Optional for provisioning restore volume (ResoreVolumeName should not be specified)</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcloudbackuprestoreresponse">SdkCloudBackupRestoreResponse </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>restore_volume_id</td>
+<td><a href="#string"> string</a></td>
+<td>VolumeID to which the backup is being restored</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcloudbackupstatechangerequest">SdkCloudBackupStateChangeRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>src_volume_id</td>
+<td><a href="#string"> string</a></td>
+<td>SrcVolumeID is volume ID on which backup/restore state change is being requested</td>
+</tr>
+<tr>
+<td>requested_state</td>
+<td><a href="#sdkcloudbackuprequestedstate"> SdkCloudBackupRequestedState</a></td>
+<td>RequestedState is desired state of the op can be pause/resume/stop</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcloudbackupstatechangeresponse">SdkCloudBackupStateChangeResponse </h2>
+ <!-- end HasFields -->
+<h2 id="sdkcloudbackupstatus">SdkCloudBackupStatus </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>backup_id</td>
+<td><a href="#string"> string</a></td>
+<td>ID is the ID for the operation</td>
+</tr>
+<tr>
+<td>optype</td>
+<td><a href="#sdkcloudbackupoptype"> SdkCloudBackupOpType</a></td>
+<td>OpType indicates if this is a backup or restore</td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="#sdkcloudbackupstatustype"> SdkCloudBackupStatusType</a></td>
+<td>State indicates if the op is currently active/done/failed</td>
+</tr>
+<tr>
+<td>bytes_done</td>
+<td><a href="#uint64"> uint64</a></td>
+<td>BytesDone indicates total Bytes uploaded/downloaded</td>
+</tr>
+<tr>
+<td>start_time</td>
+<td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
+<td>StartTime indicates Op&apos;s start time</td>
+</tr>
+<tr>
+<td>completed_time</td>
+<td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
+<td>CompletedTime indicates Op&apos;s completed time</td>
+</tr>
+<tr>
+<td>node_id</td>
+<td><a href="#string"> string</a></td>
+<td>NodeID is the ID of the node where this Op is active</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcloudbackupstatusrequest">SdkCloudBackupStatusRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>src_volume_id</td>
+<td><a href="#string"> string</a></td>
+<td>SrcVolumeID optional volumeID to list status of backup/restore</td>
+</tr>
+<tr>
+<td>local</td>
+<td><a href="#bool"> bool</a></td>
+<td>Local indicates if only those backups/restores that are active on current node must be returned</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcloudbackupstatusresponse">SdkCloudBackupStatusResponse </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>statuses</td>
+<td><a href="#sdkcloudbackupstatusresponsestatusesentry">map SdkCloudBackupStatusResponse.StatusesEntry</a></td>
+<td>statuses is list of currently active/failed/done backup/restores</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcloudbackupstatusresponsestatusesentry">SdkCloudBackupStatusResponse.StatusesEntry </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="#sdkcloudbackupstatus"> SdkCloudBackupStatus</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
 <h2 id="sdkclusteralertclearrequest">SdkClusterAlertClearRequest </h2>
 <table>
 <thead>
@@ -1516,6 +2208,275 @@ swagger:model</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkcredentialvalidateresponse">SdkCredentialValidateResponse </h2>
+ <!-- end HasFields -->
+<h2 id="sdkobjectstorecreaterequest">SdkObjectstoreCreateRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume_name</td>
+<td><a href="#string"> string</a></td>
+<td>Volume on which objectstore will be running</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkobjectstorecreateresponse">SdkObjectstoreCreateResponse </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>objectstore_status</td>
+<td><a href="#objectstoreinfo"> ObjectstoreInfo</a></td>
+<td>Created objecstore status</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkobjectstoredeleterequest">SdkObjectstoreDeleteRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>objectstore_id</td>
+<td><a href="#string"> string</a></td>
+<td>Objectstore ID to delete</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkobjectstoredeleteresponse">SdkObjectstoreDeleteResponse </h2>
+ <!-- end HasFields -->
+<h2 id="sdkobjectstoreinspectrequest">SdkObjectstoreInspectRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>objectstore_id</td>
+<td><a href="#string"> string</a></td>
+<td>ObjecstoreID to query objestore status</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkobjectstoreinspectresponse">SdkObjectstoreInspectResponse </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>objectstore_status</td>
+<td><a href="#objectstoreinfo"> ObjectstoreInfo</a></td>
+<td>Objectstore status</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkobjectstoreupdaterequest">SdkObjectstoreUpdateRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>objectstore_id</td>
+<td><a href="#string"> string</a></td>
+<td>Objectstore Id to update</td>
+</tr>
+<tr>
+<td>enable</td>
+<td><a href="#bool"> bool</a></td>
+<td>enable/disable objectstore</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkobjectstoreupdateresponse">SdkObjectstoreUpdateResponse </h2>
+ <!-- end HasFields -->
+<h2 id="sdkschedulepolicy">SdkSchedulePolicy </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td><a href="#string"> string</a></td>
+<td>Name of the schedule policy</td>
+</tr>
+<tr>
+<td>schedule</td>
+<td><a href="#string"> string</a></td>
+<td>Schedule string in yaml</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkschedulepolicycreaterequest">SdkSchedulePolicyCreateRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SchedulePolicy</td>
+<td><a href="#sdkschedulepolicy"> SdkSchedulePolicy</a></td>
+<td>Schedule Policy</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkschedulepolicycreateresponse">SdkSchedulePolicyCreateResponse </h2>
+ <!-- end HasFields -->
+<h2 id="sdkschedulepolicydeleterequest">SdkSchedulePolicyDeleteRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td><a href="#string"> string</a></td>
+<td>Name of the schedule policy</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkschedulepolicydeleteresponse">SdkSchedulePolicyDeleteResponse </h2>
+ <!-- end HasFields -->
+<h2 id="sdkschedulepolicyenumeraterequest">SdkSchedulePolicyEnumerateRequest </h2>
+ <!-- end HasFields -->
+<h2 id="sdkschedulepolicyenumerateresponse">SdkSchedulePolicyEnumerateResponse </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>policies</td>
+<td><a href="#sdkschedulepolicy">repeated SdkSchedulePolicy</a></td>
+<td>List of Schedule Policy</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkschedulepolicyinspectrequest">SdkSchedulePolicyInspectRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td><a href="#string"> string</a></td>
+<td>Name of the schedule Policy</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkschedulepolicyinspectresponse">SdkSchedulePolicyInspectResponse </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>policy</td>
+<td><a href="#sdkschedulepolicy"> SdkSchedulePolicy</a></td>
+<td>List of Schedule Policy</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkschedulepolicyupdaterequest">SdkSchedulePolicyUpdateRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SchedulePolicy</td>
+<td><a href="#sdkschedulepolicy"> SdkSchedulePolicy</a></td>
+<td>Schedule Policy</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkschedulepolicyupdateresponse">SdkSchedulePolicyUpdateResponse </h2>
  <!-- end HasFields -->
 <h2 id="sdkvolumeattachrequest">SdkVolumeAttachRequest </h2>
 <table>
@@ -3503,6 +4464,117 @@ swagger:model</p>
 </tr>
 </tbody>
 </table>
+<h2 id="sdkcloudbackupoptype">SdkCloudBackupOpType </h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SdkCloudBackupOpTypeUnknown</td>
+<td>0</td>
+<td>none</td>
+</tr>
+<tr>
+<td>SdkCloudBackupOpTypeBackupOp</td>
+<td>1</td>
+<td>none</td>
+</tr>
+<tr>
+<td>SdkCloudBackupOpTypeRestoreOp</td>
+<td>2</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sdkcloudbackuprequestedstate">SdkCloudBackupRequestedState </h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SdkCloudBackupRequestedStateUnknown</td>
+<td>0</td>
+<td>none</td>
+</tr>
+<tr>
+<td>SdkCloudBackupRequestedStatePause</td>
+<td>1</td>
+<td>none</td>
+</tr>
+<tr>
+<td>SdkCloudBackupRequestedStateResume</td>
+<td>2</td>
+<td>none</td>
+</tr>
+<tr>
+<td>SdkCloudBackupRequestedStateStop</td>
+<td>3</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sdkcloudbackupstatustype">SdkCloudBackupStatusType </h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SdkCloudBackupStatusTypeUnknown</td>
+<td>0</td>
+<td>none</td>
+</tr>
+<tr>
+<td>SdkCloudBackupStatusTypeNotStarted</td>
+<td>1</td>
+<td>none</td>
+</tr>
+<tr>
+<td>SdkCloudBackupStatusTypeDone</td>
+<td>2</td>
+<td>none</td>
+</tr>
+<tr>
+<td>SdkCloudBackupStatusTypeAborted</td>
+<td>3</td>
+<td>none</td>
+</tr>
+<tr>
+<td>SdkCloudBackupStatusTypePaused</td>
+<td>4</td>
+<td>none</td>
+</tr>
+<tr>
+<td>SdkCloudBackupStatusTypeStopped</td>
+<td>5</td>
+<td>none</td>
+</tr>
+<tr>
+<td>SdkCloudBackupStatusTypeActive</td>
+<td>6</td>
+<td>none</td>
+</tr>
+<tr>
+<td>SdkCloudBackupStatusTypeFailed</td>
+<td>7</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
 <h2 id="severitytype">SeverityType </h2>
 <table>
 <thead>
@@ -3937,7 +5009,7 @@ swagger:model</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"API Refernce","level":"1.5","depth":1,"previous":{"title":"Installing","level":"1.4","depth":1,"path":"installing.md","ref":"installing.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"generated-api.md","mtime":"2018-06-02T16:57:12.977Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-02T16:57:21.033Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"API Refernce","level":"1.5","depth":1,"previous":{"title":"Installing","level":"1.4","depth":1,"path":"installing.md","ref":"installing.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"generated-api.md","mtime":"2018-06-12T00:02:01.926Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-12T00:02:12.135Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
