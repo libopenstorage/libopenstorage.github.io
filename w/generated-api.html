@@ -241,9 +241,7 @@
 <li><a href="#activerequests">ActiveRequests</a></li>
 <li><a href="#alert">Alert</a></li>
 <li><a href="#alerts">Alerts</a></li>
-<li><a href="#azurecredential">AzureCredential</a></li>
 <li><a href="#clusterresponse">ClusterResponse</a></li>
-<li><a href="#googlecredential">GoogleCredential</a></li>
 <li><a href="#graphdriverchanges">GraphDriverChanges</a></li>
 <li><a href="#group">Group</a></li>
 <li><a href="#groupsnapcreaterequest">GroupSnapCreateRequest</a></li>
@@ -254,7 +252,10 @@
 <li><a href="#replicaset">ReplicaSet</a></li>
 <li><a href="#runtimestatemap">RuntimeStateMap</a></li>
 <li><a href="#runtimestatemapruntimestateentry">RuntimeStateMap.RuntimeStateEntry</a></li>
-<li><a href="#s3credential">S3Credential</a></li>
+<li><a href="#sdkawscredentialrequest">SdkAwsCredentialRequest</a></li>
+<li><a href="#sdkawscredentialresponse">SdkAwsCredentialResponse</a></li>
+<li><a href="#sdkazurecredentialrequest">SdkAzureCredentialRequest</a></li>
+<li><a href="#sdkazurecredentialresponse">SdkAzureCredentialResponse</a></li>
 <li><a href="#sdkcloudbackupcatalogrequest">SdkCloudBackupCatalogRequest</a></li>
 <li><a href="#sdkcloudbackupcatalogresponse">SdkCloudBackupCatalogResponse</a></li>
 <li><a href="#sdkcloudbackupcreaterequest">SdkCloudBackupCreateRequest</a></li>
@@ -280,30 +281,26 @@
 <li><a href="#sdkcloudbackupstatusresponsestatusesentry">SdkCloudBackupStatusResponse.StatusesEntry</a></li>
 <li><a href="#sdkclusteralertclearrequest">SdkClusterAlertClearRequest</a></li>
 <li><a href="#sdkclusteralertclearresponse">SdkClusterAlertClearResponse</a></li>
+<li><a href="#sdkclusteralertdeleterequest">SdkClusterAlertDeleteRequest</a></li>
+<li><a href="#sdkclusteralertdeleteresponse">SdkClusterAlertDeleteResponse</a></li>
 <li><a href="#sdkclusteralertenumeraterequest">SdkClusterAlertEnumerateRequest</a></li>
 <li><a href="#sdkclusteralertenumerateresponse">SdkClusterAlertEnumerateResponse</a></li>
-<li><a href="#sdkclusteralerteraserequest">SdkClusterAlertEraseRequest</a></li>
-<li><a href="#sdkclusteralerteraseresponse">SdkClusterAlertEraseResponse</a></li>
 <li><a href="#sdkclusterenumeraterequest">SdkClusterEnumerateRequest</a></li>
 <li><a href="#sdkclusterenumerateresponse">SdkClusterEnumerateResponse</a></li>
 <li><a href="#sdkclusterinspectrequest">SdkClusterInspectRequest</a></li>
 <li><a href="#sdkclusterinspectresponse">SdkClusterInspectResponse</a></li>
-<li><a href="#sdkcredentialcreateawsrequest">SdkCredentialCreateAWSRequest</a></li>
-<li><a href="#sdkcredentialcreateawsresponse">SdkCredentialCreateAWSResponse</a></li>
-<li><a href="#sdkcredentialcreateazurerequest">SdkCredentialCreateAzureRequest</a></li>
-<li><a href="#sdkcredentialcreateazureresponse">SdkCredentialCreateAzureResponse</a></li>
-<li><a href="#sdkcredentialcreategooglerequest">SdkCredentialCreateGoogleRequest</a></li>
-<li><a href="#sdkcredentialcreategoogleresponse">SdkCredentialCreateGoogleResponse</a></li>
+<li><a href="#sdkcredentialcreaterequest">SdkCredentialCreateRequest</a></li>
+<li><a href="#sdkcredentialcreateresponse">SdkCredentialCreateResponse</a></li>
 <li><a href="#sdkcredentialdeleterequest">SdkCredentialDeleteRequest</a></li>
 <li><a href="#sdkcredentialdeleteresponse">SdkCredentialDeleteResponse</a></li>
-<li><a href="#sdkcredentialenumerateawsrequest">SdkCredentialEnumerateAWSRequest</a></li>
-<li><a href="#sdkcredentialenumerateawsresponse">SdkCredentialEnumerateAWSResponse</a></li>
-<li><a href="#sdkcredentialenumerateazurerequest">SdkCredentialEnumerateAzureRequest</a></li>
-<li><a href="#sdkcredentialenumerateazureresponse">SdkCredentialEnumerateAzureResponse</a></li>
-<li><a href="#sdkcredentialenumerategooglerequest">SdkCredentialEnumerateGoogleRequest</a></li>
-<li><a href="#sdkcredentialenumerategoogleresponse">SdkCredentialEnumerateGoogleResponse</a></li>
+<li><a href="#sdkcredentialenumeraterequest">SdkCredentialEnumerateRequest</a></li>
+<li><a href="#sdkcredentialenumerateresponse">SdkCredentialEnumerateResponse</a></li>
+<li><a href="#sdkcredentialinspectrequest">SdkCredentialInspectRequest</a></li>
+<li><a href="#sdkcredentialinspectresponse">SdkCredentialInspectResponse</a></li>
 <li><a href="#sdkcredentialvalidaterequest">SdkCredentialValidateRequest</a></li>
 <li><a href="#sdkcredentialvalidateresponse">SdkCredentialValidateResponse</a></li>
+<li><a href="#sdkgooglecredentialrequest">SdkGoogleCredentialRequest</a></li>
+<li><a href="#sdkgooglecredentialresponse">SdkGoogleCredentialResponse</a></li>
 <li><a href="#sdkobjectstorecreaterequest">SdkObjectstoreCreateRequest</a></li>
 <li><a href="#sdkobjectstorecreateresponse">SdkObjectstoreCreateResponse</a></li>
 <li><a href="#sdkobjectstoredeleterequest">SdkObjectstoreDeleteRequest</a></li>
@@ -326,8 +323,8 @@
 <li><a href="#sdkvolumeattachrequest">SdkVolumeAttachRequest</a></li>
 <li><a href="#sdkvolumeattachrequestoptionsentry">SdkVolumeAttachRequest.OptionsEntry</a></li>
 <li><a href="#sdkvolumeattachresponse">SdkVolumeAttachResponse</a></li>
-<li><a href="#sdkvolumecreatefromvolumeidrequest">SdkVolumeCreateFromVolumeIdRequest</a></li>
-<li><a href="#sdkvolumecreatefromvolumeidresponse">SdkVolumeCreateFromVolumeIdResponse</a></li>
+<li><a href="#sdkvolumeclonerequest">SdkVolumeCloneRequest</a></li>
+<li><a href="#sdkvolumecloneresponse">SdkVolumeCloneResponse</a></li>
 <li><a href="#sdkvolumecreaterequest">SdkVolumeCreateRequest</a></li>
 <li><a href="#sdkvolumecreateresponse">SdkVolumeCreateResponse</a></li>
 <li><a href="#sdkvolumedeleterequest">SdkVolumeDeleteRequest</a></li>
@@ -489,62 +486,41 @@
     <a href="#sdkclusteralertclearresponse">SdkClusterAlertClearResponse</a></p>
 </blockquote>
 <p>Clear the alert for a given resource</p>
-<h2 id="alerterase">AlertErase</h2>
+<h2 id="alertdelete">AlertDelete</h2>
 <blockquote>
-<p><strong>rpc</strong> AlertErase(<a href="#sdkclusteralerteraserequest">SdkClusterAlertEraseRequest</a>)
-    <a href="#sdkclusteralerteraseresponse">SdkClusterAlertEraseResponse</a></p>
+<p><strong>rpc</strong> AlertDelete(<a href="#sdkclusteralertdeleterequest">SdkClusterAlertDeleteRequest</a>)
+    <a href="#sdkclusteralertdeleteresponse">SdkClusterAlertDeleteResponse</a></p>
 </blockquote>
 <p>Erases an alert for a given resource
  <!-- end methods --></p>
 <h1 id="openstorageapiopenstoragecredentials">OpenStorageCredentials </h1>
-<h2 id="createforaws">CreateForAWS</h2>
+<h2 id="create">Create</h2>
 <blockquote>
-<p><strong>rpc</strong> CreateForAWS(<a href="#sdkcredentialcreateawsrequest">SdkCredentialCreateAWSRequest</a>)
-    <a href="#sdkcredentialcreateawsresponse">SdkCredentialCreateAWSResponse</a></p>
+<p><strong>rpc</strong> Create(<a href="#sdkcredentialcreaterequest">SdkCredentialCreateRequest</a>)
+    <a href="#sdkcredentialcreateresponse">SdkCredentialCreateResponse</a></p>
 </blockquote>
-<p>Create credential for AWS S3 and if valid ,
-returns a unique identifier</p>
-<h2 id="createforazure">CreateForAzure</h2>
+<p>Create cloud credentials</p>
+<h2 id="enumerate">Enumerate</h2>
 <blockquote>
-<p><strong>rpc</strong> CreateForAzure(<a href="#sdkcredentialcreateazurerequest">SdkCredentialCreateAzureRequest</a>)
-    <a href="#sdkcredentialcreateazureresponse">SdkCredentialCreateAzureResponse</a></p>
+<p><strong>rpc</strong> Enumerate(<a href="#sdkcredentialenumeraterequest">SdkCredentialEnumerateRequest</a>)
+    <a href="#sdkcredentialenumerateresponse">SdkCredentialEnumerateResponse</a></p>
 </blockquote>
-<p>Create credential for Azure and if valid ,
-returns a unique identifier</p>
-<h2 id="createforgoogle">CreateForGoogle</h2>
+<p>Enumerate returns a list of credential ids</p>
+<h2 id="inspect">Inspect</h2>
 <blockquote>
-<p><strong>rpc</strong> CreateForGoogle(<a href="#sdkcredentialcreategooglerequest">SdkCredentialCreateGoogleRequest</a>)
-    <a href="#sdkcredentialcreategoogleresponse">SdkCredentialCreateGoogleResponse</a></p>
+<p><strong>rpc</strong> Inspect(<a href="#sdkcredentialinspectrequest">SdkCredentialInspectRequest</a>)
+    <a href="#sdkcredentialinspectresponse">SdkCredentialInspectResponse</a></p>
 </blockquote>
-<p>Create credential for Google and if valid ,
-returns a unique identifier</p>
-<h2 id="enumerateforaws">EnumerateForAWS</h2>
+<p>Inspect returns the information about a credential</p>
+<h2 id="delete">Delete</h2>
 <blockquote>
-<p><strong>rpc</strong> EnumerateForAWS(<a href="#sdkcredentialenumerateawsrequest">SdkCredentialEnumerateAWSRequest</a>)
-    <a href="#sdkcredentialenumerateawsresponse">SdkCredentialEnumerateAWSResponse</a></p>
-</blockquote>
-<p>EnumerateForAWS lists the configured AWS credentials</p>
-<h2 id="enumerateforazure">EnumerateForAzure</h2>
-<blockquote>
-<p><strong>rpc</strong> EnumerateForAzure(<a href="#sdkcredentialenumerateazurerequest">SdkCredentialEnumerateAzureRequest</a>)
-    <a href="#sdkcredentialenumerateazureresponse">SdkCredentialEnumerateAzureResponse</a></p>
-</blockquote>
-<p>EnumerateForAzure lists the configured Azure credentials</p>
-<h2 id="enumerateforgoogle">EnumerateForGoogle</h2>
-<blockquote>
-<p><strong>rpc</strong> EnumerateForGoogle(<a href="#sdkcredentialenumerategooglerequest">SdkCredentialEnumerateGoogleRequest</a>)
-    <a href="#sdkcredentialenumerategoogleresponse">SdkCredentialEnumerateGoogleResponse</a></p>
-</blockquote>
-<p>EnumerateForGoogle lists the configured Google credentials</p>
-<h2 id="credentialdelete">CredentialDelete</h2>
-<blockquote>
-<p><strong>rpc</strong> CredentialDelete(<a href="#sdkcredentialdeleterequest">SdkCredentialDeleteRequest</a>)
+<p><strong>rpc</strong> Delete(<a href="#sdkcredentialdeleterequest">SdkCredentialDeleteRequest</a>)
     <a href="#sdkcredentialdeleteresponse">SdkCredentialDeleteResponse</a></p>
 </blockquote>
 <p>Delete a specified credential</p>
-<h2 id="credentialvalidate">CredentialValidate</h2>
+<h2 id="validate">Validate</h2>
 <blockquote>
-<p><strong>rpc</strong> CredentialValidate(<a href="#sdkcredentialvalidaterequest">SdkCredentialValidateRequest</a>)
+<p><strong>rpc</strong> Validate(<a href="#sdkcredentialvalidaterequest">SdkCredentialValidateRequest</a>)
     <a href="#sdkcredentialvalidateresponse">SdkCredentialValidateResponse</a></p>
 </blockquote>
 <p>Validate a specified credential
@@ -613,12 +589,12 @@ returns a unique identifier</p>
     <a href="#sdkvolumecreateresponse">SdkVolumeCreateResponse</a></p>
 </blockquote>
 <p>Creates a new volume</p>
-<h2 id="createfromvolumeid">CreateFromVolumeId</h2>
+<h2 id="clone">Clone</h2>
 <blockquote>
-<p><strong>rpc</strong> CreateFromVolumeId(<a href="#sdkvolumecreatefromvolumeidrequest">SdkVolumeCreateFromVolumeIdRequest</a>)
-    <a href="#sdkvolumecreatefromvolumeidresponse">SdkVolumeCreateFromVolumeIdResponse</a></p>
+<p><strong>rpc</strong> Clone(<a href="#sdkvolumeclonerequest">SdkVolumeCloneRequest</a>)
+    <a href="#sdkvolumecloneresponse">SdkVolumeCloneResponse</a></p>
 </blockquote>
-<p>CreateFromVolumeId creates a new volume cloned from an existing volume</p>
+<p>Clone creates a new volume cloned from an existing volume</p>
 <h2 id="delete">Delete</h2>
 <blockquote>
 <p><strong>rpc</strong> Delete(<a href="#sdkvolumedeleterequest">SdkVolumeDeleteRequest</a>)
@@ -841,35 +817,6 @@ swagger:model</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
-<h2 id="azurecredential">AzureCredential </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>credential_id</td>
-<td><a href="#string"> string</a></td>
-<td>Cred Type</td>
-</tr>
-<tr>
-<td>account_name</td>
-<td><a href="#string"> string</a></td>
-<td>Account name</td>
-</tr>
-<tr>
-<td>account_key</td>
-<td><a href="#string"> string</a></td>
-<td>Account key</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
 <h2 id="clusterresponse">ClusterResponse </h2>
 <p>ClusterResponse specifies a response that gets returned when requesting the cluster
 swagger:response clusterResponse</p>
@@ -892,35 +839,6 @@ swagger:response clusterResponse</p>
 <p>in: body |
  <!-- end Fields -->
  <!-- end HasFields --></p>
-<h2 id="googlecredential">GoogleCredential </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>credential_id</td>
-<td><a href="#string"> string</a></td>
-<td>none</td>
-</tr>
-<tr>
-<td>project_id</td>
-<td><a href="#string"> string</a></td>
-<td>Project ID</td>
-</tr>
-<tr>
-<td>json_key</td>
-<td><a href="#string"> string</a></td>
-<td>JSON Key</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
 <h2 id="graphdriverchanges">GraphDriverChanges </h2>
 <p>GraphDriverChanges represent a list of changes between the filesystem layers
 specified by the ID and Parent.  // Parent may be an empty string, in which
@@ -1209,7 +1127,7 @@ swagger:model</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
-<h2 id="s3credential">S3Credential </h2>
+<h2 id="sdkawscredentialrequest">SdkAwsCredentialRequest </h2>
 <table>
 <thead>
 <tr>
@@ -1219,11 +1137,6 @@ swagger:model</p>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>credential_id</td>
-<td><a href="#string"> string</a></td>
-<td>Id of the credentials</td>
-</tr>
 <tr>
 <td>access_key</td>
 <td><a href="#string"> string</a></td>
@@ -1243,6 +1156,88 @@ swagger:model</p>
 <td>region</td>
 <td><a href="#string"> string</a></td>
 <td>Region</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkawscredentialresponse">SdkAwsCredentialResponse </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>credential_id</td>
+<td><a href="#string"> string</a></td>
+<td>Credential Id</td>
+</tr>
+<tr>
+<td>access_key</td>
+<td><a href="#string"> string</a></td>
+<td>Access key</td>
+</tr>
+<tr>
+<td>endpoint</td>
+<td><a href="#string"> string</a></td>
+<td>Endpoint</td>
+</tr>
+<tr>
+<td>region</td>
+<td><a href="#string"> string</a></td>
+<td>Region</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkazurecredentialrequest">SdkAzureCredentialRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>account_name</td>
+<td><a href="#string"> string</a></td>
+<td>Account name</td>
+</tr>
+<tr>
+<td>account_key</td>
+<td><a href="#string"> string</a></td>
+<td>Account key</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkazurecredentialresponse">SdkAzureCredentialResponse </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>credential_id</td>
+<td><a href="#string"> string</a></td>
+<td>Credential Id</td>
+</tr>
+<tr>
+<td>account_name</td>
+<td><a href="#string"> string</a></td>
+<td>Account name</td>
 </tr>
 </tbody>
 </table>
@@ -1441,8 +1436,8 @@ swagger:model</p>
 </thead>
 <tbody>
 <tr>
-<td>backups</td>
-<td><a href="#sdkcloudbackupinfo">repeated SdkCloudBackupInfo</a></td>
+<td>backup_ids</td>
+<td><a href="#string">repeated string</a></td>
 <td>none</td>
 </tr>
 </tbody>
@@ -1805,6 +1800,32 @@ swagger:model</p>
  <!-- end HasFields -->
 <h2 id="sdkclusteralertclearresponse">SdkClusterAlertClearResponse </h2>
  <!-- end HasFields -->
+<h2 id="sdkclusteralertdeleterequest">SdkClusterAlertDeleteRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>resource</td>
+<td><a href="#resourcetype"> ResourceType</a></td>
+<td>Type of resource (required)</td>
+</tr>
+<tr>
+<td>alert_id</td>
+<td><a href="#int64"> int64</a></td>
+<td>Id of alert as returned by ClusterEnumerateAlertResponse (required)</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkclusteralertdeleteresponse">SdkClusterAlertDeleteResponse </h2>
+ <!-- end HasFields -->
 <h2 id="sdkclusteralertenumeraterequest">SdkClusterAlertEnumerateRequest </h2>
 <table>
 <thead>
@@ -1846,38 +1867,12 @@ swagger:model</p>
 <tbody>
 <tr>
 <td>alerts</td>
-<td><a href="#alerts"> Alerts</a></td>
+<td><a href="#alert">repeated Alert</a></td>
 <td>Information on the alerts requested</td>
 </tr>
 </tbody>
 </table>
  <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkclusteralerteraserequest">SdkClusterAlertEraseRequest </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>resource</td>
-<td><a href="#resourcetype"> ResourceType</a></td>
-<td>Type of resource (required)</td>
-</tr>
-<tr>
-<td>alert_id</td>
-<td><a href="#int64"> int64</a></td>
-<td>Id of alert as returned by ClusterEnumerateAlertResponse (required)</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkclusteralerteraseresponse">SdkClusterAlertEraseResponse </h2>
  <!-- end HasFields -->
 <h2 id="sdkclusterenumeraterequest">SdkClusterEnumerateRequest </h2>
  <!-- end HasFields -->
@@ -1938,7 +1933,7 @@ swagger:model</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
-<h2 id="sdkcredentialcreateawsrequest">SdkCredentialCreateAWSRequest </h2>
+<h2 id="sdkcredentialcreaterequest">SdkCredentialCreateRequest </h2>
 <table>
 <thead>
 <tr>
@@ -1949,91 +1944,25 @@ swagger:model</p>
 </thead>
 <tbody>
 <tr>
-<td>credential</td>
-<td><a href="#s3credential"> S3Credential</a></td>
-<td>AWS S3 Credential</td>
+<td>aws_credential</td>
+<td><a href="#sdkawscredentialrequest"> SdkAwsCredentialRequest</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>azure_credential</td>
+<td><a href="#sdkazurecredentialrequest"> SdkAzureCredentialRequest</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>google_credential</td>
+<td><a href="#sdkgooglecredentialrequest"> SdkGoogleCredentialRequest</a></td>
+<td>none</td>
 </tr>
 </tbody>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
-<h2 id="sdkcredentialcreateawsresponse">SdkCredentialCreateAWSResponse </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>credential_id</td>
-<td><a href="#string"> string</a></td>
-<td>Id of the credentials</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkcredentialcreateazurerequest">SdkCredentialCreateAzureRequest </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>credential</td>
-<td><a href="#azurecredential"> AzureCredential</a></td>
-<td>Azure Credential</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkcredentialcreateazureresponse">SdkCredentialCreateAzureResponse </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>credential_id</td>
-<td><a href="#string"> string</a></td>
-<td>Id of the credentials</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkcredentialcreategooglerequest">SdkCredentialCreateGoogleRequest </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>credential</td>
-<td><a href="#googlecredential"> GoogleCredential</a></td>
-<td>Google Credential</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkcredentialcreategoogleresponse">SdkCredentialCreateGoogleResponse </h2>
+<h2 id="sdkcredentialcreateresponse">SdkCredentialCreateResponse </h2>
 <table>
 <thead>
 <tr>
@@ -2073,8 +2002,9 @@ swagger:model</p>
  <!-- end HasFields -->
 <h2 id="sdkcredentialdeleteresponse">SdkCredentialDeleteResponse </h2>
  <!-- end HasFields -->
-<h2 id="sdkcredentialenumerateawsrequest">SdkCredentialEnumerateAWSRequest </h2>
-<p>should enumerate accept anything?</p>
+<h2 id="sdkcredentialenumeraterequest">SdkCredentialEnumerateRequest </h2>
+ <!-- end HasFields -->
+<h2 id="sdkcredentialenumerateresponse">SdkCredentialEnumerateResponse </h2>
 <table>
 <thead>
 <tr>
@@ -2085,34 +2015,15 @@ swagger:model</p>
 </thead>
 <tbody>
 <tr>
-<td>credential_id</td>
-<td><a href="#string"> string</a></td>
-<td>Id of the credentials</td>
+<td>credential_ids</td>
+<td><a href="#string">repeated string</a></td>
+<td>none</td>
 </tr>
 </tbody>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
-<h2 id="sdkcredentialenumerateawsresponse">SdkCredentialEnumerateAWSResponse </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>credential</td>
-<td><a href="#s3credential">repeated S3Credential</a></td>
-<td>Array of Credentials for AWS</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkcredentialenumerateazurerequest">SdkCredentialEnumerateAzureRequest </h2>
+<h2 id="sdkcredentialinspectrequest">SdkCredentialInspectRequest </h2>
 <table>
 <thead>
 <tr>
@@ -2131,7 +2042,9 @@ swagger:model</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
-<h2 id="sdkcredentialenumerateazureresponse">SdkCredentialEnumerateAzureResponse </h2>
+<h2 id="sdkcredentialinspectresponse">SdkCredentialInspectResponse </h2>
+<p>This response uses OneOf proto style. Depending on your programming language
+you will need to check if the value of credential_type is one of the ones below.</p>
 <table>
 <thead>
 <tr>
@@ -2142,47 +2055,19 @@ swagger:model</p>
 </thead>
 <tbody>
 <tr>
-<td>credential</td>
-<td><a href="#azurecredential">repeated AzureCredential</a></td>
-<td>List of Credentials for Azure</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkcredentialenumerategooglerequest">SdkCredentialEnumerateGoogleRequest </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>credential_id</td>
-<td><a href="#string"> string</a></td>
+<td>aws_credential</td>
+<td><a href="#sdkawscredentialresponse"> SdkAwsCredentialResponse</a></td>
 <td>none</td>
 </tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkcredentialenumerategoogleresponse">SdkCredentialEnumerateGoogleResponse </h2>
-<table>
-<thead>
 <tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
+<td>azure_credential</td>
+<td><a href="#sdkazurecredentialresponse"> SdkAzureCredentialResponse</a></td>
+<td>none</td>
 </tr>
-</thead>
-<tbody>
 <tr>
-<td>credential</td>
-<td><a href="#googlecredential">repeated GoogleCredential</a></td>
-<td>List of Credentials for Google</td>
+<td>google_credential</td>
+<td><a href="#sdkgooglecredentialresponse"> SdkGoogleCredentialResponse</a></td>
+<td>none</td>
 </tr>
 </tbody>
 </table>
@@ -2208,6 +2093,54 @@ swagger:model</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkcredentialvalidateresponse">SdkCredentialValidateResponse </h2>
+ <!-- end HasFields -->
+<h2 id="sdkgooglecredentialrequest">SdkGoogleCredentialRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>project_id</td>
+<td><a href="#string"> string</a></td>
+<td>Project ID</td>
+</tr>
+<tr>
+<td>json_key</td>
+<td><a href="#string"> string</a></td>
+<td>JSON Key</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkgooglecredentialresponse">SdkGoogleCredentialResponse </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>credential_id</td>
+<td><a href="#string"> string</a></td>
+<td>Credential Id</td>
+</tr>
+<tr>
+<td>project_id</td>
+<td><a href="#string"> string</a></td>
+<td>Project ID</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkobjectstorecreaterequest">SdkObjectstoreCreateRequest </h2>
 <table>
@@ -2545,7 +2478,7 @@ swagger:model</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
-<h2 id="sdkvolumecreatefromvolumeidrequest">SdkVolumeCreateFromVolumeIdRequest </h2>
+<h2 id="sdkvolumeclonerequest">SdkVolumeCloneRequest </h2>
 <table>
 <thead>
 <tr>
@@ -2574,7 +2507,7 @@ swagger:model</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
-<h2 id="sdkvolumecreatefromvolumeidresponse">SdkVolumeCreateFromVolumeIdResponse </h2>
+<h2 id="sdkvolumecloneresponse">SdkVolumeCloneResponse </h2>
 <table>
 <thead>
 <tr>
@@ -2708,8 +2641,8 @@ swagger:model</p>
 </thead>
 <tbody>
 <tr>
-<td>volumes</td>
-<td><a href="#volume">repeated Volume</a></td>
+<td>volume_ids</td>
+<td><a href="#string">repeated string</a></td>
 <td>List of volumes matching label</td>
 </tr>
 </tbody>
@@ -2935,8 +2868,8 @@ swagger:model</p>
 </thead>
 <tbody>
 <tr>
-<td>snapshots</td>
-<td><a href="#volume">repeated Volume</a></td>
+<td>volume_snapshot_ids</td>
+<td><a href="#string">repeated string</a></td>
 <td>List of immutable snapshots</td>
 </tr>
 </tbody>
@@ -3197,8 +3130,8 @@ swagger:model</p>
 <td>NodeId is the id of the node servicing these requests</td>
 </tr>
 <tr>
-<td>nodes</td>
-<td><a href="#storagenode">repeated StorageNode</a></td>
+<td>node_ids</td>
+<td><a href="#string">repeated string</a></td>
 <td>Nodes are a list of all the nodes on the cluster</td>
 </tr>
 </tbody>
@@ -5009,7 +4942,7 @@ swagger:model</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"API Refernce","level":"1.5","depth":1,"previous":{"title":"Installing","level":"1.4","depth":1,"path":"installing.md","ref":"installing.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"generated-api.md","mtime":"2018-06-12T00:02:01.926Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-12T00:02:12.135Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"API Refernce","level":"1.5","depth":1,"previous":{"title":"Installing","level":"1.4","depth":1,"path":"installing.md","ref":"installing.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"generated-api.md","mtime":"2018-06-24T10:55:35.459Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-24T10:55:36.466Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

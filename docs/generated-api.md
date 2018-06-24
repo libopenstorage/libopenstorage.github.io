@@ -19,9 +19,7 @@
     - [ActiveRequests](#activerequests)
     - [Alert](#alert)
     - [Alerts](#alerts)
-    - [AzureCredential](#azurecredential)
     - [ClusterResponse](#clusterresponse)
-    - [GoogleCredential](#googlecredential)
     - [GraphDriverChanges](#graphdriverchanges)
     - [Group](#group)
     - [GroupSnapCreateRequest](#groupsnapcreaterequest)
@@ -32,7 +30,10 @@
     - [ReplicaSet](#replicaset)
     - [RuntimeStateMap](#runtimestatemap)
     - [RuntimeStateMap.RuntimeStateEntry](#runtimestatemapruntimestateentry)
-    - [S3Credential](#s3credential)
+    - [SdkAwsCredentialRequest](#sdkawscredentialrequest)
+    - [SdkAwsCredentialResponse](#sdkawscredentialresponse)
+    - [SdkAzureCredentialRequest](#sdkazurecredentialrequest)
+    - [SdkAzureCredentialResponse](#sdkazurecredentialresponse)
     - [SdkCloudBackupCatalogRequest](#sdkcloudbackupcatalogrequest)
     - [SdkCloudBackupCatalogResponse](#sdkcloudbackupcatalogresponse)
     - [SdkCloudBackupCreateRequest](#sdkcloudbackupcreaterequest)
@@ -58,30 +59,26 @@
     - [SdkCloudBackupStatusResponse.StatusesEntry](#sdkcloudbackupstatusresponsestatusesentry)
     - [SdkClusterAlertClearRequest](#sdkclusteralertclearrequest)
     - [SdkClusterAlertClearResponse](#sdkclusteralertclearresponse)
+    - [SdkClusterAlertDeleteRequest](#sdkclusteralertdeleterequest)
+    - [SdkClusterAlertDeleteResponse](#sdkclusteralertdeleteresponse)
     - [SdkClusterAlertEnumerateRequest](#sdkclusteralertenumeraterequest)
     - [SdkClusterAlertEnumerateResponse](#sdkclusteralertenumerateresponse)
-    - [SdkClusterAlertEraseRequest](#sdkclusteralerteraserequest)
-    - [SdkClusterAlertEraseResponse](#sdkclusteralerteraseresponse)
     - [SdkClusterEnumerateRequest](#sdkclusterenumeraterequest)
     - [SdkClusterEnumerateResponse](#sdkclusterenumerateresponse)
     - [SdkClusterInspectRequest](#sdkclusterinspectrequest)
     - [SdkClusterInspectResponse](#sdkclusterinspectresponse)
-    - [SdkCredentialCreateAWSRequest](#sdkcredentialcreateawsrequest)
-    - [SdkCredentialCreateAWSResponse](#sdkcredentialcreateawsresponse)
-    - [SdkCredentialCreateAzureRequest](#sdkcredentialcreateazurerequest)
-    - [SdkCredentialCreateAzureResponse](#sdkcredentialcreateazureresponse)
-    - [SdkCredentialCreateGoogleRequest](#sdkcredentialcreategooglerequest)
-    - [SdkCredentialCreateGoogleResponse](#sdkcredentialcreategoogleresponse)
+    - [SdkCredentialCreateRequest](#sdkcredentialcreaterequest)
+    - [SdkCredentialCreateResponse](#sdkcredentialcreateresponse)
     - [SdkCredentialDeleteRequest](#sdkcredentialdeleterequest)
     - [SdkCredentialDeleteResponse](#sdkcredentialdeleteresponse)
-    - [SdkCredentialEnumerateAWSRequest](#sdkcredentialenumerateawsrequest)
-    - [SdkCredentialEnumerateAWSResponse](#sdkcredentialenumerateawsresponse)
-    - [SdkCredentialEnumerateAzureRequest](#sdkcredentialenumerateazurerequest)
-    - [SdkCredentialEnumerateAzureResponse](#sdkcredentialenumerateazureresponse)
-    - [SdkCredentialEnumerateGoogleRequest](#sdkcredentialenumerategooglerequest)
-    - [SdkCredentialEnumerateGoogleResponse](#sdkcredentialenumerategoogleresponse)
+    - [SdkCredentialEnumerateRequest](#sdkcredentialenumeraterequest)
+    - [SdkCredentialEnumerateResponse](#sdkcredentialenumerateresponse)
+    - [SdkCredentialInspectRequest](#sdkcredentialinspectrequest)
+    - [SdkCredentialInspectResponse](#sdkcredentialinspectresponse)
     - [SdkCredentialValidateRequest](#sdkcredentialvalidaterequest)
     - [SdkCredentialValidateResponse](#sdkcredentialvalidateresponse)
+    - [SdkGoogleCredentialRequest](#sdkgooglecredentialrequest)
+    - [SdkGoogleCredentialResponse](#sdkgooglecredentialresponse)
     - [SdkObjectstoreCreateRequest](#sdkobjectstorecreaterequest)
     - [SdkObjectstoreCreateResponse](#sdkobjectstorecreateresponse)
     - [SdkObjectstoreDeleteRequest](#sdkobjectstoredeleterequest)
@@ -104,8 +101,8 @@
     - [SdkVolumeAttachRequest](#sdkvolumeattachrequest)
     - [SdkVolumeAttachRequest.OptionsEntry](#sdkvolumeattachrequestoptionsentry)
     - [SdkVolumeAttachResponse](#sdkvolumeattachresponse)
-    - [SdkVolumeCreateFromVolumeIdRequest](#sdkvolumecreatefromvolumeidrequest)
-    - [SdkVolumeCreateFromVolumeIdResponse](#sdkvolumecreatefromvolumeidresponse)
+    - [SdkVolumeCloneRequest](#sdkvolumeclonerequest)
+    - [SdkVolumeCloneResponse](#sdkvolumecloneresponse)
     - [SdkVolumeCreateRequest](#sdkvolumecreaterequest)
     - [SdkVolumeCreateResponse](#sdkvolumecreateresponse)
     - [SdkVolumeDeleteRequest](#sdkvolumedeleterequest)
@@ -271,64 +268,43 @@ Get a list of alerts from the storage cluster
     [SdkClusterAlertClearResponse](#sdkclusteralertclearresponse)
 
 Clear the alert for a given resource
-## AlertErase
+## AlertDelete
 
-> **rpc** AlertErase([SdkClusterAlertEraseRequest](#sdkclusteralerteraserequest))
-    [SdkClusterAlertEraseResponse](#sdkclusteralerteraseresponse)
+> **rpc** AlertDelete([SdkClusterAlertDeleteRequest](#sdkclusteralertdeleterequest))
+    [SdkClusterAlertDeleteResponse](#sdkclusteralertdeleteresponse)
 
 Erases an alert for a given resource
  <!-- end methods -->
 # OpenStorageCredentials {#openstorageapiopenstoragecredentials}
 
 
-## CreateForAWS
+## Create
 
-> **rpc** CreateForAWS([SdkCredentialCreateAWSRequest](#sdkcredentialcreateawsrequest))
-    [SdkCredentialCreateAWSResponse](#sdkcredentialcreateawsresponse)
+> **rpc** Create([SdkCredentialCreateRequest](#sdkcredentialcreaterequest))
+    [SdkCredentialCreateResponse](#sdkcredentialcreateresponse)
 
-Create credential for AWS S3 and if valid ,
-returns a unique identifier
-## CreateForAzure
+Create cloud credentials
+## Enumerate
 
-> **rpc** CreateForAzure([SdkCredentialCreateAzureRequest](#sdkcredentialcreateazurerequest))
-    [SdkCredentialCreateAzureResponse](#sdkcredentialcreateazureresponse)
+> **rpc** Enumerate([SdkCredentialEnumerateRequest](#sdkcredentialenumeraterequest))
+    [SdkCredentialEnumerateResponse](#sdkcredentialenumerateresponse)
 
-Create credential for Azure and if valid ,
-returns a unique identifier
-## CreateForGoogle
+Enumerate returns a list of credential ids
+## Inspect
 
-> **rpc** CreateForGoogle([SdkCredentialCreateGoogleRequest](#sdkcredentialcreategooglerequest))
-    [SdkCredentialCreateGoogleResponse](#sdkcredentialcreategoogleresponse)
+> **rpc** Inspect([SdkCredentialInspectRequest](#sdkcredentialinspectrequest))
+    [SdkCredentialInspectResponse](#sdkcredentialinspectresponse)
 
-Create credential for Google and if valid ,
-returns a unique identifier
-## EnumerateForAWS
+Inspect returns the information about a credential
+## Delete
 
-> **rpc** EnumerateForAWS([SdkCredentialEnumerateAWSRequest](#sdkcredentialenumerateawsrequest))
-    [SdkCredentialEnumerateAWSResponse](#sdkcredentialenumerateawsresponse)
-
-EnumerateForAWS lists the configured AWS credentials
-## EnumerateForAzure
-
-> **rpc** EnumerateForAzure([SdkCredentialEnumerateAzureRequest](#sdkcredentialenumerateazurerequest))
-    [SdkCredentialEnumerateAzureResponse](#sdkcredentialenumerateazureresponse)
-
-EnumerateForAzure lists the configured Azure credentials
-## EnumerateForGoogle
-
-> **rpc** EnumerateForGoogle([SdkCredentialEnumerateGoogleRequest](#sdkcredentialenumerategooglerequest))
-    [SdkCredentialEnumerateGoogleResponse](#sdkcredentialenumerategoogleresponse)
-
-EnumerateForGoogle lists the configured Google credentials
-## CredentialDelete
-
-> **rpc** CredentialDelete([SdkCredentialDeleteRequest](#sdkcredentialdeleterequest))
+> **rpc** Delete([SdkCredentialDeleteRequest](#sdkcredentialdeleterequest))
     [SdkCredentialDeleteResponse](#sdkcredentialdeleteresponse)
 
 Delete a specified credential
-## CredentialValidate
+## Validate
 
-> **rpc** CredentialValidate([SdkCredentialValidateRequest](#sdkcredentialvalidaterequest))
+> **rpc** Validate([SdkCredentialValidateRequest](#sdkcredentialvalidaterequest))
     [SdkCredentialValidateResponse](#sdkcredentialvalidateresponse)
 
 Validate a specified credential
@@ -404,12 +380,12 @@ Delete Schedule Policy
     [SdkVolumeCreateResponse](#sdkvolumecreateresponse)
 
 Creates a new volume
-## CreateFromVolumeId
+## Clone
 
-> **rpc** CreateFromVolumeId([SdkVolumeCreateFromVolumeIdRequest](#sdkvolumecreatefromvolumeidrequest))
-    [SdkVolumeCreateFromVolumeIdResponse](#sdkvolumecreatefromvolumeidresponse)
+> **rpc** Clone([SdkVolumeCloneRequest](#sdkvolumeclonerequest))
+    [SdkVolumeCloneResponse](#sdkvolumecloneresponse)
 
-CreateFromVolumeId creates a new volume cloned from an existing volume
+Clone creates a new volume cloned from an existing volume
 ## Delete
 
 > **rpc** Delete([SdkVolumeDeleteRequest](#sdkvolumedeleterequest))
@@ -547,19 +523,6 @@ swagger:model
  <!-- end HasFields -->
 
 
-## AzureCredential {#azurecredential}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| credential_id | [ string](#string) | Cred Type |
-| account_name | [ string](#string) | Account name |
-| account_key | [ string](#string) | Account key |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
 ## ClusterResponse {#clusterresponse}
 ClusterResponse specifies a response that gets returned when requesting the cluster
 swagger:response clusterResponse
@@ -570,19 +533,6 @@ swagger:response clusterResponse
 | error | [ string](#string) | Error code
 
 in: body |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## GoogleCredential {#googlecredential}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| credential_id | [ string](#string) | none |
-| project_id | [ string](#string) | Project ID |
-| json_key | [ string](#string) | JSON Key |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -730,17 +680,54 @@ swagger:model
  <!-- end HasFields -->
 
 
-## S3Credential {#s3credential}
+## SdkAwsCredentialRequest {#sdkawscredentialrequest}
 
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| credential_id | [ string](#string) | Id of the credentials |
 | access_key | [ string](#string) | Access key |
 | secret_key | [ string](#string) | Secret key |
 | endpoint | [ string](#string) | Endpoint |
 | region | [ string](#string) | Region |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkAwsCredentialResponse {#sdkawscredentialresponse}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| credential_id | [ string](#string) | Credential Id |
+| access_key | [ string](#string) | Access key |
+| endpoint | [ string](#string) | Endpoint |
+| region | [ string](#string) | Region |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkAzureCredentialRequest {#sdkazurecredentialrequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| account_name | [ string](#string) | Account name |
+| account_key | [ string](#string) | Account key |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkAzureCredentialResponse {#sdkazurecredentialresponse}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| credential_id | [ string](#string) | Credential Id |
+| account_name | [ string](#string) | Account name |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -849,7 +836,7 @@ swagger:model
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| backups | [repeated SdkCloudBackupInfo](#sdkcloudbackupinfo) | none |
+| backup_ids | [repeated string](#string) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -1030,6 +1017,24 @@ swagger:model
  <!-- end HasFields -->
 
 
+## SdkClusterAlertDeleteRequest {#sdkclusteralertdeleterequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| resource | [ ResourceType](#resourcetype) | Type of resource (required) |
+| alert_id | [ int64](#int64) | Id of alert as returned by ClusterEnumerateAlertResponse (required) |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkClusterAlertDeleteResponse {#sdkclusteralertdeleteresponse}
+
+
+ <!-- end HasFields -->
+
+
 ## SdkClusterAlertEnumerateRequest {#sdkclusteralertenumeraterequest}
 
 
@@ -1049,26 +1054,8 @@ swagger:model
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| alerts | [ Alerts](#alerts) | Information on the alerts requested |
+| alerts | [repeated Alert](#alert) | Information on the alerts requested |
  <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkClusterAlertEraseRequest {#sdkclusteralerteraserequest}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| resource | [ ResourceType](#resourcetype) | Type of resource (required) |
-| alert_id | [ int64](#int64) | Id of alert as returned by ClusterEnumerateAlertResponse (required) |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkClusterAlertEraseResponse {#sdkclusteralerteraseresponse}
-
-
  <!-- end HasFields -->
 
 
@@ -1111,62 +1098,20 @@ swagger:model
  <!-- end HasFields -->
 
 
-## SdkCredentialCreateAWSRequest {#sdkcredentialcreateawsrequest}
+## SdkCredentialCreateRequest {#sdkcredentialcreaterequest}
 
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| credential | [ S3Credential](#s3credential) | AWS S3 Credential |
+| aws_credential | [ SdkAwsCredentialRequest](#sdkawscredentialrequest) | none |
+| azure_credential | [ SdkAzureCredentialRequest](#sdkazurecredentialrequest) | none |
+| google_credential | [ SdkGoogleCredentialRequest](#sdkgooglecredentialrequest) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
 
-## SdkCredentialCreateAWSResponse {#sdkcredentialcreateawsresponse}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| credential_id | [ string](#string) | Id of the credentials |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkCredentialCreateAzureRequest {#sdkcredentialcreateazurerequest}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| credential | [ AzureCredential](#azurecredential) | Azure Credential |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkCredentialCreateAzureResponse {#sdkcredentialcreateazureresponse}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| credential_id | [ string](#string) | Id of the credentials |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkCredentialCreateGoogleRequest {#sdkcredentialcreategooglerequest}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| credential | [ GoogleCredential](#googlecredential) | Google Credential |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkCredentialCreateGoogleResponse {#sdkcredentialcreategoogleresponse}
+## SdkCredentialCreateResponse {#sdkcredentialcreateresponse}
 
 
 
@@ -1194,29 +1139,24 @@ swagger:model
  <!-- end HasFields -->
 
 
-## SdkCredentialEnumerateAWSRequest {#sdkcredentialenumerateawsrequest}
-should enumerate accept anything?
+## SdkCredentialEnumerateRequest {#sdkcredentialenumeraterequest}
 
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| credential_id | [ string](#string) | Id of the credentials |
- <!-- end Fields -->
  <!-- end HasFields -->
 
 
-## SdkCredentialEnumerateAWSResponse {#sdkcredentialenumerateawsresponse}
+## SdkCredentialEnumerateResponse {#sdkcredentialenumerateresponse}
 
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| credential | [repeated S3Credential](#s3credential) | Array of Credentials for AWS |
+| credential_ids | [repeated string](#string) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
 
-## SdkCredentialEnumerateAzureRequest {#sdkcredentialenumerateazurerequest}
+## SdkCredentialInspectRequest {#sdkcredentialinspectrequest}
 
 
 
@@ -1227,35 +1167,16 @@ should enumerate accept anything?
  <!-- end HasFields -->
 
 
-## SdkCredentialEnumerateAzureResponse {#sdkcredentialenumerateazureresponse}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| credential | [repeated AzureCredential](#azurecredential) | List of Credentials for Azure |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkCredentialEnumerateGoogleRequest {#sdkcredentialenumerategooglerequest}
-
+## SdkCredentialInspectResponse {#sdkcredentialinspectresponse}
+This response uses OneOf proto style. Depending on your programming language
+you will need to check if the value of credential_type is one of the ones below.
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| credential_id | [ string](#string) | none |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkCredentialEnumerateGoogleResponse {#sdkcredentialenumerategoogleresponse}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| credential | [repeated GoogleCredential](#googlecredential) | List of Credentials for Google |
+| aws_credential | [ SdkAwsCredentialResponse](#sdkawscredentialresponse) | none |
+| azure_credential | [ SdkAzureCredentialResponse](#sdkazurecredentialresponse) | none |
+| google_credential | [ SdkGoogleCredentialResponse](#sdkgooglecredentialresponse) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -1274,6 +1195,30 @@ should enumerate accept anything?
 ## SdkCredentialValidateResponse {#sdkcredentialvalidateresponse}
 
 
+ <!-- end HasFields -->
+
+
+## SdkGoogleCredentialRequest {#sdkgooglecredentialrequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| project_id | [ string](#string) | Project ID |
+| json_key | [ string](#string) | JSON Key |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkGoogleCredentialResponse {#sdkgooglecredentialresponse}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| credential_id | [ string](#string) | Credential Id |
+| project_id | [ string](#string) | Project ID |
+ <!-- end Fields -->
  <!-- end HasFields -->
 
 
@@ -1493,7 +1438,7 @@ should enumerate accept anything?
  <!-- end HasFields -->
 
 
-## SdkVolumeCreateFromVolumeIdRequest {#sdkvolumecreatefromvolumeidrequest}
+## SdkVolumeCloneRequest {#sdkvolumeclonerequest}
 
 
 
@@ -1506,7 +1451,7 @@ should enumerate accept anything?
  <!-- end HasFields -->
 
 
-## SdkVolumeCreateFromVolumeIdResponse {#sdkvolumecreatefromvolumeidresponse}
+## SdkVolumeCloneResponse {#sdkvolumecloneresponse}
 
 
 
@@ -1591,7 +1536,7 @@ should enumerate accept anything?
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| volumes | [repeated Volume](#volume) | List of volumes matching label |
+| volume_ids | [repeated string](#string) | List of volumes matching label |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -1714,7 +1659,7 @@ should enumerate accept anything?
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| snapshots | [repeated Volume](#volume) | List of immutable snapshots |
+| volume_snapshot_ids | [repeated string](#string) | List of immutable snapshots |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -1840,7 +1785,7 @@ StorageCluster represents the state of the cluster
 | status | [ Status](#status) | Status of the cluster |
 | id | [ string](#string) | Id of the cluster |
 | node_id | [ string](#string) | NodeId is the id of the node servicing these requests |
-| nodes | [repeated StorageNode](#storagenode) | Nodes are a list of all the nodes on the cluster |
+| node_ids | [repeated string](#string) | Nodes are a list of all the nodes on the cluster |
  <!-- end Fields -->
  <!-- end HasFields -->
 
