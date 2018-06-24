@@ -1104,9 +1104,9 @@ swagger:model
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| aws_credential | [ SdkAwsCredentialRequest](#sdkawscredentialrequest) | none |
-| azure_credential | [ SdkAzureCredentialRequest](#sdkazurecredentialrequest) | none |
-| google_credential | [ SdkGoogleCredentialRequest](#sdkgooglecredentialrequest) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.aws_credential | [ SdkAwsCredentialRequest](#sdkawscredentialrequest) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.azure_credential | [ SdkAzureCredentialRequest](#sdkazurecredentialrequest) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.google_credential | [ SdkGoogleCredentialRequest](#sdkgooglecredentialrequest) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -1174,9 +1174,9 @@ you will need to check if the value of credential_type is one of the ones below.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| aws_credential | [ SdkAwsCredentialResponse](#sdkawscredentialresponse) | none |
-| azure_credential | [ SdkAzureCredentialResponse](#sdkazurecredentialresponse) | none |
-| google_credential | [ SdkGoogleCredentialResponse](#sdkgooglecredentialresponse) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.aws_credential | [ SdkAwsCredentialResponse](#sdkawscredentialresponse) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.azure_credential | [ SdkAzureCredentialResponse](#sdkazurecredentialresponse) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.google_credential | [ SdkGoogleCredentialResponse](#sdkgooglecredentialresponse) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 

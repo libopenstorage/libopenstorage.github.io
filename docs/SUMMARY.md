@@ -3,4 +3,4 @@
 * [Status](status.md)
 * [Architecture](arch.md)
 * [Installing](installing.md)
-* [API Refernce](generated-api.md)
+* [API Reference](generated-api.md)
