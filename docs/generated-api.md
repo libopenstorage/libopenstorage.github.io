@@ -96,6 +96,10 @@
     - [SdkSchedulePolicyEnumerateResponse](#sdkschedulepolicyenumerateresponse)
     - [SdkSchedulePolicyInspectRequest](#sdkschedulepolicyinspectrequest)
     - [SdkSchedulePolicyInspectResponse](#sdkschedulepolicyinspectresponse)
+    - [SdkSchedulePolicyInterval](#sdkschedulepolicyinterval)
+    - [SdkSchedulePolicyIntervalDaily](#sdkschedulepolicyintervaldaily)
+    - [SdkSchedulePolicyIntervalMonthly](#sdkschedulepolicyintervalmonthly)
+    - [SdkSchedulePolicyIntervalWeekly](#sdkschedulepolicyintervalweekly)
     - [SdkSchedulePolicyUpdateRequest](#sdkschedulepolicyupdaterequest)
     - [SdkSchedulePolicyUpdateResponse](#sdkschedulepolicyupdateresponse)
     - [SdkVolumeAttachRequest](#sdkvolumeattachrequest)
@@ -170,6 +174,7 @@
     - [SdkCloudBackupOpType](#sdkcloudbackupoptype)
     - [SdkCloudBackupRequestedState](#sdkcloudbackuprequestedstate)
     - [SdkCloudBackupStatusType](#sdkcloudbackupstatustype)
+    - [SdkTimeWeekday](#sdktimeweekday)
     - [SeverityType](#severitytype)
     - [Status](#status)
     - [StorageMedium](#storagemedium)
@@ -635,7 +640,7 @@ swagger:model
 | access_key | [ string](#string) | AccessKey for login into objectstore |
 | secret_key | [ string](#string) | SecretKey for login into objectstore |
 | endpoints | [repeated string](#string) | Endpoints for accessing objectstore |
-| current_endPoint | [ string](#string) | CurrentEndpoint on which objectstore server is accessible |
+| current_endpoint | [ string](#string) | CurrentEndpoint on which objectstore server is accessible |
 | access_port | [ int64](#int64) | AccessPort is objectstore server port |
 | region | [ string](#string) | Region for this objectstore |
  <!-- end Fields -->
@@ -1228,7 +1233,7 @@ you will need to check if the value of credential_type is one of the ones below.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| volume_name | [ string](#string) | Volume on which objectstore will be running |
+| volume_id | [ string](#string) | Volume on which objectstore will be running |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -1308,7 +1313,7 @@ you will need to check if the value of credential_type is one of the ones below.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | name | [ string](#string) | Name of the schedule policy |
-| schedule | [ string](#string) | Schedule string in yaml |
+| schedule | [ SdkSchedulePolicyInterval](#sdkschedulepolicyinterval) | Schedule policy |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -1382,6 +1387,58 @@ you will need to check if the value of credential_type is one of the ones below.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | policy | [ SdkSchedulePolicy](#sdkschedulepolicy) | List of Schedule Policy |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkSchedulePolicyInterval {#sdkschedulepolicyinterval}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| retain | [ int64](#int64) | Number of instances to retain |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) period_type.daily | [ SdkSchedulePolicyIntervalDaily](#sdkschedulepolicyintervaldaily) | Daily policy |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) period_type.weekly | [ SdkSchedulePolicyIntervalWeekly](#sdkschedulepolicyintervalweekly) | Weekly policy |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) period_type.monthly | [ SdkSchedulePolicyIntervalMonthly](#sdkschedulepolicyintervalmonthly) | Monthly policy |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkSchedulePolicyIntervalDaily {#sdkschedulepolicyintervaldaily}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| hour | [ int32](#int32) | Range: 0-23 |
+| minute | [ int32](#int32) | Range: 0-59 |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkSchedulePolicyIntervalMonthly {#sdkschedulepolicyintervalmonthly}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| day | [ int32](#int32) | Range: 1-28 |
+| hour | [ int32](#int32) | Range: 0-59 |
+| minute | [ int32](#int32) | Range: 0-59 |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkSchedulePolicyIntervalWeekly {#sdkschedulepolicyintervalweekly}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| day | [ SdkTimeWeekday](#sdktimeweekday) | none |
+| hour | [ int32](#int32) | Range: 0-23 |
+| minute | [ int32](#int32) | Range: 0-59 |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -2321,6 +2378,22 @@ swagger:model
 | SdkCloudBackupStatusTypeStopped | 5 | none |
 | SdkCloudBackupStatusTypeActive | 6 | none |
 | SdkCloudBackupStatusTypeFailed | 7 | none |
+
+
+
+
+## SdkTimeWeekday {#sdktimeweekday}
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| SdkTimeWeekdaySunday | 0 | none |
+| SdkTimeWeekdayMonday | 1 | none |
+| SdkTimeWeekdayTuesday | 2 | none |
+| SdkTimeWeekdayWednesday | 3 | none |
+| SdkTimeWeekdayThursday | 4 | none |
+| SdkTimeWeekdayFriday | 5 | none |
+| SdkTimeWeekdaySaturday | 6 | none |
 
 
 

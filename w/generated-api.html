@@ -318,6 +318,10 @@
 <li><a href="#sdkschedulepolicyenumerateresponse">SdkSchedulePolicyEnumerateResponse</a></li>
 <li><a href="#sdkschedulepolicyinspectrequest">SdkSchedulePolicyInspectRequest</a></li>
 <li><a href="#sdkschedulepolicyinspectresponse">SdkSchedulePolicyInspectResponse</a></li>
+<li><a href="#sdkschedulepolicyinterval">SdkSchedulePolicyInterval</a></li>
+<li><a href="#sdkschedulepolicyintervaldaily">SdkSchedulePolicyIntervalDaily</a></li>
+<li><a href="#sdkschedulepolicyintervalmonthly">SdkSchedulePolicyIntervalMonthly</a></li>
+<li><a href="#sdkschedulepolicyintervalweekly">SdkSchedulePolicyIntervalWeekly</a></li>
 <li><a href="#sdkschedulepolicyupdaterequest">SdkSchedulePolicyUpdateRequest</a></li>
 <li><a href="#sdkschedulepolicyupdateresponse">SdkSchedulePolicyUpdateResponse</a></li>
 <li><a href="#sdkvolumeattachrequest">SdkVolumeAttachRequest</a></li>
@@ -393,6 +397,7 @@
 <li><a href="#sdkcloudbackupoptype">SdkCloudBackupOpType</a></li>
 <li><a href="#sdkcloudbackuprequestedstate">SdkCloudBackupRequestedState</a></li>
 <li><a href="#sdkcloudbackupstatustype">SdkCloudBackupStatusType</a></li>
+<li><a href="#sdktimeweekday">SdkTimeWeekday</a></li>
 <li><a href="#severitytype">SeverityType</a></li>
 <li><a href="#status">Status</a></li>
 <li><a href="#storagemedium">StorageMedium</a></li>
@@ -1041,7 +1046,7 @@ swagger:model</p>
 <td>Endpoints for accessing objectstore</td>
 </tr>
 <tr>
-<td>current_endPoint</td>
+<td>current_endpoint</td>
 <td><a href="#string"> string</a></td>
 <td>CurrentEndpoint on which objectstore server is accessible</td>
 </tr>
@@ -2153,7 +2158,7 @@ you will need to check if the value of credential_type is one of the ones below.
 </thead>
 <tbody>
 <tr>
-<td>volume_name</td>
+<td>volume_id</td>
 <td><a href="#string"> string</a></td>
 <td>Volume on which objectstore will be running</td>
 </tr>
@@ -2282,8 +2287,8 @@ you will need to check if the value of credential_type is one of the ones below.
 </tr>
 <tr>
 <td>schedule</td>
-<td><a href="#string"> string</a></td>
-<td>Schedule string in yaml</td>
+<td><a href="#sdkschedulepolicyinterval"> SdkSchedulePolicyInterval</a></td>
+<td>Schedule policy</td>
 </tr>
 </tbody>
 </table>
@@ -2385,6 +2390,122 @@ you will need to check if the value of credential_type is one of the ones below.
 <td>policy</td>
 <td><a href="#sdkschedulepolicy"> SdkSchedulePolicy</a></td>
 <td>List of Schedule Policy</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkschedulepolicyinterval">SdkSchedulePolicyInterval </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>retain</td>
+<td><a href="#int64"> int64</a></td>
+<td>Number of instances to retain</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> period_type.daily</td>
+<td><a href="#sdkschedulepolicyintervaldaily"> SdkSchedulePolicyIntervalDaily</a></td>
+<td>Daily policy</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> period_type.weekly</td>
+<td><a href="#sdkschedulepolicyintervalweekly"> SdkSchedulePolicyIntervalWeekly</a></td>
+<td>Weekly policy</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> period_type.monthly</td>
+<td><a href="#sdkschedulepolicyintervalmonthly"> SdkSchedulePolicyIntervalMonthly</a></td>
+<td>Monthly policy</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkschedulepolicyintervaldaily">SdkSchedulePolicyIntervalDaily </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>hour</td>
+<td><a href="#int32"> int32</a></td>
+<td>Range: 0-23</td>
+</tr>
+<tr>
+<td>minute</td>
+<td><a href="#int32"> int32</a></td>
+<td>Range: 0-59</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkschedulepolicyintervalmonthly">SdkSchedulePolicyIntervalMonthly </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>day</td>
+<td><a href="#int32"> int32</a></td>
+<td>Range: 1-28</td>
+</tr>
+<tr>
+<td>hour</td>
+<td><a href="#int32"> int32</a></td>
+<td>Range: 0-59</td>
+</tr>
+<tr>
+<td>minute</td>
+<td><a href="#int32"> int32</a></td>
+<td>Range: 0-59</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkschedulepolicyintervalweekly">SdkSchedulePolicyIntervalWeekly </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>day</td>
+<td><a href="#sdktimeweekday"> SdkTimeWeekday</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>hour</td>
+<td><a href="#int32"> int32</a></td>
+<td>Range: 0-23</td>
+</tr>
+<tr>
+<td>minute</td>
+<td><a href="#int32"> int32</a></td>
+<td>Range: 0-59</td>
 </tr>
 </tbody>
 </table>
@@ -4508,6 +4629,53 @@ swagger:model</p>
 </tr>
 </tbody>
 </table>
+<h2 id="sdktimeweekday">SdkTimeWeekday </h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SdkTimeWeekdaySunday</td>
+<td>0</td>
+<td>none</td>
+</tr>
+<tr>
+<td>SdkTimeWeekdayMonday</td>
+<td>1</td>
+<td>none</td>
+</tr>
+<tr>
+<td>SdkTimeWeekdayTuesday</td>
+<td>2</td>
+<td>none</td>
+</tr>
+<tr>
+<td>SdkTimeWeekdayWednesday</td>
+<td>3</td>
+<td>none</td>
+</tr>
+<tr>
+<td>SdkTimeWeekdayThursday</td>
+<td>4</td>
+<td>none</td>
+</tr>
+<tr>
+<td>SdkTimeWeekdayFriday</td>
+<td>5</td>
+<td>none</td>
+</tr>
+<tr>
+<td>SdkTimeWeekdaySaturday</td>
+<td>6</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
 <h2 id="severitytype">SeverityType </h2>
 <table>
 <thead>
@@ -4942,7 +5110,7 @@ swagger:model</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"API Reference","level":"1.5","depth":1,"previous":{"title":"Installing","level":"1.4","depth":1,"path":"installing.md","ref":"installing.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"generated-api.md","mtime":"2018-06-24T14:32:38.784Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-24T14:32:45.649Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"API Reference","level":"1.5","depth":1,"previous":{"title":"Installing","level":"1.4","depth":1,"path":"installing.md","ref":"installing.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"generated-api.md","mtime":"2018-06-25T06:22:35.421Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-25T06:22:36.437Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
