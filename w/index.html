@@ -146,14 +146,14 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4" data-path="installing.html">
+        <li class="chapter " data-level="1.4" data-path="installation.html">
             
-                <a href="installing.html">
+                <a href="installation.html">
             
                     
                         <b>1.4.</b>
                     
-                    Installing
+                    Installation
             
                 </a>
             
@@ -161,12 +161,63 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5" data-path="generated-api.html">
+        <li class="chapter " data-level="1.5" data-path="tutorial.html">
+            
+                <a href="tutorial.html">
+            
+                    
+                        <b>1.5.</b>
+                    
+                    Tutorial
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="tutorial-golang.html">
+            
+                <a href="tutorial-golang.html">
+            
+                    
+                        <b>1.5.1.</b>
+                    
+                    Golang
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="tutorial-python.html">
+            
+                <a href="tutorial-python.html">
+            
+                    
+                        <b>1.5.2.</b>
+                    
+                    Python
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="generated-api.html">
             
                 <a href="generated-api.html">
             
                     
-                        <b>1.5.</b>
+                        <b>1.6.</b>
                     
                     API Reference
             
@@ -245,7 +296,7 @@ $ echo {} | java -jar polyglot.jar \
 </code></pre><ul>
 <li>Run using the REST gRPC Gateway</li>
 </ul>
-<pre class="language-"><code>$ curl -X POST &quot;http://localhost:9110/v1/cluster/enumerate&quot; \
+<pre class="language-"><code>$ curl -X GET &quot;http://localhost:9110/v1/cluster&quot; \
      -H &quot;accept: application/json&quot; \
      -H &quot;Content-Type: application/json&quot; \
      -d &quot;{}&quot;
@@ -254,18 +305,10 @@ $ echo {} | java -jar polyglot.jar \
   <span class="token property">&quot;cluster&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token string">&quot;STATUS_OK&quot;</span><span class="token punctuation">,</span>
     <span class="token property">&quot;id&quot;</span><span class="token operator">:</span> <span class="token string">&quot;deadbeeef&quot;</span><span class="token punctuation">,</span>
-    <span class="token property">&quot;nodeId&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1&quot;</span><span class="token punctuation">,</span>
-    <span class="token property">&quot;nodes&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
-      <span class="token property">&quot;id&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1&quot;</span><span class="token punctuation">,</span>
-      <span class="token property">&quot;cpu&quot;</span><span class="token operator">:</span> <span class="token number">0.4993757802746567</span><span class="token punctuation">,</span>
-      <span class="token property">&quot;memTotal&quot;</span><span class="token operator">:</span> <span class="token string">&quot;8320278528&quot;</span><span class="token punctuation">,</span>
-      <span class="token property">&quot;memUsed&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1895813120&quot;</span><span class="token punctuation">,</span>
-      <span class="token property">&quot;memFree&quot;</span><span class="token operator">:</span> <span class="token string">&quot;6424465408&quot;</span><span class="token punctuation">,</span>
-      <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token string">&quot;STATUS_OK&quot;</span><span class="token punctuation">,</span>
-      <span class="token property">&quot;mgmtIp&quot;</span><span class="token operator">:</span> <span class="token string">&quot;172.17.0.2&quot;</span><span class="token punctuation">,</span>
-      <span class="token property">&quot;dataIp&quot;</span><span class="token operator">:</span> <span class="token string">&quot;172.17.0.2&quot;</span><span class="token punctuation">,</span>
-      <span class="token property">&quot;hostname&quot;</span><span class="token operator">:</span> <span class="token string">&quot;42f9d528292c&quot;</span>
-    <span class="token punctuation">}</span><span class="token punctuation">]</span>
+    <span class="token property">&quot;node_id&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;node_ids&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token string">&quot;1&quot;</span>
+    <span class="token punctuation">]</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
@@ -312,7 +355,7 @@ at <a href="http://localhost:9110/swagger-ui/" target="_blank">http://localhost:
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"Status","level":"1.2","depth":1,"path":"status.md","ref":"status.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"README.md","mtime":"2018-05-07T20:22:46.725Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-06-25T06:22:36.437Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"Status","level":"1.2","depth":1,"path":"status.md","ref":"status.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"README.md","mtime":"2018-07-09T21:10:20.442Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-07-09T21:47:30.152Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

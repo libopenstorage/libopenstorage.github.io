@@ -9,41 +9,7 @@ file on OpenStorage.
 
 ### Golang
 For Golang, simply import `github.com/libopenstorage/openstorage/api` in your
-sources. Here is a full example:
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-
-    "github.com/libopenstorage/openstorage/api"
-    "google.golang.org/grpc"
-    "google.golang.org/grpc/codes"
-	"google.golang.org/grpc/status"
-)
-
-func main() {
-    conn, err := grpc.Dial("localhost:9100", grpc.WithInsecure())
-    if err != nil {
-        fmt.Printf("Error: %v\n", err)
-        os.Exit(1)
-    }
-
-    c := api.NewOpenStorageClusterClient(conn)
-    r, err := c.Enumerate(context.Background(), &api.ClusterEnumerateRequest{})
-    if err != nil {
-        serverError, _ := status.FromError(err)
-        fmt.Printf("Error, code=%v, msg=%v\n",
-            serverError.Code(),
-            serverError.Message())
-        os.Exit(1)
-    }
-    fmt.Println(r)
-}
-```
+sources. For a full example see [Tutorial: Golang](tutorial-golang.html).
 
 ### Python
 Python libraries are available [`api/client/sdk/python`](https://github.com/libopenstorage/openstorage/tree/master/api/client/sdk).

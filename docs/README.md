@@ -30,7 +30,7 @@ $ echo {} | java -jar polyglot.jar \
 * Run using the REST gRPC Gateway
 
 ```
-$ curl -X POST "http://localhost:9110/v1/cluster/enumerate" \
+$ curl -X GET "http://localhost:9110/v1/cluster" \
      -H "accept: application/json" \
 	 -H "Content-Type: application/json" \
 	 -d "{}"
@@ -43,18 +43,10 @@ Results in:
   "cluster": {
     "status": "STATUS_OK",
     "id": "deadbeeef",
-    "nodeId": "1",
-    "nodes": [{
-      "id": "1",
-      "cpu": 0.4993757802746567,
-      "memTotal": "8320278528",
-      "memUsed": "1895813120",
-      "memFree": "6424465408",
-      "status": "STATUS_OK",
-      "mgmtIp": "172.17.0.2",
-      "dataIp": "172.17.0.2",
-      "hostname": "42f9d528292c"
-    }]
+    "node_id": "1",
+    "node_ids": [
+      "1"
+    ]
   }
 }
 ```
