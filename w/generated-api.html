@@ -69,6 +69,8 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="status.html" />
+    
     
     <link rel="prev" href="tutorial-python.html" />
     
@@ -116,27 +118,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2" data-path="status.html">
-            
-                <a href="status.html">
-            
-                    
-                        <b>1.2.</b>
-                    
-                    Status
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3" data-path="arch.html">
+        <li class="chapter " data-level="1.2" data-path="arch.html">
             
                 <a href="arch.html">
             
                     
-                        <b>1.3.</b>
+                        <b>1.2.</b>
                     
                     Architecture
             
@@ -146,12 +133,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4" data-path="installation.html">
+        <li class="chapter " data-level="1.3" data-path="installation.html">
             
                 <a href="installation.html">
             
                     
-                        <b>1.4.</b>
+                        <b>1.3.</b>
                     
                     Installation
             
@@ -161,12 +148,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5" data-path="tutorial.html">
+        <li class="chapter " data-level="1.4" data-path="tutorial.html">
             
                 <a href="tutorial.html">
             
                     
-                        <b>1.5.</b>
+                        <b>1.4.</b>
                     
                     Tutorial
             
@@ -177,12 +164,12 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.5.1" data-path="tutorial-golang.html">
+        <li class="chapter " data-level="1.4.1" data-path="tutorial-golang.html">
             
                 <a href="tutorial-golang.html">
             
                     
-                        <b>1.5.1.</b>
+                        <b>1.4.1.</b>
                     
                     Golang
             
@@ -192,12 +179,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.2" data-path="tutorial-python.html">
+        <li class="chapter " data-level="1.4.2" data-path="tutorial-python.html">
             
                 <a href="tutorial-python.html">
             
                     
-                        <b>1.5.2.</b>
+                        <b>1.4.2.</b>
                     
                     Python
             
@@ -212,14 +199,29 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.6" data-path="generated-api.html">
+        <li class="chapter active" data-level="1.5" data-path="generated-api.html">
             
                 <a href="generated-api.html">
             
                     
-                        <b>1.6.</b>
+                        <b>1.5.</b>
                     
                     API Reference
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="status.html">
+            
+                <a href="status.html">
+            
+                    
+                        <b>1.6.</b>
+                    
+                    API Status
             
                 </a>
             
@@ -292,6 +294,13 @@
 <li><a href="#activerequests">ActiveRequests</a></li>
 <li><a href="#alert">Alert</a></li>
 <li><a href="#alerts">Alerts</a></li>
+<li><a href="#cloudmigrate">CloudMigrate</a></li>
+<li><a href="#cloudmigratecancelrequest">CloudMigrateCancelRequest</a></li>
+<li><a href="#cloudmigrateinfo">CloudMigrateInfo</a></li>
+<li><a href="#cloudmigrateinfolist">CloudMigrateInfoList</a></li>
+<li><a href="#cloudmigratestartrequest">CloudMigrateStartRequest</a></li>
+<li><a href="#cloudmigratestatusresponse">CloudMigrateStatusResponse</a></li>
+<li><a href="#cloudmigratestatusresponseinfoentry">CloudMigrateStatusResponse.InfoEntry</a></li>
 <li><a href="#clusterresponse">ClusterResponse</a></li>
 <li><a href="#graphdriverchanges">GraphDriverChanges</a></li>
 <li><a href="#group">Group</a></li>
@@ -324,6 +333,14 @@
 <li><a href="#sdkcloudbackupinfometadataentry">SdkCloudBackupInfo.MetadataEntry</a></li>
 <li><a href="#sdkcloudbackuprestorerequest">SdkCloudBackupRestoreRequest</a></li>
 <li><a href="#sdkcloudbackuprestoreresponse">SdkCloudBackupRestoreResponse</a></li>
+<li><a href="#sdkcloudbackupschedcreaterequest">SdkCloudBackupSchedCreateRequest</a></li>
+<li><a href="#sdkcloudbackupschedcreateresponse">SdkCloudBackupSchedCreateResponse</a></li>
+<li><a href="#sdkcloudbackupscheddeleterequest">SdkCloudBackupSchedDeleteRequest</a></li>
+<li><a href="#sdkcloudbackupscheddeleteresponse">SdkCloudBackupSchedDeleteResponse</a></li>
+<li><a href="#sdkcloudbackupschedenumeraterequest">SdkCloudBackupSchedEnumerateRequest</a></li>
+<li><a href="#sdkcloudbackupschedenumerateresponse">SdkCloudBackupSchedEnumerateResponse</a></li>
+<li><a href="#sdkcloudbackupschedenumerateresponsecloudschedlistentry">SdkCloudBackupSchedEnumerateResponse.CloudSchedListEntry</a></li>
+<li><a href="#sdkcloudbackupscheduleinfo">SdkCloudBackupScheduleInfo</a></li>
 <li><a href="#sdkcloudbackupstatechangerequest">SdkCloudBackupStateChangeRequest</a></li>
 <li><a href="#sdkcloudbackupstatechangeresponse">SdkCloudBackupStateChangeResponse</a></li>
 <li><a href="#sdkcloudbackupstatus">SdkCloudBackupStatus</a></li>
@@ -393,6 +410,8 @@
 <li><a href="#sdkvolumemountrequest">SdkVolumeMountRequest</a></li>
 <li><a href="#sdkvolumemountrequestoptionsentry">SdkVolumeMountRequest.OptionsEntry</a></li>
 <li><a href="#sdkvolumemountresponse">SdkVolumeMountResponse</a></li>
+<li><a href="#sdkvolumesetrequest">SdkVolumeSetRequest</a></li>
+<li><a href="#sdkvolumesetresponse">SdkVolumeSetResponse</a></li>
 <li><a href="#sdkvolumesnapshotcreaterequest">SdkVolumeSnapshotCreateRequest</a></li>
 <li><a href="#sdkvolumesnapshotcreaterequestlabelsentry">SdkVolumeSnapshotCreateRequest.LabelsEntry</a></li>
 <li><a href="#sdkvolumesnapshotcreateresponse">SdkVolumeSnapshotCreateResponse</a></li>
@@ -429,6 +448,8 @@
 <li><a href="#volumesetresponse">VolumeSetResponse</a></li>
 <li><a href="#volumespec">VolumeSpec</a></li>
 <li><a href="#volumespecvolumelabelsentry">VolumeSpec.VolumeLabelsEntry</a></li>
+<li><a href="#volumespecset">VolumeSpecSet</a></li>
+<li><a href="#volumespecsetvolumelabelsentry">VolumeSpecSet.VolumeLabelsEntry</a></li>
 <li><a href="#volumestateaction">VolumeStateAction</a></li>
 </ul>
 </li>
@@ -437,6 +458,9 @@
 <li>Enums<ul>
 <li><a href="#alertactiontype">AlertActionType</a></li>
 <li><a href="#attachstate">AttachState</a></li>
+<li><a href="#cloudmigrateoperationtype">CloudMigrate.OperationType</a></li>
+<li><a href="#cloudmigratestage">CloudMigrate.Stage</a></li>
+<li><a href="#cloudmigratestatus">CloudMigrate.Status</a></li>
 <li><a href="#clusternotify">ClusterNotify</a></li>
 <li><a href="#costype">CosType</a></li>
 <li><a href="#drivertype">DriverType</a></li>
@@ -462,100 +486,145 @@
 <li><a href="#scalar-value-types">Scalar Value Types</a></li>
 </ul>
 <h1 id="openstorageapiopenstoragecloudbackup">OpenStorageCloudBackup </h1>
+<p>OpenStorageCloudBackup service manages backing up volumes to a cloud
+location like Amazon, Google, or Azure.</p>
 <h2 id="create">Create</h2>
 <blockquote>
 <p><strong>rpc</strong> Create(<a href="#sdkcloudbackupcreaterequest">SdkCloudBackupCreateRequest</a>)
     <a href="#sdkcloudbackupcreateresponse">SdkCloudBackupCreateResponse</a></p>
 </blockquote>
-<p>Create</p>
+<p>Creates a backup request for a specified volume. Use
+OpenStorageCloudBackup.Status() to get the current status of the
+backup request.</p>
 <h2 id="restore">Restore</h2>
 <blockquote>
 <p><strong>rpc</strong> Restore(<a href="#sdkcloudbackuprestorerequest">SdkCloudBackupRestoreRequest</a>)
     <a href="#sdkcloudbackuprestoreresponse">SdkCloudBackupRestoreResponse</a></p>
 </blockquote>
-<p>Restore</p>
+<p>Restore creates a new volume from a backup id. The newly created volume
+has an ha_level (number of replicas) of only 1. To increase the number of
+replicas, use OpenStorageVolume.Set() to change the ha_level.</p>
 <h2 id="delete">Delete</h2>
 <blockquote>
 <p><strong>rpc</strong> Delete(<a href="#sdkcloudbackupdeleterequest">SdkCloudBackupDeleteRequest</a>)
     <a href="#sdkcloudbackupdeleteresponse">SdkCloudBackupDeleteResponse</a></p>
 </blockquote>
-<p>Delete</p>
+<p>Delete deletes a backup stored in the cloud. If the backup is an incremental
+backup and other backups are dependent on it, it will not be able to be deleted.</p>
 <h2 id="deleteall">DeleteAll</h2>
 <blockquote>
 <p><strong>rpc</strong> DeleteAll(<a href="#sdkcloudbackupdeleteallrequest">SdkCloudBackupDeleteAllRequest</a>)
     <a href="#sdkcloudbackupdeleteallresponse">SdkCloudBackupDeleteAllResponse</a></p>
 </blockquote>
-<p>DeleteAll</p>
+<p>DeleteAll deletes all the backups in the cloud for the specified volume.</p>
 <h2 id="enumerate">Enumerate</h2>
 <blockquote>
 <p><strong>rpc</strong> Enumerate(<a href="#sdkcloudbackupenumeraterequest">SdkCloudBackupEnumerateRequest</a>)
     <a href="#sdkcloudbackupenumerateresponse">SdkCloudBackupEnumerateResponse</a></p>
 </blockquote>
-<p>Enumerate</p>
+<p>Return a list of backups for the specified volume</p>
 <h2 id="status">Status</h2>
 <blockquote>
 <p><strong>rpc</strong> Status(<a href="#sdkcloudbackupstatusrequest">SdkCloudBackupStatusRequest</a>)
     <a href="#sdkcloudbackupstatusresponse">SdkCloudBackupStatusResponse</a></p>
 </blockquote>
-<p>Status</p>
+<p>Status returns the status of any cloud backups of a volume</p>
 <h2 id="catalog">Catalog</h2>
 <blockquote>
 <p><strong>rpc</strong> Catalog(<a href="#sdkcloudbackupcatalogrequest">SdkCloudBackupCatalogRequest</a>)
     <a href="#sdkcloudbackupcatalogresponse">SdkCloudBackupCatalogResponse</a></p>
 </blockquote>
-<p>Catalog</p>
+<p>Catalog returns a list of the contents in the backup</p>
 <h2 id="history">History</h2>
 <blockquote>
 <p><strong>rpc</strong> History(<a href="#sdkcloudbackuphistoryrequest">SdkCloudBackupHistoryRequest</a>)
     <a href="#sdkcloudbackuphistoryresponse">SdkCloudBackupHistoryResponse</a></p>
 </blockquote>
-<p>History</p>
+<p>History returns a list of backups for a specified volume</p>
 <h2 id="statechange">StateChange</h2>
 <blockquote>
 <p><strong>rpc</strong> StateChange(<a href="#sdkcloudbackupstatechangerequest">SdkCloudBackupStateChangeRequest</a>)
     <a href="#sdkcloudbackupstatechangeresponse">SdkCloudBackupStateChangeResponse</a></p>
 </blockquote>
-<p>StateChange
+<p>StateChange can be used to stop, pause, and restart a backup</p>
+<h2 id="schedcreate">SchedCreate</h2>
+<blockquote>
+<p><strong>rpc</strong> SchedCreate(<a href="#sdkcloudbackupschedcreaterequest">SdkCloudBackupSchedCreateRequest</a>)
+    <a href="#sdkcloudbackupschedcreateresponse">SdkCloudBackupSchedCreateResponse</a></p>
+</blockquote>
+<p>Create cloud backup schedule</p>
+<h2 id="scheddelete">SchedDelete</h2>
+<blockquote>
+<p><strong>rpc</strong> SchedDelete(<a href="#sdkcloudbackupscheddeleterequest">SdkCloudBackupSchedDeleteRequest</a>)
+    <a href="#sdkcloudbackupscheddeleteresponse">SdkCloudBackupSchedDeleteResponse</a></p>
+</blockquote>
+<p>Delete cloud backup schedule</p>
+<h2 id="schedenumerate">SchedEnumerate</h2>
+<blockquote>
+<p><strong>rpc</strong> SchedEnumerate(<a href="#sdkcloudbackupschedenumeraterequest">SdkCloudBackupSchedEnumerateRequest</a>)
+    <a href="#sdkcloudbackupschedenumerateresponse">SdkCloudBackupSchedEnumerateResponse</a></p>
+</blockquote>
+<p>Enumerate cloud backup schedules
  <!-- end methods --></p>
 <h1 id="openstorageapiopenstoragecluster">OpenStorageCluster </h1>
+<p>OpenStorageCluster service provides the methods to manage the cluster</p>
 <h2 id="enumerate">Enumerate</h2>
 <blockquote>
 <p><strong>rpc</strong> Enumerate(<a href="#sdkclusterenumeraterequest">SdkClusterEnumerateRequest</a>)
     <a href="#sdkclusterenumerateresponse">SdkClusterEnumerateResponse</a></p>
 </blockquote>
-<p>Enumerate lists all the nodes in the cluster.</p>
+<p>Enumerate returns information about the cluster and the unique ids of
+all the nodes in the cluster.</p>
 <h2 id="inspect">Inspect</h2>
 <blockquote>
 <p><strong>rpc</strong> Inspect(<a href="#sdkclusterinspectrequest">SdkClusterInspectRequest</a>)
     <a href="#sdkclusterinspectresponse">SdkClusterInspectResponse</a></p>
 </blockquote>
-<p>Inspect the node given a UUID.</p>
+<p>Inspect returns information about the specified node</p>
 <h2 id="alertenumerate">AlertEnumerate</h2>
 <blockquote>
 <p><strong>rpc</strong> AlertEnumerate(<a href="#sdkclusteralertenumeraterequest">SdkClusterAlertEnumerateRequest</a>)
     <a href="#sdkclusteralertenumerateresponse">SdkClusterAlertEnumerateResponse</a></p>
 </blockquote>
-<p>Get a list of alerts from the storage cluster</p>
+<p>AlertEnumerate returns a list of alerts from the storage cluster</p>
 <h2 id="alertclear">AlertClear</h2>
 <blockquote>
 <p><strong>rpc</strong> AlertClear(<a href="#sdkclusteralertclearrequest">SdkClusterAlertClearRequest</a>)
     <a href="#sdkclusteralertclearresponse">SdkClusterAlertClearResponse</a></p>
 </blockquote>
-<p>Clear the alert for a given resource</p>
+<p>AlertClear clears the alert for a given resource</p>
 <h2 id="alertdelete">AlertDelete</h2>
 <blockquote>
 <p><strong>rpc</strong> AlertDelete(<a href="#sdkclusteralertdeleterequest">SdkClusterAlertDeleteRequest</a>)
     <a href="#sdkclusteralertdeleteresponse">SdkClusterAlertDeleteResponse</a></p>
 </blockquote>
-<p>Erases an alert for a given resource
+<p>AlertDelete deletes an alert for all resources
  <!-- end methods --></p>
 <h1 id="openstorageapiopenstoragecredentials">OpenStorageCredentials </h1>
+<p>OpenStorageCredentials is a service used to manage the cloud credentials
+which can then be used by the OpenStorageCloudBackup service</p>
 <h2 id="create">Create</h2>
 <blockquote>
 <p><strong>rpc</strong> Create(<a href="#sdkcredentialcreaterequest">SdkCredentialCreateRequest</a>)
     <a href="#sdkcredentialcreateresponse">SdkCredentialCreateResponse</a></p>
 </blockquote>
-<p>Create cloud credentials</p>
+<p>Create is used to submit cloud credentials. It will return an
+id of the credentials once they are verified to work.</p>
+<h5 id="example">Example</h5>
+<p><div class="codetabs"><div class="codetabs-header"><div class="tab active" data-codetab="0">Golang</div><div class="tab" data-codetab="1">Python</div></div><div class="codetabs-body"><div class="tab active" data-codetab="0"><pre class="language-"><code class="lang-go">id<span class="token punctuation">,</span> err <span class="token operator">:=</span> client<span class="token punctuation">.</span><span class="token function">Create</span><span class="token punctuation">(</span>context<span class="token punctuation">.</span><span class="token function">Background</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>api<span class="token punctuation">.</span>SdkCredentialCreateRequest<span class="token punctuation">{</span>
+  CredentialType<span class="token punctuation">:</span> <span class="token operator">&amp;</span>api<span class="token punctuation">.</span>SdkCredentialCreateRequest_AwsCredential<span class="token punctuation">{</span>
+    AwsCredential<span class="token punctuation">:</span> <span class="token operator">&amp;</span>api<span class="token punctuation">.</span>SdkAwsCredentialRequest<span class="token punctuation">{</span>
+    AccessKey<span class="token punctuation">:</span> <span class="token string">&quot;dummy-access&quot;</span><span class="token punctuation">,</span>
+    SecretKey<span class="token punctuation">:</span> <span class="token string">&quot;dummy-secret&quot;</span><span class="token punctuation">,</span>
+    Endpoint<span class="token punctuation">:</span>  <span class="token string">&quot;dummy-endpoint&quot;</span><span class="token punctuation">,</span>
+    Region<span class="token punctuation">:</span>    <span class="token string">&quot;dummy-region&quot;</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre></div><div class="tab" data-codetab="1"><pre class="language-"><code class="lang-py">en_resp <span class="token operator">=</span> client<span class="token punctuation">.</span>Create<span class="token punctuation">(</span>api_pb2<span class="token punctuation">.</span>SdkCredentialCreateRequest<span class="token punctuation">(</span>
+  aws_credential<span class="token operator">=</span>api_pb2<span class="token punctuation">.</span>SdkAwsCredentialRequest<span class="token punctuation">(</span>
+    access_key<span class="token operator">=</span><span class="token string">&apos;dummy-access&apos;</span><span class="token punctuation">,</span>
+    secret_key<span class="token operator">=</span><span class="token string">&apos;dumm-secret&apos;</span><span class="token punctuation">,</span>
+    endpoint<span class="token operator">=</span><span class="token string">&apos;dummy-endpoint&apos;</span><span class="token punctuation">,</span>
+    region<span class="token operator">=</span><span class="token string">&apos;dummy-region&apos;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre></div></div></div></p>
 <h2 id="enumerate">Enumerate</h2>
 <blockquote>
 <p><strong>rpc</strong> Enumerate(<a href="#sdkcredentialenumeraterequest">SdkCredentialEnumerateRequest</a>)
@@ -567,7 +636,7 @@
 <p><strong>rpc</strong> Inspect(<a href="#sdkcredentialinspectrequest">SdkCredentialInspectRequest</a>)
     <a href="#sdkcredentialinspectresponse">SdkCredentialInspectResponse</a></p>
 </blockquote>
-<p>Inspect returns the information about a credential</p>
+<p>Inspect returns the information about a credential, but does not return the secret key.</p>
 <h2 id="delete">Delete</h2>
 <blockquote>
 <p><strong>rpc</strong> Delete(<a href="#sdkcredentialdeleterequest">SdkCredentialDeleteRequest</a>)
@@ -579,139 +648,172 @@
 <p><strong>rpc</strong> Validate(<a href="#sdkcredentialvalidaterequest">SdkCredentialValidateRequest</a>)
     <a href="#sdkcredentialvalidateresponse">SdkCredentialValidateResponse</a></p>
 </blockquote>
-<p>Validate a specified credential
+<p>Validate is used to validate credentials
  <!-- end methods --></p>
 <h1 id="openstorageapiopenstorageobjectstore">OpenStorageObjectstore </h1>
+<p>OpenStorageObjectstore is a service used to manage object store services on volumes</p>
 <h2 id="inspect">Inspect</h2>
 <blockquote>
 <p><strong>rpc</strong> Inspect(<a href="#sdkobjectstoreinspectrequest">SdkObjectstoreInspectRequest</a>)
     <a href="#sdkobjectstoreinspectresponse">SdkObjectstoreInspectResponse</a></p>
 </blockquote>
-<p>Inspect returns current status of objectstore</p>
+<p>Inspect returns information about the object store endpoint</p>
 <h2 id="create">Create</h2>
 <blockquote>
 <p><strong>rpc</strong> Create(<a href="#sdkobjectstorecreaterequest">SdkObjectstoreCreateRequest</a>)
     <a href="#sdkobjectstorecreateresponse">SdkObjectstoreCreateResponse</a></p>
 </blockquote>
-<p>Creates objectstore on specified volume</p>
+<p>Creates creates an object store endpoint on specified volume</p>
 <h2 id="delete">Delete</h2>
 <blockquote>
 <p><strong>rpc</strong> Delete(<a href="#sdkobjectstoredeleterequest">SdkObjectstoreDeleteRequest</a>)
     <a href="#sdkobjectstoredeleteresponse">SdkObjectstoreDeleteResponse</a></p>
 </blockquote>
-<p>Deletes objectstore by id</p>
+<p>Delete destroys the object store endpoint on the volume</p>
 <h2 id="update">Update</h2>
 <blockquote>
 <p><strong>rpc</strong> Update(<a href="#sdkobjectstoreupdaterequest">SdkObjectstoreUpdateRequest</a>)
     <a href="#sdkobjectstoreupdateresponse">SdkObjectstoreUpdateResponse</a></p>
 </blockquote>
-<p>Updates provided objectstore status
+<p>Updates provided objectstore status.
+This call can be used to stop and start the server while maintaining the same
+object storage id.
  <!-- end methods --></p>
 <h1 id="openstorageapiopenstorageschedulepolicy">OpenStorageSchedulePolicy </h1>
+<p>OpenStorageSchedulePolicy service is used to manage the automated
+snapshots for a volume</p>
 <h2 id="create">Create</h2>
 <blockquote>
 <p><strong>rpc</strong> Create(<a href="#sdkschedulepolicycreaterequest">SdkSchedulePolicyCreateRequest</a>)
     <a href="#sdkschedulepolicycreateresponse">SdkSchedulePolicyCreateResponse</a></p>
 </blockquote>
-<p>Create Schedule Policy for snapshots</p>
+<p>Create creates a new snapshot schedule. They can be setup daily,
+weekly, or monthly.</p>
 <h2 id="update">Update</h2>
 <blockquote>
 <p><strong>rpc</strong> Update(<a href="#sdkschedulepolicyupdaterequest">SdkSchedulePolicyUpdateRequest</a>)
     <a href="#sdkschedulepolicyupdateresponse">SdkSchedulePolicyUpdateResponse</a></p>
 </blockquote>
-<p>Update Schedule Policy</p>
+<p>Update a snapshot schedule</p>
 <h2 id="enumerate">Enumerate</h2>
 <blockquote>
 <p><strong>rpc</strong> Enumerate(<a href="#sdkschedulepolicyenumeraterequest">SdkSchedulePolicyEnumerateRequest</a>)
     <a href="#sdkschedulepolicyenumerateresponse">SdkSchedulePolicyEnumerateResponse</a></p>
 </blockquote>
+<p>Enumerate returns a list of schedules</p>
 <h2 id="inspect">Inspect</h2>
 <blockquote>
 <p><strong>rpc</strong> Inspect(<a href="#sdkschedulepolicyinspectrequest">SdkSchedulePolicyInspectRequest</a>)
     <a href="#sdkschedulepolicyinspectresponse">SdkSchedulePolicyInspectResponse</a></p>
 </blockquote>
-<p>Inspect Schedule Policy</p>
+<p>Inspect returns information about a specified schedule</p>
 <h2 id="delete">Delete</h2>
 <blockquote>
 <p><strong>rpc</strong> Delete(<a href="#sdkschedulepolicydeleterequest">SdkSchedulePolicyDeleteRequest</a>)
     <a href="#sdkschedulepolicydeleteresponse">SdkSchedulePolicyDeleteResponse</a></p>
 </blockquote>
-<p>Delete Schedule Policy
+<p>Delete removes a snapshot schedule
  <!-- end methods --></p>
 <h1 id="openstorageapiopenstoragevolume">OpenStorageVolume </h1>
+<p>OpenStorageVolume is a service used to manage the volumes of a storage system</p>
 <h2 id="create">Create</h2>
 <blockquote>
 <p><strong>rpc</strong> Create(<a href="#sdkvolumecreaterequest">SdkVolumeCreateRequest</a>)
     <a href="#sdkvolumecreateresponse">SdkVolumeCreateResponse</a></p>
 </blockquote>
-<p>Creates a new volume</p>
+<p>Create creates a volume according to the specification provided</p>
+<h5 id="example">Example</h5>
+<p><div class="codetabs"><div class="codetabs-header"><div class="tab active" data-codetab="0">Golang</div><div class="tab" data-codetab="1">Python</div></div><div class="codetabs-body"><div class="tab active" data-codetab="0"><pre class="language-"><code class="lang-go">id<span class="token punctuation">,</span> err <span class="token operator">:=</span> client<span class="token punctuation">.</span><span class="token function">Create</span><span class="token punctuation">(</span>context<span class="token punctuation">.</span><span class="token function">Background</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>api<span class="token punctuation">.</span>SdkVolumeCreateRequest<span class="token punctuation">{</span>
+  Name<span class="token punctuation">:</span> <span class="token string">&quot;volume-12345-east&quot;</span><span class="token punctuation">,</span>
+  Spec<span class="token punctuation">:</span> <span class="token operator">&amp;</span>api<span class="token punctuation">.</span>VolumeSpec <span class="token punctuation">{</span>
+    Size<span class="token punctuation">:</span> <span class="token number">1234567</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre></div><div class="tab" data-codetab="1"><pre class="language-"><code class="lang-py">en_resp <span class="token operator">=</span> client<span class="token punctuation">.</span>Create<span class="token punctuation">(</span>api_pb2<span class="token punctuation">.</span>SdkVolumeCreateRequest<span class="token punctuation">(</span>
+  name<span class="token operator">=</span><span class="token string">&quot;volume-12345-east&quot;</span><span class="token punctuation">,</span>
+  spec<span class="token operator">=</span>api_pb2<span class="token punctuation">.</span>VolumeSpec<span class="token punctuation">(</span>size<span class="token operator">=</span><span class="token number">1234567</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre></div></div></div></p>
 <h2 id="clone">Clone</h2>
 <blockquote>
 <p><strong>rpc</strong> Clone(<a href="#sdkvolumeclonerequest">SdkVolumeCloneRequest</a>)
     <a href="#sdkvolumecloneresponse">SdkVolumeCloneResponse</a></p>
 </blockquote>
-<p>Clone creates a new volume cloned from an existing volume</p>
+<p>Clone creates a new writable volume cloned from an existing volume</p>
 <h2 id="delete">Delete</h2>
 <blockquote>
 <p><strong>rpc</strong> Delete(<a href="#sdkvolumedeleterequest">SdkVolumeDeleteRequest</a>)
     <a href="#sdkvolumedeleteresponse">SdkVolumeDeleteResponse</a></p>
 </blockquote>
-<p>Delete a volume</p>
+<p>Delete deletes the provided volume</p>
 <h2 id="inspect">Inspect</h2>
 <blockquote>
 <p><strong>rpc</strong> Inspect(<a href="#sdkvolumeinspectrequest">SdkVolumeInspectRequest</a>)
     <a href="#sdkvolumeinspectresponse">SdkVolumeInspectResponse</a></p>
 </blockquote>
-<p>Get information on a volume</p>
+<p>Inspect returns information about a volume</p>
+<h2 id="set">Set</h2>
+<blockquote>
+<p><strong>rpc</strong> Set(<a href="#sdkvolumesetrequest">SdkVolumeSetRequest</a>)
+    <a href="#sdkvolumesetresponse">SdkVolumeSetResponse</a></p>
+</blockquote>
+<p>Set provides a method for manipulating the specification and attributes of a volume.
+Set can be used to resize a volume, update labels, change replica count, and much more.</p>
 <h2 id="enumerate">Enumerate</h2>
 <blockquote>
 <p><strong>rpc</strong> Enumerate(<a href="#sdkvolumeenumeraterequest">SdkVolumeEnumerateRequest</a>)
     <a href="#sdkvolumeenumerateresponse">SdkVolumeEnumerateResponse</a></p>
 </blockquote>
-<p>Get a list of volumes</p>
+<p>Enumerate returns a list of volume ids that match the labels if any are provided.</p>
 <h2 id="snapshotcreate">SnapshotCreate</h2>
 <blockquote>
 <p><strong>rpc</strong> SnapshotCreate(<a href="#sdkvolumesnapshotcreaterequest">SdkVolumeSnapshotCreateRequest</a>)
     <a href="#sdkvolumesnapshotcreateresponse">SdkVolumeSnapshotCreateResponse</a></p>
 </blockquote>
-<p>Create a snapshot of a volume. This creates an immutable (read-only),
+<p>SnapshotCreate creates a snapshot of a volume. This creates an immutable (read-only),
 point-in-time snapshot of a volume.</p>
 <h2 id="snapshotrestore">SnapshotRestore</h2>
 <blockquote>
 <p><strong>rpc</strong> SnapshotRestore(<a href="#sdkvolumesnapshotrestorerequest">SdkVolumeSnapshotRestoreRequest</a>)
     <a href="#sdkvolumesnapshotrestoreresponse">SdkVolumeSnapshotRestoreResponse</a></p>
 </blockquote>
-<p>Restores a volume to a specified snapshot</p>
+<p>SnapshotRestore restores a volume to a specified snapshot</p>
 <h2 id="snapshotenumerate">SnapshotEnumerate</h2>
 <blockquote>
 <p><strong>rpc</strong> SnapshotEnumerate(<a href="#sdkvolumesnapshotenumeraterequest">SdkVolumeSnapshotEnumerateRequest</a>)
     <a href="#sdkvolumesnapshotenumerateresponse">SdkVolumeSnapshotEnumerateResponse</a></p>
 </blockquote>
-<p>List the number of snapshots for a specific volume</p>
+<p>SnapshotEnumerate returns a list of snapshots for a specific volume
+that match the labels provided if any.</p>
 <h2 id="attach">Attach</h2>
 <blockquote>
 <p><strong>rpc</strong> Attach(<a href="#sdkvolumeattachrequest">SdkVolumeAttachRequest</a>)
     <a href="#sdkvolumeattachresponse">SdkVolumeAttachResponse</a></p>
 </blockquote>
-<p>Attach device to host</p>
+<p>Attach attaches device to the host that the client is communicating with.
+NOTE: Please see <a href="https://github.com/libopenstorage/openstorage/issues/381" target="_blank">#381</a> for more
+information about a new feature to allow attachment to any node.</p>
 <h2 id="detach">Detach</h2>
 <blockquote>
 <p><strong>rpc</strong> Detach(<a href="#sdkvolumedetachrequest">SdkVolumeDetachRequest</a>)
     <a href="#sdkvolumedetachresponse">SdkVolumeDetachResponse</a></p>
 </blockquote>
-<p>Detaches the volume from the node.</p>
+<p>Detaches a the volume from the host that the client is communicating with
+NOTE: Please see <a href="https://github.com/libopenstorage/openstorage/issues/381" target="_blank">#381</a> for more
+information about a new feature to allow attachment to any node.</p>
 <h2 id="mount">Mount</h2>
 <blockquote>
 <p><strong>rpc</strong> Mount(<a href="#sdkvolumemountrequest">SdkVolumeMountRequest</a>)
     <a href="#sdkvolumemountresponse">SdkVolumeMountResponse</a></p>
 </blockquote>
-<p>Attaches the volume to a node.</p>
+<p>Mount mounts an attached volume in the host that the client is communicating with
+NOTE: Please see <a href="https://github.com/libopenstorage/openstorage/issues/381" target="_blank">#381</a> for more
+information about a new feature to allow attachment to any node.</p>
 <h2 id="unmount">Unmount</h2>
 <blockquote>
 <p><strong>rpc</strong> Unmount(<a href="#sdkvolumeunmountrequest">SdkVolumeUnmountRequest</a>)
     <a href="#sdkvolumeunmountresponse">SdkVolumeUnmountResponse</a></p>
 </blockquote>
-<p>Unmount volume at specified path
+<p>Unmount unmounts a mounted volume in the host that the client is communicating with
+NOTE: Please see <a href="https://github.com/libopenstorage/openstorage/issues/381" target="_blank">#381</a> for more
+information about a new feature to allow attachment to any node.
  <!-- end methods -->
  <!-- end services --></p>
 <h1 id="messages">Messages</h1>
@@ -841,12 +943,22 @@ swagger:model</p>
 <tr>
 <td>ttl</td>
 <td><a href="#uint64"> uint64</a></td>
-<td>TTL in seconds for this Alert</td>
+<td>Time-to-live in seconds for this Alert</td>
 </tr>
 <tr>
 <td>unique_tag</td>
 <td><a href="#string"> string</a></td>
 <td>UniqueTag helps identify a unique alert for a given resouce</td>
+</tr>
+<tr>
+<td>count</td>
+<td><a href="#int64"> int64</a></td>
+<td>Count of such alerts raised so far.</td>
+</tr>
+<tr>
+<td>first_seen</td>
+<td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
+<td>Timestamp when such alert was raised the very first time.</td>
 </tr>
 </tbody>
 </table>
@@ -867,6 +979,190 @@ swagger:model</p>
 <tr>
 <td>alert</td>
 <td><a href="#alert">repeated Alert</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="cloudmigrate">CloudMigrate </h2>
+ <!-- end HasFields -->
+<h2 id="cloudmigratecancelrequest">CloudMigrateCancelRequest </h2>
+<p>Request to stop a cloud migration</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>operation</td>
+<td><a href="#cloudmigrateoperationtype"> CloudMigrate.OperationType</a></td>
+<td>The type of operation to cancel</td>
+</tr>
+<tr>
+<td>cluster_id</td>
+<td><a href="#string"> string</a></td>
+<td>ID of the cluster to which migration should be cancelled</td>
+</tr>
+<tr>
+<td>target_id</td>
+<td><a href="#string"> string</a></td>
+<td>Depending on the operation type this can be a VolumeID or VolumeGroupID</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="cloudmigrateinfo">CloudMigrateInfo </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cluster_id</td>
+<td><a href="#string"> string</a></td>
+<td>ID of the cluster where the volume is being migrated</td>
+</tr>
+<tr>
+<td>local_volume_id</td>
+<td><a href="#string"> string</a></td>
+<td>ID of the volume on the local cluster</td>
+</tr>
+<tr>
+<td>local_volume_name</td>
+<td><a href="#string"> string</a></td>
+<td>Name of the volume on the local cluster</td>
+</tr>
+<tr>
+<td>remote_volume_id</td>
+<td><a href="#string"> string</a></td>
+<td>ID of the volume on the remote cluster</td>
+</tr>
+<tr>
+<td>cloudbackup_id</td>
+<td><a href="#string"> string</a></td>
+<td>ID of the cloudbackup used for the migration</td>
+</tr>
+<tr>
+<td>current_stage</td>
+<td><a href="#cloudmigratestage"> CloudMigrate.Stage</a></td>
+<td>Current stage of the volume migration</td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="#cloudmigratestatus"> CloudMigrate.Status</a></td>
+<td>Status of the current stage</td>
+</tr>
+<tr>
+<td>last_update</td>
+<td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
+<td>Last time the status was updated</td>
+</tr>
+<tr>
+<td>last_success</td>
+<td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
+<td>Time of the last successful migration of the volume</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="cloudmigrateinfolist">CloudMigrateInfoList </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>list</td>
+<td><a href="#cloudmigrateinfo">repeated CloudMigrateInfo</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="cloudmigratestartrequest">CloudMigrateStartRequest </h2>
+<p>Request to start a cloud migration</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>operation</td>
+<td><a href="#cloudmigrateoperationtype"> CloudMigrate.OperationType</a></td>
+<td>The type of operation to start</td>
+</tr>
+<tr>
+<td>cluster_id</td>
+<td><a href="#string"> string</a></td>
+<td>ID of the cluster to which volumes are to be migrated</td>
+</tr>
+<tr>
+<td>target_id</td>
+<td><a href="#string"> string</a></td>
+<td>Depending on the operation type this can be a VolumeID or VolumeGroupID</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="cloudmigratestatusresponse">CloudMigrateStatusResponse </h2>
+<p>Response with a status of the cloud migration operations</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>info</td>
+<td><a href="#cloudmigratestatusresponseinfoentry">map CloudMigrateStatusResponse.InfoEntry</a></td>
+<td>Map of cluster id to the status of volumes being migrated</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="cloudmigratestatusresponseinfoentry">CloudMigrateStatusResponse.InfoEntry </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="#cloudmigrateinfolist"> CloudMigrateInfoList</a></td>
 <td>none</td>
 </tr>
 </tbody>
@@ -1372,23 +1668,6 @@ swagger:model</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkcloudbackupcreateresponse">SdkCloudBackupCreateResponse </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>backup_id</td>
-<td><a href="#string"> string</a></td>
-<td>Id of the backup created</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkcloudbackupdeleteallrequest">SdkCloudBackupDeleteAllRequest </h2>
 <table>
@@ -1492,8 +1771,8 @@ swagger:model</p>
 </thead>
 <tbody>
 <tr>
-<td>backup_ids</td>
-<td><a href="#string">repeated string</a></td>
+<td>backups</td>
+<td><a href="#sdkcloudbackupinfo">repeated SdkCloudBackupInfo</a></td>
 <td>none</td>
 </tr>
 </tbody>
@@ -1683,6 +1962,144 @@ swagger:model</p>
 <td>restore_volume_id</td>
 <td><a href="#string"> string</a></td>
 <td>VolumeID to which the backup is being restored</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcloudbackupschedcreaterequest">SdkCloudBackupSchedCreateRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cloud_sched_info</td>
+<td><a href="#sdkcloudbackupscheduleinfo"> SdkCloudBackupScheduleInfo</a></td>
+<td>Cloud Backup Schedule info</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcloudbackupschedcreateresponse">SdkCloudBackupSchedCreateResponse </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>uuid</td>
+<td><a href="#string"> string</a></td>
+<td>UUID of newly created backup schedule</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcloudbackupscheddeleterequest">SdkCloudBackupSchedDeleteRequest </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>uuid</td>
+<td><a href="#string"> string</a></td>
+<td>UUID of cloud backup to delete</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcloudbackupscheddeleteresponse">SdkCloudBackupSchedDeleteResponse </h2>
+ <!-- end HasFields -->
+<h2 id="sdkcloudbackupschedenumeraterequest">SdkCloudBackupSchedEnumerateRequest </h2>
+ <!-- end HasFields -->
+<h2 id="sdkcloudbackupschedenumerateresponse">SdkCloudBackupSchedEnumerateResponse </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cloud_sched_list</td>
+<td><a href="#sdkcloudbackupschedenumerateresponsecloudschedlistentry">map SdkCloudBackupSchedEnumerateResponse.CloudSchedListEntry</a></td>
+<td>Returns list of backup schedules</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcloudbackupschedenumerateresponsecloudschedlistentry">SdkCloudBackupSchedEnumerateResponse.CloudSchedListEntry </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="#sdkcloudbackupscheduleinfo"> SdkCloudBackupScheduleInfo</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcloudbackupscheduleinfo">SdkCloudBackupScheduleInfo </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>src_volume_id</td>
+<td><a href="#string"> string</a></td>
+<td>SrcVolumeID is the schedule&apos;s source volume</td>
+</tr>
+<tr>
+<td>credential_uuid</td>
+<td><a href="#string"> string</a></td>
+<td>CredentialUUID is the cloud credential used with this schedule</td>
+</tr>
+<tr>
+<td>schedule</td>
+<td><a href="#sdkschedulepolicyinterval"> SdkSchedulePolicyInterval</a></td>
+<td>Schedule is the frequence of backup</td>
+</tr>
+<tr>
+<td>max_backups</td>
+<td><a href="#uint64"> uint64</a></td>
+<td>MaxBackups are the maximum number of backups retained in cloud.Older backups are deleted</td>
 </tr>
 </tbody>
 </table>
@@ -1883,6 +2300,8 @@ swagger:model</p>
 <h2 id="sdkclusteralertdeleteresponse">SdkClusterAlertDeleteResponse </h2>
  <!-- end HasFields -->
 <h2 id="sdkclusteralertenumeraterequest">SdkClusterAlertEnumerateRequest </h2>
+<p>This request contains the information needed to get alerts from
+the storage system</p>
 <table>
 <thead>
 <tr>
@@ -1895,23 +2314,24 @@ swagger:model</p>
 <tr>
 <td>time_start</td>
 <td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
-<td>Start time of alerts (required)</td>
+<td>Start time of alerts</td>
 </tr>
 <tr>
 <td>time_end</td>
 <td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
-<td>End time of alerts (required)</td>
+<td>End time of alerts</td>
 </tr>
 <tr>
 <td>resource</td>
 <td><a href="#resourcetype"> ResourceType</a></td>
-<td>Type of resource (required)</td>
+<td>Type of resource</td>
 </tr>
 </tbody>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkclusteralertenumerateresponse">SdkClusterAlertEnumerateResponse </h2>
+<p>This response provides a list of the alerts at the specified time.</p>
 <table>
 <thead>
 <tr>
@@ -1931,8 +2351,10 @@ swagger:model</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkclusterenumeraterequest">SdkClusterEnumerateRequest </h2>
+<p>This request is an empty request</p>
  <!-- end HasFields -->
 <h2 id="sdkclusterenumerateresponse">SdkClusterEnumerateResponse </h2>
+<p>This response returns information about the cluster</p>
 <table>
 <thead>
 <tr>
@@ -1952,6 +2374,7 @@ swagger:model</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkclusterinspectrequest">SdkClusterInspectRequest </h2>
+<p>Contains the request when inspecting a node</p>
 <table>
 <thead>
 <tr>
@@ -1971,6 +2394,7 @@ swagger:model</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkclusterinspectresponse">SdkClusterInspectResponse </h2>
+<p>This response contains information about the respective node requested</p>
 <table>
 <thead>
 <tr>
@@ -2914,6 +3338,39 @@ you will need to check if the value of credential_type is one of the ones below.
  <!-- end HasFields -->
 <h2 id="sdkvolumemountresponse">SdkVolumeMountResponse </h2>
  <!-- end HasFields -->
+<h2 id="sdkvolumesetrequest">SdkVolumeSetRequest </h2>
+<p>This request is used to adjust or set new values in the volume</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of the volume to update</td>
+</tr>
+<tr>
+<td>locator</td>
+<td><a href="#volumelocator"> VolumeLocator</a></td>
+<td>Change locator values. Some of these values may not be able to be changed. New labels will be added to the current volume labels. To delete a label, set the value of the label to an empty string.</td>
+</tr>
+<tr>
+<td>spec</td>
+<td><a href="#volumespecset"> VolumeSpecSet</a></td>
+<td>VolumeSpecSet provides a method to request that certain values in the VolumeSpec are changed. This is necessary as a separate variable because values like int and bool in the VolumeSpec cannot be determined if they are being requested to change in gRPC proto3. Some of these values may not be able to be changed. Here are a few examples of actions that can be accomplished using the VolumeSpec. To resize the volume: Set a new value in spec.size. To change number of replicas: Adjust spec.ha_level. To change the I/O Profile: Adjust spec.io_profile.</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkvolumesetresponse">SdkVolumeSetResponse </h2>
+<p>The response returns no data</p>
+ <!-- end HasFields -->
 <h2 id="sdkvolumesnapshotcreaterequest">SdkVolumeSnapshotCreateRequest </h2>
 <table>
 <thead>
@@ -3276,7 +3733,7 @@ swagger:model</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="storagecluster">StorageCluster </h2>
-<p>StorageCluster represents the state of the cluster</p>
+<p>StorageCluster represents the state and information about the cluster</p>
 <table>
 <thead>
 <tr>
@@ -3299,12 +3756,12 @@ swagger:model</p>
 <tr>
 <td>node_id</td>
 <td><a href="#string"> string</a></td>
-<td>NodeId is the id of the node servicing these requests</td>
+<td>The id of the node servicing these requests</td>
 </tr>
 <tr>
 <td>node_ids</td>
 <td><a href="#string">repeated string</a></td>
-<td>Nodes are a list of all the nodes on the cluster</td>
+<td>List of all the node ids in the cluster</td>
 </tr>
 </tbody>
 </table>
@@ -4056,7 +4513,7 @@ swagger:model</p>
 <tr>
 <td>size</td>
 <td><a href="#uint64"> uint64</a></td>
-<td>Size specifies the thin provisioned volume size.</td>
+<td>Size specifies the thin provisioned volume size in bytes</td>
 </tr>
 <tr>
 <td>format</td>
@@ -4196,6 +4653,165 @@ swagger:model</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
+<h2 id="volumespecset">VolumeSpecSet </h2>
+<p>VolumeSpecSet provides a method to set any of the VolumeSpec of an existing volume</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> ephemeral_opt.ephemeral</td>
+<td><a href="#bool"> bool</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> size_opt.size</td>
+<td><a href="#uint64"> uint64</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> format_opt.format</td>
+<td><a href="#fstype"> FSType</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> block_size_opt.block_size</td>
+<td><a href="#int64"> int64</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> ha_level_opt.ha_level</td>
+<td><a href="#int64"> int64</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> cos_opt.cos</td>
+<td><a href="#costype"> CosType</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> io_profile_opt.io_profile</td>
+<td><a href="#ioprofile"> IoProfile</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> dedupe_opt.dedupe</td>
+<td><a href="#bool"> bool</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> snapshot_interval_opt.snapshot_interval</td>
+<td><a href="#uint32"> uint32</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>volume_labels</td>
+<td><a href="#volumespecsetvolumelabelsentry">map VolumeSpecSet.VolumeLabelsEntry</a></td>
+<td>VolumeLabels configuration labels</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> shared_opt.shared</td>
+<td><a href="#bool"> bool</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>replica_set</td>
+<td><a href="#replicaset"> ReplicaSet</a></td>
+<td>ReplicaSet is the desired set of nodes for the volume data.</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> aggregation_level_opt.aggregation_level</td>
+<td><a href="#uint32"> uint32</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> encrypted_opt.encrypted</td>
+<td><a href="#bool"> bool</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> passphrase_opt.passphrase</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> snapshot_schedule_opt.snapshot_schedule</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> scale_opt.scale</td>
+<td><a href="#uint32"> uint32</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> sticky_opt.sticky</td>
+<td><a href="#bool"> bool</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> group_opt.group</td>
+<td><a href="#group"> Group</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> group_enforced_opt.group_enforced</td>
+<td><a href="#bool"> bool</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> compressed_opt.compressed</td>
+<td><a href="#bool"> bool</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> cascaded_opt.cascaded</td>
+<td><a href="#bool"> bool</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> journal_opt.journal</td>
+<td><a href="#bool"> bool</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> sharedv4_opt.sharedv4</td>
+<td><a href="#bool"> bool</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="volumespecsetvolumelabelsentry">VolumeSpecSet.VolumeLabelsEntry </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
 <h2 id="volumestateaction">VolumeStateAction </h2>
 <p>VolumeStateAction specifies desired actions.
 swagger:model</p>
@@ -4290,6 +4906,117 @@ swagger:model</p>
 <td>ATTACH_STATE_INTERNAL_SWITCH</td>
 <td>2</td>
 <td>Switching from External to Internal</td>
+</tr>
+</tbody>
+</table>
+<h2 id="cloudmigrateoperationtype">CloudMigrate.OperationType </h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>InvalidType</td>
+<td>0</td>
+<td>none</td>
+</tr>
+<tr>
+<td>MigrateCluster</td>
+<td>1</td>
+<td>Migrate all volumes in the cluster</td>
+</tr>
+<tr>
+<td>MigrateVolume</td>
+<td>2</td>
+<td>Migrate a single volume</td>
+</tr>
+<tr>
+<td>MigrateVolumeGroup</td>
+<td>3</td>
+<td>Migrate a group of volumes</td>
+</tr>
+</tbody>
+</table>
+<h2 id="cloudmigratestage">CloudMigrate.Stage </h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>InvalidStage</td>
+<td>0</td>
+<td>none</td>
+</tr>
+<tr>
+<td>Backup</td>
+<td>1</td>
+<td>none</td>
+</tr>
+<tr>
+<td>Restore</td>
+<td>2</td>
+<td>none</td>
+</tr>
+<tr>
+<td>VolumeUpdate</td>
+<td>3</td>
+<td>none</td>
+</tr>
+<tr>
+<td>Done</td>
+<td>4</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<h2 id="cloudmigratestatus">CloudMigrate.Status </h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>InvalidStatus</td>
+<td>0</td>
+<td>none</td>
+</tr>
+<tr>
+<td>Queued</td>
+<td>1</td>
+<td>none</td>
+</tr>
+<tr>
+<td>Initialized</td>
+<td>2</td>
+<td>none</td>
+</tr>
+<tr>
+<td>InProgress</td>
+<td>3</td>
+<td>none</td>
+</tr>
+<tr>
+<td>Failed</td>
+<td>4</td>
+<td>none</td>
+</tr>
+<tr>
+<td>Complete</td>
+<td>5</td>
+<td>none</td>
 </tr>
 </tbody>
 </table>
@@ -5149,10 +5876,14 @@ swagger:model</p>
 
             
                 
-                <a href="tutorial-python.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Python">
+                <a href="tutorial-python.html" class="navigation navigation-prev " aria-label="Previous page: Python">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
+                
+                <a href="status.html" class="navigation navigation-next " aria-label="Next page: API Status">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -5161,7 +5892,7 @@ swagger:model</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"API Reference","level":"1.6","depth":1,"previous":{"title":"Python","level":"1.5.2","depth":2,"path":"tutorial-python.md","ref":"tutorial-python.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"generated-api.md","mtime":"2018-07-09T20:19:22.882Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-07-09T21:47:30.152Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"API Reference","level":"1.5","depth":1,"next":{"title":"API Status","level":"1.6","depth":1,"path":"status.md","ref":"status.md","articles":[]},"previous":{"title":"Python","level":"1.4.2","depth":2,"path":"tutorial-python.md","ref":"tutorial-python.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"generated-api.md","mtime":"2018-07-10T18:57:48.946Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-07-10T18:58:37.836Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

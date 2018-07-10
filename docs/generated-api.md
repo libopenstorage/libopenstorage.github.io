@@ -19,6 +19,13 @@
     - [ActiveRequests](#activerequests)
     - [Alert](#alert)
     - [Alerts](#alerts)
+    - [CloudMigrate](#cloudmigrate)
+    - [CloudMigrateCancelRequest](#cloudmigratecancelrequest)
+    - [CloudMigrateInfo](#cloudmigrateinfo)
+    - [CloudMigrateInfoList](#cloudmigrateinfolist)
+    - [CloudMigrateStartRequest](#cloudmigratestartrequest)
+    - [CloudMigrateStatusResponse](#cloudmigratestatusresponse)
+    - [CloudMigrateStatusResponse.InfoEntry](#cloudmigratestatusresponseinfoentry)
     - [ClusterResponse](#clusterresponse)
     - [GraphDriverChanges](#graphdriverchanges)
     - [Group](#group)
@@ -51,6 +58,14 @@
     - [SdkCloudBackupInfo.MetadataEntry](#sdkcloudbackupinfometadataentry)
     - [SdkCloudBackupRestoreRequest](#sdkcloudbackuprestorerequest)
     - [SdkCloudBackupRestoreResponse](#sdkcloudbackuprestoreresponse)
+    - [SdkCloudBackupSchedCreateRequest](#sdkcloudbackupschedcreaterequest)
+    - [SdkCloudBackupSchedCreateResponse](#sdkcloudbackupschedcreateresponse)
+    - [SdkCloudBackupSchedDeleteRequest](#sdkcloudbackupscheddeleterequest)
+    - [SdkCloudBackupSchedDeleteResponse](#sdkcloudbackupscheddeleteresponse)
+    - [SdkCloudBackupSchedEnumerateRequest](#sdkcloudbackupschedenumeraterequest)
+    - [SdkCloudBackupSchedEnumerateResponse](#sdkcloudbackupschedenumerateresponse)
+    - [SdkCloudBackupSchedEnumerateResponse.CloudSchedListEntry](#sdkcloudbackupschedenumerateresponsecloudschedlistentry)
+    - [SdkCloudBackupScheduleInfo](#sdkcloudbackupscheduleinfo)
     - [SdkCloudBackupStateChangeRequest](#sdkcloudbackupstatechangerequest)
     - [SdkCloudBackupStateChangeResponse](#sdkcloudbackupstatechangeresponse)
     - [SdkCloudBackupStatus](#sdkcloudbackupstatus)
@@ -120,6 +135,8 @@
     - [SdkVolumeMountRequest](#sdkvolumemountrequest)
     - [SdkVolumeMountRequest.OptionsEntry](#sdkvolumemountrequestoptionsentry)
     - [SdkVolumeMountResponse](#sdkvolumemountresponse)
+    - [SdkVolumeSetRequest](#sdkvolumesetrequest)
+    - [SdkVolumeSetResponse](#sdkvolumesetresponse)
     - [SdkVolumeSnapshotCreateRequest](#sdkvolumesnapshotcreaterequest)
     - [SdkVolumeSnapshotCreateRequest.LabelsEntry](#sdkvolumesnapshotcreaterequestlabelsentry)
     - [SdkVolumeSnapshotCreateResponse](#sdkvolumesnapshotcreateresponse)
@@ -156,6 +173,8 @@
     - [VolumeSetResponse](#volumesetresponse)
     - [VolumeSpec](#volumespec)
     - [VolumeSpec.VolumeLabelsEntry](#volumespecvolumelabelsentry)
+    - [VolumeSpecSet](#volumespecset)
+    - [VolumeSpecSet.VolumeLabelsEntry](#volumespecsetvolumelabelsentry)
     - [VolumeStateAction](#volumestateaction)
   
 
@@ -163,6 +182,9 @@
 - Enums
     - [AlertActionType](#alertactiontype)
     - [AttachState](#attachstate)
+    - [CloudMigrate.OperationType](#cloudmigrateoperationtype)
+    - [CloudMigrate.Stage](#cloudmigratestage)
+    - [CloudMigrate.Status](#cloudmigratestatus)
     - [ClusterNotify](#clusternotify)
     - [CosType](#costype)
     - [DriverType](#drivertype)
@@ -189,106 +211,153 @@
 
 
 # OpenStorageCloudBackup {#openstorageapiopenstoragecloudbackup}
-
+OpenStorageCloudBackup service manages backing up volumes to a cloud
+location like Amazon, Google, or Azure.
 
 ## Create
 
 > **rpc** Create([SdkCloudBackupCreateRequest](#sdkcloudbackupcreaterequest))
     [SdkCloudBackupCreateResponse](#sdkcloudbackupcreateresponse)
 
-Create
+Creates a backup request for a specified volume. Use
+OpenStorageCloudBackup.Status() to get the current status of the
+backup request.
 ## Restore
 
 > **rpc** Restore([SdkCloudBackupRestoreRequest](#sdkcloudbackuprestorerequest))
     [SdkCloudBackupRestoreResponse](#sdkcloudbackuprestoreresponse)
 
-Restore
+Restore creates a new volume from a backup id. The newly created volume
+has an ha_level (number of replicas) of only 1. To increase the number of
+replicas, use OpenStorageVolume.Set() to change the ha_level.
 ## Delete
 
 > **rpc** Delete([SdkCloudBackupDeleteRequest](#sdkcloudbackupdeleterequest))
     [SdkCloudBackupDeleteResponse](#sdkcloudbackupdeleteresponse)
 
-Delete
+Delete deletes a backup stored in the cloud. If the backup is an incremental
+backup and other backups are dependent on it, it will not be able to be deleted.
 ## DeleteAll
 
 > **rpc** DeleteAll([SdkCloudBackupDeleteAllRequest](#sdkcloudbackupdeleteallrequest))
     [SdkCloudBackupDeleteAllResponse](#sdkcloudbackupdeleteallresponse)
 
-DeleteAll
+DeleteAll deletes all the backups in the cloud for the specified volume.
 ## Enumerate
 
 > **rpc** Enumerate([SdkCloudBackupEnumerateRequest](#sdkcloudbackupenumeraterequest))
     [SdkCloudBackupEnumerateResponse](#sdkcloudbackupenumerateresponse)
 
-Enumerate
+Return a list of backups for the specified volume
 ## Status
 
 > **rpc** Status([SdkCloudBackupStatusRequest](#sdkcloudbackupstatusrequest))
     [SdkCloudBackupStatusResponse](#sdkcloudbackupstatusresponse)
 
-Status
+Status returns the status of any cloud backups of a volume
 ## Catalog
 
 > **rpc** Catalog([SdkCloudBackupCatalogRequest](#sdkcloudbackupcatalogrequest))
     [SdkCloudBackupCatalogResponse](#sdkcloudbackupcatalogresponse)
 
-Catalog
+Catalog returns a list of the contents in the backup
 ## History
 
 > **rpc** History([SdkCloudBackupHistoryRequest](#sdkcloudbackuphistoryrequest))
     [SdkCloudBackupHistoryResponse](#sdkcloudbackuphistoryresponse)
 
-History
+History returns a list of backups for a specified volume
 ## StateChange
 
 > **rpc** StateChange([SdkCloudBackupStateChangeRequest](#sdkcloudbackupstatechangerequest))
     [SdkCloudBackupStateChangeResponse](#sdkcloudbackupstatechangeresponse)
 
-StateChange
+StateChange can be used to stop, pause, and restart a backup
+## SchedCreate
+
+> **rpc** SchedCreate([SdkCloudBackupSchedCreateRequest](#sdkcloudbackupschedcreaterequest))
+    [SdkCloudBackupSchedCreateResponse](#sdkcloudbackupschedcreateresponse)
+
+Create cloud backup schedule
+## SchedDelete
+
+> **rpc** SchedDelete([SdkCloudBackupSchedDeleteRequest](#sdkcloudbackupscheddeleterequest))
+    [SdkCloudBackupSchedDeleteResponse](#sdkcloudbackupscheddeleteresponse)
+
+Delete cloud backup schedule
+## SchedEnumerate
+
+> **rpc** SchedEnumerate([SdkCloudBackupSchedEnumerateRequest](#sdkcloudbackupschedenumeraterequest))
+    [SdkCloudBackupSchedEnumerateResponse](#sdkcloudbackupschedenumerateresponse)
+
+Enumerate cloud backup schedules
  <!-- end methods -->
 # OpenStorageCluster {#openstorageapiopenstoragecluster}
-
+OpenStorageCluster service provides the methods to manage the cluster
 
 ## Enumerate
 
 > **rpc** Enumerate([SdkClusterEnumerateRequest](#sdkclusterenumeraterequest))
     [SdkClusterEnumerateResponse](#sdkclusterenumerateresponse)
 
-Enumerate lists all the nodes in the cluster.
+Enumerate returns information about the cluster and the unique ids of
+all the nodes in the cluster.
 ## Inspect
 
 > **rpc** Inspect([SdkClusterInspectRequest](#sdkclusterinspectrequest))
     [SdkClusterInspectResponse](#sdkclusterinspectresponse)
 
-Inspect the node given a UUID.
+Inspect returns information about the specified node
 ## AlertEnumerate
 
 > **rpc** AlertEnumerate([SdkClusterAlertEnumerateRequest](#sdkclusteralertenumeraterequest))
     [SdkClusterAlertEnumerateResponse](#sdkclusteralertenumerateresponse)
 
-Get a list of alerts from the storage cluster
+AlertEnumerate returns a list of alerts from the storage cluster
 ## AlertClear
 
 > **rpc** AlertClear([SdkClusterAlertClearRequest](#sdkclusteralertclearrequest))
     [SdkClusterAlertClearResponse](#sdkclusteralertclearresponse)
 
-Clear the alert for a given resource
+AlertClear clears the alert for a given resource
 ## AlertDelete
 
 > **rpc** AlertDelete([SdkClusterAlertDeleteRequest](#sdkclusteralertdeleterequest))
     [SdkClusterAlertDeleteResponse](#sdkclusteralertdeleteresponse)
 
-Erases an alert for a given resource
+AlertDelete deletes an alert for all resources
  <!-- end methods -->
 # OpenStorageCredentials {#openstorageapiopenstoragecredentials}
-
+OpenStorageCredentials is a service used to manage the cloud credentials
+which can then be used by the OpenStorageCloudBackup service
 
 ## Create
 
 > **rpc** Create([SdkCredentialCreateRequest](#sdkcredentialcreaterequest))
     [SdkCredentialCreateResponse](#sdkcredentialcreateresponse)
 
-Create cloud credentials
+Create is used to submit cloud credentials. It will return an
+id of the credentials once they are verified to work.
+
+##### Example
+{% codetabs name="Golang", type="go" -%}
+id, err := client.Create(context.Background(), &api.SdkCredentialCreateRequest{
+  CredentialType: &api.SdkCredentialCreateRequest_AwsCredential{
+    AwsCredential: &api.SdkAwsCredentialRequest{
+    AccessKey: "dummy-access",
+    SecretKey: "dummy-secret",
+    Endpoint:  "dummy-endpoint",
+    Region:    "dummy-region",
+  },
+})
+{%- language name="Python", type="py" -%}
+en_resp = client.Create(api_pb2.SdkCredentialCreateRequest(
+  aws_credential=api_pb2.SdkAwsCredentialRequest(
+    access_key='dummy-access',
+    secret_key='dumm-secret',
+    endpoint='dummy-endpoint',
+    region='dummy-region')))
+{%- endcodetabs %}
 ## Enumerate
 
 > **rpc** Enumerate([SdkCredentialEnumerateRequest](#sdkcredentialenumeraterequest))
@@ -300,7 +369,7 @@ Enumerate returns a list of credential ids
 > **rpc** Inspect([SdkCredentialInspectRequest](#sdkcredentialinspectrequest))
     [SdkCredentialInspectResponse](#sdkcredentialinspectresponse)
 
-Inspect returns the information about a credential
+Inspect returns the information about a credential, but does not return the secret key.
 ## Delete
 
 > **rpc** Delete([SdkCredentialDeleteRequest](#sdkcredentialdeleterequest))
@@ -312,146 +381,180 @@ Delete a specified credential
 > **rpc** Validate([SdkCredentialValidateRequest](#sdkcredentialvalidaterequest))
     [SdkCredentialValidateResponse](#sdkcredentialvalidateresponse)
 
-Validate a specified credential
+Validate is used to validate credentials
  <!-- end methods -->
 # OpenStorageObjectstore {#openstorageapiopenstorageobjectstore}
-
+OpenStorageObjectstore is a service used to manage object store services on volumes
 
 ## Inspect
 
 > **rpc** Inspect([SdkObjectstoreInspectRequest](#sdkobjectstoreinspectrequest))
     [SdkObjectstoreInspectResponse](#sdkobjectstoreinspectresponse)
 
-Inspect returns current status of objectstore
+Inspect returns information about the object store endpoint
 ## Create
 
 > **rpc** Create([SdkObjectstoreCreateRequest](#sdkobjectstorecreaterequest))
     [SdkObjectstoreCreateResponse](#sdkobjectstorecreateresponse)
 
-Creates objectstore on specified volume
+Creates creates an object store endpoint on specified volume
 ## Delete
 
 > **rpc** Delete([SdkObjectstoreDeleteRequest](#sdkobjectstoredeleterequest))
     [SdkObjectstoreDeleteResponse](#sdkobjectstoredeleteresponse)
 
-Deletes objectstore by id
+Delete destroys the object store endpoint on the volume
 ## Update
 
 > **rpc** Update([SdkObjectstoreUpdateRequest](#sdkobjectstoreupdaterequest))
     [SdkObjectstoreUpdateResponse](#sdkobjectstoreupdateresponse)
 
-Updates provided objectstore status
+Updates provided objectstore status.
+This call can be used to stop and start the server while maintaining the same
+object storage id.
  <!-- end methods -->
 # OpenStorageSchedulePolicy {#openstorageapiopenstorageschedulepolicy}
-
+OpenStorageSchedulePolicy service is used to manage the automated
+snapshots for a volume
 
 ## Create
 
 > **rpc** Create([SdkSchedulePolicyCreateRequest](#sdkschedulepolicycreaterequest))
     [SdkSchedulePolicyCreateResponse](#sdkschedulepolicycreateresponse)
 
-Create Schedule Policy for snapshots
+Create creates a new snapshot schedule. They can be setup daily,
+weekly, or monthly.
 ## Update
 
 > **rpc** Update([SdkSchedulePolicyUpdateRequest](#sdkschedulepolicyupdaterequest))
     [SdkSchedulePolicyUpdateResponse](#sdkschedulepolicyupdateresponse)
 
-Update Schedule Policy
+Update a snapshot schedule
 ## Enumerate
 
 > **rpc** Enumerate([SdkSchedulePolicyEnumerateRequest](#sdkschedulepolicyenumeraterequest))
     [SdkSchedulePolicyEnumerateResponse](#sdkschedulepolicyenumerateresponse)
 
-
+Enumerate returns a list of schedules
 ## Inspect
 
 > **rpc** Inspect([SdkSchedulePolicyInspectRequest](#sdkschedulepolicyinspectrequest))
     [SdkSchedulePolicyInspectResponse](#sdkschedulepolicyinspectresponse)
 
-Inspect Schedule Policy
+Inspect returns information about a specified schedule
 ## Delete
 
 > **rpc** Delete([SdkSchedulePolicyDeleteRequest](#sdkschedulepolicydeleterequest))
     [SdkSchedulePolicyDeleteResponse](#sdkschedulepolicydeleteresponse)
 
-Delete Schedule Policy
+Delete removes a snapshot schedule
  <!-- end methods -->
 # OpenStorageVolume {#openstorageapiopenstoragevolume}
-
+OpenStorageVolume is a service used to manage the volumes of a storage system
 
 ## Create
 
 > **rpc** Create([SdkVolumeCreateRequest](#sdkvolumecreaterequest))
     [SdkVolumeCreateResponse](#sdkvolumecreateresponse)
 
-Creates a new volume
+Create creates a volume according to the specification provided
+
+##### Example
+{% codetabs name="Golang", type="go" -%}
+id, err := client.Create(context.Background(), &api.SdkVolumeCreateRequest{
+  Name: "volume-12345-east",
+  Spec: &api.VolumeSpec {
+    Size: 1234567,
+  },
+})
+{%- language name="Python", type="py" -%}
+en_resp = client.Create(api_pb2.SdkVolumeCreateRequest(
+  name="volume-12345-east",
+  spec=api_pb2.VolumeSpec(size=1234567)))
+{%- endcodetabs %}
 ## Clone
 
 > **rpc** Clone([SdkVolumeCloneRequest](#sdkvolumeclonerequest))
     [SdkVolumeCloneResponse](#sdkvolumecloneresponse)
 
-Clone creates a new volume cloned from an existing volume
+Clone creates a new writable volume cloned from an existing volume
 ## Delete
 
 > **rpc** Delete([SdkVolumeDeleteRequest](#sdkvolumedeleterequest))
     [SdkVolumeDeleteResponse](#sdkvolumedeleteresponse)
 
-Delete a volume
+Delete deletes the provided volume
 ## Inspect
 
 > **rpc** Inspect([SdkVolumeInspectRequest](#sdkvolumeinspectrequest))
     [SdkVolumeInspectResponse](#sdkvolumeinspectresponse)
 
-Get information on a volume
+Inspect returns information about a volume
+## Set
+
+> **rpc** Set([SdkVolumeSetRequest](#sdkvolumesetrequest))
+    [SdkVolumeSetResponse](#sdkvolumesetresponse)
+
+Set provides a method for manipulating the specification and attributes of a volume.
+Set can be used to resize a volume, update labels, change replica count, and much more.
 ## Enumerate
 
 > **rpc** Enumerate([SdkVolumeEnumerateRequest](#sdkvolumeenumeraterequest))
     [SdkVolumeEnumerateResponse](#sdkvolumeenumerateresponse)
 
-Get a list of volumes
+Enumerate returns a list of volume ids that match the labels if any are provided.
 ## SnapshotCreate
 
 > **rpc** SnapshotCreate([SdkVolumeSnapshotCreateRequest](#sdkvolumesnapshotcreaterequest))
     [SdkVolumeSnapshotCreateResponse](#sdkvolumesnapshotcreateresponse)
 
-Create a snapshot of a volume. This creates an immutable (read-only),
+SnapshotCreate creates a snapshot of a volume. This creates an immutable (read-only),
 point-in-time snapshot of a volume.
 ## SnapshotRestore
 
 > **rpc** SnapshotRestore([SdkVolumeSnapshotRestoreRequest](#sdkvolumesnapshotrestorerequest))
     [SdkVolumeSnapshotRestoreResponse](#sdkvolumesnapshotrestoreresponse)
 
-Restores a volume to a specified snapshot
+SnapshotRestore restores a volume to a specified snapshot
 ## SnapshotEnumerate
 
 > **rpc** SnapshotEnumerate([SdkVolumeSnapshotEnumerateRequest](#sdkvolumesnapshotenumeraterequest))
     [SdkVolumeSnapshotEnumerateResponse](#sdkvolumesnapshotenumerateresponse)
 
-List the number of snapshots for a specific volume
+SnapshotEnumerate returns a list of snapshots for a specific volume
+that match the labels provided if any.
 ## Attach
 
 > **rpc** Attach([SdkVolumeAttachRequest](#sdkvolumeattachrequest))
     [SdkVolumeAttachResponse](#sdkvolumeattachresponse)
 
-Attach device to host
+Attach attaches device to the host that the client is communicating with.
+NOTE: Please see [#381](https://github.com/libopenstorage/openstorage/issues/381) for more
+information about a new feature to allow attachment to any node.
 ## Detach
 
 > **rpc** Detach([SdkVolumeDetachRequest](#sdkvolumedetachrequest))
     [SdkVolumeDetachResponse](#sdkvolumedetachresponse)
 
-Detaches the volume from the node.
+Detaches a the volume from the host that the client is communicating with
+NOTE: Please see [#381](https://github.com/libopenstorage/openstorage/issues/381) for more
+information about a new feature to allow attachment to any node.
 ## Mount
 
 > **rpc** Mount([SdkVolumeMountRequest](#sdkvolumemountrequest))
     [SdkVolumeMountResponse](#sdkvolumemountresponse)
 
-Attaches the volume to a node.
+Mount mounts an attached volume in the host that the client is communicating with
+NOTE: Please see [#381](https://github.com/libopenstorage/openstorage/issues/381) for more
+information about a new feature to allow attachment to any node.
 ## Unmount
 
 > **rpc** Unmount([SdkVolumeUnmountRequest](#sdkvolumeunmountrequest))
     [SdkVolumeUnmountResponse](#sdkvolumeunmountresponse)
 
-Unmount volume at specified path
+Unmount unmounts a mounted volume in the host that the client is communicating with
+NOTE: Please see [#381](https://github.com/libopenstorage/openstorage/issues/381) for more
+information about a new feature to allow attachment to any node.
  <!-- end methods -->
  <!-- end services -->
 
@@ -510,8 +613,10 @@ swagger:model
 | resource_id | [ string](#string) | ResourceId where Alert occured |
 | resource | [ ResourceType](#resourcetype) | Resource where Alert occured |
 | cleared | [ bool](#bool) | Cleared Flag |
-| ttl | [ uint64](#uint64) | TTL in seconds for this Alert |
+| ttl | [ uint64](#uint64) | Time-to-live in seconds for this Alert |
 | unique_tag | [ string](#string) | UniqueTag helps identify a unique alert for a given resouce |
+| count | [ int64](#int64) | Count of such alerts raised so far. |
+| first_seen | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | Timestamp when such alert was raised the very first time. |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -524,6 +629,91 @@ swagger:model
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | alert | [repeated Alert](#alert) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## CloudMigrate {#cloudmigrate}
+
+
+ <!-- end HasFields -->
+
+
+## CloudMigrateCancelRequest {#cloudmigratecancelrequest}
+Request to stop a cloud migration
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| operation | [ CloudMigrate.OperationType](#cloudmigrateoperationtype) | The type of operation to cancel |
+| cluster_id | [ string](#string) | ID of the cluster to which migration should be cancelled |
+| target_id | [ string](#string) | Depending on the operation type this can be a VolumeID or VolumeGroupID |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## CloudMigrateInfo {#cloudmigrateinfo}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| cluster_id | [ string](#string) | ID of the cluster where the volume is being migrated |
+| local_volume_id | [ string](#string) | ID of the volume on the local cluster |
+| local_volume_name | [ string](#string) | Name of the volume on the local cluster |
+| remote_volume_id | [ string](#string) | ID of the volume on the remote cluster |
+| cloudbackup_id | [ string](#string) | ID of the cloudbackup used for the migration |
+| current_stage | [ CloudMigrate.Stage](#cloudmigratestage) | Current stage of the volume migration |
+| status | [ CloudMigrate.Status](#cloudmigratestatus) | Status of the current stage |
+| last_update | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | Last time the status was updated |
+| last_success | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | Time of the last successful migration of the volume |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## CloudMigrateInfoList {#cloudmigrateinfolist}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| list | [repeated CloudMigrateInfo](#cloudmigrateinfo) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## CloudMigrateStartRequest {#cloudmigratestartrequest}
+Request to start a cloud migration
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| operation | [ CloudMigrate.OperationType](#cloudmigrateoperationtype) | The type of operation to start |
+| cluster_id | [ string](#string) | ID of the cluster to which volumes are to be migrated |
+| target_id | [ string](#string) | Depending on the operation type this can be a VolumeID or VolumeGroupID |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## CloudMigrateStatusResponse {#cloudmigratestatusresponse}
+Response with a status of the cloud migration operations
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| info | [map CloudMigrateStatusResponse.InfoEntry](#cloudmigratestatusresponseinfoentry) | Map of cluster id to the status of volumes being migrated |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## CloudMigrateStatusResponse.InfoEntry {#cloudmigratestatusresponseinfoentry}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [ string](#string) | none |
+| value | [ CloudMigrateInfoList](#cloudmigrateinfolist) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -776,11 +966,6 @@ swagger:model
 ## SdkCloudBackupCreateResponse {#sdkcloudbackupcreateresponse}
 
 
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| backup_id | [ string](#string) | Id of the backup created |
- <!-- end Fields -->
  <!-- end HasFields -->
 
 
@@ -841,7 +1026,7 @@ swagger:model
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| backup_ids | [repeated string](#string) | none |
+| backups | [repeated SdkCloudBackupInfo](#sdkcloudbackupinfo) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -930,6 +1115,88 @@ swagger:model
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | restore_volume_id | [ string](#string) | VolumeID to which the backup is being restored |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCloudBackupSchedCreateRequest {#sdkcloudbackupschedcreaterequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| cloud_sched_info | [ SdkCloudBackupScheduleInfo](#sdkcloudbackupscheduleinfo) | Cloud Backup Schedule info |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCloudBackupSchedCreateResponse {#sdkcloudbackupschedcreateresponse}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| uuid | [ string](#string) | UUID of newly created backup schedule |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCloudBackupSchedDeleteRequest {#sdkcloudbackupscheddeleterequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| uuid | [ string](#string) | UUID of cloud backup to delete |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCloudBackupSchedDeleteResponse {#sdkcloudbackupscheddeleteresponse}
+
+
+ <!-- end HasFields -->
+
+
+## SdkCloudBackupSchedEnumerateRequest {#sdkcloudbackupschedenumeraterequest}
+
+
+ <!-- end HasFields -->
+
+
+## SdkCloudBackupSchedEnumerateResponse {#sdkcloudbackupschedenumerateresponse}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| cloud_sched_list | [map SdkCloudBackupSchedEnumerateResponse.CloudSchedListEntry](#sdkcloudbackupschedenumerateresponsecloudschedlistentry) | Returns list of backup schedules |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCloudBackupSchedEnumerateResponse.CloudSchedListEntry {#sdkcloudbackupschedenumerateresponsecloudschedlistentry}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [ string](#string) | none |
+| value | [ SdkCloudBackupScheduleInfo](#sdkcloudbackupscheduleinfo) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCloudBackupScheduleInfo {#sdkcloudbackupscheduleinfo}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| src_volume_id | [ string](#string) | SrcVolumeID is the schedule's source volume |
+| credential_uuid | [ string](#string) | CredentialUUID is the cloud credential used with this schedule |
+| schedule | [ SdkSchedulePolicyInterval](#sdkschedulepolicyinterval) | Schedule is the frequence of backup |
+| max_backups | [ uint64](#uint64) | MaxBackups are the maximum number of backups retained in cloud.Older backups are deleted |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -1041,20 +1308,21 @@ swagger:model
 
 
 ## SdkClusterAlertEnumerateRequest {#sdkclusteralertenumeraterequest}
-
+This request contains the information needed to get alerts from
+the storage system
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| time_start | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | Start time of alerts (required) |
-| time_end | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | End time of alerts (required) |
-| resource | [ ResourceType](#resourcetype) | Type of resource (required) |
+| time_start | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | Start time of alerts |
+| time_end | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | End time of alerts |
+| resource | [ ResourceType](#resourcetype) | Type of resource |
  <!-- end Fields -->
  <!-- end HasFields -->
 
 
 ## SdkClusterAlertEnumerateResponse {#sdkclusteralertenumerateresponse}
-
+This response provides a list of the alerts at the specified time.
 
 
 | Field | Type | Description |
@@ -1065,13 +1333,13 @@ swagger:model
 
 
 ## SdkClusterEnumerateRequest {#sdkclusterenumeraterequest}
-
+This request is an empty request
 
  <!-- end HasFields -->
 
 
 ## SdkClusterEnumerateResponse {#sdkclusterenumerateresponse}
-
+This response returns information about the cluster
 
 
 | Field | Type | Description |
@@ -1082,7 +1350,7 @@ swagger:model
 
 
 ## SdkClusterInspectRequest {#sdkclusterinspectrequest}
-
+Contains the request when inspecting a node
 
 
 | Field | Type | Description |
@@ -1093,7 +1361,7 @@ swagger:model
 
 
 ## SdkClusterInspectResponse {#sdkclusterinspectresponse}
-
+This response contains information about the respective node requested
 
 
 | Field | Type | Description |
@@ -1651,6 +1919,25 @@ you will need to check if the value of credential_type is one of the ones below.
  <!-- end HasFields -->
 
 
+## SdkVolumeSetRequest {#sdkvolumesetrequest}
+This request is used to adjust or set new values in the volume
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id | [ string](#string) | Id of the volume to update |
+| locator | [ VolumeLocator](#volumelocator) | Change locator values. Some of these values may not be able to be changed. New labels will be added to the current volume labels. To delete a label, set the value of the label to an empty string. |
+| spec | [ VolumeSpecSet](#volumespecset) | VolumeSpecSet provides a method to request that certain values in the VolumeSpec are changed. This is necessary as a separate variable because values like int and bool in the VolumeSpec cannot be determined if they are being requested to change in gRPC proto3. Some of these values may not be able to be changed. Here are a few examples of actions that can be accomplished using the VolumeSpec. To resize the volume: Set a new value in spec.size. To change number of replicas: Adjust spec.ha_level. To change the I/O Profile: Adjust spec.io_profile. |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVolumeSetResponse {#sdkvolumesetresponse}
+The response returns no data
+
+ <!-- end HasFields -->
+
+
 ## SdkVolumeSnapshotCreateRequest {#sdkvolumesnapshotcreaterequest}
 
 
@@ -1834,15 +2121,15 @@ swagger:model
 
 
 ## StorageCluster {#storagecluster}
-StorageCluster represents the state of the cluster
+StorageCluster represents the state and information about the cluster
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | status | [ Status](#status) | Status of the cluster |
 | id | [ string](#string) | Id of the cluster |
-| node_id | [ string](#string) | NodeId is the id of the node servicing these requests |
-| node_ids | [repeated string](#string) | Nodes are a list of all the nodes on the cluster |
+| node_id | [ string](#string) | The id of the node servicing these requests |
+| node_ids | [repeated string](#string) | List of all the node ids in the cluster |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -2150,7 +2437,7 @@ swagger:model
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | ephemeral | [ bool](#bool) | Ephemeral storage |
-| size | [ uint64](#uint64) | Size specifies the thin provisioned volume size. |
+| size | [ uint64](#uint64) | Size specifies the thin provisioned volume size in bytes |
 | format | [ FSType](#fstype) | Format specifies the filesystem for this volume. |
 | block_size | [ int64](#int64) | BlockSize for the filesystem. |
 | ha_level | [ int64](#int64) | HaLevel specifies the number of copies of data. |
@@ -2178,6 +2465,52 @@ swagger:model
 
 
 ## VolumeSpec.VolumeLabelsEntry {#volumespecvolumelabelsentry}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [ string](#string) | none |
+| value | [ string](#string) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## VolumeSpecSet {#volumespecset}
+VolumeSpecSet provides a method to set any of the VolumeSpec of an existing volume
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) ephemeral_opt.ephemeral | [ bool](#bool) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) size_opt.size | [ uint64](#uint64) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) format_opt.format | [ FSType](#fstype) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) block_size_opt.block_size | [ int64](#int64) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) ha_level_opt.ha_level | [ int64](#int64) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) cos_opt.cos | [ CosType](#costype) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) io_profile_opt.io_profile | [ IoProfile](#ioprofile) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) dedupe_opt.dedupe | [ bool](#bool) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) snapshot_interval_opt.snapshot_interval | [ uint32](#uint32) | none |
+| volume_labels | [map VolumeSpecSet.VolumeLabelsEntry](#volumespecsetvolumelabelsentry) | VolumeLabels configuration labels |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) shared_opt.shared | [ bool](#bool) | none |
+| replica_set | [ ReplicaSet](#replicaset) | ReplicaSet is the desired set of nodes for the volume data. |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) aggregation_level_opt.aggregation_level | [ uint32](#uint32) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) encrypted_opt.encrypted | [ bool](#bool) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) passphrase_opt.passphrase | [ string](#string) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) snapshot_schedule_opt.snapshot_schedule | [ string](#string) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) scale_opt.scale | [ uint32](#uint32) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) sticky_opt.sticky | [ bool](#bool) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) group_opt.group | [ Group](#group) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) group_enforced_opt.group_enforced | [ bool](#bool) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) compressed_opt.compressed | [ bool](#bool) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) cascaded_opt.cascaded | [ bool](#bool) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) journal_opt.journal | [ bool](#bool) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) sharedv4_opt.sharedv4 | [ bool](#bool) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## VolumeSpecSet.VolumeLabelsEntry {#volumespecsetvolumelabelsentry}
 
 
 
@@ -2228,6 +2561,48 @@ swagger:model
 | ATTACH_STATE_EXTERNAL | 0 | Attached and available externally |
 | ATTACH_STATE_INTERNAL | 1 | Attached but only available internally |
 | ATTACH_STATE_INTERNAL_SWITCH | 2 | Switching from External to Internal |
+
+
+
+
+## CloudMigrate.OperationType {#cloudmigrateoperationtype}
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| InvalidType | 0 | none |
+| MigrateCluster | 1 | Migrate all volumes in the cluster |
+| MigrateVolume | 2 | Migrate a single volume |
+| MigrateVolumeGroup | 3 | Migrate a group of volumes |
+
+
+
+
+## CloudMigrate.Stage {#cloudmigratestage}
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| InvalidStage | 0 | none |
+| Backup | 1 | none |
+| Restore | 2 | none |
+| VolumeUpdate | 3 | none |
+| Done | 4 | none |
+
+
+
+
+## CloudMigrate.Status {#cloudmigratestatus}
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| InvalidStatus | 0 | none |
+| Queued | 1 | none |
+| Initialized | 2 | none |
+| InProgress | 3 | none |
+| Failed | 4 | none |
+| Complete | 5 | none |
 
 
 
