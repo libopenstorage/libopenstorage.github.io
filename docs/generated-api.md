@@ -219,6 +219,18 @@
 OpenStorageCloudBackup service manages backing up volumes to a cloud
 location like Amazon, Google, or Azure.
 
+#### Backup
+To create a backup, you must first call the Create() call for a specified
+volume. To see the status of this request, use Status() which returns
+a map where the keys are the source volume id.
+
+#### Restore
+To restore, you would pass a `backup_id` of a successful backup.
+`backup_id` can be retreived by calling Enumerate() for a specified volume.
+Pass this `backup_id` and a new volume name to Restore() to start
+restoring a new volume from an existing backup. To see the status of this
+restore, pass volume id returned by Restore() to input to Status()
+
 ## Create
 
 > **rpc** Create([SdkCloudBackupCreateRequest](#sdkcloudbackupcreaterequest))
@@ -341,12 +353,13 @@ id of the credentials once they are verified to work.
 ##### Example
 {% codetabs name="Golang", type="go" -%}
 id, err := client.Create(context.Background(), &api.SdkCredentialCreateRequest{
-  CredentialType: &api.SdkCredentialCreateRequest_AwsCredential{
-    AwsCredential: &api.SdkAwsCredentialRequest{
-    AccessKey: "dummy-access",
-    SecretKey: "dummy-secret",
-    Endpoint:  "dummy-endpoint",
-    Region:    "dummy-region",
+    CredentialType: &api.SdkCredentialCreateRequest_AwsCredential{
+      AwsCredential: &api.SdkAwsCredentialRequest{
+      AccessKey: "dummy-access",
+      SecretKey: "dummy-secret",
+      Endpoint:  "dummy-endpoint",
+      Region:    "dummy-region",
+    },
   },
 })
 {%- language name="Python", type="py" -%}
@@ -1074,7 +1087,7 @@ a specific volume to a cloud provider
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| src_volume_id | [ string](#string) | This optional value defines which history of backup/restore is being requested. If not provided, it will return the history for all volumes. |
+| src_volume_id | [ string](#string) | This optional value defines which history of backups is being requested. If not provided, it will return the history for all volumes. |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -1085,7 +1098,7 @@ Defines a response containing a list of history of backups to a cloud provider
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| history_list | [repeated SdkCloudBackupHistoryItem](#sdkcloudbackuphistoryitem) | HistoryList is list of past backup/restores in the cluster |
+| history_list | [repeated SdkCloudBackupHistoryItem](#sdkcloudbackuphistoryitem) | HistoryList is list of past backups on this volume |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -1096,7 +1109,7 @@ SdkCloudBackupInfo has information about a backup stored by a cloud provider
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| id | [ string](#string) | ID is the ID of the cloud backup |
+| id | [ string](#string) | This is the id as represented by the cloud provider |
 | src_volume_id | [ string](#string) | Source volumeID of the backup |
 | src_volume_name | [ string](#string) | Name of the sourceVolume of the backup |
 | timestamp | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | Timestamp is the timestamp at which the source volume was backed up to cloud |
@@ -1256,7 +1269,7 @@ SdkCloudBackupStatus defines the status of a backup stored by a cloud provider
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| backup_id | [ string](#string) | ID is the ID for the operation |
+| backup_id | [ string](#string) | This is the id as represented by the cloud provider |
 | optype | [ SdkCloudBackupOpType](#sdkcloudbackupoptype) | OpType indicates if this is a backup or restore |
 | status | [ SdkCloudBackupStatusType](#sdkcloudbackupstatustype) | State indicates if the op is currently active/done/failed |
 | bytes_done | [ uint64](#uint64) | BytesDone indicates total Bytes uploaded/downloaded |
@@ -1268,12 +1281,13 @@ SdkCloudBackupStatus defines the status of a backup stored by a cloud provider
 
 
 ## SdkCloudBackupStatusRequest {#sdkcloudbackupstatusrequest}
-Defines a request to retreive the status of a backup for a specified volume
+Defines a request to retreive the status of a backup or restore for a
+specified volume
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| src_volume_id | [ string](#string) | SrcVolumeID optional volumeID to list status of backup/restore |
+| volume_id | [ string](#string) | This is an optional value which is used to get information on the status of a backup for the specified volume. If no volume id is provided, then status for all volumes is returned. |
 | local | [ bool](#bool) | Local indicates if only those backups/restores that are active on current node must be returned |
  <!-- end Fields -->
  <!-- end HasFields -->
@@ -1285,7 +1299,7 @@ Defines a response containing the status of the backups for a specified volume
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| statuses | [map SdkCloudBackupStatusResponse.StatusesEntry](#sdkcloudbackupstatusresponsestatusesentry) | Statuses is list of currently active/failed/done backup/restores |
+| statuses | [map SdkCloudBackupStatusResponse.StatusesEntry](#sdkcloudbackupstatusresponsestatusesentry) | Statuses is list of currently active/failed/done backup/restores where the key is the volume ids of current volumes being backed up or restored |
  <!-- end Fields -->
  <!-- end HasFields -->
 

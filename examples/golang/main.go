@@ -3,8 +3,11 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"os"
+
+	"github.com/golang/protobuf/ptypes"
 
 	"github.com/libopenstorage/openstorage/api"
 	"google.golang.org/grpc"
@@ -35,6 +38,7 @@ func main() {
 	}
 	fmt.Printf("Connected to Cluster %s\n",
 		clusterInfo.GetCluster().GetId())
+	fmt.Println()
 
 	// Create a 100Gi volume
 	volumes := api.NewOpenStorageVolumeClient(conn)
@@ -53,6 +57,7 @@ func main() {
 		os.Exit(1)
 	}
 	fmt.Printf("Volume 100Gi created with id %s\n", v.GetVolumeId())
+	fmt.Println()
 
 	// Take a snapshot
 	snap, err := volumes.SnapshotCreate(
@@ -70,5 +75,92 @@ func main() {
 	fmt.Printf("Snapshot with id %s was create for volume %s\n",
 		snap.GetSnapshotId(),
 		v.GetVolumeId())
+	fmt.Println()
 
+	// Create mock credentials
+	creds := api.NewOpenStorageCredentialsClient(conn)
+	credResponse, err := creds.Create(context.Background(),
+		&api.SdkCredentialCreateRequest{
+			CredentialType: &api.SdkCredentialCreateRequest_AwsCredential{
+				AwsCredential: &api.SdkAwsCredentialRequest{
+					AccessKey: "dummy-access",
+					SecretKey: "dummy-secret",
+					Endpoint:  "dummy-endpoint",
+					Region:    "dummy-region",
+				},
+			},
+		})
+	if err != nil {
+		gerr, _ := status.FromError(err)
+		fmt.Printf("Error Code[%d] Message[%s]\n",
+			gerr.Code(), gerr.Message())
+		os.Exit(1)
+	}
+	credID := credResponse.GetCredentialId()
+	fmt.Printf("Credentials created with id %s\n", credID)
+	fmt.Println()
+
+	// Create a backup to a cloud provider of our volume
+	cloudbackups := api.NewOpenStorageCloudBackupClient(conn)
+	_, err = cloudbackups.Create(context.Background(),
+		&api.SdkCloudBackupCreateRequest{
+			VolumeId:     v.GetVolumeId(),
+			CredentialId: credID,
+		})
+	if err != nil {
+		gerr, _ := status.FromError(err)
+		fmt.Printf("Error Code[%d] Message[%s]\n",
+			gerr.Code(), gerr.Message())
+		os.Exit(1)
+	}
+	fmt.Printf("Backup started for volume %s\n", v.GetVolumeId())
+
+	// Now check the status of the backup
+	backupStatus, err := cloudbackups.Status(context.Background(),
+		&api.SdkCloudBackupStatusRequest{
+			SrcVolumeId: v.GetVolumeId(),
+		})
+	if err != nil {
+		gerr, _ := status.FromError(err)
+		fmt.Printf("Error Code[%d] Message[%s]\n",
+			gerr.Code(), gerr.Message())
+		os.Exit(1)
+	}
+	for volID, status := range backupStatus.GetStatuses() {
+		// There will be only one value in the map, but we use
+		// a for-loop as an example.
+		b, _ := json.MarshalIndent(status, "", "  ")
+		fmt.Printf("Backup status for volume: %s\n"+
+			"Type: %s\n"+
+			"Status: %s\n"+
+			"Full JSON Response: %s\n",
+			volID,
+			status.GetOptype().String(),
+			status.GetStatus().String(),
+			string(b))
+	}
+	fmt.Println()
+
+	// Backup History
+	historyResp, err := cloudbackups.History(context.Background(),
+		&api.SdkCloudBackupHistoryRequest{
+			SrcVolumeId: v.GetVolumeId(),
+		})
+	if err != nil {
+		gerr, _ := status.FromError(err)
+		fmt.Printf("Error Code[%d] Message[%s]\n",
+			gerr.Code(), gerr.Message())
+		os.Exit(1)
+	}
+
+	fmt.Printf("Backup history for volume %s:\n", v.GetVolumeId())
+	for _, history := range historyResp.GetHistoryList() {
+
+		timestamp, _ := ptypes.Timestamp(history.GetTimestamp())
+		fmt.Printf("Volume:%s \tttime:%v \tstatus:%v\n",
+			history.GetSrcVolumeId(),
+			timestamp,
+			history.GetStatus())
+	}
+	fmt.Println()
 }

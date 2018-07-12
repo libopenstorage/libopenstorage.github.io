@@ -124,6 +124,153 @@ You can now create a snapshot of this volume:
 		v.GetVolumeId())
 ```
 
+## Backup
+In this section we will be making a backup of our volume to a cloud provider.
+To do this, we must first create a set of credentials which will enable
+the storage system to save the backup in the cloud.
+
+```go
+	// Create mock credentials
+	creds := api.NewOpenStorageCredentialsClient(conn)
+	credResponse, err := creds.Create(context.Background(),
+		&api.SdkCredentialCreateRequest{
+			CredentialType: &api.SdkCredentialCreateRequest_AwsCredential{
+				AwsCredential: &api.SdkAwsCredentialRequest{
+					AccessKey: "dummy-access",
+					SecretKey: "dummy-secret",
+					Endpoint:  "dummy-endpoint",
+					Region:    "dummy-region",
+				},
+			},
+		})
+	if err != nil {
+		gerr, _ := status.FromError(err)
+		fmt.Printf("Error Code[%d] Message[%s]\n",
+			gerr.Code(), gerr.Message())
+		os.Exit(1)
+	}
+	credID := credResponse.GetCredentialId()
+	fmt.Printf("Credentials created with id %s\n", credID)
+```
+
+Notice above the `CredentialType.AwsCredential`. This is struct was
+generated from the protobuf concept of [`oneof`](https://developers.google.com/protocol-buffers/docs/proto3#oneof). Oneof
+states that _one of these types_ will be used. In SdkCredentialCreateRequest, `oneof` is used as a method of determining which
+type of cloud provider is being requested.
+
+The backup of the volume can now be started with the newly acquired
+credential id:
+
+```go
+	// Create a backup to a cloud provider of our volume
+	cloudbackups := api.NewOpenStorageCloudBackupClient(conn)
+	_, err = cloudbackups.Create(context.Background(),
+		&api.SdkCloudBackupCreateRequest{
+			VolumeId:     v.GetVolumeId(),
+			CredentialId: credID,
+		})
+	if err != nil {
+		gerr, _ := status.FromError(err)
+		fmt.Printf("Error Code[%d] Message[%s]\n",
+			gerr.Code(), gerr.Message())
+		os.Exit(1)
+	}
+	fmt.Printf("Backup started for volume %s\n", v.GetVolumeId())
+```
+
+This request will not block while the backup is running. Instead you should
+call OpenStorageCloudBackup.Status() to get information about the backup:
+
+```go
+	// Now check the status of the backup
+	backupStatus, err := cloudbackups.Status(context.Background(),
+		&api.SdkCloudBackupStatusRequest{
+			SrcVolumeId: v.GetVolumeId(),
+		})
+	if err != nil {
+		gerr, _ := status.FromError(err)
+		fmt.Printf("Error Code[%d] Message[%s]\n",
+			gerr.Code(), gerr.Message())
+		os.Exit(1)
+	}
+	for volID, status := range backupStatus.GetStatuses() {
+		// There will be only one value in the map, but we use
+		// a for-loop as an example.
+		b, _ := json.MarshalIndent(status, "", "  ")
+		fmt.Printf("Backup status for volume: %s\n"+
+			"Type: %s\n"+
+			"Status: %s\n"+
+			"Full JSON Response: %s\n",
+			volID,
+			status.GetOptype().String(),
+			status.GetStatus().String(),
+			string(b))
+	}
+```
+
+Lastly, once the backup is complete, we can get a history of this and any
+other backups we have created from our volume:
+
+```go
+	historyResp, err := cloudbackups.History(context.Background(),
+		&api.SdkCloudBackupHistoryRequest{
+			SrcVolumeId: v.GetVolumeId(),
+		})
+	if err != nil {
+		gerr, _ := status.FromError(err)
+		fmt.Printf("Error Code[%d] Message[%s]\n",
+			gerr.Code(), gerr.Message())
+		os.Exit(1)
+	}
+
+	fmt.Printf("Backup history for volume %s:\n", v.GetVolumeId())
+	for _, history := range historyResp.GetHistoryList() {
+
+		timestamp, _ := ptypes.Timestamp(history.GetTimestamp())
+		fmt.Printf("Volume:%s \tttime:%v \tstatus:%v\n",
+			history.GetSrcVolumeId(),
+			timestamp,
+			history.GetStatus())
+	}
+```
+
+## Example output
+Below is an example output run of this tutorial:
+
+```
+Connected to Cluster mock
+
+Volume 100Gi created with id 42908221-1e24-4927-b67a-468c8b826b0b
+
+Snapshot with id e24efabc-a2d8-4f11-aa4a-a283623536ae was create for volume 42908221-1e24-4927-b67a-468c8b826b0b
+
+Credentials created with id 3c73dc9f-dce7-4852-b870-79a988ac4440
+
+Backup started for volume 42908221-1e24-4927-b67a-468c8b826b0b
+Backup status for volume: 42908221-1e24-4927-b67a-468c8b826b0b
+Type: SdkCloudBackupOpTypeBackupOp
+Status: SdkCloudBackupStatusTypeDone
+Full JSON Response: {
+  "backup_id": "ae23bc53-79b9-49a6-9eee-fac66221528e",
+  "optype": 1,
+  "status": 2,
+  "bytes_done": 107374182400,
+  "start_time": {
+    "seconds": 1531438150,
+    "nanos": 856373600
+  },
+  "completed_time": {
+    "seconds": 1531438151,
+    "nanos": 856397100
+  },
+  "node_id": "1"
+} 
+
+Backup history for volume 42908221-1e24-4927-b67a-468c8b826b0b:
+Volume:42908221-1e24-4927-b67a-468c8b826b0b     ttime:2018-07-12 23:29:11.8563971 +0000 UTC     status:SdkCloudBackupStatusTypeDone
+```
+
+## Next
 As you can see from the above, working with OpenStorage SDK is quite easy,
 fun, and powerful. Please refer to the [API Reference](generated-api.html)
 for a complete list of services.

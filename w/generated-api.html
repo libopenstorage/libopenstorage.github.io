@@ -493,6 +493,16 @@
 <h1 id="openstorageapiopenstoragecloudbackup">OpenStorageCloudBackup </h1>
 <p>OpenStorageCloudBackup service manages backing up volumes to a cloud
 location like Amazon, Google, or Azure.</p>
+<h4 id="backup">Backup</h4>
+<p>To create a backup, you must first call the Create() call for a specified
+volume. To see the status of this request, use Status() which returns
+a map where the keys are the source volume id.</p>
+<h4 id="restore">Restore</h4>
+<p>To restore, you would pass a <code>backup_id</code> of a successful backup.
+<code>backup_id</code> can be retreived by calling Enumerate() for a specified volume.
+Pass this <code>backup_id</code> and a new volume name to Restore() to start
+restoring a new volume from an existing backup. To see the status of this
+restore, pass volume id returned by Restore() to input to Status()</p>
 <h2 id="create">Create</h2>
 <blockquote>
 <p><strong>rpc</strong> Create(<a href="#sdkcloudbackupcreaterequest">SdkCloudBackupCreateRequest</a>)
@@ -611,12 +621,13 @@ which can then be used by the OpenStorageCloudBackup service</p>
 id of the credentials once they are verified to work.</p>
 <h5 id="example">Example</h5>
 <p><div class="codetabs"><div class="codetabs-header"><div class="tab active" data-codetab="0">Golang</div><div class="tab" data-codetab="1">Python</div></div><div class="codetabs-body"><div class="tab active" data-codetab="0"><pre class="language-"><code class="lang-go">id<span class="token punctuation">,</span> err <span class="token operator">:=</span> client<span class="token punctuation">.</span><span class="token function">Create</span><span class="token punctuation">(</span>context<span class="token punctuation">.</span><span class="token function">Background</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>api<span class="token punctuation">.</span>SdkCredentialCreateRequest<span class="token punctuation">{</span>
-  CredentialType<span class="token punctuation">:</span> <span class="token operator">&amp;</span>api<span class="token punctuation">.</span>SdkCredentialCreateRequest_AwsCredential<span class="token punctuation">{</span>
-    AwsCredential<span class="token punctuation">:</span> <span class="token operator">&amp;</span>api<span class="token punctuation">.</span>SdkAwsCredentialRequest<span class="token punctuation">{</span>
-    AccessKey<span class="token punctuation">:</span> <span class="token string">&quot;dummy-access&quot;</span><span class="token punctuation">,</span>
-    SecretKey<span class="token punctuation">:</span> <span class="token string">&quot;dummy-secret&quot;</span><span class="token punctuation">,</span>
-    Endpoint<span class="token punctuation">:</span>  <span class="token string">&quot;dummy-endpoint&quot;</span><span class="token punctuation">,</span>
-    Region<span class="token punctuation">:</span>    <span class="token string">&quot;dummy-region&quot;</span><span class="token punctuation">,</span>
+    CredentialType<span class="token punctuation">:</span> <span class="token operator">&amp;</span>api<span class="token punctuation">.</span>SdkCredentialCreateRequest_AwsCredential<span class="token punctuation">{</span>
+      AwsCredential<span class="token punctuation">:</span> <span class="token operator">&amp;</span>api<span class="token punctuation">.</span>SdkAwsCredentialRequest<span class="token punctuation">{</span>
+      AccessKey<span class="token punctuation">:</span> <span class="token string">&quot;dummy-access&quot;</span><span class="token punctuation">,</span>
+      SecretKey<span class="token punctuation">:</span> <span class="token string">&quot;dummy-secret&quot;</span><span class="token punctuation">,</span>
+      Endpoint<span class="token punctuation">:</span>  <span class="token string">&quot;dummy-endpoint&quot;</span><span class="token punctuation">,</span>
+      Region<span class="token punctuation">:</span>    <span class="token string">&quot;dummy-region&quot;</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre></div><div class="tab" data-codetab="1"><pre class="language-"><code class="lang-py">en_resp <span class="token operator">=</span> client<span class="token punctuation">.</span>Create<span class="token punctuation">(</span>api_pb2<span class="token punctuation">.</span>SdkCredentialCreateRequest<span class="token punctuation">(</span>
   aws_credential<span class="token operator">=</span>api_pb2<span class="token punctuation">.</span>SdkAwsCredentialRequest<span class="token punctuation">(</span>
@@ -1860,7 +1871,7 @@ a specific volume to a cloud provider</p>
 <tr>
 <td>src_volume_id</td>
 <td><a href="#string"> string</a></td>
-<td>This optional value defines which history of backup/restore is being requested. If not provided, it will return the history for all volumes.</td>
+<td>This optional value defines which history of backups is being requested. If not provided, it will return the history for all volumes.</td>
 </tr>
 </tbody>
 </table>
@@ -1880,7 +1891,7 @@ a specific volume to a cloud provider</p>
 <tr>
 <td>history_list</td>
 <td><a href="#sdkcloudbackuphistoryitem">repeated SdkCloudBackupHistoryItem</a></td>
-<td>HistoryList is list of past backup/restores in the cluster</td>
+<td>HistoryList is list of past backups on this volume</td>
 </tr>
 </tbody>
 </table>
@@ -1900,7 +1911,7 @@ a specific volume to a cloud provider</p>
 <tr>
 <td>id</td>
 <td><a href="#string"> string</a></td>
-<td>ID is the ID of the cloud backup</td>
+<td>This is the id as represented by the cloud provider</td>
 </tr>
 <tr>
 <td>src_volume_id</td>
@@ -2204,7 +2215,7 @@ from a cloud provider</p>
 <tr>
 <td>backup_id</td>
 <td><a href="#string"> string</a></td>
-<td>ID is the ID for the operation</td>
+<td>This is the id as represented by the cloud provider</td>
 </tr>
 <tr>
 <td>optype</td>
@@ -2241,7 +2252,8 @@ from a cloud provider</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkcloudbackupstatusrequest">SdkCloudBackupStatusRequest </h2>
-<p>Defines a request to retreive the status of a backup for a specified volume</p>
+<p>Defines a request to retreive the status of a backup or restore for a
+specified volume</p>
 <table>
 <thead>
 <tr>
@@ -2252,9 +2264,9 @@ from a cloud provider</p>
 </thead>
 <tbody>
 <tr>
-<td>src_volume_id</td>
+<td>volume_id</td>
 <td><a href="#string"> string</a></td>
-<td>SrcVolumeID optional volumeID to list status of backup/restore</td>
+<td>This is an optional value which is used to get information on the status of a backup for the specified volume. If no volume id is provided, then status for all volumes is returned.</td>
 </tr>
 <tr>
 <td>local</td>
@@ -2279,7 +2291,7 @@ from a cloud provider</p>
 <tr>
 <td>statuses</td>
 <td><a href="#sdkcloudbackupstatusresponsestatusesentry">map SdkCloudBackupStatusResponse.StatusesEntry</a></td>
-<td>Statuses is list of currently active/failed/done backup/restores</td>
+<td>Statuses is list of currently active/failed/done backup/restores where the key is the volume ids of current volumes being backed up or restored</td>
 </tr>
 </tbody>
 </table>
@@ -6056,7 +6068,7 @@ to or from a cloud provider</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"API Reference","level":"1.5","depth":1,"next":{"title":"API Status","level":"1.6","depth":1,"path":"status.md","ref":"status.md","articles":[]},"previous":{"title":"Python","level":"1.4.2","depth":2,"path":"tutorial-python.md","ref":"tutorial-python.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"generated-api.md","mtime":"2018-07-12T18:25:41.108Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-07-12T18:25:46.967Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"API Reference","level":"1.5","depth":1,"next":{"title":"API Status","level":"1.6","depth":1,"path":"status.md","ref":"status.md","articles":[]},"previous":{"title":"Python","level":"1.4.2","depth":2,"path":"tutorial-python.md","ref":"tutorial-python.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"generated-api.md","mtime":"2018-07-12T23:44:03.038Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-07-12T23:44:19.557Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
