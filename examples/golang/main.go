@@ -24,18 +24,17 @@ func main() {
 	cluster := api.NewOpenStorageClusterClient(conn)
 
 	// Print the cluster information
-	clusterEnum, err := cluster.Enumerate(
+	clusterInfo, err := cluster.InspectCurrent(
 		context.Background(),
-		&api.SdkClusterEnumerateRequest{})
+		&api.SdkClusterInspectCurrentRequest{})
 	if err != nil {
 		gerr, _ := status.FromError(err)
 		fmt.Printf("Error Code[%d] Message[%s]\n",
 			gerr.Code(), gerr.Message())
 		os.Exit(1)
 	}
-	fmt.Printf("Connected to Cluster %s with %d node(s)\n",
-		clusterEnum.GetCluster().GetId(),
-		len(clusterEnum.GetCluster().GetNodeIds()))
+	fmt.Printf("Connected to Cluster %s\n",
+		clusterInfo.GetCluster().GetId())
 
 	// Create a 100Gi volume
 	volumes := api.NewOpenStorageVolumeClient(conn)

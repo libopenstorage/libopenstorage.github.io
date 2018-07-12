@@ -285,52 +285,11 @@ file on OpenStorage.</p>
 <p>For Golang, simply import <code>github.com/libopenstorage/openstorage/api</code> in your
 sources. For a full example see <a href="tutorial-golang.html">Tutorial: Golang</a>.</p>
 <h3 id="python">Python</h3>
-<p>Python libraries are available <a href="https://github.com/libopenstorage/openstorage/tree/master/api/client/sdk" target="_blank"><code>api/client/sdk/python</code></a>.
-You will need the files <code>api*.py</code> copied to your path.  Here is a full example:</p>
-<pre class="language-"><code class="lang-python"><span class="token comment" spellcheck="true">#</span>
-<span class="token comment" spellcheck="true"># Install:</span>
-<span class="token comment" spellcheck="true">#   virtualenv sdk</span>
-<span class="token comment" spellcheck="true">#   source sdk/bin/activate</span>
-<span class="token comment" spellcheck="true">#   pip install grpcio grpcio-tools</span>
-<span class="token comment" spellcheck="true">#</span>
-<span class="token comment" spellcheck="true"># Then copy the api*.py files to the directory as your client</span>
-<span class="token comment" spellcheck="true"># More info: https://grpc.io/docs/quickstart/python.html</span>
-<span class="token comment" spellcheck="true">#</span>
-<span class="token keyword">import</span> grpc
-<span class="token keyword">import</span> api_pb2
-<span class="token keyword">import</span> api_pb2_grpc
-
-<span class="token comment" spellcheck="true"># Setup connection</span>
-channel <span class="token operator">=</span> grpc<span class="token punctuation">.</span>insecure_channel<span class="token punctuation">(</span><span class="token string">&apos;localhost:9100&apos;</span><span class="token punctuation">)</span>
-client <span class="token operator">=</span> api_pb2_grpc<span class="token punctuation">.</span>OpenStorageClusterStub<span class="token punctuation">(</span>channel<span class="token punctuation">)</span>
-
-<span class="token comment" spellcheck="true"># Get cluster information</span>
-<span class="token keyword">try</span><span class="token punctuation">:</span>
-    en_resp <span class="token operator">=</span> client<span class="token punctuation">.</span>Enumerate<span class="token punctuation">(</span>api_pb2<span class="token punctuation">.</span>ClusterEnumerateRequest<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token keyword">except</span> grpc<span class="token punctuation">.</span>RpcError <span class="token keyword">as</span> e<span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&apos;Enumerate failed: code={0} msg={1}&apos;</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>e<span class="token punctuation">.</span>code<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> e<span class="token punctuation">.</span>details<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token keyword">else</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>en_resp<span class="token punctuation">)</span>
-
-<span class="token comment" spellcheck="true"># Get node info</span>
-<span class="token keyword">try</span><span class="token punctuation">:</span>
-    n_resp <span class="token operator">=</span> client<span class="token punctuation">.</span>Inspect<span class="token punctuation">(</span>api_pb2<span class="token punctuation">.</span>ClusterInspectRequest<span class="token punctuation">(</span>node_id<span class="token operator">=</span>en_resp<span class="token punctuation">.</span>cluster<span class="token punctuation">.</span>nodes<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token keyword">except</span> grpc<span class="token punctuation">.</span>RpcError <span class="token keyword">as</span> e<span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&apos;Inspect failed: code={0} msg={1}&apos;</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>e<span class="token punctuation">.</span>code<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> e<span class="token punctuation">.</span>details<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token keyword">else</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>n_resp<span class="token punctuation">)</span>
-</code></pre>
-<p>We may some day provide a python <code>pip</code> package, but do not have one at the moment.</p>
+<p>Python libraries are available <a href="https://github.com/libopenstorage/openstorage/tree/master/api/client/sdk/python" target="_blank"><code>api/client/sdk/python</code></a>.
+You will need the files <code>api*.py</code> and <code>google/</code> copied to your path. We may
+provide a python <code>pip</code> package, but do not have one at the moment.</p>
 <h3 id="ruby-and-javascript">Ruby and Javascript</h3>
-<p>Ruby and Javascript clients are also located in <em>api/client/sdk</em>.</p>
-<h2 id="mock-sdk-server">Mock SDK Server</h2>
-<p>OpenStorage provides mock SDK server as a container which can be run using the
-command:</p>
-<pre class="language-"><code>$ docker run --rm -d -p 9110:9110 -p 9100:9100 openstorage/mock-sdk-server
-</code></pre><p>Port 9110 is the REST gRPC Gateway location for all REST calls. Port 9100 is
-the gRPC port.</p>
-<p>This will run OpenStorage server with an in-memory driver implementation called
-<code>fake</code>. You can then point your gRPC client to <code>localhost:9100</code>.</p>
+<p>Ruby and Javascript clients are also located in <a href="https://github.com/libopenstorage/openstorage/tree/master/api/client/sdk/python" target="_blank"><code>api/client/sdk</code></a>. </p>
 
                                 
                                 </section>
@@ -374,7 +333,7 @@ the gRPC port.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Installation","level":"1.3","depth":1,"next":{"title":"Tutorial","level":"1.4","depth":1,"path":"tutorial.md","ref":"tutorial.md","articles":[{"title":"Golang","level":"1.4.1","depth":2,"path":"tutorial-golang.md","ref":"tutorial-golang.md","articles":[]},{"title":"Python","level":"1.4.2","depth":2,"path":"tutorial-python.md","ref":"tutorial-python.md","articles":[]}]},"previous":{"title":"Architecture","level":"1.2","depth":1,"path":"arch.md","ref":"arch.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"installation.md","mtime":"2018-07-09T21:47:16.482Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-07-10T18:58:37.836Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Installation","level":"1.3","depth":1,"next":{"title":"Tutorial","level":"1.4","depth":1,"path":"tutorial.md","ref":"tutorial.md","articles":[{"title":"Golang","level":"1.4.1","depth":2,"path":"tutorial-golang.md","ref":"tutorial-golang.md","articles":[]},{"title":"Python","level":"1.4.2","depth":2,"path":"tutorial-python.md","ref":"tutorial-python.md","articles":[]}]},"previous":{"title":"Architecture","level":"1.2","depth":1,"path":"arch.md","ref":"arch.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"installation.md","mtime":"2018-07-12T18:05:14.766Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-07-12T18:25:46.967Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

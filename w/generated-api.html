@@ -281,6 +281,7 @@
 <li><a href="#openstorageapiopenstoragecloudbackup">OpenStorageCloudBackup</a></li>
 <li><a href="#openstorageapiopenstoragecluster">OpenStorageCluster</a></li>
 <li><a href="#openstorageapiopenstoragecredentials">OpenStorageCredentials</a></li>
+<li><a href="#openstorageapiopenstoragenode">OpenStorageNode</a></li>
 <li><a href="#openstorageapiopenstorageobjectstore">OpenStorageObjectstore</a></li>
 <li><a href="#openstorageapiopenstorageschedulepolicy">OpenStorageSchedulePolicy</a></li>
 <li><a href="#openstorageapiopenstoragevolume">OpenStorageVolume</a></li>
@@ -353,10 +354,8 @@
 <li><a href="#sdkclusteralertdeleteresponse">SdkClusterAlertDeleteResponse</a></li>
 <li><a href="#sdkclusteralertenumeraterequest">SdkClusterAlertEnumerateRequest</a></li>
 <li><a href="#sdkclusteralertenumerateresponse">SdkClusterAlertEnumerateResponse</a></li>
-<li><a href="#sdkclusterenumeraterequest">SdkClusterEnumerateRequest</a></li>
-<li><a href="#sdkclusterenumerateresponse">SdkClusterEnumerateResponse</a></li>
-<li><a href="#sdkclusterinspectrequest">SdkClusterInspectRequest</a></li>
-<li><a href="#sdkclusterinspectresponse">SdkClusterInspectResponse</a></li>
+<li><a href="#sdkclusterinspectcurrentrequest">SdkClusterInspectCurrentRequest</a></li>
+<li><a href="#sdkclusterinspectcurrentresponse">SdkClusterInspectCurrentResponse</a></li>
 <li><a href="#sdkcredentialcreaterequest">SdkCredentialCreateRequest</a></li>
 <li><a href="#sdkcredentialcreateresponse">SdkCredentialCreateResponse</a></li>
 <li><a href="#sdkcredentialdeleterequest">SdkCredentialDeleteRequest</a></li>
@@ -369,6 +368,12 @@
 <li><a href="#sdkcredentialvalidateresponse">SdkCredentialValidateResponse</a></li>
 <li><a href="#sdkgooglecredentialrequest">SdkGoogleCredentialRequest</a></li>
 <li><a href="#sdkgooglecredentialresponse">SdkGoogleCredentialResponse</a></li>
+<li><a href="#sdknodeenumeraterequest">SdkNodeEnumerateRequest</a></li>
+<li><a href="#sdknodeenumerateresponse">SdkNodeEnumerateResponse</a></li>
+<li><a href="#sdknodeinspectcurrentrequest">SdkNodeInspectCurrentRequest</a></li>
+<li><a href="#sdknodeinspectcurrentresponse">SdkNodeInspectCurrentResponse</a></li>
+<li><a href="#sdknodeinspectrequest">SdkNodeInspectRequest</a></li>
+<li><a href="#sdknodeinspectresponse">SdkNodeInspectResponse</a></li>
 <li><a href="#sdkobjectstorecreaterequest">SdkObjectstoreCreateRequest</a></li>
 <li><a href="#sdkobjectstorecreateresponse">SdkObjectstoreCreateResponse</a></li>
 <li><a href="#sdkobjectstoredeleterequest">SdkObjectstoreDeleteRequest</a></li>
@@ -410,8 +415,6 @@
 <li><a href="#sdkvolumemountrequest">SdkVolumeMountRequest</a></li>
 <li><a href="#sdkvolumemountrequestoptionsentry">SdkVolumeMountRequest.OptionsEntry</a></li>
 <li><a href="#sdkvolumemountresponse">SdkVolumeMountResponse</a></li>
-<li><a href="#sdkvolumesetrequest">SdkVolumeSetRequest</a></li>
-<li><a href="#sdkvolumesetresponse">SdkVolumeSetResponse</a></li>
 <li><a href="#sdkvolumesnapshotcreaterequest">SdkVolumeSnapshotCreateRequest</a></li>
 <li><a href="#sdkvolumesnapshotcreaterequestlabelsentry">SdkVolumeSnapshotCreateRequest.LabelsEntry</a></li>
 <li><a href="#sdkvolumesnapshotcreateresponse">SdkVolumeSnapshotCreateResponse</a></li>
@@ -423,6 +426,8 @@
 <li><a href="#sdkvolumeunmountrequest">SdkVolumeUnmountRequest</a></li>
 <li><a href="#sdkvolumeunmountrequestoptionsentry">SdkVolumeUnmountRequest.OptionsEntry</a></li>
 <li><a href="#sdkvolumeunmountresponse">SdkVolumeUnmountResponse</a></li>
+<li><a href="#sdkvolumeupdaterequest">SdkVolumeUpdateRequest</a></li>
+<li><a href="#sdkvolumeupdateresponse">SdkVolumeUpdateResponse</a></li>
 <li><a href="#snapcreaterequest">SnapCreateRequest</a></li>
 <li><a href="#snapcreateresponse">SnapCreateResponse</a></li>
 <li><a href="#source">Source</a></li>
@@ -448,8 +453,8 @@
 <li><a href="#volumesetresponse">VolumeSetResponse</a></li>
 <li><a href="#volumespec">VolumeSpec</a></li>
 <li><a href="#volumespecvolumelabelsentry">VolumeSpec.VolumeLabelsEntry</a></li>
-<li><a href="#volumespecset">VolumeSpecSet</a></li>
-<li><a href="#volumespecsetvolumelabelsentry">VolumeSpecSet.VolumeLabelsEntry</a></li>
+<li><a href="#volumespecupdate">VolumeSpecUpdate</a></li>
+<li><a href="#volumespecupdatevolumelabelsentry">VolumeSpecUpdate.VolumeLabelsEntry</a></li>
 <li><a href="#volumestateaction">VolumeStateAction</a></li>
 </ul>
 </li>
@@ -568,25 +573,19 @@ backup and other backups are dependent on it, it will not be able to be deleted.
  <!-- end methods --></p>
 <h1 id="openstorageapiopenstoragecluster">OpenStorageCluster </h1>
 <p>OpenStorageCluster service provides the methods to manage the cluster</p>
-<h2 id="enumerate">Enumerate</h2>
+<h2 id="inspectcurrent">InspectCurrent</h2>
 <blockquote>
-<p><strong>rpc</strong> Enumerate(<a href="#sdkclusterenumeraterequest">SdkClusterEnumerateRequest</a>)
-    <a href="#sdkclusterenumerateresponse">SdkClusterEnumerateResponse</a></p>
+<p><strong>rpc</strong> InspectCurrent(<a href="#sdkclusterinspectcurrentrequest">SdkClusterInspectCurrentRequest</a>)
+    <a href="#sdkclusterinspectcurrentresponse">SdkClusterInspectCurrentResponse</a></p>
 </blockquote>
-<p>Enumerate returns information about the cluster and the unique ids of
-all the nodes in the cluster.</p>
-<h2 id="inspect">Inspect</h2>
-<blockquote>
-<p><strong>rpc</strong> Inspect(<a href="#sdkclusterinspectrequest">SdkClusterInspectRequest</a>)
-    <a href="#sdkclusterinspectresponse">SdkClusterInspectResponse</a></p>
-</blockquote>
-<p>Inspect returns information about the specified node</p>
+<p>InspectCurrent returns information about the current cluster</p>
 <h2 id="alertenumerate">AlertEnumerate</h2>
 <blockquote>
 <p><strong>rpc</strong> AlertEnumerate(<a href="#sdkclusteralertenumeraterequest">SdkClusterAlertEnumerateRequest</a>)
     <a href="#sdkclusteralertenumerateresponse">SdkClusterAlertEnumerateResponse</a></p>
 </blockquote>
-<p>AlertEnumerate returns a list of alerts from the storage cluster</p>
+<p>AlertEnumerate returns a list of alerts from the storage cluster
+In REST, use the request values as query parameters.</p>
 <h2 id="alertclear">AlertClear</h2>
 <blockquote>
 <p><strong>rpc</strong> AlertClear(<a href="#sdkclusteralertclearrequest">SdkClusterAlertClearRequest</a>)
@@ -649,6 +648,28 @@ id of the credentials once they are verified to work.</p>
     <a href="#sdkcredentialvalidateresponse">SdkCredentialValidateResponse</a></p>
 </blockquote>
 <p>Validate is used to validate credentials
+ <!-- end methods --></p>
+<h1 id="openstorageapiopenstoragenode">OpenStorageNode </h1>
+<p>OpenStorageNode is a service used to manage nodes in the cluster</p>
+<h2 id="inspect">Inspect</h2>
+<blockquote>
+<p><strong>rpc</strong> Inspect(<a href="#sdknodeinspectrequest">SdkNodeInspectRequest</a>)
+    <a href="#sdknodeinspectresponse">SdkNodeInspectResponse</a></p>
+</blockquote>
+<p>Inspect returns information about the specified node</p>
+<h2 id="inspectcurrent">InspectCurrent</h2>
+<blockquote>
+<p><strong>rpc</strong> InspectCurrent(<a href="#sdknodeinspectcurrentrequest">SdkNodeInspectCurrentRequest</a>)
+    <a href="#sdknodeinspectcurrentresponse">SdkNodeInspectCurrentResponse</a></p>
+</blockquote>
+<p>InspectCurrent returns information about the storage node
+where the client is currently connected to.</p>
+<h2 id="enumerate">Enumerate</h2>
+<blockquote>
+<p><strong>rpc</strong> Enumerate(<a href="#sdknodeenumeraterequest">SdkNodeEnumerateRequest</a>)
+    <a href="#sdknodeenumerateresponse">SdkNodeEnumerateResponse</a></p>
+</blockquote>
+<p>Enumerate returns the ids of all the nodes in the current cluster
  <!-- end methods --></p>
 <h1 id="openstorageapiopenstorageobjectstore">OpenStorageObjectstore </h1>
 <p>OpenStorageObjectstore is a service used to manage object store services on volumes</p>
@@ -749,12 +770,12 @@ weekly, or monthly.</p>
     <a href="#sdkvolumeinspectresponse">SdkVolumeInspectResponse</a></p>
 </blockquote>
 <p>Inspect returns information about a volume</p>
-<h2 id="set">Set</h2>
+<h2 id="update">Update</h2>
 <blockquote>
-<p><strong>rpc</strong> Set(<a href="#sdkvolumesetrequest">SdkVolumeSetRequest</a>)
-    <a href="#sdkvolumesetresponse">SdkVolumeSetResponse</a></p>
+<p><strong>rpc</strong> Update(<a href="#sdkvolumeupdaterequest">SdkVolumeUpdateRequest</a>)
+    <a href="#sdkvolumeupdateresponse">SdkVolumeUpdateResponse</a></p>
 </blockquote>
-<p>Set provides a method for manipulating the specification and attributes of a volume.
+<p>Update provides a method for manipulating the specification and attributes of a volume.
 Set can be used to resize a volume, update labels, change replica count, and much more.</p>
 <h2 id="enumerate">Enumerate</h2>
 <blockquote>
@@ -768,7 +789,8 @@ Set can be used to resize a volume, update labels, change replica count, and muc
     <a href="#sdkvolumesnapshotcreateresponse">SdkVolumeSnapshotCreateResponse</a></p>
 </blockquote>
 <p>SnapshotCreate creates a snapshot of a volume. This creates an immutable (read-only),
-point-in-time snapshot of a volume.</p>
+point-in-time snapshot of a volume. To create a new writable volume from
+a snapshot, please use OpenStorageVolume.Clone().</p>
 <h2 id="snapshotrestore">SnapshotRestore</h2>
 <blockquote>
 <p><strong>rpc</strong> SnapshotRestore(<a href="#sdkvolumesnapshotrestorerequest">SdkVolumeSnapshotRestoreRequest</a>)
@@ -795,9 +817,7 @@ information about a new feature to allow attachment to any node.</p>
 <p><strong>rpc</strong> Detach(<a href="#sdkvolumedetachrequest">SdkVolumeDetachRequest</a>)
     <a href="#sdkvolumedetachresponse">SdkVolumeDetachResponse</a></p>
 </blockquote>
-<p>Detaches a the volume from the host that the client is communicating with
-NOTE: Please see <a href="https://github.com/libopenstorage/openstorage/issues/381" target="_blank">#381</a> for more
-information about a new feature to allow attachment to any node.</p>
+<p>Detaches a the volume from the host</p>
 <h2 id="mount">Mount</h2>
 <blockquote>
 <p><strong>rpc</strong> Mount(<a href="#sdkvolumemountrequest">SdkVolumeMountRequest</a>)
@@ -1480,6 +1500,7 @@ swagger:model</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkawscredentialrequest">SdkAwsCredentialRequest </h2>
+<p>Defines credentials for Aws/S3 endpoints</p>
 <table>
 <thead>
 <tr>
@@ -1514,6 +1535,7 @@ swagger:model</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkawscredentialresponse">SdkAwsCredentialResponse </h2>
+<p>Defines the response for AWS/S3 credentials</p>
 <table>
 <thead>
 <tr>
@@ -1548,6 +1570,7 @@ swagger:model</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkazurecredentialrequest">SdkAzureCredentialRequest </h2>
+<p>Defines credentials for Azure</p>
 <table>
 <thead>
 <tr>
@@ -1572,6 +1595,7 @@ swagger:model</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkazurecredentialresponse">SdkAzureCredentialResponse </h2>
+<p>Defines the response for Azure credentials</p>
 <table>
 <thead>
 <tr>
@@ -1596,6 +1620,7 @@ swagger:model</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkcloudbackupcatalogrequest">SdkCloudBackupCatalogRequest </h2>
+<p>Defines a request to get catalog of a backup stored by a cloud provider</p>
 <table>
 <thead>
 <tr>
@@ -1611,15 +1636,16 @@ swagger:model</p>
 <td>Id of the backup</td>
 </tr>
 <tr>
-<td>credential_uuid</td>
+<td>credential_id</td>
 <td><a href="#string"> string</a></td>
-<td>is the credential for cloud</td>
+<td>Credential id describe the credentials for the cloud</td>
 </tr>
 </tbody>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkcloudbackupcatalogresponse">SdkCloudBackupCatalogResponse </h2>
+<p>Defines a response containing the contents of a backup stored by a cloud provider</p>
 <table>
 <thead>
 <tr>
@@ -1639,6 +1665,7 @@ swagger:model</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkcloudbackupcreaterequest">SdkCloudBackupCreateRequest </h2>
+<p>Defines a request to create a backup of a volume to the cloud</p>
 <table>
 <thead>
 <tr>
@@ -1654,9 +1681,9 @@ swagger:model</p>
 <td>VolumeID of the volume for which cloudbackup is requested</td>
 </tr>
 <tr>
-<td>credential_uuid</td>
+<td>credential_id</td>
 <td><a href="#string"> string</a></td>
-<td>CredentialUUID is cloud credential to be used for backup</td>
+<td>Credential id refers to the cloud credentials needed to backup</td>
 </tr>
 <tr>
 <td>full</td>
@@ -1668,8 +1695,11 @@ swagger:model</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkcloudbackupcreateresponse">SdkCloudBackupCreateResponse </h2>
+<p>Empty response</p>
  <!-- end HasFields -->
 <h2 id="sdkcloudbackupdeleteallrequest">SdkCloudBackupDeleteAllRequest </h2>
+<p>Defines a request to delete all the backups stored by a cloud provider
+for a specified volume</p>
 <table>
 <thead>
 <tr>
@@ -1685,17 +1715,19 @@ swagger:model</p>
 <td>id of the volume for the request</td>
 </tr>
 <tr>
-<td>credential_uuid</td>
+<td>credential_id</td>
 <td><a href="#string"> string</a></td>
-<td>CredentialUUID is the credential for cloud to be used for the request</td>
+<td>Credential id is the credential for cloud to be used for the request</td>
 </tr>
 </tbody>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkcloudbackupdeleteallresponse">SdkCloudBackupDeleteAllResponse </h2>
+<p>Empty response</p>
  <!-- end HasFields -->
 <h2 id="sdkcloudbackupdeleterequest">SdkCloudBackupDeleteRequest </h2>
+<p>Defines a request to delete a single backup stored by a cloud provider</p>
 <table>
 <thead>
 <tr>
@@ -1711,22 +1743,24 @@ swagger:model</p>
 <td>ID is the ID of the cloud backup</td>
 </tr>
 <tr>
-<td>credential_uuid</td>
+<td>credential_id</td>
 <td><a href="#string"> string</a></td>
-<td>CredentialUUID is the credential for cloud to be used for the request</td>
+<td>Credential id is the credential for cloud to be used for the request</td>
 </tr>
 <tr>
 <td>force</td>
 <td><a href="#bool"> bool</a></td>
-<td>Force Delete cloudbackup even if there are dependencies</td>
+<td>Force Delete cloudbackup even if there are dependencies. This may be needed if the backup is an incremental backup and subsequent backups depend on this backup specified by <code>backup_id</code>.</td>
 </tr>
 </tbody>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkcloudbackupdeleteresponse">SdkCloudBackupDeleteResponse </h2>
+<p>Empty response</p>
  <!-- end HasFields -->
 <h2 id="sdkcloudbackupenumeraterequest">SdkCloudBackupEnumerateRequest </h2>
+<p>Defines a request to list the backups stored by a cloud provider</p>
 <table>
 <thead>
 <tr>
@@ -1744,12 +1778,12 @@ swagger:model</p>
 <tr>
 <td>cluster_id</td>
 <td><a href="#string"> string</a></td>
-<td>ClusterID is the optional clusterID for the request</td>
+<td>Cluster id is an optional parameter which defines the cluster</td>
 </tr>
 <tr>
-<td>credential_uuid</td>
+<td>credential_id</td>
 <td><a href="#string"> string</a></td>
-<td>CredentialUUID is the credential for cloud to be used for the request</td>
+<td>Credential id is the credential for cloud to be used for the request</td>
 </tr>
 <tr>
 <td>all</td>
@@ -1761,6 +1795,7 @@ swagger:model</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkcloudbackupenumerateresponse">SdkCloudBackupEnumerateResponse </h2>
+<p>Defines a response which lists all the backups stored by a cloud provider</p>
 <table>
 <thead>
 <tr>
@@ -1780,6 +1815,8 @@ swagger:model</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkcloudbackuphistoryitem">SdkCloudBackupHistoryItem </h2>
+<p>SdkCloudBackupHistoryItem contains information about a backup for a
+specific volume</p>
 <table>
 <thead>
 <tr>
@@ -1809,6 +1846,8 @@ swagger:model</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkcloudbackuphistoryrequest">SdkCloudBackupHistoryRequest </h2>
+<p>Defines a request to retreive the history of the backups for
+a specific volume to a cloud provider</p>
 <table>
 <thead>
 <tr>
@@ -1821,13 +1860,14 @@ swagger:model</p>
 <tr>
 <td>src_volume_id</td>
 <td><a href="#string"> string</a></td>
-<td>volumeID for which history of backup/restore is being requested (optional) If not provided, it will return the history for all volumes.</td>
+<td>This optional value defines which history of backup/restore is being requested. If not provided, it will return the history for all volumes.</td>
 </tr>
 </tbody>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkcloudbackuphistoryresponse">SdkCloudBackupHistoryResponse </h2>
+<p>Defines a response containing a list of history of backups to a cloud provider</p>
 <table>
 <thead>
 <tr>
@@ -1847,6 +1887,7 @@ swagger:model</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkcloudbackupinfo">SdkCloudBackupInfo </h2>
+<p>SdkCloudBackupInfo has information about a backup stored by a cloud provider</p>
 <table>
 <thead>
 <tr>
@@ -1915,6 +1956,8 @@ swagger:model</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkcloudbackuprestorerequest">SdkCloudBackupRestoreRequest </h2>
+<p>Defines a request to restore a volume from an existing backup stored by
+a cloud provider</p>
 <table>
 <thead>
 <tr>
@@ -1935,7 +1978,7 @@ swagger:model</p>
 <td>Optional volume Name of the new volume to be created in the cluster for restoring the cloudbackup</td>
 </tr>
 <tr>
-<td>credential_uuid</td>
+<td>credential_id</td>
 <td><a href="#string"> string</a></td>
 <td>The credential to be used for restore operation</td>
 </tr>
@@ -1949,6 +1992,8 @@ swagger:model</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkcloudbackuprestoreresponse">SdkCloudBackupRestoreResponse </h2>
+<p>Defines a response when restoring a volume from a backup stored by
+a cloud provider</p>
 <table>
 <thead>
 <tr>
@@ -1968,6 +2013,8 @@ swagger:model</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkcloudbackupschedcreaterequest">SdkCloudBackupSchedCreateRequest </h2>
+<p>Defines a request to create a schedule for volume backups to a
+cloud provider</p>
 <table>
 <thead>
 <tr>
@@ -1987,6 +2034,8 @@ swagger:model</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkcloudbackupschedcreateresponse">SdkCloudBackupSchedCreateResponse </h2>
+<p>Defines a response containing the id of a schedule for a volume backup
+to a cloud provider</p>
 <table>
 <thead>
 <tr>
@@ -1997,15 +2046,16 @@ swagger:model</p>
 </thead>
 <tbody>
 <tr>
-<td>uuid</td>
+<td>backup_schedule_id</td>
 <td><a href="#string"> string</a></td>
-<td>UUID of newly created backup schedule</td>
+<td>Id of newly created backup schedule</td>
 </tr>
 </tbody>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkcloudbackupscheddeleterequest">SdkCloudBackupSchedDeleteRequest </h2>
+<p>Defines a request to delete a backup schedule</p>
 <table>
 <thead>
 <tr>
@@ -2016,19 +2066,23 @@ swagger:model</p>
 </thead>
 <tbody>
 <tr>
-<td>uuid</td>
+<td>backup_schedule_id</td>
 <td><a href="#string"> string</a></td>
-<td>UUID of cloud backup to delete</td>
+<td>Id of cloud backup to delete</td>
 </tr>
 </tbody>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkcloudbackupscheddeleteresponse">SdkCloudBackupSchedDeleteResponse </h2>
+<p>Empty response</p>
  <!-- end HasFields -->
 <h2 id="sdkcloudbackupschedenumeraterequest">SdkCloudBackupSchedEnumerateRequest </h2>
+<p>Empty request</p>
  <!-- end HasFields -->
 <h2 id="sdkcloudbackupschedenumerateresponse">SdkCloudBackupSchedEnumerateResponse </h2>
+<p>Defines a response containing a map listing the schedules for volume
+backups to a cloud provider</p>
 <table>
 <thead>
 <tr>
@@ -2072,6 +2126,8 @@ swagger:model</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkcloudbackupscheduleinfo">SdkCloudBackupScheduleInfo </h2>
+<p>SdkCloudBackupScheduleInfo describes a schedule for volume backups to
+a cloud provider</p>
 <table>
 <thead>
 <tr>
@@ -2084,12 +2140,12 @@ swagger:model</p>
 <tr>
 <td>src_volume_id</td>
 <td><a href="#string"> string</a></td>
-<td>SrcVolumeID is the schedule&apos;s source volume</td>
+<td>The schedule&apos;s source volume</td>
 </tr>
 <tr>
-<td>credential_uuid</td>
+<td>credential_id</td>
 <td><a href="#string"> string</a></td>
-<td>CredentialUUID is the cloud credential used with this schedule</td>
+<td>The cloud credential used with this schedule</td>
 </tr>
 <tr>
 <td>schedule</td>
@@ -2106,6 +2162,8 @@ swagger:model</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkcloudbackupstatechangerequest">SdkCloudBackupStateChangeRequest </h2>
+<p>Defines a request to change the state of a backup or restore to or
+from a cloud provider</p>
 <table>
 <thead>
 <tr>
@@ -2118,20 +2176,22 @@ swagger:model</p>
 <tr>
 <td>src_volume_id</td>
 <td><a href="#string"> string</a></td>
-<td>SrcVolumeID is volume ID on which backup/restore state change is being requested</td>
+<td>Describes the volume id on which backup/restore state change is being requested</td>
 </tr>
 <tr>
 <td>requested_state</td>
 <td><a href="#sdkcloudbackuprequestedstate"> SdkCloudBackupRequestedState</a></td>
-<td>RequestedState is desired state of the op can be pause/resume/stop</td>
+<td>The desired state of the operation</td>
 </tr>
 </tbody>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkcloudbackupstatechangeresponse">SdkCloudBackupStateChangeResponse </h2>
+<p>Empty response</p>
  <!-- end HasFields -->
 <h2 id="sdkcloudbackupstatus">SdkCloudBackupStatus </h2>
+<p>SdkCloudBackupStatus defines the status of a backup stored by a cloud provider</p>
 <table>
 <thead>
 <tr>
@@ -2181,6 +2241,7 @@ swagger:model</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkcloudbackupstatusrequest">SdkCloudBackupStatusRequest </h2>
+<p>Defines a request to retreive the status of a backup for a specified volume</p>
 <table>
 <thead>
 <tr>
@@ -2205,6 +2266,7 @@ swagger:model</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkcloudbackupstatusresponse">SdkCloudBackupStatusResponse </h2>
+<p>Defines a response containing the status of the backups for a specified volume</p>
 <table>
 <thead>
 <tr>
@@ -2217,7 +2279,7 @@ swagger:model</p>
 <tr>
 <td>statuses</td>
 <td><a href="#sdkcloudbackupstatusresponsestatusesentry">map SdkCloudBackupStatusResponse.StatusesEntry</a></td>
-<td>statuses is list of currently active/failed/done backup/restores</td>
+<td>Statuses is list of currently active/failed/done backup/restores</td>
 </tr>
 </tbody>
 </table>
@@ -2248,6 +2310,7 @@ swagger:model</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkclusteralertclearrequest">SdkClusterAlertClearRequest </h2>
+<p>Defines a request to clear an alert</p>
 <table>
 <thead>
 <tr>
@@ -2272,8 +2335,10 @@ swagger:model</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkclusteralertclearresponse">SdkClusterAlertClearResponse </h2>
+<p>Empty response</p>
  <!-- end HasFields -->
 <h2 id="sdkclusteralertdeleterequest">SdkClusterAlertDeleteRequest </h2>
+<p>Defines a request to delete an alert</p>
 <table>
 <thead>
 <tr>
@@ -2298,10 +2363,12 @@ swagger:model</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkclusteralertdeleteresponse">SdkClusterAlertDeleteResponse </h2>
+<p>Empty response</p>
  <!-- end HasFields -->
 <h2 id="sdkclusteralertenumeraterequest">SdkClusterAlertEnumerateRequest </h2>
-<p>This request contains the information needed to get alerts from
-the storage system</p>
+<p>Defines a request contains the information needed to get alerts from
+the storage system. For REST you will need to pass these
+as query parameters. See swagger documentation for more information.</p>
 <table>
 <thead>
 <tr>
@@ -2331,7 +2398,7 @@ the storage system</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkclusteralertenumerateresponse">SdkClusterAlertEnumerateResponse </h2>
-<p>This response provides a list of the alerts at the specified time.</p>
+<p>Defines a response providing a list of alerts</p>
 <table>
 <thead>
 <tr>
@@ -2350,11 +2417,11 @@ the storage system</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
-<h2 id="sdkclusterenumeraterequest">SdkClusterEnumerateRequest </h2>
-<p>This request is an empty request</p>
+<h2 id="sdkclusterinspectcurrentrequest">SdkClusterInspectCurrentRequest </h2>
+<p>Empty request</p>
  <!-- end HasFields -->
-<h2 id="sdkclusterenumerateresponse">SdkClusterEnumerateResponse </h2>
-<p>This response returns information about the cluster</p>
+<h2 id="sdkclusterinspectcurrentresponse">SdkClusterInspectCurrentResponse </h2>
+<p>Defines a response when inspecting the current cluster</p>
 <table>
 <thead>
 <tr>
@@ -2373,47 +2440,8 @@ the storage system</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
-<h2 id="sdkclusterinspectrequest">SdkClusterInspectRequest </h2>
-<p>Contains the request when inspecting a node</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>node_id</td>
-<td><a href="#string"> string</a></td>
-<td>Id of node to inspect (required)</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkclusterinspectresponse">SdkClusterInspectResponse </h2>
-<p>This response contains information about the respective node requested</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>node</td>
-<td><a href="#storagenode"> StorageNode</a></td>
-<td>Node information</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
 <h2 id="sdkcredentialcreaterequest">SdkCredentialCreateRequest </h2>
+<p>Defines a request to create credentials</p>
 <table>
 <thead>
 <tr>
@@ -2426,23 +2454,24 @@ the storage system</p>
 <tr>
 <td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> credential_type.aws_credential</td>
 <td><a href="#sdkawscredentialrequest"> SdkAwsCredentialRequest</a></td>
-<td>none</td>
+<td>Credentials for AWS/S3</td>
 </tr>
 <tr>
 <td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> credential_type.azure_credential</td>
 <td><a href="#sdkazurecredentialrequest"> SdkAzureCredentialRequest</a></td>
-<td>none</td>
+<td>Credentials for Azure</td>
 </tr>
 <tr>
 <td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> credential_type.google_credential</td>
 <td><a href="#sdkgooglecredentialrequest"> SdkGoogleCredentialRequest</a></td>
-<td>none</td>
+<td>Credentials for Google</td>
 </tr>
 </tbody>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkcredentialcreateresponse">SdkCredentialCreateResponse </h2>
+<p>Defines a response from creating a credential</p>
 <table>
 <thead>
 <tr>
@@ -2462,6 +2491,7 @@ the storage system</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkcredentialdeleterequest">SdkCredentialDeleteRequest </h2>
+<p>Defines the request to delete credentials</p>
 <table>
 <thead>
 <tr>
@@ -2474,17 +2504,20 @@ the storage system</p>
 <tr>
 <td>credential_id</td>
 <td><a href="#string"> string</a></td>
-<td>ID for credentials</td>
+<td>Id for credentials</td>
 </tr>
 </tbody>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkcredentialdeleteresponse">SdkCredentialDeleteResponse </h2>
+<p>Empty response</p>
  <!-- end HasFields -->
 <h2 id="sdkcredentialenumeraterequest">SdkCredentialEnumerateRequest </h2>
+<p>Empty request</p>
  <!-- end HasFields -->
 <h2 id="sdkcredentialenumerateresponse">SdkCredentialEnumerateResponse </h2>
+<p>Defines response for a enumeration of credentials</p>
 <table>
 <thead>
 <tr>
@@ -2497,13 +2530,14 @@ the storage system</p>
 <tr>
 <td>credential_ids</td>
 <td><a href="#string">repeated string</a></td>
-<td>none</td>
+<td>List of credentials</td>
 </tr>
 </tbody>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkcredentialinspectrequest">SdkCredentialInspectRequest </h2>
+<p>Defines the request to inspection for credentials</p>
 <table>
 <thead>
 <tr>
@@ -2516,14 +2550,15 @@ the storage system</p>
 <tr>
 <td>credential_id</td>
 <td><a href="#string"> string</a></td>
-<td>none</td>
+<td>Id of the credential</td>
 </tr>
 </tbody>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkcredentialinspectresponse">SdkCredentialInspectResponse </h2>
-<p>This response uses OneOf proto style. Depending on your programming language
+<p>Defines the response to an inspection of a credential.
+This response uses OneOf proto style. Depending on your programming language
 you will need to check if the value of credential_type is one of the ones below.</p>
 <table>
 <thead>
@@ -2537,23 +2572,24 @@ you will need to check if the value of credential_type is one of the ones below.
 <tr>
 <td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> credential_type.aws_credential</td>
 <td><a href="#sdkawscredentialresponse"> SdkAwsCredentialResponse</a></td>
-<td>none</td>
+<td>Aws credentials</td>
 </tr>
 <tr>
 <td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> credential_type.azure_credential</td>
 <td><a href="#sdkazurecredentialresponse"> SdkAzureCredentialResponse</a></td>
-<td>none</td>
+<td>Azure credentials</td>
 </tr>
 <tr>
 <td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> credential_type.google_credential</td>
 <td><a href="#sdkgooglecredentialresponse"> SdkGoogleCredentialResponse</a></td>
-<td>none</td>
+<td>Google credentials</td>
 </tr>
 </tbody>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkcredentialvalidaterequest">SdkCredentialValidateRequest </h2>
+<p>Defines a request to validate credentials</p>
 <table>
 <thead>
 <tr>
@@ -2573,8 +2609,10 @@ you will need to check if the value of credential_type is one of the ones below.
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkcredentialvalidateresponse">SdkCredentialValidateResponse </h2>
+<p>Empty response</p>
  <!-- end HasFields -->
 <h2 id="sdkgooglecredentialrequest">SdkGoogleCredentialRequest </h2>
+<p>Defines credentials for Google</p>
 <table>
 <thead>
 <tr>
@@ -2599,6 +2637,7 @@ you will need to check if the value of credential_type is one of the ones below.
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkgooglecredentialresponse">SdkGoogleCredentialResponse </h2>
+<p>Defines the response for Google credentials</p>
 <table>
 <thead>
 <tr>
@@ -2622,7 +2661,94 @@ you will need to check if the value of credential_type is one of the ones below.
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
+<h2 id="sdknodeenumeraterequest">SdkNodeEnumerateRequest </h2>
+<p>Empty request</p>
+ <!-- end HasFields -->
+<h2 id="sdknodeenumerateresponse">SdkNodeEnumerateResponse </h2>
+<p>Defines a response with a list of nodes</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>node_ids</td>
+<td><a href="#string">repeated string</a></td>
+<td>List of all the node ids in the cluster</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdknodeinspectcurrentrequest">SdkNodeInspectCurrentRequest </h2>
+<p>Empty request</p>
+ <!-- end HasFields -->
+<h2 id="sdknodeinspectcurrentresponse">SdkNodeInspectCurrentResponse </h2>
+<p>Defines a response when inspecting a node</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>node</td>
+<td><a href="#storagenode"> StorageNode</a></td>
+<td>Node information</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdknodeinspectrequest">SdkNodeInspectRequest </h2>
+<p>Defines a request when inspecting a node</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>node_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of node to inspect</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdknodeinspectresponse">SdkNodeInspectResponse </h2>
+<p>Defines a response when inspecting a node</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>node</td>
+<td><a href="#storagenode"> StorageNode</a></td>
+<td>Node information</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
 <h2 id="sdkobjectstorecreaterequest">SdkObjectstoreCreateRequest </h2>
+<p>Defines a request to create an object store</p>
 <table>
 <thead>
 <tr>
@@ -2642,6 +2768,8 @@ you will need to check if the value of credential_type is one of the ones below.
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkobjectstorecreateresponse">SdkObjectstoreCreateResponse </h2>
+<p>Defines a response when an object store has been created for a
+specified volume</p>
 <table>
 <thead>
 <tr>
@@ -2661,6 +2789,7 @@ you will need to check if the value of credential_type is one of the ones below.
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkobjectstoredeleterequest">SdkObjectstoreDeleteRequest </h2>
+<p>Defines a request to delete an object store service from a volume</p>
 <table>
 <thead>
 <tr>
@@ -2673,15 +2802,17 @@ you will need to check if the value of credential_type is one of the ones below.
 <tr>
 <td>objectstore_id</td>
 <td><a href="#string"> string</a></td>
-<td>Objectstore ID to delete</td>
+<td>Id of the object store to delete</td>
 </tr>
 </tbody>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkobjectstoredeleteresponse">SdkObjectstoreDeleteResponse </h2>
+<p>Empty response</p>
  <!-- end HasFields -->
 <h2 id="sdkobjectstoreinspectrequest">SdkObjectstoreInspectRequest </h2>
+<p>Defines a request to get information about an object store endpoint</p>
 <table>
 <thead>
 <tr>
@@ -2694,13 +2825,14 @@ you will need to check if the value of credential_type is one of the ones below.
 <tr>
 <td>objectstore_id</td>
 <td><a href="#string"> string</a></td>
-<td>ObjecstoreID to query objestore status</td>
+<td>Id of the object store</td>
 </tr>
 </tbody>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkobjectstoreinspectresponse">SdkObjectstoreInspectResponse </h2>
+<p>Defines a response when inspecting an object store endpoint</p>
 <table>
 <thead>
 <tr>
@@ -2713,13 +2845,14 @@ you will need to check if the value of credential_type is one of the ones below.
 <tr>
 <td>objectstore_status</td>
 <td><a href="#objectstoreinfo"> ObjectstoreInfo</a></td>
-<td>Objectstore status</td>
+<td>Contains information about the object store requested</td>
 </tr>
 </tbody>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkobjectstoreupdaterequest">SdkObjectstoreUpdateRequest </h2>
+<p>Defines a request to update an object store</p>
 <table>
 <thead>
 <tr>
@@ -2744,8 +2877,10 @@ you will need to check if the value of credential_type is one of the ones below.
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkobjectstoreupdateresponse">SdkObjectstoreUpdateResponse </h2>
+<p>Empty response</p>
  <!-- end HasFields -->
 <h2 id="sdkschedulepolicy">SdkSchedulePolicy </h2>
+<p>Defines a schedule policy</p>
 <table>
 <thead>
 <tr>
@@ -2770,6 +2905,7 @@ you will need to check if the value of credential_type is one of the ones below.
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkschedulepolicycreaterequest">SdkSchedulePolicyCreateRequest </h2>
+<p>Define a schedule policy request</p>
 <table>
 <thead>
 <tr>
@@ -2789,8 +2925,10 @@ you will need to check if the value of credential_type is one of the ones below.
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkschedulepolicycreateresponse">SdkSchedulePolicyCreateResponse </h2>
+<p>Empty response</p>
  <!-- end HasFields -->
 <h2 id="sdkschedulepolicydeleterequest">SdkSchedulePolicyDeleteRequest </h2>
+<p>Define schedule policy deletion request</p>
 <table>
 <thead>
 <tr>
@@ -2810,10 +2948,13 @@ you will need to check if the value of credential_type is one of the ones below.
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkschedulepolicydeleteresponse">SdkSchedulePolicyDeleteResponse </h2>
+<p>Empty response</p>
  <!-- end HasFields -->
 <h2 id="sdkschedulepolicyenumeraterequest">SdkSchedulePolicyEnumerateRequest </h2>
+<p>Empty request</p>
  <!-- end HasFields -->
 <h2 id="sdkschedulepolicyenumerateresponse">SdkSchedulePolicyEnumerateResponse </h2>
+<p>Defines a schedule policy enumerate response</p>
 <table>
 <thead>
 <tr>
@@ -2833,6 +2974,7 @@ you will need to check if the value of credential_type is one of the ones below.
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkschedulepolicyinspectrequest">SdkSchedulePolicyInspectRequest </h2>
+<p>Define a schedule policy inspection request</p>
 <table>
 <thead>
 <tr>
@@ -2852,6 +2994,7 @@ you will need to check if the value of credential_type is one of the ones below.
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkschedulepolicyinspectresponse">SdkSchedulePolicyInspectResponse </h2>
+<p>Defines a schedule policy inspection response</p>
 <table>
 <thead>
 <tr>
@@ -2871,6 +3014,7 @@ you will need to check if the value of credential_type is one of the ones below.
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkschedulepolicyinterval">SdkSchedulePolicyInterval </h2>
+<p>Defines a schedule policy interval</p>
 <table>
 <thead>
 <tr>
@@ -2905,6 +3049,7 @@ you will need to check if the value of credential_type is one of the ones below.
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkschedulepolicyintervaldaily">SdkSchedulePolicyIntervalDaily </h2>
+<p>Defines a daily schedule</p>
 <table>
 <thead>
 <tr>
@@ -2929,6 +3074,7 @@ you will need to check if the value of credential_type is one of the ones below.
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkschedulepolicyintervalmonthly">SdkSchedulePolicyIntervalMonthly </h2>
+<p>Defines a monthly schedule</p>
 <table>
 <thead>
 <tr>
@@ -2958,6 +3104,7 @@ you will need to check if the value of credential_type is one of the ones below.
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkschedulepolicyintervalweekly">SdkSchedulePolicyIntervalWeekly </h2>
+<p>Defines a weekly schedule</p>
 <table>
 <thead>
 <tr>
@@ -2987,6 +3134,7 @@ you will need to check if the value of credential_type is one of the ones below.
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkschedulepolicyupdaterequest">SdkSchedulePolicyUpdateRequest </h2>
+<p>Define a request to update a schedule policy</p>
 <table>
 <thead>
 <tr>
@@ -3006,8 +3154,10 @@ you will need to check if the value of credential_type is one of the ones below.
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkschedulepolicyupdateresponse">SdkSchedulePolicyUpdateResponse </h2>
+<p>Empty response</p>
  <!-- end HasFields -->
 <h2 id="sdkvolumeattachrequest">SdkVolumeAttachRequest </h2>
+<p>Defines a request to attach a volume to the node receiving this request</p>
 <table>
 <thead>
 <tr>
@@ -3056,6 +3206,7 @@ you will need to check if the value of credential_type is one of the ones below.
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkvolumeattachresponse">SdkVolumeAttachResponse </h2>
+<p>Defines a response from the node which received the request to attach</p>
 <table>
 <thead>
 <tr>
@@ -3075,6 +3226,7 @@ you will need to check if the value of credential_type is one of the ones below.
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkvolumeclonerequest">SdkVolumeCloneRequest </h2>
+<p>Defines a request to clone a volume or create a volume from a snapshot</p>
 <table>
 <thead>
 <tr>
@@ -3092,18 +3244,14 @@ you will need to check if the value of credential_type is one of the ones below.
 <tr>
 <td>parent_id</td>
 <td><a href="#string"> string</a></td>
-<td>Parent volume id, if specified will create a new volume as a clone of the parent.</td>
-</tr>
-<tr>
-<td>spec</td>
-<td><a href="#volumespec"> VolumeSpec</a></td>
-<td>Volume specification</td>
+<td>Parent volume id or snapshot id will create a new volume as a clone of the parent.</td>
 </tr>
 </tbody>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkvolumecloneresponse">SdkVolumeCloneResponse </h2>
+<p>Defines the response when creating a clone from a volume or a snapshot</p>
 <table>
 <thead>
 <tr>
@@ -3123,6 +3271,8 @@ you will need to check if the value of credential_type is one of the ones below.
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkvolumecreaterequest">SdkVolumeCreateRequest </h2>
+<p>Defines a request to create a volume. Use OpenStorageVolume.Update()
+to update any labels on the volume.</p>
 <table>
 <thead>
 <tr>
@@ -3147,6 +3297,7 @@ you will need to check if the value of credential_type is one of the ones below.
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkvolumecreateresponse">SdkVolumeCreateResponse </h2>
+<p>Defines a response to the creation of a volume</p>
 <table>
 <thead>
 <tr>
@@ -3166,6 +3317,7 @@ you will need to check if the value of credential_type is one of the ones below.
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkvolumedeleterequest">SdkVolumeDeleteRequest </h2>
+<p>Defines the request to delete a volume</p>
 <table>
 <thead>
 <tr>
@@ -3185,8 +3337,10 @@ you will need to check if the value of credential_type is one of the ones below.
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkvolumedeleteresponse">SdkVolumeDeleteResponse </h2>
+<p>Empty response</p>
  <!-- end HasFields -->
 <h2 id="sdkvolumedetachrequest">SdkVolumeDetachRequest </h2>
+<p>Defines a request to detach a volume</p>
 <table>
 <thead>
 <tr>
@@ -3206,8 +3360,10 @@ you will need to check if the value of credential_type is one of the ones below.
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkvolumedetachresponse">SdkVolumeDetachResponse </h2>
+<p>Empty response</p>
  <!-- end HasFields -->
 <h2 id="sdkvolumeenumeraterequest">SdkVolumeEnumerateRequest </h2>
+<p>Defines a request to list volumes</p>
 <table>
 <thead>
 <tr>
@@ -3227,6 +3383,7 @@ you will need to check if the value of credential_type is one of the ones below.
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkvolumeenumerateresponse">SdkVolumeEnumerateResponse </h2>
+<p>Defines the response when listing volumes</p>
 <table>
 <thead>
 <tr>
@@ -3246,6 +3403,7 @@ you will need to check if the value of credential_type is one of the ones below.
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkvolumeinspectrequest">SdkVolumeInspectRequest </h2>
+<p>Defines the request to inspect a volume</p>
 <table>
 <thead>
 <tr>
@@ -3265,6 +3423,7 @@ you will need to check if the value of credential_type is one of the ones below.
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkvolumeinspectresponse">SdkVolumeInspectResponse </h2>
+<p>Defines the response when inspecting a volume</p>
 <table>
 <thead>
 <tr>
@@ -3284,6 +3443,7 @@ you will need to check if the value of credential_type is one of the ones below.
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkvolumemountrequest">SdkVolumeMountRequest </h2>
+<p>Defines a request to mount a volume to the node receiving this request</p>
 <table>
 <thead>
 <tr>
@@ -3337,41 +3497,10 @@ you will need to check if the value of credential_type is one of the ones below.
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkvolumemountresponse">SdkVolumeMountResponse </h2>
- <!-- end HasFields -->
-<h2 id="sdkvolumesetrequest">SdkVolumeSetRequest </h2>
-<p>This request is used to adjust or set new values in the volume</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>volume_id</td>
-<td><a href="#string"> string</a></td>
-<td>Id of the volume to update</td>
-</tr>
-<tr>
-<td>locator</td>
-<td><a href="#volumelocator"> VolumeLocator</a></td>
-<td>Change locator values. Some of these values may not be able to be changed. New labels will be added to the current volume labels. To delete a label, set the value of the label to an empty string.</td>
-</tr>
-<tr>
-<td>spec</td>
-<td><a href="#volumespecset"> VolumeSpecSet</a></td>
-<td>VolumeSpecSet provides a method to request that certain values in the VolumeSpec are changed. This is necessary as a separate variable because values like int and bool in the VolumeSpec cannot be determined if they are being requested to change in gRPC proto3. Some of these values may not be able to be changed. Here are a few examples of actions that can be accomplished using the VolumeSpec. To resize the volume: Set a new value in spec.size. To change number of replicas: Adjust spec.ha_level. To change the I/O Profile: Adjust spec.io_profile.</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkvolumesetresponse">SdkVolumeSetResponse </h2>
-<p>The response returns no data</p>
+<p>Empty response</p>
  <!-- end HasFields -->
 <h2 id="sdkvolumesnapshotcreaterequest">SdkVolumeSnapshotCreateRequest </h2>
+<p>Defines the request when creating a snapshot from a volume.</p>
 <table>
 <thead>
 <tr>
@@ -3420,6 +3549,7 @@ you will need to check if the value of credential_type is one of the ones below.
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkvolumesnapshotcreateresponse">SdkVolumeSnapshotCreateResponse </h2>
+<p>Defines a response after creating a snapshot of a volume</p>
 <table>
 <thead>
 <tr>
@@ -3439,6 +3569,7 @@ you will need to check if the value of credential_type is one of the ones below.
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkvolumesnapshotenumeraterequest">SdkVolumeSnapshotEnumerateRequest </h2>
+<p>Defines a request to list the snaphots</p>
 <table>
 <thead>
 <tr>
@@ -3487,6 +3618,7 @@ you will need to check if the value of credential_type is one of the ones below.
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkvolumesnapshotenumerateresponse">SdkVolumeSnapshotEnumerateResponse </h2>
+<p>Defines a response when listing snapshots</p>
 <table>
 <thead>
 <tr>
@@ -3506,6 +3638,7 @@ you will need to check if the value of credential_type is one of the ones below.
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkvolumesnapshotrestorerequest">SdkVolumeSnapshotRestoreRequest </h2>
+<p>Defines a request to restore a volume to a snapshot</p>
 <table>
 <thead>
 <tr>
@@ -3530,8 +3663,10 @@ you will need to check if the value of credential_type is one of the ones below.
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkvolumesnapshotrestoreresponse">SdkVolumeSnapshotRestoreResponse </h2>
+<p>Empty response</p>
  <!-- end HasFields -->
 <h2 id="sdkvolumeunmountrequest">SdkVolumeUnmountRequest </h2>
+<p>Defines a request to unmount a volume on the node receiving this request</p>
 <table>
 <thead>
 <tr>
@@ -3585,6 +3720,40 @@ you will need to check if the value of credential_type is one of the ones below.
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkvolumeunmountresponse">SdkVolumeUnmountResponse </h2>
+<p>Empty response</p>
+ <!-- end HasFields -->
+<h2 id="sdkvolumeupdaterequest">SdkVolumeUpdateRequest </h2>
+<p>This request is used to adjust or set new values in the volume</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of the volume to update</td>
+</tr>
+<tr>
+<td>locator</td>
+<td><a href="#volumelocator"> VolumeLocator</a></td>
+<td>Change locator values. Some of these values may not be able to be changed. New labels will be added to the current volume labels. To delete a label, set the value of the label to an empty string.</td>
+</tr>
+<tr>
+<td>spec</td>
+<td><a href="#volumespecupdate"> VolumeSpecUpdate</a></td>
+<td>VolumeSpecUpdate provides a method to request that certain values in the VolumeSpec are changed. This is necessary as a separate variable because values like int and bool in the VolumeSpec cannot be determined if they are being requested to change in gRPC proto3. Some of these values may not be able to be changed. Here are a few examples of actions that can be accomplished using the VolumeSpec. To resize the volume: Set a new value in spec.size. To change number of replicas: Adjust spec.ha_level. To change the I/O Profile: Adjust spec.io_profile.</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkvolumeupdateresponse">SdkVolumeUpdateResponse </h2>
+<p>Empty response</p>
  <!-- end HasFields -->
 <h2 id="snapcreaterequest">SnapCreateRequest </h2>
 <p>SnapCreateRequest specifies a request to create a snapshot of given volume.
@@ -3752,16 +3921,6 @@ swagger:model</p>
 <td>id</td>
 <td><a href="#string"> string</a></td>
 <td>Id of the cluster</td>
-</tr>
-<tr>
-<td>node_id</td>
-<td><a href="#string"> string</a></td>
-<td>The id of the node servicing these requests</td>
-</tr>
-<tr>
-<td>node_ids</td>
-<td><a href="#string">repeated string</a></td>
-<td>List of all the node ids in the cluster</td>
 </tr>
 </tbody>
 </table>
@@ -4653,8 +4812,8 @@ swagger:model</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
-<h2 id="volumespecset">VolumeSpecSet </h2>
-<p>VolumeSpecSet provides a method to set any of the VolumeSpec of an existing volume</p>
+<h2 id="volumespecupdate">VolumeSpecUpdate </h2>
+<p>VolumeSpecUpdate provides a method to set any of the VolumeSpec of an existing volume</p>
 <table>
 <thead>
 <tr>
@@ -4711,7 +4870,7 @@ swagger:model</p>
 </tr>
 <tr>
 <td>volume_labels</td>
-<td><a href="#volumespecsetvolumelabelsentry">map VolumeSpecSet.VolumeLabelsEntry</a></td>
+<td><a href="#volumespecupdatevolumelabelsentry">map VolumeSpecUpdate.VolumeLabelsEntry</a></td>
 <td>VolumeLabels configuration labels</td>
 </tr>
 <tr>
@@ -4788,7 +4947,7 @@ swagger:model</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
-<h2 id="volumespecsetvolumelabelsentry">VolumeSpecSet.VolumeLabelsEntry </h2>
+<h2 id="volumespecupdatevolumelabelsentry">VolumeSpecUpdate.VolumeLabelsEntry </h2>
 <table>
 <thead>
 <tr>
@@ -5297,6 +5456,7 @@ swagger:model</p>
 </tbody>
 </table>
 <h2 id="sdkcloudbackupoptype">SdkCloudBackupOpType </h2>
+<p>CloudBackup operations types</p>
 <table>
 <thead>
 <tr>
@@ -5309,21 +5469,23 @@ swagger:model</p>
 <tr>
 <td>SdkCloudBackupOpTypeUnknown</td>
 <td>0</td>
-<td>none</td>
+<td>Unknown</td>
 </tr>
 <tr>
 <td>SdkCloudBackupOpTypeBackupOp</td>
 <td>1</td>
-<td>none</td>
+<td>Backup</td>
 </tr>
 <tr>
 <td>SdkCloudBackupOpTypeRestoreOp</td>
 <td>2</td>
-<td>none</td>
+<td>Restore</td>
 </tr>
 </tbody>
 </table>
 <h2 id="sdkcloudbackuprequestedstate">SdkCloudBackupRequestedState </h2>
+<p>SdkCloudBackupRequestedState defines states to set a specified backup or restore
+to or from a cloud provider</p>
 <table>
 <thead>
 <tr>
@@ -5336,26 +5498,27 @@ swagger:model</p>
 <tr>
 <td>SdkCloudBackupRequestedStateUnknown</td>
 <td>0</td>
-<td>none</td>
+<td>Unknown state</td>
 </tr>
 <tr>
 <td>SdkCloudBackupRequestedStatePause</td>
 <td>1</td>
-<td>none</td>
+<td>Pause the backup or restore</td>
 </tr>
 <tr>
 <td>SdkCloudBackupRequestedStateResume</td>
 <td>2</td>
-<td>none</td>
+<td>Resume the backup or restore</td>
 </tr>
 <tr>
 <td>SdkCloudBackupRequestedStateStop</td>
 <td>3</td>
-<td>none</td>
+<td>Stop a backup or restore</td>
 </tr>
 </tbody>
 </table>
 <h2 id="sdkcloudbackupstatustype">SdkCloudBackupStatusType </h2>
+<p>CloudBackup status types</p>
 <table>
 <thead>
 <tr>
@@ -5368,46 +5531,47 @@ swagger:model</p>
 <tr>
 <td>SdkCloudBackupStatusTypeUnknown</td>
 <td>0</td>
-<td>none</td>
+<td>Unkonwn</td>
 </tr>
 <tr>
 <td>SdkCloudBackupStatusTypeNotStarted</td>
 <td>1</td>
-<td>none</td>
+<td>Not started</td>
 </tr>
 <tr>
 <td>SdkCloudBackupStatusTypeDone</td>
 <td>2</td>
-<td>none</td>
+<td>Done</td>
 </tr>
 <tr>
 <td>SdkCloudBackupStatusTypeAborted</td>
 <td>3</td>
-<td>none</td>
+<td>Aborted</td>
 </tr>
 <tr>
 <td>SdkCloudBackupStatusTypePaused</td>
 <td>4</td>
-<td>none</td>
+<td>Paused</td>
 </tr>
 <tr>
 <td>SdkCloudBackupStatusTypeStopped</td>
 <td>5</td>
-<td>none</td>
+<td>Stopped</td>
 </tr>
 <tr>
 <td>SdkCloudBackupStatusTypeActive</td>
 <td>6</td>
-<td>none</td>
+<td>Active</td>
 </tr>
 <tr>
 <td>SdkCloudBackupStatusTypeFailed</td>
 <td>7</td>
-<td>none</td>
+<td>Failed</td>
 </tr>
 </tbody>
 </table>
 <h2 id="sdktimeweekday">SdkTimeWeekday </h2>
+<p>Defines times of day</p>
 <table>
 <thead>
 <tr>
@@ -5420,37 +5584,37 @@ swagger:model</p>
 <tr>
 <td>SdkTimeWeekdaySunday</td>
 <td>0</td>
-<td>none</td>
+<td>Sunday</td>
 </tr>
 <tr>
 <td>SdkTimeWeekdayMonday</td>
 <td>1</td>
-<td>none</td>
+<td>Monday</td>
 </tr>
 <tr>
 <td>SdkTimeWeekdayTuesday</td>
 <td>2</td>
-<td>none</td>
+<td>Tuesday</td>
 </tr>
 <tr>
 <td>SdkTimeWeekdayWednesday</td>
 <td>3</td>
-<td>none</td>
+<td>Wednesday</td>
 </tr>
 <tr>
 <td>SdkTimeWeekdayThursday</td>
 <td>4</td>
-<td>none</td>
+<td>Thursday</td>
 </tr>
 <tr>
 <td>SdkTimeWeekdayFriday</td>
 <td>5</td>
-<td>none</td>
+<td>Friday</td>
 </tr>
 <tr>
 <td>SdkTimeWeekdaySaturday</td>
 <td>6</td>
-<td>none</td>
+<td>Saturday</td>
 </tr>
 </tbody>
 </table>
@@ -5892,7 +6056,7 @@ swagger:model</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"API Reference","level":"1.5","depth":1,"next":{"title":"API Status","level":"1.6","depth":1,"path":"status.md","ref":"status.md","articles":[]},"previous":{"title":"Python","level":"1.4.2","depth":2,"path":"tutorial-python.md","ref":"tutorial-python.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"generated-api.md","mtime":"2018-07-10T18:57:48.946Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-07-10T18:58:37.836Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"API Reference","level":"1.5","depth":1,"next":{"title":"API Status","level":"1.6","depth":1,"path":"status.md","ref":"status.md","articles":[]},"previous":{"title":"Python","level":"1.4.2","depth":2,"path":"tutorial-python.md","ref":"tutorial-python.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"generated-api.md","mtime":"2018-07-12T18:25:41.108Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-07-12T18:25:46.967Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

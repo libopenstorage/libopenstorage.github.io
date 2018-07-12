@@ -7,6 +7,7 @@
     - [OpenStorageCloudBackup](#openstorageapiopenstoragecloudbackup)
     - [OpenStorageCluster](#openstorageapiopenstoragecluster)
     - [OpenStorageCredentials](#openstorageapiopenstoragecredentials)
+    - [OpenStorageNode](#openstorageapiopenstoragenode)
     - [OpenStorageObjectstore](#openstorageapiopenstorageobjectstore)
     - [OpenStorageSchedulePolicy](#openstorageapiopenstorageschedulepolicy)
     - [OpenStorageVolume](#openstorageapiopenstoragevolume)
@@ -78,10 +79,8 @@
     - [SdkClusterAlertDeleteResponse](#sdkclusteralertdeleteresponse)
     - [SdkClusterAlertEnumerateRequest](#sdkclusteralertenumeraterequest)
     - [SdkClusterAlertEnumerateResponse](#sdkclusteralertenumerateresponse)
-    - [SdkClusterEnumerateRequest](#sdkclusterenumeraterequest)
-    - [SdkClusterEnumerateResponse](#sdkclusterenumerateresponse)
-    - [SdkClusterInspectRequest](#sdkclusterinspectrequest)
-    - [SdkClusterInspectResponse](#sdkclusterinspectresponse)
+    - [SdkClusterInspectCurrentRequest](#sdkclusterinspectcurrentrequest)
+    - [SdkClusterInspectCurrentResponse](#sdkclusterinspectcurrentresponse)
     - [SdkCredentialCreateRequest](#sdkcredentialcreaterequest)
     - [SdkCredentialCreateResponse](#sdkcredentialcreateresponse)
     - [SdkCredentialDeleteRequest](#sdkcredentialdeleterequest)
@@ -94,6 +93,12 @@
     - [SdkCredentialValidateResponse](#sdkcredentialvalidateresponse)
     - [SdkGoogleCredentialRequest](#sdkgooglecredentialrequest)
     - [SdkGoogleCredentialResponse](#sdkgooglecredentialresponse)
+    - [SdkNodeEnumerateRequest](#sdknodeenumeraterequest)
+    - [SdkNodeEnumerateResponse](#sdknodeenumerateresponse)
+    - [SdkNodeInspectCurrentRequest](#sdknodeinspectcurrentrequest)
+    - [SdkNodeInspectCurrentResponse](#sdknodeinspectcurrentresponse)
+    - [SdkNodeInspectRequest](#sdknodeinspectrequest)
+    - [SdkNodeInspectResponse](#sdknodeinspectresponse)
     - [SdkObjectstoreCreateRequest](#sdkobjectstorecreaterequest)
     - [SdkObjectstoreCreateResponse](#sdkobjectstorecreateresponse)
     - [SdkObjectstoreDeleteRequest](#sdkobjectstoredeleterequest)
@@ -135,8 +140,6 @@
     - [SdkVolumeMountRequest](#sdkvolumemountrequest)
     - [SdkVolumeMountRequest.OptionsEntry](#sdkvolumemountrequestoptionsentry)
     - [SdkVolumeMountResponse](#sdkvolumemountresponse)
-    - [SdkVolumeSetRequest](#sdkvolumesetrequest)
-    - [SdkVolumeSetResponse](#sdkvolumesetresponse)
     - [SdkVolumeSnapshotCreateRequest](#sdkvolumesnapshotcreaterequest)
     - [SdkVolumeSnapshotCreateRequest.LabelsEntry](#sdkvolumesnapshotcreaterequestlabelsentry)
     - [SdkVolumeSnapshotCreateResponse](#sdkvolumesnapshotcreateresponse)
@@ -148,6 +151,8 @@
     - [SdkVolumeUnmountRequest](#sdkvolumeunmountrequest)
     - [SdkVolumeUnmountRequest.OptionsEntry](#sdkvolumeunmountrequestoptionsentry)
     - [SdkVolumeUnmountResponse](#sdkvolumeunmountresponse)
+    - [SdkVolumeUpdateRequest](#sdkvolumeupdaterequest)
+    - [SdkVolumeUpdateResponse](#sdkvolumeupdateresponse)
     - [SnapCreateRequest](#snapcreaterequest)
     - [SnapCreateResponse](#snapcreateresponse)
     - [Source](#source)
@@ -173,8 +178,8 @@
     - [VolumeSetResponse](#volumesetresponse)
     - [VolumeSpec](#volumespec)
     - [VolumeSpec.VolumeLabelsEntry](#volumespecvolumelabelsentry)
-    - [VolumeSpecSet](#volumespecset)
-    - [VolumeSpecSet.VolumeLabelsEntry](#volumespecsetvolumelabelsentry)
+    - [VolumeSpecUpdate](#volumespecupdate)
+    - [VolumeSpecUpdate.VolumeLabelsEntry](#volumespecupdatevolumelabelsentry)
     - [VolumeStateAction](#volumestateaction)
   
 
@@ -295,25 +300,19 @@ Enumerate cloud backup schedules
 # OpenStorageCluster {#openstorageapiopenstoragecluster}
 OpenStorageCluster service provides the methods to manage the cluster
 
-## Enumerate
+## InspectCurrent
 
-> **rpc** Enumerate([SdkClusterEnumerateRequest](#sdkclusterenumeraterequest))
-    [SdkClusterEnumerateResponse](#sdkclusterenumerateresponse)
+> **rpc** InspectCurrent([SdkClusterInspectCurrentRequest](#sdkclusterinspectcurrentrequest))
+    [SdkClusterInspectCurrentResponse](#sdkclusterinspectcurrentresponse)
 
-Enumerate returns information about the cluster and the unique ids of
-all the nodes in the cluster.
-## Inspect
-
-> **rpc** Inspect([SdkClusterInspectRequest](#sdkclusterinspectrequest))
-    [SdkClusterInspectResponse](#sdkclusterinspectresponse)
-
-Inspect returns information about the specified node
+InspectCurrent returns information about the current cluster
 ## AlertEnumerate
 
 > **rpc** AlertEnumerate([SdkClusterAlertEnumerateRequest](#sdkclusteralertenumeraterequest))
     [SdkClusterAlertEnumerateResponse](#sdkclusteralertenumerateresponse)
 
 AlertEnumerate returns a list of alerts from the storage cluster
+In REST, use the request values as query parameters.
 ## AlertClear
 
 > **rpc** AlertClear([SdkClusterAlertClearRequest](#sdkclusteralertclearrequest))
@@ -382,6 +381,29 @@ Delete a specified credential
     [SdkCredentialValidateResponse](#sdkcredentialvalidateresponse)
 
 Validate is used to validate credentials
+ <!-- end methods -->
+# OpenStorageNode {#openstorageapiopenstoragenode}
+OpenStorageNode is a service used to manage nodes in the cluster
+
+## Inspect
+
+> **rpc** Inspect([SdkNodeInspectRequest](#sdknodeinspectrequest))
+    [SdkNodeInspectResponse](#sdknodeinspectresponse)
+
+Inspect returns information about the specified node
+## InspectCurrent
+
+> **rpc** InspectCurrent([SdkNodeInspectCurrentRequest](#sdknodeinspectcurrentrequest))
+    [SdkNodeInspectCurrentResponse](#sdknodeinspectcurrentresponse)
+
+InspectCurrent returns information about the storage node
+where the client is currently connected to.
+## Enumerate
+
+> **rpc** Enumerate([SdkNodeEnumerateRequest](#sdknodeenumeraterequest))
+    [SdkNodeEnumerateResponse](#sdknodeenumerateresponse)
+
+Enumerate returns the ids of all the nodes in the current cluster
  <!-- end methods -->
 # OpenStorageObjectstore {#openstorageapiopenstorageobjectstore}
 OpenStorageObjectstore is a service used to manage object store services on volumes
@@ -490,12 +512,12 @@ Delete deletes the provided volume
     [SdkVolumeInspectResponse](#sdkvolumeinspectresponse)
 
 Inspect returns information about a volume
-## Set
+## Update
 
-> **rpc** Set([SdkVolumeSetRequest](#sdkvolumesetrequest))
-    [SdkVolumeSetResponse](#sdkvolumesetresponse)
+> **rpc** Update([SdkVolumeUpdateRequest](#sdkvolumeupdaterequest))
+    [SdkVolumeUpdateResponse](#sdkvolumeupdateresponse)
 
-Set provides a method for manipulating the specification and attributes of a volume.
+Update provides a method for manipulating the specification and attributes of a volume.
 Set can be used to resize a volume, update labels, change replica count, and much more.
 ## Enumerate
 
@@ -509,7 +531,8 @@ Enumerate returns a list of volume ids that match the labels if any are provided
     [SdkVolumeSnapshotCreateResponse](#sdkvolumesnapshotcreateresponse)
 
 SnapshotCreate creates a snapshot of a volume. This creates an immutable (read-only),
-point-in-time snapshot of a volume.
+point-in-time snapshot of a volume. To create a new writable volume from
+a snapshot, please use OpenStorageVolume.Clone().
 ## SnapshotRestore
 
 > **rpc** SnapshotRestore([SdkVolumeSnapshotRestoreRequest](#sdkvolumesnapshotrestorerequest))
@@ -536,9 +559,7 @@ information about a new feature to allow attachment to any node.
 > **rpc** Detach([SdkVolumeDetachRequest](#sdkvolumedetachrequest))
     [SdkVolumeDetachResponse](#sdkvolumedetachresponse)
 
-Detaches a the volume from the host that the client is communicating with
-NOTE: Please see [#381](https://github.com/libopenstorage/openstorage/issues/381) for more
-information about a new feature to allow attachment to any node.
+Detaches a the volume from the host
 ## Mount
 
 > **rpc** Mount([SdkVolumeMountRequest](#sdkvolumemountrequest))
@@ -876,7 +897,7 @@ swagger:model
 
 
 ## SdkAwsCredentialRequest {#sdkawscredentialrequest}
-
+Defines credentials for Aws/S3 endpoints
 
 
 | Field | Type | Description |
@@ -890,7 +911,7 @@ swagger:model
 
 
 ## SdkAwsCredentialResponse {#sdkawscredentialresponse}
-
+Defines the response for AWS/S3 credentials
 
 
 | Field | Type | Description |
@@ -904,7 +925,7 @@ swagger:model
 
 
 ## SdkAzureCredentialRequest {#sdkazurecredentialrequest}
-
+Defines credentials for Azure
 
 
 | Field | Type | Description |
@@ -916,7 +937,7 @@ swagger:model
 
 
 ## SdkAzureCredentialResponse {#sdkazurecredentialresponse}
-
+Defines the response for Azure credentials
 
 
 | Field | Type | Description |
@@ -928,19 +949,19 @@ swagger:model
 
 
 ## SdkCloudBackupCatalogRequest {#sdkcloudbackupcatalogrequest}
-
+Defines a request to get catalog of a backup stored by a cloud provider
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | backup_id | [ string](#string) | Id of the backup |
-| credential_uuid | [ string](#string) | is the credential for cloud |
+| credential_id | [ string](#string) | Credential id describe the credentials for the cloud |
  <!-- end Fields -->
  <!-- end HasFields -->
 
 
 ## SdkCloudBackupCatalogResponse {#sdkcloudbackupcatalogresponse}
-
+Defines a response containing the contents of a backup stored by a cloud provider
 
 
 | Field | Type | Description |
@@ -951,77 +972,78 @@ swagger:model
 
 
 ## SdkCloudBackupCreateRequest {#sdkcloudbackupcreaterequest}
-
+Defines a request to create a backup of a volume to the cloud
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | volume_id | [ string](#string) | VolumeID of the volume for which cloudbackup is requested |
-| credential_uuid | [ string](#string) | CredentialUUID is cloud credential to be used for backup |
+| credential_id | [ string](#string) | Credential id refers to the cloud credentials needed to backup |
 | full | [ bool](#bool) | Full indicates if full backup is desired even though incremental is possible |
  <!-- end Fields -->
  <!-- end HasFields -->
 
 
 ## SdkCloudBackupCreateResponse {#sdkcloudbackupcreateresponse}
-
+Empty response
 
  <!-- end HasFields -->
 
 
 ## SdkCloudBackupDeleteAllRequest {#sdkcloudbackupdeleteallrequest}
-
+Defines a request to delete all the backups stored by a cloud provider
+for a specified volume
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | src_volume_id | [ string](#string) | id of the volume for the request |
-| credential_uuid | [ string](#string) | CredentialUUID is the credential for cloud to be used for the request |
+| credential_id | [ string](#string) | Credential id is the credential for cloud to be used for the request |
  <!-- end Fields -->
  <!-- end HasFields -->
 
 
 ## SdkCloudBackupDeleteAllResponse {#sdkcloudbackupdeleteallresponse}
-
+Empty response
 
  <!-- end HasFields -->
 
 
 ## SdkCloudBackupDeleteRequest {#sdkcloudbackupdeleterequest}
-
+Defines a request to delete a single backup stored by a cloud provider
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | backup_id | [ string](#string) | ID is the ID of the cloud backup |
-| credential_uuid | [ string](#string) | CredentialUUID is the credential for cloud to be used for the request |
-| force | [ bool](#bool) | Force Delete cloudbackup even if there are dependencies |
+| credential_id | [ string](#string) | Credential id is the credential for cloud to be used for the request |
+| force | [ bool](#bool) | Force Delete cloudbackup even if there are dependencies. This may be needed if the backup is an incremental backup and subsequent backups depend on this backup specified by `backup_id`. |
  <!-- end Fields -->
  <!-- end HasFields -->
 
 
 ## SdkCloudBackupDeleteResponse {#sdkcloudbackupdeleteresponse}
-
+Empty response
 
  <!-- end HasFields -->
 
 
 ## SdkCloudBackupEnumerateRequest {#sdkcloudbackupenumeraterequest}
-
+Defines a request to list the backups stored by a cloud provider
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | src_volume_id | [ string](#string) | Optional source id of the volume for the request |
-| cluster_id | [ string](#string) | ClusterID is the optional clusterID for the request |
-| credential_uuid | [ string](#string) | CredentialUUID is the credential for cloud to be used for the request |
+| cluster_id | [ string](#string) | Cluster id is an optional parameter which defines the cluster |
+| credential_id | [ string](#string) | Credential id is the credential for cloud to be used for the request |
 | all | [ bool](#bool) | All if set to true, backups for all clusters in the cloud are processed |
  <!-- end Fields -->
  <!-- end HasFields -->
 
 
 ## SdkCloudBackupEnumerateResponse {#sdkcloudbackupenumerateresponse}
-
+Defines a response which lists all the backups stored by a cloud provider
 
 
 | Field | Type | Description |
@@ -1032,7 +1054,8 @@ swagger:model
 
 
 ## SdkCloudBackupHistoryItem {#sdkcloudbackuphistoryitem}
-
+SdkCloudBackupHistoryItem contains information about a backup for a
+specific volume
 
 
 | Field | Type | Description |
@@ -1045,18 +1068,19 @@ swagger:model
 
 
 ## SdkCloudBackupHistoryRequest {#sdkcloudbackuphistoryrequest}
-
+Defines a request to retreive the history of the backups for
+a specific volume to a cloud provider
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| src_volume_id | [ string](#string) | volumeID for which history of backup/restore is being requested (optional) If not provided, it will return the history for all volumes. |
+| src_volume_id | [ string](#string) | This optional value defines which history of backup/restore is being requested. If not provided, it will return the history for all volumes. |
  <!-- end Fields -->
  <!-- end HasFields -->
 
 
 ## SdkCloudBackupHistoryResponse {#sdkcloudbackuphistoryresponse}
-
+Defines a response containing a list of history of backups to a cloud provider
 
 
 | Field | Type | Description |
@@ -1067,7 +1091,7 @@ swagger:model
 
 
 ## SdkCloudBackupInfo {#sdkcloudbackupinfo}
-
+SdkCloudBackupInfo has information about a backup stored by a cloud provider
 
 
 | Field | Type | Description |
@@ -1095,21 +1119,23 @@ swagger:model
 
 
 ## SdkCloudBackupRestoreRequest {#sdkcloudbackuprestorerequest}
-
+Defines a request to restore a volume from an existing backup stored by
+a cloud provider
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | backup_id | [ string](#string) | Backup ID being restored |
 | restore_volume_name | [ string](#string) | Optional volume Name of the new volume to be created in the cluster for restoring the cloudbackup |
-| credential_uuid | [ string](#string) | The credential to be used for restore operation |
+| credential_id | [ string](#string) | The credential to be used for restore operation |
 | node_id | [ string](#string) | Optional for provisioning restore volume (ResoreVolumeName should not be specified) |
  <!-- end Fields -->
  <!-- end HasFields -->
 
 
 ## SdkCloudBackupRestoreResponse {#sdkcloudbackuprestoreresponse}
-
+Defines a response when restoring a volume from a backup stored by
+a cloud provider
 
 
 | Field | Type | Description |
@@ -1120,7 +1146,8 @@ swagger:model
 
 
 ## SdkCloudBackupSchedCreateRequest {#sdkcloudbackupschedcreaterequest}
-
+Defines a request to create a schedule for volume backups to a
+cloud provider
 
 
 | Field | Type | Description |
@@ -1131,41 +1158,43 @@ swagger:model
 
 
 ## SdkCloudBackupSchedCreateResponse {#sdkcloudbackupschedcreateresponse}
-
+Defines a response containing the id of a schedule for a volume backup
+to a cloud provider
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| uuid | [ string](#string) | UUID of newly created backup schedule |
+| backup_schedule_id | [ string](#string) | Id of newly created backup schedule |
  <!-- end Fields -->
  <!-- end HasFields -->
 
 
 ## SdkCloudBackupSchedDeleteRequest {#sdkcloudbackupscheddeleterequest}
-
+Defines a request to delete a backup schedule
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| uuid | [ string](#string) | UUID of cloud backup to delete |
+| backup_schedule_id | [ string](#string) | Id of cloud backup to delete |
  <!-- end Fields -->
  <!-- end HasFields -->
 
 
 ## SdkCloudBackupSchedDeleteResponse {#sdkcloudbackupscheddeleteresponse}
-
+Empty response
 
  <!-- end HasFields -->
 
 
 ## SdkCloudBackupSchedEnumerateRequest {#sdkcloudbackupschedenumeraterequest}
-
+Empty request
 
  <!-- end HasFields -->
 
 
 ## SdkCloudBackupSchedEnumerateResponse {#sdkcloudbackupschedenumerateresponse}
-
+Defines a response containing a map listing the schedules for volume
+backups to a cloud provider
 
 
 | Field | Type | Description |
@@ -1188,13 +1217,14 @@ swagger:model
 
 
 ## SdkCloudBackupScheduleInfo {#sdkcloudbackupscheduleinfo}
-
+SdkCloudBackupScheduleInfo describes a schedule for volume backups to
+a cloud provider
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| src_volume_id | [ string](#string) | SrcVolumeID is the schedule's source volume |
-| credential_uuid | [ string](#string) | CredentialUUID is the cloud credential used with this schedule |
+| src_volume_id | [ string](#string) | The schedule's source volume |
+| credential_id | [ string](#string) | The cloud credential used with this schedule |
 | schedule | [ SdkSchedulePolicyInterval](#sdkschedulepolicyinterval) | Schedule is the frequence of backup |
 | max_backups | [ uint64](#uint64) | MaxBackups are the maximum number of backups retained in cloud.Older backups are deleted |
  <!-- end Fields -->
@@ -1202,25 +1232,26 @@ swagger:model
 
 
 ## SdkCloudBackupStateChangeRequest {#sdkcloudbackupstatechangerequest}
-
+Defines a request to change the state of a backup or restore to or
+from a cloud provider
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| src_volume_id | [ string](#string) | SrcVolumeID is volume ID on which backup/restore state change is being requested |
-| requested_state | [ SdkCloudBackupRequestedState](#sdkcloudbackuprequestedstate) | RequestedState is desired state of the op can be pause/resume/stop |
+| src_volume_id | [ string](#string) | Describes the volume id on which backup/restore state change is being requested |
+| requested_state | [ SdkCloudBackupRequestedState](#sdkcloudbackuprequestedstate) | The desired state of the operation |
  <!-- end Fields -->
  <!-- end HasFields -->
 
 
 ## SdkCloudBackupStateChangeResponse {#sdkcloudbackupstatechangeresponse}
-
+Empty response
 
  <!-- end HasFields -->
 
 
 ## SdkCloudBackupStatus {#sdkcloudbackupstatus}
-
+SdkCloudBackupStatus defines the status of a backup stored by a cloud provider
 
 
 | Field | Type | Description |
@@ -1237,7 +1268,7 @@ swagger:model
 
 
 ## SdkCloudBackupStatusRequest {#sdkcloudbackupstatusrequest}
-
+Defines a request to retreive the status of a backup for a specified volume
 
 
 | Field | Type | Description |
@@ -1249,12 +1280,12 @@ swagger:model
 
 
 ## SdkCloudBackupStatusResponse {#sdkcloudbackupstatusresponse}
-
+Defines a response containing the status of the backups for a specified volume
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| statuses | [map SdkCloudBackupStatusResponse.StatusesEntry](#sdkcloudbackupstatusresponsestatusesentry) | statuses is list of currently active/failed/done backup/restores |
+| statuses | [map SdkCloudBackupStatusResponse.StatusesEntry](#sdkcloudbackupstatusresponsestatusesentry) | Statuses is list of currently active/failed/done backup/restores |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -1272,7 +1303,7 @@ swagger:model
 
 
 ## SdkClusterAlertClearRequest {#sdkclusteralertclearrequest}
-
+Defines a request to clear an alert
 
 
 | Field | Type | Description |
@@ -1284,13 +1315,13 @@ swagger:model
 
 
 ## SdkClusterAlertClearResponse {#sdkclusteralertclearresponse}
-
+Empty response
 
  <!-- end HasFields -->
 
 
 ## SdkClusterAlertDeleteRequest {#sdkclusteralertdeleterequest}
-
+Defines a request to delete an alert
 
 
 | Field | Type | Description |
@@ -1302,14 +1333,15 @@ swagger:model
 
 
 ## SdkClusterAlertDeleteResponse {#sdkclusteralertdeleteresponse}
-
+Empty response
 
  <!-- end HasFields -->
 
 
 ## SdkClusterAlertEnumerateRequest {#sdkclusteralertenumeraterequest}
-This request contains the information needed to get alerts from
-the storage system
+Defines a request contains the information needed to get alerts from
+the storage system. For REST you will need to pass these
+as query parameters. See swagger documentation for more information.
 
 
 | Field | Type | Description |
@@ -1322,7 +1354,7 @@ the storage system
 
 
 ## SdkClusterAlertEnumerateResponse {#sdkclusteralertenumerateresponse}
-This response provides a list of the alerts at the specified time.
+Defines a response providing a list of alerts
 
 
 | Field | Type | Description |
@@ -1332,14 +1364,14 @@ This response provides a list of the alerts at the specified time.
  <!-- end HasFields -->
 
 
-## SdkClusterEnumerateRequest {#sdkclusterenumeraterequest}
-This request is an empty request
+## SdkClusterInspectCurrentRequest {#sdkclusterinspectcurrentrequest}
+Empty request
 
  <!-- end HasFields -->
 
 
-## SdkClusterEnumerateResponse {#sdkclusterenumerateresponse}
-This response returns information about the cluster
+## SdkClusterInspectCurrentResponse {#sdkclusterinspectcurrentresponse}
+Defines a response when inspecting the current cluster
 
 
 | Field | Type | Description |
@@ -1349,43 +1381,21 @@ This response returns information about the cluster
  <!-- end HasFields -->
 
 
-## SdkClusterInspectRequest {#sdkclusterinspectrequest}
-Contains the request when inspecting a node
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| node_id | [ string](#string) | Id of node to inspect (required) |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkClusterInspectResponse {#sdkclusterinspectresponse}
-This response contains information about the respective node requested
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| node | [ StorageNode](#storagenode) | Node information |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
 ## SdkCredentialCreateRequest {#sdkcredentialcreaterequest}
-
+Defines a request to create credentials
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.aws_credential | [ SdkAwsCredentialRequest](#sdkawscredentialrequest) | none |
-| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.azure_credential | [ SdkAzureCredentialRequest](#sdkazurecredentialrequest) | none |
-| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.google_credential | [ SdkGoogleCredentialRequest](#sdkgooglecredentialrequest) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.aws_credential | [ SdkAwsCredentialRequest](#sdkawscredentialrequest) | Credentials for AWS/S3 |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.azure_credential | [ SdkAzureCredentialRequest](#sdkazurecredentialrequest) | Credentials for Azure |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.google_credential | [ SdkGoogleCredentialRequest](#sdkgooglecredentialrequest) | Credentials for Google |
  <!-- end Fields -->
  <!-- end HasFields -->
 
 
 ## SdkCredentialCreateResponse {#sdkcredentialcreateresponse}
-
+Defines a response from creating a credential
 
 
 | Field | Type | Description |
@@ -1396,66 +1406,67 @@ This response contains information about the respective node requested
 
 
 ## SdkCredentialDeleteRequest {#sdkcredentialdeleterequest}
-
+Defines the request to delete credentials
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| credential_id | [ string](#string) | ID for credentials |
+| credential_id | [ string](#string) | Id for credentials |
  <!-- end Fields -->
  <!-- end HasFields -->
 
 
 ## SdkCredentialDeleteResponse {#sdkcredentialdeleteresponse}
-
+Empty response
 
  <!-- end HasFields -->
 
 
 ## SdkCredentialEnumerateRequest {#sdkcredentialenumeraterequest}
-
+Empty request
 
  <!-- end HasFields -->
 
 
 ## SdkCredentialEnumerateResponse {#sdkcredentialenumerateresponse}
-
+Defines response for a enumeration of credentials
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| credential_ids | [repeated string](#string) | none |
+| credential_ids | [repeated string](#string) | List of credentials |
  <!-- end Fields -->
  <!-- end HasFields -->
 
 
 ## SdkCredentialInspectRequest {#sdkcredentialinspectrequest}
-
+Defines the request to inspection for credentials
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| credential_id | [ string](#string) | none |
+| credential_id | [ string](#string) | Id of the credential |
  <!-- end Fields -->
  <!-- end HasFields -->
 
 
 ## SdkCredentialInspectResponse {#sdkcredentialinspectresponse}
+Defines the response to an inspection of a credential.
 This response uses OneOf proto style. Depending on your programming language
 you will need to check if the value of credential_type is one of the ones below.
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.aws_credential | [ SdkAwsCredentialResponse](#sdkawscredentialresponse) | none |
-| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.azure_credential | [ SdkAzureCredentialResponse](#sdkazurecredentialresponse) | none |
-| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.google_credential | [ SdkGoogleCredentialResponse](#sdkgooglecredentialresponse) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.aws_credential | [ SdkAwsCredentialResponse](#sdkawscredentialresponse) | Aws credentials |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.azure_credential | [ SdkAzureCredentialResponse](#sdkazurecredentialresponse) | Azure credentials |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.google_credential | [ SdkGoogleCredentialResponse](#sdkgooglecredentialresponse) | Google credentials |
  <!-- end Fields -->
  <!-- end HasFields -->
 
 
 ## SdkCredentialValidateRequest {#sdkcredentialvalidaterequest}
-
+Defines a request to validate credentials
 
 
 | Field | Type | Description |
@@ -1466,13 +1477,13 @@ you will need to check if the value of credential_type is one of the ones below.
 
 
 ## SdkCredentialValidateResponse {#sdkcredentialvalidateresponse}
-
+Empty response
 
  <!-- end HasFields -->
 
 
 ## SdkGoogleCredentialRequest {#sdkgooglecredentialrequest}
-
+Defines credentials for Google
 
 
 | Field | Type | Description |
@@ -1484,7 +1495,7 @@ you will need to check if the value of credential_type is one of the ones below.
 
 
 ## SdkGoogleCredentialResponse {#sdkgooglecredentialresponse}
-
+Defines the response for Google credentials
 
 
 | Field | Type | Description |
@@ -1495,8 +1506,64 @@ you will need to check if the value of credential_type is one of the ones below.
  <!-- end HasFields -->
 
 
-## SdkObjectstoreCreateRequest {#sdkobjectstorecreaterequest}
+## SdkNodeEnumerateRequest {#sdknodeenumeraterequest}
+Empty request
 
+ <!-- end HasFields -->
+
+
+## SdkNodeEnumerateResponse {#sdknodeenumerateresponse}
+Defines a response with a list of nodes
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| node_ids | [repeated string](#string) | List of all the node ids in the cluster |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkNodeInspectCurrentRequest {#sdknodeinspectcurrentrequest}
+Empty request
+
+ <!-- end HasFields -->
+
+
+## SdkNodeInspectCurrentResponse {#sdknodeinspectcurrentresponse}
+Defines a response when inspecting a node
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| node | [ StorageNode](#storagenode) | Node information |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkNodeInspectRequest {#sdknodeinspectrequest}
+Defines a request when inspecting a node
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| node_id | [ string](#string) | Id of node to inspect |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkNodeInspectResponse {#sdknodeinspectresponse}
+Defines a response when inspecting a node
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| node | [ StorageNode](#storagenode) | Node information |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkObjectstoreCreateRequest {#sdkobjectstorecreaterequest}
+Defines a request to create an object store
 
 
 | Field | Type | Description |
@@ -1507,7 +1574,8 @@ you will need to check if the value of credential_type is one of the ones below.
 
 
 ## SdkObjectstoreCreateResponse {#sdkobjectstorecreateresponse}
-
+Defines a response when an object store has been created for a
+specified volume
 
 
 | Field | Type | Description |
@@ -1518,46 +1586,46 @@ you will need to check if the value of credential_type is one of the ones below.
 
 
 ## SdkObjectstoreDeleteRequest {#sdkobjectstoredeleterequest}
-
+Defines a request to delete an object store service from a volume
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| objectstore_id | [ string](#string) | Objectstore ID to delete |
+| objectstore_id | [ string](#string) | Id of the object store to delete |
  <!-- end Fields -->
  <!-- end HasFields -->
 
 
 ## SdkObjectstoreDeleteResponse {#sdkobjectstoredeleteresponse}
-
+Empty response
 
  <!-- end HasFields -->
 
 
 ## SdkObjectstoreInspectRequest {#sdkobjectstoreinspectrequest}
-
+Defines a request to get information about an object store endpoint
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| objectstore_id | [ string](#string) | ObjecstoreID to query objestore status |
+| objectstore_id | [ string](#string) | Id of the object store |
  <!-- end Fields -->
  <!-- end HasFields -->
 
 
 ## SdkObjectstoreInspectResponse {#sdkobjectstoreinspectresponse}
-
+Defines a response when inspecting an object store endpoint
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| objectstore_status | [ ObjectstoreInfo](#objectstoreinfo) | Objectstore status |
+| objectstore_status | [ ObjectstoreInfo](#objectstoreinfo) | Contains information about the object store requested |
  <!-- end Fields -->
  <!-- end HasFields -->
 
 
 ## SdkObjectstoreUpdateRequest {#sdkobjectstoreupdaterequest}
-
+Defines a request to update an object store
 
 
 | Field | Type | Description |
@@ -1569,13 +1637,13 @@ you will need to check if the value of credential_type is one of the ones below.
 
 
 ## SdkObjectstoreUpdateResponse {#sdkobjectstoreupdateresponse}
-
+Empty response
 
  <!-- end HasFields -->
 
 
 ## SdkSchedulePolicy {#sdkschedulepolicy}
-
+Defines a schedule policy
 
 
 | Field | Type | Description |
@@ -1587,7 +1655,7 @@ you will need to check if the value of credential_type is one of the ones below.
 
 
 ## SdkSchedulePolicyCreateRequest {#sdkschedulepolicycreaterequest}
-
+Define a schedule policy request
 
 
 | Field | Type | Description |
@@ -1598,13 +1666,13 @@ you will need to check if the value of credential_type is one of the ones below.
 
 
 ## SdkSchedulePolicyCreateResponse {#sdkschedulepolicycreateresponse}
-
+Empty response
 
  <!-- end HasFields -->
 
 
 ## SdkSchedulePolicyDeleteRequest {#sdkschedulepolicydeleterequest}
-
+Define schedule policy deletion request
 
 
 | Field | Type | Description |
@@ -1615,19 +1683,19 @@ you will need to check if the value of credential_type is one of the ones below.
 
 
 ## SdkSchedulePolicyDeleteResponse {#sdkschedulepolicydeleteresponse}
-
+Empty response
 
  <!-- end HasFields -->
 
 
 ## SdkSchedulePolicyEnumerateRequest {#sdkschedulepolicyenumeraterequest}
-
+Empty request
 
  <!-- end HasFields -->
 
 
 ## SdkSchedulePolicyEnumerateResponse {#sdkschedulepolicyenumerateresponse}
-
+Defines a schedule policy enumerate response
 
 
 | Field | Type | Description |
@@ -1638,7 +1706,7 @@ you will need to check if the value of credential_type is one of the ones below.
 
 
 ## SdkSchedulePolicyInspectRequest {#sdkschedulepolicyinspectrequest}
-
+Define a schedule policy inspection request
 
 
 | Field | Type | Description |
@@ -1649,7 +1717,7 @@ you will need to check if the value of credential_type is one of the ones below.
 
 
 ## SdkSchedulePolicyInspectResponse {#sdkschedulepolicyinspectresponse}
-
+Defines a schedule policy inspection response
 
 
 | Field | Type | Description |
@@ -1660,7 +1728,7 @@ you will need to check if the value of credential_type is one of the ones below.
 
 
 ## SdkSchedulePolicyInterval {#sdkschedulepolicyinterval}
-
+Defines a schedule policy interval
 
 
 | Field | Type | Description |
@@ -1674,7 +1742,7 @@ you will need to check if the value of credential_type is one of the ones below.
 
 
 ## SdkSchedulePolicyIntervalDaily {#sdkschedulepolicyintervaldaily}
-
+Defines a daily schedule
 
 
 | Field | Type | Description |
@@ -1686,7 +1754,7 @@ you will need to check if the value of credential_type is one of the ones below.
 
 
 ## SdkSchedulePolicyIntervalMonthly {#sdkschedulepolicyintervalmonthly}
-
+Defines a monthly schedule
 
 
 | Field | Type | Description |
@@ -1699,7 +1767,7 @@ you will need to check if the value of credential_type is one of the ones below.
 
 
 ## SdkSchedulePolicyIntervalWeekly {#sdkschedulepolicyintervalweekly}
-
+Defines a weekly schedule
 
 
 | Field | Type | Description |
@@ -1712,7 +1780,7 @@ you will need to check if the value of credential_type is one of the ones below.
 
 
 ## SdkSchedulePolicyUpdateRequest {#sdkschedulepolicyupdaterequest}
-
+Define a request to update a schedule policy
 
 
 | Field | Type | Description |
@@ -1723,13 +1791,13 @@ you will need to check if the value of credential_type is one of the ones below.
 
 
 ## SdkSchedulePolicyUpdateResponse {#sdkschedulepolicyupdateresponse}
-
+Empty response
 
  <!-- end HasFields -->
 
 
 ## SdkVolumeAttachRequest {#sdkvolumeattachrequest}
-
+Defines a request to attach a volume to the node receiving this request
 
 
 | Field | Type | Description |
@@ -1753,7 +1821,7 @@ you will need to check if the value of credential_type is one of the ones below.
 
 
 ## SdkVolumeAttachResponse {#sdkvolumeattachresponse}
-
+Defines a response from the node which received the request to attach
 
 
 | Field | Type | Description |
@@ -1764,20 +1832,19 @@ you will need to check if the value of credential_type is one of the ones below.
 
 
 ## SdkVolumeCloneRequest {#sdkvolumeclonerequest}
-
+Defines a request to clone a volume or create a volume from a snapshot
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | name | [ string](#string) | Unique name of the volume. This will be used for idempotency. |
-| parent_id | [ string](#string) | Parent volume id, if specified will create a new volume as a clone of the parent. |
-| spec | [ VolumeSpec](#volumespec) | Volume specification |
+| parent_id | [ string](#string) | Parent volume id or snapshot id will create a new volume as a clone of the parent. |
  <!-- end Fields -->
  <!-- end HasFields -->
 
 
 ## SdkVolumeCloneResponse {#sdkvolumecloneresponse}
-
+Defines the response when creating a clone from a volume or a snapshot
 
 
 | Field | Type | Description |
@@ -1788,7 +1855,8 @@ you will need to check if the value of credential_type is one of the ones below.
 
 
 ## SdkVolumeCreateRequest {#sdkvolumecreaterequest}
-
+Defines a request to create a volume. Use OpenStorageVolume.Update()
+to update any labels on the volume.
 
 
 | Field | Type | Description |
@@ -1800,7 +1868,7 @@ you will need to check if the value of credential_type is one of the ones below.
 
 
 ## SdkVolumeCreateResponse {#sdkvolumecreateresponse}
-
+Defines a response to the creation of a volume
 
 
 | Field | Type | Description |
@@ -1811,7 +1879,7 @@ you will need to check if the value of credential_type is one of the ones below.
 
 
 ## SdkVolumeDeleteRequest {#sdkvolumedeleterequest}
-
+Defines the request to delete a volume
 
 
 | Field | Type | Description |
@@ -1822,13 +1890,13 @@ you will need to check if the value of credential_type is one of the ones below.
 
 
 ## SdkVolumeDeleteResponse {#sdkvolumedeleteresponse}
-
+Empty response
 
  <!-- end HasFields -->
 
 
 ## SdkVolumeDetachRequest {#sdkvolumedetachrequest}
-
+Defines a request to detach a volume
 
 
 | Field | Type | Description |
@@ -1839,13 +1907,13 @@ you will need to check if the value of credential_type is one of the ones below.
 
 
 ## SdkVolumeDetachResponse {#sdkvolumedetachresponse}
-
+Empty response
 
  <!-- end HasFields -->
 
 
 ## SdkVolumeEnumerateRequest {#sdkvolumeenumeraterequest}
-
+Defines a request to list volumes
 
 
 | Field | Type | Description |
@@ -1856,7 +1924,7 @@ you will need to check if the value of credential_type is one of the ones below.
 
 
 ## SdkVolumeEnumerateResponse {#sdkvolumeenumerateresponse}
-
+Defines the response when listing volumes
 
 
 | Field | Type | Description |
@@ -1867,7 +1935,7 @@ you will need to check if the value of credential_type is one of the ones below.
 
 
 ## SdkVolumeInspectRequest {#sdkvolumeinspectrequest}
-
+Defines the request to inspect a volume
 
 
 | Field | Type | Description |
@@ -1878,7 +1946,7 @@ you will need to check if the value of credential_type is one of the ones below.
 
 
 ## SdkVolumeInspectResponse {#sdkvolumeinspectresponse}
-
+Defines the response when inspecting a volume
 
 
 | Field | Type | Description |
@@ -1889,7 +1957,7 @@ you will need to check if the value of credential_type is one of the ones below.
 
 
 ## SdkVolumeMountRequest {#sdkvolumemountrequest}
-
+Defines a request to mount a volume to the node receiving this request
 
 
 | Field | Type | Description |
@@ -1914,32 +1982,13 @@ you will need to check if the value of credential_type is one of the ones below.
 
 
 ## SdkVolumeMountResponse {#sdkvolumemountresponse}
-
-
- <!-- end HasFields -->
-
-
-## SdkVolumeSetRequest {#sdkvolumesetrequest}
-This request is used to adjust or set new values in the volume
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| volume_id | [ string](#string) | Id of the volume to update |
-| locator | [ VolumeLocator](#volumelocator) | Change locator values. Some of these values may not be able to be changed. New labels will be added to the current volume labels. To delete a label, set the value of the label to an empty string. |
-| spec | [ VolumeSpecSet](#volumespecset) | VolumeSpecSet provides a method to request that certain values in the VolumeSpec are changed. This is necessary as a separate variable because values like int and bool in the VolumeSpec cannot be determined if they are being requested to change in gRPC proto3. Some of these values may not be able to be changed. Here are a few examples of actions that can be accomplished using the VolumeSpec. To resize the volume: Set a new value in spec.size. To change number of replicas: Adjust spec.ha_level. To change the I/O Profile: Adjust spec.io_profile. |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkVolumeSetResponse {#sdkvolumesetresponse}
-The response returns no data
+Empty response
 
  <!-- end HasFields -->
 
 
 ## SdkVolumeSnapshotCreateRequest {#sdkvolumesnapshotcreaterequest}
-
+Defines the request when creating a snapshot from a volume.
 
 
 | Field | Type | Description |
@@ -1963,7 +2012,7 @@ The response returns no data
 
 
 ## SdkVolumeSnapshotCreateResponse {#sdkvolumesnapshotcreateresponse}
-
+Defines a response after creating a snapshot of a volume
 
 
 | Field | Type | Description |
@@ -1974,7 +2023,7 @@ The response returns no data
 
 
 ## SdkVolumeSnapshotEnumerateRequest {#sdkvolumesnapshotenumeraterequest}
-
+Defines a request to list the snaphots
 
 
 | Field | Type | Description |
@@ -1998,7 +2047,7 @@ The response returns no data
 
 
 ## SdkVolumeSnapshotEnumerateResponse {#sdkvolumesnapshotenumerateresponse}
-
+Defines a response when listing snapshots
 
 
 | Field | Type | Description |
@@ -2009,7 +2058,7 @@ The response returns no data
 
 
 ## SdkVolumeSnapshotRestoreRequest {#sdkvolumesnapshotrestorerequest}
-
+Defines a request to restore a volume to a snapshot
 
 
 | Field | Type | Description |
@@ -2021,13 +2070,13 @@ The response returns no data
 
 
 ## SdkVolumeSnapshotRestoreResponse {#sdkvolumesnapshotrestoreresponse}
-
+Empty response
 
  <!-- end HasFields -->
 
 
 ## SdkVolumeUnmountRequest {#sdkvolumeunmountrequest}
-
+Defines a request to unmount a volume on the node receiving this request
 
 
 | Field | Type | Description |
@@ -2052,7 +2101,26 @@ The response returns no data
 
 
 ## SdkVolumeUnmountResponse {#sdkvolumeunmountresponse}
+Empty response
 
+ <!-- end HasFields -->
+
+
+## SdkVolumeUpdateRequest {#sdkvolumeupdaterequest}
+This request is used to adjust or set new values in the volume
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id | [ string](#string) | Id of the volume to update |
+| locator | [ VolumeLocator](#volumelocator) | Change locator values. Some of these values may not be able to be changed. New labels will be added to the current volume labels. To delete a label, set the value of the label to an empty string. |
+| spec | [ VolumeSpecUpdate](#volumespecupdate) | VolumeSpecUpdate provides a method to request that certain values in the VolumeSpec are changed. This is necessary as a separate variable because values like int and bool in the VolumeSpec cannot be determined if they are being requested to change in gRPC proto3. Some of these values may not be able to be changed. Here are a few examples of actions that can be accomplished using the VolumeSpec. To resize the volume: Set a new value in spec.size. To change number of replicas: Adjust spec.ha_level. To change the I/O Profile: Adjust spec.io_profile. |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVolumeUpdateResponse {#sdkvolumeupdateresponse}
+Empty response
 
  <!-- end HasFields -->
 
@@ -2128,8 +2196,6 @@ StorageCluster represents the state and information about the cluster
 | ----- | ---- | ----------- |
 | status | [ Status](#status) | Status of the cluster |
 | id | [ string](#string) | Id of the cluster |
-| node_id | [ string](#string) | The id of the node servicing these requests |
-| node_ids | [repeated string](#string) | List of all the node ids in the cluster |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -2476,8 +2542,8 @@ swagger:model
  <!-- end HasFields -->
 
 
-## VolumeSpecSet {#volumespecset}
-VolumeSpecSet provides a method to set any of the VolumeSpec of an existing volume
+## VolumeSpecUpdate {#volumespecupdate}
+VolumeSpecUpdate provides a method to set any of the VolumeSpec of an existing volume
 
 
 | Field | Type | Description |
@@ -2491,7 +2557,7 @@ VolumeSpecSet provides a method to set any of the VolumeSpec of an existing volu
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) io_profile_opt.io_profile | [ IoProfile](#ioprofile) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) dedupe_opt.dedupe | [ bool](#bool) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) snapshot_interval_opt.snapshot_interval | [ uint32](#uint32) | none |
-| volume_labels | [map VolumeSpecSet.VolumeLabelsEntry](#volumespecsetvolumelabelsentry) | VolumeLabels configuration labels |
+| volume_labels | [map VolumeSpecUpdate.VolumeLabelsEntry](#volumespecupdatevolumelabelsentry) | VolumeLabels configuration labels |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) shared_opt.shared | [ bool](#bool) | none |
 | replica_set | [ ReplicaSet](#replicaset) | ReplicaSet is the desired set of nodes for the volume data. |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) aggregation_level_opt.aggregation_level | [ uint32](#uint32) | none |
@@ -2510,7 +2576,7 @@ VolumeSpecSet provides a method to set any of the VolumeSpec of an existing volu
  <!-- end HasFields -->
 
 
-## VolumeSpecSet.VolumeLabelsEntry {#volumespecsetvolumelabelsentry}
+## VolumeSpecUpdate.VolumeLabelsEntry {#volumespecupdatevolumelabelsentry}
 
 
 
@@ -2716,59 +2782,60 @@ swagger:model
 
 
 ## SdkCloudBackupOpType {#sdkcloudbackupoptype}
-
+CloudBackup operations types
 
 | Name | Number | Description |
 | ---- | ------ | ----------- |
-| SdkCloudBackupOpTypeUnknown | 0 | none |
-| SdkCloudBackupOpTypeBackupOp | 1 | none |
-| SdkCloudBackupOpTypeRestoreOp | 2 | none |
+| SdkCloudBackupOpTypeUnknown | 0 | Unknown |
+| SdkCloudBackupOpTypeBackupOp | 1 | Backup |
+| SdkCloudBackupOpTypeRestoreOp | 2 | Restore |
 
 
 
 
 ## SdkCloudBackupRequestedState {#sdkcloudbackuprequestedstate}
-
+SdkCloudBackupRequestedState defines states to set a specified backup or restore
+to or from a cloud provider
 
 | Name | Number | Description |
 | ---- | ------ | ----------- |
-| SdkCloudBackupRequestedStateUnknown | 0 | none |
-| SdkCloudBackupRequestedStatePause | 1 | none |
-| SdkCloudBackupRequestedStateResume | 2 | none |
-| SdkCloudBackupRequestedStateStop | 3 | none |
+| SdkCloudBackupRequestedStateUnknown | 0 | Unknown state |
+| SdkCloudBackupRequestedStatePause | 1 | Pause the backup or restore |
+| SdkCloudBackupRequestedStateResume | 2 | Resume the backup or restore |
+| SdkCloudBackupRequestedStateStop | 3 | Stop a backup or restore |
 
 
 
 
 ## SdkCloudBackupStatusType {#sdkcloudbackupstatustype}
-
+CloudBackup status types
 
 | Name | Number | Description |
 | ---- | ------ | ----------- |
-| SdkCloudBackupStatusTypeUnknown | 0 | none |
-| SdkCloudBackupStatusTypeNotStarted | 1 | none |
-| SdkCloudBackupStatusTypeDone | 2 | none |
-| SdkCloudBackupStatusTypeAborted | 3 | none |
-| SdkCloudBackupStatusTypePaused | 4 | none |
-| SdkCloudBackupStatusTypeStopped | 5 | none |
-| SdkCloudBackupStatusTypeActive | 6 | none |
-| SdkCloudBackupStatusTypeFailed | 7 | none |
+| SdkCloudBackupStatusTypeUnknown | 0 | Unkonwn |
+| SdkCloudBackupStatusTypeNotStarted | 1 | Not started |
+| SdkCloudBackupStatusTypeDone | 2 | Done |
+| SdkCloudBackupStatusTypeAborted | 3 | Aborted |
+| SdkCloudBackupStatusTypePaused | 4 | Paused |
+| SdkCloudBackupStatusTypeStopped | 5 | Stopped |
+| SdkCloudBackupStatusTypeActive | 6 | Active |
+| SdkCloudBackupStatusTypeFailed | 7 | Failed |
 
 
 
 
 ## SdkTimeWeekday {#sdktimeweekday}
-
+Defines times of day
 
 | Name | Number | Description |
 | ---- | ------ | ----------- |
-| SdkTimeWeekdaySunday | 0 | none |
-| SdkTimeWeekdayMonday | 1 | none |
-| SdkTimeWeekdayTuesday | 2 | none |
-| SdkTimeWeekdayWednesday | 3 | none |
-| SdkTimeWeekdayThursday | 4 | none |
-| SdkTimeWeekdayFriday | 5 | none |
-| SdkTimeWeekdaySaturday | 6 | none |
+| SdkTimeWeekdaySunday | 0 | Sunday |
+| SdkTimeWeekdayMonday | 1 | Monday |
+| SdkTimeWeekdayTuesday | 2 | Tuesday |
+| SdkTimeWeekdayWednesday | 3 | Wednesday |
+| SdkTimeWeekdayThursday | 4 | Thursday |
+| SdkTimeWeekdayFriday | 5 | Friday |
+| SdkTimeWeekdaySaturday | 6 | Saturday |
 
 
 

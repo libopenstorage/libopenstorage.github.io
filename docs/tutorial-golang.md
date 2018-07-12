@@ -1,7 +1,10 @@
 # Tutorial: Golang
 
 In this tutorial you will learn to setup your environment, create a volume,
-then take its snapshot.
+then take its snapshot, create cloud credentials, and create a backup of the
+volume.
+
+The sources for this tutorial are available in the [`examples/golang`](https://github.com/libopenstorage/libopenstorage.github.io/tree/master/examples/golang) directory in the repo for this website.
 
 ## Setting up your environment
 To setup your environment, you will need to import the following to gain
@@ -30,12 +33,17 @@ the OpenStorage SDK server:
 
 ```go
 	// Setup a connection
-	conn, err := grpc.Dial(":9100", grpc.WithInsecure())
+	conn, err := grpc.Dial("localhost:9100", grpc.WithInsecure())
 	if err != nil {
 		fmt.Printf("Error: %v", err)
 		os.Exit(1)
 	}
 ```
+
+> **NOTE**: Notice the call [`grpc.WithInsecure()`](https://grpc.io/docs/guides/auth.html). The mock-sdk-server
+currently does not support HTTPS or authentication, so the tutorial will
+only focus on an insecure connection. The SDK project will add HTTPS and
+authentication support in following releases.
 
 ## Cluster operations
 Now that we have made a connection, we can use the `conn` object to create
@@ -47,24 +55,23 @@ service to print the `id` of the cluster and how many nodes it has:
 	cluster := api.NewOpenStorageClusterClient(conn)
 
 	// Print the cluster information
-	clusterEnum, err := cluster.Enumerate(
+	clusterInfo, err := cluster.InspectCurrent(
 		context.Background(),
-		&api.SdkClusterEnumerateRequest{})
+		&api.SdkClusterInspectCurrentRequest{})
 	if err != nil {
 		gerr, _ := status.FromError(err)
 		fmt.Printf("Error Code[%d] Message[%s]\n",
 			gerr.Code(), gerr.Message())
 		os.Exit(1)
 	}
-	fmt.Printf("Connected to Cluster %s with %d node(s)\n",
-		clusterEnum.GetCluster().GetId(),
-		len(clusterEnum.GetCluster().GetNodeIds()))
+	fmt.Printf("Connected to Cluster %s\n",
+		clusterInfo.GetCluster().GetId())
 ```
 
 Notice the `status.FromError()` call above. As mentioned in the
-[Architecture](arch.html#error-handling) all errors are encoded the standard
-gRPC status. To gain access to the error code and its message you must
-use `status.FromError()` which decodes the error value and the message.
+[Architecture](arch.html#error-handling) all errors are encoded using the
+standard gRPC status. To gain access to the error code and its message you
+must use `status.FromError()` which decodes the error value and the message.
 
 Notice also the use of accessors `GetXXX()` above. These convenient functions
 are provided automatically be the golang protobuf generator.

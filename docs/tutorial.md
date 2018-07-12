@@ -38,5 +38,5 @@ $ curl -X GET "http://localhost:9110/v1/cluster" \
 This should return information about the cluster in JSON format, for example:
 
 ```json
-{"cluster":{"status":"STATUS_OK","id":"deadbeeef","node_id":"1","node_ids":["1"]}}
+{"cluster":{"status":"STATUS_OK","id":"mock"}}
 ```

@@ -9,32 +9,32 @@ communicate with an OpenStorage server.
 ## Quick Example
 Here is a quick example of how to get cluster information from an OpenStorage
 server. In this example we will be using the mock SDK container as the
-server:
-
-* Start up the container
+server. First let's start the container by running the following command:
 
 ```
-$ docker run -d -p 9100:9100 -p 9110:9110 openstorage/mock-sdk-server
+$ docker run --rm --name sdk -d -p 9100:9100 -p 9110:9110 openstorage/mock-sdk-server
 ```
 
-* Running the gRPC server and using [Polyglot](https://github.com/grpc-ecosystem/polyglot) as the gRPC client.
+This container starts a tiny, in-memory OpenStorage SDK server able to be used
+for development. More information can be found in the [Tutorial](tutorial.html).
 
-```
+Now we can send requests from the command line. To send requests to the gRPC
+server, we will use [Polyglot](https://github.com/grpc-ecosystem/polyglot)
+as the gRPC client. To send requests to the gRPC REST Gateway, we will be
+sending the same request as Polyglot, but using _curl_ instead:
+
+{% codetabs name="gRPC", type="less" -%}
 $ wget https://github.com/grpc-ecosystem/polyglot/releases/download/v1.6.0/polyglot.jar
 $ echo {} | java -jar polyglot.jar \
   --command=call \
   --endpoint=localhost:9100 \
-  --full_method=openstorage.api.OpenStorageCluster/Enumerate
-```
-
-* Run using the REST gRPC Gateway
-
-```
-$ curl -X GET "http://localhost:9110/v1/cluster" \
+  --full_method=openstorage.api.OpenStorageCluster/InspectCurrent
+{%- language name="REST", type="less" -%}
+$ curl -X GET "http://localhost:9110/v1/clusters/current" \
      -H "accept: application/json" \
 	 -H "Content-Type: application/json" \
 	 -d "{}"
-```
+{%- endcodetabs %}
 
 Results in:
 
@@ -42,15 +42,20 @@ Results in:
 {
   "cluster": {
     "status": "STATUS_OK",
-    "id": "deadbeeef",
-    "node_id": "1",
-    "node_ids": [
-      "1"
-    ]
+    "id": "mock"
   }
 }
 ```
 
-* Check out more REST information by looking at the [Swagger](https://swagger.io) located
-at [http://localhost:9110/swagger-ui/](http://localhost:9110/swagger-ui/)
+The `mock-sdk-server` container also comes with a full [Swagger](https://swagger.io)
+UI located at [http://localhost:9110/swagger-ui/](http://localhost:9110/swagger-ui/).
+
+## What's next
+
+Check out:
+
+* [Architecture](arch.html)
+* [Installation](installation.html)
+* [Tutorials](tutorial.html)
+
 

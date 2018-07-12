@@ -276,7 +276,9 @@
                                 
                                 <h1 id="tutorial-golang">Tutorial: Golang</h1>
 <p>In this tutorial you will learn to setup your environment, create a volume,
-then take its snapshot.</p>
+then take its snapshot, create cloud credentials, and create a backup of the
+volume.</p>
+<p>The sources for this tutorial are available in the <a href="https://github.com/libopenstorage/libopenstorage.github.io/tree/master/examples/golang" target="_blank"><code>examples/golang</code></a> directory in the repo for this website.</p>
 <h2 id="setting-up-your-environment">Setting up your environment</h2>
 <p>To setup your environment, you will need to import the following to gain
 access to <code>api.pb.go</code>:</p>
@@ -297,12 +299,18 @@ with the OpenStorage SDK.</p>
 <p>To use any of the gRPC functions, you must first create a connection with
 the OpenStorage SDK server:</p>
 <pre class="language-"><code class="lang-go">    <span class="token comment" spellcheck="true">// Setup a connection</span>
-    conn<span class="token punctuation">,</span> err <span class="token operator">:=</span> grpc<span class="token punctuation">.</span><span class="token function">Dial</span><span class="token punctuation">(</span><span class="token string">&quot;:9100&quot;</span><span class="token punctuation">,</span> grpc<span class="token punctuation">.</span><span class="token function">WithInsecure</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    conn<span class="token punctuation">,</span> err <span class="token operator">:=</span> grpc<span class="token punctuation">.</span><span class="token function">Dial</span><span class="token punctuation">(</span><span class="token string">&quot;localhost:9100&quot;</span><span class="token punctuation">,</span> grpc<span class="token punctuation">.</span><span class="token function">WithInsecure</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
     <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
         fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;Error: %v&quot;</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
         os<span class="token punctuation">.</span><span class="token function">Exit</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
 </code></pre>
+<blockquote>
+<p><strong>NOTE</strong>: Notice the call <a href="https://grpc.io/docs/guides/auth.html" target="_blank"><code>grpc.WithInsecure()</code></a>. The mock-sdk-server
+currently does not support HTTPS or authentication, so the tutorial will
+only focus on an insecure connection. The SDK project will add HTTPS and
+authentication support in following releases.</p>
+</blockquote>
 <h2 id="cluster-operations">Cluster operations</h2>
 <p>Now that we have made a connection, we can use the <code>conn</code> object to create
 clients for each of the services we would like to use. Let&apos;s use the <a href="generated-api.html#openstorageapiopenstoragecluster">OpenStorageCluster</a>
@@ -311,23 +319,22 @@ service to print the <code>id</code> of the cluster and how many nodes it has:</
     cluster <span class="token operator">:=</span> api<span class="token punctuation">.</span><span class="token function">NewOpenStorageClusterClient</span><span class="token punctuation">(</span>conn<span class="token punctuation">)</span>
 
     <span class="token comment" spellcheck="true">// Print the cluster information</span>
-    clusterEnum<span class="token punctuation">,</span> err <span class="token operator">:=</span> cluster<span class="token punctuation">.</span><span class="token function">Enumerate</span><span class="token punctuation">(</span>
+    clusterInfo<span class="token punctuation">,</span> err <span class="token operator">:=</span> cluster<span class="token punctuation">.</span><span class="token function">InspectCurrent</span><span class="token punctuation">(</span>
         context<span class="token punctuation">.</span><span class="token function">Background</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-        <span class="token operator">&amp;</span>api<span class="token punctuation">.</span>SdkClusterEnumerateRequest<span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token operator">&amp;</span>api<span class="token punctuation">.</span>SdkClusterInspectCurrentRequest<span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
     <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
         gerr<span class="token punctuation">,</span> <span class="token boolean">_</span> <span class="token operator">:=</span> status<span class="token punctuation">.</span><span class="token function">FromError</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
         fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;Error Code[%d] Message[%s]\n&quot;</span><span class="token punctuation">,</span>
             gerr<span class="token punctuation">.</span><span class="token function">Code</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> gerr<span class="token punctuation">.</span><span class="token function">Message</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
         os<span class="token punctuation">.</span><span class="token function">Exit</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;Connected to Cluster %s with %d node(s)\n&quot;</span><span class="token punctuation">,</span>
-        clusterEnum<span class="token punctuation">.</span><span class="token function">GetCluster</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">GetId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-        <span class="token function">len</span><span class="token punctuation">(</span>clusterEnum<span class="token punctuation">.</span><span class="token function">GetCluster</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">GetNodeIds</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;Connected to Cluster %s\n&quot;</span><span class="token punctuation">,</span>
+        clusterInfo<span class="token punctuation">.</span><span class="token function">GetCluster</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">GetId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 </code></pre>
 <p>Notice the <code>status.FromError()</code> call above. As mentioned in the
-<a href="arch.html#error-handling">Architecture</a> all errors are encoded the standard
-gRPC status. To gain access to the error code and its message you must
-use <code>status.FromError()</code> which decodes the error value and the message.</p>
+<a href="arch.html#error-handling">Architecture</a> all errors are encoded using the
+standard gRPC status. To gain access to the error code and its message you
+must use <code>status.FromError()</code> which decodes the error value and the message.</p>
 <p>Notice also the use of accessors <code>GetXXX()</code> above. These convenient functions
 are provided automatically be the golang protobuf generator.</p>
 <h2 id="volume-operations">Volume Operations</h2>
@@ -417,7 +424,7 @@ for a complete list of services.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Golang","level":"1.4.1","depth":2,"next":{"title":"Python","level":"1.4.2","depth":2,"path":"tutorial-python.md","ref":"tutorial-python.md","articles":[]},"previous":{"title":"Tutorial","level":"1.4","depth":1,"path":"tutorial.md","ref":"tutorial.md","articles":[{"title":"Golang","level":"1.4.1","depth":2,"path":"tutorial-golang.md","ref":"tutorial-golang.md","articles":[]},{"title":"Python","level":"1.4.2","depth":2,"path":"tutorial-python.md","ref":"tutorial-python.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"tutorial-golang.md","mtime":"2018-07-09T21:42:17.066Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-07-10T18:58:37.836Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Golang","level":"1.4.1","depth":2,"next":{"title":"Python","level":"1.4.2","depth":2,"path":"tutorial-python.md","ref":"tutorial-python.md","articles":[]},"previous":{"title":"Tutorial","level":"1.4","depth":1,"path":"tutorial.md","ref":"tutorial.md","articles":[{"title":"Golang","level":"1.4.1","depth":2,"path":"tutorial-golang.md","ref":"tutorial-golang.md","articles":[]},{"title":"Python","level":"1.4.2","depth":2,"path":"tutorial-python.md","ref":"tutorial-python.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"tutorial-golang.md","mtime":"2018-07-12T18:25:22.657Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-07-12T18:25:46.967Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

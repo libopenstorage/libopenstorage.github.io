@@ -30,7 +30,7 @@
   branch = "master"
   name = "github.com/libopenstorage/openstorage"
   packages = ["api"]
-  revision = "85b81e8cc5c71fe4d02dd6889d8fe0d6854101a5"
+  revision = "771daf5538702a86881642f67a28f8c46c279754"
 
 [[projects]]
   branch = "master"
@@ -50,7 +50,7 @@
     "internal/timeseries",
     "trace"
   ]
-  revision = "c21de06aaf072cea07f3a65d6970e5c7d8b6cd6d"
+  revision = "cffdcf672aee934982473246bc7e9a8ba446aa9b"
 
 [[projects]]
   name = "golang.org/x/text"
