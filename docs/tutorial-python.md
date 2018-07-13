@@ -1,3 +1,3 @@
 # Tutorial: Python
 
-TBD
+Coming soon...
