@@ -48,7 +48,7 @@ authentication support in following releases.
 ## Cluster operations
 Now that we have made a connection, we can use the `conn` object to create
 clients for each of the services we would like to use. Let's use the [OpenStorageCluster](generated-api.html#openstorageapiopenstoragecluster)
-service to print the `id` of the cluster and how many nodes it has:
+service to print the `id` of the cluster:
 
 ```go
 	// Create a cluster client
