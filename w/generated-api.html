@@ -278,13 +278,13 @@
 <h1 id="table-of-contents">Table of Contents</h1>
 <ul>
 <li>Services<ul>
-<li><a href="#openstorageapiopenstoragecloudbackup">OpenStorageCloudBackup</a></li>
-<li><a href="#openstorageapiopenstoragecluster">OpenStorageCluster</a></li>
-<li><a href="#openstorageapiopenstoragecredentials">OpenStorageCredentials</a></li>
-<li><a href="#openstorageapiopenstoragenode">OpenStorageNode</a></li>
-<li><a href="#openstorageapiopenstorageobjectstore">OpenStorageObjectstore</a></li>
-<li><a href="#openstorageapiopenstorageschedulepolicy">OpenStorageSchedulePolicy</a></li>
-<li><a href="#openstorageapiopenstoragevolume">OpenStorageVolume</a></li>
+<li><a href="#serviceopenstorageapiopenstoragecloudbackup">OpenStorageCloudBackup</a></li>
+<li><a href="#serviceopenstorageapiopenstoragecluster">OpenStorageCluster</a></li>
+<li><a href="#serviceopenstorageapiopenstoragecredentials">OpenStorageCredentials</a></li>
+<li><a href="#serviceopenstorageapiopenstoragenode">OpenStorageNode</a></li>
+<li><a href="#serviceopenstorageapiopenstorageobjectstore">OpenStorageObjectstore</a></li>
+<li><a href="#serviceopenstorageapiopenstorageschedulepolicy">OpenStorageSchedulePolicy</a></li>
+<li><a href="#serviceopenstorageapiopenstoragevolume">OpenStorageVolume</a></li>
 </ul>
 </li>
 </ul>
@@ -490,7 +490,7 @@
 <ul>
 <li><a href="#scalar-value-types">Scalar Value Types</a></li>
 </ul>
-<h1 id="openstorageapiopenstoragecloudbackup">OpenStorageCloudBackup </h1>
+<h1 id="serviceopenstorageapiopenstoragecloudbackup">OpenStorageCloudBackup </h1>
 <p>OpenStorageCloudBackup service manages backing up volumes to a cloud
 location like Amazon, Google, or Azure.</p>
 <h4 id="backup">Backup</h4>
@@ -503,7 +503,7 @@ a map where the keys are the source volume id.</p>
 Pass this <code>backup_id</code> and a new volume name to Restore() to start
 restoring a new volume from an existing backup. To see the status of this
 restore, pass volume id returned by Restore() to input to Status()</p>
-<h2 id="create">Create</h2>
+<h2 id="methodcreate">Create </h2>
 <blockquote>
 <p><strong>rpc</strong> Create(<a href="#sdkcloudbackupcreaterequest">SdkCloudBackupCreateRequest</a>)
     <a href="#sdkcloudbackupcreateresponse">SdkCloudBackupCreateResponse</a></p>
@@ -511,7 +511,7 @@ restore, pass volume id returned by Restore() to input to Status()</p>
 <p>Creates a backup request for a specified volume. Use
 OpenStorageCloudBackup.Status() to get the current status of the
 backup request.</p>
-<h2 id="restore">Restore</h2>
+<h2 id="methodrestore">Restore </h2>
 <blockquote>
 <p><strong>rpc</strong> Restore(<a href="#sdkcloudbackuprestorerequest">SdkCloudBackupRestoreRequest</a>)
     <a href="#sdkcloudbackuprestoreresponse">SdkCloudBackupRestoreResponse</a></p>
@@ -519,100 +519,100 @@ backup request.</p>
 <p>Restore creates a new volume from a backup id. The newly created volume
 has an ha_level (number of replicas) of only 1. To increase the number of
 replicas, use OpenStorageVolume.Set() to change the ha_level.</p>
-<h2 id="delete">Delete</h2>
+<h2 id="methoddelete">Delete </h2>
 <blockquote>
 <p><strong>rpc</strong> Delete(<a href="#sdkcloudbackupdeleterequest">SdkCloudBackupDeleteRequest</a>)
     <a href="#sdkcloudbackupdeleteresponse">SdkCloudBackupDeleteResponse</a></p>
 </blockquote>
 <p>Delete deletes a backup stored in the cloud. If the backup is an incremental
 backup and other backups are dependent on it, it will not be able to be deleted.</p>
-<h2 id="deleteall">DeleteAll</h2>
+<h2 id="methoddeleteall">DeleteAll </h2>
 <blockquote>
 <p><strong>rpc</strong> DeleteAll(<a href="#sdkcloudbackupdeleteallrequest">SdkCloudBackupDeleteAllRequest</a>)
     <a href="#sdkcloudbackupdeleteallresponse">SdkCloudBackupDeleteAllResponse</a></p>
 </blockquote>
 <p>DeleteAll deletes all the backups in the cloud for the specified volume.</p>
-<h2 id="enumerate">Enumerate</h2>
+<h2 id="methodenumerate">Enumerate </h2>
 <blockquote>
 <p><strong>rpc</strong> Enumerate(<a href="#sdkcloudbackupenumeraterequest">SdkCloudBackupEnumerateRequest</a>)
     <a href="#sdkcloudbackupenumerateresponse">SdkCloudBackupEnumerateResponse</a></p>
 </blockquote>
 <p>Return a list of backups for the specified volume</p>
-<h2 id="status">Status</h2>
+<h2 id="methodstatus">Status </h2>
 <blockquote>
 <p><strong>rpc</strong> Status(<a href="#sdkcloudbackupstatusrequest">SdkCloudBackupStatusRequest</a>)
     <a href="#sdkcloudbackupstatusresponse">SdkCloudBackupStatusResponse</a></p>
 </blockquote>
 <p>Status returns the status of any cloud backups of a volume</p>
-<h2 id="catalog">Catalog</h2>
+<h2 id="methodcatalog">Catalog </h2>
 <blockquote>
 <p><strong>rpc</strong> Catalog(<a href="#sdkcloudbackupcatalogrequest">SdkCloudBackupCatalogRequest</a>)
     <a href="#sdkcloudbackupcatalogresponse">SdkCloudBackupCatalogResponse</a></p>
 </blockquote>
 <p>Catalog returns a list of the contents in the backup</p>
-<h2 id="history">History</h2>
+<h2 id="methodhistory">History </h2>
 <blockquote>
 <p><strong>rpc</strong> History(<a href="#sdkcloudbackuphistoryrequest">SdkCloudBackupHistoryRequest</a>)
     <a href="#sdkcloudbackuphistoryresponse">SdkCloudBackupHistoryResponse</a></p>
 </blockquote>
 <p>History returns a list of backups for a specified volume</p>
-<h2 id="statechange">StateChange</h2>
+<h2 id="methodstatechange">StateChange </h2>
 <blockquote>
 <p><strong>rpc</strong> StateChange(<a href="#sdkcloudbackupstatechangerequest">SdkCloudBackupStateChangeRequest</a>)
     <a href="#sdkcloudbackupstatechangeresponse">SdkCloudBackupStateChangeResponse</a></p>
 </blockquote>
 <p>StateChange can be used to stop, pause, and restart a backup</p>
-<h2 id="schedcreate">SchedCreate</h2>
+<h2 id="methodschedcreate">SchedCreate </h2>
 <blockquote>
 <p><strong>rpc</strong> SchedCreate(<a href="#sdkcloudbackupschedcreaterequest">SdkCloudBackupSchedCreateRequest</a>)
     <a href="#sdkcloudbackupschedcreateresponse">SdkCloudBackupSchedCreateResponse</a></p>
 </blockquote>
 <p>Create cloud backup schedule</p>
-<h2 id="scheddelete">SchedDelete</h2>
+<h2 id="methodscheddelete">SchedDelete </h2>
 <blockquote>
 <p><strong>rpc</strong> SchedDelete(<a href="#sdkcloudbackupscheddeleterequest">SdkCloudBackupSchedDeleteRequest</a>)
     <a href="#sdkcloudbackupscheddeleteresponse">SdkCloudBackupSchedDeleteResponse</a></p>
 </blockquote>
 <p>Delete cloud backup schedule</p>
-<h2 id="schedenumerate">SchedEnumerate</h2>
+<h2 id="methodschedenumerate">SchedEnumerate </h2>
 <blockquote>
 <p><strong>rpc</strong> SchedEnumerate(<a href="#sdkcloudbackupschedenumeraterequest">SdkCloudBackupSchedEnumerateRequest</a>)
     <a href="#sdkcloudbackupschedenumerateresponse">SdkCloudBackupSchedEnumerateResponse</a></p>
 </blockquote>
 <p>Enumerate cloud backup schedules
  <!-- end methods --></p>
-<h1 id="openstorageapiopenstoragecluster">OpenStorageCluster </h1>
+<h1 id="serviceopenstorageapiopenstoragecluster">OpenStorageCluster </h1>
 <p>OpenStorageCluster service provides the methods to manage the cluster</p>
-<h2 id="inspectcurrent">InspectCurrent</h2>
+<h2 id="methodinspectcurrent">InspectCurrent </h2>
 <blockquote>
 <p><strong>rpc</strong> InspectCurrent(<a href="#sdkclusterinspectcurrentrequest">SdkClusterInspectCurrentRequest</a>)
     <a href="#sdkclusterinspectcurrentresponse">SdkClusterInspectCurrentResponse</a></p>
 </blockquote>
 <p>InspectCurrent returns information about the current cluster</p>
-<h2 id="alertenumerate">AlertEnumerate</h2>
+<h2 id="methodalertenumerate">AlertEnumerate </h2>
 <blockquote>
 <p><strong>rpc</strong> AlertEnumerate(<a href="#sdkclusteralertenumeraterequest">SdkClusterAlertEnumerateRequest</a>)
     <a href="#sdkclusteralertenumerateresponse">SdkClusterAlertEnumerateResponse</a></p>
 </blockquote>
 <p>AlertEnumerate returns a list of alerts from the storage cluster
 In REST, use the request values as query parameters.</p>
-<h2 id="alertclear">AlertClear</h2>
+<h2 id="methodalertclear">AlertClear </h2>
 <blockquote>
 <p><strong>rpc</strong> AlertClear(<a href="#sdkclusteralertclearrequest">SdkClusterAlertClearRequest</a>)
     <a href="#sdkclusteralertclearresponse">SdkClusterAlertClearResponse</a></p>
 </blockquote>
 <p>AlertClear clears the alert for a given resource</p>
-<h2 id="alertdelete">AlertDelete</h2>
+<h2 id="methodalertdelete">AlertDelete </h2>
 <blockquote>
 <p><strong>rpc</strong> AlertDelete(<a href="#sdkclusteralertdeleterequest">SdkClusterAlertDeleteRequest</a>)
     <a href="#sdkclusteralertdeleteresponse">SdkClusterAlertDeleteResponse</a></p>
 </blockquote>
 <p>AlertDelete deletes an alert for all resources
  <!-- end methods --></p>
-<h1 id="openstorageapiopenstoragecredentials">OpenStorageCredentials </h1>
+<h1 id="serviceopenstorageapiopenstoragecredentials">OpenStorageCredentials </h1>
 <p>OpenStorageCredentials is a service used to manage the cloud credentials
 which can then be used by the OpenStorageCloudBackup service</p>
-<h2 id="create">Create</h2>
+<h2 id="methodcreate">Create </h2>
 <blockquote>
 <p><strong>rpc</strong> Create(<a href="#sdkcredentialcreaterequest">SdkCredentialCreateRequest</a>)
     <a href="#sdkcredentialcreateresponse">SdkCredentialCreateResponse</a></p>
@@ -635,74 +635,74 @@ id of the credentials once they are verified to work.</p>
     secret_key<span class="token operator">=</span><span class="token string">&apos;dumm-secret&apos;</span><span class="token punctuation">,</span>
     endpoint<span class="token operator">=</span><span class="token string">&apos;dummy-endpoint&apos;</span><span class="token punctuation">,</span>
     region<span class="token operator">=</span><span class="token string">&apos;dummy-region&apos;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre></div></div></div></p>
-<h2 id="enumerate">Enumerate</h2>
+<h2 id="methodenumerate">Enumerate </h2>
 <blockquote>
 <p><strong>rpc</strong> Enumerate(<a href="#sdkcredentialenumeraterequest">SdkCredentialEnumerateRequest</a>)
     <a href="#sdkcredentialenumerateresponse">SdkCredentialEnumerateResponse</a></p>
 </blockquote>
 <p>Enumerate returns a list of credential ids</p>
-<h2 id="inspect">Inspect</h2>
+<h2 id="methodinspect">Inspect </h2>
 <blockquote>
 <p><strong>rpc</strong> Inspect(<a href="#sdkcredentialinspectrequest">SdkCredentialInspectRequest</a>)
     <a href="#sdkcredentialinspectresponse">SdkCredentialInspectResponse</a></p>
 </blockquote>
 <p>Inspect returns the information about a credential, but does not return the secret key.</p>
-<h2 id="delete">Delete</h2>
+<h2 id="methoddelete">Delete </h2>
 <blockquote>
 <p><strong>rpc</strong> Delete(<a href="#sdkcredentialdeleterequest">SdkCredentialDeleteRequest</a>)
     <a href="#sdkcredentialdeleteresponse">SdkCredentialDeleteResponse</a></p>
 </blockquote>
 <p>Delete a specified credential</p>
-<h2 id="validate">Validate</h2>
+<h2 id="methodvalidate">Validate </h2>
 <blockquote>
 <p><strong>rpc</strong> Validate(<a href="#sdkcredentialvalidaterequest">SdkCredentialValidateRequest</a>)
     <a href="#sdkcredentialvalidateresponse">SdkCredentialValidateResponse</a></p>
 </blockquote>
 <p>Validate is used to validate credentials
  <!-- end methods --></p>
-<h1 id="openstorageapiopenstoragenode">OpenStorageNode </h1>
+<h1 id="serviceopenstorageapiopenstoragenode">OpenStorageNode </h1>
 <p>OpenStorageNode is a service used to manage nodes in the cluster</p>
-<h2 id="inspect">Inspect</h2>
+<h2 id="methodinspect">Inspect </h2>
 <blockquote>
 <p><strong>rpc</strong> Inspect(<a href="#sdknodeinspectrequest">SdkNodeInspectRequest</a>)
     <a href="#sdknodeinspectresponse">SdkNodeInspectResponse</a></p>
 </blockquote>
 <p>Inspect returns information about the specified node</p>
-<h2 id="inspectcurrent">InspectCurrent</h2>
+<h2 id="methodinspectcurrent">InspectCurrent </h2>
 <blockquote>
 <p><strong>rpc</strong> InspectCurrent(<a href="#sdknodeinspectcurrentrequest">SdkNodeInspectCurrentRequest</a>)
     <a href="#sdknodeinspectcurrentresponse">SdkNodeInspectCurrentResponse</a></p>
 </blockquote>
 <p>InspectCurrent returns information about the storage node
 where the client is currently connected to.</p>
-<h2 id="enumerate">Enumerate</h2>
+<h2 id="methodenumerate">Enumerate </h2>
 <blockquote>
 <p><strong>rpc</strong> Enumerate(<a href="#sdknodeenumeraterequest">SdkNodeEnumerateRequest</a>)
     <a href="#sdknodeenumerateresponse">SdkNodeEnumerateResponse</a></p>
 </blockquote>
 <p>Enumerate returns the ids of all the nodes in the current cluster
  <!-- end methods --></p>
-<h1 id="openstorageapiopenstorageobjectstore">OpenStorageObjectstore </h1>
+<h1 id="serviceopenstorageapiopenstorageobjectstore">OpenStorageObjectstore </h1>
 <p>OpenStorageObjectstore is a service used to manage object store services on volumes</p>
-<h2 id="inspect">Inspect</h2>
+<h2 id="methodinspect">Inspect </h2>
 <blockquote>
 <p><strong>rpc</strong> Inspect(<a href="#sdkobjectstoreinspectrequest">SdkObjectstoreInspectRequest</a>)
     <a href="#sdkobjectstoreinspectresponse">SdkObjectstoreInspectResponse</a></p>
 </blockquote>
 <p>Inspect returns information about the object store endpoint</p>
-<h2 id="create">Create</h2>
+<h2 id="methodcreate">Create </h2>
 <blockquote>
 <p><strong>rpc</strong> Create(<a href="#sdkobjectstorecreaterequest">SdkObjectstoreCreateRequest</a>)
     <a href="#sdkobjectstorecreateresponse">SdkObjectstoreCreateResponse</a></p>
 </blockquote>
 <p>Creates creates an object store endpoint on specified volume</p>
-<h2 id="delete">Delete</h2>
+<h2 id="methoddelete">Delete </h2>
 <blockquote>
 <p><strong>rpc</strong> Delete(<a href="#sdkobjectstoredeleterequest">SdkObjectstoreDeleteRequest</a>)
     <a href="#sdkobjectstoredeleteresponse">SdkObjectstoreDeleteResponse</a></p>
 </blockquote>
 <p>Delete destroys the object store endpoint on the volume</p>
-<h2 id="update">Update</h2>
+<h2 id="methodupdate">Update </h2>
 <blockquote>
 <p><strong>rpc</strong> Update(<a href="#sdkobjectstoreupdaterequest">SdkObjectstoreUpdateRequest</a>)
     <a href="#sdkobjectstoreupdateresponse">SdkObjectstoreUpdateResponse</a></p>
@@ -711,44 +711,44 @@ where the client is currently connected to.</p>
 This call can be used to stop and start the server while maintaining the same
 object storage id.
  <!-- end methods --></p>
-<h1 id="openstorageapiopenstorageschedulepolicy">OpenStorageSchedulePolicy </h1>
+<h1 id="serviceopenstorageapiopenstorageschedulepolicy">OpenStorageSchedulePolicy </h1>
 <p>OpenStorageSchedulePolicy service is used to manage the automated
 snapshots for a volume</p>
-<h2 id="create">Create</h2>
+<h2 id="methodcreate">Create </h2>
 <blockquote>
 <p><strong>rpc</strong> Create(<a href="#sdkschedulepolicycreaterequest">SdkSchedulePolicyCreateRequest</a>)
     <a href="#sdkschedulepolicycreateresponse">SdkSchedulePolicyCreateResponse</a></p>
 </blockquote>
 <p>Create creates a new snapshot schedule. They can be setup daily,
 weekly, or monthly.</p>
-<h2 id="update">Update</h2>
+<h2 id="methodupdate">Update </h2>
 <blockquote>
 <p><strong>rpc</strong> Update(<a href="#sdkschedulepolicyupdaterequest">SdkSchedulePolicyUpdateRequest</a>)
     <a href="#sdkschedulepolicyupdateresponse">SdkSchedulePolicyUpdateResponse</a></p>
 </blockquote>
 <p>Update a snapshot schedule</p>
-<h2 id="enumerate">Enumerate</h2>
+<h2 id="methodenumerate">Enumerate </h2>
 <blockquote>
 <p><strong>rpc</strong> Enumerate(<a href="#sdkschedulepolicyenumeraterequest">SdkSchedulePolicyEnumerateRequest</a>)
     <a href="#sdkschedulepolicyenumerateresponse">SdkSchedulePolicyEnumerateResponse</a></p>
 </blockquote>
 <p>Enumerate returns a list of schedules</p>
-<h2 id="inspect">Inspect</h2>
+<h2 id="methodinspect">Inspect </h2>
 <blockquote>
 <p><strong>rpc</strong> Inspect(<a href="#sdkschedulepolicyinspectrequest">SdkSchedulePolicyInspectRequest</a>)
     <a href="#sdkschedulepolicyinspectresponse">SdkSchedulePolicyInspectResponse</a></p>
 </blockquote>
 <p>Inspect returns information about a specified schedule</p>
-<h2 id="delete">Delete</h2>
+<h2 id="methoddelete">Delete </h2>
 <blockquote>
 <p><strong>rpc</strong> Delete(<a href="#sdkschedulepolicydeleterequest">SdkSchedulePolicyDeleteRequest</a>)
     <a href="#sdkschedulepolicydeleteresponse">SdkSchedulePolicyDeleteResponse</a></p>
 </blockquote>
 <p>Delete removes a snapshot schedule
  <!-- end methods --></p>
-<h1 id="openstorageapiopenstoragevolume">OpenStorageVolume </h1>
+<h1 id="serviceopenstorageapiopenstoragevolume">OpenStorageVolume </h1>
 <p>OpenStorageVolume is a service used to manage the volumes of a storage system</p>
-<h2 id="create">Create</h2>
+<h2 id="methodcreate">Create </h2>
 <blockquote>
 <p><strong>rpc</strong> Create(<a href="#sdkvolumecreaterequest">SdkVolumeCreateRequest</a>)
     <a href="#sdkvolumecreateresponse">SdkVolumeCreateResponse</a></p>
@@ -763,38 +763,38 @@ weekly, or monthly.</p>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre></div><div class="tab" data-codetab="1"><pre class="language-"><code class="lang-py">en_resp <span class="token operator">=</span> client<span class="token punctuation">.</span>Create<span class="token punctuation">(</span>api_pb2<span class="token punctuation">.</span>SdkVolumeCreateRequest<span class="token punctuation">(</span>
   name<span class="token operator">=</span><span class="token string">&quot;volume-12345-east&quot;</span><span class="token punctuation">,</span>
   spec<span class="token operator">=</span>api_pb2<span class="token punctuation">.</span>VolumeSpec<span class="token punctuation">(</span>size<span class="token operator">=</span><span class="token number">1234567</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre></div></div></div></p>
-<h2 id="clone">Clone</h2>
+<h2 id="methodclone">Clone </h2>
 <blockquote>
 <p><strong>rpc</strong> Clone(<a href="#sdkvolumeclonerequest">SdkVolumeCloneRequest</a>)
     <a href="#sdkvolumecloneresponse">SdkVolumeCloneResponse</a></p>
 </blockquote>
 <p>Clone creates a new writable volume cloned from an existing volume</p>
-<h2 id="delete">Delete</h2>
+<h2 id="methoddelete">Delete </h2>
 <blockquote>
 <p><strong>rpc</strong> Delete(<a href="#sdkvolumedeleterequest">SdkVolumeDeleteRequest</a>)
     <a href="#sdkvolumedeleteresponse">SdkVolumeDeleteResponse</a></p>
 </blockquote>
 <p>Delete deletes the provided volume</p>
-<h2 id="inspect">Inspect</h2>
+<h2 id="methodinspect">Inspect </h2>
 <blockquote>
 <p><strong>rpc</strong> Inspect(<a href="#sdkvolumeinspectrequest">SdkVolumeInspectRequest</a>)
     <a href="#sdkvolumeinspectresponse">SdkVolumeInspectResponse</a></p>
 </blockquote>
 <p>Inspect returns information about a volume</p>
-<h2 id="update">Update</h2>
+<h2 id="methodupdate">Update </h2>
 <blockquote>
 <p><strong>rpc</strong> Update(<a href="#sdkvolumeupdaterequest">SdkVolumeUpdateRequest</a>)
     <a href="#sdkvolumeupdateresponse">SdkVolumeUpdateResponse</a></p>
 </blockquote>
 <p>Update provides a method for manipulating the specification and attributes of a volume.
 Set can be used to resize a volume, update labels, change replica count, and much more.</p>
-<h2 id="enumerate">Enumerate</h2>
+<h2 id="methodenumerate">Enumerate </h2>
 <blockquote>
 <p><strong>rpc</strong> Enumerate(<a href="#sdkvolumeenumeraterequest">SdkVolumeEnumerateRequest</a>)
     <a href="#sdkvolumeenumerateresponse">SdkVolumeEnumerateResponse</a></p>
 </blockquote>
 <p>Enumerate returns a list of volume ids that match the labels if any are provided.</p>
-<h2 id="snapshotcreate">SnapshotCreate</h2>
+<h2 id="methodsnapshotcreate">SnapshotCreate </h2>
 <blockquote>
 <p><strong>rpc</strong> SnapshotCreate(<a href="#sdkvolumesnapshotcreaterequest">SdkVolumeSnapshotCreateRequest</a>)
     <a href="#sdkvolumesnapshotcreateresponse">SdkVolumeSnapshotCreateResponse</a></p>
@@ -802,20 +802,20 @@ Set can be used to resize a volume, update labels, change replica count, and muc
 <p>SnapshotCreate creates a snapshot of a volume. This creates an immutable (read-only),
 point-in-time snapshot of a volume. To create a new writable volume from
 a snapshot, please use OpenStorageVolume.Clone().</p>
-<h2 id="snapshotrestore">SnapshotRestore</h2>
+<h2 id="methodsnapshotrestore">SnapshotRestore </h2>
 <blockquote>
 <p><strong>rpc</strong> SnapshotRestore(<a href="#sdkvolumesnapshotrestorerequest">SdkVolumeSnapshotRestoreRequest</a>)
     <a href="#sdkvolumesnapshotrestoreresponse">SdkVolumeSnapshotRestoreResponse</a></p>
 </blockquote>
 <p>SnapshotRestore restores a volume to a specified snapshot</p>
-<h2 id="snapshotenumerate">SnapshotEnumerate</h2>
+<h2 id="methodsnapshotenumerate">SnapshotEnumerate </h2>
 <blockquote>
 <p><strong>rpc</strong> SnapshotEnumerate(<a href="#sdkvolumesnapshotenumeraterequest">SdkVolumeSnapshotEnumerateRequest</a>)
     <a href="#sdkvolumesnapshotenumerateresponse">SdkVolumeSnapshotEnumerateResponse</a></p>
 </blockquote>
 <p>SnapshotEnumerate returns a list of snapshots for a specific volume
 that match the labels provided if any.</p>
-<h2 id="attach">Attach</h2>
+<h2 id="methodattach">Attach </h2>
 <blockquote>
 <p><strong>rpc</strong> Attach(<a href="#sdkvolumeattachrequest">SdkVolumeAttachRequest</a>)
     <a href="#sdkvolumeattachresponse">SdkVolumeAttachResponse</a></p>
@@ -823,13 +823,13 @@ that match the labels provided if any.</p>
 <p>Attach attaches device to the host that the client is communicating with.
 NOTE: Please see <a href="https://github.com/libopenstorage/openstorage/issues/381" target="_blank">#381</a> for more
 information about a new feature to allow attachment to any node.</p>
-<h2 id="detach">Detach</h2>
+<h2 id="methoddetach">Detach </h2>
 <blockquote>
 <p><strong>rpc</strong> Detach(<a href="#sdkvolumedetachrequest">SdkVolumeDetachRequest</a>)
     <a href="#sdkvolumedetachresponse">SdkVolumeDetachResponse</a></p>
 </blockquote>
 <p>Detaches a the volume from the host</p>
-<h2 id="mount">Mount</h2>
+<h2 id="methodmount">Mount </h2>
 <blockquote>
 <p><strong>rpc</strong> Mount(<a href="#sdkvolumemountrequest">SdkVolumeMountRequest</a>)
     <a href="#sdkvolumemountresponse">SdkVolumeMountResponse</a></p>
@@ -837,7 +837,7 @@ information about a new feature to allow attachment to any node.</p>
 <p>Mount mounts an attached volume in the host that the client is communicating with
 NOTE: Please see <a href="https://github.com/libopenstorage/openstorage/issues/381" target="_blank">#381</a> for more
 information about a new feature to allow attachment to any node.</p>
-<h2 id="unmount">Unmount</h2>
+<h2 id="methodunmount">Unmount </h2>
 <blockquote>
 <p><strong>rpc</strong> Unmount(<a href="#sdkvolumeunmountrequest">SdkVolumeUnmountRequest</a>)
     <a href="#sdkvolumeunmountresponse">SdkVolumeUnmountResponse</a></p>
@@ -6068,7 +6068,7 @@ to or from a cloud provider</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"API Reference","level":"1.5","depth":1,"next":{"title":"API Status","level":"1.6","depth":1,"path":"status.md","ref":"status.md","articles":[]},"previous":{"title":"Python","level":"1.4.2","depth":2,"path":"tutorial-python.md","ref":"tutorial-python.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"generated-api.md","mtime":"2018-07-12T23:44:03.038Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-07-12T23:44:19.557Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"API Reference","level":"1.5","depth":1,"next":{"title":"API Status","level":"1.6","depth":1,"path":"status.md","ref":"status.md","articles":[]},"previous":{"title":"Python","level":"1.4.2","depth":2,"path":"tutorial-python.md","ref":"tutorial-python.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"generated-api.md","mtime":"2018-07-13T00:27:11.678Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-07-13T00:28:34.610Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

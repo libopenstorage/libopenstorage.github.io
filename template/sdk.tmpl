@@ -4,7 +4,7 @@
 {{range .Files}}
 {{if .HasServices}}
 - Services
-  {{range .Services}}  - [{{.Name}}](#{{.FullName | lower | replace "." ""}})
+  {{range .Services}}  - [{{.Name}}](#service{{.FullName | lower | replace "." ""}})
   {{end}}
 {{end}}
 {{if .HasMessages}}
@@ -23,11 +23,11 @@
 {{range .Files}}
 
 {{range .Services -}}
-# {{.Name}} {#{{.FullName | lower | replace "." ""}}}
+# {{.Name}} {#service{{.FullName | lower | replace "." ""}}}
 {{.Description}}
 
 {{range .Methods -}}
-## {{.Name}}
+## {{.Name}} {#method{{.Name | lower | replace "." ""}}}
 
 > **rpc** {{.Name}}([{{.RequestLongType}}](#{{.RequestLongType | lower | replace "." ""}}))
     [{{.ResponseLongType}}](#{{.ResponseLongType | lower | replace "." ""}})
