@@ -74,7 +74,7 @@ standard gRPC status. To gain access to the error code and its message you
 must use `status.FromError()` which decodes the error value and the message.
 
 Notice also the use of accessors `GetXXX()` above. These convenient functions
-are provided automatically be the golang protobuf generator.
+are provided automatically by the golang protobuf generator.
 
 ## Volume Operations
 Now that we have connected to the cluster, let's go ahead and create a
