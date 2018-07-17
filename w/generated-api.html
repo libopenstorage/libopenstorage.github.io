@@ -302,6 +302,20 @@
 <li><a href="#cloudmigratestartrequest">CloudMigrateStartRequest</a></li>
 <li><a href="#cloudmigratestatusresponse">CloudMigrateStatusResponse</a></li>
 <li><a href="#cloudmigratestatusresponseinfoentry">CloudMigrateStatusResponse.InfoEntry</a></li>
+<li><a href="#clusterpaircreaterequest">ClusterPairCreateRequest</a></li>
+<li><a href="#clusterpaircreateresponse">ClusterPairCreateResponse</a></li>
+<li><a href="#clusterpairdeleterequest">ClusterPairDeleteRequest</a></li>
+<li><a href="#clusterpairgetrequest">ClusterPairGetRequest</a></li>
+<li><a href="#clusterpairgetresponse">ClusterPairGetResponse</a></li>
+<li><a href="#clusterpairinfo">ClusterPairInfo</a></li>
+<li><a href="#clusterpairinfooptionsentry">ClusterPairInfo.OptionsEntry</a></li>
+<li><a href="#clusterpairprocessrequest">ClusterPairProcessRequest</a></li>
+<li><a href="#clusterpairprocessresponse">ClusterPairProcessResponse</a></li>
+<li><a href="#clusterpairprocessresponseoptionsentry">ClusterPairProcessResponse.OptionsEntry</a></li>
+<li><a href="#clusterpairtokengetrequest">ClusterPairTokenGetRequest</a></li>
+<li><a href="#clusterpairtokengetresponse">ClusterPairTokenGetResponse</a></li>
+<li><a href="#clusterpairsenumerateresponse">ClusterPairsEnumerateResponse</a></li>
+<li><a href="#clusterpairsenumerateresponsepairsentry">ClusterPairsEnumerateResponse.PairsEntry</a></li>
 <li><a href="#clusterresponse">ClusterResponse</a></li>
 <li><a href="#graphdriverchanges">GraphDriverChanges</a></li>
 <li><a href="#group">Group</a></li>
@@ -410,6 +424,8 @@
 <li><a href="#sdkvolumedetachresponse">SdkVolumeDetachResponse</a></li>
 <li><a href="#sdkvolumeenumeraterequest">SdkVolumeEnumerateRequest</a></li>
 <li><a href="#sdkvolumeenumerateresponse">SdkVolumeEnumerateResponse</a></li>
+<li><a href="#sdkvolumeenumeratewithfiltersrequest">SdkVolumeEnumerateWithFiltersRequest</a></li>
+<li><a href="#sdkvolumeenumeratewithfiltersresponse">SdkVolumeEnumerateWithFiltersResponse</a></li>
 <li><a href="#sdkvolumeinspectrequest">SdkVolumeInspectRequest</a></li>
 <li><a href="#sdkvolumeinspectresponse">SdkVolumeInspectResponse</a></li>
 <li><a href="#sdkvolumemountrequest">SdkVolumeMountRequest</a></li>
@@ -419,8 +435,10 @@
 <li><a href="#sdkvolumesnapshotcreaterequestlabelsentry">SdkVolumeSnapshotCreateRequest.LabelsEntry</a></li>
 <li><a href="#sdkvolumesnapshotcreateresponse">SdkVolumeSnapshotCreateResponse</a></li>
 <li><a href="#sdkvolumesnapshotenumeraterequest">SdkVolumeSnapshotEnumerateRequest</a></li>
-<li><a href="#sdkvolumesnapshotenumeraterequestlabelsentry">SdkVolumeSnapshotEnumerateRequest.LabelsEntry</a></li>
 <li><a href="#sdkvolumesnapshotenumerateresponse">SdkVolumeSnapshotEnumerateResponse</a></li>
+<li><a href="#sdkvolumesnapshotenumeratewithfiltersrequest">SdkVolumeSnapshotEnumerateWithFiltersRequest</a></li>
+<li><a href="#sdkvolumesnapshotenumeratewithfiltersrequestlabelsentry">SdkVolumeSnapshotEnumerateWithFiltersRequest.LabelsEntry</a></li>
+<li><a href="#sdkvolumesnapshotenumeratewithfiltersresponse">SdkVolumeSnapshotEnumerateWithFiltersResponse</a></li>
 <li><a href="#sdkvolumesnapshotrestorerequest">SdkVolumeSnapshotRestoreRequest</a></li>
 <li><a href="#sdkvolumesnapshotrestoreresponse">SdkVolumeSnapshotRestoreResponse</a></li>
 <li><a href="#sdkvolumeunmountrequest">SdkVolumeUnmountRequest</a></li>
@@ -524,7 +542,7 @@ replicas, use OpenStorageVolume.Set() to change the ha_level.</p>
 <p><strong>rpc</strong> Delete(<a href="#sdkcloudbackupdeleterequest">SdkCloudBackupDeleteRequest</a>)
     <a href="#sdkcloudbackupdeleteresponse">SdkCloudBackupDeleteResponse</a></p>
 </blockquote>
-<p>Delete deletes a backup stored in the cloud. If the backup is an incremental
+<p>Deletes a backup stored in the cloud. If the backup is an incremental
 backup and other backups are dependent on it, it will not be able to be deleted.</p>
 <h2 id="methoddeleteall">DeleteAll </h2>
 <blockquote>
@@ -793,6 +811,12 @@ Set can be used to resize a volume, update labels, change replica count, and muc
 <p><strong>rpc</strong> Enumerate(<a href="#sdkvolumeenumeraterequest">SdkVolumeEnumerateRequest</a>)
     <a href="#sdkvolumeenumerateresponse">SdkVolumeEnumerateResponse</a></p>
 </blockquote>
+<p>Enumerate returns a list of volume ids</p>
+<h2 id="methodenumeratewithfilters">EnumerateWithFilters </h2>
+<blockquote>
+<p><strong>rpc</strong> EnumerateWithFilters(<a href="#sdkvolumeenumeratewithfiltersrequest">SdkVolumeEnumerateWithFiltersRequest</a>)
+    <a href="#sdkvolumeenumeratewithfiltersresponse">SdkVolumeEnumerateWithFiltersResponse</a></p>
+</blockquote>
 <p>Enumerate returns a list of volume ids that match the labels if any are provided.</p>
 <h2 id="methodsnapshotcreate">SnapshotCreate </h2>
 <blockquote>
@@ -812,6 +836,13 @@ a snapshot, please use OpenStorageVolume.Clone().</p>
 <blockquote>
 <p><strong>rpc</strong> SnapshotEnumerate(<a href="#sdkvolumesnapshotenumeraterequest">SdkVolumeSnapshotEnumerateRequest</a>)
     <a href="#sdkvolumesnapshotenumerateresponse">SdkVolumeSnapshotEnumerateResponse</a></p>
+</blockquote>
+<p>SnapshotEnumerate returns a list of snapshots for a specific volume
+that match the labels provided if any.</p>
+<h2 id="methodsnapshotenumeratewithfilters">SnapshotEnumerateWithFilters </h2>
+<blockquote>
+<p><strong>rpc</strong> SnapshotEnumerateWithFilters(<a href="#sdkvolumesnapshotenumeratewithfiltersrequest">SdkVolumeSnapshotEnumerateWithFiltersRequest</a>)
+    <a href="#sdkvolumesnapshotenumeratewithfiltersresponse">SdkVolumeSnapshotEnumerateWithFiltersResponse</a></p>
 </blockquote>
 <p>SnapshotEnumerate returns a list of snapshots for a specific volume
 that match the labels provided if any.</p>
@@ -1194,6 +1225,376 @@ swagger:model</p>
 <tr>
 <td>value</td>
 <td><a href="#cloudmigrateinfolist"> CloudMigrateInfoList</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="clusterpaircreaterequest">ClusterPairCreateRequest </h2>
+<p>Used to send a request to create a cluster pair
+swagger:model</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>remote_cluster_ip</td>
+<td><a href="#string"> string</a></td>
+<td>IP of the remote cluster</td>
+</tr>
+<tr>
+<td>remote_cluster_port</td>
+<td><a href="#uint32"> uint32</a></td>
+<td>Port for the remote cluster</td>
+</tr>
+<tr>
+<td>remote_cluster_token</td>
+<td><a href="#string"> string</a></td>
+<td>Token used to authenticate with the remote cluster</td>
+</tr>
+<tr>
+<td>set_default</td>
+<td><a href="#bool"> bool</a></td>
+<td>Set the new pair as the default</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="clusterpaircreateresponse">ClusterPairCreateResponse </h2>
+<p>Response for a pair request
+swagger:response</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>remote_cluster_id</td>
+<td><a href="#string"> string</a></td>
+<td>ID of the remote cluster</td>
+</tr>
+<tr>
+<td>remote_cluster_name</td>
+<td><a href="#string"> string</a></td>
+<td>Name of the remote cluster</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="clusterpairdeleterequest">ClusterPairDeleteRequest </h2>
+<p>Request to to delete a cluster pair
+swagger:model</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cluster_id</td>
+<td><a href="#string"> string</a></td>
+<td>ID of the cluster pair to be deleted</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="clusterpairgetrequest">ClusterPairGetRequest </h2>
+<p>Request to get a cluster pair
+swagger:model</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td><a href="#string"> string</a></td>
+<td>ID of the cluster, if empty gets the default pair</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="clusterpairgetresponse">ClusterPairGetResponse </h2>
+<p>Reponse to get a cluster pair
+swagger:response</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pair_info</td>
+<td><a href="#clusterpairinfo"> ClusterPairInfo</a></td>
+<td>Info about the cluster pair</td>
+</tr>
+</tbody>
+</table>
+<p>in: body |
+ <!-- end Fields -->
+ <!-- end HasFields --></p>
+<h2 id="clusterpairinfo">ClusterPairInfo </h2>
+<p>Information about a cluster pair
+swagger:model</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td><a href="#string"> string</a></td>
+<td>ID of the cluster</td>
+</tr>
+<tr>
+<td>name</td>
+<td><a href="#string"> string</a></td>
+<td>Name of the cluster</td>
+</tr>
+<tr>
+<td>ip</td>
+<td><a href="#string"> string</a></td>
+<td>IP of the cluster</td>
+</tr>
+<tr>
+<td>port</td>
+<td><a href="#uint32"> uint32</a></td>
+<td>Port for the cluster</td>
+</tr>
+<tr>
+<td>secure</td>
+<td><a href="#bool"> bool</a></td>
+<td>Flag used to determine if communication is over a secure channel</td>
+</tr>
+<tr>
+<td>token</td>
+<td><a href="#string"> string</a></td>
+<td>Token associated with cluster</td>
+</tr>
+<tr>
+<td>options</td>
+<td><a href="#clusterpairinfooptionsentry">map ClusterPairInfo.OptionsEntry</a></td>
+<td>Key/value pair of options associated with the cluster Opaque to openstorage and interpreted by the drivers</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="clusterpairinfooptionsentry">ClusterPairInfo.OptionsEntry </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="clusterpairprocessrequest">ClusterPairProcessRequest </h2>
+<p>Used to process a pair request from a remote cluster
+swagger:model</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>source_cluster_id</td>
+<td><a href="#string"> string</a></td>
+<td>ID of the cluster requesting the pairing</td>
+</tr>
+<tr>
+<td>remote_cluster_token</td>
+<td><a href="#string"> string</a></td>
+<td>Token used to authenticate with the remote cluster</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="clusterpairprocessresponse">ClusterPairProcessResponse </h2>
+<p>Response after a pairing has been processed
+swagger:response</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>remote_cluster_id</td>
+<td><a href="#string"> string</a></td>
+<td>in: body ID of the cluster which processed the pair request</td>
+</tr>
+<tr>
+<td>remote_cluster_name</td>
+<td><a href="#string"> string</a></td>
+<td>Name of the cluster which processed the pair request</td>
+</tr>
+</tbody>
+</table>
+<p>in: body |
+| options | <a href="#clusterpairprocessresponseoptionsentry">map ClusterPairProcessResponse.OptionsEntry</a> | Key/value pair of options returned on successful pairing Opaque to openstorage and interpreted by the drivers</p>
+<p>in: body |
+ <!-- end Fields -->
+ <!-- end HasFields --></p>
+<h2 id="clusterpairprocessresponseoptionsentry">ClusterPairProcessResponse.OptionsEntry </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="clusterpairtokengetrequest">ClusterPairTokenGetRequest </h2>
+<p>Request to get the token for a cluster
+swagger:model</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>reset_token</td>
+<td><a href="#bool"> bool</a></td>
+<td>Reset token if already preset</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="clusterpairtokengetresponse">ClusterPairTokenGetResponse </h2>
+<p>Response to get the cluster token
+swagger:model</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>token</td>
+<td><a href="#string"> string</a></td>
+<td>Token used to authenticate clusters</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="clusterpairsenumerateresponse">ClusterPairsEnumerateResponse </h2>
+<p>Response to enumerate all the cluster pairs
+swagger:response</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>default_id</td>
+<td><a href="#string"> string</a></td>
+<td>ID of the default cluster pair</td>
+</tr>
+</tbody>
+</table>
+<p>in: body |
+| pairs | <a href="#clusterpairsenumerateresponsepairsentry">map ClusterPairsEnumerateResponse.PairsEntry</a> | Pairs Info about the cluster pairs</p>
+<p>in: body required: false |
+ <!-- end Fields -->
+ <!-- end HasFields --></p>
+<h2 id="clusterpairsenumerateresponsepairsentry">ClusterPairsEnumerateResponse.PairsEntry </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="#clusterpairinfo"> ClusterPairInfo</a></td>
 <td>none</td>
 </tr>
 </tbody>
@@ -3376,6 +3777,29 @@ to update any labels on the volume.</p>
  <!-- end HasFields -->
 <h2 id="sdkvolumeenumeraterequest">SdkVolumeEnumerateRequest </h2>
 <p>Defines a request to list volumes</p>
+ <!-- end HasFields -->
+<h2 id="sdkvolumeenumerateresponse">SdkVolumeEnumerateResponse </h2>
+<p>Defines the response when listing volumes</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume_ids</td>
+<td><a href="#string">repeated string</a></td>
+<td>List of volumes matching label</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkvolumeenumeratewithfiltersrequest">SdkVolumeEnumerateWithFiltersRequest </h2>
+<p>Defines a request to list volumes</p>
 <table>
 <thead>
 <tr>
@@ -3394,7 +3818,7 @@ to update any labels on the volume.</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
-<h2 id="sdkvolumeenumerateresponse">SdkVolumeEnumerateResponse </h2>
+<h2 id="sdkvolumeenumeratewithfiltersresponse">SdkVolumeEnumerateWithFiltersResponse </h2>
 <p>Defines the response when listing volumes</p>
 <table>
 <thead>
@@ -3594,18 +4018,58 @@ to update any labels on the volume.</p>
 <tr>
 <td>volume_id</td>
 <td><a href="#string"> string</a></td>
-<td>Id of volume</td>
-</tr>
-<tr>
-<td>labels</td>
-<td><a href="#sdkvolumesnapshotenumeraterequestlabelsentry">map SdkVolumeSnapshotEnumerateRequest.LabelsEntry</a></td>
-<td>Labels from snapshot</td>
+<td>Get the snapshots for this volume id</td>
 </tr>
 </tbody>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
-<h2 id="sdkvolumesnapshotenumeraterequestlabelsentry">SdkVolumeSnapshotEnumerateRequest.LabelsEntry </h2>
+<h2 id="sdkvolumesnapshotenumerateresponse">SdkVolumeSnapshotEnumerateResponse </h2>
+<p>Defines a response when listing snapshots</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume_snapshot_ids</td>
+<td><a href="#string">repeated string</a></td>
+<td>List of immutable snapshots</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkvolumesnapshotenumeratewithfiltersrequest">SdkVolumeSnapshotEnumerateWithFiltersRequest </h2>
+<p>Defines a request to list the snaphots</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume_id</td>
+<td><a href="#string"> string</a></td>
+<td>Get the snapshots for this volume id</td>
+</tr>
+<tr>
+<td>labels</td>
+<td><a href="#sdkvolumesnapshotenumeratewithfiltersrequestlabelsentry">map SdkVolumeSnapshotEnumerateWithFiltersRequest.LabelsEntry</a></td>
+<td>Get snapshots that match these labels</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkvolumesnapshotenumeratewithfiltersrequestlabelsentry">SdkVolumeSnapshotEnumerateWithFiltersRequest.LabelsEntry </h2>
 <table>
 <thead>
 <tr>
@@ -3629,7 +4093,7 @@ to update any labels on the volume.</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
-<h2 id="sdkvolumesnapshotenumerateresponse">SdkVolumeSnapshotEnumerateResponse </h2>
+<h2 id="sdkvolumesnapshotenumeratewithfiltersresponse">SdkVolumeSnapshotEnumerateWithFiltersResponse </h2>
 <p>Defines a response when listing snapshots</p>
 <table>
 <thead>
@@ -6068,7 +6532,7 @@ to or from a cloud provider</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"API Reference","level":"1.5","depth":1,"next":{"title":"API Status","level":"1.6","depth":1,"path":"status.md","ref":"status.md","articles":[]},"previous":{"title":"Python","level":"1.4.2","depth":2,"path":"tutorial-python.md","ref":"tutorial-python.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"generated-api.md","mtime":"2018-07-13T00:27:11.678Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-07-13T05:37:40.873Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"API Reference","level":"1.5","depth":1,"next":{"title":"API Status","level":"1.6","depth":1,"path":"status.md","ref":"status.md","articles":[]},"previous":{"title":"Python","level":"1.4.2","depth":2,"path":"tutorial-python.md","ref":"tutorial-python.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"generated-api.md","mtime":"2018-07-17T18:58:18.325Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-07-17T18:58:21.879Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

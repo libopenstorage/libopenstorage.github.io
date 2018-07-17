@@ -27,6 +27,20 @@
     - [CloudMigrateStartRequest](#cloudmigratestartrequest)
     - [CloudMigrateStatusResponse](#cloudmigratestatusresponse)
     - [CloudMigrateStatusResponse.InfoEntry](#cloudmigratestatusresponseinfoentry)
+    - [ClusterPairCreateRequest](#clusterpaircreaterequest)
+    - [ClusterPairCreateResponse](#clusterpaircreateresponse)
+    - [ClusterPairDeleteRequest](#clusterpairdeleterequest)
+    - [ClusterPairGetRequest](#clusterpairgetrequest)
+    - [ClusterPairGetResponse](#clusterpairgetresponse)
+    - [ClusterPairInfo](#clusterpairinfo)
+    - [ClusterPairInfo.OptionsEntry](#clusterpairinfooptionsentry)
+    - [ClusterPairProcessRequest](#clusterpairprocessrequest)
+    - [ClusterPairProcessResponse](#clusterpairprocessresponse)
+    - [ClusterPairProcessResponse.OptionsEntry](#clusterpairprocessresponseoptionsentry)
+    - [ClusterPairTokenGetRequest](#clusterpairtokengetrequest)
+    - [ClusterPairTokenGetResponse](#clusterpairtokengetresponse)
+    - [ClusterPairsEnumerateResponse](#clusterpairsenumerateresponse)
+    - [ClusterPairsEnumerateResponse.PairsEntry](#clusterpairsenumerateresponsepairsentry)
     - [ClusterResponse](#clusterresponse)
     - [GraphDriverChanges](#graphdriverchanges)
     - [Group](#group)
@@ -135,6 +149,8 @@
     - [SdkVolumeDetachResponse](#sdkvolumedetachresponse)
     - [SdkVolumeEnumerateRequest](#sdkvolumeenumeraterequest)
     - [SdkVolumeEnumerateResponse](#sdkvolumeenumerateresponse)
+    - [SdkVolumeEnumerateWithFiltersRequest](#sdkvolumeenumeratewithfiltersrequest)
+    - [SdkVolumeEnumerateWithFiltersResponse](#sdkvolumeenumeratewithfiltersresponse)
     - [SdkVolumeInspectRequest](#sdkvolumeinspectrequest)
     - [SdkVolumeInspectResponse](#sdkvolumeinspectresponse)
     - [SdkVolumeMountRequest](#sdkvolumemountrequest)
@@ -144,8 +160,10 @@
     - [SdkVolumeSnapshotCreateRequest.LabelsEntry](#sdkvolumesnapshotcreaterequestlabelsentry)
     - [SdkVolumeSnapshotCreateResponse](#sdkvolumesnapshotcreateresponse)
     - [SdkVolumeSnapshotEnumerateRequest](#sdkvolumesnapshotenumeraterequest)
-    - [SdkVolumeSnapshotEnumerateRequest.LabelsEntry](#sdkvolumesnapshotenumeraterequestlabelsentry)
     - [SdkVolumeSnapshotEnumerateResponse](#sdkvolumesnapshotenumerateresponse)
+    - [SdkVolumeSnapshotEnumerateWithFiltersRequest](#sdkvolumesnapshotenumeratewithfiltersrequest)
+    - [SdkVolumeSnapshotEnumerateWithFiltersRequest.LabelsEntry](#sdkvolumesnapshotenumeratewithfiltersrequestlabelsentry)
+    - [SdkVolumeSnapshotEnumerateWithFiltersResponse](#sdkvolumesnapshotenumeratewithfiltersresponse)
     - [SdkVolumeSnapshotRestoreRequest](#sdkvolumesnapshotrestorerequest)
     - [SdkVolumeSnapshotRestoreResponse](#sdkvolumesnapshotrestoreresponse)
     - [SdkVolumeUnmountRequest](#sdkvolumeunmountrequest)
@@ -252,7 +270,7 @@ replicas, use OpenStorageVolume.Set() to change the ha_level.
 > **rpc** Delete([SdkCloudBackupDeleteRequest](#sdkcloudbackupdeleterequest))
     [SdkCloudBackupDeleteResponse](#sdkcloudbackupdeleteresponse)
 
-Delete deletes a backup stored in the cloud. If the backup is an incremental
+Deletes a backup stored in the cloud. If the backup is an incremental
 backup and other backups are dependent on it, it will not be able to be deleted.
 ## DeleteAll {#methoddeleteall}
 
@@ -537,6 +555,12 @@ Set can be used to resize a volume, update labels, change replica count, and muc
 > **rpc** Enumerate([SdkVolumeEnumerateRequest](#sdkvolumeenumeraterequest))
     [SdkVolumeEnumerateResponse](#sdkvolumeenumerateresponse)
 
+Enumerate returns a list of volume ids
+## EnumerateWithFilters {#methodenumeratewithfilters}
+
+> **rpc** EnumerateWithFilters([SdkVolumeEnumerateWithFiltersRequest](#sdkvolumeenumeratewithfiltersrequest))
+    [SdkVolumeEnumerateWithFiltersResponse](#sdkvolumeenumeratewithfiltersresponse)
+
 Enumerate returns a list of volume ids that match the labels if any are provided.
 ## SnapshotCreate {#methodsnapshotcreate}
 
@@ -556,6 +580,13 @@ SnapshotRestore restores a volume to a specified snapshot
 
 > **rpc** SnapshotEnumerate([SdkVolumeSnapshotEnumerateRequest](#sdkvolumesnapshotenumeraterequest))
     [SdkVolumeSnapshotEnumerateResponse](#sdkvolumesnapshotenumerateresponse)
+
+SnapshotEnumerate returns a list of snapshots for a specific volume
+that match the labels provided if any.
+## SnapshotEnumerateWithFilters {#methodsnapshotenumeratewithfilters}
+
+> **rpc** SnapshotEnumerateWithFilters([SdkVolumeSnapshotEnumerateWithFiltersRequest](#sdkvolumesnapshotenumeratewithfiltersrequest))
+    [SdkVolumeSnapshotEnumerateWithFiltersResponse](#sdkvolumesnapshotenumeratewithfiltersresponse)
 
 SnapshotEnumerate returns a list of snapshots for a specific volume
 that match the labels provided if any.
@@ -748,6 +779,198 @@ Response with a status of the cloud migration operations
 | ----- | ---- | ----------- |
 | key | [ string](#string) | none |
 | value | [ CloudMigrateInfoList](#cloudmigrateinfolist) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## ClusterPairCreateRequest {#clusterpaircreaterequest}
+Used to send a request to create a cluster pair
+swagger:model
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| remote_cluster_ip | [ string](#string) | IP of the remote cluster |
+| remote_cluster_port | [ uint32](#uint32) | Port for the remote cluster |
+| remote_cluster_token | [ string](#string) | Token used to authenticate with the remote cluster |
+| set_default | [ bool](#bool) | Set the new pair as the default |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## ClusterPairCreateResponse {#clusterpaircreateresponse}
+Response for a pair request
+swagger:response
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| remote_cluster_id | [ string](#string) | ID of the remote cluster |
+| remote_cluster_name | [ string](#string) | Name of the remote cluster |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## ClusterPairDeleteRequest {#clusterpairdeleterequest}
+Request to to delete a cluster pair
+swagger:model
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| cluster_id | [ string](#string) | ID of the cluster pair to be deleted |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## ClusterPairGetRequest {#clusterpairgetrequest}
+Request to get a cluster pair
+swagger:model
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [ string](#string) | ID of the cluster, if empty gets the default pair |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## ClusterPairGetResponse {#clusterpairgetresponse}
+Reponse to get a cluster pair
+swagger:response
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| pair_info | [ ClusterPairInfo](#clusterpairinfo) | Info about the cluster pair
+
+in: body |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## ClusterPairInfo {#clusterpairinfo}
+Information about a cluster pair
+swagger:model
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [ string](#string) | ID of the cluster |
+| name | [ string](#string) | Name of the cluster |
+| ip | [ string](#string) | IP of the cluster |
+| port | [ uint32](#uint32) | Port for the cluster |
+| secure | [ bool](#bool) | Flag used to determine if communication is over a secure channel |
+| token | [ string](#string) | Token associated with cluster |
+| options | [map ClusterPairInfo.OptionsEntry](#clusterpairinfooptionsentry) | Key/value pair of options associated with the cluster Opaque to openstorage and interpreted by the drivers |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## ClusterPairInfo.OptionsEntry {#clusterpairinfooptionsentry}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [ string](#string) | none |
+| value | [ string](#string) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## ClusterPairProcessRequest {#clusterpairprocessrequest}
+Used to process a pair request from a remote cluster
+swagger:model
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| source_cluster_id | [ string](#string) | ID of the cluster requesting the pairing |
+| remote_cluster_token | [ string](#string) | Token used to authenticate with the remote cluster |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## ClusterPairProcessResponse {#clusterpairprocessresponse}
+Response after a pairing has been processed
+swagger:response
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| remote_cluster_id | [ string](#string) | in: body ID of the cluster which processed the pair request |
+| remote_cluster_name | [ string](#string) | Name of the cluster which processed the pair request
+
+in: body |
+| options | [map ClusterPairProcessResponse.OptionsEntry](#clusterpairprocessresponseoptionsentry) | Key/value pair of options returned on successful pairing Opaque to openstorage and interpreted by the drivers
+
+in: body |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## ClusterPairProcessResponse.OptionsEntry {#clusterpairprocessresponseoptionsentry}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [ string](#string) | none |
+| value | [ string](#string) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## ClusterPairTokenGetRequest {#clusterpairtokengetrequest}
+Request to get the token for a cluster
+swagger:model
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| reset_token | [ bool](#bool) | Reset token if already preset |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## ClusterPairTokenGetResponse {#clusterpairtokengetresponse}
+Response to get the cluster token
+swagger:model
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| token | [ string](#string) | Token used to authenticate clusters |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## ClusterPairsEnumerateResponse {#clusterpairsenumerateresponse}
+Response to enumerate all the cluster pairs
+swagger:response
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| default_id | [ string](#string) | ID of the default cluster pair
+
+in: body |
+| pairs | [map ClusterPairsEnumerateResponse.PairsEntry](#clusterpairsenumerateresponsepairsentry) | Pairs Info about the cluster pairs
+
+in: body required: false |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## ClusterPairsEnumerateResponse.PairsEntry {#clusterpairsenumerateresponsepairsentry}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [ string](#string) | none |
+| value | [ ClusterPairInfo](#clusterpairinfo) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -1929,6 +2152,23 @@ Empty response
 ## SdkVolumeEnumerateRequest {#sdkvolumeenumeraterequest}
 Defines a request to list volumes
 
+ <!-- end HasFields -->
+
+
+## SdkVolumeEnumerateResponse {#sdkvolumeenumerateresponse}
+Defines the response when listing volumes
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_ids | [repeated string](#string) | List of volumes matching label |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVolumeEnumerateWithFiltersRequest {#sdkvolumeenumeratewithfiltersrequest}
+Defines a request to list volumes
+
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
@@ -1937,7 +2177,7 @@ Defines a request to list volumes
  <!-- end HasFields -->
 
 
-## SdkVolumeEnumerateResponse {#sdkvolumeenumerateresponse}
+## SdkVolumeEnumerateWithFiltersResponse {#sdkvolumeenumeratewithfiltersresponse}
 Defines the response when listing volumes
 
 
@@ -2042,13 +2282,35 @@ Defines a request to list the snaphots
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| volume_id | [ string](#string) | Id of volume |
-| labels | [map SdkVolumeSnapshotEnumerateRequest.LabelsEntry](#sdkvolumesnapshotenumeraterequestlabelsentry) | Labels from snapshot |
+| volume_id | [ string](#string) | Get the snapshots for this volume id |
  <!-- end Fields -->
  <!-- end HasFields -->
 
 
-## SdkVolumeSnapshotEnumerateRequest.LabelsEntry {#sdkvolumesnapshotenumeraterequestlabelsentry}
+## SdkVolumeSnapshotEnumerateResponse {#sdkvolumesnapshotenumerateresponse}
+Defines a response when listing snapshots
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_snapshot_ids | [repeated string](#string) | List of immutable snapshots |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVolumeSnapshotEnumerateWithFiltersRequest {#sdkvolumesnapshotenumeratewithfiltersrequest}
+Defines a request to list the snaphots
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id | [ string](#string) | Get the snapshots for this volume id |
+| labels | [map SdkVolumeSnapshotEnumerateWithFiltersRequest.LabelsEntry](#sdkvolumesnapshotenumeratewithfiltersrequestlabelsentry) | Get snapshots that match these labels |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVolumeSnapshotEnumerateWithFiltersRequest.LabelsEntry {#sdkvolumesnapshotenumeratewithfiltersrequestlabelsentry}
 
 
 
@@ -2060,7 +2322,7 @@ Defines a request to list the snaphots
  <!-- end HasFields -->
 
 
-## SdkVolumeSnapshotEnumerateResponse {#sdkvolumesnapshotenumerateresponse}
+## SdkVolumeSnapshotEnumerateWithFiltersResponse {#sdkvolumesnapshotenumeratewithfiltersresponse}
 Defines a response when listing snapshots
 
 
