@@ -4,39 +4,21 @@
 [[projects]]
   name = "github.com/golang/protobuf"
   packages = [
-    "jsonpb",
     "proto",
     "protoc-gen-go/descriptor",
     "ptypes",
     "ptypes/any",
     "ptypes/duration",
-    "ptypes/struct",
     "ptypes/timestamp"
   ]
   revision = "b4deda0973fb4c70b50d226b1af49f3da59f5265"
   version = "v1.1.0"
 
 [[projects]]
-  name = "github.com/grpc-ecosystem/grpc-gateway"
-  packages = [
-    "runtime",
-    "runtime/internal",
-    "utilities"
-  ]
-  revision = "92583770e3f01b09a0d3e9bdf64321d8bebd48f2"
-  version = "v1.4.1"
-
-[[projects]]
   branch = "master"
-  name = "github.com/libopenstorage/openstorage"
-  packages = ["api"]
-  revision = "771daf5538702a86881642f67a28f8c46c279754"
-
-[[projects]]
-  branch = "master"
-  name = "github.com/mohae/deepcopy"
-  packages = ["."]
-  revision = "c48cc78d482608239f6c4c92a4abd87eb8761c90"
+  name = "github.com/libopenstorage/openstorage-sdk-clients"
+  packages = ["sdk/golang"]
+  revision = "77304b2deb68d33fa4814bf713f60ac4f00da985"
 
 [[projects]]
   branch = "master"
@@ -50,7 +32,7 @@
     "internal/timeseries",
     "trace"
   ]
-  revision = "cffdcf672aee934982473246bc7e9a8ba446aa9b"
+  revision = "a680a1efc54dd51c040b3b5ce4939ea3cf2ea0d1"
 
 [[projects]]
   name = "golang.org/x/text"
@@ -80,7 +62,7 @@
     "googleapis/api/annotations",
     "googleapis/rpc/status"
   ]
-  revision = "e92b116572682a5b432ddd840aeaba2a559eeff1"
+  revision = "fedd2861243fd1a8152376292b921b394c7bef7e"
 
 [[projects]]
   name = "google.golang.org/grpc"
@@ -117,6 +99,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "97d443d5c25e6698cb459ced578f971622b13592416d1a22e0b02148b3a6f354"
+  inputs-digest = "521085310f14e675dd76dd6e9699651710f9a595b18bb91434d741b2da3e9cce"
   solver-name = "gps-cdcl"
   solver-version = 1

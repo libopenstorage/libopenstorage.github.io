@@ -12,10 +12,10 @@ access to `api.pb.go`:
 
 ```go
 import (
-    "github.com/libopenstorage/openstorage/api"
-
+    api "github.com/libopenstorage/openstorage-sdk-clients/sdk/golang"
+    "github.com/golang/protobuf/ptypes"
     "google.golang.org/grpc"
-	"google.golang.org/grpc/status"
+    "google.golang.org/grpc/status"
 )
 ```
 

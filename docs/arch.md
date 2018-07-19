@@ -30,6 +30,6 @@ and passing the path `/swagger-ui`.
 All API calls use the [standard gRPC status](https://github.com/grpc/grpc/blob/master/src/proto/grpc/status/status.proto).
 
 ## OpenStorage SDK Implementations
-In this document, examples will refer to both the [OpenStorage SDK Mock](installing.md)
+In this document, examples will refer to both the [OpenStorage SDK Mock](tutorial.html)
 and Portworx OpenStorage drivers.
 

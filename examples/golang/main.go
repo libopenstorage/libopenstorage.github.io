@@ -7,9 +7,8 @@ import (
 	"fmt"
 	"os"
 
+	api "github.com/libopenstorage/openstorage-sdk-clients/sdk/golang"
 	"github.com/golang/protobuf/ptypes"
-
-	"github.com/libopenstorage/openstorage/api"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/status"
 )
@@ -119,7 +118,7 @@ func main() {
 	// Now check the status of the backup
 	backupStatus, err := cloudbackups.Status(context.Background(),
 		&api.SdkCloudBackupStatusRequest{
-			SrcVolumeId: v.GetVolumeId(),
+			VolumeId: v.GetVolumeId(),
 		})
 	if err != nil {
 		gerr, _ := status.FromError(err)
