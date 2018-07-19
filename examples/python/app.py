@@ -8,7 +8,7 @@ try:
     # Cluster connection
     clusters = api_pb2_grpc.OpenStorageClusterStub(channel)
     ic_resp = clusters.InspectCurrent(api_pb2.SdkClusterInspectCurrentRequest())
-    print('Conntected to {0} with status {1}'.format(
+    print('Connected to {0} with status {1}'.format(
         ic_resp.cluster.id,
         api_pb2.Status.Name(ic_resp.cluster.status)
     ))

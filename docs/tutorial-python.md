@@ -6,6 +6,9 @@ volume.
 
 The sources for this tutorial are available in the [`examples/python`](https://github.com/libopenstorage/libopenstorage.github.io/tree/master/examples/python) directory in the repo for this website.
 
+If you would like to try this tutorial on the web, check out our
+[Katacoda Scenario: OpenStorage SDK Python Client Tutorial](https://www.katacoda.com/lpabon/scenarios/tutorial-python).
+
 ## Setting up your environment
 To setup your environment, you will need to copy `openstorage` and `google`
 directories from [`openstorage/api/clients/sdk/python`](https://github.com/libopenstorage/openstorage/tree/master/api/client/sdk/python)
@@ -52,7 +55,7 @@ try:
     # Cluster connection
     clusters = api_pb2_grpc.OpenStorageClusterStub(channel)
     ic_resp = clusters.InspectCurrent(api_pb2.SdkClusterInspectCurrentRequest())
-    print('Conntected to {0} with status {1}'.format(
+    print('Connected to {0} with status {1}'.format(
         ic_resp.cluster.id,
         api_pb2.Status.Name(ic_resp.cluster.status)
     ))
