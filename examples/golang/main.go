@@ -47,7 +47,8 @@ func main() {
 		&api.SdkVolumeCreateRequest{
 			Name: "myvol",
 			Spec: &api.VolumeSpec{
-				Size: 100 * 1024 * 1024 * 1024,
+				Size:    100 * 1024 * 1024 * 1024,
+				HaLevel: 3,
 			},
 		})
 	if err != nil {
