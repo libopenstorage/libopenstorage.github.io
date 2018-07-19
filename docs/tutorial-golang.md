@@ -6,6 +6,10 @@ volume.
 
 The sources for this tutorial are available in the [`examples/golang`](https://github.com/libopenstorage/libopenstorage.github.io/tree/master/examples/golang) directory in the repo for this website.
 
+#### Recorded demo
+Check out the [step by step tutorial](https://asciinema.org/a/auGZOUd4R5osIgS8xEbRUX8Ah)
+on how to setup the golang client using [Golang dep](https://github.com/golang/dep).
+
 ## Setting up your environment
 To setup your environment, you will need to import the following to gain
 access to `api.pb.go`:
