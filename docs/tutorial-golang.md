@@ -190,7 +190,7 @@ call OpenStorageCloudBackup.Status() to get information about the backup:
 	// Now check the status of the backup
 	backupStatus, err := cloudbackups.Status(context.Background(),
 		&api.SdkCloudBackupStatusRequest{
-			SrcVolumeId: v.GetVolumeId(),
+			VolumeId: v.GetVolumeId(),
 		})
 	if err != nil {
 		gerr, _ := status.FromError(err)

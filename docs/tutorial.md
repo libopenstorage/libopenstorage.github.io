@@ -29,7 +29,7 @@ Let's test the connection now before continuing by running the following to the
 gRPC REST Gateway:
 
 ```
-$ curl -X GET "http://localhost:9110/v1/cluster" \
+$ curl -X GET "http://localhost:9110/v1/clusters/current" \
      -H "accept: application/json" \
 	 -H "Content-Type: application/json" \
 	 -d "{}"
