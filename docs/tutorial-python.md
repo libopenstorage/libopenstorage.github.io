@@ -11,7 +11,7 @@ If you would like to try this tutorial on the web, check out our
 
 ## Setting up your environment
 To setup your environment, you will need to copy `openstorage` and `google`
-directories from [`openstorage/api/clients/sdk/python`](https://github.com/libopenstorage/openstorage/tree/master/api/client/sdk/python)
+directories from [`openstorage-sdk-clients/sdk/python`](https://github.com/libopenstorage/openstorage-sdk-clients/tree/master/sdk/python)
 to your project.
 
 > **NOTE**: We will be adding this package to pip in future releases.
