@@ -295,6 +295,8 @@
 <li><a href="#activerequests">ActiveRequests</a></li>
 <li><a href="#alert">Alert</a></li>
 <li><a href="#alerts">Alerts</a></li>
+<li><a href="#catalog">Catalog</a></li>
+<li><a href="#catalogresponse">CatalogResponse</a></li>
 <li><a href="#cloudmigrate">CloudMigrate</a></li>
 <li><a href="#cloudmigratecancelrequest">CloudMigrateCancelRequest</a></li>
 <li><a href="#cloudmigrateinfo">CloudMigrateInfo</a></li>
@@ -325,6 +327,7 @@
 <li><a href="#groupsnapcreateresponsesnapshotsentry">GroupSnapCreateResponse.SnapshotsEntry</a></li>
 <li><a href="#objectstoreinfo">ObjectstoreInfo</a></li>
 <li><a href="#replicaset">ReplicaSet</a></li>
+<li><a href="#report">Report</a></li>
 <li><a href="#runtimestatemap">RuntimeStateMap</a></li>
 <li><a href="#runtimestatemapruntimestateentry">RuntimeStateMap.RuntimeStateEntry</a></li>
 <li><a href="#sdkawscredentialrequest">SdkAwsCredentialRequest</a></li>
@@ -441,6 +444,8 @@
 <li><a href="#sdkvolumesnapshotenumeratewithfiltersresponse">SdkVolumeSnapshotEnumerateWithFiltersResponse</a></li>
 <li><a href="#sdkvolumesnapshotrestorerequest">SdkVolumeSnapshotRestoreRequest</a></li>
 <li><a href="#sdkvolumesnapshotrestoreresponse">SdkVolumeSnapshotRestoreResponse</a></li>
+<li><a href="#sdkvolumestatsrequest">SdkVolumeStatsRequest</a></li>
+<li><a href="#sdkvolumestatsresponse">SdkVolumeStatsResponse</a></li>
 <li><a href="#sdkvolumeunmountrequest">SdkVolumeUnmountRequest</a></li>
 <li><a href="#sdkvolumeunmountrequestoptionsentry">SdkVolumeUnmountRequest.OptionsEntry</a></li>
 <li><a href="#sdkvolumeunmountresponse">SdkVolumeUnmountResponse</a></li>
@@ -806,6 +811,12 @@ weekly, or monthly.</p>
 </blockquote>
 <p>Update provides a method for manipulating the specification and attributes of a volume.
 Set can be used to resize a volume, update labels, change replica count, and much more.</p>
+<h2 id="methodstats">Stats </h2>
+<blockquote>
+<p><strong>rpc</strong> Stats(<a href="#sdkvolumestatsrequest">SdkVolumeStatsRequest</a>)
+    <a href="#sdkvolumestatsresponse">SdkVolumeStatsResponse</a></p>
+</blockquote>
+<p>Stats returns the statistics for the requested volume</p>
 <h2 id="methodenumerate">Enumerate </h2>
 <blockquote>
 <p><strong>rpc</strong> Enumerate(<a href="#sdkvolumeenumeraterequest">SdkVolumeEnumerateRequest</a>)
@@ -951,8 +962,7 @@ swagger:model</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="alert">Alert </h2>
-<p>Alert is a structure that represents an alert object
-swagger:model</p>
+<p>Alert is a structure that represents an alert object</p>
 <table>
 <thead>
 <tr>
@@ -1042,6 +1052,74 @@ swagger:model</p>
 <td>alert</td>
 <td><a href="#alert">repeated Alert</a></td>
 <td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="catalog">Catalog </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td><a href="#string"> string</a></td>
+<td>Name of the Directory/File</td>
+</tr>
+<tr>
+<td>path</td>
+<td><a href="#string"> string</a></td>
+<td>Full Path of the Directory/File</td>
+</tr>
+<tr>
+<td>type</td>
+<td><a href="#string"> string</a></td>
+<td>Type Directory or File</td>
+</tr>
+<tr>
+<td>size</td>
+<td><a href="#uint64"> uint64</a></td>
+<td>File or Directory Size</td>
+</tr>
+<tr>
+<td>LastModified</td>
+<td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
+<td>Last Modified</td>
+</tr>
+<tr>
+<td>children</td>
+<td><a href="#catalog">repeated Catalog</a></td>
+<td>Children</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="catalogresponse">CatalogResponse </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>root</td>
+<td><a href="#catalog"> Catalog</a></td>
+<td>Root Catalog</td>
+</tr>
+<tr>
+<td>report</td>
+<td><a href="#report"> Report</a></td>
+<td>Report of total directories and files count</td>
 </tr>
 </tbody>
 </table>
@@ -1860,6 +1938,30 @@ swagger:model</p>
 <td>nodes</td>
 <td><a href="#string">repeated string</a></td>
 <td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="report">Report </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>directories</td>
+<td><a href="#int64"> int64</a></td>
+<td>Directory count</td>
+</tr>
+<tr>
+<td>files</td>
+<td><a href="#int64"> int64</a></td>
+<td>File count</td>
 </tr>
 </tbody>
 </table>
@@ -4141,6 +4243,51 @@ to update any labels on the volume.</p>
 <h2 id="sdkvolumesnapshotrestoreresponse">SdkVolumeSnapshotRestoreResponse </h2>
 <p>Empty response</p>
  <!-- end HasFields -->
+<h2 id="sdkvolumestatsrequest">SdkVolumeStatsRequest </h2>
+<p>Defines a request to retreive volume statistics</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of the volume to get statistics</td>
+</tr>
+<tr>
+<td>not_cumulative</td>
+<td><a href="#bool"> bool</a></td>
+<td>When set to false the stats are in /proc/diskstats style stats. When set to true the stats are stats for a specific duration.</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkvolumestatsresponse">SdkVolumeStatsResponse </h2>
+<p>Defines a response containing drive statistics</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>stats</td>
+<td><a href="#stats"> Stats</a></td>
+<td>Statistics for a single volume</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
 <h2 id="sdkvolumeunmountrequest">SdkVolumeUnmountRequest </h2>
 <p>Defines a request to unmount a volume on the node receiving this request</p>
 <table>
@@ -4312,8 +4459,7 @@ swagger:model</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="stats">Stats </h2>
-<p>Stats is a structure that represents last collected stats for a volume
-swagger:model</p>
+<p>Stats is a structure that represents last collected stats for a volume</p>
 <table>
 <thead>
 <tr>
@@ -4336,7 +4482,7 @@ swagger:model</p>
 <tr>
 <td>read_bytes</td>
 <td><a href="#uint64"> uint64</a></td>
-<td>none</td>
+<td>Number of bytes read</td>
 </tr>
 <tr>
 <td>writes</td>
@@ -4351,7 +4497,7 @@ swagger:model</p>
 <tr>
 <td>write_bytes</td>
 <td><a href="#uint64"> uint64</a></td>
-<td>none</td>
+<td>Number of bytes written</td>
 </tr>
 <tr>
 <td>io_progress</td>
@@ -6532,7 +6678,7 @@ to or from a cloud provider</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"API Reference","level":"1.5","depth":1,"next":{"title":"API Status","level":"1.6","depth":1,"path":"status.md","ref":"status.md","articles":[]},"previous":{"title":"Python","level":"1.4.2","depth":2,"path":"tutorial-python.md","ref":"tutorial-python.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"generated-api.md","mtime":"2018-07-19T22:05:16.425Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-07-20T06:51:05.416Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"API Reference","level":"1.5","depth":1,"next":{"title":"API Status","level":"1.6","depth":1,"path":"status.md","ref":"status.md","articles":[]},"previous":{"title":"Python","level":"1.4.2","depth":2,"path":"tutorial-python.md","ref":"tutorial-python.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"generated-api.md","mtime":"2018-07-23T17:56:19.609Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-07-23T17:56:22.929Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

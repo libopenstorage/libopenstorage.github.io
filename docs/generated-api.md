@@ -20,6 +20,8 @@
     - [ActiveRequests](#activerequests)
     - [Alert](#alert)
     - [Alerts](#alerts)
+    - [Catalog](#catalog)
+    - [CatalogResponse](#catalogresponse)
     - [CloudMigrate](#cloudmigrate)
     - [CloudMigrateCancelRequest](#cloudmigratecancelrequest)
     - [CloudMigrateInfo](#cloudmigrateinfo)
@@ -50,6 +52,7 @@
     - [GroupSnapCreateResponse.SnapshotsEntry](#groupsnapcreateresponsesnapshotsentry)
     - [ObjectstoreInfo](#objectstoreinfo)
     - [ReplicaSet](#replicaset)
+    - [Report](#report)
     - [RuntimeStateMap](#runtimestatemap)
     - [RuntimeStateMap.RuntimeStateEntry](#runtimestatemapruntimestateentry)
     - [SdkAwsCredentialRequest](#sdkawscredentialrequest)
@@ -166,6 +169,8 @@
     - [SdkVolumeSnapshotEnumerateWithFiltersResponse](#sdkvolumesnapshotenumeratewithfiltersresponse)
     - [SdkVolumeSnapshotRestoreRequest](#sdkvolumesnapshotrestorerequest)
     - [SdkVolumeSnapshotRestoreResponse](#sdkvolumesnapshotrestoreresponse)
+    - [SdkVolumeStatsRequest](#sdkvolumestatsrequest)
+    - [SdkVolumeStatsResponse](#sdkvolumestatsresponse)
     - [SdkVolumeUnmountRequest](#sdkvolumeunmountrequest)
     - [SdkVolumeUnmountRequest.OptionsEntry](#sdkvolumeunmountrequestoptionsentry)
     - [SdkVolumeUnmountResponse](#sdkvolumeunmountresponse)
@@ -550,6 +555,12 @@ Inspect returns information about a volume
 
 Update provides a method for manipulating the specification and attributes of a volume.
 Set can be used to resize a volume, update labels, change replica count, and much more.
+## Stats {#methodstats}
+
+> **rpc** Stats([SdkVolumeStatsRequest](#sdkvolumestatsrequest))
+    [SdkVolumeStatsResponse](#sdkvolumestatsresponse)
+
+Stats returns the statistics for the requested volume
 ## Enumerate {#methodenumerate}
 
 > **rpc** Enumerate([SdkVolumeEnumerateRequest](#sdkvolumeenumeraterequest))
@@ -665,7 +676,6 @@ swagger:model
 
 ## Alert {#alert}
 Alert is a structure that represents an alert object
-swagger:model
 
 
 | Field | Type | Description |
@@ -694,6 +704,34 @@ swagger:model
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | alert | [repeated Alert](#alert) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## Catalog {#catalog}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| name | [ string](#string) | Name of the Directory/File |
+| path | [ string](#string) | Full Path of the Directory/File |
+| type | [ string](#string) | Type Directory or File |
+| size | [ uint64](#uint64) | File or Directory Size |
+| LastModified | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | Last Modified |
+| children | [repeated Catalog](#catalog) | Children |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## CatalogResponse {#catalogresponse}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| root | [ Catalog](#catalog) | Root Catalog |
+| report | [ Report](#report) | Report of total directories and files count |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -1103,6 +1141,18 @@ swagger:model
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | nodes | [repeated string](#string) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## Report {#report}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| directories | [ int64](#int64) | Directory count |
+| files | [ int64](#int64) | File count |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -2351,6 +2401,29 @@ Empty response
  <!-- end HasFields -->
 
 
+## SdkVolumeStatsRequest {#sdkvolumestatsrequest}
+Defines a request to retreive volume statistics
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id | [ string](#string) | Id of the volume to get statistics |
+| not_cumulative | [ bool](#bool) | When set to false the stats are in /proc/diskstats style stats. When set to true the stats are stats for a specific duration. |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVolumeStatsResponse {#sdkvolumestatsresponse}
+Defines a response containing drive statistics
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| stats | [ Stats](#stats) | Statistics for a single volume |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
 ## SdkVolumeUnmountRequest {#sdkvolumeunmountrequest}
 Defines a request to unmount a volume on the node receiving this request
 
@@ -2445,17 +2518,16 @@ swagger:model
 
 ## Stats {#stats}
 Stats is a structure that represents last collected stats for a volume
-swagger:model
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | reads | [ uint64](#uint64) | Reads completed successfully |
 | read_ms | [ uint64](#uint64) | Time spent in reads in ms |
-| read_bytes | [ uint64](#uint64) | none |
+| read_bytes | [ uint64](#uint64) | Number of bytes read |
 | writes | [ uint64](#uint64) | Writes completed successfully |
 | write_ms | [ uint64](#uint64) | Time spent in writes in ms |
-| write_bytes | [ uint64](#uint64) | none |
+| write_bytes | [ uint64](#uint64) | Number of bytes written |
 | io_progress | [ uint64](#uint64) | IOs curently in progress |
 | io_ms | [ uint64](#uint64) | Time spent doing IOs ms |
 | bytes_used | [ uint64](#uint64) | BytesUsed |
