@@ -18,7 +18,7 @@
   branch = "master"
   name = "github.com/libopenstorage/openstorage-sdk-clients"
   packages = ["sdk/golang"]
-  revision = "77304b2deb68d33fa4814bf713f60ac4f00da985"
+  revision = "65a80057e1e0c87eeb67dd6f7ab9ca8c206a8d48"
 
 [[projects]]
   branch = "master"
@@ -32,7 +32,7 @@
     "internal/timeseries",
     "trace"
   ]
-  revision = "a680a1efc54dd51c040b3b5ce4939ea3cf2ea0d1"
+  revision = "3673e40ba22529d22c3fd7c93e97b0ce50fa7bdd"
 
 [[projects]]
   name = "golang.org/x/text"
@@ -62,7 +62,7 @@
     "googleapis/api/annotations",
     "googleapis/rpc/status"
   ]
-  revision = "fedd2861243fd1a8152376292b921b394c7bef7e"
+  revision = "02b4e95473316948020af0b7a4f0f22c73929b0e"
 
 [[projects]]
   name = "google.golang.org/grpc"

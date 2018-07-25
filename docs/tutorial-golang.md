@@ -116,6 +116,7 @@ You can now create a snapshot of this volume:
 		context.Background(),
 		&api.SdkVolumeSnapshotCreateRequest{
 			VolumeId: v.GetVolumeId(),
+			Name:     fmt.Sprintf("snap-%v", time.Now().Unix()),
 		},
 	)
 	if err != nil {

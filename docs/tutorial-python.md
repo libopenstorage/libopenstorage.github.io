@@ -94,6 +94,7 @@ You can now create a snapshot of this volume:
     # Create a snapshot
     snap = volumes.SnapshotCreate(api_pb2.SdkVolumeSnapshotCreateRequest(
         volume_id=v_resp.volume_id,
+        name="mysnap"
     ))
     print('Snapshot created with id {0}'.format(snap.snapshot_id))
 ```

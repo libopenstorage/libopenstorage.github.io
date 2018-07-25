@@ -1511,7 +1511,7 @@ a cloud provider
 | ----- | ---- | ----------- |
 | src_volume_id | [ string](#string) | The schedule's source volume |
 | credential_id | [ string](#string) | The cloud credential used with this schedule |
-| schedule | [ SdkSchedulePolicyInterval](#sdkschedulepolicyinterval) | Schedule is the frequence of backup |
+| schedules | [repeated SdkSchedulePolicyInterval](#sdkschedulepolicyinterval) | Schedules are the frequencies of the backup |
 | max_backups | [ uint64](#uint64) | MaxBackups are the maximum number of backups retained in cloud.Older backups are deleted |
  <!-- end Fields -->
  <!-- end HasFields -->
@@ -1936,7 +1936,7 @@ Defines a schedule policy
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | name | [ string](#string) | Name of the schedule policy |
-| schedule | [ SdkSchedulePolicyInterval](#sdkschedulepolicyinterval) | Schedule policy |
+| schedules | [repeated SdkSchedulePolicyInterval](#sdkschedulepolicyinterval) | Schedule policies |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -2298,6 +2298,7 @@ Defines the request when creating a snapshot from a volume.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | volume_id | [ string](#string) | Id of volume to take the snapshot from |
+| name | [ string](#string) | Name of the snapshot. |
 | labels | [map SdkVolumeSnapshotCreateRequest.LabelsEntry](#sdkvolumesnapshotcreaterequestlabelsentry) | Labels to apply to snapshot |
  <!-- end Fields -->
  <!-- end HasFields -->
@@ -2678,6 +2679,7 @@ swagger:model
 | runtime_state | [repeated RuntimeStateMap](#runtimestatemap) | RuntimeState is a lst of name value mapping of driver specific runtime information. |
 | error | [ string](#string) | Error is the Last recorded error. |
 | volume_consumers | [repeated VolumeConsumer](#volumeconsumer) | VolumeConsumers are entities that consume this volume |
+| fs_resize_required | [ bool](#bool) | FsResizeRequired if an FS resize is required on the volume. |
  <!-- end Fields -->
  <!-- end HasFields -->
 

@@ -1,5 +1,5 @@
 HAS_PROTOC_GEN_GO := $(shell command -v protoc-gen-go 2> /dev/null)
-APIDIR := "../../"
+APIDIR := ../..
 ifndef PROTOC
 PROTOC = protoc
 endif
@@ -9,7 +9,7 @@ PROTOS_PATH = $(GOPATH)/src
 endif
 
 ifndef PROTOSRC_PATH
-PROTOSRC_PATH = $(PROTOS_PATH)/github.com/libopenstorage/openstorage-sdk
+PROTOSRC_PATH = $(APIDIR)
 endif
 
 all: grpc

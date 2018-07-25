@@ -6,9 +6,10 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"time"
 
-	api "github.com/libopenstorage/openstorage-sdk-clients/sdk/golang"
 	"github.com/golang/protobuf/ptypes"
+	api "github.com/libopenstorage/openstorage-sdk-clients/sdk/golang"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/status"
 )
@@ -64,6 +65,7 @@ func main() {
 		context.Background(),
 		&api.SdkVolumeSnapshotCreateRequest{
 			VolumeId: v.GetVolumeId(),
+			Name:     fmt.Sprintf("snap-%v", time.Now().Unix()),
 		},
 	)
 	if err != nil {
