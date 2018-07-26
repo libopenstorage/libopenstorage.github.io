@@ -238,6 +238,7 @@
 
 
 
+
 # OpenStorageCloudBackup {#serviceopenstorageapiopenstoragecloudbackup}
 OpenStorageCloudBackup service manages backing up volumes to a cloud
 location like Amazon, Google, or Azure.
@@ -254,7 +255,7 @@ Pass this `backup_id` and a new volume name to Restore() to start
 restoring a new volume from an existing backup. To see the status of this
 restore, pass volume id returned by Restore() to input to Status()
 
-## Create {#methodcreate}
+## Create {#methodopenstorageapiopenstoragecloudbackupcreate}
 
 > **rpc** Create([SdkCloudBackupCreateRequest](#sdkcloudbackupcreaterequest))
     [SdkCloudBackupCreateResponse](#sdkcloudbackupcreateresponse)
@@ -262,7 +263,7 @@ restore, pass volume id returned by Restore() to input to Status()
 Creates a backup request for a specified volume. Use
 OpenStorageCloudBackup.Status() to get the current status of the
 backup request.
-## Restore {#methodrestore}
+## Restore {#methodopenstorageapiopenstoragecloudbackuprestore}
 
 > **rpc** Restore([SdkCloudBackupRestoreRequest](#sdkcloudbackuprestorerequest))
     [SdkCloudBackupRestoreResponse](#sdkcloudbackuprestoreresponse)
@@ -270,102 +271,104 @@ backup request.
 Restore creates a new volume from a backup id. The newly created volume
 has an ha_level (number of replicas) of only 1. To increase the number of
 replicas, use OpenStorageVolume.Set() to change the ha_level.
-## Delete {#methoddelete}
+## Delete {#methodopenstorageapiopenstoragecloudbackupdelete}
 
 > **rpc** Delete([SdkCloudBackupDeleteRequest](#sdkcloudbackupdeleterequest))
     [SdkCloudBackupDeleteResponse](#sdkcloudbackupdeleteresponse)
 
 Deletes a backup stored in the cloud. If the backup is an incremental
 backup and other backups are dependent on it, it will not be able to be deleted.
-## DeleteAll {#methoddeleteall}
+## DeleteAll {#methodopenstorageapiopenstoragecloudbackupdeleteall}
 
 > **rpc** DeleteAll([SdkCloudBackupDeleteAllRequest](#sdkcloudbackupdeleteallrequest))
     [SdkCloudBackupDeleteAllResponse](#sdkcloudbackupdeleteallresponse)
 
 DeleteAll deletes all the backups in the cloud for the specified volume.
-## Enumerate {#methodenumerate}
+## Enumerate {#methodopenstorageapiopenstoragecloudbackupenumerate}
 
 > **rpc** Enumerate([SdkCloudBackupEnumerateRequest](#sdkcloudbackupenumeraterequest))
     [SdkCloudBackupEnumerateResponse](#sdkcloudbackupenumerateresponse)
 
 Return a list of backups for the specified volume
-## Status {#methodstatus}
+## Status {#methodopenstorageapiopenstoragecloudbackupstatus}
 
 > **rpc** Status([SdkCloudBackupStatusRequest](#sdkcloudbackupstatusrequest))
     [SdkCloudBackupStatusResponse](#sdkcloudbackupstatusresponse)
 
 Status returns the status of any cloud backups of a volume
-## Catalog {#methodcatalog}
+## Catalog {#methodopenstorageapiopenstoragecloudbackupcatalog}
 
 > **rpc** Catalog([SdkCloudBackupCatalogRequest](#sdkcloudbackupcatalogrequest))
     [SdkCloudBackupCatalogResponse](#sdkcloudbackupcatalogresponse)
 
 Catalog returns a list of the contents in the backup
-## History {#methodhistory}
+## History {#methodopenstorageapiopenstoragecloudbackuphistory}
 
 > **rpc** History([SdkCloudBackupHistoryRequest](#sdkcloudbackuphistoryrequest))
     [SdkCloudBackupHistoryResponse](#sdkcloudbackuphistoryresponse)
 
 History returns a list of backups for a specified volume
-## StateChange {#methodstatechange}
+## StateChange {#methodopenstorageapiopenstoragecloudbackupstatechange}
 
 > **rpc** StateChange([SdkCloudBackupStateChangeRequest](#sdkcloudbackupstatechangerequest))
     [SdkCloudBackupStateChangeResponse](#sdkcloudbackupstatechangeresponse)
 
 StateChange can be used to stop, pause, and restart a backup
-## SchedCreate {#methodschedcreate}
+## SchedCreate {#methodopenstorageapiopenstoragecloudbackupschedcreate}
 
 > **rpc** SchedCreate([SdkCloudBackupSchedCreateRequest](#sdkcloudbackupschedcreaterequest))
     [SdkCloudBackupSchedCreateResponse](#sdkcloudbackupschedcreateresponse)
 
 Create cloud backup schedule
-## SchedDelete {#methodscheddelete}
+## SchedDelete {#methodopenstorageapiopenstoragecloudbackupscheddelete}
 
 > **rpc** SchedDelete([SdkCloudBackupSchedDeleteRequest](#sdkcloudbackupscheddeleterequest))
     [SdkCloudBackupSchedDeleteResponse](#sdkcloudbackupscheddeleteresponse)
 
 Delete cloud backup schedule
-## SchedEnumerate {#methodschedenumerate}
+## SchedEnumerate {#methodopenstorageapiopenstoragecloudbackupschedenumerate}
 
 > **rpc** SchedEnumerate([SdkCloudBackupSchedEnumerateRequest](#sdkcloudbackupschedenumeraterequest))
     [SdkCloudBackupSchedEnumerateResponse](#sdkcloudbackupschedenumerateresponse)
 
 Enumerate cloud backup schedules
  <!-- end methods -->
+
 # OpenStorageCluster {#serviceopenstorageapiopenstoragecluster}
 OpenStorageCluster service provides the methods to manage the cluster
 
-## InspectCurrent {#methodinspectcurrent}
+## InspectCurrent {#methodopenstorageapiopenstorageclusterinspectcurrent}
 
 > **rpc** InspectCurrent([SdkClusterInspectCurrentRequest](#sdkclusterinspectcurrentrequest))
     [SdkClusterInspectCurrentResponse](#sdkclusterinspectcurrentresponse)
 
 InspectCurrent returns information about the current cluster
-## AlertEnumerate {#methodalertenumerate}
+## AlertEnumerate {#methodopenstorageapiopenstorageclusteralertenumerate}
 
 > **rpc** AlertEnumerate([SdkClusterAlertEnumerateRequest](#sdkclusteralertenumeraterequest))
     [SdkClusterAlertEnumerateResponse](#sdkclusteralertenumerateresponse)
 
 AlertEnumerate returns a list of alerts from the storage cluster
 In REST, use the request values as query parameters.
-## AlertClear {#methodalertclear}
+## AlertClear {#methodopenstorageapiopenstorageclusteralertclear}
 
 > **rpc** AlertClear([SdkClusterAlertClearRequest](#sdkclusteralertclearrequest))
     [SdkClusterAlertClearResponse](#sdkclusteralertclearresponse)
 
 AlertClear clears the alert for a given resource
-## AlertDelete {#methodalertdelete}
+## AlertDelete {#methodopenstorageapiopenstorageclusteralertdelete}
 
 > **rpc** AlertDelete([SdkClusterAlertDeleteRequest](#sdkclusteralertdeleterequest))
     [SdkClusterAlertDeleteResponse](#sdkclusteralertdeleteresponse)
 
 AlertDelete deletes an alert for all resources
  <!-- end methods -->
+
 # OpenStorageCredentials {#serviceopenstorageapiopenstoragecredentials}
 OpenStorageCredentials is a service used to manage the cloud credentials
 which can then be used by the OpenStorageCloudBackup service
 
-## Create {#methodcreate}
+## Create {#methodopenstorageapiopenstoragecredentialscreate}
 
 > **rpc** Create([SdkCredentialCreateRequest](#sdkcredentialcreaterequest))
     [SdkCredentialCreateResponse](#sdkcredentialcreateresponse)
@@ -393,76 +396,78 @@ en_resp = client.Create(api_pb2.SdkCredentialCreateRequest(
     endpoint='dummy-endpoint',
     region='dummy-region')))
 {%- endcodetabs %}
-## Enumerate {#methodenumerate}
+## Enumerate {#methodopenstorageapiopenstoragecredentialsenumerate}
 
 > **rpc** Enumerate([SdkCredentialEnumerateRequest](#sdkcredentialenumeraterequest))
     [SdkCredentialEnumerateResponse](#sdkcredentialenumerateresponse)
 
 Enumerate returns a list of credential ids
-## Inspect {#methodinspect}
+## Inspect {#methodopenstorageapiopenstoragecredentialsinspect}
 
 > **rpc** Inspect([SdkCredentialInspectRequest](#sdkcredentialinspectrequest))
     [SdkCredentialInspectResponse](#sdkcredentialinspectresponse)
 
 Inspect returns the information about a credential, but does not return the secret key.
-## Delete {#methoddelete}
+## Delete {#methodopenstorageapiopenstoragecredentialsdelete}
 
 > **rpc** Delete([SdkCredentialDeleteRequest](#sdkcredentialdeleterequest))
     [SdkCredentialDeleteResponse](#sdkcredentialdeleteresponse)
 
 Delete a specified credential
-## Validate {#methodvalidate}
+## Validate {#methodopenstorageapiopenstoragecredentialsvalidate}
 
 > **rpc** Validate([SdkCredentialValidateRequest](#sdkcredentialvalidaterequest))
     [SdkCredentialValidateResponse](#sdkcredentialvalidateresponse)
 
 Validate is used to validate credentials
  <!-- end methods -->
+
 # OpenStorageNode {#serviceopenstorageapiopenstoragenode}
 OpenStorageNode is a service used to manage nodes in the cluster
 
-## Inspect {#methodinspect}
+## Inspect {#methodopenstorageapiopenstoragenodeinspect}
 
 > **rpc** Inspect([SdkNodeInspectRequest](#sdknodeinspectrequest))
     [SdkNodeInspectResponse](#sdknodeinspectresponse)
 
 Inspect returns information about the specified node
-## InspectCurrent {#methodinspectcurrent}
+## InspectCurrent {#methodopenstorageapiopenstoragenodeinspectcurrent}
 
 > **rpc** InspectCurrent([SdkNodeInspectCurrentRequest](#sdknodeinspectcurrentrequest))
     [SdkNodeInspectCurrentResponse](#sdknodeinspectcurrentresponse)
 
 InspectCurrent returns information about the storage node
 where the client is currently connected to.
-## Enumerate {#methodenumerate}
+## Enumerate {#methodopenstorageapiopenstoragenodeenumerate}
 
 > **rpc** Enumerate([SdkNodeEnumerateRequest](#sdknodeenumeraterequest))
     [SdkNodeEnumerateResponse](#sdknodeenumerateresponse)
 
 Enumerate returns the ids of all the nodes in the current cluster
  <!-- end methods -->
+
 # OpenStorageObjectstore {#serviceopenstorageapiopenstorageobjectstore}
 OpenStorageObjectstore is a service used to manage object store services on volumes
 
-## Inspect {#methodinspect}
+## Inspect {#methodopenstorageapiopenstorageobjectstoreinspect}
 
 > **rpc** Inspect([SdkObjectstoreInspectRequest](#sdkobjectstoreinspectrequest))
     [SdkObjectstoreInspectResponse](#sdkobjectstoreinspectresponse)
 
 Inspect returns information about the object store endpoint
-## Create {#methodcreate}
+## Create {#methodopenstorageapiopenstorageobjectstorecreate}
 
 > **rpc** Create([SdkObjectstoreCreateRequest](#sdkobjectstorecreaterequest))
     [SdkObjectstoreCreateResponse](#sdkobjectstorecreateresponse)
 
 Creates creates an object store endpoint on specified volume
-## Delete {#methoddelete}
+## Delete {#methodopenstorageapiopenstorageobjectstoredelete}
 
 > **rpc** Delete([SdkObjectstoreDeleteRequest](#sdkobjectstoredeleterequest))
     [SdkObjectstoreDeleteResponse](#sdkobjectstoredeleteresponse)
 
 Delete destroys the object store endpoint on the volume
-## Update {#methodupdate}
+## Update {#methodopenstorageapiopenstorageobjectstoreupdate}
 
 > **rpc** Update([SdkObjectstoreUpdateRequest](#sdkobjectstoreupdaterequest))
     [SdkObjectstoreUpdateResponse](#sdkobjectstoreupdateresponse)
@@ -471,46 +476,48 @@ Updates provided objectstore status.
 This call can be used to stop and start the server while maintaining the same
 object storage id.
  <!-- end methods -->
+
 # OpenStorageSchedulePolicy {#serviceopenstorageapiopenstorageschedulepolicy}
 OpenStorageSchedulePolicy service is used to manage the automated
 snapshots for a volume
 
-## Create {#methodcreate}
+## Create {#methodopenstorageapiopenstorageschedulepolicycreate}
 
 > **rpc** Create([SdkSchedulePolicyCreateRequest](#sdkschedulepolicycreaterequest))
     [SdkSchedulePolicyCreateResponse](#sdkschedulepolicycreateresponse)
 
 Create creates a new snapshot schedule. They can be setup daily,
 weekly, or monthly.
-## Update {#methodupdate}
+## Update {#methodopenstorageapiopenstorageschedulepolicyupdate}
 
 > **rpc** Update([SdkSchedulePolicyUpdateRequest](#sdkschedulepolicyupdaterequest))
     [SdkSchedulePolicyUpdateResponse](#sdkschedulepolicyupdateresponse)
 
 Update a snapshot schedule
-## Enumerate {#methodenumerate}
+## Enumerate {#methodopenstorageapiopenstorageschedulepolicyenumerate}
 
 > **rpc** Enumerate([SdkSchedulePolicyEnumerateRequest](#sdkschedulepolicyenumeraterequest))
     [SdkSchedulePolicyEnumerateResponse](#sdkschedulepolicyenumerateresponse)
 
 Enumerate returns a list of schedules
-## Inspect {#methodinspect}
+## Inspect {#methodopenstorageapiopenstorageschedulepolicyinspect}
 
 > **rpc** Inspect([SdkSchedulePolicyInspectRequest](#sdkschedulepolicyinspectrequest))
     [SdkSchedulePolicyInspectResponse](#sdkschedulepolicyinspectresponse)
 
 Inspect returns information about a specified schedule
-## Delete {#methoddelete}
+## Delete {#methodopenstorageapiopenstorageschedulepolicydelete}
 
 > **rpc** Delete([SdkSchedulePolicyDeleteRequest](#sdkschedulepolicydeleterequest))
     [SdkSchedulePolicyDeleteResponse](#sdkschedulepolicydeleteresponse)
 
 Delete removes a snapshot schedule
  <!-- end methods -->
+
 # OpenStorageVolume {#serviceopenstorageapiopenstoragevolume}
 OpenStorageVolume is a service used to manage the volumes of a storage system
 
-## Create {#methodcreate}
+## Create {#methodopenstorageapiopenstoragevolumecreate}
 
 > **rpc** Create([SdkVolumeCreateRequest](#sdkvolumecreaterequest))
     [SdkVolumeCreateResponse](#sdkvolumecreateresponse)
@@ -530,50 +537,50 @@ en_resp = client.Create(api_pb2.SdkVolumeCreateRequest(
   name="volume-12345-east",
   spec=api_pb2.VolumeSpec(size=1234567)))
 {%- endcodetabs %}
-## Clone {#methodclone}
+## Clone {#methodopenstorageapiopenstoragevolumeclone}
 
 > **rpc** Clone([SdkVolumeCloneRequest](#sdkvolumeclonerequest))
     [SdkVolumeCloneResponse](#sdkvolumecloneresponse)
 
 Clone creates a new writable volume cloned from an existing volume
-## Delete {#methoddelete}
+## Delete {#methodopenstorageapiopenstoragevolumedelete}
 
 > **rpc** Delete([SdkVolumeDeleteRequest](#sdkvolumedeleterequest))
     [SdkVolumeDeleteResponse](#sdkvolumedeleteresponse)
 
 Delete deletes the provided volume
-## Inspect {#methodinspect}
+## Inspect {#methodopenstorageapiopenstoragevolumeinspect}
 
 > **rpc** Inspect([SdkVolumeInspectRequest](#sdkvolumeinspectrequest))
     [SdkVolumeInspectResponse](#sdkvolumeinspectresponse)
 
 Inspect returns information about a volume
-## Update {#methodupdate}
+## Update {#methodopenstorageapiopenstoragevolumeupdate}
 
 > **rpc** Update([SdkVolumeUpdateRequest](#sdkvolumeupdaterequest))
     [SdkVolumeUpdateResponse](#sdkvolumeupdateresponse)
 
 Update provides a method for manipulating the specification and attributes of a volume.
 Set can be used to resize a volume, update labels, change replica count, and much more.
-## Stats {#methodstats}
+## Stats {#methodopenstorageapiopenstoragevolumestats}
 
 > **rpc** Stats([SdkVolumeStatsRequest](#sdkvolumestatsrequest))
     [SdkVolumeStatsResponse](#sdkvolumestatsresponse)
 
 Stats returns the statistics for the requested volume
-## Enumerate {#methodenumerate}
+## Enumerate {#methodopenstorageapiopenstoragevolumeenumerate}
 
 > **rpc** Enumerate([SdkVolumeEnumerateRequest](#sdkvolumeenumeraterequest))
     [SdkVolumeEnumerateResponse](#sdkvolumeenumerateresponse)
 
 Enumerate returns a list of volume ids
-## EnumerateWithFilters {#methodenumeratewithfilters}
+## EnumerateWithFilters {#methodopenstorageapiopenstoragevolumeenumeratewithfilters}
 
 > **rpc** EnumerateWithFilters([SdkVolumeEnumerateWithFiltersRequest](#sdkvolumeenumeratewithfiltersrequest))
     [SdkVolumeEnumerateWithFiltersResponse](#sdkvolumeenumeratewithfiltersresponse)
 
 Enumerate returns a list of volume ids that match the labels if any are provided.
-## SnapshotCreate {#methodsnapshotcreate}
+## SnapshotCreate {#methodopenstorageapiopenstoragevolumesnapshotcreate}
 
 > **rpc** SnapshotCreate([SdkVolumeSnapshotCreateRequest](#sdkvolumesnapshotcreaterequest))
     [SdkVolumeSnapshotCreateResponse](#sdkvolumesnapshotcreateresponse)
@@ -581,27 +588,27 @@ Enumerate returns a list of volume ids that match the labels if any are provided
 SnapshotCreate creates a snapshot of a volume. This creates an immutable (read-only),
 point-in-time snapshot of a volume. To create a new writable volume from
 a snapshot, please use OpenStorageVolume.Clone().
-## SnapshotRestore {#methodsnapshotrestore}
+## SnapshotRestore {#methodopenstorageapiopenstoragevolumesnapshotrestore}
 
 > **rpc** SnapshotRestore([SdkVolumeSnapshotRestoreRequest](#sdkvolumesnapshotrestorerequest))
     [SdkVolumeSnapshotRestoreResponse](#sdkvolumesnapshotrestoreresponse)
 
 SnapshotRestore restores a volume to a specified snapshot
-## SnapshotEnumerate {#methodsnapshotenumerate}
+## SnapshotEnumerate {#methodopenstorageapiopenstoragevolumesnapshotenumerate}
 
 > **rpc** SnapshotEnumerate([SdkVolumeSnapshotEnumerateRequest](#sdkvolumesnapshotenumeraterequest))
     [SdkVolumeSnapshotEnumerateResponse](#sdkvolumesnapshotenumerateresponse)
 
 SnapshotEnumerate returns a list of snapshots for a specific volume
 that match the labels provided if any.
-## SnapshotEnumerateWithFilters {#methodsnapshotenumeratewithfilters}
+## SnapshotEnumerateWithFilters {#methodopenstorageapiopenstoragevolumesnapshotenumeratewithfilters}
 
 > **rpc** SnapshotEnumerateWithFilters([SdkVolumeSnapshotEnumerateWithFiltersRequest](#sdkvolumesnapshotenumeratewithfiltersrequest))
     [SdkVolumeSnapshotEnumerateWithFiltersResponse](#sdkvolumesnapshotenumeratewithfiltersresponse)
 
 SnapshotEnumerate returns a list of snapshots for a specific volume
 that match the labels provided if any.
-## Attach {#methodattach}
+## Attach {#methodopenstorageapiopenstoragevolumeattach}
 
 > **rpc** Attach([SdkVolumeAttachRequest](#sdkvolumeattachrequest))
     [SdkVolumeAttachResponse](#sdkvolumeattachresponse)
@@ -609,13 +616,13 @@ that match the labels provided if any.
 Attach attaches device to the host that the client is communicating with.
 NOTE: Please see [#381](https://github.com/libopenstorage/openstorage/issues/381) for more
 information about a new feature to allow attachment to any node.
-## Detach {#methoddetach}
+## Detach {#methodopenstorageapiopenstoragevolumedetach}
 
 > **rpc** Detach([SdkVolumeDetachRequest](#sdkvolumedetachrequest))
     [SdkVolumeDetachResponse](#sdkvolumedetachresponse)
 
 Detaches a the volume from the host
-## Mount {#methodmount}
+## Mount {#methodopenstorageapiopenstoragevolumemount}
 
 > **rpc** Mount([SdkVolumeMountRequest](#sdkvolumemountrequest))
     [SdkVolumeMountResponse](#sdkvolumemountresponse)
@@ -623,7 +630,7 @@ Detaches a the volume from the host
 Mount mounts an attached volume in the host that the client is communicating with
 NOTE: Please see [#381](https://github.com/libopenstorage/openstorage/issues/381) for more
 information about a new feature to allow attachment to any node.
-## Unmount {#methodunmount}
+## Unmount {#methodopenstorageapiopenstoragevolumeunmount}
 
 > **rpc** Unmount([SdkVolumeUnmountRequest](#sdkvolumeunmountrequest))
     [SdkVolumeUnmountResponse](#sdkvolumeunmountresponse)

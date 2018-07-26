@@ -23,11 +23,12 @@
 {{range .Files}}
 
 {{range .Services -}}
+{{ $service := .FullName | lower | replace "." "" }}
 # {{.Name}} {#service{{.FullName | lower | replace "." ""}}}
 {{.Description}}
 
 {{range .Methods -}}
-## {{.Name}} {#method{{.Name | lower | replace "." ""}}}
+## {{.Name}} {#method{{$service}}{{.Name | lower | replace "." ""}}}
 
 > **rpc** {{.Name}}([{{.RequestLongType}}](#{{.RequestLongType | lower | replace "." ""}}))
     [{{.ResponseLongType}}](#{{.ResponseLongType | lower | replace "." ""}})
