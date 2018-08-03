@@ -281,6 +281,7 @@
 <li><a href="#serviceopenstorageapiopenstoragecloudbackup">OpenStorageCloudBackup</a></li>
 <li><a href="#serviceopenstorageapiopenstoragecluster">OpenStorageCluster</a></li>
 <li><a href="#serviceopenstorageapiopenstoragecredentials">OpenStorageCredentials</a></li>
+<li><a href="#serviceopenstorageapiopenstorageidentity">OpenStorageIdentity</a></li>
 <li><a href="#serviceopenstorageapiopenstoragenode">OpenStorageNode</a></li>
 <li><a href="#serviceopenstorageapiopenstorageobjectstore">OpenStorageObjectstore</a></li>
 <li><a href="#serviceopenstorageapiopenstorageschedulepolicy">OpenStorageSchedulePolicy</a></li>
@@ -385,6 +386,8 @@
 <li><a href="#sdkcredentialvalidateresponse">SdkCredentialValidateResponse</a></li>
 <li><a href="#sdkgooglecredentialrequest">SdkGoogleCredentialRequest</a></li>
 <li><a href="#sdkgooglecredentialresponse">SdkGoogleCredentialResponse</a></li>
+<li><a href="#sdkidentitycapabilitiesrequest">SdkIdentityCapabilitiesRequest</a></li>
+<li><a href="#sdkidentitycapabilitiesresponse">SdkIdentityCapabilitiesResponse</a></li>
 <li><a href="#sdknodeenumeraterequest">SdkNodeEnumerateRequest</a></li>
 <li><a href="#sdknodeenumerateresponse">SdkNodeEnumerateResponse</a></li>
 <li><a href="#sdknodeinspectcurrentrequest">SdkNodeInspectCurrentRequest</a></li>
@@ -414,6 +417,8 @@
 <li><a href="#sdkschedulepolicyintervalweekly">SdkSchedulePolicyIntervalWeekly</a></li>
 <li><a href="#sdkschedulepolicyupdaterequest">SdkSchedulePolicyUpdateRequest</a></li>
 <li><a href="#sdkschedulepolicyupdateresponse">SdkSchedulePolicyUpdateResponse</a></li>
+<li><a href="#sdkservicecapability">SdkServiceCapability</a></li>
+<li><a href="#sdkservicecapabilityopenstorageservice">SdkServiceCapability.OpenStorageService</a></li>
 <li><a href="#sdkvolumeattachrequest">SdkVolumeAttachRequest</a></li>
 <li><a href="#sdkvolumeattachrequestoptionsentry">SdkVolumeAttachRequest.OptionsEntry</a></li>
 <li><a href="#sdkvolumeattachresponse">SdkVolumeAttachResponse</a></li>
@@ -682,6 +687,20 @@ id of the credentials once they are verified to work.</p>
     <a href="#sdkcredentialvalidateresponse">SdkCredentialValidateResponse</a></p>
 </blockquote>
 <p>Validate is used to validate credentials
+ <!-- end methods --></p>
+<h1 id="serviceopenstorageapiopenstorageidentity">OpenStorageIdentity </h1>
+<p>OpenStorageIdentity service provides methods to obtain information
+about the cluster</p>
+<h2 id="methodopenstorageapiopenstorageidentitycapabilities">Capabilities </h2>
+<blockquote>
+<p><strong>rpc</strong> Capabilities(<a href="#sdkidentitycapabilitiesrequest">SdkIdentityCapabilitiesRequest</a>)
+    <a href="#sdkidentitycapabilitiesresponse">SdkIdentityCapabilitiesResponse</a></p>
+</blockquote>
+<p>Capabilities returns the supported services by the cluster.
+This allows SDK implementations to advertise their supported
+services as the API matures. With this information, clients
+can determine supported services from storage clusters at
+different versions.
  <!-- end methods --></p>
 <h1 id="serviceopenstorageapiopenstoragenode">OpenStorageNode </h1>
 <p>OpenStorageNode is a service used to manage nodes in the cluster</p>
@@ -3176,6 +3195,29 @@ you will need to check if the value of credential_type is one of the ones below.
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
+<h2 id="sdkidentitycapabilitiesrequest">SdkIdentityCapabilitiesRequest </h2>
+<p>Empty request</p>
+ <!-- end HasFields -->
+<h2 id="sdkidentitycapabilitiesresponse">SdkIdentityCapabilitiesResponse </h2>
+<p>Defines a response containing the capabilites of the cluster</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>capabilities</td>
+<td><a href="#sdkservicecapability">repeated SdkServiceCapability</a></td>
+<td>Provides all the capabilites supported by the cluster</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
 <h2 id="sdknodeenumeraterequest">SdkNodeEnumerateRequest </h2>
 <p>Empty request</p>
  <!-- end HasFields -->
@@ -3670,6 +3712,45 @@ specified volume</p>
  <!-- end HasFields -->
 <h2 id="sdkschedulepolicyupdateresponse">SdkSchedulePolicyUpdateResponse </h2>
 <p>Empty response</p>
+ <!-- end HasFields -->
+<h2 id="sdkservicecapability">SdkServiceCapability </h2>
+<p>Defines a capability of he cluster</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> type.service</td>
+<td><a href="#sdkservicecapabilityopenstorageservice"> SdkServiceCapability.OpenStorageService</a></td>
+<td>service type supported by this cluster</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkservicecapabilityopenstorageservice">SdkServiceCapability.OpenStorageService </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="#sdkservicecapabilityopenstorageservicetype"> SdkServiceCapability.OpenStorageService.Type</a></td>
+<td>Type of service supported</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkvolumeattachrequest">SdkVolumeAttachRequest </h2>
 <p>Defines a request to attach a volume to the node receiving this request</p>
@@ -6688,7 +6769,7 @@ to or from a cloud provider</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"API Reference","level":"1.5","depth":1,"next":{"title":"API Status","level":"1.6","depth":1,"path":"status.md","ref":"status.md","articles":[]},"previous":{"title":"Python","level":"1.4.2","depth":2,"path":"tutorial-python.md","ref":"tutorial-python.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"generated-api.md","mtime":"2018-07-26T09:30:47.970Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-07-26T09:32:19.923Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"API Reference","level":"1.5","depth":1,"next":{"title":"API Status","level":"1.6","depth":1,"path":"status.md","ref":"status.md","articles":[]},"previous":{"title":"Python","level":"1.4.2","depth":2,"path":"tutorial-python.md","ref":"tutorial-python.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"generated-api.md","mtime":"2018-08-03T05:53:40.988Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-08-03T05:53:47.647Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

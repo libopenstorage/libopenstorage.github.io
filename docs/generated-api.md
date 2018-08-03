@@ -7,6 +7,7 @@
     - [OpenStorageCloudBackup](#serviceopenstorageapiopenstoragecloudbackup)
     - [OpenStorageCluster](#serviceopenstorageapiopenstoragecluster)
     - [OpenStorageCredentials](#serviceopenstorageapiopenstoragecredentials)
+    - [OpenStorageIdentity](#serviceopenstorageapiopenstorageidentity)
     - [OpenStorageNode](#serviceopenstorageapiopenstoragenode)
     - [OpenStorageObjectstore](#serviceopenstorageapiopenstorageobjectstore)
     - [OpenStorageSchedulePolicy](#serviceopenstorageapiopenstorageschedulepolicy)
@@ -110,6 +111,8 @@
     - [SdkCredentialValidateResponse](#sdkcredentialvalidateresponse)
     - [SdkGoogleCredentialRequest](#sdkgooglecredentialrequest)
     - [SdkGoogleCredentialResponse](#sdkgooglecredentialresponse)
+    - [SdkIdentityCapabilitiesRequest](#sdkidentitycapabilitiesrequest)
+    - [SdkIdentityCapabilitiesResponse](#sdkidentitycapabilitiesresponse)
     - [SdkNodeEnumerateRequest](#sdknodeenumeraterequest)
     - [SdkNodeEnumerateResponse](#sdknodeenumerateresponse)
     - [SdkNodeInspectCurrentRequest](#sdknodeinspectcurrentrequest)
@@ -139,6 +142,8 @@
     - [SdkSchedulePolicyIntervalWeekly](#sdkschedulepolicyintervalweekly)
     - [SdkSchedulePolicyUpdateRequest](#sdkschedulepolicyupdaterequest)
     - [SdkSchedulePolicyUpdateResponse](#sdkschedulepolicyupdateresponse)
+    - [SdkServiceCapability](#sdkservicecapability)
+    - [SdkServiceCapability.OpenStorageService](#sdkservicecapabilityopenstorageservice)
     - [SdkVolumeAttachRequest](#sdkvolumeattachrequest)
     - [SdkVolumeAttachRequest.OptionsEntry](#sdkvolumeattachrequestoptionsentry)
     - [SdkVolumeAttachResponse](#sdkvolumeattachresponse)
@@ -420,6 +425,22 @@ Delete a specified credential
     [SdkCredentialValidateResponse](#sdkcredentialvalidateresponse)
 
 Validate is used to validate credentials
+ <!-- end methods -->
+
+# OpenStorageIdentity {#serviceopenstorageapiopenstorageidentity}
+OpenStorageIdentity service provides methods to obtain information
+about the cluster
+
+## Capabilities {#methodopenstorageapiopenstorageidentitycapabilities}
+
+> **rpc** Capabilities([SdkIdentityCapabilitiesRequest](#sdkidentitycapabilitiesrequest))
+    [SdkIdentityCapabilitiesResponse](#sdkidentitycapabilitiesresponse)
+
+Capabilities returns the supported services by the cluster.
+This allows SDK implementations to advertise their supported
+services as the API matures. With this information, clients
+can determine supported services from storage clusters at
+different versions.
  <!-- end methods -->
 
 # OpenStorageNode {#serviceopenstorageapiopenstoragenode}
@@ -1800,6 +1821,23 @@ Defines the response for Google credentials
  <!-- end HasFields -->
 
 
+## SdkIdentityCapabilitiesRequest {#sdkidentitycapabilitiesrequest}
+Empty request
+
+ <!-- end HasFields -->
+
+
+## SdkIdentityCapabilitiesResponse {#sdkidentitycapabilitiesresponse}
+Defines a response containing the capabilites of the cluster
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| capabilities | [repeated SdkServiceCapability](#sdkservicecapability) | Provides all the capabilites supported by the cluster |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
 ## SdkNodeEnumerateRequest {#sdknodeenumeraterequest}
 Empty request
 
@@ -2087,6 +2125,28 @@ Define a request to update a schedule policy
 ## SdkSchedulePolicyUpdateResponse {#sdkschedulepolicyupdateresponse}
 Empty response
 
+ <!-- end HasFields -->
+
+
+## SdkServiceCapability {#sdkservicecapability}
+Defines a capability of he cluster
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) type.service | [ SdkServiceCapability.OpenStorageService](#sdkservicecapabilityopenstorageservice) | service type supported by this cluster |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkServiceCapability.OpenStorageService {#sdkservicecapabilityopenstorageservice}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| type | [ SdkServiceCapability.OpenStorageService.Type](#sdkservicecapabilityopenstorageservicetype) | Type of service supported |
+ <!-- end Fields -->
  <!-- end HasFields -->
 
 
