@@ -229,6 +229,7 @@
     - [SdkCloudBackupOpType](#sdkcloudbackupoptype)
     - [SdkCloudBackupRequestedState](#sdkcloudbackuprequestedstate)
     - [SdkCloudBackupStatusType](#sdkcloudbackupstatustype)
+    - [SdkServiceCapability.OpenStorageService.Type](#sdkservicecapabilityopenstorageservicetype)
     - [SdkTimeWeekday](#sdktimeweekday)
     - [SeverityType](#severitytype)
     - [Status](#status)
@@ -3237,6 +3238,23 @@ CloudBackup status types
 | SdkCloudBackupStatusTypeStopped | 5 | Stopped |
 | SdkCloudBackupStatusTypeActive | 6 | Active |
 | SdkCloudBackupStatusTypeFailed | 7 | Failed |
+
+
+
+
+## SdkServiceCapability.OpenStorageService.Type {#sdkservicecapabilityopenstorageservicetype}
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| UNKNOWN | 0 | Unknown service |
+| CLUSTER | 1 | Cluster management |
+| CLOUD_BACKUP | 2 | Cloud backup of volumes management |
+| CREDENTIALS | 3 | Credentials management |
+| NODE | 4 | Node management |
+| OBJECT_STORAGE | 5 | Object Storage management |
+| SCHEDULE_POLICY | 6 | Schedule policy management |
+| VOLUME | 7 | Volume management |
 
 
 

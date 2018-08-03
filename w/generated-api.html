@@ -505,6 +505,7 @@
 <li><a href="#sdkcloudbackupoptype">SdkCloudBackupOpType</a></li>
 <li><a href="#sdkcloudbackuprequestedstate">SdkCloudBackupRequestedState</a></li>
 <li><a href="#sdkcloudbackupstatustype">SdkCloudBackupStatusType</a></li>
+<li><a href="#sdkservicecapabilityopenstorageservicetype">SdkServiceCapability.OpenStorageService.Type</a></li>
 <li><a href="#sdktimeweekday">SdkTimeWeekday</a></li>
 <li><a href="#severitytype">SeverityType</a></li>
 <li><a href="#status">Status</a></li>
@@ -6283,6 +6284,58 @@ to or from a cloud provider</p>
 </tr>
 </tbody>
 </table>
+<h2 id="sdkservicecapabilityopenstorageservicetype">SdkServiceCapability.OpenStorageService.Type </h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UNKNOWN</td>
+<td>0</td>
+<td>Unknown service</td>
+</tr>
+<tr>
+<td>CLUSTER</td>
+<td>1</td>
+<td>Cluster management</td>
+</tr>
+<tr>
+<td>CLOUD_BACKUP</td>
+<td>2</td>
+<td>Cloud backup of volumes management</td>
+</tr>
+<tr>
+<td>CREDENTIALS</td>
+<td>3</td>
+<td>Credentials management</td>
+</tr>
+<tr>
+<td>NODE</td>
+<td>4</td>
+<td>Node management</td>
+</tr>
+<tr>
+<td>OBJECT_STORAGE</td>
+<td>5</td>
+<td>Object Storage management</td>
+</tr>
+<tr>
+<td>SCHEDULE_POLICY</td>
+<td>6</td>
+<td>Schedule policy management</td>
+</tr>
+<tr>
+<td>VOLUME</td>
+<td>7</td>
+<td>Volume management</td>
+</tr>
+</tbody>
+</table>
 <h2 id="sdktimeweekday">SdkTimeWeekday </h2>
 <p>Defines times of day</p>
 <table>
@@ -6769,7 +6822,7 @@ to or from a cloud provider</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"API Reference","level":"1.5","depth":1,"next":{"title":"API Status","level":"1.6","depth":1,"path":"status.md","ref":"status.md","articles":[]},"previous":{"title":"Python","level":"1.4.2","depth":2,"path":"tutorial-python.md","ref":"tutorial-python.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"generated-api.md","mtime":"2018-08-03T05:53:40.988Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-08-03T05:53:47.647Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"API Reference","level":"1.5","depth":1,"next":{"title":"API Status","level":"1.6","depth":1,"path":"status.md","ref":"status.md","articles":[]},"previous":{"title":"Python","level":"1.4.2","depth":2,"path":"tutorial-python.md","ref":"tutorial-python.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"livereload":{},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"generated-api.md","mtime":"2018-08-03T08:00:55.798Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-08-03T08:01:05.787Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
@@ -6804,6 +6857,10 @@ to or from a cloud provider</p>
     
         
         <script src="gitbook/gitbook-plugin-page-toc/page-toc.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
         
     
         
