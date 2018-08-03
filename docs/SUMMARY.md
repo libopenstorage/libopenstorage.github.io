@@ -6,4 +6,4 @@
     * [Golang](tutorial-golang.md)
     * [Python](tutorial-python.md)
 * [API Reference](generated-api.md)
-* [API Status](status.md)
+* [Changelog](changelog.md)
