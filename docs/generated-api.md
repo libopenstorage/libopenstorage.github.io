@@ -113,6 +113,8 @@
     - [SdkGoogleCredentialResponse](#sdkgooglecredentialresponse)
     - [SdkIdentityCapabilitiesRequest](#sdkidentitycapabilitiesrequest)
     - [SdkIdentityCapabilitiesResponse](#sdkidentitycapabilitiesresponse)
+    - [SdkIdentityVersionRequest](#sdkidentityversionrequest)
+    - [SdkIdentityVersionResponse](#sdkidentityversionresponse)
     - [SdkNodeEnumerateRequest](#sdknodeenumeraterequest)
     - [SdkNodeEnumerateResponse](#sdknodeenumerateresponse)
     - [SdkNodeInspectCurrentRequest](#sdknodeinspectcurrentrequest)
@@ -144,6 +146,7 @@
     - [SdkSchedulePolicyUpdateResponse](#sdkschedulepolicyupdateresponse)
     - [SdkServiceCapability](#sdkservicecapability)
     - [SdkServiceCapability.OpenStorageService](#sdkservicecapabilityopenstorageservice)
+    - [SdkVersion](#sdkversion)
     - [SdkVolumeAttachRequest](#sdkvolumeattachrequest)
     - [SdkVolumeAttachRequest.OptionsEntry](#sdkvolumeattachrequestoptionsentry)
     - [SdkVolumeAttachResponse](#sdkvolumeattachresponse)
@@ -192,6 +195,8 @@
     - [StoragePool](#storagepool)
     - [StoragePool.LabelsEntry](#storagepoollabelsentry)
     - [StorageResource](#storageresource)
+    - [StorageVersion](#storageversion)
+    - [StorageVersion.DetailsEntry](#storageversiondetailsentry)
     - [Volume](#volume)
     - [Volume.AttachInfoEntry](#volumeattachinfoentry)
     - [VolumeConsumer](#volumeconsumer)
@@ -231,6 +236,7 @@
     - [SdkCloudBackupStatusType](#sdkcloudbackupstatustype)
     - [SdkServiceCapability.OpenStorageService.Type](#sdkservicecapabilityopenstorageservicetype)
     - [SdkTimeWeekday](#sdktimeweekday)
+    - [SdkVersion.Version](#sdkversionversion)
     - [SeverityType](#severitytype)
     - [Status](#status)
     - [StorageMedium](#storagemedium)
@@ -442,6 +448,12 @@ This allows SDK implementations to advertise their supported
 services as the API matures. With this information, clients
 can determine supported services from storage clusters at
 different versions.
+## Version {#methodopenstorageapiopenstorageidentityversion}
+
+> **rpc** Version([SdkIdentityVersionRequest](#sdkidentityversionrequest))
+    [SdkIdentityVersionResponse](#sdkidentityversionresponse)
+
+Version returns version information about the system.
  <!-- end methods -->
 
 # OpenStorageNode {#serviceopenstorageapiopenstoragenode}
@@ -1839,6 +1851,24 @@ Defines a response containing the capabilites of the cluster
  <!-- end HasFields -->
 
 
+## SdkIdentityVersionRequest {#sdkidentityversionrequest}
+Empty request
+
+ <!-- end HasFields -->
+
+
+## SdkIdentityVersionResponse {#sdkidentityversionresponse}
+Defines a response containing version information
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| sdk_version | [ SdkVersion](#sdkversion) | OpenStorage SDK version used by the server |
+| version | [ StorageVersion](#storageversion) | Version information about the storage system |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
 ## SdkNodeEnumerateRequest {#sdknodeenumeraterequest}
 Empty request
 
@@ -2147,6 +2177,22 @@ Defines a capability of he cluster
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | type | [ SdkServiceCapability.OpenStorageService.Type](#sdkservicecapabilityopenstorageservicetype) | Type of service supported |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVersion {#sdkversion}
+SDK version in Major.Minor.Patch format. The goal of this
+message is to provide clients a method to determine the SDK
+version run by an SDK server.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| major | [ int32](#int32) | SDK version major number |
+| minor | [ int32](#int32) | SDK version minor number |
+| patch | [ int32](#int32) | SDK version patch number |
+| version | [ string](#string) | String representation of the SDK version. Must be in `major.minor.patch` format. |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -2717,6 +2763,31 @@ swagger:model
  <!-- end HasFields -->
 
 
+## StorageVersion {#storageversion}
+Version information about the storage system
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| driver | [ string](#string) | OpenStorage driver name |
+| version | [ string](#string) | Version of the server |
+| details | [map StorageVersion.DetailsEntry](#storageversiondetailsentry) | Extra information provided by the storage system |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## StorageVersion.DetailsEntry {#storageversiondetailsentry}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [ string](#string) | none |
+| value | [ string](#string) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
 ## Volume {#volume}
 Volume represents an abstract storage volume.
 Volume represents an abstract storage volume.
@@ -3271,6 +3342,20 @@ Defines times of day
 | SdkTimeWeekdayThursday | 4 | Thursday |
 | SdkTimeWeekdayFriday | 5 | Friday |
 | SdkTimeWeekdaySaturday | 6 | Saturday |
+
+
+
+
+## SdkVersion.Version {#sdkversionversion}
+These values are constants that can be used by the
+client and server applications
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
+| Major | 0 | SDK version major value of this specification |
+| Minor | 1 | SDK version minor value of this specification |
+| Patch | 0 | SDK version patch value of this specification |
 
 
 

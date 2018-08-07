@@ -388,6 +388,8 @@
 <li><a href="#sdkgooglecredentialresponse">SdkGoogleCredentialResponse</a></li>
 <li><a href="#sdkidentitycapabilitiesrequest">SdkIdentityCapabilitiesRequest</a></li>
 <li><a href="#sdkidentitycapabilitiesresponse">SdkIdentityCapabilitiesResponse</a></li>
+<li><a href="#sdkidentityversionrequest">SdkIdentityVersionRequest</a></li>
+<li><a href="#sdkidentityversionresponse">SdkIdentityVersionResponse</a></li>
 <li><a href="#sdknodeenumeraterequest">SdkNodeEnumerateRequest</a></li>
 <li><a href="#sdknodeenumerateresponse">SdkNodeEnumerateResponse</a></li>
 <li><a href="#sdknodeinspectcurrentrequest">SdkNodeInspectCurrentRequest</a></li>
@@ -419,6 +421,7 @@
 <li><a href="#sdkschedulepolicyupdateresponse">SdkSchedulePolicyUpdateResponse</a></li>
 <li><a href="#sdkservicecapability">SdkServiceCapability</a></li>
 <li><a href="#sdkservicecapabilityopenstorageservice">SdkServiceCapability.OpenStorageService</a></li>
+<li><a href="#sdkversion">SdkVersion</a></li>
 <li><a href="#sdkvolumeattachrequest">SdkVolumeAttachRequest</a></li>
 <li><a href="#sdkvolumeattachrequestoptionsentry">SdkVolumeAttachRequest.OptionsEntry</a></li>
 <li><a href="#sdkvolumeattachresponse">SdkVolumeAttachResponse</a></li>
@@ -467,6 +470,8 @@
 <li><a href="#storagepool">StoragePool</a></li>
 <li><a href="#storagepoollabelsentry">StoragePool.LabelsEntry</a></li>
 <li><a href="#storageresource">StorageResource</a></li>
+<li><a href="#storageversion">StorageVersion</a></li>
+<li><a href="#storageversiondetailsentry">StorageVersion.DetailsEntry</a></li>
 <li><a href="#volume">Volume</a></li>
 <li><a href="#volumeattachinfoentry">Volume.AttachInfoEntry</a></li>
 <li><a href="#volumeconsumer">VolumeConsumer</a></li>
@@ -507,6 +512,7 @@
 <li><a href="#sdkcloudbackupstatustype">SdkCloudBackupStatusType</a></li>
 <li><a href="#sdkservicecapabilityopenstorageservicetype">SdkServiceCapability.OpenStorageService.Type</a></li>
 <li><a href="#sdktimeweekday">SdkTimeWeekday</a></li>
+<li><a href="#sdkversionversion">SdkVersion.Version</a></li>
 <li><a href="#severitytype">SeverityType</a></li>
 <li><a href="#status">Status</a></li>
 <li><a href="#storagemedium">StorageMedium</a></li>
@@ -701,7 +707,13 @@ about the cluster</p>
 This allows SDK implementations to advertise their supported
 services as the API matures. With this information, clients
 can determine supported services from storage clusters at
-different versions.
+different versions.</p>
+<h2 id="methodopenstorageapiopenstorageidentityversion">Version </h2>
+<blockquote>
+<p><strong>rpc</strong> Version(<a href="#sdkidentityversionrequest">SdkIdentityVersionRequest</a>)
+    <a href="#sdkidentityversionresponse">SdkIdentityVersionResponse</a></p>
+</blockquote>
+<p>Version returns version information about the system.
  <!-- end methods --></p>
 <h1 id="serviceopenstorageapiopenstoragenode">OpenStorageNode </h1>
 <p>OpenStorageNode is a service used to manage nodes in the cluster</p>
@@ -3219,6 +3231,34 @@ you will need to check if the value of credential_type is one of the ones below.
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
+<h2 id="sdkidentityversionrequest">SdkIdentityVersionRequest </h2>
+<p>Empty request</p>
+ <!-- end HasFields -->
+<h2 id="sdkidentityversionresponse">SdkIdentityVersionResponse </h2>
+<p>Defines a response containing version information</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sdk_version</td>
+<td><a href="#sdkversion"> SdkVersion</a></td>
+<td>OpenStorage SDK version used by the server</td>
+</tr>
+<tr>
+<td>version</td>
+<td><a href="#storageversion"> StorageVersion</a></td>
+<td>Version information about the storage system</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
 <h2 id="sdknodeenumeraterequest">SdkNodeEnumerateRequest </h2>
 <p>Empty request</p>
  <!-- end HasFields -->
@@ -3748,6 +3788,43 @@ specified volume</p>
 <td>type</td>
 <td><a href="#sdkservicecapabilityopenstorageservicetype"> SdkServiceCapability.OpenStorageService.Type</a></td>
 <td>Type of service supported</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkversion">SdkVersion </h2>
+<p>SDK version in Major.Minor.Patch format. The goal of this
+message is to provide clients a method to determine the SDK
+version run by an SDK server.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>major</td>
+<td><a href="#int32"> int32</a></td>
+<td>SDK version major number</td>
+</tr>
+<tr>
+<td>minor</td>
+<td><a href="#int32"> int32</a></td>
+<td>SDK version minor number</td>
+</tr>
+<tr>
+<td>patch</td>
+<td><a href="#int32"> int32</a></td>
+<td>SDK version patch number</td>
+</tr>
+<tr>
+<td>version</td>
+<td><a href="#string"> string</a></td>
+<td>String representation of the SDK version. Must be in <code>major.minor.patch</code> format.</td>
 </tr>
 </tbody>
 </table>
@@ -4913,6 +4990,60 @@ swagger:model</p>
 <td>metadata</td>
 <td><a href="#bool"> bool</a></td>
 <td>True if dedicated for metadata.</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="storageversion">StorageVersion </h2>
+<p>Version information about the storage system</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>driver</td>
+<td><a href="#string"> string</a></td>
+<td>OpenStorage driver name</td>
+</tr>
+<tr>
+<td>version</td>
+<td><a href="#string"> string</a></td>
+<td>Version of the server</td>
+</tr>
+<tr>
+<td>details</td>
+<td><a href="#storageversiondetailsentry">map StorageVersion.DetailsEntry</a></td>
+<td>Extra information provided by the storage system</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="storageversiondetailsentry">StorageVersion.DetailsEntry </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
 </tr>
 </tbody>
 </table>
@@ -6384,6 +6515,40 @@ to or from a cloud provider</p>
 </tr>
 </tbody>
 </table>
+<h2 id="sdkversionversion">SdkVersion.Version </h2>
+<p>These values are constants that can be used by the
+client and server applications</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MUST_HAVE_ZERO_VALUE</td>
+<td>0</td>
+<td>Must be set in the proto file; ignore.</td>
+</tr>
+<tr>
+<td>Major</td>
+<td>0</td>
+<td>SDK version major value of this specification</td>
+</tr>
+<tr>
+<td>Minor</td>
+<td>1</td>
+<td>SDK version minor value of this specification</td>
+</tr>
+<tr>
+<td>Patch</td>
+<td>0</td>
+<td>SDK version patch value of this specification</td>
+</tr>
+</tbody>
+</table>
 <h2 id="severitytype">SeverityType </h2>
 <table>
 <thead>
@@ -6822,7 +6987,7 @@ to or from a cloud provider</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"API Reference","level":"1.5","depth":1,"next":{"title":"Changelog","level":"1.6","depth":1,"path":"changelog.md","ref":"changelog.md","articles":[]},"previous":{"title":"Python","level":"1.4.2","depth":2,"path":"tutorial-python.md","ref":"tutorial-python.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"livereload":{},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"generated-api.md","mtime":"2018-08-03T08:00:55.798Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-08-03T11:32:24.526Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"API Reference","level":"1.5","depth":1,"next":{"title":"Changelog","level":"1.6","depth":1,"path":"changelog.md","ref":"changelog.md","articles":[]},"previous":{"title":"Python","level":"1.4.2","depth":2,"path":"tutorial-python.md","ref":"tutorial-python.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"generated-api.md","mtime":"2018-08-07T00:37:57.692Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-08-07T00:41:27.651Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
@@ -6857,10 +7022,6 @@ to or from a cloud provider</p>
     
         
         <script src="gitbook/gitbook-plugin-page-toc/page-toc.js"></script>
-        
-    
-        
-        <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
         
     
         
