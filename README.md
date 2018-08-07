@@ -23,11 +23,7 @@ make serve
 ```
 
 ## Generating API Documentation
-To generate it, you will need to install protoc-gen-doc
-
-```
-go get -u github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc
-```
+To generate it, you will need to install [protoc-gen-doc](https://github.com/lpabon/protoc-gen-doc/releases/tag/v1.1.1)
 
 
 Then type `make api` to generate the API documentation.
