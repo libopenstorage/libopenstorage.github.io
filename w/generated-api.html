@@ -656,6 +656,7 @@ which can then be used by the OpenStorageCloudBackup service</p>
 id of the credentials once they are verified to work.</p>
 <h5 id="example">Example</h5>
 <p><div class="codetabs"><div class="codetabs-header"><div class="tab active" data-codetab="0">Golang</div><div class="tab" data-codetab="1">Python</div></div><div class="codetabs-body"><div class="tab active" data-codetab="0"><pre class="language-"><code class="lang-go">id<span class="token punctuation">,</span> err <span class="token operator">:=</span> client<span class="token punctuation">.</span><span class="token function">Create</span><span class="token punctuation">(</span>context<span class="token punctuation">.</span><span class="token function">Background</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>api<span class="token punctuation">.</span>SdkCredentialCreateRequest<span class="token punctuation">{</span>
+    Name<span class="token punctuation">:</span> <span class="token string">&quot;awscred&quot;</span><span class="token punctuation">,</span>
     CredentialType<span class="token punctuation">:</span> <span class="token operator">&amp;</span>api<span class="token punctuation">.</span>SdkCredentialCreateRequest_AwsCredential<span class="token punctuation">{</span>
       AwsCredential<span class="token punctuation">:</span> <span class="token operator">&amp;</span>api<span class="token punctuation">.</span>SdkAwsCredentialRequest<span class="token punctuation">{</span>
       AccessKey<span class="token punctuation">:</span> <span class="token string">&quot;dummy-access&quot;</span><span class="token punctuation">,</span>
@@ -665,6 +666,7 @@ id of the credentials once they are verified to work.</p>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre></div><div class="tab" data-codetab="1"><pre class="language-"><code class="lang-py">en_resp <span class="token operator">=</span> client<span class="token punctuation">.</span>Create<span class="token punctuation">(</span>api_pb2<span class="token punctuation">.</span>SdkCredentialCreateRequest<span class="token punctuation">(</span>
+  name<span class="token operator">=</span><span class="token string">&apos;awscred&apos;</span><span class="token punctuation">,</span>
   aws_credential<span class="token operator">=</span>api_pb2<span class="token punctuation">.</span>SdkAwsCredentialRequest<span class="token punctuation">(</span>
     access_key<span class="token operator">=</span><span class="token string">&apos;dummy-access&apos;</span><span class="token punctuation">,</span>
     secret_key<span class="token operator">=</span><span class="token string">&apos;dumm-secret&apos;</span><span class="token punctuation">,</span>
@@ -2092,11 +2094,6 @@ swagger:model</p>
 </thead>
 <tbody>
 <tr>
-<td>credential_id</td>
-<td><a href="#string"> string</a></td>
-<td>Credential Id</td>
-</tr>
-<tr>
 <td>access_key</td>
 <td><a href="#string"> string</a></td>
 <td>Access key</td>
@@ -2151,11 +2148,6 @@ swagger:model</p>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>credential_id</td>
-<td><a href="#string"> string</a></td>
-<td>Credential Id</td>
-</tr>
 <tr>
 <td>account_name</td>
 <td><a href="#string"> string</a></td>
@@ -2999,6 +2991,11 @@ as query parameters. See swagger documentation for more information.</p>
 </thead>
 <tbody>
 <tr>
+<td>name</td>
+<td><a href="#string"> string</a></td>
+<td>Name of the credential</td>
+</tr>
+<tr>
 <td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> credential_type.aws_credential</td>
 <td><a href="#sdkawscredentialrequest"> SdkAwsCredentialRequest</a></td>
 <td>Credentials for AWS/S3</td>
@@ -3117,6 +3114,16 @@ you will need to check if the value of credential_type is one of the ones below.
 </thead>
 <tbody>
 <tr>
+<td>credential_id</td>
+<td><a href="#string"> string</a></td>
+<td>Credential id</td>
+</tr>
+<tr>
+<td>name</td>
+<td><a href="#string"> string</a></td>
+<td>Name of the credential</td>
+</tr>
+<tr>
 <td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> credential_type.aws_credential</td>
 <td><a href="#sdkawscredentialresponse"> SdkAwsCredentialResponse</a></td>
 <td>Aws credentials</td>
@@ -3194,11 +3201,6 @@ you will need to check if the value of credential_type is one of the ones below.
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>credential_id</td>
-<td><a href="#string"> string</a></td>
-<td>Credential Id</td>
-</tr>
 <tr>
 <td>project_id</td>
 <td><a href="#string"> string</a></td>
@@ -4568,6 +4570,11 @@ swagger:parameters snapVolume</p>
 <td>readonly</td>
 <td><a href="#bool"> bool</a></td>
 <td>none</td>
+</tr>
+<tr>
+<td>no_retry</td>
+<td><a href="#bool"> bool</a></td>
+<td>NoRetry indicates not to retry snapshot creation in the background.</td>
 </tr>
 </tbody>
 </table>
@@ -6539,7 +6546,7 @@ client and server applications</p>
 </tr>
 <tr>
 <td>Minor</td>
-<td>1</td>
+<td>2</td>
 <td>SDK version minor value of this specification</td>
 </tr>
 <tr>
@@ -6987,7 +6994,7 @@ client and server applications</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"API Reference","level":"1.5","depth":1,"next":{"title":"Changelog","level":"1.6","depth":1,"path":"changelog.md","ref":"changelog.md","articles":[]},"previous":{"title":"Python","level":"1.4.2","depth":2,"path":"tutorial-python.md","ref":"tutorial-python.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"generated-api.md","mtime":"2018-08-07T00:37:57.692Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-08-07T00:41:27.651Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"API Reference","level":"1.5","depth":1,"next":{"title":"Changelog","level":"1.6","depth":1,"path":"changelog.md","ref":"changelog.md","articles":[]},"previous":{"title":"Python","level":"1.4.2","depth":2,"path":"tutorial-python.md","ref":"tutorial-python.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"generated-api.md","mtime":"2018-08-16T08:07:29.782Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-08-16T08:08:38.809Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

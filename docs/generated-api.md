@@ -391,6 +391,7 @@ id of the credentials once they are verified to work.
 ##### Example
 {% codetabs name="Golang", type="go" -%}
 id, err := client.Create(context.Background(), &api.SdkCredentialCreateRequest{
+    Name: "awscred",
     CredentialType: &api.SdkCredentialCreateRequest_AwsCredential{
       AwsCredential: &api.SdkAwsCredentialRequest{
       AccessKey: "dummy-access",
@@ -402,6 +403,7 @@ id, err := client.Create(context.Background(), &api.SdkCredentialCreateRequest{
 })
 {%- language name="Python", type="py" -%}
 en_resp = client.Create(api_pb2.SdkCredentialCreateRequest(
+  name='awscred',
   aws_credential=api_pb2.SdkAwsCredentialRequest(
     access_key='dummy-access',
     secret_key='dumm-secret',
@@ -1243,7 +1245,6 @@ Defines the response for AWS/S3 credentials
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| credential_id | [ string](#string) | Credential Id |
 | access_key | [ string](#string) | Access key |
 | endpoint | [ string](#string) | Endpoint |
 | region | [ string](#string) | Region |
@@ -1269,7 +1270,6 @@ Defines the response for Azure credentials
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| credential_id | [ string](#string) | Credential Id |
 | account_name | [ string](#string) | Account name |
  <!-- end Fields -->
  <!-- end HasFields -->
@@ -1715,6 +1715,7 @@ Defines a request to create credentials
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
+| name | [ string](#string) | Name of the credential |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.aws_credential | [ SdkAwsCredentialRequest](#sdkawscredentialrequest) | Credentials for AWS/S3 |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.azure_credential | [ SdkAzureCredentialRequest](#sdkazurecredentialrequest) | Credentials for Azure |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.google_credential | [ SdkGoogleCredentialRequest](#sdkgooglecredentialrequest) | Credentials for Google |
@@ -1786,6 +1787,8 @@ you will need to check if the value of credential_type is one of the ones below.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
+| credential_id | [ string](#string) | Credential id |
+| name | [ string](#string) | Name of the credential |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.aws_credential | [ SdkAwsCredentialResponse](#sdkawscredentialresponse) | Aws credentials |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.azure_credential | [ SdkAzureCredentialResponse](#sdkazurecredentialresponse) | Azure credentials |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.google_credential | [ SdkGoogleCredentialResponse](#sdkgooglecredentialresponse) | Google credentials |
@@ -1828,7 +1831,6 @@ Defines the response for Google credentials
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| credential_id | [ string](#string) | Credential Id |
 | project_id | [ string](#string) | Project ID |
  <!-- end Fields -->
  <!-- end HasFields -->
@@ -2599,6 +2601,7 @@ swagger:parameters snapVolume
 | id | [ string](#string) | volume id |
 | locator | [ VolumeLocator](#volumelocator) | none |
 | readonly | [ bool](#bool) | none |
+| no_retry | [ bool](#bool) | NoRetry indicates not to retry snapshot creation in the background. |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3354,7 +3357,7 @@ client and server applications
 | ---- | ------ | ----------- |
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
-| Minor | 1 | SDK version minor value of this specification |
+| Minor | 2 | SDK version minor value of this specification |
 | Patch | 0 | SDK version patch value of this specification |
 
 
