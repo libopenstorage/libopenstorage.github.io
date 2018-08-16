@@ -140,6 +140,7 @@ the storage system to save the backup in the cloud.
 	creds := api.NewOpenStorageCredentialsClient(conn)
 	credResponse, err := creds.Create(context.Background(),
 		&api.SdkCredentialCreateRequest{
+			Name: "aws",
 			CredentialType: &api.SdkCredentialCreateRequest_AwsCredential{
 				AwsCredential: &api.SdkAwsCredentialRequest{
 					AccessKey: "dummy-access",

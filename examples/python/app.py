@@ -34,6 +34,7 @@ try:
     # Create a credentials
     creds = api_pb2_grpc.OpenStorageCredentialsStub(channel)
     cred_resp = creds.Create(api_pb2.SdkCredentialCreateRequest(
+        name='aws',
         aws_credential=api_pb2.SdkAwsCredentialRequest(
             access_key='dummy',
             secret_key='dummy',

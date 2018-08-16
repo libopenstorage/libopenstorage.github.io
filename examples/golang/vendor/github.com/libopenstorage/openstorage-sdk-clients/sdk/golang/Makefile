@@ -23,5 +23,10 @@ endif
 		-I $(PROTOS_PATH)/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
 		--go_out=plugins=grpc:. \
 		$(PROTOSRC_PATH)/api.proto
+	$(PROTOC) -I $(PROTOSRC_PATH) \
+		-I /usr/local/include \
+		-I $(PROTOS_PATH)/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
+		--grpc-gateway_out=logtostderr=true:. \
+		$(PROTOSRC_PATH)/api.proto
 
 .PHONY: all grpc
