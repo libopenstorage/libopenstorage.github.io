@@ -2685,6 +2685,7 @@ StorageNode describes the state of the node
 | data_ip | [ string](#string) | Data IP |
 | hostname | [ string](#string) | Hostname of the node |
 | node_labels | [map StorageNode.NodeLabelsEntry](#storagenodenodelabelsentry) | User defined labels for the node |
+| scheduler_node_name | [ string](#string) | SchedulerNodeName is name of the node in scheduler context. It can be empty if unable to get the name from the scheduler. |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3357,7 +3358,7 @@ client and server applications
 | ---- | ------ | ----------- |
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
-| Minor | 2 | SDK version minor value of this specification |
+| Minor | 3 | SDK version minor value of this specification |
 | Patch | 0 | SDK version patch value of this specification |
 
 

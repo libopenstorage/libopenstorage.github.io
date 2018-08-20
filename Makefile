@@ -5,11 +5,15 @@ all: build
 images:
 	$(MAKE) -C docs/images
 
-build: images
+build: api changelog images
 	gitbook build docs/ w
 
 serve: images
 	gitbook serve docs/ w
+
+changelog:
+	curl https://raw.githubusercontent.com/libopenstorage/openstorage/master/SDK_CHANGELOG.md \
+		--output docs/changelog.md --silent
 
 api:
 ifndef HAS_PROTOC

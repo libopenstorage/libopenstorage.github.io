@@ -5,6 +5,10 @@
 
 ## Releases
 
+### v0.3.0 - Tech Preview (8/20/2018)
+
+* Added SchedulerNodeName field to StorageNode object
+
 ### v0.2.0 - Tech Preview (8/16/2018)
 
 * Changed Credentials.Create to take `name` as a required parameter
