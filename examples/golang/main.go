@@ -8,16 +8,63 @@ import (
 	"os"
 	"time"
 
+	jwt "github.com/dgrijalva/jwt-go"
+
 	"github.com/golang/protobuf/ptypes"
 	api "github.com/libopenstorage/openstorage-sdk-clients/sdk/golang"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials"
 	"google.golang.org/grpc/status"
 )
 
+type OpenStorageSdkToken struct{}
+
+func (t OpenStorageSdkToken) GetRequestMetadata(ctx context.Context, uri ...string) (map[string]string, error) {
+	secret := "thisistheadminkey"
+
+	// Create Token
+	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
+		// Set issuer
+		"sub": "admin",
+		// Set issued at time
+		"iat": time.Now().Unix(),
+		// Set expiration
+		"exp": time.Now().Add(time.Minute * 5).Unix(),
+		// Name
+		"name": "Luis Pabon",
+		// Email
+		"email": "luis@portworx.com",
+	})
+
+	// Sign the token
+	signedtoken, err := token.SignedString([]byte(secret))
+	if err != nil {
+		return nil, err
+	}
+
+	return map[string]string{
+		"authorization": "bearer " + signedtoken,
+	}, nil
+}
+
+func (t OpenStorageSdkToken) RequireTransportSecurity() bool {
+	return false
+}
+
 func main() {
 
+	ctx := context.Background()
+	token := OpenStorageSdkToken{}
+
+	// Setup connection
+	grpccreds, err := credentials.NewClientTLSFromFile("cert.pem", "")
+	if err != nil {
+		fmt.Printf("Creds failed: %v", err)
+		os.Exit(1)
+	}
+
 	// Setup a connection
-	conn, err := grpc.Dial("localhost:9100", grpc.WithInsecure())
+	conn, err := grpc.Dial(":9100", grpc.WithTransportCredentials(grpccreds), grpc.WithPerRPCCredentials(token))
 	if err != nil {
 		fmt.Printf("Error: %v", err)
 		os.Exit(1)
@@ -28,11 +75,11 @@ func main() {
 
 	// Print the cluster information
 	clusterInfo, err := cluster.InspectCurrent(
-		context.Background(),
+		ctx,
 		&api.SdkClusterInspectCurrentRequest{})
 	if err != nil {
 		gerr, _ := status.FromError(err)
-		fmt.Printf("Error Code[%d] Message[%s]\n",
+		fmt.Printf("A Error Code[%d] Message[%s]\n",
 			gerr.Code(), gerr.Message())
 		os.Exit(1)
 	}
@@ -43,7 +90,7 @@ func main() {
 	// Create a 100Gi volume
 	volumes := api.NewOpenStorageVolumeClient(conn)
 	v, err := volumes.Create(
-		context.Background(),
+		ctx,
 		&api.SdkVolumeCreateRequest{
 			Name: "myvol",
 			Spec: &api.VolumeSpec{
@@ -62,7 +109,7 @@ func main() {
 
 	// Take a snapshot
 	snap, err := volumes.SnapshotCreate(
-		context.Background(),
+		ctx,
 		&api.SdkVolumeSnapshotCreateRequest{
 			VolumeId: v.GetVolumeId(),
 			Name:     fmt.Sprintf("snap-%v", time.Now().Unix()),
