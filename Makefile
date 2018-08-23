@@ -22,6 +22,8 @@ endif
 ifndef HAS_PROTOGENDOC
 	$(error "Please install protoc-gen-doc. See README.md for more information")
 endif
+	curl https://raw.githubusercontent.com/libopenstorage/openstorage/master/api/server/sdk/api/api.swagger.json \
+		--output docs/api/api.swagger.json --silent
 	curl https://raw.githubusercontent.com/libopenstorage/openstorage/master/api/api.proto \
 		--output api.proto --silent
 	protoc -I. -I $(GOPATH)/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \

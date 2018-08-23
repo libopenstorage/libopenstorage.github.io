@@ -3217,6 +3217,7 @@ swagger:model
 | FS_TYPE_VFS | 5 | none |
 | FS_TYPE_XFS | 6 | none |
 | FS_TYPE_ZFS | 7 | none |
+| FS_TYPE_XFSv2 | 8 | none |
 
 
 
