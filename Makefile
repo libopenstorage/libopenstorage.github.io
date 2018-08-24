@@ -5,15 +5,11 @@ all: build
 images:
 	$(MAKE) -C docs/images
 
-build: api changelog images
+build: images
 	gitbook build docs/ w
 
 serve: images
 	gitbook serve docs/ w
-
-changelog:
-	curl https://raw.githubusercontent.com/libopenstorage/openstorage/master/SDK_CHANGELOG.md \
-		--output docs/changelog.md --silent
 
 api:
 ifndef HAS_PROTOC
@@ -24,6 +20,8 @@ ifndef HAS_PROTOGENDOC
 endif
 	curl https://raw.githubusercontent.com/libopenstorage/openstorage/master/api/server/sdk/api/api.swagger.json \
 		--output docs/api/api.swagger.json --silent
+	curl https://raw.githubusercontent.com/libopenstorage/openstorage/master/SDK_CHANGELOG.md \
+		--output docs/changelog.md --silent
 	curl https://raw.githubusercontent.com/libopenstorage/openstorage/master/api/api.proto \
 		--output api.proto --silent
 	protoc -I. -I $(GOPATH)/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \

@@ -1235,6 +1235,7 @@ Defines credentials for Aws/S3 endpoints
 | secret_key | [ string](#string) | Secret key |
 | endpoint | [ string](#string) | Endpoint |
 | region | [ string](#string) | Region |
+| disable_ssl | [ bool](#bool) | (optional) Disable SSL connection |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -1248,6 +1249,7 @@ Defines the response for AWS/S3 credentials
 | access_key | [ string](#string) | Access key |
 | endpoint | [ string](#string) | Endpoint |
 | region | [ string](#string) | Region |
+| disable_ssl | [ bool](#bool) | (optional) Disable SSL connection |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -1716,6 +1718,8 @@ Defines a request to create credentials
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | name | [ string](#string) | Name of the credential |
+| bucket | [ string](#string) | (optional) Name of bucket |
+| encryption_key | [ string](#string) | (optional) Key used to encrypt the data |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.aws_credential | [ SdkAwsCredentialRequest](#sdkawscredentialrequest) | Credentials for AWS/S3 |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.azure_credential | [ SdkAzureCredentialRequest](#sdkazurecredentialrequest) | Credentials for Azure |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.google_credential | [ SdkGoogleCredentialRequest](#sdkgooglecredentialrequest) | Credentials for Google |
@@ -1789,6 +1793,7 @@ you will need to check if the value of credential_type is one of the ones below.
 | ----- | ---- | ----------- |
 | credential_id | [ string](#string) | Credential id |
 | name | [ string](#string) | Name of the credential |
+| bucket | [ string](#string) | (optional) Name of bucket |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.aws_credential | [ SdkAwsCredentialResponse](#sdkawscredentialresponse) | Aws credentials |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.azure_credential | [ SdkAzureCredentialResponse](#sdkazurecredentialresponse) | Azure credentials |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.google_credential | [ SdkGoogleCredentialResponse](#sdkgooglecredentialresponse) | Google credentials |
@@ -3359,7 +3364,7 @@ client and server applications
 | ---- | ------ | ----------- |
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
-| Minor | 3 | SDK version minor value of this specification |
+| Minor | 4 | SDK version minor value of this specification |
 | Patch | 0 | SDK version patch value of this specification |
 
 

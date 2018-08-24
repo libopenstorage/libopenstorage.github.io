@@ -2114,6 +2114,11 @@ swagger:model</p>
 <td><a href="#string"> string</a></td>
 <td>Region</td>
 </tr>
+<tr>
+<td>disable_ssl</td>
+<td><a href="#bool"> bool</a></td>
+<td>(optional) Disable SSL connection</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -2143,6 +2148,11 @@ swagger:model</p>
 <td>region</td>
 <td><a href="#string"> string</a></td>
 <td>Region</td>
+</tr>
+<tr>
+<td>disable_ssl</td>
+<td><a href="#bool"> bool</a></td>
+<td>(optional) Disable SSL connection</td>
 </tr>
 </tbody>
 </table>
@@ -3032,6 +3042,16 @@ as query parameters. See swagger documentation for more information.</p>
 <td>Name of the credential</td>
 </tr>
 <tr>
+<td>bucket</td>
+<td><a href="#string"> string</a></td>
+<td>(optional) Name of bucket</td>
+</tr>
+<tr>
+<td>encryption_key</td>
+<td><a href="#string"> string</a></td>
+<td>(optional) Key used to encrypt the data</td>
+</tr>
+<tr>
 <td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> credential_type.aws_credential</td>
 <td><a href="#sdkawscredentialrequest"> SdkAwsCredentialRequest</a></td>
 <td>Credentials for AWS/S3</td>
@@ -3158,6 +3178,11 @@ you will need to check if the value of credential_type is one of the ones below.
 <td>name</td>
 <td><a href="#string"> string</a></td>
 <td>Name of the credential</td>
+</tr>
+<tr>
+<td>bucket</td>
+<td><a href="#string"> string</a></td>
+<td>(optional) Name of bucket</td>
 </tr>
 <tr>
 <td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> credential_type.aws_credential</td>
@@ -6592,7 +6617,7 @@ client and server applications</p>
 </tr>
 <tr>
 <td>Minor</td>
-<td>3</td>
+<td>4</td>
 <td>SDK version minor value of this specification</td>
 </tr>
 <tr>
@@ -7040,7 +7065,7 @@ client and server applications</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"gRPC Reference","level":"1.5.1","depth":2,"next":{"title":"REST Reference","level":"1.5.2","depth":2,"path":"rest-api.md","ref":"rest-api.md","articles":[]},"previous":{"title":"API Reference","level":"1.5","depth":1,"path":"reference.md","ref":"reference.md","articles":[{"title":"gRPC Reference","level":"1.5.1","depth":2,"path":"generated-api.md","ref":"generated-api.md","articles":[]},{"title":"REST Reference","level":"1.5.2","depth":2,"path":"rest-api.md","ref":"rest-api.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"generated-api.md","mtime":"2018-08-23T07:25:49.730Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-08-23T07:25:50.880Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"gRPC Reference","level":"1.5.1","depth":2,"next":{"title":"REST Reference","level":"1.5.2","depth":2,"path":"rest-api.md","ref":"rest-api.md","articles":[]},"previous":{"title":"API Reference","level":"1.5","depth":1,"path":"reference.md","ref":"reference.md","articles":[{"title":"gRPC Reference","level":"1.5.1","depth":2,"path":"generated-api.md","ref":"generated-api.md","articles":[]},{"title":"REST Reference","level":"1.5.2","depth":2,"path":"rest-api.md","ref":"rest-api.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"generated-api.md","mtime":"2018-08-24T20:57:38.888Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-08-24T20:57:53.319Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
