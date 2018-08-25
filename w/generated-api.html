@@ -5124,7 +5124,6 @@ swagger:model</p>
  <!-- end HasFields -->
 <h2 id="volume">Volume </h2>
 <p>Volume represents an abstract storage volume.
-Volume represents an abstract storage volume.
 swagger:model</p>
 <table>
 <thead>
@@ -5702,6 +5701,11 @@ swagger:model</p>
 <td><a href="#bool"> bool</a></td>
 <td>Sharedv4 is true if this volume can be accessed via sharedv4.</td>
 </tr>
+<tr>
+<td>queue_depth</td>
+<td><a href="#int32"> int32</a></td>
+<td>QueueDepth defines the desired block device queue depth</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -5742,23 +5746,8 @@ swagger:model</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> ephemeral_opt.ephemeral</td>
-<td><a href="#bool"> bool</a></td>
-<td>none</td>
-</tr>
-<tr>
 <td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> size_opt.size</td>
 <td><a href="#uint64"> uint64</a></td>
-<td>none</td>
-</tr>
-<tr>
-<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> format_opt.format</td>
-<td><a href="#fstype"> FSType</a></td>
-<td>none</td>
-</tr>
-<tr>
-<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> block_size_opt.block_size</td>
-<td><a href="#int64"> int64</a></td>
 <td>none</td>
 </tr>
 <tr>
@@ -5802,16 +5791,6 @@ swagger:model</p>
 <td>ReplicaSet is the desired set of nodes for the volume data.</td>
 </tr>
 <tr>
-<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> aggregation_level_opt.aggregation_level</td>
-<td><a href="#uint32"> uint32</a></td>
-<td>none</td>
-</tr>
-<tr>
-<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> encrypted_opt.encrypted</td>
-<td><a href="#bool"> bool</a></td>
-<td>none</td>
-</tr>
-<tr>
 <td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> passphrase_opt.passphrase</td>
 <td><a href="#string"> string</a></td>
 <td>none</td>
@@ -5837,21 +5816,6 @@ swagger:model</p>
 <td>none</td>
 </tr>
 <tr>
-<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> group_enforced_opt.group_enforced</td>
-<td><a href="#bool"> bool</a></td>
-<td>none</td>
-</tr>
-<tr>
-<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> compressed_opt.compressed</td>
-<td><a href="#bool"> bool</a></td>
-<td>none</td>
-</tr>
-<tr>
-<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> cascaded_opt.cascaded</td>
-<td><a href="#bool"> bool</a></td>
-<td>none</td>
-</tr>
-<tr>
 <td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> journal_opt.journal</td>
 <td><a href="#bool"> bool</a></td>
 <td>none</td>
@@ -5859,6 +5823,11 @@ swagger:model</p>
 <tr>
 <td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> sharedv4_opt.sharedv4</td>
 <td><a href="#bool"> bool</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> queue_depth_opt.queue_depth</td>
+<td><a href="#int32"> int32</a></td>
 <td>none</td>
 </tr>
 </tbody>
@@ -6617,7 +6586,7 @@ client and server applications</p>
 </tr>
 <tr>
 <td>Minor</td>
-<td>4</td>
+<td>5</td>
 <td>SDK version minor value of this specification</td>
 </tr>
 <tr>
@@ -7065,7 +7034,7 @@ client and server applications</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"gRPC Reference","level":"1.5.1","depth":2,"next":{"title":"REST Reference","level":"1.5.2","depth":2,"path":"rest-api.md","ref":"rest-api.md","articles":[]},"previous":{"title":"API Reference","level":"1.5","depth":1,"path":"reference.md","ref":"reference.md","articles":[{"title":"gRPC Reference","level":"1.5.1","depth":2,"path":"generated-api.md","ref":"generated-api.md","articles":[]},{"title":"REST Reference","level":"1.5.2","depth":2,"path":"rest-api.md","ref":"rest-api.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"generated-api.md","mtime":"2018-08-24T20:57:38.888Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-08-24T20:57:53.319Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"gRPC Reference","level":"1.5.1","depth":2,"next":{"title":"REST Reference","level":"1.5.2","depth":2,"path":"rest-api.md","ref":"rest-api.md","articles":[]},"previous":{"title":"API Reference","level":"1.5","depth":1,"path":"reference.md","ref":"reference.md","articles":[{"title":"gRPC Reference","level":"1.5.1","depth":2,"path":"generated-api.md","ref":"generated-api.md","articles":[]},{"title":"REST Reference","level":"1.5.2","depth":2,"path":"rest-api.md","ref":"rest-api.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"generated-api.md","mtime":"2018-08-25T18:44:28.692Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-08-25T18:45:04.553Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

@@ -2799,7 +2799,6 @@ Version information about the storage system
 
 ## Volume {#volume}
 Volume represents an abstract storage volume.
-Volume represents an abstract storage volume.
 swagger:model
 
 
@@ -3024,6 +3023,7 @@ swagger:model
 | cascaded | [ bool](#bool) | Cascaded is true if this volume can be populated on any node from an external source. |
 | journal | [ bool](#bool) | Journal is true if data for the volume goes into the journal. |
 | sharedv4 | [ bool](#bool) | Sharedv4 is true if this volume can be accessed via sharedv4. |
+| queue_depth | [ int32](#int32) | QueueDepth defines the desired block device queue depth |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3046,10 +3046,7 @@ VolumeSpecUpdate provides a method to set any of the VolumeSpec of an existing v
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) ephemeral_opt.ephemeral | [ bool](#bool) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) size_opt.size | [ uint64](#uint64) | none |
-| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) format_opt.format | [ FSType](#fstype) | none |
-| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) block_size_opt.block_size | [ int64](#int64) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) ha_level_opt.ha_level | [ int64](#int64) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) cos_opt.cos | [ CosType](#costype) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) io_profile_opt.io_profile | [ IoProfile](#ioprofile) | none |
@@ -3058,18 +3055,14 @@ VolumeSpecUpdate provides a method to set any of the VolumeSpec of an existing v
 | volume_labels | [map VolumeSpecUpdate.VolumeLabelsEntry](#volumespecupdatevolumelabelsentry) | VolumeLabels configuration labels |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) shared_opt.shared | [ bool](#bool) | none |
 | replica_set | [ ReplicaSet](#replicaset) | ReplicaSet is the desired set of nodes for the volume data. |
-| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) aggregation_level_opt.aggregation_level | [ uint32](#uint32) | none |
-| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) encrypted_opt.encrypted | [ bool](#bool) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) passphrase_opt.passphrase | [ string](#string) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) snapshot_schedule_opt.snapshot_schedule | [ string](#string) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) scale_opt.scale | [ uint32](#uint32) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) sticky_opt.sticky | [ bool](#bool) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) group_opt.group | [ Group](#group) | none |
-| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) group_enforced_opt.group_enforced | [ bool](#bool) | none |
-| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) compressed_opt.compressed | [ bool](#bool) | none |
-| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) cascaded_opt.cascaded | [ bool](#bool) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) journal_opt.journal | [ bool](#bool) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) sharedv4_opt.sharedv4 | [ bool](#bool) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) queue_depth_opt.queue_depth | [ int32](#int32) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3364,7 +3357,7 @@ client and server applications
 | ---- | ------ | ----------- |
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
-| Minor | 4 | SDK version minor value of this specification |
+| Minor | 5 | SDK version minor value of this specification |
 | Patch | 0 | SDK version patch value of this specification |
 
 
