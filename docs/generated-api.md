@@ -91,12 +91,6 @@
     - [SdkCloudBackupStatusRequest](#sdkcloudbackupstatusrequest)
     - [SdkCloudBackupStatusResponse](#sdkcloudbackupstatusresponse)
     - [SdkCloudBackupStatusResponse.StatusesEntry](#sdkcloudbackupstatusresponsestatusesentry)
-    - [SdkClusterAlertClearRequest](#sdkclusteralertclearrequest)
-    - [SdkClusterAlertClearResponse](#sdkclusteralertclearresponse)
-    - [SdkClusterAlertDeleteRequest](#sdkclusteralertdeleterequest)
-    - [SdkClusterAlertDeleteResponse](#sdkclusteralertdeleteresponse)
-    - [SdkClusterAlertEnumerateRequest](#sdkclusteralertenumeraterequest)
-    - [SdkClusterAlertEnumerateResponse](#sdkclusteralertenumerateresponse)
     - [SdkClusterInspectCurrentRequest](#sdkclusterinspectcurrentrequest)
     - [SdkClusterInspectCurrentResponse](#sdkclusterinspectcurrentresponse)
     - [SdkCredentialCreateRequest](#sdkcredentialcreaterequest)
@@ -355,25 +349,6 @@ OpenStorageCluster service provides the methods to manage the cluster
     [SdkClusterInspectCurrentResponse](#sdkclusterinspectcurrentresponse)
 
 InspectCurrent returns information about the current cluster
-## AlertEnumerate {#methodopenstorageapiopenstorageclusteralertenumerate}
-
-> **rpc** AlertEnumerate([SdkClusterAlertEnumerateRequest](#sdkclusteralertenumeraterequest))
-    [SdkClusterAlertEnumerateResponse](#sdkclusteralertenumerateresponse)
-
-AlertEnumerate returns a list of alerts from the storage cluster
-In REST, use the request values as query parameters.
-## AlertClear {#methodopenstorageapiopenstorageclusteralertclear}
-
-> **rpc** AlertClear([SdkClusterAlertClearRequest](#sdkclusteralertclearrequest))
-    [SdkClusterAlertClearResponse](#sdkclusteralertclearresponse)
-
-AlertClear clears the alert for a given resource
-## AlertDelete {#methodopenstorageapiopenstorageclusteralertdelete}
-
-> **rpc** AlertDelete([SdkClusterAlertDeleteRequest](#sdkclusteralertdeleterequest))
-    [SdkClusterAlertDeleteResponse](#sdkclusteralertdeleteresponse)
-
-AlertDelete deletes an alert for all resources
  <!-- end methods -->
 
 # OpenStorageCredentials {#serviceopenstorageapiopenstoragecredentials}
@@ -1632,68 +1607,6 @@ Defines a response containing the status of the backups for a specified volume
  <!-- end HasFields -->
 
 
-## SdkClusterAlertClearRequest {#sdkclusteralertclearrequest}
-Defines a request to clear an alert
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| resource | [ ResourceType](#resourcetype) | Type of resource (required) |
-| alert_id | [ int64](#int64) | Id of alert as returned by ClusterEnumerateAlertResponse (required) |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkClusterAlertClearResponse {#sdkclusteralertclearresponse}
-Empty response
-
- <!-- end HasFields -->
-
-
-## SdkClusterAlertDeleteRequest {#sdkclusteralertdeleterequest}
-Defines a request to delete an alert
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| resource | [ ResourceType](#resourcetype) | Type of resource (required) |
-| alert_id | [ int64](#int64) | Id of alert as returned by ClusterEnumerateAlertResponse (required) |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkClusterAlertDeleteResponse {#sdkclusteralertdeleteresponse}
-Empty response
-
- <!-- end HasFields -->
-
-
-## SdkClusterAlertEnumerateRequest {#sdkclusteralertenumeraterequest}
-Defines a request contains the information needed to get alerts from
-the storage system. For REST you will need to pass these
-as query parameters. See swagger documentation for more information.
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| time_start | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | Start time of alerts |
-| time_end | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | End time of alerts |
-| resource | [ ResourceType](#resourcetype) | Type of resource |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkClusterAlertEnumerateResponse {#sdkclusteralertenumerateresponse}
-Defines a response providing a list of alerts
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| alerts | [repeated Alert](#alert) | Information on the alerts requested |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
 ## SdkClusterInspectCurrentRequest {#sdkclusterinspectcurrentrequest}
 Empty request
 
@@ -2667,6 +2580,7 @@ StorageCluster represents the state and information about the cluster
 | ----- | ---- | ----------- |
 | status | [ Status](#status) | Status of the cluster |
 | id | [ string](#string) | Id of the cluster |
+| name | [ string](#string) | Name of the cluster |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3024,6 +2938,7 @@ swagger:model
 | journal | [ bool](#bool) | Journal is true if data for the volume goes into the journal. |
 | sharedv4 | [ bool](#bool) | Sharedv4 is true if this volume can be accessed via sharedv4. |
 | queue_depth | [ int32](#int32) | QueueDepth defines the desired block device queue depth |
+| force_unsupported_fs_type | [ bool](#bool) | Use to force a file system type which is not recommended. The driver may still refuse to use the file system type. |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3357,7 +3272,7 @@ client and server applications
 | ---- | ------ | ----------- |
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
-| Minor | 5 | SDK version minor value of this specification |
+| Minor | 7 | SDK version minor value of this specification |
 | Patch | 0 | SDK version patch value of this specification |
 
 

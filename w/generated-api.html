@@ -402,12 +402,6 @@
 <li><a href="#sdkcloudbackupstatusrequest">SdkCloudBackupStatusRequest</a></li>
 <li><a href="#sdkcloudbackupstatusresponse">SdkCloudBackupStatusResponse</a></li>
 <li><a href="#sdkcloudbackupstatusresponsestatusesentry">SdkCloudBackupStatusResponse.StatusesEntry</a></li>
-<li><a href="#sdkclusteralertclearrequest">SdkClusterAlertClearRequest</a></li>
-<li><a href="#sdkclusteralertclearresponse">SdkClusterAlertClearResponse</a></li>
-<li><a href="#sdkclusteralertdeleterequest">SdkClusterAlertDeleteRequest</a></li>
-<li><a href="#sdkclusteralertdeleteresponse">SdkClusterAlertDeleteResponse</a></li>
-<li><a href="#sdkclusteralertenumeraterequest">SdkClusterAlertEnumerateRequest</a></li>
-<li><a href="#sdkclusteralertenumerateresponse">SdkClusterAlertEnumerateResponse</a></li>
 <li><a href="#sdkclusterinspectcurrentrequest">SdkClusterInspectCurrentRequest</a></li>
 <li><a href="#sdkclusterinspectcurrentresponse">SdkClusterInspectCurrentResponse</a></li>
 <li><a href="#sdkcredentialcreaterequest">SdkCredentialCreateRequest</a></li>
@@ -659,26 +653,7 @@ backup and other backups are dependent on it, it will not be able to be deleted.
 <p><strong>rpc</strong> InspectCurrent(<a href="#sdkclusterinspectcurrentrequest">SdkClusterInspectCurrentRequest</a>)
     <a href="#sdkclusterinspectcurrentresponse">SdkClusterInspectCurrentResponse</a></p>
 </blockquote>
-<p>InspectCurrent returns information about the current cluster</p>
-<h2 id="methodopenstorageapiopenstorageclusteralertenumerate">AlertEnumerate </h2>
-<blockquote>
-<p><strong>rpc</strong> AlertEnumerate(<a href="#sdkclusteralertenumeraterequest">SdkClusterAlertEnumerateRequest</a>)
-    <a href="#sdkclusteralertenumerateresponse">SdkClusterAlertEnumerateResponse</a></p>
-</blockquote>
-<p>AlertEnumerate returns a list of alerts from the storage cluster
-In REST, use the request values as query parameters.</p>
-<h2 id="methodopenstorageapiopenstorageclusteralertclear">AlertClear </h2>
-<blockquote>
-<p><strong>rpc</strong> AlertClear(<a href="#sdkclusteralertclearrequest">SdkClusterAlertClearRequest</a>)
-    <a href="#sdkclusteralertclearresponse">SdkClusterAlertClearResponse</a></p>
-</blockquote>
-<p>AlertClear clears the alert for a given resource</p>
-<h2 id="methodopenstorageapiopenstorageclusteralertdelete">AlertDelete </h2>
-<blockquote>
-<p><strong>rpc</strong> AlertDelete(<a href="#sdkclusteralertdeleterequest">SdkClusterAlertDeleteRequest</a>)
-    <a href="#sdkclusteralertdeleteresponse">SdkClusterAlertDeleteResponse</a></p>
-</blockquote>
-<p>AlertDelete deletes an alert for all resources
+<p>InspectCurrent returns information about the current cluster
  <!-- end methods --></p>
 <h1 id="serviceopenstorageapiopenstoragecredentials">OpenStorageCredentials </h1>
 <p>OpenStorageCredentials is a service used to manage the cloud credentials
@@ -2894,114 +2869,6 @@ specified volume</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
-<h2 id="sdkclusteralertclearrequest">SdkClusterAlertClearRequest </h2>
-<p>Defines a request to clear an alert</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>resource</td>
-<td><a href="#resourcetype"> ResourceType</a></td>
-<td>Type of resource (required)</td>
-</tr>
-<tr>
-<td>alert_id</td>
-<td><a href="#int64"> int64</a></td>
-<td>Id of alert as returned by ClusterEnumerateAlertResponse (required)</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkclusteralertclearresponse">SdkClusterAlertClearResponse </h2>
-<p>Empty response</p>
- <!-- end HasFields -->
-<h2 id="sdkclusteralertdeleterequest">SdkClusterAlertDeleteRequest </h2>
-<p>Defines a request to delete an alert</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>resource</td>
-<td><a href="#resourcetype"> ResourceType</a></td>
-<td>Type of resource (required)</td>
-</tr>
-<tr>
-<td>alert_id</td>
-<td><a href="#int64"> int64</a></td>
-<td>Id of alert as returned by ClusterEnumerateAlertResponse (required)</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkclusteralertdeleteresponse">SdkClusterAlertDeleteResponse </h2>
-<p>Empty response</p>
- <!-- end HasFields -->
-<h2 id="sdkclusteralertenumeraterequest">SdkClusterAlertEnumerateRequest </h2>
-<p>Defines a request contains the information needed to get alerts from
-the storage system. For REST you will need to pass these
-as query parameters. See swagger documentation for more information.</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>time_start</td>
-<td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
-<td>Start time of alerts</td>
-</tr>
-<tr>
-<td>time_end</td>
-<td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
-<td>End time of alerts</td>
-</tr>
-<tr>
-<td>resource</td>
-<td><a href="#resourcetype"> ResourceType</a></td>
-<td>Type of resource</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkclusteralertenumerateresponse">SdkClusterAlertEnumerateResponse </h2>
-<p>Defines a response providing a list of alerts</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>alerts</td>
-<td><a href="#alert">repeated Alert</a></td>
-<td>Information on the alerts requested</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
 <h2 id="sdkclusterinspectcurrentrequest">SdkClusterInspectCurrentRequest </h2>
 <p>Empty request</p>
  <!-- end HasFields -->
@@ -4776,6 +4643,11 @@ swagger:model</p>
 <td><a href="#string"> string</a></td>
 <td>Id of the cluster</td>
 </tr>
+<tr>
+<td>name</td>
+<td><a href="#string"> string</a></td>
+<td>Name of the cluster</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -5706,6 +5578,11 @@ swagger:model</p>
 <td><a href="#int32"> int32</a></td>
 <td>QueueDepth defines the desired block device queue depth</td>
 </tr>
+<tr>
+<td>force_unsupported_fs_type</td>
+<td><a href="#bool"> bool</a></td>
+<td>Use to force a file system type which is not recommended. The driver may still refuse to use the file system type.</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -6586,7 +6463,7 @@ client and server applications</p>
 </tr>
 <tr>
 <td>Minor</td>
-<td>5</td>
+<td>7</td>
 <td>SDK version minor value of this specification</td>
 </tr>
 <tr>
@@ -7034,7 +6911,7 @@ client and server applications</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"gRPC Reference","level":"1.5.1","depth":2,"next":{"title":"REST Reference","level":"1.5.2","depth":2,"path":"rest-api.md","ref":"rest-api.md","articles":[]},"previous":{"title":"API Reference","level":"1.5","depth":1,"path":"reference.md","ref":"reference.md","articles":[{"title":"gRPC Reference","level":"1.5.1","depth":2,"path":"generated-api.md","ref":"generated-api.md","articles":[]},{"title":"REST Reference","level":"1.5.2","depth":2,"path":"rest-api.md","ref":"rest-api.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"generated-api.md","mtime":"2018-08-25T18:44:28.692Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-08-25T18:45:04.553Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"gRPC Reference","level":"1.5.1","depth":2,"next":{"title":"REST Reference","level":"1.5.2","depth":2,"path":"rest-api.md","ref":"rest-api.md","articles":[]},"previous":{"title":"API Reference","level":"1.5","depth":1,"path":"reference.md","ref":"reference.md","articles":[{"title":"gRPC Reference","level":"1.5.1","depth":2,"path":"generated-api.md","ref":"generated-api.md","articles":[]},{"title":"REST Reference","level":"1.5.2","depth":2,"path":"rest-api.md","ref":"rest-api.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"generated-api.md","mtime":"2018-09-06T07:17:24.427Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-06T07:17:27.917Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
