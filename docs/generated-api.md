@@ -51,6 +51,9 @@
     - [GroupSnapCreateRequest.LabelsEntry](#groupsnapcreaterequestlabelsentry)
     - [GroupSnapCreateResponse](#groupsnapcreateresponse)
     - [GroupSnapCreateResponse.SnapshotsEntry](#groupsnapcreateresponsesnapshotsentry)
+    - [LocateResponse](#locateresponse)
+    - [LocateResponse.DockeridsEntry](#locateresponsedockeridsentry)
+    - [LocateResponse.MountsEntry](#locateresponsemountsentry)
     - [ObjectstoreInfo](#objectstoreinfo)
     - [ReplicaSet](#replicaset)
     - [Report](#report)
@@ -611,14 +614,16 @@ SnapshotRestore restores a volume to a specified snapshot
     [SdkVolumeSnapshotEnumerateResponse](#sdkvolumesnapshotenumerateresponse)
 
 SnapshotEnumerate returns a list of snapshots for a specific volume
-that match the labels provided if any.
 ## SnapshotEnumerateWithFilters {#methodopenstorageapiopenstoragevolumesnapshotenumeratewithfilters}
 
 > **rpc** SnapshotEnumerateWithFilters([SdkVolumeSnapshotEnumerateWithFiltersRequest](#sdkvolumesnapshotenumeratewithfiltersrequest))
     [SdkVolumeSnapshotEnumerateWithFiltersResponse](#sdkvolumesnapshotenumeratewithfiltersresponse)
 
-SnapshotEnumerate returns a list of snapshots for a specific volume
-that match the labels provided if any.
+SnapshotEnumerate returns a list of snapshots. 
+To filter all the snapshots for a specific volume which may no longer exist,
+specifiy a volume id.
+Labels can also be used to filter the snapshot list.
+If neither are provided all snapshots will be returned.
 ## Attach {#methodopenstorageapiopenstoragevolumeattach}
 
 > **rpc** Attach([SdkVolumeAttachRequest](#sdkvolumeattachrequest))
@@ -1124,6 +1129,43 @@ in: body Required: true |
 | ----- | ---- | ----------- |
 | key | [ string](#string) | none |
 | value | [ SnapCreateResponse](#snapcreateresponse) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## LocateResponse {#locateresponse}
+Locate response woul be used to return a set of mounts
+and/or Container IDs and their mount paths
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| mounts | [map LocateResponse.MountsEntry](#locateresponsemountsentry) | Map of mounts <host>: /var/lib/osd/<volumemount> |
+| dockerids | [map LocateResponse.DockeridsEntry](#locateresponsedockeridsentry) | Map of docker id's and their mounts <containerid>: /var/www |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## LocateResponse.DockeridsEntry {#locateresponsedockeridsentry}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [ string](#string) | none |
+| value | [ string](#string) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## LocateResponse.MountsEntry {#locateresponsemountsentry}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [ string](#string) | none |
+| value | [ string](#string) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -2389,8 +2431,8 @@ Defines a request to list the snaphots
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| volume_id | [ string](#string) | Get the snapshots for this volume id |
-| labels | [map SdkVolumeSnapshotEnumerateWithFiltersRequest.LabelsEntry](#sdkvolumesnapshotenumeratewithfiltersrequestlabelsentry) | Get snapshots that match these labels |
+| volume_id | [ string](#string) | (optional) Get the snapshots for this volume id |
+| labels | [map SdkVolumeSnapshotEnumerateWithFiltersRequest.LabelsEntry](#sdkvolumesnapshotenumeratewithfiltersrequestlabelsentry) | (optional) Get snapshots that match these labels |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3272,7 +3314,7 @@ client and server applications
 | ---- | ------ | ----------- |
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
-| Minor | 7 | SDK version minor value of this specification |
+| Minor | 8 | SDK version minor value of this specification |
 | Patch | 0 | SDK version patch value of this specification |
 
 

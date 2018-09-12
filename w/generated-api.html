@@ -362,6 +362,9 @@
 <li><a href="#groupsnapcreaterequestlabelsentry">GroupSnapCreateRequest.LabelsEntry</a></li>
 <li><a href="#groupsnapcreateresponse">GroupSnapCreateResponse</a></li>
 <li><a href="#groupsnapcreateresponsesnapshotsentry">GroupSnapCreateResponse.SnapshotsEntry</a></li>
+<li><a href="#locateresponse">LocateResponse</a></li>
+<li><a href="#locateresponsedockeridsentry">LocateResponse.DockeridsEntry</a></li>
+<li><a href="#locateresponsemountsentry">LocateResponse.MountsEntry</a></li>
 <li><a href="#objectstoreinfo">ObjectstoreInfo</a></li>
 <li><a href="#replicaset">ReplicaSet</a></li>
 <li><a href="#report">Report</a></li>
@@ -893,15 +896,17 @@ a snapshot, please use OpenStorageVolume.Clone().</p>
 <p><strong>rpc</strong> SnapshotEnumerate(<a href="#sdkvolumesnapshotenumeraterequest">SdkVolumeSnapshotEnumerateRequest</a>)
     <a href="#sdkvolumesnapshotenumerateresponse">SdkVolumeSnapshotEnumerateResponse</a></p>
 </blockquote>
-<p>SnapshotEnumerate returns a list of snapshots for a specific volume
-that match the labels provided if any.</p>
+<p>SnapshotEnumerate returns a list of snapshots for a specific volume</p>
 <h2 id="methodopenstorageapiopenstoragevolumesnapshotenumeratewithfilters">SnapshotEnumerateWithFilters </h2>
 <blockquote>
 <p><strong>rpc</strong> SnapshotEnumerateWithFilters(<a href="#sdkvolumesnapshotenumeratewithfiltersrequest">SdkVolumeSnapshotEnumerateWithFiltersRequest</a>)
     <a href="#sdkvolumesnapshotenumeratewithfiltersresponse">SdkVolumeSnapshotEnumerateWithFiltersResponse</a></p>
 </blockquote>
-<p>SnapshotEnumerate returns a list of snapshots for a specific volume
-that match the labels provided if any.</p>
+<p>SnapshotEnumerate returns a list of snapshots. 
+To filter all the snapshots for a specific volume which may no longer exist,
+specifiy a volume id.
+Labels can also be used to filter the snapshot list.
+If neither are provided all snapshots will be returned.</p>
 <h2 id="methodopenstorageapiopenstoragevolumeattach">Attach </h2>
 <blockquote>
 <p><strong>rpc</strong> Attach(<a href="#sdkvolumeattachrequest">SdkVolumeAttachRequest</a>)
@@ -1889,6 +1894,80 @@ swagger:response groupSnapCreateResponse</p>
 <tr>
 <td>value</td>
 <td><a href="#snapcreateresponse"> SnapCreateResponse</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="locateresponse">LocateResponse </h2>
+<p>Locate response woul be used to return a set of mounts
+and/or Container IDs and their mount paths</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mounts</td>
+<td><a href="#locateresponsemountsentry">map LocateResponse.MountsEntry</a></td>
+<td>Map of mounts <host>: /var/lib/osd/<volumemount></volumemount></host></td>
+</tr>
+<tr>
+<td>dockerids</td>
+<td><a href="#locateresponsedockeridsentry">map LocateResponse.DockeridsEntry</a></td>
+<td>Map of docker id&apos;s and their mounts <containerid>: /var/www</containerid></td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="locateresponsedockeridsentry">LocateResponse.DockeridsEntry </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="locateresponsemountsentry">LocateResponse.MountsEntry </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="#string"> string</a></td>
 <td>none</td>
 </tr>
 </tbody>
@@ -4254,12 +4333,12 @@ to update any labels on the volume.</p>
 <tr>
 <td>volume_id</td>
 <td><a href="#string"> string</a></td>
-<td>Get the snapshots for this volume id</td>
+<td>(optional) Get the snapshots for this volume id</td>
 </tr>
 <tr>
 <td>labels</td>
 <td><a href="#sdkvolumesnapshotenumeratewithfiltersrequestlabelsentry">map SdkVolumeSnapshotEnumerateWithFiltersRequest.LabelsEntry</a></td>
-<td>Get snapshots that match these labels</td>
+<td>(optional) Get snapshots that match these labels</td>
 </tr>
 </tbody>
 </table>
@@ -6463,7 +6542,7 @@ client and server applications</p>
 </tr>
 <tr>
 <td>Minor</td>
-<td>7</td>
+<td>8</td>
 <td>SDK version minor value of this specification</td>
 </tr>
 <tr>
@@ -6911,7 +6990,7 @@ client and server applications</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"gRPC Reference","level":"1.5.1","depth":2,"next":{"title":"REST Reference","level":"1.5.2","depth":2,"path":"rest-api.md","ref":"rest-api.md","articles":[]},"previous":{"title":"API Reference","level":"1.5","depth":1,"path":"reference.md","ref":"reference.md","articles":[{"title":"gRPC Reference","level":"1.5.1","depth":2,"path":"generated-api.md","ref":"generated-api.md","articles":[]},{"title":"REST Reference","level":"1.5.2","depth":2,"path":"rest-api.md","ref":"rest-api.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"generated-api.md","mtime":"2018-09-06T07:17:24.427Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-06T07:17:27.917Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"gRPC Reference","level":"1.5.1","depth":2,"next":{"title":"REST Reference","level":"1.5.2","depth":2,"path":"rest-api.md","ref":"rest-api.md","articles":[]},"previous":{"title":"API Reference","level":"1.5","depth":1,"path":"reference.md","ref":"reference.md","articles":[{"title":"gRPC Reference","level":"1.5.1","depth":2,"path":"generated-api.md","ref":"generated-api.md","articles":[]},{"title":"REST Reference","level":"1.5.2","depth":2,"path":"rest-api.md","ref":"rest-api.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"generated-api.md","mtime":"2018-09-12T05:28:06.530Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-12T05:28:11.143Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
