@@ -1375,15 +1375,27 @@ Empty response
 
 
 ## SdkCloudBackupEnumerateRequest {#sdkcloudbackupenumeraterequest}
-Defines a request to list the backups stored by a cloud provider
+Defines a request to list the backups stored by a cloud provider.
+The following combinations can be used to get cloud backup information:
+
+* For a specific volume in current cluster: Set `src_volume_id` to your desired volume id
+and do not provide `cluster_id` and `all`.
+* For a specific volume in a specific cluster: Set `src_volume_id` to your desired volume id
+and specify `cluster_id`.
+* For a specific volume in all clusters: Set `src_volume_id` to your desired volume id
+and set `all` to true, do not provide `cluster_id`.
+* For all volumes in current cluster: do not provide `cluster_id`, `volume_id` and `all`.
+* For all volumes in a specific cluster: Set `cluster_id` to your desired cluster id
+and do not provide `volume_id` and `all`.
+* For all volumes in all clusters: Set `all` to true do not provide `volume_id` and `cluster_id`.
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| src_volume_id | [ string](#string) | Optional source id of the volume for the request |
-| cluster_id | [ string](#string) | Cluster id is an optional parameter which defines the cluster |
+| src_volume_id | [ string](#string) | (optional) Source id of the volume for the request. |
+| cluster_id | [ string](#string) | (optional) Cluster id specifies the cluster for the request |
 | credential_id | [ string](#string) | Credential id is the credential for cloud to be used for the request |
-| all | [ bool](#bool) | All if set to true, backups for all clusters in the cloud are processed |
+| all | [ bool](#bool) | (optional) All indicates if the request should show cloud backups for all clusters or the current cluster. |
  <!-- end Fields -->
  <!-- end HasFields -->
 

@@ -2398,7 +2398,20 @@ for a specified volume</p>
 <p>Empty response</p>
  <!-- end HasFields -->
 <h2 id="sdkcloudbackupenumeraterequest">SdkCloudBackupEnumerateRequest </h2>
-<p>Defines a request to list the backups stored by a cloud provider</p>
+<p>Defines a request to list the backups stored by a cloud provider.
+The following combinations can be used to get cloud backup information:</p>
+<ul>
+<li>For a specific volume in current cluster: Set <code>src_volume_id</code> to your desired volume id
+and do not provide <code>cluster_id</code> and <code>all</code>.</li>
+<li>For a specific volume in a specific cluster: Set <code>src_volume_id</code> to your desired volume id
+and specify <code>cluster_id</code>.</li>
+<li>For a specific volume in all clusters: Set <code>src_volume_id</code> to your desired volume id
+and set <code>all</code> to true, do not provide <code>cluster_id</code>.</li>
+<li>For all volumes in current cluster: do not provide <code>cluster_id</code>, <code>volume_id</code> and <code>all</code>.</li>
+<li>For all volumes in a specific cluster: Set <code>cluster_id</code> to your desired cluster id
+and do not provide <code>volume_id</code> and <code>all</code>.</li>
+<li>For all volumes in all clusters: Set <code>all</code> to true do not provide <code>volume_id</code> and <code>cluster_id</code>.</li>
+</ul>
 <table>
 <thead>
 <tr>
@@ -2411,12 +2424,12 @@ for a specified volume</p>
 <tr>
 <td>src_volume_id</td>
 <td><a href="#string"> string</a></td>
-<td>Optional source id of the volume for the request</td>
+<td>(optional) Source id of the volume for the request.</td>
 </tr>
 <tr>
 <td>cluster_id</td>
 <td><a href="#string"> string</a></td>
-<td>Cluster id is an optional parameter which defines the cluster</td>
+<td>(optional) Cluster id specifies the cluster for the request</td>
 </tr>
 <tr>
 <td>credential_id</td>
@@ -2426,7 +2439,7 @@ for a specified volume</p>
 <tr>
 <td>all</td>
 <td><a href="#bool"> bool</a></td>
-<td>All if set to true, backups for all clusters in the cloud are processed</td>
+<td>(optional) All indicates if the request should show cloud backups for all clusters or the current cluster.</td>
 </tr>
 </tbody>
 </table>
@@ -6990,7 +7003,7 @@ client and server applications</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"gRPC Reference","level":"1.5.1","depth":2,"next":{"title":"REST Reference","level":"1.5.2","depth":2,"path":"rest-api.md","ref":"rest-api.md","articles":[]},"previous":{"title":"API Reference","level":"1.5","depth":1,"path":"reference.md","ref":"reference.md","articles":[{"title":"gRPC Reference","level":"1.5.1","depth":2,"path":"generated-api.md","ref":"generated-api.md","articles":[]},{"title":"REST Reference","level":"1.5.2","depth":2,"path":"rest-api.md","ref":"rest-api.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"generated-api.md","mtime":"2018-09-12T05:28:06.530Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-12T05:28:11.143Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"gRPC Reference","level":"1.5.1","depth":2,"next":{"title":"REST Reference","level":"1.5.2","depth":2,"path":"rest-api.md","ref":"rest-api.md","articles":[]},"previous":{"title":"API Reference","level":"1.5","depth":1,"path":"reference.md","ref":"reference.md","articles":[{"title":"gRPC Reference","level":"1.5.1","depth":2,"path":"generated-api.md","ref":"generated-api.md","articles":[]},{"title":"REST Reference","level":"1.5.2","depth":2,"path":"rest-api.md","ref":"rest-api.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"generated-api.md","mtime":"2018-09-13T11:28:47.056Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-13T11:30:23.105Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
