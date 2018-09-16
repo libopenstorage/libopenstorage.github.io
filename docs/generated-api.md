@@ -8,6 +8,7 @@
     - [OpenStorageCluster](#serviceopenstorageapiopenstoragecluster)
     - [OpenStorageCredentials](#serviceopenstorageapiopenstoragecredentials)
     - [OpenStorageIdentity](#serviceopenstorageapiopenstorageidentity)
+    - [OpenStorageMountAttach](#serviceopenstorageapiopenstoragemountattach)
     - [OpenStorageNode](#serviceopenstorageapiopenstoragenode)
     - [OpenStorageObjectstore](#serviceopenstorageapiopenstorageobjectstore)
     - [OpenStorageSchedulePolicy](#serviceopenstorageapiopenstorageschedulepolicy)
@@ -145,7 +146,7 @@
     - [SdkServiceCapability.OpenStorageService](#sdkservicecapabilityopenstorageservice)
     - [SdkVersion](#sdkversion)
     - [SdkVolumeAttachRequest](#sdkvolumeattachrequest)
-    - [SdkVolumeAttachRequest.OptionsEntry](#sdkvolumeattachrequestoptionsentry)
+    - [SdkVolumeAttachRequest.Options](#sdkvolumeattachrequestoptions)
     - [SdkVolumeAttachResponse](#sdkvolumeattachresponse)
     - [SdkVolumeCloneRequest](#sdkvolumeclonerequest)
     - [SdkVolumeCloneResponse](#sdkvolumecloneresponse)
@@ -154,6 +155,7 @@
     - [SdkVolumeDeleteRequest](#sdkvolumedeleterequest)
     - [SdkVolumeDeleteResponse](#sdkvolumedeleteresponse)
     - [SdkVolumeDetachRequest](#sdkvolumedetachrequest)
+    - [SdkVolumeDetachRequest.Options](#sdkvolumedetachrequestoptions)
     - [SdkVolumeDetachResponse](#sdkvolumedetachresponse)
     - [SdkVolumeEnumerateRequest](#sdkvolumeenumeraterequest)
     - [SdkVolumeEnumerateResponse](#sdkvolumeenumerateresponse)
@@ -162,7 +164,6 @@
     - [SdkVolumeInspectRequest](#sdkvolumeinspectrequest)
     - [SdkVolumeInspectResponse](#sdkvolumeinspectresponse)
     - [SdkVolumeMountRequest](#sdkvolumemountrequest)
-    - [SdkVolumeMountRequest.OptionsEntry](#sdkvolumemountrequestoptionsentry)
     - [SdkVolumeMountResponse](#sdkvolumemountresponse)
     - [SdkVolumeSnapshotCreateRequest](#sdkvolumesnapshotcreaterequest)
     - [SdkVolumeSnapshotCreateRequest.LabelsEntry](#sdkvolumesnapshotcreaterequestlabelsentry)
@@ -177,7 +178,7 @@
     - [SdkVolumeStatsRequest](#sdkvolumestatsrequest)
     - [SdkVolumeStatsResponse](#sdkvolumestatsresponse)
     - [SdkVolumeUnmountRequest](#sdkvolumeunmountrequest)
-    - [SdkVolumeUnmountRequest.OptionsEntry](#sdkvolumeunmountrequestoptionsentry)
+    - [SdkVolumeUnmountRequest.Options](#sdkvolumeunmountrequestoptions)
     - [SdkVolumeUnmountResponse](#sdkvolumeunmountresponse)
     - [SdkVolumeUpdateRequest](#sdkvolumeupdaterequest)
     - [SdkVolumeUpdateResponse](#sdkvolumeupdateresponse)
@@ -436,6 +437,39 @@ different versions.
 Version returns version information about the system.
  <!-- end methods -->
 
+# OpenStorageMountAttach {#serviceopenstorageapiopenstoragemountattach}
+OpenStorageMountAttach is a service used to manage node access to a volume.
+Note, these APIs are here for testing or diagnostics purposes only. In normal
+operations, the Container Orchestration (CO) system is managing all mount
+and attach calls through the CSI interface. The normal usage is once volumes
+are created, to let the CO manage the node access functions to the volume.
+
+## Attach {#methodopenstorageapiopenstoragemountattachattach}
+
+> **rpc** Attach([SdkVolumeAttachRequest](#sdkvolumeattachrequest))
+    [SdkVolumeAttachResponse](#sdkvolumeattachresponse)
+
+Attach attaches device to the host that the client is communicating with.
+## Detach {#methodopenstorageapiopenstoragemountattachdetach}
+
+> **rpc** Detach([SdkVolumeDetachRequest](#sdkvolumedetachrequest))
+    [SdkVolumeDetachResponse](#sdkvolumedetachresponse)
+
+Detaches a the volume from the host
+## Mount {#methodopenstorageapiopenstoragemountattachmount}
+
+> **rpc** Mount([SdkVolumeMountRequest](#sdkvolumemountrequest))
+    [SdkVolumeMountResponse](#sdkvolumemountresponse)
+
+Mount mounts an attached volume in the host that the client is communicating with
+## Unmount {#methodopenstorageapiopenstoragemountattachunmount}
+
+> **rpc** Unmount([SdkVolumeUnmountRequest](#sdkvolumeunmountrequest))
+    [SdkVolumeUnmountResponse](#sdkvolumeunmountresponse)
+
+Unmount unmounts a mounted volume in the host that the client is communicating with
+ <!-- end methods -->
+
 # OpenStorageNode {#serviceopenstorageapiopenstoragenode}
 OpenStorageNode is a service used to manage nodes in the cluster
 
@@ -619,41 +653,11 @@ SnapshotEnumerate returns a list of snapshots for a specific volume
 > **rpc** SnapshotEnumerateWithFilters([SdkVolumeSnapshotEnumerateWithFiltersRequest](#sdkvolumesnapshotenumeratewithfiltersrequest))
     [SdkVolumeSnapshotEnumerateWithFiltersResponse](#sdkvolumesnapshotenumeratewithfiltersresponse)
 
-SnapshotEnumerate returns a list of snapshots. 
+SnapshotEnumerate returns a list of snapshots.
 To filter all the snapshots for a specific volume which may no longer exist,
 specifiy a volume id.
 Labels can also be used to filter the snapshot list.
 If neither are provided all snapshots will be returned.
-## Attach {#methodopenstorageapiopenstoragevolumeattach}
-
-> **rpc** Attach([SdkVolumeAttachRequest](#sdkvolumeattachrequest))
-    [SdkVolumeAttachResponse](#sdkvolumeattachresponse)
-
-Attach attaches device to the host that the client is communicating with.
-NOTE: Please see [#381](https://github.com/libopenstorage/openstorage/issues/381) for more
-information about a new feature to allow attachment to any node.
-## Detach {#methodopenstorageapiopenstoragevolumedetach}
-
-> **rpc** Detach([SdkVolumeDetachRequest](#sdkvolumedetachrequest))
-    [SdkVolumeDetachResponse](#sdkvolumedetachresponse)
-
-Detaches a the volume from the host
-## Mount {#methodopenstorageapiopenstoragevolumemount}
-
-> **rpc** Mount([SdkVolumeMountRequest](#sdkvolumemountrequest))
-    [SdkVolumeMountResponse](#sdkvolumemountresponse)
-
-Mount mounts an attached volume in the host that the client is communicating with
-NOTE: Please see [#381](https://github.com/libopenstorage/openstorage/issues/381) for more
-information about a new feature to allow attachment to any node.
-## Unmount {#methodopenstorageapiopenstoragevolumeunmount}
-
-> **rpc** Unmount([SdkVolumeUnmountRequest](#sdkvolumeunmountrequest))
-    [SdkVolumeUnmountResponse](#sdkvolumeunmountresponse)
-
-Unmount unmounts a mounted volume in the host that the client is communicating with
-NOTE: Please see [#381](https://github.com/libopenstorage/openstorage/issues/381) for more
-information about a new feature to allow attachment to any node.
  <!-- end methods -->
  <!-- end services -->
 
@@ -2178,19 +2182,20 @@ Defines a request to attach a volume to the node receiving this request
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | volume_id | [ string](#string) | Id of volume |
-| options | [map SdkVolumeAttachRequest.OptionsEntry](#sdkvolumeattachrequestoptionsentry) | Options for attaching volume, right now only passphrase options is supported |
+| options | [ SdkVolumeAttachRequest.Options](#sdkvolumeattachrequestoptions) | Options to attach device |
  <!-- end Fields -->
  <!-- end HasFields -->
 
 
-## SdkVolumeAttachRequest.OptionsEntry {#sdkvolumeattachrequestoptionsentry}
-
+## SdkVolumeAttachRequest.Options {#sdkvolumeattachrequestoptions}
+Options to attach device
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| key | [ string](#string) | none |
-| value | [ string](#string) | none |
+| secret_name | [ string](#string) | Indicates the name of the secret stored in a secret store In case of Hashicorp's Vault, it will be the key from the key-value pair stored in its kv backend. In case of Kubernetes secret, it is the name of the secret object itself |
+| secret_key | [ string](#string) | In case of Kubernetes, this will be the key stored in the Kubernetes secret |
+| secret_context | [ string](#string) | It indicates the additional context which could be used to retrieve the secret. In case of Kubernetes, this is the namespace in which the secret is created. |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -2277,6 +2282,19 @@ Defines a request to detach a volume
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | volume_id | [ string](#string) | Id of the volume |
+| options | [ SdkVolumeDetachRequest.Options](#sdkvolumedetachrequestoptions) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVolumeDetachRequest.Options {#sdkvolumedetachrequestoptions}
+Options to detach device
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| force | [ bool](#bool) | Forcefully detach device from the kernel |
+| unmount_before_detach | [ bool](#bool) | Unmount the volume before detaching |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -2356,19 +2374,6 @@ Defines a request to mount a volume to the node receiving this request
 | ----- | ---- | ----------- |
 | volume_id | [ string](#string) | Id of the volume |
 | mount_path | [ string](#string) | Mount path for mounting the volume. |
-| options | [map SdkVolumeMountRequest.OptionsEntry](#sdkvolumemountrequestoptionsentry) | Additional options |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkVolumeMountRequest.OptionsEntry {#sdkvolumemountrequestoptionsentry}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| key | [ string](#string) | none |
-| value | [ string](#string) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -2521,19 +2526,19 @@ Defines a request to unmount a volume on the node receiving this request
 | ----- | ---- | ----------- |
 | volume_id | [ string](#string) | Id of volume |
 | mount_path | [ string](#string) | MountPath for device |
-| options | [map SdkVolumeUnmountRequest.OptionsEntry](#sdkvolumeunmountrequestoptionsentry) | Options to unmount device |
+| options | [ SdkVolumeUnmountRequest.Options](#sdkvolumeunmountrequestoptions) | Options to unmount device |
  <!-- end Fields -->
  <!-- end HasFields -->
 
 
-## SdkVolumeUnmountRequest.OptionsEntry {#sdkvolumeunmountrequestoptionsentry}
-
+## SdkVolumeUnmountRequest.Options {#sdkvolumeunmountrequestoptions}
+Options to unmount device
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| key | [ string](#string) | none |
-| value | [ string](#string) | none |
+| delete_mount_path | [ bool](#bool) | Delete the mount path on the node after unmounting |
+| no_delay_before_deleting_mount_path | [ bool](#bool) | Do not wait for a delay before deleting path. Normally a storage driver may delay before deleting the mount path, which may be necessary to reduce the risk of race conditions. This choice will remove that delay. This value is only usable when `delete_mount_path` is set. |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3326,7 +3331,7 @@ client and server applications
 | ---- | ------ | ----------- |
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
-| Minor | 8 | SDK version minor value of this specification |
+| Minor | 9 | SDK version minor value of this specification |
 | Patch | 0 | SDK version patch value of this specification |
 
 

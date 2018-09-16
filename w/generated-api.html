@@ -318,6 +318,7 @@
 <li><a href="#serviceopenstorageapiopenstoragecluster">OpenStorageCluster</a></li>
 <li><a href="#serviceopenstorageapiopenstoragecredentials">OpenStorageCredentials</a></li>
 <li><a href="#serviceopenstorageapiopenstorageidentity">OpenStorageIdentity</a></li>
+<li><a href="#serviceopenstorageapiopenstoragemountattach">OpenStorageMountAttach</a></li>
 <li><a href="#serviceopenstorageapiopenstoragenode">OpenStorageNode</a></li>
 <li><a href="#serviceopenstorageapiopenstorageobjectstore">OpenStorageObjectstore</a></li>
 <li><a href="#serviceopenstorageapiopenstorageschedulepolicy">OpenStorageSchedulePolicy</a></li>
@@ -456,7 +457,7 @@
 <li><a href="#sdkservicecapabilityopenstorageservice">SdkServiceCapability.OpenStorageService</a></li>
 <li><a href="#sdkversion">SdkVersion</a></li>
 <li><a href="#sdkvolumeattachrequest">SdkVolumeAttachRequest</a></li>
-<li><a href="#sdkvolumeattachrequestoptionsentry">SdkVolumeAttachRequest.OptionsEntry</a></li>
+<li><a href="#sdkvolumeattachrequestoptions">SdkVolumeAttachRequest.Options</a></li>
 <li><a href="#sdkvolumeattachresponse">SdkVolumeAttachResponse</a></li>
 <li><a href="#sdkvolumeclonerequest">SdkVolumeCloneRequest</a></li>
 <li><a href="#sdkvolumecloneresponse">SdkVolumeCloneResponse</a></li>
@@ -465,6 +466,7 @@
 <li><a href="#sdkvolumedeleterequest">SdkVolumeDeleteRequest</a></li>
 <li><a href="#sdkvolumedeleteresponse">SdkVolumeDeleteResponse</a></li>
 <li><a href="#sdkvolumedetachrequest">SdkVolumeDetachRequest</a></li>
+<li><a href="#sdkvolumedetachrequestoptions">SdkVolumeDetachRequest.Options</a></li>
 <li><a href="#sdkvolumedetachresponse">SdkVolumeDetachResponse</a></li>
 <li><a href="#sdkvolumeenumeraterequest">SdkVolumeEnumerateRequest</a></li>
 <li><a href="#sdkvolumeenumerateresponse">SdkVolumeEnumerateResponse</a></li>
@@ -473,7 +475,6 @@
 <li><a href="#sdkvolumeinspectrequest">SdkVolumeInspectRequest</a></li>
 <li><a href="#sdkvolumeinspectresponse">SdkVolumeInspectResponse</a></li>
 <li><a href="#sdkvolumemountrequest">SdkVolumeMountRequest</a></li>
-<li><a href="#sdkvolumemountrequestoptionsentry">SdkVolumeMountRequest.OptionsEntry</a></li>
 <li><a href="#sdkvolumemountresponse">SdkVolumeMountResponse</a></li>
 <li><a href="#sdkvolumesnapshotcreaterequest">SdkVolumeSnapshotCreateRequest</a></li>
 <li><a href="#sdkvolumesnapshotcreaterequestlabelsentry">SdkVolumeSnapshotCreateRequest.LabelsEntry</a></li>
@@ -488,7 +489,7 @@
 <li><a href="#sdkvolumestatsrequest">SdkVolumeStatsRequest</a></li>
 <li><a href="#sdkvolumestatsresponse">SdkVolumeStatsResponse</a></li>
 <li><a href="#sdkvolumeunmountrequest">SdkVolumeUnmountRequest</a></li>
-<li><a href="#sdkvolumeunmountrequestoptionsentry">SdkVolumeUnmountRequest.OptionsEntry</a></li>
+<li><a href="#sdkvolumeunmountrequestoptions">SdkVolumeUnmountRequest.Options</a></li>
 <li><a href="#sdkvolumeunmountresponse">SdkVolumeUnmountResponse</a></li>
 <li><a href="#sdkvolumeupdaterequest">SdkVolumeUpdateRequest</a></li>
 <li><a href="#sdkvolumeupdateresponse">SdkVolumeUpdateResponse</a></li>
@@ -731,6 +732,37 @@ different versions.</p>
 </blockquote>
 <p>Version returns version information about the system.
  <!-- end methods --></p>
+<h1 id="serviceopenstorageapiopenstoragemountattach">OpenStorageMountAttach </h1>
+<p>OpenStorageMountAttach is a service used to manage node access to a volume.
+Note, these APIs are here for testing or diagnostics purposes only. In normal
+operations, the Container Orchestration (CO) system is managing all mount
+and attach calls through the CSI interface. The normal usage is once volumes
+are created, to let the CO manage the node access functions to the volume.</p>
+<h2 id="methodopenstorageapiopenstoragemountattachattach">Attach </h2>
+<blockquote>
+<p><strong>rpc</strong> Attach(<a href="#sdkvolumeattachrequest">SdkVolumeAttachRequest</a>)
+    <a href="#sdkvolumeattachresponse">SdkVolumeAttachResponse</a></p>
+</blockquote>
+<p>Attach attaches device to the host that the client is communicating with.</p>
+<h2 id="methodopenstorageapiopenstoragemountattachdetach">Detach </h2>
+<blockquote>
+<p><strong>rpc</strong> Detach(<a href="#sdkvolumedetachrequest">SdkVolumeDetachRequest</a>)
+    <a href="#sdkvolumedetachresponse">SdkVolumeDetachResponse</a></p>
+</blockquote>
+<p>Detaches a the volume from the host</p>
+<h2 id="methodopenstorageapiopenstoragemountattachmount">Mount </h2>
+<blockquote>
+<p><strong>rpc</strong> Mount(<a href="#sdkvolumemountrequest">SdkVolumeMountRequest</a>)
+    <a href="#sdkvolumemountresponse">SdkVolumeMountResponse</a></p>
+</blockquote>
+<p>Mount mounts an attached volume in the host that the client is communicating with</p>
+<h2 id="methodopenstorageapiopenstoragemountattachunmount">Unmount </h2>
+<blockquote>
+<p><strong>rpc</strong> Unmount(<a href="#sdkvolumeunmountrequest">SdkVolumeUnmountRequest</a>)
+    <a href="#sdkvolumeunmountresponse">SdkVolumeUnmountResponse</a></p>
+</blockquote>
+<p>Unmount unmounts a mounted volume in the host that the client is communicating with
+ <!-- end methods --></p>
 <h1 id="serviceopenstorageapiopenstoragenode">OpenStorageNode </h1>
 <p>OpenStorageNode is a service used to manage nodes in the cluster</p>
 <h2 id="methodopenstorageapiopenstoragenodeinspect">Inspect </h2>
@@ -902,41 +934,11 @@ a snapshot, please use OpenStorageVolume.Clone().</p>
 <p><strong>rpc</strong> SnapshotEnumerateWithFilters(<a href="#sdkvolumesnapshotenumeratewithfiltersrequest">SdkVolumeSnapshotEnumerateWithFiltersRequest</a>)
     <a href="#sdkvolumesnapshotenumeratewithfiltersresponse">SdkVolumeSnapshotEnumerateWithFiltersResponse</a></p>
 </blockquote>
-<p>SnapshotEnumerate returns a list of snapshots. 
+<p>SnapshotEnumerate returns a list of snapshots.
 To filter all the snapshots for a specific volume which may no longer exist,
 specifiy a volume id.
 Labels can also be used to filter the snapshot list.
-If neither are provided all snapshots will be returned.</p>
-<h2 id="methodopenstorageapiopenstoragevolumeattach">Attach </h2>
-<blockquote>
-<p><strong>rpc</strong> Attach(<a href="#sdkvolumeattachrequest">SdkVolumeAttachRequest</a>)
-    <a href="#sdkvolumeattachresponse">SdkVolumeAttachResponse</a></p>
-</blockquote>
-<p>Attach attaches device to the host that the client is communicating with.
-NOTE: Please see <a href="https://github.com/libopenstorage/openstorage/issues/381" target="_blank">#381</a> for more
-information about a new feature to allow attachment to any node.</p>
-<h2 id="methodopenstorageapiopenstoragevolumedetach">Detach </h2>
-<blockquote>
-<p><strong>rpc</strong> Detach(<a href="#sdkvolumedetachrequest">SdkVolumeDetachRequest</a>)
-    <a href="#sdkvolumedetachresponse">SdkVolumeDetachResponse</a></p>
-</blockquote>
-<p>Detaches a the volume from the host</p>
-<h2 id="methodopenstorageapiopenstoragevolumemount">Mount </h2>
-<blockquote>
-<p><strong>rpc</strong> Mount(<a href="#sdkvolumemountrequest">SdkVolumeMountRequest</a>)
-    <a href="#sdkvolumemountresponse">SdkVolumeMountResponse</a></p>
-</blockquote>
-<p>Mount mounts an attached volume in the host that the client is communicating with
-NOTE: Please see <a href="https://github.com/libopenstorage/openstorage/issues/381" target="_blank">#381</a> for more
-information about a new feature to allow attachment to any node.</p>
-<h2 id="methodopenstorageapiopenstoragevolumeunmount">Unmount </h2>
-<blockquote>
-<p><strong>rpc</strong> Unmount(<a href="#sdkvolumeunmountrequest">SdkVolumeUnmountRequest</a>)
-    <a href="#sdkvolumeunmountresponse">SdkVolumeUnmountResponse</a></p>
-</blockquote>
-<p>Unmount unmounts a mounted volume in the host that the client is communicating with
-NOTE: Please see <a href="https://github.com/libopenstorage/openstorage/issues/381" target="_blank">#381</a> for more
-information about a new feature to allow attachment to any node.
+If neither are provided all snapshots will be returned.
  <!-- end methods -->
  <!-- end services --></p>
 <h1 id="messages">Messages</h1>
@@ -3870,14 +3872,15 @@ version run by an SDK server.</p>
 </tr>
 <tr>
 <td>options</td>
-<td><a href="#sdkvolumeattachrequestoptionsentry">map SdkVolumeAttachRequest.OptionsEntry</a></td>
-<td>Options for attaching volume, right now only passphrase options is supported</td>
+<td><a href="#sdkvolumeattachrequestoptions"> SdkVolumeAttachRequest.Options</a></td>
+<td>Options to attach device</td>
 </tr>
 </tbody>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
-<h2 id="sdkvolumeattachrequestoptionsentry">SdkVolumeAttachRequest.OptionsEntry </h2>
+<h2 id="sdkvolumeattachrequestoptions">SdkVolumeAttachRequest.Options </h2>
+<p>Options to attach device</p>
 <table>
 <thead>
 <tr>
@@ -3888,14 +3891,19 @@ version run by an SDK server.</p>
 </thead>
 <tbody>
 <tr>
-<td>key</td>
+<td>secret_name</td>
 <td><a href="#string"> string</a></td>
-<td>none</td>
+<td>Indicates the name of the secret stored in a secret store In case of Hashicorp&apos;s Vault, it will be the key from the key-value pair stored in its kv backend. In case of Kubernetes secret, it is the name of the secret object itself</td>
 </tr>
 <tr>
-<td>value</td>
+<td>secret_key</td>
 <td><a href="#string"> string</a></td>
-<td>none</td>
+<td>In case of Kubernetes, this will be the key stored in the Kubernetes secret</td>
+</tr>
+<tr>
+<td>secret_context</td>
+<td><a href="#string"> string</a></td>
+<td>It indicates the additional context which could be used to retrieve the secret. In case of Kubernetes, this is the namespace in which the secret is created.</td>
 </tr>
 </tbody>
 </table>
@@ -4051,6 +4059,36 @@ to update any labels on the volume.</p>
 <td><a href="#string"> string</a></td>
 <td>Id of the volume</td>
 </tr>
+<tr>
+<td>options</td>
+<td><a href="#sdkvolumedetachrequestoptions"> SdkVolumeDetachRequest.Options</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkvolumedetachrequestoptions">SdkVolumeDetachRequest.Options </h2>
+<p>Options to detach device</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>force</td>
+<td><a href="#bool"> bool</a></td>
+<td>Forcefully detach device from the kernel</td>
+</tr>
+<tr>
+<td>unmount_before_detach</td>
+<td><a href="#bool"> bool</a></td>
+<td>Unmount the volume before detaching</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -4181,35 +4219,6 @@ to update any labels on the volume.</p>
 <td>mount_path</td>
 <td><a href="#string"> string</a></td>
 <td>Mount path for mounting the volume.</td>
-</tr>
-<tr>
-<td>options</td>
-<td><a href="#sdkvolumemountrequestoptionsentry">map SdkVolumeMountRequest.OptionsEntry</a></td>
-<td>Additional options</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkvolumemountrequestoptionsentry">SdkVolumeMountRequest.OptionsEntry </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>key</td>
-<td><a href="#string"> string</a></td>
-<td>none</td>
-</tr>
-<tr>
-<td>value</td>
-<td><a href="#string"> string</a></td>
-<td>none</td>
 </tr>
 </tbody>
 </table>
@@ -4497,14 +4506,15 @@ to update any labels on the volume.</p>
 </tr>
 <tr>
 <td>options</td>
-<td><a href="#sdkvolumeunmountrequestoptionsentry">map SdkVolumeUnmountRequest.OptionsEntry</a></td>
+<td><a href="#sdkvolumeunmountrequestoptions"> SdkVolumeUnmountRequest.Options</a></td>
 <td>Options to unmount device</td>
 </tr>
 </tbody>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
-<h2 id="sdkvolumeunmountrequestoptionsentry">SdkVolumeUnmountRequest.OptionsEntry </h2>
+<h2 id="sdkvolumeunmountrequestoptions">SdkVolumeUnmountRequest.Options </h2>
+<p>Options to unmount device</p>
 <table>
 <thead>
 <tr>
@@ -4515,14 +4525,14 @@ to update any labels on the volume.</p>
 </thead>
 <tbody>
 <tr>
-<td>key</td>
-<td><a href="#string"> string</a></td>
-<td>none</td>
+<td>delete_mount_path</td>
+<td><a href="#bool"> bool</a></td>
+<td>Delete the mount path on the node after unmounting</td>
 </tr>
 <tr>
-<td>value</td>
-<td><a href="#string"> string</a></td>
-<td>none</td>
+<td>no_delay_before_deleting_mount_path</td>
+<td><a href="#bool"> bool</a></td>
+<td>Do not wait for a delay before deleting path. Normally a storage driver may delay before deleting the mount path, which may be necessary to reduce the risk of race conditions. This choice will remove that delay. This value is only usable when <code>delete_mount_path</code> is set.</td>
 </tr>
 </tbody>
 </table>
@@ -6555,7 +6565,7 @@ client and server applications</p>
 </tr>
 <tr>
 <td>Minor</td>
-<td>8</td>
+<td>9</td>
 <td>SDK version minor value of this specification</td>
 </tr>
 <tr>
@@ -7003,7 +7013,7 @@ client and server applications</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"gRPC Reference","level":"1.5.1","depth":2,"next":{"title":"REST Reference","level":"1.5.2","depth":2,"path":"rest-api.md","ref":"rest-api.md","articles":[]},"previous":{"title":"API Reference","level":"1.5","depth":1,"path":"reference.md","ref":"reference.md","articles":[{"title":"gRPC Reference","level":"1.5.1","depth":2,"path":"generated-api.md","ref":"generated-api.md","articles":[]},{"title":"REST Reference","level":"1.5.2","depth":2,"path":"rest-api.md","ref":"rest-api.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"generated-api.md","mtime":"2018-09-13T11:28:47.056Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-13T11:30:23.105Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"gRPC Reference","level":"1.5.1","depth":2,"next":{"title":"REST Reference","level":"1.5.2","depth":2,"path":"rest-api.md","ref":"rest-api.md","articles":[]},"previous":{"title":"API Reference","level":"1.5","depth":1,"path":"reference.md","ref":"reference.md","articles":[{"title":"gRPC Reference","level":"1.5.1","depth":2,"path":"generated-api.md","ref":"generated-api.md","articles":[]},{"title":"REST Reference","level":"1.5.2","depth":2,"path":"rest-api.md","ref":"rest-api.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"generated-api.md","mtime":"2018-09-16T00:52:36.423Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T00:52:43.313Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

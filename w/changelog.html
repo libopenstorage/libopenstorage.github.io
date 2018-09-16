@@ -314,6 +314,14 @@
 use the SDK version numbers.</p>
 </blockquote>
 <h2 id="releases">Releases</h2>
+<h3 id="v090---tech-preview-9182018">v0.9.0 - Tech Preview (9/18/2018)</h3>
+<p>NOTE: This release has breaking chages for the Mount/Attach/Detach/Unmount calls</p>
+<ul>
+<li>New service called OpenStorageMountAttach has been created and documented to
+hold the mount/attach/detach/unmount calls.</li>
+<li>Mount/Attach/Detach/Unmount calls have been moved from the OpenStorageVolume
+service to the OpenStorageMountAttach service.</li>
+</ul>
 <h3 id="v080---tech-preview-9112018">v0.8.0 - Tech Preview (9/11/2018)</h3>
 <ul>
 <li>SdkVolumeSnapshotEnumerateWithFilters all attributes are now optional. <a href="https://github.com/libopenstorage/openstorage/issues/609" target="_blank">#609</a></li>
@@ -393,7 +401,7 @@ use the SDK version numbers.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Changelog","level":"1.6","depth":1,"previous":{"title":"REST Reference","level":"1.5.2","depth":2,"path":"rest-api.md","ref":"rest-api.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"changelog.md","mtime":"2018-09-13T11:28:46.762Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-13T11:30:23.105Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Changelog","level":"1.6","depth":1,"previous":{"title":"REST Reference","level":"1.5.2","depth":2,"path":"rest-api.md","ref":"rest-api.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"changelog.md","mtime":"2018-09-16T00:52:36.091Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-16T00:52:43.313Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
