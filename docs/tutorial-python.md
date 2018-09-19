@@ -31,6 +31,15 @@ With the [`mock-sdk-server`](tutorial.html#setting-up-the-mock-sdk-server)
 running, the following steps will provide an introduction to programming
 with the OpenStorage SDK.
 
+## Import dependencies
+For most of the examples below, you will need the following `import`'s.
+
+```python
+import grpc
+from openstorage import api_pb2
+from openstorage import api_pb2_grpc
+```
+
 ## Creating a connection
 To use any of the gRPC functions, you must first create a connection with
 the OpenStorage SDK server:
