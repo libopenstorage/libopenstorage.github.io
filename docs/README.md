@@ -1,8 +1,8 @@
-# OpenStorage API
+# OpenStorage SDK
 
 
 ## Introduction
-Welcome to the _OpenStorage API_ documentation. Here you will find the
+Welcome to the _OpenStorage SDK_ documentation. Here you will find the
 API functions, examples, and references to multiple client libraries which can
 communicate with an OpenStorage server.
 
