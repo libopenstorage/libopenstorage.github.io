@@ -4,6 +4,7 @@
 
 
 - Services
+    - [OpenStorageAlerts](#serviceopenstorageapiopenstoragealerts)
     - [OpenStorageCloudBackup](#serviceopenstorageapiopenstoragecloudbackup)
     - [OpenStorageCluster](#serviceopenstorageapiopenstoragecluster)
     - [OpenStorageCredentials](#serviceopenstorageapiopenstoragecredentials)
@@ -60,6 +61,15 @@
     - [Report](#report)
     - [RuntimeStateMap](#runtimestatemap)
     - [RuntimeStateMap.RuntimeStateEntry](#runtimestatemapruntimestateentry)
+    - [SdkAlertsAlertTypeQuery](#sdkalertsalerttypequery)
+    - [SdkAlertsCountSpan](#sdkalertscountspan)
+    - [SdkAlertsEnumerateRequest](#sdkalertsenumeraterequest)
+    - [SdkAlertsEnumerateResponse](#sdkalertsenumerateresponse)
+    - [SdkAlertsOption](#sdkalertsoption)
+    - [SdkAlertsQuery](#sdkalertsquery)
+    - [SdkAlertsResourceIdQuery](#sdkalertsresourceidquery)
+    - [SdkAlertsResourceTypeQuery](#sdkalertsresourcetypequery)
+    - [SdkAlertsTimeSpan](#sdkalertstimespan)
     - [SdkAwsCredentialRequest](#sdkawscredentialrequest)
     - [SdkAwsCredentialResponse](#sdkawscredentialresponse)
     - [SdkAzureCredentialRequest](#sdkazurecredentialrequest)
@@ -248,6 +258,45 @@
 
 
 
+
+# OpenStorageAlerts {#serviceopenstorageapiopenstoragealerts}
+OpenStorageAlerts defines rpc's for alerts.
+
+## Enumerate {#methodopenstorageapiopenstoragealertsenumerate}
+
+> **rpc** Enumerate([SdkAlertsEnumerateRequest](#sdkalertsenumeraterequest))
+    [SdkAlertsEnumerateResponse](#sdkalertsenumerateresponse)
+
+Enumerate allows querying alerts.
+
+#### Enumerate
+Enumerate allows 3 different types of queries as defined below:
+
+* Query that takes only resource type as input
+* Query that takes resource type and alert type as input and
+* Query that takes resource id, alert type and resource type as input.
+
+#### Input
+SdkAlertsEnumerateRequest takes a list of such queries and the returned
+output is a collective ouput from each of these queries. In that sense,
+the filtering of these queries has a behavior of OR operation.
+Each query also has a list of optional options. These options allow
+narrowing down the scope of alerts search. These options have a
+behavior of an AND operation.
+
+#### Examples
+To search by a resource type in a given time window would require
+initializing SdkAlertsResourceTypeQuery query and pass in
+SdkAlertsTimeSpan option into SdkAlertsQuery struct and finally
+packing any other such queries into SdkAlertsEnumerateRequest object.
+Alternatively, to search by both resource type and alert type, use
+SdkAlertsAlertTypeQuery as query builder.
+Finally to search all alerts of a given resource type and some
+alerts of another resource type but with specific alert type,
+use two queries, first initialized with SdkAlertsResourceTypeQuery
+and second initialized with SdkAlertsAlertTypeQuery and both
+eventually packed as list in SdkAlertsEnumerateRequest.
+ <!-- end methods -->
 
 # OpenStorageCloudBackup {#serviceopenstorageapiopenstoragecloudbackup}
 OpenStorageCloudBackup service manages backing up volumes to a cloud
@@ -1242,6 +1291,121 @@ swagger:model
 | ----- | ---- | ----------- |
 | key | [ string](#string) | none |
 | value | [ string](#string) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkAlertsAlertTypeQuery {#sdkalertsalerttypequery}
+SdkAlertsAlertTypeQuery queries for alerts using alert type
+and it requires that resource type be provided as well.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| resource_type | [ ResourceType](#resourcetype) | resource_type is the resource type of alerts to query with. |
+| alert_type | [ int64](#int64) | alert_type is the alert type of the alerts to query with. |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkAlertsCountSpan {#sdkalertscountspan}
+SdkAlertsCountSpan to store count range information.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| min_count | [ int64](#int64) | Min count of such alerts raised so far. |
+| max_count | [ int64](#int64) | Max count of such alerts raised so far. |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkAlertsEnumerateRequest {#sdkalertsenumeraterequest}
+SdkAlertsEnumerateRequest is a request message to enumerate alerts.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| queries | [repeated SdkAlertsQuery](#sdkalertsquery) | queries is a list of queries to find matching alerts. Output of each of these queries is added to a global pool and returned as output of an RPC call. In that sense alerts are fetched if they match any of the queries. |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkAlertsEnumerateResponse {#sdkalertsenumerateresponse}
+SdkAlertsEnumerateResponse is a list of alerts.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| alerts | [repeated Alert](#alert) | alerts is a list of alert objects retured from RPC call. |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkAlertsOption {#sdkalertsoption}
+SdkAlertsOption contains options for filtering alerts.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) opt.min_severity_type | [ SeverityType](#severitytype) | min_severity_type to query using severity type. |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) opt.is_cleared | [ bool](#bool) | is_cleared indicates querying for alerts cleared flag. |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) opt.time_span | [ SdkAlertsTimeSpan](#sdkalertstimespan) | time_span to query in a given time span range. |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) opt.count_span | [ SdkAlertsCountSpan](#sdkalertscountspan) | count_span to query in a given count range. |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkAlertsQuery {#sdkalertsquery}
+SdkAlertsQuery is one of the query types and a list of options.
+Each query object is one of the three query types and a list of
+options.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) query.resource_type_query | [ SdkAlertsResourceTypeQuery](#sdkalertsresourcetypequery) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) query.alert_type_query | [ SdkAlertsAlertTypeQuery](#sdkalertsalerttypequery) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) query.resource_id_query | [ SdkAlertsResourceIdQuery](#sdkalertsresourceidquery) | none |
+| opts | [repeated SdkAlertsOption](#sdkalertsoption) | opts is a list of options associated with one of the queries. |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkAlertsResourceIdQuery {#sdkalertsresourceidquery}
+SdkAlertsResourceIdQuery queries for alerts using resource id
+and it requires that both alert type and resource type be provided
+as well.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| resource_type | [ ResourceType](#resourcetype) | resource_type is the resource type of alerts to query with. |
+| alert_type | [ int64](#int64) | alert_type is the alert type of the alerts to query with. |
+| resource_id | [ string](#string) | resource_id is the resource id of the alerts to query with. |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkAlertsResourceTypeQuery {#sdkalertsresourcetypequery}
+SdkAlertsResourceTypeQuery queries for alerts using only resource id.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| resource_type | [ ResourceType](#resourcetype) | resource_type is the resource type of alerts to query with. |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkAlertsTimeSpan {#sdkalertstimespan}
+SdkAlertsTimeSpan to store time window information.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| start_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | Start timestamp when Alert occured |
+| end_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | End timestamp when Alert occured |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3303,6 +3467,7 @@ CloudBackup status types
 | OBJECT_STORAGE | 5 | Object Storage management |
 | SCHEDULE_POLICY | 6 | Schedule policy management |
 | VOLUME | 7 | Volume management |
+| ALERTS | 8 | Alert enumeration |
 
 
 
@@ -3331,7 +3496,7 @@ client and server applications
 | ---- | ------ | ----------- |
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
-| Minor | 9 | SDK version minor value of this specification |
+| Minor | 10 | SDK version minor value of this specification |
 | Patch | 0 | SDK version patch value of this specification |
 
 
