@@ -8,4 +8,6 @@
 * [API Reference](reference.md)
     * [gRPC Reference](generated-api.md)
 	* [REST Reference](rest-api.md)
+* [Releases](releases.md)
 * [Changelog](changelog.md)
+

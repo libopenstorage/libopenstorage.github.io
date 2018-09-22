@@ -1,0 +1,569 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Python · OpenStorage API</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-codetabs/codetabs.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-toggle-chapters/toggle.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-prism/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-page-toc/page-toc.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="reference.html" />
+    
+    
+    <link rel="prev" href="tutorial-golang.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">OpenStorage SDK</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                        <b>1.1.</b>
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="arch.html">
+            
+                <a href="arch.html">
+            
+                    
+                        <b>1.2.</b>
+                    
+                    Architecture
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="installation.html">
+            
+                <a href="installation.html">
+            
+                    
+                        <b>1.3.</b>
+                    
+                    Installation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="tutorial.html">
+            
+                <a href="tutorial.html">
+            
+                    
+                        <b>1.4.</b>
+                    
+                    Tutorial
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="tutorial-golang.html">
+            
+                <a href="tutorial-golang.html">
+            
+                    
+                        <b>1.4.1.</b>
+                    
+                    Golang
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.2" data-path="tutorial-python.html">
+            
+                <a href="tutorial-python.html">
+            
+                    
+                        <b>1.4.2.</b>
+                    
+                    Python
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="reference.html">
+            
+                <a href="reference.html">
+            
+                    
+                        <b>1.5.</b>
+                    
+                    API Reference
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="generated-api.html">
+            
+                <a href="generated-api.html">
+            
+                    
+                        <b>1.5.1.</b>
+                    
+                    gRPC Reference
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="rest-api.html">
+            
+                <a href="rest-api.html">
+            
+                    
+                        <b>1.5.2.</b>
+                    
+                    REST Reference
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="changelog.html">
+            
+                <a href="changelog.html">
+            
+                    
+                        <b>1.6.</b>
+                    
+                    Changelog
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Python</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="tutorial-python">Tutorial: Python</h1>
+<p>In this tutorial you will learn to setup your environment, create a volume,
+then take its snapshot, create cloud credentials, and create a backup of the
+volume.</p>
+<p>The sources for this tutorial are available in the <a href="https://github.com/libopenstorage/libopenstorage.github.io/tree/master/examples/python" target="_blank"><code>examples/python</code></a> directory in the repo for this website.</p>
+<p>If you would like to try this tutorial on the web, check out our
+<a href="https://www.katacoda.com/lpabon/scenarios/tutorial-python" target="_blank">Katacoda Scenario: OpenStorage SDK Python Client Tutorial</a>.</p>
+<h2 id="setting-up-your-environment">Setting up your environment</h2>
+<p>To setup your environment, you will need to copy <code>openstorage</code> and <code>google</code>
+directories from <a href="https://github.com/libopenstorage/openstorage-sdk-clients/tree/master/sdk/python" target="_blank"><code>openstorage-sdk-clients/sdk/python</code></a>
+to your project.</p>
+<blockquote>
+<p><strong>NOTE</strong>: We will be adding this package to pip in future releases.</p>
+</blockquote>
+<p>We will now use <code>virutalenv</code> to install a python local environment:</p>
+<pre class="language-"><code>$ virtualenv sdk
+$ source sdk/bin/activate
+$ pip install grpcio grpcio-tools
+</code></pre><p>You will now have access to the OpenStorage SDK Python client which was
+generated from the protobuf file <a href="https://github.com/libopenstorage/openstorage/blob/master/api/api.proto" target="_blank"><code>api.proto</code></a>.</p>
+<p>With the <a href="tutorial.html#setting-up-the-mock-sdk-server"><code>mock-sdk-server</code></a>
+running, the following steps will provide an introduction to programming
+with the OpenStorage SDK.</p>
+<h2 id="import-dependencies">Import dependencies</h2>
+<p>For most of the examples below, you will need the following <code>import</code>&apos;s.</p>
+<pre class="language-"><code class="lang-python"><span class="token keyword">import</span> grpc
+<span class="token keyword">from</span> openstorage <span class="token keyword">import</span> api_pb2
+<span class="token keyword">from</span> openstorage <span class="token keyword">import</span> api_pb2_grpc
+</code></pre>
+<h2 id="creating-a-connection">Creating a connection</h2>
+<p>To use any of the gRPC functions, you must first create a connection with
+the OpenStorage SDK server:</p>
+<pre class="language-"><code class="lang-python"><span class="token comment" spellcheck="true"># Cluster connection</span>
+channel <span class="token operator">=</span> grpc<span class="token punctuation">.</span>insecure_channel<span class="token punctuation">(</span><span class="token string">&apos;localhost:9100&apos;</span><span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p><strong>NOTE</strong>: Notice the call <a href="https://grpc.io/docs/guides/auth.html" target="_blank"><code>grpc.insecure_channel()</code></a>. The mock-sdk-server
+currently does not support HTTPS or authentication, so the tutorial will
+only focus on an insecure connection. The SDK project will add HTTPS and
+authentication support in following releases.</p>
+</blockquote>
+<h2 id="cluster-operations">Cluster operations</h2>
+<p>Now that we have made a connection, we can use the <code>channel</code> object to create
+clients for each of the services we would like to use. Let&apos;s use the <a href="generated-api.html#openstorageapiopenstoragecluster">OpenStorageCluster</a>
+service to print the <code>id</code> of the cluster:</p>
+<pre class="language-"><code class="lang-python"><span class="token keyword">try</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># Cluster connection</span>
+    clusters <span class="token operator">=</span> api_pb2_grpc<span class="token punctuation">.</span>OpenStorageClusterStub<span class="token punctuation">(</span>channel<span class="token punctuation">)</span>
+    ic_resp <span class="token operator">=</span> clusters<span class="token punctuation">.</span>InspectCurrent<span class="token punctuation">(</span>api_pb2<span class="token punctuation">.</span>SdkClusterInspectCurrentRequest<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&apos;Connected to {0} with status {1}&apos;</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>
+        ic_resp<span class="token punctuation">.</span>cluster<span class="token punctuation">.</span>id<span class="token punctuation">,</span>
+        api_pb2<span class="token punctuation">.</span>Status<span class="token punctuation">.</span>Name<span class="token punctuation">(</span>ic_resp<span class="token punctuation">.</span>cluster<span class="token punctuation">.</span>status<span class="token punctuation">)</span>
+    <span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">except</span> grpc<span class="token punctuation">.</span>RpcError <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&apos;Failed: code={0} msg={1}&apos;</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>e<span class="token punctuation">.</span>code<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> e<span class="token punctuation">.</span>details<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Notice the <code>except</code> above. As mentioned in the
+<a href="arch.html#error-handling">Architecture</a> all errors are encoded using the
+standard gRPC status. To gain access to the error code and its message you
+must use <code>except grpc.RpcError as e</code> which decodes the error value and the message.</p>
+<h2 id="volume-operations">Volume Operations</h2>
+<p>Now that we have connected to the cluster, let&apos;s go ahead and create a
+volume of size 100Gi:</p>
+<pre class="language-"><code class="lang-python">    volumes <span class="token operator">=</span> api_pb2_grpc<span class="token punctuation">.</span>OpenStorageVolumeStub<span class="token punctuation">(</span>channel<span class="token punctuation">)</span>
+    v_resp <span class="token operator">=</span> volumes<span class="token punctuation">.</span>Create<span class="token punctuation">(</span>api_pb2<span class="token punctuation">.</span>SdkVolumeCreateRequest<span class="token punctuation">(</span>
+        name<span class="token operator">=</span><span class="token string">&quot;myvol&quot;</span><span class="token punctuation">,</span>
+        spec<span class="token operator">=</span>api_pb2<span class="token punctuation">.</span>VolumeSpec<span class="token punctuation">(</span>
+            size<span class="token operator">=</span><span class="token number">100</span><span class="token operator">*</span><span class="token number">1024</span><span class="token operator">*</span><span class="token number">1024</span><span class="token operator">*</span><span class="token number">1024</span><span class="token punctuation">,</span>
+            ha_level<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">,</span>
+        <span class="token punctuation">)</span>
+    <span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&apos;Volume id is {0}&apos;</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>v_resp<span class="token punctuation">.</span>volume_id<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Notice the value of <code>name</code> provided above. This value is important since
+it allows for the function to be idempotent. In other words, this function
+will always return the same volume id for the volume of same name.</p>
+<p>You can now create a snapshot of this volume:</p>
+<pre class="language-"><code class="lang-python">    <span class="token comment" spellcheck="true"># Create a snapshot</span>
+    snap <span class="token operator">=</span> volumes<span class="token punctuation">.</span>SnapshotCreate<span class="token punctuation">(</span>api_pb2<span class="token punctuation">.</span>SdkVolumeSnapshotCreateRequest<span class="token punctuation">(</span>
+        volume_id<span class="token operator">=</span>v_resp<span class="token punctuation">.</span>volume_id<span class="token punctuation">,</span>
+        name<span class="token operator">=</span><span class="token string">&quot;mysnap&quot;</span>
+    <span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&apos;Snapshot created with id {0}&apos;</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>snap<span class="token punctuation">.</span>snapshot_id<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="backup">Backup</h2>
+<p>In this section we will be making a backup of our volume to a cloud provider.
+To do this, we must first create a set of credentials which will enable
+the storage system to save the backup in the cloud.</p>
+<pre class="language-"><code class="lang-python">    <span class="token comment" spellcheck="true"># Create a credentials</span>
+    creds <span class="token operator">=</span> api_pb2_grpc<span class="token punctuation">.</span>OpenStorageCredentialsStub<span class="token punctuation">(</span>channel<span class="token punctuation">)</span>
+    cred_resp <span class="token operator">=</span> creds<span class="token punctuation">.</span>Create<span class="token punctuation">(</span>api_pb2<span class="token punctuation">.</span>SdkCredentialCreateRequest<span class="token punctuation">(</span>
+        name<span class="token operator">=</span><span class="token string">&apos;aws&apos;</span><span class="token punctuation">,</span>
+        aws_credential<span class="token operator">=</span>api_pb2<span class="token punctuation">.</span>SdkAwsCredentialRequest<span class="token punctuation">(</span>
+            access_key<span class="token operator">=</span><span class="token string">&apos;dummy&apos;</span><span class="token punctuation">,</span>
+            secret_key<span class="token operator">=</span><span class="token string">&apos;dummy&apos;</span><span class="token punctuation">,</span>
+            endpoint<span class="token operator">=</span><span class="token string">&apos;dummy&apos;</span><span class="token punctuation">,</span>
+            region<span class="token operator">=</span><span class="token string">&apos;dummy&apos;</span>
+        <span class="token punctuation">)</span>
+    <span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&apos;Credential id is {0}&apos;</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>cred_resp<span class="token punctuation">.</span>credential_id<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Notice above the <a href="https://libopenstorage.github.io/w/generated-api.html#sdkcredentialcreaterequest" target="_blank"><code>api_pb2.SdkCredentialCreateRequest</code></a>.
+This struct in protobuf uses <a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><code>oneof</code></a>.
+Oneof states that <em>one of these types</em> will be used. In SdkCredentialCreateRequest,
+only <code>aws_credential</code> is set, showing the server which type of credentials
+are being registered.</p>
+<p>The backup of the volume can now be started with the newly acquired
+credential id:</p>
+<pre class="language-"><code class="lang-python">    <span class="token comment" spellcheck="true"># Create backup</span>
+    backups <span class="token operator">=</span> api_pb2_grpc<span class="token punctuation">.</span>OpenStorageCloudBackupStub<span class="token punctuation">(</span>channel<span class="token punctuation">)</span>
+    backup_resp <span class="token operator">=</span> backups<span class="token punctuation">.</span>Create<span class="token punctuation">(</span>api_pb2<span class="token punctuation">.</span>SdkCloudBackupCreateRequest<span class="token punctuation">(</span>
+        volume_id<span class="token operator">=</span>v_resp<span class="token punctuation">.</span>volume_id<span class="token punctuation">,</span>
+        credential_id<span class="token operator">=</span>cred_resp<span class="token punctuation">.</span>credential_id<span class="token punctuation">,</span>
+        full<span class="token operator">=</span><span class="token boolean">False</span>
+    <span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>This request will not block while the backup is running. Instead you should
+call <a href="https://libopenstorage.github.io/w/generated-api.html#methodstatus" target="_blank">OpenStorageCloudBackup.Status()</a>
+to get information about the backup:</p>
+<pre class="language-"><code class="lang-python">    status_resp <span class="token operator">=</span> backups<span class="token punctuation">.</span>Status<span class="token punctuation">(</span>api_pb2<span class="token punctuation">.</span>SdkCloudBackupStatusRequest<span class="token punctuation">(</span>
+        volume_id<span class="token operator">=</span>v_resp<span class="token punctuation">.</span>volume_id
+    <span class="token punctuation">)</span><span class="token punctuation">)</span>
+    backup_status <span class="token operator">=</span> status_resp<span class="token punctuation">.</span>statuses<span class="token punctuation">[</span>v_resp<span class="token punctuation">.</span>volume_id<span class="token punctuation">]</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&apos;Status of the backup is {0}&apos;</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>
+        api_pb2<span class="token punctuation">.</span>SdkCloudBackupStatusType<span class="token punctuation">.</span>Name<span class="token punctuation">(</span>backup_status<span class="token punctuation">.</span>status<span class="token punctuation">)</span>
+    <span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Lastly, once the backup is complete, we can get a history of this and any
+other backups we have created from our volume:</p>
+<pre class="language-"><code class="lang-python">    <span class="token comment" spellcheck="true"># Show history</span>
+    history <span class="token operator">=</span> backups<span class="token punctuation">.</span>History<span class="token punctuation">(</span>api_pb2<span class="token punctuation">.</span>SdkCloudBackupHistoryRequest<span class="token punctuation">(</span>
+        src_volume_id<span class="token operator">=</span>v_resp<span class="token punctuation">.</span>volume_id
+    <span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&apos;Backup history for volume {0}&apos;</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>v_resp<span class="token punctuation">.</span>volume_id<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> item <span class="token keyword">in</span> history<span class="token punctuation">.</span>history_list<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&apos;Time:{0} Status:{1}&apos;</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>
+            item<span class="token punctuation">.</span>timestamp<span class="token punctuation">.</span>ToJsonString<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            api_pb2<span class="token punctuation">.</span>SdkCloudBackupStatusType<span class="token punctuation">.</span>Name<span class="token punctuation">(</span>item<span class="token punctuation">.</span>status<span class="token punctuation">)</span>
+        <span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="example-output">Example output</h2>
+<p>Below is an example output run of this tutorial:</p>
+<pre class="language-"><code>Conntected to portworx with status STATUS_OK
+Volume id is 9b64012f-db53-4a7b-8393-94b3d1ba0b02
+Snapshot created with id 26a7262c-3eec-4352-a0be-3710d25f8335
+Credential id is 716ed48f-f089-453d-ba07-7072eacd2ba0
+Status of the backup is SdkCloudBackupStatusTypeDone
+Backup history for volume 9b64012f-db53-4a7b-8393-94b3d1ba0b02
+Time:2018-07-18T02:04:53.278579951Z Status:SdkCloudBackupStatusTypeDone
+</code></pre><h2 id="next">Next</h2>
+<p>As you can see from the above, working with OpenStorage SDK is quite easy,
+fun, and powerful. Please refer to the <a href="generated-api.html">API Reference</a>
+for a complete list of services.</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="tutorial-golang.html" class="navigation navigation-prev " aria-label="Previous page: Golang">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="reference.html" class="navigation navigation-next " aria-label="Next page: API Reference">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Python","level":"1.4.2","depth":2,"next":{"title":"API Reference","level":"1.5","depth":1,"path":"reference.md","ref":"reference.md","articles":[{"title":"gRPC Reference","level":"1.5.1","depth":2,"path":"generated-api.md","ref":"generated-api.md","articles":[]},{"title":"REST Reference","level":"1.5.2","depth":2,"path":"rest-api.md","ref":"rest-api.md","articles":[]}]},"previous":{"title":"Golang","level":"1.4.1","depth":2,"path":"tutorial-golang.md","ref":"tutorial-golang.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"tutorial-python.md","mtime":"2018-09-22T07:21:09.249Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-22T08:24:11.637Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-codetabs/codetabs.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-toggle-chapters/toggle.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-toggle-headers/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-page-toc/anchor-3.1.1.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-page-toc/page-toc.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

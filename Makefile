@@ -7,6 +7,7 @@ images:
 
 build: images
 	gitbook build docs/ w
+	gitbook build v0.9.0/ w/v0.9.0
 
 serve: images
 	gitbook serve docs/ w

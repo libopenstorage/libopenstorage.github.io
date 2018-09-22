@@ -28,6 +28,16 @@ To generate it, you will need to install [protoc-gen-doc](https://github.com/lpa
 
 Then type `make api` to generate the API documentation.
 
+## Releasing
+When releasing new version use the following method to maintain that release
+version on the documentation website:
+
+1. Copy the docs dir to a new `vX.X.X` dir.
+1. Add the build to the Makefile `build:` tags
+1. Edit `docs/releases.md` accordingly
+1. Type `make build`
+1. git add the new `vX.X.X` dir and the entire `w/` dir
+
 ## More information
 * [Gitbook](https://toolchain.gitbook.com/)
 * Examples gitbook json setup
