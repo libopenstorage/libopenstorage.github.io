@@ -33,6 +33,7 @@ When releasing new version use the following method to maintain that release
 version on the documentation website:
 
 1. Copy the docs dir to a new `vX.X.X` dir.
+1. Edit the only non-generated link: `vX.X.X/rest-api.md` for the Swagger UI
 1. Add the build to the Makefile `build:` tags
 1. Edit `docs/releases.md` accordingly
 1. Type `make build`
