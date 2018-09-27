@@ -389,6 +389,8 @@
 <li><a href="#runtimestatemapruntimestateentry">RuntimeStateMap.RuntimeStateEntry</a></li>
 <li><a href="#sdkalertsalerttypequery">SdkAlertsAlertTypeQuery</a></li>
 <li><a href="#sdkalertscountspan">SdkAlertsCountSpan</a></li>
+<li><a href="#sdkalertsdeleterequest">SdkAlertsDeleteRequest</a></li>
+<li><a href="#sdkalertsdeleteresponse">SdkAlertsDeleteResponse</a></li>
 <li><a href="#sdkalertsenumeraterequest">SdkAlertsEnumerateRequest</a></li>
 <li><a href="#sdkalertsenumerateresponse">SdkAlertsEnumerateResponse</a></li>
 <li><a href="#sdkalertsoption">SdkAlertsOption</a></li>
@@ -617,7 +619,23 @@ Finally to search all alerts of a given resource type and some
 alerts of another resource type but with specific alert type,
 use two queries, first initialized with SdkAlertsResourceTypeQuery
 and second initialized with SdkAlertsAlertTypeQuery and both
-eventually packed as list in SdkAlertsEnumerateRequest.
+eventually packed as list in SdkAlertsEnumerateRequest.</p>
+<h2 id="methodopenstorageapiopenstoragealertsdelete">Delete </h2>
+<blockquote>
+<p><strong>rpc</strong> Delete(<a href="#sdkalertsdeleterequest">SdkAlertsDeleteRequest</a>)
+    <a href="#sdkalertsdeleteresponse">SdkAlertsDeleteResponse</a></p>
+</blockquote>
+<p>Delete allows deleting alerts.</p>
+<h4 id="delete">Delete</h4>
+<p>Delete allows 3 different types of queries as defined below:</p>
+<ul>
+<li>Query that takes only resource type as input</li>
+<li>Query that takes resource type and alert type as input and</li>
+<li>Query that takes resource id, alert type and resource type as input.</li>
+</ul>
+<h4 id="input">Input</h4>
+<p>SdkAlertsEnumerateRequest takes a list of such queries and all alerts
+that match at least one of the queries are deleted.
  <!-- end methods --></p>
 <h1 id="serviceopenstorageapiopenstoragecloudbackup">OpenStorageCloudBackup </h1>
 <p>OpenStorageCloudBackup service manages backing up volumes to a cloud
@@ -2214,12 +2232,12 @@ and it requires that resource type be provided as well.</p>
 <tr>
 <td>resource_type</td>
 <td><a href="#resourcetype"> ResourceType</a></td>
-<td>resource_type is the resource type of alerts to query with.</td>
+<td>Resource type used to build query.</td>
 </tr>
 <tr>
 <td>alert_type</td>
 <td><a href="#int64"> int64</a></td>
-<td>alert_type is the alert type of the alerts to query with.</td>
+<td>Alert type used to build query.</td>
 </tr>
 </tbody>
 </table>
@@ -2250,6 +2268,29 @@ and it requires that resource type be provided as well.</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
+<h2 id="sdkalertsdeleterequest">SdkAlertsDeleteRequest </h2>
+<p>SdkAlertsDeleteRequest is a request message to delete alerts.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>queries</td>
+<td><a href="#sdkalertsquery">repeated SdkAlertsQuery</a></td>
+<td>It takes a list of queries to find matching alerts. Matching alerts are deleted.</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkalertsdeleteresponse">SdkAlertsDeleteResponse </h2>
+<p>SdkAlertsDeleteResponse is empty.</p>
+ <!-- end HasFields -->
 <h2 id="sdkalertsenumeraterequest">SdkAlertsEnumerateRequest </h2>
 <p>SdkAlertsEnumerateRequest is a request message to enumerate alerts.</p>
 <table>
@@ -2264,7 +2305,7 @@ and it requires that resource type be provided as well.</p>
 <tr>
 <td>queries</td>
 <td><a href="#sdkalertsquery">repeated SdkAlertsQuery</a></td>
-<td>queries is a list of queries to find matching alerts. Output of each of these queries is added to a global pool and returned as output of an RPC call. In that sense alerts are fetched if they match any of the queries.</td>
+<td>It is a list of queries to find matching alerts. Output of each of these queries is added to a global pool and returned as output of an RPC call. In that sense alerts are fetched if they match any of the queries.</td>
 </tr>
 </tbody>
 </table>
@@ -2284,7 +2325,7 @@ and it requires that resource type be provided as well.</p>
 <tr>
 <td>alerts</td>
 <td><a href="#alert">repeated Alert</a></td>
-<td>alerts is a list of alert objects retured from RPC call.</td>
+<td>Response contains a list of alerts.</td>
 </tr>
 </tbody>
 </table>
@@ -2304,22 +2345,22 @@ and it requires that resource type be provided as well.</p>
 <tr>
 <td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> opt.min_severity_type</td>
 <td><a href="#severitytype"> SeverityType</a></td>
-<td>min_severity_type to query using severity type.</td>
+<td>Query using minimum severity type.</td>
 </tr>
 <tr>
 <td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> opt.is_cleared</td>
 <td><a href="#bool"> bool</a></td>
-<td>is_cleared indicates querying for alerts cleared flag.</td>
+<td>Query using cleared flag.</td>
 </tr>
 <tr>
 <td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> opt.time_span</td>
 <td><a href="#sdkalertstimespan"> SdkAlertsTimeSpan</a></td>
-<td>time_span to query in a given time span range.</td>
+<td>Query using a time span during which alert was last seen.</td>
 </tr>
 <tr>
 <td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> opt.count_span</td>
 <td><a href="#sdkalertscountspan"> SdkAlertsCountSpan</a></td>
-<td>count_span to query in a given count range.</td>
+<td>Query using a count span in which alert count exists.</td>
 </tr>
 </tbody>
 </table>
@@ -2341,22 +2382,22 @@ options.</p>
 <tr>
 <td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> query.resource_type_query</td>
 <td><a href="#sdkalertsresourcetypequery"> SdkAlertsResourceTypeQuery</a></td>
-<td>none</td>
+<td>Query only using resource type.</td>
 </tr>
 <tr>
 <td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> query.alert_type_query</td>
 <td><a href="#sdkalertsalerttypequery"> SdkAlertsAlertTypeQuery</a></td>
-<td>none</td>
+<td>Query using alert type and resource type.</td>
 </tr>
 <tr>
 <td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> query.resource_id_query</td>
 <td><a href="#sdkalertsresourceidquery"> SdkAlertsResourceIdQuery</a></td>
-<td>none</td>
+<td>Query using resource id, alert type and resource type.</td>
 </tr>
 <tr>
 <td>opts</td>
 <td><a href="#sdkalertsoption">repeated SdkAlertsOption</a></td>
-<td>opts is a list of options associated with one of the queries.</td>
+<td>Opts is a list of options associated with one of the queries.</td>
 </tr>
 </tbody>
 </table>
@@ -2378,17 +2419,17 @@ as well.</p>
 <tr>
 <td>resource_type</td>
 <td><a href="#resourcetype"> ResourceType</a></td>
-<td>resource_type is the resource type of alerts to query with.</td>
+<td>Resource type used to build query.</td>
 </tr>
 <tr>
 <td>alert_type</td>
 <td><a href="#int64"> int64</a></td>
-<td>alert_type is the alert type of the alerts to query with.</td>
+<td>Alert type used to build query.</td>
 </tr>
 <tr>
 <td>resource_id</td>
 <td><a href="#string"> string</a></td>
-<td>resource_id is the resource id of the alerts to query with.</td>
+<td>Resource ID used to build query.</td>
 </tr>
 </tbody>
 </table>
@@ -2408,7 +2449,7 @@ as well.</p>
 <tr>
 <td>resource_type</td>
 <td><a href="#resourcetype"> ResourceType</a></td>
-<td>resource_type is the resource type of alerts to query with.</td>
+<td>Resource type used to build query.</td>
 </tr>
 </tbody>
 </table>
@@ -3109,6 +3150,11 @@ a cloud provider</p>
 <td>max_backups</td>
 <td><a href="#uint64"> uint64</a></td>
 <td>MaxBackups are the maximum number of backups retained in cloud.Older backups are deleted</td>
+</tr>
+<tr>
+<td>full</td>
+<td><a href="#bool"> bool</a></td>
+<td>Full indicates if scheduled backups should always be full and never incremental.</td>
 </tr>
 </tbody>
 </table>
@@ -5977,7 +6023,7 @@ swagger:model</p>
 </tr>
 <tr>
 <td>queue_depth</td>
-<td><a href="#int32"> int32</a></td>
+<td><a href="#uint32"> uint32</a></td>
 <td>QueueDepth defines the desired block device queue depth</td>
 </tr>
 <tr>
@@ -6106,7 +6152,7 @@ swagger:model</p>
 </tr>
 <tr>
 <td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> queue_depth_opt.queue_depth</td>
-<td><a href="#int32"> int32</a></td>
+<td><a href="#uint32"> uint32</a></td>
 <td>none</td>
 </tr>
 </tbody>
@@ -6796,6 +6842,11 @@ to or from a cloud provider</p>
 <td>8</td>
 <td>Alert enumeration</td>
 </tr>
+<tr>
+<td>MOUNT_ATTACH</td>
+<td>9</td>
+<td>Mount/Attach Support</td>
+</tr>
 </tbody>
 </table>
 <h2 id="sdktimeweekday">SdkTimeWeekday </h2>
@@ -6870,7 +6921,7 @@ client and server applications</p>
 </tr>
 <tr>
 <td>Minor</td>
-<td>10</td>
+<td>13</td>
 <td>SDK version minor value of this specification</td>
 </tr>
 <tr>
@@ -7318,7 +7369,7 @@ client and server applications</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"gRPC Reference","level":"1.5.1","depth":2,"next":{"title":"REST Reference","level":"1.5.2","depth":2,"path":"rest-api.md","ref":"rest-api.md","articles":[]},"previous":{"title":"API Reference","level":"1.5","depth":1,"path":"reference.md","ref":"reference.md","articles":[{"title":"gRPC Reference","level":"1.5.1","depth":2,"path":"generated-api.md","ref":"generated-api.md","articles":[]},{"title":"REST Reference","level":"1.5.2","depth":2,"path":"rest-api.md","ref":"rest-api.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"generated-api.md","mtime":"2018-09-22T07:21:14.182Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-22T08:33:56.518Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"gRPC Reference","level":"1.5.1","depth":2,"next":{"title":"REST Reference","level":"1.5.2","depth":2,"path":"rest-api.md","ref":"rest-api.md","articles":[]},"previous":{"title":"API Reference","level":"1.5","depth":1,"path":"reference.md","ref":"reference.md","articles":[{"title":"gRPC Reference","level":"1.5.1","depth":2,"path":"generated-api.md","ref":"generated-api.md","articles":[]},{"title":"REST Reference","level":"1.5.2","depth":2,"path":"rest-api.md","ref":"rest-api.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"generated-api.md","mtime":"2018-09-27T12:31:42.505Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-27T12:31:44.350Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

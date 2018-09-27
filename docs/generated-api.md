@@ -63,6 +63,8 @@
     - [RuntimeStateMap.RuntimeStateEntry](#runtimestatemapruntimestateentry)
     - [SdkAlertsAlertTypeQuery](#sdkalertsalerttypequery)
     - [SdkAlertsCountSpan](#sdkalertscountspan)
+    - [SdkAlertsDeleteRequest](#sdkalertsdeleterequest)
+    - [SdkAlertsDeleteResponse](#sdkalertsdeleteresponse)
     - [SdkAlertsEnumerateRequest](#sdkalertsenumeraterequest)
     - [SdkAlertsEnumerateResponse](#sdkalertsenumerateresponse)
     - [SdkAlertsOption](#sdkalertsoption)
@@ -296,6 +298,23 @@ alerts of another resource type but with specific alert type,
 use two queries, first initialized with SdkAlertsResourceTypeQuery
 and second initialized with SdkAlertsAlertTypeQuery and both
 eventually packed as list in SdkAlertsEnumerateRequest.
+## Delete {#methodopenstorageapiopenstoragealertsdelete}
+
+> **rpc** Delete([SdkAlertsDeleteRequest](#sdkalertsdeleterequest))
+    [SdkAlertsDeleteResponse](#sdkalertsdeleteresponse)
+
+Delete allows deleting alerts.
+
+#### Delete
+Delete allows 3 different types of queries as defined below:
+
+* Query that takes only resource type as input
+* Query that takes resource type and alert type as input and
+* Query that takes resource id, alert type and resource type as input.
+
+#### Input
+SdkAlertsEnumerateRequest takes a list of such queries and all alerts
+that match at least one of the queries are deleted.
  <!-- end methods -->
 
 # OpenStorageCloudBackup {#serviceopenstorageapiopenstoragecloudbackup}
@@ -1302,8 +1321,8 @@ and it requires that resource type be provided as well.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| resource_type | [ ResourceType](#resourcetype) | resource_type is the resource type of alerts to query with. |
-| alert_type | [ int64](#int64) | alert_type is the alert type of the alerts to query with. |
+| resource_type | [ ResourceType](#resourcetype) | Resource type used to build query. |
+| alert_type | [ int64](#int64) | Alert type used to build query. |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -1320,13 +1339,30 @@ SdkAlertsCountSpan to store count range information.
  <!-- end HasFields -->
 
 
+## SdkAlertsDeleteRequest {#sdkalertsdeleterequest}
+SdkAlertsDeleteRequest is a request message to delete alerts.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| queries | [repeated SdkAlertsQuery](#sdkalertsquery) | It takes a list of queries to find matching alerts. Matching alerts are deleted. |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkAlertsDeleteResponse {#sdkalertsdeleteresponse}
+SdkAlertsDeleteResponse is empty.
+
+ <!-- end HasFields -->
+
+
 ## SdkAlertsEnumerateRequest {#sdkalertsenumeraterequest}
 SdkAlertsEnumerateRequest is a request message to enumerate alerts.
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| queries | [repeated SdkAlertsQuery](#sdkalertsquery) | queries is a list of queries to find matching alerts. Output of each of these queries is added to a global pool and returned as output of an RPC call. In that sense alerts are fetched if they match any of the queries. |
+| queries | [repeated SdkAlertsQuery](#sdkalertsquery) | It is a list of queries to find matching alerts. Output of each of these queries is added to a global pool and returned as output of an RPC call. In that sense alerts are fetched if they match any of the queries. |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -1337,7 +1373,7 @@ SdkAlertsEnumerateResponse is a list of alerts.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| alerts | [repeated Alert](#alert) | alerts is a list of alert objects retured from RPC call. |
+| alerts | [repeated Alert](#alert) | Response contains a list of alerts. |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -1348,10 +1384,10 @@ SdkAlertsOption contains options for filtering alerts.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) opt.min_severity_type | [ SeverityType](#severitytype) | min_severity_type to query using severity type. |
-| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) opt.is_cleared | [ bool](#bool) | is_cleared indicates querying for alerts cleared flag. |
-| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) opt.time_span | [ SdkAlertsTimeSpan](#sdkalertstimespan) | time_span to query in a given time span range. |
-| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) opt.count_span | [ SdkAlertsCountSpan](#sdkalertscountspan) | count_span to query in a given count range. |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) opt.min_severity_type | [ SeverityType](#severitytype) | Query using minimum severity type. |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) opt.is_cleared | [ bool](#bool) | Query using cleared flag. |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) opt.time_span | [ SdkAlertsTimeSpan](#sdkalertstimespan) | Query using a time span during which alert was last seen. |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) opt.count_span | [ SdkAlertsCountSpan](#sdkalertscountspan) | Query using a count span in which alert count exists. |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -1364,10 +1400,10 @@ options.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) query.resource_type_query | [ SdkAlertsResourceTypeQuery](#sdkalertsresourcetypequery) | none |
-| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) query.alert_type_query | [ SdkAlertsAlertTypeQuery](#sdkalertsalerttypequery) | none |
-| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) query.resource_id_query | [ SdkAlertsResourceIdQuery](#sdkalertsresourceidquery) | none |
-| opts | [repeated SdkAlertsOption](#sdkalertsoption) | opts is a list of options associated with one of the queries. |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) query.resource_type_query | [ SdkAlertsResourceTypeQuery](#sdkalertsresourcetypequery) | Query only using resource type. |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) query.alert_type_query | [ SdkAlertsAlertTypeQuery](#sdkalertsalerttypequery) | Query using alert type and resource type. |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) query.resource_id_query | [ SdkAlertsResourceIdQuery](#sdkalertsresourceidquery) | Query using resource id, alert type and resource type. |
+| opts | [repeated SdkAlertsOption](#sdkalertsoption) | Opts is a list of options associated with one of the queries. |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -1380,9 +1416,9 @@ as well.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| resource_type | [ ResourceType](#resourcetype) | resource_type is the resource type of alerts to query with. |
-| alert_type | [ int64](#int64) | alert_type is the alert type of the alerts to query with. |
-| resource_id | [ string](#string) | resource_id is the resource id of the alerts to query with. |
+| resource_type | [ ResourceType](#resourcetype) | Resource type used to build query. |
+| alert_type | [ int64](#int64) | Alert type used to build query. |
+| resource_id | [ string](#string) | Resource ID used to build query. |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -1393,7 +1429,7 @@ SdkAlertsResourceTypeQuery queries for alerts using only resource id.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| resource_type | [ ResourceType](#resourcetype) | resource_type is the resource type of alerts to query with. |
+| resource_type | [ ResourceType](#resourcetype) | Resource type used to build query. |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -1753,6 +1789,7 @@ a cloud provider
 | credential_id | [ string](#string) | The cloud credential used with this schedule |
 | schedules | [repeated SdkSchedulePolicyInterval](#sdkschedulepolicyinterval) | Schedules are the frequencies of the backup |
 | max_backups | [ uint64](#uint64) | MaxBackups are the maximum number of backups retained in cloud.Older backups are deleted |
+| full | [ bool](#bool) | Full indicates if scheduled backups should always be full and never incremental. |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3160,7 +3197,7 @@ swagger:model
 | cascaded | [ bool](#bool) | Cascaded is true if this volume can be populated on any node from an external source. |
 | journal | [ bool](#bool) | Journal is true if data for the volume goes into the journal. |
 | sharedv4 | [ bool](#bool) | Sharedv4 is true if this volume can be accessed via sharedv4. |
-| queue_depth | [ int32](#int32) | QueueDepth defines the desired block device queue depth |
+| queue_depth | [ uint32](#uint32) | QueueDepth defines the desired block device queue depth |
 | force_unsupported_fs_type | [ bool](#bool) | Use to force a file system type which is not recommended. The driver may still refuse to use the file system type. |
  <!-- end Fields -->
  <!-- end HasFields -->
@@ -3200,7 +3237,7 @@ VolumeSpecUpdate provides a method to set any of the VolumeSpec of an existing v
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) group_opt.group | [ Group](#group) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) journal_opt.journal | [ bool](#bool) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) sharedv4_opt.sharedv4 | [ bool](#bool) | none |
-| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) queue_depth_opt.queue_depth | [ int32](#int32) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) queue_depth_opt.queue_depth | [ uint32](#uint32) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3468,6 +3505,7 @@ CloudBackup status types
 | SCHEDULE_POLICY | 6 | Schedule policy management |
 | VOLUME | 7 | Volume management |
 | ALERTS | 8 | Alert enumeration |
+| MOUNT_ATTACH | 9 | Mount/Attach Support |
 
 
 
@@ -3496,7 +3534,7 @@ client and server applications
 | ---- | ------ | ----------- |
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
-| Minor | 10 | SDK version minor value of this specification |
+| Minor | 13 | SDK version minor value of this specification |
 | Patch | 0 | SDK version patch value of this specification |
 
 
