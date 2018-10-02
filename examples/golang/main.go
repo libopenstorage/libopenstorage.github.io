@@ -14,6 +14,13 @@ import (
 	"google.golang.org/grpc/status"
 )
 
+const (
+	Bytes = uint64(1)
+	KB    = Bytes * uint64(1024)
+	MB    = KB * uint64(1024)
+	GB    = MB * uint64(1024)
+)
+
 func main() {
 
 	// Setup a connection
@@ -38,7 +45,46 @@ func main() {
 	}
 	fmt.Printf("Connected to Cluster %s\n",
 		clusterInfo.GetCluster().GetId())
-	fmt.Println()
+
+	// --- Get Cluster capacity ---
+	// First, get all node node IDs in this cluster
+	nodeclient := api.NewOpenStorageNodeClient(conn)
+	nodeEnumResp, err := nodeclient.Enumerate(
+		context.Background(),
+		&api.SdkNodeEnumerateRequest{})
+	if err != nil {
+		gerr, _ := status.FromError(err)
+		fmt.Printf("Error Code[%d] Message[%s]\n",
+			gerr.Code(), gerr.Message())
+		os.Exit(1)
+	}
+
+	// Initialize the variable
+	totalCapacity := uint64(0)
+
+	// For each node ID, get its information
+	for _, nodeID := range nodeEnumResp.GetNodeIds() {
+		node, err := nodeclient.Inspect(
+			context.Background(),
+			&api.SdkNodeInspectRequest{
+				NodeId: nodeID,
+			},
+		)
+		if err != nil {
+			gerr, _ := status.FromError(err)
+			fmt.Printf("Error Code[%d] Message[%s]\n",
+				gerr.Code(), gerr.Message())
+			os.Exit(1)
+		}
+
+		// Get size from the pools
+		// Use Pool instead of the disks, because disks could be in a RAID
+		// configuration. The Pool returns the usable size.
+		for _, pool := range node.GetNode().GetPools() {
+			totalCapacity += pool.GetTotalSize()
+		}
+	}
+	fmt.Printf("Cluster total capacity is %d Gi\n", totalCapacity/GB)
 
 	// Create a 100Gi volume
 	volumes := api.NewOpenStorageVolumeClient(conn)
