@@ -151,6 +151,7 @@
     - [SdkSchedulePolicyInterval](#sdkschedulepolicyinterval)
     - [SdkSchedulePolicyIntervalDaily](#sdkschedulepolicyintervaldaily)
     - [SdkSchedulePolicyIntervalMonthly](#sdkschedulepolicyintervalmonthly)
+    - [SdkSchedulePolicyIntervalPeriodic](#sdkschedulepolicyintervalperiodic)
     - [SdkSchedulePolicyIntervalWeekly](#sdkschedulepolicyintervalweekly)
     - [SdkSchedulePolicyUpdateRequest](#sdkschedulepolicyupdaterequest)
     - [SdkSchedulePolicyUpdateResponse](#sdkschedulepolicyupdateresponse)
@@ -187,6 +188,8 @@
     - [SdkVolumeSnapshotEnumerateWithFiltersResponse](#sdkvolumesnapshotenumeratewithfiltersresponse)
     - [SdkVolumeSnapshotRestoreRequest](#sdkvolumesnapshotrestorerequest)
     - [SdkVolumeSnapshotRestoreResponse](#sdkvolumesnapshotrestoreresponse)
+    - [SdkVolumeSnapshotScheduleUpdateRequest](#sdkvolumesnapshotscheduleupdaterequest)
+    - [SdkVolumeSnapshotScheduleUpdateResponse](#sdkvolumesnapshotscheduleupdateresponse)
     - [SdkVolumeStatsRequest](#sdkvolumestatsrequest)
     - [SdkVolumeStatsResponse](#sdkvolumestatsresponse)
     - [SdkVolumeUnmountRequest](#sdkvolumeunmountrequest)
@@ -726,6 +729,14 @@ To filter all the snapshots for a specific volume which may no longer exist,
 specifiy a volume id.
 Labels can also be used to filter the snapshot list.
 If neither are provided all snapshots will be returned.
+## SnapshotScheduleUpdate {#methodopenstorageapiopenstoragevolumesnapshotscheduleupdate}
+
+> **rpc** SnapshotScheduleUpdate([SdkVolumeSnapshotScheduleUpdateRequest](#sdkvolumesnapshotscheduleupdaterequest))
+    [SdkVolumeSnapshotScheduleUpdateResponse](#sdkvolumesnapshotscheduleupdateresponse)
+
+Sets the snapshot schedules. This information is saved in the VolumeSpec.snapshot_schedule
+as `policy=<name>,...`. This function will overwrite any policy values
+in the volume. To delete the policies in the volume send no policies.
  <!-- end methods -->
  <!-- end services -->
 
@@ -2279,6 +2290,7 @@ Defines a schedule policy interval
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) period_type.daily | [ SdkSchedulePolicyIntervalDaily](#sdkschedulepolicyintervaldaily) | Daily policy |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) period_type.weekly | [ SdkSchedulePolicyIntervalWeekly](#sdkschedulepolicyintervalweekly) | Weekly policy |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) period_type.monthly | [ SdkSchedulePolicyIntervalMonthly](#sdkschedulepolicyintervalmonthly) | Monthly policy |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) period_type.periodic | [ SdkSchedulePolicyIntervalPeriodic](#sdkschedulepolicyintervalperiodic) | Periodic policy |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -2308,6 +2320,17 @@ Defines a monthly schedule
  <!-- end HasFields -->
 
 
+## SdkSchedulePolicyIntervalPeriodic {#sdkschedulepolicyintervalperiodic}
+Defines a periodic schedule
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| seconds | [ int64](#int64) | Specify the number of seconds between intervals |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
 ## SdkSchedulePolicyIntervalWeekly {#sdkschedulepolicyintervalweekly}
 Defines a weekly schedule
 
@@ -2327,7 +2350,7 @@ Define a request to update a schedule policy
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| SchedulePolicy | [ SdkSchedulePolicy](#sdkschedulepolicy) | Schedule Policy |
+| schedule_policy | [ SdkSchedulePolicy](#sdkschedulepolicy) | Schedule Policy |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -2691,6 +2714,24 @@ Defines a request to restore a volume to a snapshot
 
 
 ## SdkVolumeSnapshotRestoreResponse {#sdkvolumesnapshotrestoreresponse}
+Empty response
+
+ <!-- end HasFields -->
+
+
+## SdkVolumeSnapshotScheduleUpdateRequest {#sdkvolumesnapshotscheduleupdaterequest}
+Defines a request to update the snapshot schedule of a volume
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id | [ string](#string) | Id of volume |
+| snapshot_schedule_names | [repeated string](#string) | Names of schedule policies |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVolumeSnapshotScheduleUpdateResponse {#sdkvolumesnapshotscheduleupdateresponse}
 Empty response
 
  <!-- end HasFields -->
@@ -3199,6 +3240,7 @@ swagger:model
 | sharedv4 | [ bool](#bool) | Sharedv4 is true if this volume can be accessed via sharedv4. |
 | queue_depth | [ uint32](#uint32) | QueueDepth defines the desired block device queue depth |
 | force_unsupported_fs_type | [ bool](#bool) | Use to force a file system type which is not recommended. The driver may still refuse to use the file system type. |
+| nodiscard | [ bool](#bool) | Nodiscard specifies if the volume will be mounted with discard support disabled. i.e. FS will not release allocated blocks back to the backing storage pool. |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3534,7 +3576,7 @@ client and server applications
 | ---- | ------ | ----------- |
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
-| Minor | 13 | SDK version minor value of this specification |
+| Minor | 15 | SDK version minor value of this specification |
 | Patch | 0 | SDK version patch value of this specification |
 
 

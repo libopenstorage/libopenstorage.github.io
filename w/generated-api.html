@@ -477,6 +477,7 @@
 <li><a href="#sdkschedulepolicyinterval">SdkSchedulePolicyInterval</a></li>
 <li><a href="#sdkschedulepolicyintervaldaily">SdkSchedulePolicyIntervalDaily</a></li>
 <li><a href="#sdkschedulepolicyintervalmonthly">SdkSchedulePolicyIntervalMonthly</a></li>
+<li><a href="#sdkschedulepolicyintervalperiodic">SdkSchedulePolicyIntervalPeriodic</a></li>
 <li><a href="#sdkschedulepolicyintervalweekly">SdkSchedulePolicyIntervalWeekly</a></li>
 <li><a href="#sdkschedulepolicyupdaterequest">SdkSchedulePolicyUpdateRequest</a></li>
 <li><a href="#sdkschedulepolicyupdateresponse">SdkSchedulePolicyUpdateResponse</a></li>
@@ -513,6 +514,8 @@
 <li><a href="#sdkvolumesnapshotenumeratewithfiltersresponse">SdkVolumeSnapshotEnumerateWithFiltersResponse</a></li>
 <li><a href="#sdkvolumesnapshotrestorerequest">SdkVolumeSnapshotRestoreRequest</a></li>
 <li><a href="#sdkvolumesnapshotrestoreresponse">SdkVolumeSnapshotRestoreResponse</a></li>
+<li><a href="#sdkvolumesnapshotscheduleupdaterequest">SdkVolumeSnapshotScheduleUpdateRequest</a></li>
+<li><a href="#sdkvolumesnapshotscheduleupdateresponse">SdkVolumeSnapshotScheduleUpdateResponse</a></li>
 <li><a href="#sdkvolumestatsrequest">SdkVolumeStatsRequest</a></li>
 <li><a href="#sdkvolumestatsresponse">SdkVolumeStatsResponse</a></li>
 <li><a href="#sdkvolumeunmountrequest">SdkVolumeUnmountRequest</a></li>
@@ -1016,7 +1019,15 @@ a snapshot, please use OpenStorageVolume.Clone().</p>
 To filter all the snapshots for a specific volume which may no longer exist,
 specifiy a volume id.
 Labels can also be used to filter the snapshot list.
-If neither are provided all snapshots will be returned.
+If neither are provided all snapshots will be returned.</p>
+<h2 id="methodopenstorageapiopenstoragevolumesnapshotscheduleupdate">SnapshotScheduleUpdate </h2>
+<blockquote>
+<p><strong>rpc</strong> SnapshotScheduleUpdate(<a href="#sdkvolumesnapshotscheduleupdaterequest">SdkVolumeSnapshotScheduleUpdateRequest</a>)
+    <a href="#sdkvolumesnapshotscheduleupdateresponse">SdkVolumeSnapshotScheduleUpdateResponse</a></p>
+</blockquote>
+<p>Sets the snapshot schedules. This information is saved in the VolumeSpec.snapshot_schedule
+as <code>policy=<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">&gt;</span></span>,...</code>. This function will overwrite any policy values
+in the volume. To delete the policies in the volume send no policies.
  <!-- end methods -->
  <!-- end services --></p>
 <h1 id="messages">Messages</h1>
@@ -4012,6 +4023,11 @@ specified volume</p>
 <td><a href="#sdkschedulepolicyintervalmonthly"> SdkSchedulePolicyIntervalMonthly</a></td>
 <td>Monthly policy</td>
 </tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> period_type.periodic</td>
+<td><a href="#sdkschedulepolicyintervalperiodic"> SdkSchedulePolicyIntervalPeriodic</a></td>
+<td>Periodic policy</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -4071,6 +4087,26 @@ specified volume</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
+<h2 id="sdkschedulepolicyintervalperiodic">SdkSchedulePolicyIntervalPeriodic </h2>
+<p>Defines a periodic schedule</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>seconds</td>
+<td><a href="#int64"> int64</a></td>
+<td>Specify the number of seconds between intervals</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
 <h2 id="sdkschedulepolicyintervalweekly">SdkSchedulePolicyIntervalWeekly </h2>
 <p>Defines a weekly schedule</p>
 <table>
@@ -4113,7 +4149,7 @@ specified volume</p>
 </thead>
 <tbody>
 <tr>
-<td>SchedulePolicy</td>
+<td>schedule_policy</td>
 <td><a href="#sdkschedulepolicy"> SdkSchedulePolicy</a></td>
 <td>Schedule Policy</td>
 </tr>
@@ -4782,6 +4818,34 @@ to update any labels on the volume.</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkvolumesnapshotrestoreresponse">SdkVolumeSnapshotRestoreResponse </h2>
+<p>Empty response</p>
+ <!-- end HasFields -->
+<h2 id="sdkvolumesnapshotscheduleupdaterequest">SdkVolumeSnapshotScheduleUpdateRequest </h2>
+<p>Defines a request to update the snapshot schedule of a volume</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of volume</td>
+</tr>
+<tr>
+<td>snapshot_schedule_names</td>
+<td><a href="#string">repeated string</a></td>
+<td>Names of schedule policies</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkvolumesnapshotscheduleupdateresponse">SdkVolumeSnapshotScheduleUpdateResponse </h2>
 <p>Empty response</p>
  <!-- end HasFields -->
 <h2 id="sdkvolumestatsrequest">SdkVolumeStatsRequest </h2>
@@ -6031,6 +6095,11 @@ swagger:model</p>
 <td><a href="#bool"> bool</a></td>
 <td>Use to force a file system type which is not recommended. The driver may still refuse to use the file system type.</td>
 </tr>
+<tr>
+<td>nodiscard</td>
+<td><a href="#bool"> bool</a></td>
+<td>Nodiscard specifies if the volume will be mounted with discard support disabled. i.e. FS will not release allocated blocks back to the backing storage pool.</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -6921,7 +6990,7 @@ client and server applications</p>
 </tr>
 <tr>
 <td>Minor</td>
-<td>13</td>
+<td>15</td>
 <td>SDK version minor value of this specification</td>
 </tr>
 <tr>
@@ -7369,7 +7438,7 @@ client and server applications</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"gRPC Reference","level":"1.5.1","depth":2,"next":{"title":"REST Reference","level":"1.5.2","depth":2,"path":"rest-api.md","ref":"rest-api.md","articles":[]},"previous":{"title":"API Reference","level":"1.5","depth":1,"path":"reference.md","ref":"reference.md","articles":[{"title":"gRPC Reference","level":"1.5.1","depth":2,"path":"generated-api.md","ref":"generated-api.md","articles":[]},{"title":"REST Reference","level":"1.5.2","depth":2,"path":"rest-api.md","ref":"rest-api.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"generated-api.md","mtime":"2018-09-27T12:31:42.505Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-27T12:31:44.350Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"gRPC Reference","level":"1.5.1","depth":2,"next":{"title":"REST Reference","level":"1.5.2","depth":2,"path":"rest-api.md","ref":"rest-api.md","articles":[]},"previous":{"title":"API Reference","level":"1.5","depth":1,"path":"reference.md","ref":"reference.md","articles":[{"title":"gRPC Reference","level":"1.5.1","depth":2,"path":"generated-api.md","ref":"generated-api.md","articles":[]},{"title":"REST Reference","level":"1.5.2","depth":2,"path":"rest-api.md","ref":"rest-api.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"generated-api.md","mtime":"2018-10-12T21:59:01.434Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-12T21:59:14.098Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
