@@ -32,13 +32,9 @@ Then type `make api` to generate the API documentation.
 When releasing new version use the following method to maintain that release
 version on the documentation website:
 
-1. Copy the docs dir to a new `vX.X.X` dir.
-1. Edit the only non-generated link: `vX.X.X/rest-api.md` for the Swagger UI
-1. Edit `vX.X.X/swagger-ui/index.html` and adjust the `url:` line to have `/w/vX.X.X/api/api.swagger.json`
-1. Add the build to the Makefile `build:` tags
-1. Edit `docs/releases.md` accordingly
-1. Type `make build`
-1. git add the new `vX.X.X` dir and the entire `w/` dir
+1. Add an entry to `getcontent.sh`
+1. Edit `docs/reference.md`
+1. Create `docs/swagger-ui/<branch>.index.html` and adjust the json file accordingly
 
 ## More information
 * [Gitbook](https://toolchain.gitbook.com/)
