@@ -2,10 +2,10 @@
 
 ## Releases
 
-| Version | Documentation | Clients |
+| Version | Documentation | mock-sdk-server Container Tag | Clients |
 | ------- | ------------- | ------- |
-| v0.9.2 | [gRPC][grpc092] / [REST][rest092] | [Source][client092]
-| Nightly Development Builds | [gRPC][grpc] / [REST][rest] | [Source][client]
+| v0.9.2 | [gRPC][grpc092] / [REST][rest092] | `openstorage/mock-sdk-server:0.9.2` | [Source][client092]
+| Nightly Development Builds | [gRPC][grpc] / [REST][rest] | `openstorage/mock-sdk-server` | [Source][client]
 
 
 [grpc092]: release-sdk-0.9.generated-api.md
