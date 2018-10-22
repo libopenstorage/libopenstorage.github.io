@@ -10,5 +10,4 @@
         * [Changelog](release-sdk-0.9.changelog.md)
     * [Nightly](master.generated-api.md)
         * [Changelog](master.changelog.md)
-* [Changelog](changelog.md)
 
