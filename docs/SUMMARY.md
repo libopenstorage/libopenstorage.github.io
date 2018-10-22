@@ -6,8 +6,9 @@
     * [Golang](tutorial-golang.md)
     * [Python](tutorial-python.md)
 * [API Reference](reference.md)
-    * [gRPC Reference](generated-api.md)
-	* [REST Reference](rest-api.md)
-* [Releases](releases.md)
+    * [v0.9.2](release-sdk-0.9.generated-api.md)
+        * [Changelog](release-sdk-0.9.changelog.md)
+    * [Nightly](master.generated-api.md)
+        * [Changelog](master.changelog.md)
 * [Changelog](changelog.md)
 

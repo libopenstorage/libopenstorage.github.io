@@ -7,7 +7,6 @@ images:
 
 build: images
 	gitbook build docs/ w
-	gitbook build v0.9.0/ w/v0.9.0
 
 serve: images
 	gitbook serve docs/ w
@@ -19,15 +18,7 @@ endif
 ifndef HAS_PROTOGENDOC
 	$(error "Please install protoc-gen-doc. See README.md for more information")
 endif
-	curl https://raw.githubusercontent.com/libopenstorage/openstorage/master/api/server/sdk/api/api.swagger.json \
-		--output docs/api/api.swagger.json --silent
-	curl https://raw.githubusercontent.com/libopenstorage/openstorage/master/SDK_CHANGELOG.md \
-		--output docs/changelog.md --silent
-	curl https://raw.githubusercontent.com/libopenstorage/openstorage/master/api/api.proto \
-		--output api.proto --silent
-	protoc -I. -I $(GOPATH)/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
-		--doc_out=docs/ --doc_opt=./template/sdk.tmpl,generated-api.md api.proto
-	rm -f api.proto
+	bash getcontent.sh
 
 # If you have updated any plugins in docs/book.json from https://plugins.gitbook.com/
 # you will need to update the modules

@@ -2,3 +2,4 @@ w/gitbook/gitbook-plugin-livereload/*
 examples/python/openstorage
 examples/python/sdk
 examples/python/google
+*.swp
