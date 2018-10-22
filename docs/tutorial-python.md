@@ -192,5 +192,5 @@ Time:2018-07-18T02:04:53.278579951Z Status:SdkCloudBackupStatusTypeDone
 
 ## Next
 As you can see from the above, working with OpenStorage SDK is quite easy,
-fun, and powerful. Please refer to the [API Reference](generated-api.html)
+fun, and powerful. Please refer to the [API Reference](reference.md)
 for a complete list of services.

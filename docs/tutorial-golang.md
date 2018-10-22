@@ -279,5 +279,5 @@ Volume:42908221-1e24-4927-b67a-468c8b826b0b     ttime:2018-07-12 23:29:11.856397
 
 ## Next
 As you can see from the above, working with OpenStorage SDK is quite easy,
-fun, and powerful. Please refer to the [API Reference](generated-api.html)
+fun, and powerful. Please refer to the [API Reference](reference.md)
 for a complete list of services.
