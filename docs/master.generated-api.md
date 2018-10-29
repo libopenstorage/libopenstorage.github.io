@@ -21,7 +21,6 @@
     - [ActiveRequest](#activerequest)
     - [ActiveRequest.ReqestKVEntry](#activerequestreqestkventry)
     - [ActiveRequests](#activerequests)
-    - [AffinityRule](#affinityrule)
     - [Alert](#alert)
     - [Alerts](#alerts)
     - [Catalog](#catalog)
@@ -31,6 +30,7 @@
     - [CloudMigrateInfo](#cloudmigrateinfo)
     - [CloudMigrateInfoList](#cloudmigrateinfolist)
     - [CloudMigrateStartRequest](#cloudmigratestartrequest)
+    - [CloudMigrateStartResponse](#cloudmigratestartresponse)
     - [CloudMigrateStatusResponse](#cloudmigratestatusresponse)
     - [CloudMigrateStatusResponse.InfoEntry](#cloudmigratestatusresponseinfoentry)
     - [ClusterPairCreateRequest](#clusterpaircreaterequest)
@@ -260,6 +260,7 @@
     - [Status](#status)
     - [StorageMedium](#storagemedium)
     - [VolumeActionParam](#volumeactionparam)
+    - [VolumePlacementRule.AffinityRuleType](#volumeplacementruleaffinityruletype)
     - [VolumePlacementRule.EnforcementType](#volumeplacementruleenforcementtype)
     - [VolumeState](#volumestate)
     - [VolumeStatus](#volumestatus)
@@ -787,17 +788,6 @@ swagger:model
  <!-- end HasFields -->
 
 
-## AffinityRule {#affinityrule}
-AffinityRule specifies the label matching rules for an affinity or anti-affinity
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| match_expressions | [repeated LabelSelectorRequirement](#labelselectorrequirement) | MatchExpressions is a list of label selector requirements. The requirements are ANDed. |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
 ## Alert {#alert}
 Alert is a structure that represents an alert object
 
@@ -872,9 +862,7 @@ Request to stop a cloud migration
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| operation | [ CloudMigrate.OperationType](#cloudmigrateoperationtype) | The type of operation to cancel |
-| cluster_id | [ string](#string) | ID of the cluster to which migration should be cancelled |
-| target_id | [ string](#string) | Depending on the operation type this can be a VolumeID or VolumeGroupID |
+| task_id | [ string](#string) | The id of the task to cancel |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -885,6 +873,7 @@ Request to stop a cloud migration
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
+| task_id | [ string](#string) | Task id associated with this migration |
 | cluster_id | [ string](#string) | ID of the cluster where the volume is being migrated |
 | local_volume_id | [ string](#string) | ID of the volume on the local cluster |
 | local_volume_name | [ string](#string) | Name of the volume on the local cluster |
@@ -893,7 +882,7 @@ Request to stop a cloud migration
 | current_stage | [ CloudMigrate.Stage](#cloudmigratestage) | Current stage of the volume migration |
 | status | [ CloudMigrate.Status](#cloudmigratestatus) | Status of the current stage |
 | last_update | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | Last time the status was updated |
-| last_success | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | Time of the last successful migration of the volume |
+| error_reason | [ string](#string) | Contains the reason for the migration error |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -918,6 +907,18 @@ Request to start a cloud migration
 | operation | [ CloudMigrate.OperationType](#cloudmigrateoperationtype) | The type of operation to start |
 | cluster_id | [ string](#string) | ID of the cluster to which volumes are to be migrated |
 | target_id | [ string](#string) | Depending on the operation type this can be a VolumeID or VolumeGroupID |
+| task_id | [ string](#string) | (Optional) Unique TaskId assocaiated with this migration. If not provided one will be generated and returned in the response |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## CloudMigrateStartResponse {#cloudmigratestartresponse}
+Response to start a cloud migration
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| task_id | [ string](#string) | TaskId assocaiated with the migration that was started |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -1895,6 +1896,7 @@ SdkCloudBackupStatus defines the status of a backup stored by a cloud provider
 | node_id | [ string](#string) | NodeID is the ID of the node where this Op is active |
 | src_volume_id | [ string](#string) | SourceVolumeID is the the volume that is either being backed up to cloud or target volume to which a backup is being restored |
 | info | [repeated string](#string) | Info currently indicates the failure cause for failed backup/restore |
+| credential_id | [ string](#string) | CredentialId is the credential used for cloud with this backup/restore op |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3217,8 +3219,8 @@ VolumePlacementRule defines a single placement rule
 | affected_replicas | [ int32](#int32) | AffectedReplicas defines the number of volume replicas affected by this rule. If not provided, rule would affect all replicas (optional) |
 | weight | [ int64](#int64) | Weight defines the weight of the rule which allows to break the tie with other matching rules. A rule with higher weight wins over a rule with lower weight. (optional) |
 | enforcement | [ VolumePlacementRule.EnforcementType](#volumeplacementruleenforcementtype) | Enforcement specifies the rule enforcement policy. Can take values: required or preferred. (optional) |
-| affinity | [ AffinityRule](#affinityrule) | Affinity defines the affinity rule for the volume placement |
-| anti_affinity | [ AffinityRule](#affinityrule) | AntiAffinity defines the anti affinity rule for the volume placement |
+| type | [ VolumePlacementRule.AffinityRuleType](#volumeplacementruleaffinityruletype) | Type is the type of the affinity rule |
+| match_expressions | [repeated LabelSelectorRequirement](#labelselectorrequirement) | MatchExpressions is a list of label selector requirements. The requirements are ANDed. |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3676,7 +3678,7 @@ client and server applications
 | ---- | ------ | ----------- |
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
-| Minor | 18 | SDK version minor value of this specification |
+| Minor | 19 | SDK version minor value of this specification |
 | Patch | 0 | SDK version patch value of this specification |
 
 
@@ -3739,6 +3741,17 @@ client and server applications
 | VOLUME_ACTION_PARAM_NONE | 0 | none |
 | VOLUME_ACTION_PARAM_OFF | 1 | Maps to the boolean value false |
 | VOLUME_ACTION_PARAM_ON | 2 | Maps to the boolean value true. |
+
+
+
+
+## VolumePlacementRule.AffinityRuleType {#volumeplacementruleaffinityruletype}
+This specifies the type an affinity rule can take
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| Affinity | 0 | Affinity means the rule specifies an affinity to objects that match the below label selector requirements |
+| AntiAffinity | 1 | AntiAffinity means the rule specifies an anti-affinity to objects that match the below label selector requirements |
 
 
 

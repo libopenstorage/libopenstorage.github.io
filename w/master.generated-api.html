@@ -359,7 +359,6 @@
 <li><a href="#activerequest">ActiveRequest</a></li>
 <li><a href="#activerequestreqestkventry">ActiveRequest.ReqestKVEntry</a></li>
 <li><a href="#activerequests">ActiveRequests</a></li>
-<li><a href="#affinityrule">AffinityRule</a></li>
 <li><a href="#alert">Alert</a></li>
 <li><a href="#alerts">Alerts</a></li>
 <li><a href="#catalog">Catalog</a></li>
@@ -369,6 +368,7 @@
 <li><a href="#cloudmigrateinfo">CloudMigrateInfo</a></li>
 <li><a href="#cloudmigrateinfolist">CloudMigrateInfoList</a></li>
 <li><a href="#cloudmigratestartrequest">CloudMigrateStartRequest</a></li>
+<li><a href="#cloudmigratestartresponse">CloudMigrateStartResponse</a></li>
 <li><a href="#cloudmigratestatusresponse">CloudMigrateStatusResponse</a></li>
 <li><a href="#cloudmigratestatusresponseinfoentry">CloudMigrateStatusResponse.InfoEntry</a></li>
 <li><a href="#clusterpaircreaterequest">ClusterPairCreateRequest</a></li>
@@ -599,6 +599,7 @@
 <li><a href="#status">Status</a></li>
 <li><a href="#storagemedium">StorageMedium</a></li>
 <li><a href="#volumeactionparam">VolumeActionParam</a></li>
+<li><a href="#volumeplacementruleaffinityruletype">VolumePlacementRule.AffinityRuleType</a></li>
 <li><a href="#volumeplacementruleenforcementtype">VolumePlacementRule.EnforcementType</a></li>
 <li><a href="#volumestate">VolumeState</a></li>
 <li><a href="#volumestatus">VolumeStatus</a></li>
@@ -1121,26 +1122,6 @@ swagger:model</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
-<h2 id="affinityrule">AffinityRule </h2>
-<p>AffinityRule specifies the label matching rules for an affinity or anti-affinity</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>match_expressions</td>
-<td><a href="#labelselectorrequirement">repeated LabelSelectorRequirement</a></td>
-<td>MatchExpressions is a list of label selector requirements. The requirements are ANDed.</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
 <h2 id="alert">Alert </h2>
 <p>Alert is a structure that represents an alert object</p>
 <table>
@@ -1319,19 +1300,9 @@ swagger:model</p>
 </thead>
 <tbody>
 <tr>
-<td>operation</td>
-<td><a href="#cloudmigrateoperationtype"> CloudMigrate.OperationType</a></td>
-<td>The type of operation to cancel</td>
-</tr>
-<tr>
-<td>cluster_id</td>
+<td>task_id</td>
 <td><a href="#string"> string</a></td>
-<td>ID of the cluster to which migration should be cancelled</td>
-</tr>
-<tr>
-<td>target_id</td>
-<td><a href="#string"> string</a></td>
-<td>Depending on the operation type this can be a VolumeID or VolumeGroupID</td>
+<td>The id of the task to cancel</td>
 </tr>
 </tbody>
 </table>
@@ -1347,6 +1318,11 @@ swagger:model</p>
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>task_id</td>
+<td><a href="#string"> string</a></td>
+<td>Task id associated with this migration</td>
+</tr>
 <tr>
 <td>cluster_id</td>
 <td><a href="#string"> string</a></td>
@@ -1388,9 +1364,9 @@ swagger:model</p>
 <td>Last time the status was updated</td>
 </tr>
 <tr>
-<td>last_success</td>
-<td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
-<td>Time of the last successful migration of the volume</td>
+<td>error_reason</td>
+<td><a href="#string"> string</a></td>
+<td>Contains the reason for the migration error</td>
 </tr>
 </tbody>
 </table>
@@ -1440,6 +1416,31 @@ swagger:model</p>
 <td>target_id</td>
 <td><a href="#string"> string</a></td>
 <td>Depending on the operation type this can be a VolumeID or VolumeGroupID</td>
+</tr>
+<tr>
+<td>task_id</td>
+<td><a href="#string"> string</a></td>
+<td>(Optional) Unique TaskId assocaiated with this migration. If not provided one will be generated and returned in the response</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="cloudmigratestartresponse">CloudMigrateStartResponse </h2>
+<p>Response to start a cloud migration</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>task_id</td>
+<td><a href="#string"> string</a></td>
+<td>TaskId assocaiated with the migration that was started</td>
 </tr>
 </tbody>
 </table>
@@ -3376,6 +3377,11 @@ from a cloud provider</p>
 <td>info</td>
 <td><a href="#string">repeated string</a></td>
 <td>Info currently indicates the failure cause for failed backup/restore</td>
+</tr>
+<tr>
+<td>credential_id</td>
+<td><a href="#string"> string</a></td>
+<td>CredentialId is the credential used for cloud with this backup/restore op</td>
 </tr>
 </tbody>
 </table>
@@ -6010,14 +6016,14 @@ swagger:model</p>
 <td>Enforcement specifies the rule enforcement policy. Can take values: required or preferred. (optional)</td>
 </tr>
 <tr>
-<td>affinity</td>
-<td><a href="#affinityrule"> AffinityRule</a></td>
-<td>Affinity defines the affinity rule for the volume placement</td>
+<td>type</td>
+<td><a href="#volumeplacementruleaffinityruletype"> VolumePlacementRule.AffinityRuleType</a></td>
+<td>Type is the type of the affinity rule</td>
 </tr>
 <tr>
-<td>anti_affinity</td>
-<td><a href="#affinityrule"> AffinityRule</a></td>
-<td>AntiAffinity defines the anti affinity rule for the volume placement</td>
+<td>match_expressions</td>
+<td><a href="#labelselectorrequirement">repeated LabelSelectorRequirement</a></td>
+<td>MatchExpressions is a list of label selector requirements. The requirements are ANDed.</td>
 </tr>
 </tbody>
 </table>
@@ -7229,7 +7235,7 @@ client and server applications</p>
 </tr>
 <tr>
 <td>Minor</td>
-<td>18</td>
+<td>19</td>
 <td>SDK version minor value of this specification</td>
 </tr>
 <tr>
@@ -7409,6 +7415,29 @@ client and server applications</p>
 <td>VOLUME_ACTION_PARAM_ON</td>
 <td>2</td>
 <td>Maps to the boolean value true.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="volumeplacementruleaffinityruletype">VolumePlacementRule.AffinityRuleType </h2>
+<p>This specifies the type an affinity rule can take</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Affinity</td>
+<td>0</td>
+<td>Affinity means the rule specifies an affinity to objects that match the below label selector requirements</td>
+</tr>
+<tr>
+<td>AntiAffinity</td>
+<td>1</td>
+<td>AntiAffinity means the rule specifies an anti-affinity to objects that match the below label selector requirements</td>
 </tr>
 </tbody>
 </table>
@@ -7700,7 +7729,7 @@ client and server applications</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Nightly","level":"1.5.2","depth":2,"next":{"title":"Changelog","level":"1.5.2.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.1.1","depth":3,"path":"release-sdk-0.9.changelog.md","ref":"release-sdk-0.9.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"master.generated-api.md","mtime":"2018-10-22T13:51:07.488Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-22T15:12:33.624Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Nightly","level":"1.5.2","depth":2,"next":{"title":"Changelog","level":"1.5.2.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.1.1","depth":3,"path":"release-sdk-0.9.changelog.md","ref":"release-sdk-0.9.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"master.generated-api.md","mtime":"2018-10-29T16:30:38.036Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-29T16:30:44.874Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
