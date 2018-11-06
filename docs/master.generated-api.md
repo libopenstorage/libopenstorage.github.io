@@ -7,8 +7,10 @@
     - [OpenStorageAlerts](#serviceopenstorageapiopenstoragealerts)
     - [OpenStorageCloudBackup](#serviceopenstorageapiopenstoragecloudbackup)
     - [OpenStorageCluster](#serviceopenstorageapiopenstoragecluster)
+    - [OpenStorageClusterPair](#serviceopenstorageapiopenstorageclusterpair)
     - [OpenStorageCredentials](#serviceopenstorageapiopenstoragecredentials)
     - [OpenStorageIdentity](#serviceopenstorageapiopenstorageidentity)
+    - [OpenStorageMigrate](#serviceopenstorageapiopenstoragemigrate)
     - [OpenStorageMountAttach](#serviceopenstorageapiopenstoragemountattach)
     - [OpenStorageNode](#serviceopenstorageapiopenstoragenode)
     - [OpenStorageObjectstore](#serviceopenstorageapiopenstorageobjectstore)
@@ -110,8 +112,29 @@
     - [SdkCloudBackupStatusRequest](#sdkcloudbackupstatusrequest)
     - [SdkCloudBackupStatusResponse](#sdkcloudbackupstatusresponse)
     - [SdkCloudBackupStatusResponse.StatusesEntry](#sdkcloudbackupstatusresponsestatusesentry)
+    - [SdkCloudMigrateCancelRequest](#sdkcloudmigratecancelrequest)
+    - [SdkCloudMigrateCancelResponse](#sdkcloudmigratecancelresponse)
+    - [SdkCloudMigrateStartRequest](#sdkcloudmigratestartrequest)
+    - [SdkCloudMigrateStartRequest.MigrateAllVolumes](#sdkcloudmigratestartrequestmigrateallvolumes)
+    - [SdkCloudMigrateStartRequest.MigrateVolume](#sdkcloudmigratestartrequestmigratevolume)
+    - [SdkCloudMigrateStartRequest.MigrateVolumeGroup](#sdkcloudmigratestartrequestmigratevolumegroup)
+    - [SdkCloudMigrateStartResponse](#sdkcloudmigratestartresponse)
+    - [SdkCloudMigrateStatusRequest](#sdkcloudmigratestatusrequest)
+    - [SdkCloudMigrateStatusResponse](#sdkcloudmigratestatusresponse)
     - [SdkClusterInspectCurrentRequest](#sdkclusterinspectcurrentrequest)
     - [SdkClusterInspectCurrentResponse](#sdkclusterinspectcurrentresponse)
+    - [SdkClusterPairCreateRequest](#sdkclusterpaircreaterequest)
+    - [SdkClusterPairCreateResponse](#sdkclusterpaircreateresponse)
+    - [SdkClusterPairDeleteRequest](#sdkclusterpairdeleterequest)
+    - [SdkClusterPairDeleteResponse](#sdkclusterpairdeleteresponse)
+    - [SdkClusterPairEnumerateRequest](#sdkclusterpairenumeraterequest)
+    - [SdkClusterPairEnumerateResponse](#sdkclusterpairenumerateresponse)
+    - [SdkClusterPairGetTokenRequest](#sdkclusterpairgettokenrequest)
+    - [SdkClusterPairGetTokenResponse](#sdkclusterpairgettokenresponse)
+    - [SdkClusterPairInspectRequest](#sdkclusterpairinspectrequest)
+    - [SdkClusterPairInspectResponse](#sdkclusterpairinspectresponse)
+    - [SdkClusterPairResetTokenRequest](#sdkclusterpairresettokenrequest)
+    - [SdkClusterPairResetTokenResponse](#sdkclusterpairresettokenresponse)
     - [SdkCredentialCreateRequest](#sdkcredentialcreaterequest)
     - [SdkCredentialCreateResponse](#sdkcredentialcreateresponse)
     - [SdkCredentialDeleteRequest](#sdkcredentialdeleterequest)
@@ -434,6 +457,59 @@ OpenStorageCluster service provides the methods to manage the cluster
 InspectCurrent returns information about the current cluster
  <!-- end methods -->
 
+# OpenStorageClusterPair {#serviceopenstorageapiopenstorageclusterpair}
+OpenStorageClusterPair service provides the methods to manage a cluster pair
+
+## Create {#methodopenstorageapiopenstorageclusterpaircreate}
+
+> **rpc** Create([SdkClusterPairCreateRequest](#sdkclusterpaircreaterequest))
+    [SdkClusterPairCreateResponse](#sdkclusterpaircreateresponse)
+
+Creates Pair with a remote cluster and returns details about the remote cluster
+
+##### Example
+{% codetabs name="Golang", type="go" -%}
+id, err := client.Create(context.Background(), &api.SdkClusterPairCreateRequest {
+  Request : &api.ClusterPairCreateRequest {
+                 RemoteClusterIp: "127.0.0.1",
+                 RemoteClusterPort: 12345,
+                 RemoteClusterToken: "<Auth-Token>",
+                 SetDefault: true,
+             }
+       })
+{%- endcodetabs %}
+## Inspect {#methodopenstorageapiopenstorageclusterpairinspect}
+
+> **rpc** Inspect([SdkClusterPairInspectRequest](#sdkclusterpairinspectrequest))
+    [SdkClusterPairInspectResponse](#sdkclusterpairinspectresponse)
+
+Inspect information about a cluster pair
+## Enumerate {#methodopenstorageapiopenstorageclusterpairenumerate}
+
+> **rpc** Enumerate([SdkClusterPairEnumerateRequest](#sdkclusterpairenumeraterequest))
+    [SdkClusterPairEnumerateResponse](#sdkclusterpairenumerateresponse)
+
+Enumerate returns list of cluster pairs
+## GetToken {#methodopenstorageapiopenstorageclusterpairgettoken}
+
+> **rpc** GetToken([SdkClusterPairGetTokenRequest](#sdkclusterpairgettokenrequest))
+    [SdkClusterPairGetTokenResponse](#sdkclusterpairgettokenresponse)
+
+GetToken returns a auth token
+## ResetToken {#methodopenstorageapiopenstorageclusterpairresettoken}
+
+> **rpc** ResetToken([SdkClusterPairResetTokenRequest](#sdkclusterpairresettokenrequest))
+    [SdkClusterPairResetTokenResponse](#sdkclusterpairresettokenresponse)
+
+ResetToken returns a auth token
+## Delete {#methodopenstorageapiopenstorageclusterpairdelete}
+
+> **rpc** Delete([SdkClusterPairDeleteRequest](#sdkclusterpairdeleterequest))
+    [SdkClusterPairDeleteResponse](#sdkclusterpairdeleteresponse)
+
+Delete a cluster pair
+ <!-- end methods -->
+
 # OpenStorageCredentials {#serviceopenstorageapiopenstoragecredentials}
 OpenStorageCredentials is a service used to manage the cloud credentials
 which can then be used by the OpenStorageCloudBackup service
@@ -514,6 +590,29 @@ different versions.
     [SdkIdentityVersionResponse](#sdkidentityversionresponse)
 
 Version returns version information about the system.
+ <!-- end methods -->
+
+# OpenStorageMigrate {#serviceopenstorageapiopenstoragemigrate}
+OpenStorageMigrate is a service used to manage migration of volumes
+
+## Start {#methodopenstorageapiopenstoragemigratestart}
+
+> **rpc** Start([SdkCloudMigrateStartRequest](#sdkcloudmigratestartrequest))
+    [SdkCloudMigrateStartResponse](#sdkcloudmigratestartresponse)
+
+Start a migration operation
+## Cancel {#methodopenstorageapiopenstoragemigratecancel}
+
+> **rpc** Cancel([SdkCloudMigrateCancelRequest](#sdkcloudmigratecancelrequest))
+    [SdkCloudMigrateCancelResponse](#sdkcloudmigratecancelresponse)
+
+Cancel a migration operation
+## Status {#methodopenstorageapiopenstoragemigratestatus}
+
+> **rpc** Status([SdkCloudMigrateStatusRequest](#sdkcloudmigratestatusrequest))
+    [SdkCloudMigrateStatusResponse](#sdkcloudmigratestatusresponse)
+
+Inspect the status of migration operation
  <!-- end methods -->
 
 # OpenStorageMountAttach {#serviceopenstorageapiopenstoragemountattach}
@@ -883,6 +982,10 @@ Request to stop a cloud migration
 | status | [ CloudMigrate.Status](#cloudmigratestatus) | Status of the current stage |
 | last_update | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | Last time the status was updated |
 | error_reason | [ string](#string) | Contains the reason for the migration error |
+| start_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | StartTime indicates Op's start time |
+| completed_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | CompletedTime indicates Op's completed time |
+| bytes_total | [ uint64](#uint64) | BytesTotal is the number of bytes being transferred |
+| bytes_done | [ uint64](#uint64) | BytesDone is the number of bytes already transferred |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -948,7 +1051,6 @@ Response with a status of the cloud migration operations
 
 ## ClusterPairCreateRequest {#clusterpaircreaterequest}
 Used to send a request to create a cluster pair
-swagger:model
 
 
 | Field | Type | Description |
@@ -963,7 +1065,6 @@ swagger:model
 
 ## ClusterPairCreateResponse {#clusterpaircreateresponse}
 Response for a pair request
-swagger:response
 
 
 | Field | Type | Description |
@@ -976,7 +1077,6 @@ swagger:response
 
 ## ClusterPairDeleteRequest {#clusterpairdeleterequest}
 Request to to delete a cluster pair
-swagger:model
 
 
 | Field | Type | Description |
@@ -988,7 +1088,6 @@ swagger:model
 
 ## ClusterPairGetRequest {#clusterpairgetrequest}
 Request to get a cluster pair
-swagger:model
 
 
 | Field | Type | Description |
@@ -1000,28 +1099,25 @@ swagger:model
 
 ## ClusterPairGetResponse {#clusterpairgetresponse}
 Reponse to get a cluster pair
-swagger:response
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| pair_info | [ ClusterPairInfo](#clusterpairinfo) | Info about the cluster pair
-
-in: body |
+| pair_info | [ ClusterPairInfo](#clusterpairinfo) | Info about the cluster pair |
  <!-- end Fields -->
  <!-- end HasFields -->
 
 
 ## ClusterPairInfo {#clusterpairinfo}
 Information about a cluster pair
-swagger:model
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | id | [ string](#string) | ID of the cluster |
 | name | [ string](#string) | Name of the cluster |
-| endpoints | [repeated string](#string) | Endpoints of the cluster |
+| endpoint | [ string](#string) | The endpoint used for creating the pair |
+| current_endpoints | [repeated string](#string) | Current endpoints of the cluster |
 | secure | [ bool](#bool) | Flag used to determine if communication is over a secure channel |
 | token | [ string](#string) | Token associated with cluster |
 | options | [map ClusterPairInfo.OptionsEntry](#clusterpairinfooptionsentry) | Key/value pair of options associated with the cluster Opaque to openstorage and interpreted by the drivers |
@@ -1043,7 +1139,6 @@ swagger:model
 
 ## ClusterPairProcessRequest {#clusterpairprocessrequest}
 Used to process a pair request from a remote cluster
-swagger:model
 
 
 | Field | Type | Description |
@@ -1056,23 +1151,14 @@ swagger:model
 
 ## ClusterPairProcessResponse {#clusterpairprocessresponse}
 Response after a pairing has been processed
-swagger:response
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| remote_cluster_id | [ string](#string) | ID of the cluster which processed the pair request
-
-in: body |
-| remote_cluster_name | [ string](#string) | Name of the cluster which processed the pair request
-
-in: body |
-| remote_cluster_endpoints | [repeated string](#string) | List of endpoints that can be used to communicate with the cluster
-
-in: body |
-| options | [map ClusterPairProcessResponse.OptionsEntry](#clusterpairprocessresponseoptionsentry) | Key/value pair of options returned on successful pairing Opaque to openstorage and interpreted by the drivers
-
-in: body |
+| remote_cluster_id | [ string](#string) | ID of the cluster which processed the pair request |
+| remote_cluster_name | [ string](#string) | Name of the cluster which processed the pair request |
+| remote_cluster_endpoints | [repeated string](#string) | List of endpoints that can be used to communicate with the cluster |
+| options | [map ClusterPairProcessResponse.OptionsEntry](#clusterpairprocessresponseoptionsentry) | Key/value pair of options returned on successful pairing. Opaque to openstorage and interpreted by the drivers |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -1091,7 +1177,6 @@ in: body |
 
 ## ClusterPairTokenGetRequest {#clusterpairtokengetrequest}
 Request to get the token for a cluster
-swagger:model
 
 
 | Field | Type | Description |
@@ -1103,7 +1188,6 @@ swagger:model
 
 ## ClusterPairTokenGetResponse {#clusterpairtokengetresponse}
 Response to get the cluster token
-swagger:model
 
 
 | Field | Type | Description |
@@ -1115,17 +1199,12 @@ swagger:model
 
 ## ClusterPairsEnumerateResponse {#clusterpairsenumerateresponse}
 Response to enumerate all the cluster pairs
-swagger:response
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| default_id | [ string](#string) | ID of the default cluster pair
-
-in: body |
-| pairs | [map ClusterPairsEnumerateResponse.PairsEntry](#clusterpairsenumerateresponsepairsentry) | Pairs Info about the cluster pairs
-
-in: body required: false |
+| default_id | [ string](#string) | ID of the default cluster pair |
+| pairs | [map ClusterPairsEnumerateResponse.PairsEntry](#clusterpairsenumerateresponsepairsentry) | Pairs Info about the cluster pairs |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -1590,7 +1669,7 @@ Defines a request to create a backup of a volume to the cloud
 | volume_id | [ string](#string) | VolumeID of the volume for which cloudbackup is requested |
 | credential_id | [ string](#string) | Credential id refers to the cloud credentials needed to backup |
 | full | [ bool](#bool) | Full indicates if full backup is desired even though incremental is possible |
-| name | [ string](#string) | Name of the task performing this backup. This value is required and used for idempotency. |
+| task_id | [ string](#string) | TaskId of the task performing this backup. This value can be used for idempotency. |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -1601,7 +1680,7 @@ Empty response
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| name | [ string](#string) | Name of the task performing the backup |
+| task_id | [ string](#string) | TaskId of the task performing the backup |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -1757,7 +1836,7 @@ a cloud provider
 | restore_volume_name | [ string](#string) | Optional volume Name of the new volume to be created in the cluster for restoring the cloudbackup |
 | credential_id | [ string](#string) | The credential to be used for restore operation |
 | node_id | [ string](#string) | Optional for provisioning restore volume (ResoreVolumeName should not be specified) |
-| name | [ string](#string) | Name of the task performing this restore |
+| task_id | [ string](#string) | TaskId of the task performing this restore |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -1770,7 +1849,7 @@ a cloud provider
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | restore_volume_id | [ string](#string) | VolumeID to which the backup is being restored |
-| name | [ string](#string) | Name of the task performing the restore |
+| task_id | [ string](#string) | TaskId of the task performing the restore |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -1869,7 +1948,7 @@ from a cloud provider
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| name | [ string](#string) | Describes the backup/restore Name state change is being requested |
+| task_id | [ string](#string) | Describes the backup/restore task state change is being requested |
 | requested_state | [ SdkCloudBackupRequestedState](#sdkcloudbackuprequestedstate) | The desired state of the operation |
  <!-- end Fields -->
  <!-- end HasFields -->
@@ -1897,6 +1976,7 @@ SdkCloudBackupStatus defines the status of a backup stored by a cloud provider
 | src_volume_id | [ string](#string) | SourceVolumeID is the the volume that is either being backed up to cloud or target volume to which a backup is being restored |
 | info | [repeated string](#string) | Info currently indicates the failure cause for failed backup/restore |
 | credential_id | [ string](#string) | CredentialId is the credential used for cloud with this backup/restore op |
+| bytes_total | [ uint64](#uint64) | BytesTotal is the total number of bytes being transferred |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -1908,9 +1988,9 @@ specified volume
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| volume_id | [ string](#string) | VolumeId is an optional value which is used to get information on the status of a backup for the specified volume. If no volume id and name is provided, then status for all volumes is returned. |
+| volume_id | [ string](#string) | VolumeId is an optional value which is used to get information on the status of a backup for the specified volume. If no volume id and task_id is provided, then status for all volumes is returned. |
 | local | [ bool](#bool) | Local indicates if only those backups/restores that are active on current node must be returned |
-| name | [ string](#string) | Name of the backup/restore task, if this is specified, volume_id is ignored. |
+| task_id | [ string](#string) | TaskId of the backup/restore task, if this is specified, volume_id is ignored. |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -1938,6 +2018,94 @@ Defines a response containing the status of the backups for a specified volume
  <!-- end HasFields -->
 
 
+## SdkCloudMigrateCancelRequest {#sdkcloudmigratecancelrequest}
+Defines a request to stop a cloud migration
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| request | [ CloudMigrateCancelRequest](#cloudmigratecancelrequest) | Request containing the task id to be cancelled |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCloudMigrateCancelResponse {#sdkcloudmigratecancelresponse}
+Empty Response
+
+ <!-- end HasFields -->
+
+
+## SdkCloudMigrateStartRequest {#sdkcloudmigratestartrequest}
+Defines a migration request
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| cluster_id | [ string](#string) | ID of the cluster to which volumes are to be migrated |
+| task_id | [ string](#string) | Unique name assocaiated with this migration. This is a Optional field for idempotency |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) opt.volume | [ SdkCloudMigrateStartRequest.MigrateVolume](#sdkcloudmigratestartrequestmigratevolume) | Request to migrate a volume |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) opt.volume_group | [ SdkCloudMigrateStartRequest.MigrateVolumeGroup](#sdkcloudmigratestartrequestmigratevolumegroup) | Request to migrate a volume group |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) opt.all_volumes | [ SdkCloudMigrateStartRequest.MigrateAllVolumes](#sdkcloudmigratestartrequestmigrateallvolumes) | Request to migrate all volumes |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCloudMigrateStartRequest.MigrateAllVolumes {#sdkcloudmigratestartrequestmigrateallvolumes}
+Defines a migration request for all volumes in a cluster
+
+ <!-- end HasFields -->
+
+
+## SdkCloudMigrateStartRequest.MigrateVolume {#sdkcloudmigratestartrequestmigratevolume}
+Defines a migration request for a volume
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id | [ string](#string) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCloudMigrateStartRequest.MigrateVolumeGroup {#sdkcloudmigratestartrequestmigratevolumegroup}
+Defines a migration request for a volume group
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| group_id | [ string](#string) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCloudMigrateStartResponse {#sdkcloudmigratestartresponse}
+Defines a response for the migration that was started
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| result | [ CloudMigrateStartResponse](#cloudmigratestartresponse) | Result assocaiated with the migration that was started |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCloudMigrateStatusRequest {#sdkcloudmigratestatusrequest}
+Empty Request
+
+ <!-- end HasFields -->
+
+
+## SdkCloudMigrateStatusResponse {#sdkcloudmigratestatusresponse}
+Defines a response for the status request
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| result | [ CloudMigrateStatusResponse](#cloudmigratestatusresponse) | Status of all migration requests |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
 ## SdkClusterInspectCurrentRequest {#sdkclusterinspectcurrentrequest}
 Empty request
 
@@ -1951,6 +2119,118 @@ Defines a response when inspecting the current cluster
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | cluster | [ StorageCluster](#storagecluster) | Cluster information |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkClusterPairCreateRequest {#sdkclusterpaircreaterequest}
+Defines a request for creating a cluster pair
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| request | [ ClusterPairCreateRequest](#clusterpaircreaterequest) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkClusterPairCreateResponse {#sdkclusterpaircreateresponse}
+Defines a result of the cluster pair
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| result | [ ClusterPairCreateResponse](#clusterpaircreateresponse) | Contains the information about cluster pair |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkClusterPairDeleteRequest {#sdkclusterpairdeleterequest}
+Defines a delete request for a cluster pair
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| cluster_id | [ string](#string) | ID of the cluster pair to be deleted |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkClusterPairDeleteResponse {#sdkclusterpairdeleteresponse}
+Empty response
+
+ <!-- end HasFields -->
+
+
+## SdkClusterPairEnumerateRequest {#sdkclusterpairenumeraterequest}
+Empty Request
+
+ <!-- end HasFields -->
+
+
+## SdkClusterPairEnumerateResponse {#sdkclusterpairenumerateresponse}
+Defines a list of cluster pair
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| result | [ ClusterPairsEnumerateResponse](#clusterpairsenumerateresponse) | List of all the cluster pairs |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkClusterPairGetTokenRequest {#sdkclusterpairgettokenrequest}
+Empty request
+
+ <!-- end HasFields -->
+
+
+## SdkClusterPairGetTokenResponse {#sdkclusterpairgettokenresponse}
+Defines a response for the token request
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| result | [ ClusterPairTokenGetResponse](#clusterpairtokengetresponse) | Contains authentication token for the cluster |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkClusterPairInspectRequest {#sdkclusterpairinspectrequest}
+Defines a cluster pair inspect request
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [ string](#string) | ID of the cluster, if empty gets the default pair |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkClusterPairInspectResponse {#sdkclusterpairinspectresponse}
+Defines a cluster pair inspect response
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| result | [ ClusterPairGetResponse](#clusterpairgetresponse) | Information about cluster pair |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkClusterPairResetTokenRequest {#sdkclusterpairresettokenrequest}
+Empty request
+
+ <!-- end HasFields -->
+
+
+## SdkClusterPairResetTokenResponse {#sdkclusterpairresettokenresponse}
+Defines a response for the token request
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| result | [ ClusterPairTokenGetResponse](#clusterpairtokengetresponse) | Contains authentication token for the cluster |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3558,10 +3838,12 @@ This defines operator types used in a label matching rule
 
 | Name | Number | Description |
 | ---- | ------ | ----------- |
-| In | 0 | In means the value for 'key' should be in one of the given 'values' |
-| NotIn | 1 | NotIn means the value for 'key' should NOT be in one of the given 'values' |
+| In | 0 | In means the value for 'key' should be in one of the given value(s) |
+| NotIn | 1 | NotIn means the value for 'key' should NOT be in one of the given value(s) |
 | Exists | 2 | Exists means the 'key' should just exist regardless of the value |
 | DoesNotExist | 3 | DoesNotExist means the 'key' should NOT exist |
+| Gt | 4 | Gt means the 'key' should be greater than the value(s) |
+| Lt | 5 | Lt means the 'key' should be less than the value(s) |
 
 
 
@@ -3678,7 +3960,7 @@ client and server applications
 | ---- | ------ | ----------- |
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
-| Minor | 19 | SDK version minor value of this specification |
+| Minor | 23 | SDK version minor value of this specification |
 | Patch | 0 | SDK version patch value of this specification |
 
 
