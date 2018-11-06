@@ -341,6 +341,26 @@
 use the SDK version numbers.</p>
 </blockquote>
 <h2 id="releases">Releases</h2>
+<h3 id="v0230---tech-preview-1122018">v0.23.0 - Tech Preview (11/2/2018)</h3>
+<ul>
+<li>Cloud migrate status and cloud backup status now report
+total bytes to be transferred and bytes already transferred.</li>
+<li>These status blocks also report the start time of the operation
+so that client could calculate progress of the operation.</li>
+</ul>
+<h3 id="v0220---tech-preview-1112018">v0.22.0 - Tech Preview (11/1/2018)</h3>
+<ul>
+<li>Rename the field &quot;name&quot; to &quot;TaskId&quot; in sdkCloudBackupcreate/restore/status
+structures.</li>
+</ul>
+<h3 id="v0210---tech-preview-10312018">v0.21.0 - Tech Preview (10/31/2018)</h3>
+<ul>
+<li>Addition of ClusterPairing and VolumeMigrate services</li>
+</ul>
+<h3 id="v0200---tech-preview-1112018">v0.20.0 - Tech Preview (11/1/2018)</h3>
+<ul>
+<li>Added ETA for cloud snap status.</li>
+</ul>
 <h3 id="v0190---tech-preview-10232018">v0.19.0 - Tech Preview (10/23/2018)</h3>
 <ul>
 <li>CloudBackupStatus now returns CredentialUUID used for cloud for the
@@ -480,7 +500,7 @@ service to the OpenStorageMountAttach service.</li>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Changelog","level":"1.5.2.1","depth":3,"previous":{"title":"Nightly","level":"1.5.2","depth":2,"path":"master.generated-api.md","ref":"master.generated-api.md","articles":[{"title":"Changelog","level":"1.5.2.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"master.changelog.md","mtime":"2018-10-29T16:30:37.804Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-29T16:30:44.874Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Changelog","level":"1.5.2.1","depth":3,"previous":{"title":"Nightly","level":"1.5.2","depth":2,"path":"master.generated-api.md","ref":"master.generated-api.md","articles":[{"title":"Changelog","level":"1.5.2.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"master.changelog.md","mtime":"2018-11-06T15:19:23.703Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-06T15:19:40.256Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

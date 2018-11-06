@@ -344,8 +344,10 @@
 <li><a href="#serviceopenstorageapiopenstoragealerts">OpenStorageAlerts</a></li>
 <li><a href="#serviceopenstorageapiopenstoragecloudbackup">OpenStorageCloudBackup</a></li>
 <li><a href="#serviceopenstorageapiopenstoragecluster">OpenStorageCluster</a></li>
+<li><a href="#serviceopenstorageapiopenstorageclusterpair">OpenStorageClusterPair</a></li>
 <li><a href="#serviceopenstorageapiopenstoragecredentials">OpenStorageCredentials</a></li>
 <li><a href="#serviceopenstorageapiopenstorageidentity">OpenStorageIdentity</a></li>
+<li><a href="#serviceopenstorageapiopenstoragemigrate">OpenStorageMigrate</a></li>
 <li><a href="#serviceopenstorageapiopenstoragemountattach">OpenStorageMountAttach</a></li>
 <li><a href="#serviceopenstorageapiopenstoragenode">OpenStorageNode</a></li>
 <li><a href="#serviceopenstorageapiopenstorageobjectstore">OpenStorageObjectstore</a></li>
@@ -448,8 +450,29 @@
 <li><a href="#sdkcloudbackupstatusrequest">SdkCloudBackupStatusRequest</a></li>
 <li><a href="#sdkcloudbackupstatusresponse">SdkCloudBackupStatusResponse</a></li>
 <li><a href="#sdkcloudbackupstatusresponsestatusesentry">SdkCloudBackupStatusResponse.StatusesEntry</a></li>
+<li><a href="#sdkcloudmigratecancelrequest">SdkCloudMigrateCancelRequest</a></li>
+<li><a href="#sdkcloudmigratecancelresponse">SdkCloudMigrateCancelResponse</a></li>
+<li><a href="#sdkcloudmigratestartrequest">SdkCloudMigrateStartRequest</a></li>
+<li><a href="#sdkcloudmigratestartrequestmigrateallvolumes">SdkCloudMigrateStartRequest.MigrateAllVolumes</a></li>
+<li><a href="#sdkcloudmigratestartrequestmigratevolume">SdkCloudMigrateStartRequest.MigrateVolume</a></li>
+<li><a href="#sdkcloudmigratestartrequestmigratevolumegroup">SdkCloudMigrateStartRequest.MigrateVolumeGroup</a></li>
+<li><a href="#sdkcloudmigratestartresponse">SdkCloudMigrateStartResponse</a></li>
+<li><a href="#sdkcloudmigratestatusrequest">SdkCloudMigrateStatusRequest</a></li>
+<li><a href="#sdkcloudmigratestatusresponse">SdkCloudMigrateStatusResponse</a></li>
 <li><a href="#sdkclusterinspectcurrentrequest">SdkClusterInspectCurrentRequest</a></li>
 <li><a href="#sdkclusterinspectcurrentresponse">SdkClusterInspectCurrentResponse</a></li>
+<li><a href="#sdkclusterpaircreaterequest">SdkClusterPairCreateRequest</a></li>
+<li><a href="#sdkclusterpaircreateresponse">SdkClusterPairCreateResponse</a></li>
+<li><a href="#sdkclusterpairdeleterequest">SdkClusterPairDeleteRequest</a></li>
+<li><a href="#sdkclusterpairdeleteresponse">SdkClusterPairDeleteResponse</a></li>
+<li><a href="#sdkclusterpairenumeraterequest">SdkClusterPairEnumerateRequest</a></li>
+<li><a href="#sdkclusterpairenumerateresponse">SdkClusterPairEnumerateResponse</a></li>
+<li><a href="#sdkclusterpairgettokenrequest">SdkClusterPairGetTokenRequest</a></li>
+<li><a href="#sdkclusterpairgettokenresponse">SdkClusterPairGetTokenResponse</a></li>
+<li><a href="#sdkclusterpairinspectrequest">SdkClusterPairInspectRequest</a></li>
+<li><a href="#sdkclusterpairinspectresponse">SdkClusterPairInspectResponse</a></li>
+<li><a href="#sdkclusterpairresettokenrequest">SdkClusterPairResetTokenRequest</a></li>
+<li><a href="#sdkclusterpairresettokenresponse">SdkClusterPairResetTokenResponse</a></li>
 <li><a href="#sdkcredentialcreaterequest">SdkCredentialCreateRequest</a></li>
 <li><a href="#sdkcredentialcreateresponse">SdkCredentialCreateResponse</a></li>
 <li><a href="#sdkcredentialdeleterequest">SdkCredentialDeleteRequest</a></li>
@@ -760,6 +783,54 @@ backup and other backups are dependent on it, it will not be able to be deleted.
 </blockquote>
 <p>InspectCurrent returns information about the current cluster
  <!-- end methods --></p>
+<h1 id="serviceopenstorageapiopenstorageclusterpair">OpenStorageClusterPair </h1>
+<p>OpenStorageClusterPair service provides the methods to manage a cluster pair</p>
+<h2 id="methodopenstorageapiopenstorageclusterpaircreate">Create </h2>
+<blockquote>
+<p><strong>rpc</strong> Create(<a href="#sdkclusterpaircreaterequest">SdkClusterPairCreateRequest</a>)
+    <a href="#sdkclusterpaircreateresponse">SdkClusterPairCreateResponse</a></p>
+</blockquote>
+<p>Creates Pair with a remote cluster and returns details about the remote cluster</p>
+<h5 id="example">Example</h5>
+<p><div class="codetabs"><div class="codetabs-header"><div class="tab active" data-codetab="0">Golang</div></div><div class="codetabs-body"><div class="tab active" data-codetab="0"><pre class="language-"><code class="lang-go">id<span class="token punctuation">,</span> err <span class="token operator">:=</span> client<span class="token punctuation">.</span><span class="token function">Create</span><span class="token punctuation">(</span>context<span class="token punctuation">.</span><span class="token function">Background</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>api<span class="token punctuation">.</span>SdkClusterPairCreateRequest <span class="token punctuation">{</span>
+  Request <span class="token punctuation">:</span> <span class="token operator">&amp;</span>api<span class="token punctuation">.</span>ClusterPairCreateRequest <span class="token punctuation">{</span>
+                 RemoteClusterIp<span class="token punctuation">:</span> <span class="token string">&quot;127.0.0.1&quot;</span><span class="token punctuation">,</span>
+                 RemoteClusterPort<span class="token punctuation">:</span> <span class="token number">12345</span><span class="token punctuation">,</span>
+                 RemoteClusterToken<span class="token punctuation">:</span> <span class="token string">&quot;&lt;Auth-Token&gt;&quot;</span><span class="token punctuation">,</span>
+                 SetDefault<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+             <span class="token punctuation">}</span>
+       <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre></div></div></div></p>
+<h2 id="methodopenstorageapiopenstorageclusterpairinspect">Inspect </h2>
+<blockquote>
+<p><strong>rpc</strong> Inspect(<a href="#sdkclusterpairinspectrequest">SdkClusterPairInspectRequest</a>)
+    <a href="#sdkclusterpairinspectresponse">SdkClusterPairInspectResponse</a></p>
+</blockquote>
+<p>Inspect information about a cluster pair</p>
+<h2 id="methodopenstorageapiopenstorageclusterpairenumerate">Enumerate </h2>
+<blockquote>
+<p><strong>rpc</strong> Enumerate(<a href="#sdkclusterpairenumeraterequest">SdkClusterPairEnumerateRequest</a>)
+    <a href="#sdkclusterpairenumerateresponse">SdkClusterPairEnumerateResponse</a></p>
+</blockquote>
+<p>Enumerate returns list of cluster pairs</p>
+<h2 id="methodopenstorageapiopenstorageclusterpairgettoken">GetToken </h2>
+<blockquote>
+<p><strong>rpc</strong> GetToken(<a href="#sdkclusterpairgettokenrequest">SdkClusterPairGetTokenRequest</a>)
+    <a href="#sdkclusterpairgettokenresponse">SdkClusterPairGetTokenResponse</a></p>
+</blockquote>
+<p>GetToken returns a auth token</p>
+<h2 id="methodopenstorageapiopenstorageclusterpairresettoken">ResetToken </h2>
+<blockquote>
+<p><strong>rpc</strong> ResetToken(<a href="#sdkclusterpairresettokenrequest">SdkClusterPairResetTokenRequest</a>)
+    <a href="#sdkclusterpairresettokenresponse">SdkClusterPairResetTokenResponse</a></p>
+</blockquote>
+<p>ResetToken returns a auth token</p>
+<h2 id="methodopenstorageapiopenstorageclusterpairdelete">Delete </h2>
+<blockquote>
+<p><strong>rpc</strong> Delete(<a href="#sdkclusterpairdeleterequest">SdkClusterPairDeleteRequest</a>)
+    <a href="#sdkclusterpairdeleteresponse">SdkClusterPairDeleteResponse</a></p>
+</blockquote>
+<p>Delete a cluster pair
+ <!-- end methods --></p>
 <h1 id="serviceopenstorageapiopenstoragecredentials">OpenStorageCredentials </h1>
 <p>OpenStorageCredentials is a service used to manage the cloud credentials
 which can then be used by the OpenStorageCloudBackup service</p>
@@ -832,6 +903,27 @@ different versions.</p>
     <a href="#sdkidentityversionresponse">SdkIdentityVersionResponse</a></p>
 </blockquote>
 <p>Version returns version information about the system.
+ <!-- end methods --></p>
+<h1 id="serviceopenstorageapiopenstoragemigrate">OpenStorageMigrate </h1>
+<p>OpenStorageMigrate is a service used to manage migration of volumes</p>
+<h2 id="methodopenstorageapiopenstoragemigratestart">Start </h2>
+<blockquote>
+<p><strong>rpc</strong> Start(<a href="#sdkcloudmigratestartrequest">SdkCloudMigrateStartRequest</a>)
+    <a href="#sdkcloudmigratestartresponse">SdkCloudMigrateStartResponse</a></p>
+</blockquote>
+<p>Start a migration operation</p>
+<h2 id="methodopenstorageapiopenstoragemigratecancel">Cancel </h2>
+<blockquote>
+<p><strong>rpc</strong> Cancel(<a href="#sdkcloudmigratecancelrequest">SdkCloudMigrateCancelRequest</a>)
+    <a href="#sdkcloudmigratecancelresponse">SdkCloudMigrateCancelResponse</a></p>
+</blockquote>
+<p>Cancel a migration operation</p>
+<h2 id="methodopenstorageapiopenstoragemigratestatus">Status </h2>
+<blockquote>
+<p><strong>rpc</strong> Status(<a href="#sdkcloudmigratestatusrequest">SdkCloudMigrateStatusRequest</a>)
+    <a href="#sdkcloudmigratestatusresponse">SdkCloudMigrateStatusResponse</a></p>
+</blockquote>
+<p>Inspect the status of migration operation
  <!-- end methods --></p>
 <h1 id="serviceopenstorageapiopenstoragemountattach">OpenStorageMountAttach </h1>
 <p>OpenStorageMountAttach is a service used to manage node access to a volume.
@@ -1368,6 +1460,26 @@ swagger:model</p>
 <td><a href="#string"> string</a></td>
 <td>Contains the reason for the migration error</td>
 </tr>
+<tr>
+<td>start_time</td>
+<td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
+<td>StartTime indicates Op&apos;s start time</td>
+</tr>
+<tr>
+<td>completed_time</td>
+<td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
+<td>CompletedTime indicates Op&apos;s completed time</td>
+</tr>
+<tr>
+<td>bytes_total</td>
+<td><a href="#uint64"> uint64</a></td>
+<td>BytesTotal is the number of bytes being transferred</td>
+</tr>
+<tr>
+<td>bytes_done</td>
+<td><a href="#uint64"> uint64</a></td>
+<td>BytesDone is the number of bytes already transferred</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -1491,8 +1603,7 @@ swagger:model</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="clusterpaircreaterequest">ClusterPairCreateRequest </h2>
-<p>Used to send a request to create a cluster pair
-swagger:model</p>
+<p>Used to send a request to create a cluster pair</p>
 <table>
 <thead>
 <tr>
@@ -1527,8 +1638,7 @@ swagger:model</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="clusterpaircreateresponse">ClusterPairCreateResponse </h2>
-<p>Response for a pair request
-swagger:response</p>
+<p>Response for a pair request</p>
 <table>
 <thead>
 <tr>
@@ -1553,8 +1663,7 @@ swagger:response</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="clusterpairdeleterequest">ClusterPairDeleteRequest </h2>
-<p>Request to to delete a cluster pair
-swagger:model</p>
+<p>Request to to delete a cluster pair</p>
 <table>
 <thead>
 <tr>
@@ -1574,8 +1683,7 @@ swagger:model</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="clusterpairgetrequest">ClusterPairGetRequest </h2>
-<p>Request to get a cluster pair
-swagger:model</p>
+<p>Request to get a cluster pair</p>
 <table>
 <thead>
 <tr>
@@ -1595,8 +1703,7 @@ swagger:model</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="clusterpairgetresponse">ClusterPairGetResponse </h2>
-<p>Reponse to get a cluster pair
-swagger:response</p>
+<p>Reponse to get a cluster pair</p>
 <table>
 <thead>
 <tr>
@@ -1613,12 +1720,10 @@ swagger:response</p>
 </tr>
 </tbody>
 </table>
-<p>in: body |
  <!-- end Fields -->
- <!-- end HasFields --></p>
+ <!-- end HasFields -->
 <h2 id="clusterpairinfo">ClusterPairInfo </h2>
-<p>Information about a cluster pair
-swagger:model</p>
+<p>Information about a cluster pair</p>
 <table>
 <thead>
 <tr>
@@ -1639,9 +1744,14 @@ swagger:model</p>
 <td>Name of the cluster</td>
 </tr>
 <tr>
-<td>endpoints</td>
+<td>endpoint</td>
+<td><a href="#string"> string</a></td>
+<td>The endpoint used for creating the pair</td>
+</tr>
+<tr>
+<td>current_endpoints</td>
 <td><a href="#string">repeated string</a></td>
-<td>Endpoints of the cluster</td>
+<td>Current endpoints of the cluster</td>
 </tr>
 <tr>
 <td>secure</td>
@@ -1687,8 +1797,7 @@ swagger:model</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="clusterpairprocessrequest">ClusterPairProcessRequest </h2>
-<p>Used to process a pair request from a remote cluster
-swagger:model</p>
+<p>Used to process a pair request from a remote cluster</p>
 <table>
 <thead>
 <tr>
@@ -1713,8 +1822,7 @@ swagger:model</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="clusterpairprocessresponse">ClusterPairProcessResponse </h2>
-<p>Response after a pairing has been processed
-swagger:response</p>
+<p>Response after a pairing has been processed</p>
 <table>
 <thead>
 <tr>
@@ -1729,17 +1837,25 @@ swagger:response</p>
 <td><a href="#string"> string</a></td>
 <td>ID of the cluster which processed the pair request</td>
 </tr>
+<tr>
+<td>remote_cluster_name</td>
+<td><a href="#string"> string</a></td>
+<td>Name of the cluster which processed the pair request</td>
+</tr>
+<tr>
+<td>remote_cluster_endpoints</td>
+<td><a href="#string">repeated string</a></td>
+<td>List of endpoints that can be used to communicate with the cluster</td>
+</tr>
+<tr>
+<td>options</td>
+<td><a href="#clusterpairprocessresponseoptionsentry">map ClusterPairProcessResponse.OptionsEntry</a></td>
+<td>Key/value pair of options returned on successful pairing. Opaque to openstorage and interpreted by the drivers</td>
+</tr>
 </tbody>
 </table>
-<p>in: body |
-| remote_cluster_name | <a href="#string"> string</a> | Name of the cluster which processed the pair request</p>
-<p>in: body |
-| remote_cluster_endpoints | <a href="#string">repeated string</a> | List of endpoints that can be used to communicate with the cluster</p>
-<p>in: body |
-| options | <a href="#clusterpairprocessresponseoptionsentry">map ClusterPairProcessResponse.OptionsEntry</a> | Key/value pair of options returned on successful pairing Opaque to openstorage and interpreted by the drivers</p>
-<p>in: body |
  <!-- end Fields -->
- <!-- end HasFields --></p>
+ <!-- end HasFields -->
 <h2 id="clusterpairprocessresponseoptionsentry">ClusterPairProcessResponse.OptionsEntry </h2>
 <table>
 <thead>
@@ -1765,8 +1881,7 @@ swagger:response</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="clusterpairtokengetrequest">ClusterPairTokenGetRequest </h2>
-<p>Request to get the token for a cluster
-swagger:model</p>
+<p>Request to get the token for a cluster</p>
 <table>
 <thead>
 <tr>
@@ -1786,8 +1901,7 @@ swagger:model</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="clusterpairtokengetresponse">ClusterPairTokenGetResponse </h2>
-<p>Response to get the cluster token
-swagger:model</p>
+<p>Response to get the cluster token</p>
 <table>
 <thead>
 <tr>
@@ -1807,8 +1921,7 @@ swagger:model</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="clusterpairsenumerateresponse">ClusterPairsEnumerateResponse </h2>
-<p>Response to enumerate all the cluster pairs
-swagger:response</p>
+<p>Response to enumerate all the cluster pairs</p>
 <table>
 <thead>
 <tr>
@@ -1823,13 +1936,15 @@ swagger:response</p>
 <td><a href="#string"> string</a></td>
 <td>ID of the default cluster pair</td>
 </tr>
+<tr>
+<td>pairs</td>
+<td><a href="#clusterpairsenumerateresponsepairsentry">map ClusterPairsEnumerateResponse.PairsEntry</a></td>
+<td>Pairs Info about the cluster pairs</td>
+</tr>
 </tbody>
 </table>
-<p>in: body |
-| pairs | <a href="#clusterpairsenumerateresponsepairsentry">map ClusterPairsEnumerateResponse.PairsEntry</a> | Pairs Info about the cluster pairs</p>
-<p>in: body required: false |
  <!-- end Fields -->
- <!-- end HasFields --></p>
+ <!-- end HasFields -->
 <h2 id="clusterpairsenumerateresponsepairsentry">ClusterPairsEnumerateResponse.PairsEntry </h2>
 <table>
 <thead>
@@ -2773,9 +2888,9 @@ as well.</p>
 <td>Full indicates if full backup is desired even though incremental is possible</td>
 </tr>
 <tr>
-<td>name</td>
+<td>task_id</td>
 <td><a href="#string"> string</a></td>
-<td>Name of the task performing this backup. This value is required and used for idempotency.</td>
+<td>TaskId of the task performing this backup. This value can be used for idempotency.</td>
 </tr>
 </tbody>
 </table>
@@ -2793,9 +2908,9 @@ as well.</p>
 </thead>
 <tbody>
 <tr>
-<td>name</td>
+<td>task_id</td>
 <td><a href="#string"> string</a></td>
-<td>Name of the task performing the backup</td>
+<td>TaskId of the task performing the backup</td>
 </tr>
 </tbody>
 </table>
@@ -3105,9 +3220,9 @@ a cloud provider</p>
 <td>Optional for provisioning restore volume (ResoreVolumeName should not be specified)</td>
 </tr>
 <tr>
-<td>name</td>
+<td>task_id</td>
 <td><a href="#string"> string</a></td>
-<td>Name of the task performing this restore</td>
+<td>TaskId of the task performing this restore</td>
 </tr>
 </tbody>
 </table>
@@ -3131,9 +3246,9 @@ a cloud provider</p>
 <td>VolumeID to which the backup is being restored</td>
 </tr>
 <tr>
-<td>name</td>
+<td>task_id</td>
 <td><a href="#string"> string</a></td>
-<td>Name of the task performing the restore</td>
+<td>TaskId of the task performing the restore</td>
 </tr>
 </tbody>
 </table>
@@ -3306,9 +3421,9 @@ from a cloud provider</p>
 </thead>
 <tbody>
 <tr>
-<td>name</td>
+<td>task_id</td>
 <td><a href="#string"> string</a></td>
-<td>Describes the backup/restore Name state change is being requested</td>
+<td>Describes the backup/restore task state change is being requested</td>
 </tr>
 <tr>
 <td>requested_state</td>
@@ -3383,6 +3498,11 @@ from a cloud provider</p>
 <td><a href="#string"> string</a></td>
 <td>CredentialId is the credential used for cloud with this backup/restore op</td>
 </tr>
+<tr>
+<td>bytes_total</td>
+<td><a href="#uint64"> uint64</a></td>
+<td>BytesTotal is the total number of bytes being transferred</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -3402,7 +3522,7 @@ specified volume</p>
 <tr>
 <td>volume_id</td>
 <td><a href="#string"> string</a></td>
-<td>VolumeId is an optional value which is used to get information on the status of a backup for the specified volume. If no volume id and name is provided, then status for all volumes is returned.</td>
+<td>VolumeId is an optional value which is used to get information on the status of a backup for the specified volume. If no volume id and task_id is provided, then status for all volumes is returned.</td>
 </tr>
 <tr>
 <td>local</td>
@@ -3410,9 +3530,9 @@ specified volume</p>
 <td>Local indicates if only those backups/restores that are active on current node must be returned</td>
 </tr>
 <tr>
-<td>name</td>
+<td>task_id</td>
 <td><a href="#string"> string</a></td>
-<td>Name of the backup/restore task, if this is specified, volume_id is ignored.</td>
+<td>TaskId of the backup/restore task, if this is specified, volume_id is ignored.</td>
 </tr>
 </tbody>
 </table>
@@ -3462,6 +3582,155 @@ specified volume</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
+<h2 id="sdkcloudmigratecancelrequest">SdkCloudMigrateCancelRequest </h2>
+<p>Defines a request to stop a cloud migration</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>request</td>
+<td><a href="#cloudmigratecancelrequest"> CloudMigrateCancelRequest</a></td>
+<td>Request containing the task id to be cancelled</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcloudmigratecancelresponse">SdkCloudMigrateCancelResponse </h2>
+<p>Empty Response</p>
+ <!-- end HasFields -->
+<h2 id="sdkcloudmigratestartrequest">SdkCloudMigrateStartRequest </h2>
+<p>Defines a migration request</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cluster_id</td>
+<td><a href="#string"> string</a></td>
+<td>ID of the cluster to which volumes are to be migrated</td>
+</tr>
+<tr>
+<td>task_id</td>
+<td><a href="#string"> string</a></td>
+<td>Unique name assocaiated with this migration. This is a Optional field for idempotency</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> opt.volume</td>
+<td><a href="#sdkcloudmigratestartrequestmigratevolume"> SdkCloudMigrateStartRequest.MigrateVolume</a></td>
+<td>Request to migrate a volume</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> opt.volume_group</td>
+<td><a href="#sdkcloudmigratestartrequestmigratevolumegroup"> SdkCloudMigrateStartRequest.MigrateVolumeGroup</a></td>
+<td>Request to migrate a volume group</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> opt.all_volumes</td>
+<td><a href="#sdkcloudmigratestartrequestmigrateallvolumes"> SdkCloudMigrateStartRequest.MigrateAllVolumes</a></td>
+<td>Request to migrate all volumes</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcloudmigratestartrequestmigrateallvolumes">SdkCloudMigrateStartRequest.MigrateAllVolumes </h2>
+<p>Defines a migration request for all volumes in a cluster</p>
+ <!-- end HasFields -->
+<h2 id="sdkcloudmigratestartrequestmigratevolume">SdkCloudMigrateStartRequest.MigrateVolume </h2>
+<p>Defines a migration request for a volume</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume_id</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcloudmigratestartrequestmigratevolumegroup">SdkCloudMigrateStartRequest.MigrateVolumeGroup </h2>
+<p>Defines a migration request for a volume group</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>group_id</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcloudmigratestartresponse">SdkCloudMigrateStartResponse </h2>
+<p>Defines a response for the migration that was started</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><a href="#cloudmigratestartresponse"> CloudMigrateStartResponse</a></td>
+<td>Result assocaiated with the migration that was started</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcloudmigratestatusrequest">SdkCloudMigrateStatusRequest </h2>
+<p>Empty Request</p>
+ <!-- end HasFields -->
+<h2 id="sdkcloudmigratestatusresponse">SdkCloudMigrateStatusResponse </h2>
+<p>Defines a response for the status request</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><a href="#cloudmigratestatusresponse"> CloudMigrateStatusResponse</a></td>
+<td>Status of all migration requests</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
 <h2 id="sdkclusterinspectcurrentrequest">SdkClusterInspectCurrentRequest </h2>
 <p>Empty request</p>
  <!-- end HasFields -->
@@ -3480,6 +3749,178 @@ specified volume</p>
 <td>cluster</td>
 <td><a href="#storagecluster"> StorageCluster</a></td>
 <td>Cluster information</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkclusterpaircreaterequest">SdkClusterPairCreateRequest </h2>
+<p>Defines a request for creating a cluster pair</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>request</td>
+<td><a href="#clusterpaircreaterequest"> ClusterPairCreateRequest</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkclusterpaircreateresponse">SdkClusterPairCreateResponse </h2>
+<p>Defines a result of the cluster pair</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><a href="#clusterpaircreateresponse"> ClusterPairCreateResponse</a></td>
+<td>Contains the information about cluster pair</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkclusterpairdeleterequest">SdkClusterPairDeleteRequest </h2>
+<p>Defines a delete request for a cluster pair</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cluster_id</td>
+<td><a href="#string"> string</a></td>
+<td>ID of the cluster pair to be deleted</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkclusterpairdeleteresponse">SdkClusterPairDeleteResponse </h2>
+<p>Empty response</p>
+ <!-- end HasFields -->
+<h2 id="sdkclusterpairenumeraterequest">SdkClusterPairEnumerateRequest </h2>
+<p>Empty Request</p>
+ <!-- end HasFields -->
+<h2 id="sdkclusterpairenumerateresponse">SdkClusterPairEnumerateResponse </h2>
+<p>Defines a list of cluster pair</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><a href="#clusterpairsenumerateresponse"> ClusterPairsEnumerateResponse</a></td>
+<td>List of all the cluster pairs</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkclusterpairgettokenrequest">SdkClusterPairGetTokenRequest </h2>
+<p>Empty request</p>
+ <!-- end HasFields -->
+<h2 id="sdkclusterpairgettokenresponse">SdkClusterPairGetTokenResponse </h2>
+<p>Defines a response for the token request</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><a href="#clusterpairtokengetresponse"> ClusterPairTokenGetResponse</a></td>
+<td>Contains authentication token for the cluster</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkclusterpairinspectrequest">SdkClusterPairInspectRequest </h2>
+<p>Defines a cluster pair inspect request</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td><a href="#string"> string</a></td>
+<td>ID of the cluster, if empty gets the default pair</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkclusterpairinspectresponse">SdkClusterPairInspectResponse </h2>
+<p>Defines a cluster pair inspect response</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><a href="#clusterpairgetresponse"> ClusterPairGetResponse</a></td>
+<td>Information about cluster pair</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkclusterpairresettokenrequest">SdkClusterPairResetTokenRequest </h2>
+<p>Empty request</p>
+ <!-- end HasFields -->
+<h2 id="sdkclusterpairresettokenresponse">SdkClusterPairResetTokenResponse </h2>
+<p>Defines a response for the token request</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><a href="#clusterpairtokengetresponse"> ClusterPairTokenGetResponse</a></td>
+<td>Contains authentication token for the cluster</td>
 </tr>
 </tbody>
 </table>
@@ -6903,12 +7344,12 @@ swagger:model</p>
 <tr>
 <td>In</td>
 <td>0</td>
-<td>In means the value for &apos;key&apos; should be in one of the given &apos;values&apos;</td>
+<td>In means the value for &apos;key&apos; should be in one of the given value(s)</td>
 </tr>
 <tr>
 <td>NotIn</td>
 <td>1</td>
-<td>NotIn means the value for &apos;key&apos; should NOT be in one of the given &apos;values&apos;</td>
+<td>NotIn means the value for &apos;key&apos; should NOT be in one of the given value(s)</td>
 </tr>
 <tr>
 <td>Exists</td>
@@ -6919,6 +7360,16 @@ swagger:model</p>
 <td>DoesNotExist</td>
 <td>3</td>
 <td>DoesNotExist means the &apos;key&apos; should NOT exist</td>
+</tr>
+<tr>
+<td>Gt</td>
+<td>4</td>
+<td>Gt means the &apos;key&apos; should be greater than the value(s)</td>
+</tr>
+<tr>
+<td>Lt</td>
+<td>5</td>
+<td>Lt means the &apos;key&apos; should be less than the value(s)</td>
 </tr>
 </tbody>
 </table>
@@ -7235,7 +7686,7 @@ client and server applications</p>
 </tr>
 <tr>
 <td>Minor</td>
-<td>19</td>
+<td>23</td>
 <td>SDK version minor value of this specification</td>
 </tr>
 <tr>
@@ -7729,7 +8180,7 @@ client and server applications</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Nightly","level":"1.5.2","depth":2,"next":{"title":"Changelog","level":"1.5.2.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.1.1","depth":3,"path":"release-sdk-0.9.changelog.md","ref":"release-sdk-0.9.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"master.generated-api.md","mtime":"2018-10-29T16:30:38.036Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-29T16:30:44.874Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Nightly","level":"1.5.2","depth":2,"next":{"title":"Changelog","level":"1.5.2.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.1.1","depth":3,"path":"release-sdk-0.9.changelog.md","ref":"release-sdk-0.9.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"master.generated-api.md","mtime":"2018-11-06T15:19:24.292Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-06T15:19:40.256Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
