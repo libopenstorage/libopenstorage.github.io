@@ -32,11 +32,11 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:d5e35df76cbd12cdb445a66ce21015acb0cf52e619987fe46d179d1ff2c92d26"
+  digest = "1:79113c409b43aaf0ce0fc7b4eb8af1269e1862ba80a71c98f8337ba008339abe"
   name = "github.com/libopenstorage/openstorage-sdk-clients"
   packages = ["sdk/golang"]
   pruneopts = "UT"
-  revision = "9fbbb09d930d3d35fd0383d98e6573973182fbae"
+  revision = "26e0d52375c07fa46bfa3e195fd671b95ecd6aed"
 
 [[projects]]
   branch = "master"

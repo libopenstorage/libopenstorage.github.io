@@ -151,7 +151,7 @@ func main() {
 
 	// Create a backup to a cloud provider of our volume
 	cloudbackups := api.NewOpenStorageCloudBackupClient(conn)
-	_, err = cloudbackups.Create(context.Background(),
+	backupCreateResp, err := cloudbackups.Create(context.Background(),
 		&api.SdkCloudBackupCreateRequest{
 			VolumeId:     v.GetVolumeId(),
 			CredentialId: credID,
@@ -162,7 +162,9 @@ func main() {
 			gerr.Code(), gerr.Message())
 		os.Exit(1)
 	}
-	fmt.Printf("Backup started for volume %s\n", v.GetVolumeId())
+	fmt.Printf("Backup started for volume %s with task id %s\n",
+		v.GetVolumeId(),
+		backupCreateResp.GetTaskId())
 
 	// Now check the status of the backup
 	backupStatus, err := cloudbackups.Status(context.Background(),
@@ -175,15 +177,17 @@ func main() {
 			gerr.Code(), gerr.Message())
 		os.Exit(1)
 	}
-	for volID, status := range backupStatus.GetStatuses() {
+	for taskId, status := range backupStatus.GetStatuses() {
 		// There will be only one value in the map, but we use
 		// a for-loop as an example.
 		b, _ := json.MarshalIndent(status, "", "  ")
-		fmt.Printf("Backup status for volume: %s\n"+
+		fmt.Printf("Backup status for taskId: %s\n"+
+			"Volume: %s\n"+
 			"Type: %s\n"+
 			"Status: %s\n"+
 			"Full JSON Response: %s\n",
-			volID,
+			taskId,
+			status.GetSrcVolumeId(),
 			status.GetOptype().String(),
 			status.GetStatus().String(),
 			string(b))
