@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction · OpenStorage API</title>
+        <title>Changelog · OpenStorage API</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -69,8 +69,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="arch.html" />
+    <link rel="next" href="master.generated-api.html" />
     
+    
+    <link rel="prev" href="release-4.0.generated-api.html" />
     
 
     </head>
@@ -101,7 +103,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -265,7 +267,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.5.2.1" data-path="release-4.0.changelog.html">
+        <li class="chapter active" data-level="1.5.2.1" data-path="release-4.0.changelog.html">
             
                 <a href="release-4.0.changelog.html">
             
@@ -356,7 +358,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >Changelog</a>
     </h1>
 </div>
 
@@ -371,46 +373,132 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="openstorage-sdk">OpenStorage SDK</h1>
-<h2 id="introduction">Introduction</h2>
-<p>Welcome to the <em>OpenStorage SDK</em> documentation. Here you will find the
-API functions, examples, and references to multiple client libraries which can
-communicate with an OpenStorage server.</p>
-<h2 id="quick-example">Quick Example</h2>
-<p>Here is a quick example of how to get cluster information from an OpenStorage
-server. In this example we will be using the mock SDK container as the
-server. First let&apos;s start the container by running the following command:</p>
-<pre class="language-"><code>$ docker run --rm --name sdk -d -p 9100:9100 -p 9110:9110 openstorage/mock-sdk-server
-</code></pre><p>This container starts a tiny, in-memory OpenStorage SDK server able to be used
-for development. More information can be found in the <a href="tutorial.html">Tutorial</a>.</p>
-<p>Now we can send requests from the command line. To send requests to the gRPC
-server, we will use <a href="https://github.com/grpc-ecosystem/polyglot" target="_blank">Polyglot</a>
-as the gRPC client. To send requests to the gRPC REST Gateway, we will be
-sending the same request as Polyglot, but using <em>curl</em> instead:</p>
-<p><div class="codetabs"><div class="codetabs-header"><div class="tab active" data-codetab="0">gRPC</div><div class="tab" data-codetab="1">REST</div></div><div class="codetabs-body"><div class="tab active" data-codetab="0"><pre class="language-"><code class="lang-less">$ wget <span class="token property">https</span><span class="token punctuation">:</span><span class="token comment" spellcheck="true">//github.com/grpc-ecosystem/polyglot/releases/download/v1.6.0/polyglot.jar</span>
-<span class="token selector">$ echo</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> | java <span class="token operator">-</span>jar polyglot.jar \
-  <span class="token operator">-</span><span class="token operator">-</span>command=call \
-  <span class="token operator">-</span><span class="token operator">-</span>endpoint=<span class="token property">localhost</span><span class="token punctuation">:</span>9100 \
-  <span class="token operator">-</span><span class="token operator">-</span>full_method=openstorage.api.OpenStorageCluster<span class="token operator">/</span>InspectCurrent</code></pre></div><div class="tab" data-codetab="1"><pre class="language-"><code class="lang-less">$ curl <span class="token operator">-</span>X GET <span class="token string">&quot;http://localhost:9110/v1/clusters/current&quot;</span> \
-     <span class="token selector">-H &quot;accept: application/json&quot; \
-	 -H &quot;Content-Type: application/json&quot; \
-	 -d &quot;</span><span class="token punctuation">{</span><span class="token punctuation">}</span>&quot;</code></pre></div></div></div></p>
-<p>Results in:</p>
-<pre class="language-"><code class="lang-json"><span class="token punctuation">{</span>
-  <span class="token property">&quot;cluster&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token string">&quot;STATUS_OK&quot;</span><span class="token punctuation">,</span>
-    <span class="token property">&quot;id&quot;</span><span class="token operator">:</span> <span class="token string">&quot;mock&quot;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<p>The <code>mock-sdk-server</code> container also comes with a full <a href="https://swagger.io" target="_blank">Swagger</a>
-UI located at <a href="http://localhost:9110/swagger-ui/" target="_blank">http://localhost:9110/swagger-ui/</a>.</p>
-<h2 id="whats-next">What&apos;s next</h2>
-<p>Check out:</p>
+                                <h1 id="changelog">Changelog</h1>
+<blockquote>
+<p>NOTE: The SDK is still in tech preview. Once officially released, this changelog will also
+use the SDK version numbers.</p>
+</blockquote>
+<h2 id="releases">Releases</h2>
+<h3 id="v0222---tech-preview-11152018">v0.22.2 - Tech Preview (11/15/2018)</h3>
 <ul>
-<li><a href="arch.html">Architecture</a></li>
-<li><a href="installation.html">Installation</a></li>
-<li><a href="tutorial.html">Tutorials</a></li>
+<li>Added labels field to cloud backup create message</li>
+</ul>
+<h3 id="v0221---tech-preview-1182018">v0.22.1 - Tech Preview (11/8/2018)</h3>
+<ul>
+<li>Add new API for extracting volume capacity usage details.</li>
+</ul>
+<h3 id="v0220---tech-preview-1112018">v0.22.0 - Tech Preview (11/1/2018)</h3>
+<ul>
+<li>Rename the field &quot;name&quot; to &quot;TaskId&quot; in sdkCloudBackupcreate/restore/status
+structures.</li>
+</ul>
+<h3 id="v0210---tech-preview-10312018">v0.21.0 - Tech Preview (10/31/2018)</h3>
+<ul>
+<li>Addition of ClusterPairing and VolumeMigrate services</li>
+</ul>
+<h3 id="v0200---tech-preview-1112018">v0.20.0 - Tech Preview (11/1/2018)</h3>
+<ul>
+<li>Added ETA for cloud snap status.</li>
+</ul>
+<h3 id="v0190---tech-preview-10232018">v0.19.0 - Tech Preview (10/23/2018)</h3>
+<ul>
+<li>CloudBackupStatus now returns CredentialUUID used for cloud for the
+backup/restore op under consideration.</li>
+</ul>
+<h3 id="v0180---tech-preview-10232018">v0.18.0 - Tech Preview (10/23/2018)</h3>
+<ul>
+<li>Following CloudBackup APIs have been refactored to include task id rather
+than source volume id.</li>
+<li>CloudBackupCreate now returns task id.</li>
+<li>CloudBackupRestore too returns task id along with restore volume id.</li>
+<li>CloudBackupStatusRequest can take task id as an optional parameter.</li>
+<li>Map key for CloudBackupStatusResponse is task id rather than source volume id.</li>
+<li>CloudBackupStateChange takes in taskid rather than source volume id.</li>
+</ul>
+<h3 id="v0170---tech-preview-10212018">v0.17.0 - Tech Preview (10/21/2018)</h3>
+<ul>
+<li>Added IoStrategy - ability to specify I/O characteristics.</li>
+</ul>
+<h3 id="v0160---tech-preview-10152018">v0.16.0 - Tech Preview (10/15/2018)</h3>
+<ul>
+<li>Changed value of SdkSchedulePolicyCreateRequest from <code>SchedulePolicy</code> to the
+correct name of <code>schedule_policy</code>. This will not impact Golang.</li>
+</ul>
+<h3 id="v0150---tech-preview-10102018">v0.15.0 - Tech Preview (10/10/2018)</h3>
+<ul>
+<li>Added support to set the snapshot schedule policy of a Volume</li>
+</ul>
+<h3 id="v0140---tech-preview-1082018">v0.14.0 - Tech Preview (10/8/2018)</h3>
+<ul>
+<li>Added support for periodic type in OpenStorageSchedulePolicy service</li>
+</ul>
+<h3 id="v0130---tech-preview-9272018">v0.13.0 - Tech Preview (9/27/2018)</h3>
+<ul>
+<li>Added new field to CloudBackup schedules that allows scheduled backups
+to be always full and never incremental.</li>
+</ul>
+<h3 id="v0120---tech-preview-9272018">v0.12.0 - Tech Preview (9/27/2018)</h3>
+<ul>
+<li>Moved MountAttach service REST endpoints to their own namespace</li>
+<li>Added new MountAttach to SdkSErviceCapability</li>
+</ul>
+<h3 id="v0110---tech-preview-9252018">v0.11.0 - Tech Preview (9/25/2018)</h3>
+<ul>
+<li>New RPC in service called OpenStorageAlerts has been created and documented to
+allow deleting alert events.</li>
+</ul>
+<h3 id="v0100---tech-preview-9242018">v0.10.0 - Tech Preview (9/24/2018)</h3>
+<ul>
+<li>New service called OpenStorageAlerts has been created and documented to
+allow querying alert events.</li>
+</ul>
+<h3 id="v090---tech-preview-9182018">v0.9.0 - Tech Preview (9/18/2018)</h3>
+<p>NOTE: This release has breaking chages for the Mount/Attach/Detach/Unmount calls</p>
+<ul>
+<li>New service called OpenStorageMountAttach has been created and documented to
+hold the mount/attach/detach/unmount calls.</li>
+<li>Mount/Attach/Detach/Unmount calls have been moved from the OpenStorageVolume
+service to the OpenStorageMountAttach service.</li>
+</ul>
+<h3 id="v080---tech-preview-9112018">v0.8.0 - Tech Preview (9/11/2018)</h3>
+<ul>
+<li>SdkVolumeSnapshotEnumerateWithFilters all attributes are now optional. <a href="https://github.com/libopenstorage/openstorage/issues/609" target="_blank">#609</a></li>
+</ul>
+<h3 id="v070---tech-preview-952018">v0.7.0 - Tech Preview (9/5/2018)</h3>
+<ul>
+<li>Add <code>Name</code> to <code>StorageCluster</code>. This name will hold the name given to the cluster by the administrator. The <code>StorageCluster.Id</code> will now hold a unique id for the cluster.</li>
+</ul>
+<h3 id="v060---tech-preview-8302018">v0.6.0 - Tech Preview (8/30/2018)</h3>
+<ul>
+<li>Remove unsupported FS Types from supported drivers <a href="https://github.com/libopenstorage/openstorage/issues/593" target="_blank">#593</a></li>
+<li>Remove SDK Alert calls as they will be redesinged <a href="https://github.com/libopenstorage/openstorage/issues/596" target="_blank">#596</a></li>
+</ul>
+<h3 id="v050---tech-preview-8252018">v0.5.0 - Tech Preview (8/25/2018)</h3>
+<ul>
+<li>Added <code>queue_depth</code> to VolumeSpec and VolumeSpecUpdate</li>
+<li>Remove values from VolumeSpecUpdate which cannot be updated <a href="https://github.com/libopenstorage/openstorage/issues/590" target="_blank">#590</a></li>
+</ul>
+<h3 id="v040---tech-preview-8242018">v0.4.0 - Tech Preview (8/24/2018)</h3>
+<ul>
+<li>Added bucket name and encryption key to SdkCredentialCreateRequest</li>
+<li>Added the ability to disable ssl connection to SdkAwsCredentialRequest</li>
+</ul>
+<h3 id="v030---tech-preview-8202018">v0.3.0 - Tech Preview (8/20/2018)</h3>
+<ul>
+<li>Added SchedulerNodeName field to StorageNode object</li>
+</ul>
+<h3 id="v020---tech-preview-8162018">v0.2.0 - Tech Preview (8/16/2018)</h3>
+<ul>
+<li>Changed Credentials.Create to take <code>name</code> as a required parameter</li>
+</ul>
+<h3 id="tech-preview-872018">Tech Preview (8/7/2018)</h3>
+<ul>
+<li>Added <a href="https://libopenstorage.github.io/w/generated-api.html#methodopenstorageapiopenstorageidentityversion" target="_blank">Identity.Version</a> Service</li>
+</ul>
+<h3 id="tech-preview-832018">Tech Preview (8/3/2018)</h3>
+<ul>
+<li>Added <a href="https://libopenstorage.github.io/w/generated-api.html#serviceopenstorageapiopenstorageidentity" target="_blank">Idenity</a> Service</li>
+<li>Added <a href="https://libopenstorage.github.io/w/generated-api.html#methodopenstorageapiopenstorageidentitycapabilities" target="_blank">Identity.Capabilities</a> RPC</li>
 </ul>
 
                                 
@@ -439,8 +527,12 @@ UI located at <a href="http://localhost:9110/swagger-ui/" target="_blank">http:/
 
             
                 
+                <a href="release-4.0.generated-api.html" class="navigation navigation-prev " aria-label="Previous page: v0.22.x">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="arch.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Architecture">
+                
+                <a href="master.generated-api.html" class="navigation navigation-next " aria-label="Next page: Nightly">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -451,7 +543,7 @@ UI located at <a href="http://localhost:9110/swagger-ui/" target="_blank">http:/
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"Architecture","level":"1.2","depth":1,"path":"arch.md","ref":"arch.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"README.md","mtime":"2018-10-12T21:51:25.582Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-16T19:14:22.919Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Changelog","level":"1.5.2.1","depth":3,"next":{"title":"Nightly","level":"1.5.3","depth":2,"path":"master.generated-api.md","ref":"master.generated-api.md","articles":[{"title":"Changelog","level":"1.5.3.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]}]},"previous":{"title":"v0.22.x","level":"1.5.2","depth":2,"path":"release-4.0.generated-api.md","ref":"release-4.0.generated-api.md","articles":[{"title":"Changelog","level":"1.5.2.1","depth":3,"path":"release-4.0.changelog.md","ref":"release-4.0.changelog.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"release-4.0.changelog.md","mtime":"2018-11-16T19:04:02.572Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-16T19:14:22.919Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

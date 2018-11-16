@@ -34,6 +34,7 @@ version on the documentation website:
 
 1. Add an entry to `getcontent.sh`
 1. Edit `docs/reference.md`
+1. Add an entry in the reference in `docs/SUMMARY.md`
 1. Create `docs/swagger-ui/<branch>.index.html` and adjust the json file accordingly
 
 ## More information

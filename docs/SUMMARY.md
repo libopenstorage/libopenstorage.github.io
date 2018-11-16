@@ -6,8 +6,10 @@
     * [Golang](tutorial-golang.md)
     * [Python](tutorial-python.md)
 * [API Reference](reference.md)
-    * [v0.9.2](release-sdk-0.9.generated-api.md)
+    * [v0.9.x](release-sdk-0.9.generated-api.md)
         * [Changelog](release-sdk-0.9.changelog.md)
+    * [v0.22.x](release-4.0.generated-api.md)
+        * [Changelog](release-4.0.changelog.md)
     * [Nightly](master.generated-api.md)
         * [Changelog](master.changelog.md)
 

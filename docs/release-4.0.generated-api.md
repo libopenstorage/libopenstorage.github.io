@@ -91,8 +91,8 @@
     - [SdkCloudBackupDeleteAllResponse](#sdkcloudbackupdeleteallresponse)
     - [SdkCloudBackupDeleteRequest](#sdkcloudbackupdeleterequest)
     - [SdkCloudBackupDeleteResponse](#sdkcloudbackupdeleteresponse)
-    - [SdkCloudBackupEnumerateWithFiltersRequest](#sdkcloudbackupenumeratewithfiltersrequest)
-    - [SdkCloudBackupEnumerateWithFiltersResponse](#sdkcloudbackupenumeratewithfiltersresponse)
+    - [SdkCloudBackupEnumerateRequest](#sdkcloudbackupenumeraterequest)
+    - [SdkCloudBackupEnumerateResponse](#sdkcloudbackupenumerateresponse)
     - [SdkCloudBackupHistoryItem](#sdkcloudbackuphistoryitem)
     - [SdkCloudBackupHistoryRequest](#sdkcloudbackuphistoryrequest)
     - [SdkCloudBackupHistoryResponse](#sdkcloudbackuphistoryresponse)
@@ -400,10 +400,10 @@ backup and other backups are dependent on it, it will not be able to be deleted.
     [SdkCloudBackupDeleteAllResponse](#sdkcloudbackupdeleteallresponse)
 
 DeleteAll deletes all the backups in the cloud for the specified volume.
-## EnumerateWithFilters {#methodopenstorageapiopenstoragecloudbackupenumeratewithfilters}
+## Enumerate {#methodopenstorageapiopenstoragecloudbackupenumerate}
 
-> **rpc** EnumerateWithFilters([SdkCloudBackupEnumerateWithFiltersRequest](#sdkcloudbackupenumeratewithfiltersrequest))
-    [SdkCloudBackupEnumerateWithFiltersResponse](#sdkcloudbackupenumeratewithfiltersresponse)
+> **rpc** Enumerate([SdkCloudBackupEnumerateRequest](#sdkcloudbackupenumeraterequest))
+    [SdkCloudBackupEnumerateResponse](#sdkcloudbackupenumerateresponse)
 
 Return a list of backups for the specified volume
 ## Status {#methodopenstorageapiopenstoragecloudbackupstatus}
@@ -1014,11 +1014,7 @@ Request to stop a cloud migration
 | status | [ CloudMigrate.Status](#cloudmigratestatus) | Status of the current stage |
 | last_update | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | Last time the status was updated |
 | error_reason | [ string](#string) | Contains the reason for the migration error |
-| start_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | StartTime indicates Op's start time |
-| completed_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | CompletedTime indicates Op's completed time |
-| bytes_total | [ uint64](#uint64) | BytesTotal is the number of bytes being transferred |
-| bytes_done | [ uint64](#uint64) | BytesDone is the number of bytes already transferred |
-| eta_seconds | [ int64](#int64) | ETASeconds the time duration in seconds for cloud migration completion |
+| time_remaining | [ int64](#int64) | time_remaining is the estimated time remaining to completion |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -1769,7 +1765,7 @@ Empty response
  <!-- end HasFields -->
 
 
-## SdkCloudBackupEnumerateWithFiltersRequest {#sdkcloudbackupenumeratewithfiltersrequest}
+## SdkCloudBackupEnumerateRequest {#sdkcloudbackupenumeraterequest}
 Defines a request to list the backups stored by a cloud provider.
 The following combinations can be used to get cloud backup information:
 
@@ -1795,7 +1791,7 @@ and do not provide `volume_id` and `all`.
  <!-- end HasFields -->
 
 
-## SdkCloudBackupEnumerateWithFiltersResponse {#sdkcloudbackupenumeratewithfiltersresponse}
+## SdkCloudBackupEnumerateResponse {#sdkcloudbackupenumerateresponse}
 Defines a response which lists all the backups stored by a cloud provider
 
 
@@ -2022,8 +2018,6 @@ SdkCloudBackupStatus defines the status of a backup stored by a cloud provider
 | src_volume_id | [ string](#string) | SourceVolumeID is the the volume that is either being backed up to cloud or target volume to which a backup is being restored |
 | info | [repeated string](#string) | Info currently indicates the failure cause for failed backup/restore |
 | credential_id | [ string](#string) | CredentialId is the credential used for cloud with this backup/restore op |
-| bytes_total | [ uint64](#uint64) | BytesTotal is the total number of bytes being transferred |
-| eta_seconds | [ int64](#int64) | ETASeconds is the number of seconds for cloud backup completion |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -2035,7 +2029,7 @@ specified volume
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| volume_id | [ string](#string) | (optional) VolumeId is a value which is used to get information on the status of a backup for the specified volume. If no volume id and task_id is provided, then status for all volumes is returned. |
+| volume_id | [ string](#string) | VolumeId is an optional value which is used to get information on the status of a backup for the specified volume. If no volume id and task_id is provided, then status for all volumes is returned. |
 | local | [ bool](#bool) | Local indicates if only those backups/restores that are active on current node must be returned |
 | task_id | [ string](#string) | TaskId of the backup/restore task, if this is specified, volume_id is ignored. |
  <!-- end Fields -->
@@ -3393,7 +3387,6 @@ swagger:model
 | rotation_speed | [ string](#string) | True if this device is rotational. |
 | last_scan | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | Timestamp of last time this device was scanned. |
 | metadata | [ bool](#bool) | True if dedicated for metadata. |
-| cache | [ bool](#bool) | True if dedicated as cache |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -4031,8 +4024,8 @@ client and server applications
 | ---- | ------ | ----------- |
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
-| Minor | 28 | SDK version minor value of this specification |
-| Patch | 0 | SDK version patch value of this specification |
+| Minor | 22 | SDK version minor value of this specification |
+| Patch | 2 | SDK version patch value of this specification |
 
 
 

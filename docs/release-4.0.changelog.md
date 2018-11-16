@@ -5,33 +5,13 @@
 
 ## Releases
 
-### v0.28.0 - Tech Preview (11/15/2018)
-
-* (breaking change) Restructured all SDK REST routes
-* (breaking change) Reworded OpenStorageCloudBackup.Enumerate to EnumerateWithFilters
-
-### v0.27.0 - Tech Preview (11/8/2018)
-
-* Add new API for extracting volume capacity usage details.
-
-### v0.26.0 - Tech Preview (11/14/2018)
-
-* Extend attribute of StorageResource to be marked as a cache.
-
-### v0.25.0 - Tech Preview (11/13/2018)
+### v0.22.2 - Tech Preview (11/15/2018)
 
 * Added labels field to cloud backup create message
 
-### v0.24.0 - Tech Preview (11/12/2018)
+### v0.22.1 - Tech Preview (11/8/2018)
 
-* Added ETA fields to cloud backup and cloud migrate status messages
-
-### v0.23.0 - Tech Preview (11/2/2018)
-
-* Cloud migrate status and cloud backup status now report
-  total bytes to be transferred and bytes already transferred.
-* These status blocks also report the start time of the operation
-  so that client could calculate progress of the operation.
+* Add new API for extracting volume capacity usage details.
 
 ### v0.22.0 - Tech Preview (11/1/2018)
 
