@@ -465,8 +465,8 @@
 <li><a href="#sdkcloudbackupdeleteallresponse">SdkCloudBackupDeleteAllResponse</a></li>
 <li><a href="#sdkcloudbackupdeleterequest">SdkCloudBackupDeleteRequest</a></li>
 <li><a href="#sdkcloudbackupdeleteresponse">SdkCloudBackupDeleteResponse</a></li>
-<li><a href="#sdkcloudbackupenumeraterequest">SdkCloudBackupEnumerateRequest</a></li>
-<li><a href="#sdkcloudbackupenumerateresponse">SdkCloudBackupEnumerateResponse</a></li>
+<li><a href="#sdkcloudbackupenumeratewithfiltersrequest">SdkCloudBackupEnumerateWithFiltersRequest</a></li>
+<li><a href="#sdkcloudbackupenumeratewithfiltersresponse">SdkCloudBackupEnumerateWithFiltersResponse</a></li>
 <li><a href="#sdkcloudbackuphistoryitem">SdkCloudBackupHistoryItem</a></li>
 <li><a href="#sdkcloudbackuphistoryrequest">SdkCloudBackupHistoryRequest</a></li>
 <li><a href="#sdkcloudbackuphistoryresponse">SdkCloudBackupHistoryResponse</a></li>
@@ -765,10 +765,10 @@ backup and other backups are dependent on it, it will not be able to be deleted.
     <a href="#sdkcloudbackupdeleteallresponse">SdkCloudBackupDeleteAllResponse</a></p>
 </blockquote>
 <p>DeleteAll deletes all the backups in the cloud for the specified volume.</p>
-<h2 id="methodopenstorageapiopenstoragecloudbackupenumerate">Enumerate </h2>
+<h2 id="methodopenstorageapiopenstoragecloudbackupenumeratewithfilters">EnumerateWithFilters </h2>
 <blockquote>
-<p><strong>rpc</strong> Enumerate(<a href="#sdkcloudbackupenumeraterequest">SdkCloudBackupEnumerateRequest</a>)
-    <a href="#sdkcloudbackupenumerateresponse">SdkCloudBackupEnumerateResponse</a></p>
+<p><strong>rpc</strong> EnumerateWithFilters(<a href="#sdkcloudbackupenumeratewithfiltersrequest">SdkCloudBackupEnumerateWithFiltersRequest</a>)
+    <a href="#sdkcloudbackupenumeratewithfiltersresponse">SdkCloudBackupEnumerateWithFiltersResponse</a></p>
 </blockquote>
 <p>Return a list of backups for the specified volume</p>
 <h2 id="methodopenstorageapiopenstoragecloudbackupstatus">Status </h2>
@@ -3077,7 +3077,7 @@ for a specified volume</p>
 <h2 id="sdkcloudbackupdeleteresponse">SdkCloudBackupDeleteResponse </h2>
 <p>Empty response</p>
  <!-- end HasFields -->
-<h2 id="sdkcloudbackupenumeraterequest">SdkCloudBackupEnumerateRequest </h2>
+<h2 id="sdkcloudbackupenumeratewithfiltersrequest">SdkCloudBackupEnumerateWithFiltersRequest </h2>
 <p>Defines a request to list the backups stored by a cloud provider.
 The following combinations can be used to get cloud backup information:</p>
 <ul>
@@ -3125,7 +3125,7 @@ and do not provide <code>volume_id</code> and <code>all</code>.</li>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
-<h2 id="sdkcloudbackupenumerateresponse">SdkCloudBackupEnumerateResponse </h2>
+<h2 id="sdkcloudbackupenumeratewithfiltersresponse">SdkCloudBackupEnumerateWithFiltersResponse </h2>
 <p>Defines a response which lists all the backups stored by a cloud provider</p>
 <table>
 <thead>
@@ -3616,7 +3616,7 @@ specified volume</p>
 <tr>
 <td>volume_id</td>
 <td><a href="#string"> string</a></td>
-<td>VolumeId is an optional value which is used to get information on the status of a backup for the specified volume. If no volume id and task_id is provided, then status for all volumes is returned.</td>
+<td>(optional) VolumeId is a value which is used to get information on the status of a backup for the specified volume. If no volume id and task_id is provided, then status for all volumes is returned.</td>
 </tr>
 <tr>
 <td>local</td>
@@ -7830,7 +7830,7 @@ client and server applications</p>
 </tr>
 <tr>
 <td>Patch</td>
-<td>2</td>
+<td>3</td>
 <td>SDK version patch value of this specification</td>
 </tr>
 </tbody>
@@ -8319,7 +8319,7 @@ client and server applications</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"v0.22.x","level":"1.5.2","depth":2,"next":{"title":"Changelog","level":"1.5.2.1","depth":3,"path":"release-4.0.changelog.md","ref":"release-4.0.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.1.1","depth":3,"path":"release-sdk-0.9.changelog.md","ref":"release-sdk-0.9.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"release-4.0.generated-api.md","mtime":"2018-11-16T19:04:03.099Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-16T19:14:22.919Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"v0.22.x","level":"1.5.2","depth":2,"next":{"title":"Changelog","level":"1.5.2.1","depth":3,"path":"release-4.0.changelog.md","ref":"release-4.0.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.1.1","depth":3,"path":"release-sdk-0.9.changelog.md","ref":"release-sdk-0.9.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"release-4.0.generated-api.md","mtime":"2018-11-16T19:16:53.730Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-16T19:17:28.568Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

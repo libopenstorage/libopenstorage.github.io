@@ -91,8 +91,8 @@
     - [SdkCloudBackupDeleteAllResponse](#sdkcloudbackupdeleteallresponse)
     - [SdkCloudBackupDeleteRequest](#sdkcloudbackupdeleterequest)
     - [SdkCloudBackupDeleteResponse](#sdkcloudbackupdeleteresponse)
-    - [SdkCloudBackupEnumerateRequest](#sdkcloudbackupenumeraterequest)
-    - [SdkCloudBackupEnumerateResponse](#sdkcloudbackupenumerateresponse)
+    - [SdkCloudBackupEnumerateWithFiltersRequest](#sdkcloudbackupenumeratewithfiltersrequest)
+    - [SdkCloudBackupEnumerateWithFiltersResponse](#sdkcloudbackupenumeratewithfiltersresponse)
     - [SdkCloudBackupHistoryItem](#sdkcloudbackuphistoryitem)
     - [SdkCloudBackupHistoryRequest](#sdkcloudbackuphistoryrequest)
     - [SdkCloudBackupHistoryResponse](#sdkcloudbackuphistoryresponse)
@@ -400,10 +400,10 @@ backup and other backups are dependent on it, it will not be able to be deleted.
     [SdkCloudBackupDeleteAllResponse](#sdkcloudbackupdeleteallresponse)
 
 DeleteAll deletes all the backups in the cloud for the specified volume.
-## Enumerate {#methodopenstorageapiopenstoragecloudbackupenumerate}
+## EnumerateWithFilters {#methodopenstorageapiopenstoragecloudbackupenumeratewithfilters}
 
-> **rpc** Enumerate([SdkCloudBackupEnumerateRequest](#sdkcloudbackupenumeraterequest))
-    [SdkCloudBackupEnumerateResponse](#sdkcloudbackupenumerateresponse)
+> **rpc** EnumerateWithFilters([SdkCloudBackupEnumerateWithFiltersRequest](#sdkcloudbackupenumeratewithfiltersrequest))
+    [SdkCloudBackupEnumerateWithFiltersResponse](#sdkcloudbackupenumeratewithfiltersresponse)
 
 Return a list of backups for the specified volume
 ## Status {#methodopenstorageapiopenstoragecloudbackupstatus}
@@ -1765,7 +1765,7 @@ Empty response
  <!-- end HasFields -->
 
 
-## SdkCloudBackupEnumerateRequest {#sdkcloudbackupenumeraterequest}
+## SdkCloudBackupEnumerateWithFiltersRequest {#sdkcloudbackupenumeratewithfiltersrequest}
 Defines a request to list the backups stored by a cloud provider.
 The following combinations can be used to get cloud backup information:
 
@@ -1791,7 +1791,7 @@ and do not provide `volume_id` and `all`.
  <!-- end HasFields -->
 
 
-## SdkCloudBackupEnumerateResponse {#sdkcloudbackupenumerateresponse}
+## SdkCloudBackupEnumerateWithFiltersResponse {#sdkcloudbackupenumeratewithfiltersresponse}
 Defines a response which lists all the backups stored by a cloud provider
 
 
@@ -2029,7 +2029,7 @@ specified volume
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| volume_id | [ string](#string) | VolumeId is an optional value which is used to get information on the status of a backup for the specified volume. If no volume id and task_id is provided, then status for all volumes is returned. |
+| volume_id | [ string](#string) | (optional) VolumeId is a value which is used to get information on the status of a backup for the specified volume. If no volume id and task_id is provided, then status for all volumes is returned. |
 | local | [ bool](#bool) | Local indicates if only those backups/restores that are active on current node must be returned |
 | task_id | [ string](#string) | TaskId of the backup/restore task, if this is specified, volume_id is ignored. |
  <!-- end Fields -->
@@ -4025,7 +4025,7 @@ client and server applications
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
 | Minor | 22 | SDK version minor value of this specification |
-| Patch | 2 | SDK version patch value of this specification |
+| Patch | 3 | SDK version patch value of this specification |
 
 
 
