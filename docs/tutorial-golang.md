@@ -14,6 +14,14 @@ on how to setup the golang client using [Golang dep](https://github.com/golang/d
 To setup your environment, you will need to import the following to gain
 access to `api.pb.go`:
 
+#### Depedencies
+```
+go get -v github.com/libopenstorage/openstorage-sdk-clients/sdk/golang
+go get -v github.com/golang/protobuf/...
+go get -v google.golang.org/grpc
+```
+
+#### Imports
 ```go
 import (
     api "github.com/libopenstorage/openstorage-sdk-clients/sdk/golang"
@@ -112,6 +120,7 @@ will always return the same volume id for the volume of same name.
 You can now create a snapshot of this volume:
 
 ```go
+	// Create a volume snapshot
 	snap, err := volumes.SnapshotCreate(
 		context.Background(),
 		&api.SdkVolumeSnapshotCreateRequest{
@@ -182,9 +191,10 @@ credential id:
 			gerr.Code(), gerr.Message())
 		os.Exit(1)
 	}
-	fmt.Printf("Backup started for volume %s with task id %s\n",
-		v.GetVolumeId(),
-		backupCreateResp.GetTaskId())
+    taskID := backupCreateResp.GetTaskId()
+    fmt.Printf("Backup started for volume %s with task id %s\n",
+        v.GetVolumeId(),
+        taskID)
 ```
 
 This request will not block while the backup is running. Instead you should
@@ -202,7 +212,7 @@ call OpenStorageCloudBackup.Status() to get information about the backup:
 			gerr.Code(), gerr.Message())
 		os.Exit(1)
 	}
-	for volID, status := range backupStatus.GetStatuses() {
+	for taskID, status := range backupStatus.GetStatuses() {
 		// There will be only one value in the map, but we use
 		// a for-loop as an example.
 		b, _ := json.MarshalIndent(status, "", "  ")
@@ -211,7 +221,7 @@ call OpenStorageCloudBackup.Status() to get information about the backup:
 			"Type: %s\n"+
 			"Status: %s\n"+
 			"Full JSON Response: %s\n",
-			taskId,
+			taskID,
 			status.GetSrcVolumeId(),
 			status.GetOptype().String(),
 			status.GetStatus().String(),
@@ -223,6 +233,7 @@ Lastly, once the backup is complete, we can get a history of this and any
 other backups we have created from our volume:
 
 ```go
+	// Get history of the backup
 	historyResp, err := cloudbackups.History(context.Background(),
 		&api.SdkCloudBackupHistoryRequest{
 			SrcVolumeId: v.GetVolumeId(),
