@@ -19,7 +19,7 @@ This container starts a tiny, in-memory OpenStorage SDK server able to be used
 for development. More information can be found in the [Tutorial](tutorial.html).
 
 Now we can send requests from the command line. To send requests to the gRPC
-server, we will use [Polyglot](https://github.com/grpc-ecosystem/polyglot)
+server, we will use [Polyglot 1.x.x](https://github.com/grpc-ecosystem/polyglot/releases)
 as the gRPC client. To send requests to the gRPC REST Gateway, we will be
 sending the same request as Polyglot, but using _curl_ instead:
 
@@ -30,7 +30,7 @@ $ echo {} | java -jar polyglot.jar \
   --endpoint=localhost:9100 \
   --full_method=openstorage.api.OpenStorageCluster/InspectCurrent
 {%- language name="REST", type="less" -%}
-$ curl -X GET "http://localhost:9110/v1/clusters/current" \
+$ curl -X GET "http://localhost:9110/v1/clusters/inspectcurrent" \
      -H "accept: application/json" \
 	 -H "Content-Type: application/json" \
 	 -d "{}"

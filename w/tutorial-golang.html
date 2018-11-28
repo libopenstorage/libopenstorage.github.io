@@ -378,12 +378,14 @@
 then take its snapshot, create cloud credentials, and create a backup of the
 volume.</p>
 <p>The sources for this tutorial are available in the <a href="https://github.com/libopenstorage/libopenstorage.github.io/tree/master/examples/golang" target="_blank"><code>examples/golang</code></a> directory in the repo for this website.</p>
-<h4 id="recorded-demo">Recorded demo</h4>
-<p>Check out the <a href="https://asciinema.org/a/auGZOUd4R5osIgS8xEbRUX8Ah" target="_blank">step by step tutorial</a>
-on how to setup the golang client using <a href="https://github.com/golang/dep" target="_blank">Golang dep</a>.</p>
 <h2 id="setting-up-your-environment">Setting up your environment</h2>
 <p>To setup your environment, you will need to import the following to gain
 access to <code>api.pb.go</code>:</p>
+<h4 id="depedencies">Depedencies</h4>
+<pre class="language-"><code>go get -v github.com/libopenstorage/openstorage-sdk-clients/sdk/golang
+go get -v github.com/golang/protobuf/...
+go get -v google.golang.org/grpc
+</code></pre><h4 id="imports">Imports</h4>
 <pre class="language-"><code class="lang-go"><span class="token keyword">import</span> <span class="token punctuation">(</span>
     api <span class="token string">&quot;github.com/libopenstorage/openstorage-sdk-clients/sdk/golang&quot;</span>
     <span class="token string">&quot;github.com/golang/protobuf/ptypes&quot;</span>
@@ -397,6 +399,9 @@ file <a href="https://github.com/libopenstorage/openstorage/blob/master/api/api.
 <p>With the <a href="tutorial.html#setting-up-the-mock-sdk-server"><code>mock-sdk-server</code></a>
 running, the following steps will provide an introduction to programming
 with the OpenStorage SDK.</p>
+<h4 id="recorded-demo-setup">Recorded demo setup</h4>
+<p>Check out the <a href="https://asciinema.org/a/auGZOUd4R5osIgS8xEbRUX8Ah" target="_blank">step by step tutorial</a>
+on how to setup the golang client for production code using <a href="https://github.com/golang/dep" target="_blank">Golang dep</a>.</p>
 <h2 id="creating-a-connection">Creating a connection</h2>
 <p>To use any of the gRPC functions, you must first create a connection with
 the OpenStorage SDK server:</p>
@@ -465,7 +470,8 @@ volume of size 100Gi:</p>
 it allows for the function to be idempotent. In other words, this function
 will always return the same volume id for the volume of same name.</p>
 <p>You can now create a snapshot of this volume:</p>
-<pre class="language-"><code class="lang-go">    snap<span class="token punctuation">,</span> err <span class="token operator">:=</span> volumes<span class="token punctuation">.</span><span class="token function">SnapshotCreate</span><span class="token punctuation">(</span>
+<pre class="language-"><code class="lang-go">    <span class="token comment" spellcheck="true">// Create a volume snapshot</span>
+    snap<span class="token punctuation">,</span> err <span class="token operator">:=</span> volumes<span class="token punctuation">.</span><span class="token function">SnapshotCreate</span><span class="token punctuation">(</span>
         context<span class="token punctuation">.</span><span class="token function">Background</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
         <span class="token operator">&amp;</span>api<span class="token punctuation">.</span>SdkVolumeSnapshotCreateRequest<span class="token punctuation">{</span>
             VolumeId<span class="token punctuation">:</span> v<span class="token punctuation">.</span><span class="token function">GetVolumeId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
@@ -528,9 +534,10 @@ credential id:</p>
             gerr<span class="token punctuation">.</span><span class="token function">Code</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> gerr<span class="token punctuation">.</span><span class="token function">Message</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
         os<span class="token punctuation">.</span><span class="token function">Exit</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
+    taskID <span class="token operator">:=</span> backupCreateResp<span class="token punctuation">.</span><span class="token function">GetTaskId</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;Backup started for volume %s with task id %s\n&quot;</span><span class="token punctuation">,</span>
         v<span class="token punctuation">.</span><span class="token function">GetVolumeId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-        backupCreateResp<span class="token punctuation">.</span><span class="token function">GetTaskId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        taskID<span class="token punctuation">)</span>
 </code></pre>
 <p>This request will not block while the backup is running. Instead you should
 call OpenStorageCloudBackup.Status() to get information about the backup:</p>
@@ -545,7 +552,7 @@ call OpenStorageCloudBackup.Status() to get information about the backup:</p>
             gerr<span class="token punctuation">.</span><span class="token function">Code</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> gerr<span class="token punctuation">.</span><span class="token function">Message</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
         os<span class="token punctuation">.</span><span class="token function">Exit</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
-    <span class="token keyword">for</span> volID<span class="token punctuation">,</span> status <span class="token operator">:=</span> <span class="token keyword">range</span> backupStatus<span class="token punctuation">.</span><span class="token function">GetStatuses</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span> taskID<span class="token punctuation">,</span> status <span class="token operator">:=</span> <span class="token keyword">range</span> backupStatus<span class="token punctuation">.</span><span class="token function">GetStatuses</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token comment" spellcheck="true">// There will be only one value in the map, but we use</span>
         <span class="token comment" spellcheck="true">// a for-loop as an example.</span>
         b<span class="token punctuation">,</span> <span class="token boolean">_</span> <span class="token operator">:=</span> json<span class="token punctuation">.</span><span class="token function">MarshalIndent</span><span class="token punctuation">(</span>status<span class="token punctuation">,</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;  &quot;</span><span class="token punctuation">)</span>
@@ -554,7 +561,7 @@ call OpenStorageCloudBackup.Status() to get information about the backup:</p>
             <span class="token string">&quot;Type: %s\n&quot;</span><span class="token operator">+</span>
             <span class="token string">&quot;Status: %s\n&quot;</span><span class="token operator">+</span>
             <span class="token string">&quot;Full JSON Response: %s\n&quot;</span><span class="token punctuation">,</span>
-            taskId<span class="token punctuation">,</span>
+            taskID<span class="token punctuation">,</span>
             status<span class="token punctuation">.</span><span class="token function">GetSrcVolumeId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
             status<span class="token punctuation">.</span><span class="token function">GetOptype</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">String</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
             status<span class="token punctuation">.</span><span class="token function">GetStatus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">String</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
@@ -563,7 +570,8 @@ call OpenStorageCloudBackup.Status() to get information about the backup:</p>
 </code></pre>
 <p>Lastly, once the backup is complete, we can get a history of this and any
 other backups we have created from our volume:</p>
-<pre class="language-"><code class="lang-go">    historyResp<span class="token punctuation">,</span> err <span class="token operator">:=</span> cloudbackups<span class="token punctuation">.</span><span class="token function">History</span><span class="token punctuation">(</span>context<span class="token punctuation">.</span><span class="token function">Background</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<pre class="language-"><code class="lang-go">    <span class="token comment" spellcheck="true">// Get history of the backup</span>
+    historyResp<span class="token punctuation">,</span> err <span class="token operator">:=</span> cloudbackups<span class="token punctuation">.</span><span class="token function">History</span><span class="token punctuation">(</span>context<span class="token punctuation">.</span><span class="token function">Background</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
         <span class="token operator">&amp;</span>api<span class="token punctuation">.</span>SdkCloudBackupHistoryRequest<span class="token punctuation">{</span>
             SrcVolumeId<span class="token punctuation">:</span> v<span class="token punctuation">.</span><span class="token function">GetVolumeId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
         <span class="token punctuation">}</span><span class="token punctuation">)</span>
@@ -663,7 +671,7 @@ for a complete list of services.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Golang","level":"1.4.1","depth":2,"next":{"title":"Python","level":"1.4.2","depth":2,"path":"tutorial-python.md","ref":"tutorial-python.md","articles":[]},"previous":{"title":"Tutorial","level":"1.4","depth":1,"path":"tutorial.md","ref":"tutorial.md","articles":[{"title":"Golang","level":"1.4.1","depth":2,"path":"tutorial-golang.md","ref":"tutorial-golang.md","articles":[]},{"title":"Python","level":"1.4.2","depth":2,"path":"tutorial-python.md","ref":"tutorial-python.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"tutorial-golang.md","mtime":"2018-11-07T08:46:29.674Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-28T03:45:29.475Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Golang","level":"1.4.1","depth":2,"next":{"title":"Python","level":"1.4.2","depth":2,"path":"tutorial-python.md","ref":"tutorial-python.md","articles":[]},"previous":{"title":"Tutorial","level":"1.4","depth":1,"path":"tutorial.md","ref":"tutorial.md","articles":[{"title":"Golang","level":"1.4.1","depth":2,"path":"tutorial-golang.md","ref":"tutorial-golang.md","articles":[]},{"title":"Python","level":"1.4.2","depth":2,"path":"tutorial-python.md","ref":"tutorial-python.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"tutorial-golang.md","mtime":"2018-11-28T17:53:12.060Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-28T17:53:37.869Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

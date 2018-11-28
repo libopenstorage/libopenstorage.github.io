@@ -6,14 +6,18 @@ volume.
 
 The sources for this tutorial are available in the [`examples/golang`](https://github.com/libopenstorage/libopenstorage.github.io/tree/master/examples/golang) directory in the repo for this website.
 
-#### Recorded demo
-Check out the [step by step tutorial](https://asciinema.org/a/auGZOUd4R5osIgS8xEbRUX8Ah)
-on how to setup the golang client using [Golang dep](https://github.com/golang/dep).
-
 ## Setting up your environment
 To setup your environment, you will need to import the following to gain
 access to `api.pb.go`:
 
+#### Depedencies
+```
+go get -v github.com/libopenstorage/openstorage-sdk-clients/sdk/golang
+go get -v github.com/golang/protobuf/...
+go get -v google.golang.org/grpc
+```
+
+#### Imports
 ```go
 import (
     api "github.com/libopenstorage/openstorage-sdk-clients/sdk/golang"
@@ -30,6 +34,10 @@ file [`api.proto`](https://github.com/libopenstorage/openstorage/blob/master/api
 With the [`mock-sdk-server`](tutorial.html#setting-up-the-mock-sdk-server)
 running, the following steps will provide an introduction to programming
 with the OpenStorage SDK.
+
+#### Recorded demo setup
+Check out the [step by step tutorial](https://asciinema.org/a/auGZOUd4R5osIgS8xEbRUX8Ah)
+on how to setup the golang client for production code using [Golang dep](https://github.com/golang/dep).
 
 ## Creating a connection
 To use any of the gRPC functions, you must first create a connection with
@@ -112,6 +120,7 @@ will always return the same volume id for the volume of same name.
 You can now create a snapshot of this volume:
 
 ```go
+	// Create a volume snapshot
 	snap, err := volumes.SnapshotCreate(
 		context.Background(),
 		&api.SdkVolumeSnapshotCreateRequest{
@@ -182,9 +191,10 @@ credential id:
 			gerr.Code(), gerr.Message())
 		os.Exit(1)
 	}
-	fmt.Printf("Backup started for volume %s with task id %s\n",
-		v.GetVolumeId(),
-		backupCreateResp.GetTaskId())
+    taskID := backupCreateResp.GetTaskId()
+    fmt.Printf("Backup started for volume %s with task id %s\n",
+        v.GetVolumeId(),
+        taskID)
 ```
 
 This request will not block while the backup is running. Instead you should
@@ -202,7 +212,7 @@ call OpenStorageCloudBackup.Status() to get information about the backup:
 			gerr.Code(), gerr.Message())
 		os.Exit(1)
 	}
-	for volID, status := range backupStatus.GetStatuses() {
+	for taskID, status := range backupStatus.GetStatuses() {
 		// There will be only one value in the map, but we use
 		// a for-loop as an example.
 		b, _ := json.MarshalIndent(status, "", "  ")
@@ -211,7 +221,7 @@ call OpenStorageCloudBackup.Status() to get information about the backup:
 			"Type: %s\n"+
 			"Status: %s\n"+
 			"Full JSON Response: %s\n",
-			taskId,
+			taskID,
 			status.GetSrcVolumeId(),
 			status.GetOptype().String(),
 			status.GetStatus().String(),
@@ -223,6 +233,7 @@ Lastly, once the backup is complete, we can get a history of this and any
 other backups we have created from our volume:
 
 ```go
+	// Get history of the backup
 	historyResp, err := cloudbackups.History(context.Background(),
 		&api.SdkCloudBackupHistoryRequest{
 			SrcVolumeId: v.GetVolumeId(),
