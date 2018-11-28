@@ -71,8 +71,8 @@
     - [SdkAlertsCountSpan](#sdkalertscountspan)
     - [SdkAlertsDeleteRequest](#sdkalertsdeleterequest)
     - [SdkAlertsDeleteResponse](#sdkalertsdeleteresponse)
-    - [SdkAlertsEnumerateRequest](#sdkalertsenumeraterequest)
-    - [SdkAlertsEnumerateResponse](#sdkalertsenumerateresponse)
+    - [SdkAlertsEnumerateWithFiltersRequest](#sdkalertsenumeratewithfiltersrequest)
+    - [SdkAlertsEnumerateWithFiltersResponse](#sdkalertsenumeratewithfiltersresponse)
     - [SdkAlertsOption](#sdkalertsoption)
     - [SdkAlertsQuery](#sdkalertsquery)
     - [SdkAlertsResourceIdQuery](#sdkalertsresourceidquery)
@@ -302,15 +302,14 @@
 # OpenStorageAlerts {#serviceopenstorageapiopenstoragealerts}
 OpenStorageAlerts defines rpc's for alerts.
 
-## Enumerate {#methodopenstorageapiopenstoragealertsenumerate}
+## EnumerateWithFilters {#methodopenstorageapiopenstoragealertsenumeratewithfilters}
 
-> **rpc** Enumerate([SdkAlertsEnumerateRequest](#sdkalertsenumeraterequest))
-    [SdkAlertsEnumerateResponse](#sdkalertsenumerateresponse)
+> **rpc** EnumerateWithFilters([SdkAlertsEnumerateWithFiltersRequest](#sdkalertsenumeratewithfiltersrequest))
+    [SdkAlertsEnumerateWithFiltersResponse](#sdkalertsenumeratewithfiltersresponse)
 
-Enumerate allows querying alerts.
+Allows querying alerts.
 
-#### Enumerate
-Enumerate allows 3 different types of queries as defined below:
+EnumerateWithFilters allows 3 different types of queries as defined below:
 
 * Query that takes only resource type as input
 * Query that takes resource type and alert type as input and
@@ -341,7 +340,7 @@ eventually packed as list in SdkAlertsEnumerateRequest.
 > **rpc** Delete([SdkAlertsDeleteRequest](#sdkalertsdeleterequest))
     [SdkAlertsDeleteResponse](#sdkalertsdeleteresponse)
 
-Delete allows deleting alerts.
+Delete alerts
 
 #### Delete
 Delete allows 3 different types of queries as defined below:
@@ -351,7 +350,7 @@ Delete allows 3 different types of queries as defined below:
 * Query that takes resource id, alert type and resource type as input.
 
 #### Input
-SdkAlertsEnumerateRequest takes a list of such queries and all alerts
+SdkAlertsDeleteRequest takes a list of such queries and all alerts
 that match at least one of the queries are deleted.
  <!-- end methods -->
 
@@ -1014,7 +1013,11 @@ Request to stop a cloud migration
 | status | [ CloudMigrate.Status](#cloudmigratestatus) | Status of the current stage |
 | last_update | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | Last time the status was updated |
 | error_reason | [ string](#string) | Contains the reason for the migration error |
-| time_remaining | [ int64](#int64) | time_remaining is the estimated time remaining to completion |
+| start_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | StartTime indicates Op's start time |
+| completed_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | CompletedTime indicates Op's completed time |
+| bytes_total | [ uint64](#uint64) | BytesTotal is the number of bytes being transferred |
+| bytes_done | [ uint64](#uint64) | BytesDone is the number of bytes already transferred |
+| eta_seconds | [ int64](#int64) | ETASeconds the time duration in seconds for cloud migration completion |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -1524,7 +1527,7 @@ SdkAlertsDeleteResponse is empty.
  <!-- end HasFields -->
 
 
-## SdkAlertsEnumerateRequest {#sdkalertsenumeraterequest}
+## SdkAlertsEnumerateWithFiltersRequest {#sdkalertsenumeratewithfiltersrequest}
 SdkAlertsEnumerateRequest is a request message to enumerate alerts.
 
 
@@ -1535,7 +1538,7 @@ SdkAlertsEnumerateRequest is a request message to enumerate alerts.
  <!-- end HasFields -->
 
 
-## SdkAlertsEnumerateResponse {#sdkalertsenumerateresponse}
+## SdkAlertsEnumerateWithFiltersResponse {#sdkalertsenumeratewithfiltersresponse}
 SdkAlertsEnumerateResponse is a list of alerts.
 
 
@@ -2018,6 +2021,8 @@ SdkCloudBackupStatus defines the status of a backup stored by a cloud provider
 | src_volume_id | [ string](#string) | SourceVolumeID is the the volume that is either being backed up to cloud or target volume to which a backup is being restored |
 | info | [repeated string](#string) | Info currently indicates the failure cause for failed backup/restore |
 | credential_id | [ string](#string) | CredentialId is the credential used for cloud with this backup/restore op |
+| bytes_total | [ uint64](#uint64) | BytesTotal is the total number of bytes being transferred |
+| eta_seconds | [ int64](#int64) | ETASeconds is the number of seconds for cloud backup completion |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -4025,7 +4030,7 @@ client and server applications
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
 | Minor | 22 | SDK version minor value of this specification |
-| Patch | 3 | SDK version patch value of this specification |
+| Patch | 7 | SDK version patch value of this specification |
 
 
 

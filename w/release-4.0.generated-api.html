@@ -445,8 +445,8 @@
 <li><a href="#sdkalertscountspan">SdkAlertsCountSpan</a></li>
 <li><a href="#sdkalertsdeleterequest">SdkAlertsDeleteRequest</a></li>
 <li><a href="#sdkalertsdeleteresponse">SdkAlertsDeleteResponse</a></li>
-<li><a href="#sdkalertsenumeraterequest">SdkAlertsEnumerateRequest</a></li>
-<li><a href="#sdkalertsenumerateresponse">SdkAlertsEnumerateResponse</a></li>
+<li><a href="#sdkalertsenumeratewithfiltersrequest">SdkAlertsEnumerateWithFiltersRequest</a></li>
+<li><a href="#sdkalertsenumeratewithfiltersresponse">SdkAlertsEnumerateWithFiltersResponse</a></li>
 <li><a href="#sdkalertsoption">SdkAlertsOption</a></li>
 <li><a href="#sdkalertsquery">SdkAlertsQuery</a></li>
 <li><a href="#sdkalertsresourceidquery">SdkAlertsResourceIdQuery</a></li>
@@ -674,14 +674,13 @@
 </ul>
 <h1 id="serviceopenstorageapiopenstoragealerts">OpenStorageAlerts </h1>
 <p>OpenStorageAlerts defines rpc&apos;s for alerts.</p>
-<h2 id="methodopenstorageapiopenstoragealertsenumerate">Enumerate </h2>
+<h2 id="methodopenstorageapiopenstoragealertsenumeratewithfilters">EnumerateWithFilters </h2>
 <blockquote>
-<p><strong>rpc</strong> Enumerate(<a href="#sdkalertsenumeraterequest">SdkAlertsEnumerateRequest</a>)
-    <a href="#sdkalertsenumerateresponse">SdkAlertsEnumerateResponse</a></p>
+<p><strong>rpc</strong> EnumerateWithFilters(<a href="#sdkalertsenumeratewithfiltersrequest">SdkAlertsEnumerateWithFiltersRequest</a>)
+    <a href="#sdkalertsenumeratewithfiltersresponse">SdkAlertsEnumerateWithFiltersResponse</a></p>
 </blockquote>
-<p>Enumerate allows querying alerts.</p>
-<h4 id="enumerate">Enumerate</h4>
-<p>Enumerate allows 3 different types of queries as defined below:</p>
+<p>Allows querying alerts.</p>
+<p>EnumerateWithFilters allows 3 different types of queries as defined below:</p>
 <ul>
 <li>Query that takes only resource type as input</li>
 <li>Query that takes resource type and alert type as input and</li>
@@ -711,7 +710,7 @@ eventually packed as list in SdkAlertsEnumerateRequest.</p>
 <p><strong>rpc</strong> Delete(<a href="#sdkalertsdeleterequest">SdkAlertsDeleteRequest</a>)
     <a href="#sdkalertsdeleteresponse">SdkAlertsDeleteResponse</a></p>
 </blockquote>
-<p>Delete allows deleting alerts.</p>
+<p>Delete alerts</p>
 <h4 id="delete">Delete</h4>
 <p>Delete allows 3 different types of queries as defined below:</p>
 <ul>
@@ -720,7 +719,7 @@ eventually packed as list in SdkAlertsEnumerateRequest.</p>
 <li>Query that takes resource id, alert type and resource type as input.</li>
 </ul>
 <h4 id="input">Input</h4>
-<p>SdkAlertsEnumerateRequest takes a list of such queries and all alerts
+<p>SdkAlertsDeleteRequest takes a list of such queries and all alerts
 that match at least one of the queries are deleted.
  <!-- end methods --></p>
 <h1 id="serviceopenstorageapiopenstoragecloudbackup">OpenStorageCloudBackup </h1>
@@ -1546,9 +1545,29 @@ used by the other dependent snaps and parent volume.</p>
 <td>Contains the reason for the migration error</td>
 </tr>
 <tr>
-<td>time_remaining</td>
+<td>start_time</td>
+<td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
+<td>StartTime indicates Op&apos;s start time</td>
+</tr>
+<tr>
+<td>completed_time</td>
+<td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
+<td>CompletedTime indicates Op&apos;s completed time</td>
+</tr>
+<tr>
+<td>bytes_total</td>
+<td><a href="#uint64"> uint64</a></td>
+<td>BytesTotal is the number of bytes being transferred</td>
+</tr>
+<tr>
+<td>bytes_done</td>
+<td><a href="#uint64"> uint64</a></td>
+<td>BytesDone is the number of bytes already transferred</td>
+</tr>
+<tr>
+<td>eta_seconds</td>
 <td><a href="#int64"> int64</a></td>
-<td>time_remaining is the estimated time remaining to completion</td>
+<td>ETASeconds the time duration in seconds for cloud migration completion</td>
 </tr>
 </tbody>
 </table>
@@ -2577,7 +2596,7 @@ and it requires that resource type be provided as well.</p>
 <h2 id="sdkalertsdeleteresponse">SdkAlertsDeleteResponse </h2>
 <p>SdkAlertsDeleteResponse is empty.</p>
  <!-- end HasFields -->
-<h2 id="sdkalertsenumeraterequest">SdkAlertsEnumerateRequest </h2>
+<h2 id="sdkalertsenumeratewithfiltersrequest">SdkAlertsEnumerateWithFiltersRequest </h2>
 <p>SdkAlertsEnumerateRequest is a request message to enumerate alerts.</p>
 <table>
 <thead>
@@ -2597,7 +2616,7 @@ and it requires that resource type be provided as well.</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
-<h2 id="sdkalertsenumerateresponse">SdkAlertsEnumerateResponse </h2>
+<h2 id="sdkalertsenumeratewithfiltersresponse">SdkAlertsEnumerateWithFiltersResponse </h2>
 <p>SdkAlertsEnumerateResponse is a list of alerts.</p>
 <table>
 <thead>
@@ -3596,6 +3615,16 @@ from a cloud provider</p>
 <td>credential_id</td>
 <td><a href="#string"> string</a></td>
 <td>CredentialId is the credential used for cloud with this backup/restore op</td>
+</tr>
+<tr>
+<td>bytes_total</td>
+<td><a href="#uint64"> uint64</a></td>
+<td>BytesTotal is the total number of bytes being transferred</td>
+</tr>
+<tr>
+<td>eta_seconds</td>
+<td><a href="#int64"> int64</a></td>
+<td>ETASeconds is the number of seconds for cloud backup completion</td>
 </tr>
 </tbody>
 </table>
@@ -7830,7 +7859,7 @@ client and server applications</p>
 </tr>
 <tr>
 <td>Patch</td>
-<td>3</td>
+<td>7</td>
 <td>SDK version patch value of this specification</td>
 </tr>
 </tbody>
@@ -8319,7 +8348,7 @@ client and server applications</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"v0.22.x","level":"1.5.2","depth":2,"next":{"title":"Changelog","level":"1.5.2.1","depth":3,"path":"release-4.0.changelog.md","ref":"release-4.0.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.1.1","depth":3,"path":"release-sdk-0.9.changelog.md","ref":"release-sdk-0.9.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"release-4.0.generated-api.md","mtime":"2018-11-16T19:16:53.730Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-16T19:17:28.568Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"v0.22.x","level":"1.5.2","depth":2,"next":{"title":"Changelog","level":"1.5.2.1","depth":3,"path":"release-4.0.changelog.md","ref":"release-4.0.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.1.1","depth":3,"path":"release-sdk-0.9.changelog.md","ref":"release-sdk-0.9.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"release-4.0.generated-api.md","mtime":"2018-11-28T03:44:47.478Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-28T03:45:29.475Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

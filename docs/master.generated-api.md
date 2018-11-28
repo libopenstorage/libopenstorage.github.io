@@ -71,8 +71,8 @@
     - [SdkAlertsCountSpan](#sdkalertscountspan)
     - [SdkAlertsDeleteRequest](#sdkalertsdeleterequest)
     - [SdkAlertsDeleteResponse](#sdkalertsdeleteresponse)
-    - [SdkAlertsEnumerateRequest](#sdkalertsenumeraterequest)
-    - [SdkAlertsEnumerateResponse](#sdkalertsenumerateresponse)
+    - [SdkAlertsEnumerateWithFiltersRequest](#sdkalertsenumeratewithfiltersrequest)
+    - [SdkAlertsEnumerateWithFiltersResponse](#sdkalertsenumeratewithfiltersresponse)
     - [SdkAlertsOption](#sdkalertsoption)
     - [SdkAlertsQuery](#sdkalertsquery)
     - [SdkAlertsResourceIdQuery](#sdkalertsresourceidquery)
@@ -302,15 +302,14 @@
 # OpenStorageAlerts {#serviceopenstorageapiopenstoragealerts}
 OpenStorageAlerts defines rpc's for alerts.
 
-## Enumerate {#methodopenstorageapiopenstoragealertsenumerate}
+## EnumerateWithFilters {#methodopenstorageapiopenstoragealertsenumeratewithfilters}
 
-> **rpc** Enumerate([SdkAlertsEnumerateRequest](#sdkalertsenumeraterequest))
-    [SdkAlertsEnumerateResponse](#sdkalertsenumerateresponse)
+> **rpc** EnumerateWithFilters([SdkAlertsEnumerateWithFiltersRequest](#sdkalertsenumeratewithfiltersrequest))
+    [SdkAlertsEnumerateWithFiltersResponse](#sdkalertsenumeratewithfiltersresponse)
 
-Enumerate allows querying alerts.
+Allows querying alerts.
 
-#### Enumerate
-Enumerate allows 3 different types of queries as defined below:
+EnumerateWithFilters allows 3 different types of queries as defined below:
 
 * Query that takes only resource type as input
 * Query that takes resource type and alert type as input and
@@ -341,7 +340,7 @@ eventually packed as list in SdkAlertsEnumerateRequest.
 > **rpc** Delete([SdkAlertsDeleteRequest](#sdkalertsdeleterequest))
     [SdkAlertsDeleteResponse](#sdkalertsdeleteresponse)
 
-Delete allows deleting alerts.
+Delete alerts
 
 #### Delete
 Delete allows 3 different types of queries as defined below:
@@ -351,7 +350,7 @@ Delete allows 3 different types of queries as defined below:
 * Query that takes resource id, alert type and resource type as input.
 
 #### Input
-SdkAlertsEnumerateRequest takes a list of such queries and all alerts
+SdkAlertsDeleteRequest takes a list of such queries and all alerts
 that match at least one of the queries are deleted.
  <!-- end methods -->
 
@@ -1528,7 +1527,7 @@ SdkAlertsDeleteResponse is empty.
  <!-- end HasFields -->
 
 
-## SdkAlertsEnumerateRequest {#sdkalertsenumeraterequest}
+## SdkAlertsEnumerateWithFiltersRequest {#sdkalertsenumeratewithfiltersrequest}
 SdkAlertsEnumerateRequest is a request message to enumerate alerts.
 
 
@@ -1539,7 +1538,7 @@ SdkAlertsEnumerateRequest is a request message to enumerate alerts.
  <!-- end HasFields -->
 
 
-## SdkAlertsEnumerateResponse {#sdkalertsenumerateresponse}
+## SdkAlertsEnumerateWithFiltersResponse {#sdkalertsenumeratewithfiltersresponse}
 SdkAlertsEnumerateResponse is a list of alerts.
 
 
@@ -4031,7 +4030,7 @@ client and server applications
 | ---- | ------ | ----------- |
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
-| Minor | 28 | SDK version minor value of this specification |
+| Minor | 31 | SDK version minor value of this specification |
 | Patch | 0 | SDK version patch value of this specification |
 
 
