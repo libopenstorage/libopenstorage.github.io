@@ -15,7 +15,7 @@
 
 [grpc022x]: release-4.0.generated-api.md
 [rest022x]: https://libopenstorage.github.io/w/swagger-ui/release-4.0.index.html
-[client022x]: https://github.com/libopenstorage/openstorage-sdk-clients/releases/tag/v0.22.3
+[client022x]: https://github.com/libopenstorage/openstorage-sdk-clients/releases/tag/v0.22.7
 
 [grpc]: master.generated-api.md
 [rest]: https://libopenstorage.github.io/w/swagger-ui/index.html
