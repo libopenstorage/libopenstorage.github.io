@@ -69,7 +69,7 @@ try:
         api_pb2.Status.Name(ic_resp.cluster.status)
     ))
 except grpc.RpcError as e:
-    print('Failed: code={0} msg={1}'.format(e.code(), e.details()))
+    print('Failed: args={0} msg={1}'.format(e.args, e.message))
 ```
 
 Notice the `except` above. As mentioned in the
