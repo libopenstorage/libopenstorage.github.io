@@ -77,21 +77,21 @@
       "type": "string"
     },
     "VolumePlacementRuleAffinityRuleType": {
-      "default": "Affinity",
-      "description": "- Affinity: Affinity means the rule specifies an affinity to objects that match the below label selector requirements\n - AntiAffinity: AntiAffinity means the rule specifies an anti-affinity to objects that match the below label selector requirements",
+      "default": "affinity",
+      "description": "- affinity: Affinity means the rule specifies an affinity to objects that match the below label selector requirements\n - antiAffinity: AntiAffinity means the rule specifies an anti-affinity to objects that match the below label selector requirements",
       "enum": [
-        "Affinity",
-        "AntiAffinity"
+        "affinity",
+        "antiAffinity"
       ],
       "title": "This specifies the type an affinity rule can take",
       "type": "string"
     },
     "VolumePlacementRuleEnforcementType": {
-      "default": "Required",
-      "description": "- Required: This specifies that the rule is required and must be strictly enforced\n - Preferred: This specifies that the rule is preferred and can be best effort",
+      "default": "required",
+      "description": "- required: This specifies that the rule is required and must be strictly enforced\n - preferred: This specifies that the rule is preferred and can be best effort",
       "enum": [
-        "Required",
-        "Preferred"
+        "required",
+        "preferred"
       ],
       "title": "Defines the types of enforcement on the given rules",
       "type": "string"
@@ -302,6 +302,20 @@
         "Canceled"
       ],
       "type": "string"
+    },
+    "apiCloudMigrateStatusRequest": {
+      "properties": {
+        "cluster_id": {
+          "title": "ID of the cluster for which to return migration statuses",
+          "type": "string"
+        },
+        "task_id": {
+          "title": "Task id for which to return status",
+          "type": "string"
+        }
+      },
+      "title": "Request for cloud migration operation status",
+      "type": "object"
     },
     "apiCloudMigrateStatusResponse": {
       "properties": {
@@ -3058,7 +3072,7 @@
   },
   "info": {
     "title": "OpenStorage SDK",
-    "version": "0.31.0"
+    "version": "0.33.0"
   },
   "paths": {
     "/v1/alerts": {
@@ -4137,6 +4151,22 @@
     "/v1/volumemigrate": {
       "get": {
         "operationId": "Status",
+        "parameters": [
+          {
+            "description": "Task id for which to return status.",
+            "in": "query",
+            "name": "request.task_id",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "ID of the cluster for which to return migration statuses.",
+            "in": "query",
+            "name": "request.cluster_id",
+            "required": false,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "",

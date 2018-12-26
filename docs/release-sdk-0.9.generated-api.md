@@ -22,6 +22,7 @@
     - [ActiveRequests](#activerequests)
     - [Alert](#alert)
     - [Alerts](#alerts)
+    - [CapacityUsageInfo](#capacityusageinfo)
     - [Catalog](#catalog)
     - [CatalogResponse](#catalogresponse)
     - [CloudMigrate](#cloudmigrate)
@@ -149,6 +150,8 @@
     - [SdkVolumeAttachRequest](#sdkvolumeattachrequest)
     - [SdkVolumeAttachRequest.Options](#sdkvolumeattachrequestoptions)
     - [SdkVolumeAttachResponse](#sdkvolumeattachresponse)
+    - [SdkVolumeCapacityUsageRequest](#sdkvolumecapacityusagerequest)
+    - [SdkVolumeCapacityUsageResponse](#sdkvolumecapacityusageresponse)
     - [SdkVolumeCloneRequest](#sdkvolumeclonerequest)
     - [SdkVolumeCloneResponse](#sdkvolumecloneresponse)
     - [SdkVolumeCreateRequest](#sdkvolumecreaterequest)
@@ -619,6 +622,18 @@ Set can be used to resize a volume, update labels, change replica count, and muc
     [SdkVolumeStatsResponse](#sdkvolumestatsresponse)
 
 Stats returns the statistics for the requested volume
+## CapacityUsage {#methodopenstorageapiopenstoragevolumecapacityusage}
+
+> **rpc** CapacityUsage([SdkVolumeCapacityUsageRequest](#sdkvolumecapacityusagerequest))
+    [SdkVolumeCapacityUsageResponse](#sdkvolumecapacityusageresponse)
+
+CapacityUsage returns volume/snapshot's capacity usage details
+
+##### Error codes:
+
+* codes.Aborted : Command was aborted and only total_bytes field is valid
+* code.Unimmplemented : Command is not suported this kernel.Only total_bytes
+field is valid;
 ## Enumerate {#methodopenstorageapiopenstoragevolumeenumerate}
 
 > **rpc** Enumerate([SdkVolumeEnumerateRequest](#sdkvolumeenumeraterequest))
@@ -742,6 +757,22 @@ swagger:model
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | alert | [repeated Alert](#alert) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## CapacityUsageInfo {#capacityusageinfo}
+Provides details on exclusive and shared storage used by
+snapshot/volume specifically for copy-on-write(COW) snapshots. Deletion
+of snapshots and overwirte of volume will affect the exclusive storage
+used by the other dependent snaps and parent volume.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| exclusive_bytes | [ int64](#int64) | Storage consumed exclusively by this single snapshot. Deletion of this snapshot may increase the free storage available by this amount. |
+| shared_bytes | [ int64](#int64) | Storage consumed by this snapshot that is shared with parent and children |
+| total_bytes | [ int64](#int64) | TotalBytes used by this volume |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -2234,6 +2265,28 @@ Defines a response from the node which received the request to attach
  <!-- end HasFields -->
 
 
+## SdkVolumeCapacityUsageRequest {#sdkvolumecapacityusagerequest}
+Defines request to retrieve volume/snapshot capacity usage details
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id | [ string](#string) | Id of the snapshot/volume to get capacity usage details |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVolumeCapacityUsageResponse {#sdkvolumecapacityusageresponse}
+Defines response containing volume/snapshot capacity usage details
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| capacity_usage_info | [ CapacityUsageInfo](#capacityusageinfo) | CapacityUsage details |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
 ## SdkVolumeCloneRequest {#sdkvolumeclonerequest}
 Defines a request to clone a volume or create a volume from a snapshot
 
@@ -3039,6 +3092,7 @@ swagger:model
 | sharedv4 | [ bool](#bool) | Sharedv4 is true if this volume can be accessed via sharedv4. |
 | queue_depth | [ int32](#int32) | QueueDepth defines the desired block device queue depth |
 | force_unsupported_fs_type | [ bool](#bool) | Use to force a file system type which is not recommended. The driver may still refuse to use the file system type. |
+| nodiscard | [ bool](#bool) | Nodiscard specifies if the volume will be mounted with discard support disabled. i.e. FS will not release allocated blocks back to the backing storage pool. |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3373,7 +3427,7 @@ client and server applications
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
 | Minor | 9 | SDK version minor value of this specification |
-| Patch | 2 | SDK version patch value of this specification |
+| Patch | 3 | SDK version patch value of this specification |
 
 
 

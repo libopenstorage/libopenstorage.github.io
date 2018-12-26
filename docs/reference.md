@@ -4,8 +4,8 @@
 
 | Version | Documentation | mock-sdk-server Container Tag | Clients |
 | ------- | ------------- | ------- |
-| v0.9.2 | [gRPC][grpc092] / [REST][rest092] | `openstorage/mock-sdk-server:0.9.2` | [Source][client092]
-| v0.22.7 | [gRPC][grpc022x] / [REST][rest022x] | `openstorage/mock-sdk-server:0.22.7` | [Source][client022x]
+| v0.9.3 | [gRPC][grpc092] / [REST][rest092] | `openstorage/mock-sdk-server:0.9.3` | [Source][client092]
+| v0.22.9 | [gRPC][grpc022x] / [REST][rest022x] | `openstorage/mock-sdk-server:0.22.9` | [Source][client022x]
 | Nightly Development Builds | [gRPC][grpc] / [REST][rest] | `openstorage/mock-sdk-server` | [Source][client]
 
 

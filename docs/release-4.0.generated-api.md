@@ -34,19 +34,17 @@
     - [CloudMigrateInfoList](#cloudmigrateinfolist)
     - [CloudMigrateStartRequest](#cloudmigratestartrequest)
     - [CloudMigrateStartResponse](#cloudmigratestartresponse)
+    - [CloudMigrateStatusRequest](#cloudmigratestatusrequest)
     - [CloudMigrateStatusResponse](#cloudmigratestatusresponse)
     - [CloudMigrateStatusResponse.InfoEntry](#cloudmigratestatusresponseinfoentry)
     - [ClusterPairCreateRequest](#clusterpaircreaterequest)
     - [ClusterPairCreateResponse](#clusterpaircreateresponse)
-    - [ClusterPairDeleteRequest](#clusterpairdeleterequest)
-    - [ClusterPairGetRequest](#clusterpairgetrequest)
     - [ClusterPairGetResponse](#clusterpairgetresponse)
     - [ClusterPairInfo](#clusterpairinfo)
     - [ClusterPairInfo.OptionsEntry](#clusterpairinfooptionsentry)
     - [ClusterPairProcessRequest](#clusterpairprocessrequest)
     - [ClusterPairProcessResponse](#clusterpairprocessresponse)
     - [ClusterPairProcessResponse.OptionsEntry](#clusterpairprocessresponseoptionsentry)
-    - [ClusterPairTokenGetRequest](#clusterpairtokengetrequest)
     - [ClusterPairTokenGetResponse](#clusterpairtokengetresponse)
     - [ClusterPairsEnumerateResponse](#clusterpairsenumerateresponse)
     - [ClusterPairsEnumerateResponse.PairsEntry](#clusterpairsenumerateresponsepairsentry)
@@ -1058,6 +1056,18 @@ Response to start a cloud migration
  <!-- end HasFields -->
 
 
+## CloudMigrateStatusRequest {#cloudmigratestatusrequest}
+Request for cloud migration operation status
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| task_id | [ string](#string) | Task id for which to return status |
+| cluster_id | [ string](#string) | ID of the cluster for which to return migration statuses |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
 ## CloudMigrateStatusResponse {#cloudmigratestatusresponse}
 Response with a status of the cloud migration operations
 
@@ -1103,28 +1113,6 @@ Response for a pair request
 | ----- | ---- | ----------- |
 | remote_cluster_id | [ string](#string) | ID of the remote cluster |
 | remote_cluster_name | [ string](#string) | Name of the remote cluster |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## ClusterPairDeleteRequest {#clusterpairdeleterequest}
-Request to to delete a cluster pair
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| cluster_id | [ string](#string) | ID of the cluster pair to be deleted |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## ClusterPairGetRequest {#clusterpairgetrequest}
-Request to get a cluster pair
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [ string](#string) | ID of the cluster, if empty gets the default pair |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -1203,17 +1191,6 @@ Response after a pairing has been processed
 | ----- | ---- | ----------- |
 | key | [ string](#string) | none |
 | value | [ string](#string) | none |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## ClusterPairTokenGetRequest {#clusterpairtokengetrequest}
-Request to get the token for a cluster
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| reset_token | [ bool](#bool) | Reset token if already preset |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -1305,6 +1282,7 @@ swagger:model
 | ----- | ---- | ----------- |
 | id | [ string](#string) | none |
 | Labels | [map GroupSnapCreateRequest.LabelsEntry](#groupsnapcreaterequestlabelsentry) | none |
+| volume_ids | [repeated string](#string) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -2136,8 +2114,13 @@ Defines a response for the migration that was started
 
 
 ## SdkCloudMigrateStatusRequest {#sdkcloudmigratestatusrequest}
-Empty Request
+Request for cloud migration operation status
 
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| request | [ CloudMigrateStatusRequest](#cloudmigratestatusrequest) | Request contains the task id and cluster id for which status should be returned |
+ <!-- end Fields -->
  <!-- end HasFields -->
 
 
@@ -4030,7 +4013,7 @@ client and server applications
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
 | Minor | 22 | SDK version minor value of this specification |
-| Patch | 7 | SDK version patch value of this specification |
+| Patch | 9 | SDK version patch value of this specification |
 
 
 

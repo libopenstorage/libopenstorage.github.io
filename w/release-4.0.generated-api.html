@@ -408,19 +408,17 @@
 <li><a href="#cloudmigrateinfolist">CloudMigrateInfoList</a></li>
 <li><a href="#cloudmigratestartrequest">CloudMigrateStartRequest</a></li>
 <li><a href="#cloudmigratestartresponse">CloudMigrateStartResponse</a></li>
+<li><a href="#cloudmigratestatusrequest">CloudMigrateStatusRequest</a></li>
 <li><a href="#cloudmigratestatusresponse">CloudMigrateStatusResponse</a></li>
 <li><a href="#cloudmigratestatusresponseinfoentry">CloudMigrateStatusResponse.InfoEntry</a></li>
 <li><a href="#clusterpaircreaterequest">ClusterPairCreateRequest</a></li>
 <li><a href="#clusterpaircreateresponse">ClusterPairCreateResponse</a></li>
-<li><a href="#clusterpairdeleterequest">ClusterPairDeleteRequest</a></li>
-<li><a href="#clusterpairgetrequest">ClusterPairGetRequest</a></li>
 <li><a href="#clusterpairgetresponse">ClusterPairGetResponse</a></li>
 <li><a href="#clusterpairinfo">ClusterPairInfo</a></li>
 <li><a href="#clusterpairinfooptionsentry">ClusterPairInfo.OptionsEntry</a></li>
 <li><a href="#clusterpairprocessrequest">ClusterPairProcessRequest</a></li>
 <li><a href="#clusterpairprocessresponse">ClusterPairProcessResponse</a></li>
 <li><a href="#clusterpairprocessresponseoptionsentry">ClusterPairProcessResponse.OptionsEntry</a></li>
-<li><a href="#clusterpairtokengetrequest">ClusterPairTokenGetRequest</a></li>
 <li><a href="#clusterpairtokengetresponse">ClusterPairTokenGetResponse</a></li>
 <li><a href="#clusterpairsenumerateresponse">ClusterPairsEnumerateResponse</a></li>
 <li><a href="#clusterpairsenumerateresponsepairsentry">ClusterPairsEnumerateResponse.PairsEntry</a></li>
@@ -1647,6 +1645,31 @@ used by the other dependent snaps and parent volume.</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
+<h2 id="cloudmigratestatusrequest">CloudMigrateStatusRequest </h2>
+<p>Request for cloud migration operation status</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>task_id</td>
+<td><a href="#string"> string</a></td>
+<td>Task id for which to return status</td>
+</tr>
+<tr>
+<td>cluster_id</td>
+<td><a href="#string"> string</a></td>
+<td>ID of the cluster for which to return migration statuses</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
 <h2 id="cloudmigratestatusresponse">CloudMigrateStatusResponse </h2>
 <p>Response with a status of the cloud migration operations</p>
 <table>
@@ -1746,46 +1769,6 @@ used by the other dependent snaps and parent volume.</p>
 <td>remote_cluster_name</td>
 <td><a href="#string"> string</a></td>
 <td>Name of the remote cluster</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="clusterpairdeleterequest">ClusterPairDeleteRequest </h2>
-<p>Request to to delete a cluster pair</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>cluster_id</td>
-<td><a href="#string"> string</a></td>
-<td>ID of the cluster pair to be deleted</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="clusterpairgetrequest">ClusterPairGetRequest </h2>
-<p>Request to get a cluster pair</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>id</td>
-<td><a href="#string"> string</a></td>
-<td>ID of the cluster, if empty gets the default pair</td>
 </tr>
 </tbody>
 </table>
@@ -1969,26 +1952,6 @@ used by the other dependent snaps and parent volume.</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
-<h2 id="clusterpairtokengetrequest">ClusterPairTokenGetRequest </h2>
-<p>Request to get the token for a cluster</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>reset_token</td>
-<td><a href="#bool"> bool</a></td>
-<td>Reset token if already preset</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
 <h2 id="clusterpairtokengetresponse">ClusterPairTokenGetResponse </h2>
 <p>Response to get the cluster token</p>
 <table>
@@ -2151,6 +2114,11 @@ swagger:model</p>
 <tr>
 <td>Labels</td>
 <td><a href="#groupsnapcreaterequestlabelsentry">map GroupSnapCreateRequest.LabelsEntry</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>volume_ids</td>
+<td><a href="#string">repeated string</a></td>
 <td>none</td>
 </tr>
 </tbody>
@@ -3832,7 +3800,24 @@ specified volume</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkcloudmigratestatusrequest">SdkCloudMigrateStatusRequest </h2>
-<p>Empty Request</p>
+<p>Request for cloud migration operation status</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>request</td>
+<td><a href="#cloudmigratestatusrequest"> CloudMigrateStatusRequest</a></td>
+<td>Request contains the task id and cluster id for which status should be returned</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkcloudmigratestatusresponse">SdkCloudMigrateStatusResponse </h2>
 <p>Defines a response for the status request</p>
@@ -7859,7 +7844,7 @@ client and server applications</p>
 </tr>
 <tr>
 <td>Patch</td>
-<td>7</td>
+<td>9</td>
 <td>SDK version patch value of this specification</td>
 </tr>
 </tbody>
@@ -8348,7 +8333,7 @@ client and server applications</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"v0.22.x","level":"1.5.2","depth":2,"next":{"title":"Changelog","level":"1.5.2.1","depth":3,"path":"release-4.0.changelog.md","ref":"release-4.0.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.1.1","depth":3,"path":"release-sdk-0.9.changelog.md","ref":"release-sdk-0.9.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"release-4.0.generated-api.md","mtime":"2018-11-28T03:44:47.478Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-28T23:10:22.039Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"v0.22.x","level":"1.5.2","depth":2,"next":{"title":"Changelog","level":"1.5.2.1","depth":3,"path":"release-4.0.changelog.md","ref":"release-4.0.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.1.1","depth":3,"path":"release-sdk-0.9.changelog.md","ref":"release-sdk-0.9.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"release-4.0.generated-api.md","mtime":"2018-12-26T21:04:45.724Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-26T21:06:30.392Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

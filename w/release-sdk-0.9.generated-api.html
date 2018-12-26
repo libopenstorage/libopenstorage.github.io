@@ -396,6 +396,7 @@
 <li><a href="#activerequests">ActiveRequests</a></li>
 <li><a href="#alert">Alert</a></li>
 <li><a href="#alerts">Alerts</a></li>
+<li><a href="#capacityusageinfo">CapacityUsageInfo</a></li>
 <li><a href="#catalog">Catalog</a></li>
 <li><a href="#catalogresponse">CatalogResponse</a></li>
 <li><a href="#cloudmigrate">CloudMigrate</a></li>
@@ -523,6 +524,8 @@
 <li><a href="#sdkvolumeattachrequest">SdkVolumeAttachRequest</a></li>
 <li><a href="#sdkvolumeattachrequestoptions">SdkVolumeAttachRequest.Options</a></li>
 <li><a href="#sdkvolumeattachresponse">SdkVolumeAttachResponse</a></li>
+<li><a href="#sdkvolumecapacityusagerequest">SdkVolumeCapacityUsageRequest</a></li>
+<li><a href="#sdkvolumecapacityusageresponse">SdkVolumeCapacityUsageResponse</a></li>
 <li><a href="#sdkvolumeclonerequest">SdkVolumeCloneRequest</a></li>
 <li><a href="#sdkvolumecloneresponse">SdkVolumeCloneResponse</a></li>
 <li><a href="#sdkvolumecreaterequest">SdkVolumeCreateRequest</a></li>
@@ -963,7 +966,19 @@ Set can be used to resize a volume, update labels, change replica count, and muc
     <a href="#sdkvolumestatsresponse">SdkVolumeStatsResponse</a></p>
 </blockquote>
 <p>Stats returns the statistics for the requested volume</p>
-<h2 id="methodopenstorageapiopenstoragevolumeenumerate">Enumerate </h2>
+<h2 id="methodopenstorageapiopenstoragevolumecapacityusage">CapacityUsage </h2>
+<blockquote>
+<p><strong>rpc</strong> CapacityUsage(<a href="#sdkvolumecapacityusagerequest">SdkVolumeCapacityUsageRequest</a>)
+    <a href="#sdkvolumecapacityusageresponse">SdkVolumeCapacityUsageResponse</a></p>
+</blockquote>
+<p>CapacityUsage returns volume/snapshot&apos;s capacity usage details</p>
+<h5 id="error-codes">Error codes:</h5>
+<ul>
+<li>codes.Aborted : Command was aborted and only total_bytes field is valid</li>
+<li>code.Unimmplemented : Command is not suported this kernel.Only total_bytes
+field is valid;<h2 id="methodopenstorageapiopenstoragevolumeenumerate">Enumerate </h2>
+</li>
+</ul>
 <blockquote>
 <p><strong>rpc</strong> Enumerate(<a href="#sdkvolumeenumeraterequest">SdkVolumeEnumerateRequest</a>)
     <a href="#sdkvolumeenumerateresponse">SdkVolumeEnumerateResponse</a></p>
@@ -1178,6 +1193,39 @@ swagger:model</p>
 <td>alert</td>
 <td><a href="#alert">repeated Alert</a></td>
 <td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="capacityusageinfo">CapacityUsageInfo </h2>
+<p>Provides details on exclusive and shared storage used by
+snapshot/volume specifically for copy-on-write(COW) snapshots. Deletion
+of snapshots and overwirte of volume will affect the exclusive storage
+used by the other dependent snaps and parent volume.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>exclusive_bytes</td>
+<td><a href="#int64"> int64</a></td>
+<td>Storage consumed exclusively by this single snapshot. Deletion of this snapshot may increase the free storage available by this amount.</td>
+</tr>
+<tr>
+<td>shared_bytes</td>
+<td><a href="#int64"> int64</a></td>
+<td>Storage consumed by this snapshot that is shared with parent and children</td>
+</tr>
+<tr>
+<td>total_bytes</td>
+<td><a href="#int64"> int64</a></td>
+<td>TotalBytes used by this volume</td>
 </tr>
 </tbody>
 </table>
@@ -4028,6 +4076,46 @@ version run by an SDK server.</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
+<h2 id="sdkvolumecapacityusagerequest">SdkVolumeCapacityUsageRequest </h2>
+<p>Defines request to retrieve volume/snapshot capacity usage details</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of the snapshot/volume to get capacity usage details</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkvolumecapacityusageresponse">SdkVolumeCapacityUsageResponse </h2>
+<p>Defines response containing volume/snapshot capacity usage details</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>capacity_usage_info</td>
+<td><a href="#capacityusageinfo"> CapacityUsageInfo</a></td>
+<td>CapacityUsage details</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
 <h2 id="sdkvolumeclonerequest">SdkVolumeCloneRequest </h2>
 <p>Defines a request to clone a volume or create a volume from a snapshot</p>
 <table>
@@ -5812,6 +5900,11 @@ swagger:model</p>
 <td><a href="#bool"> bool</a></td>
 <td>Use to force a file system type which is not recommended. The driver may still refuse to use the file system type.</td>
 </tr>
+<tr>
+<td>nodiscard</td>
+<td><a href="#bool"> bool</a></td>
+<td>Nodiscard specifies if the volume will be mounted with discard support disabled. i.e. FS will not release allocated blocks back to the backing storage pool.</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -6697,7 +6790,7 @@ client and server applications</p>
 </tr>
 <tr>
 <td>Patch</td>
-<td>2</td>
+<td>3</td>
 <td>SDK version patch value of this specification</td>
 </tr>
 </tbody>
@@ -7140,7 +7233,7 @@ client and server applications</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"v0.9.x","level":"1.5.1","depth":2,"next":{"title":"Changelog","level":"1.5.1.1","depth":3,"path":"release-sdk-0.9.changelog.md","ref":"release-sdk-0.9.changelog.md","articles":[]},"previous":{"title":"API Reference","level":"1.5","depth":1,"path":"reference.md","ref":"reference.md","articles":[{"title":"v0.9.x","level":"1.5.1","depth":2,"path":"release-sdk-0.9.generated-api.md","ref":"release-sdk-0.9.generated-api.md","articles":[{"title":"Changelog","level":"1.5.1.1","depth":3,"path":"release-sdk-0.9.changelog.md","ref":"release-sdk-0.9.changelog.md","articles":[]}]},{"title":"v0.22.x","level":"1.5.2","depth":2,"path":"release-4.0.generated-api.md","ref":"release-4.0.generated-api.md","articles":[{"title":"Changelog","level":"1.5.2.1","depth":3,"path":"release-4.0.changelog.md","ref":"release-4.0.changelog.md","articles":[]}]},{"title":"Nightly","level":"1.5.3","depth":2,"path":"master.generated-api.md","ref":"master.generated-api.md","articles":[{"title":"Changelog","level":"1.5.3.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]}]}]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"release-sdk-0.9.generated-api.md","mtime":"2018-11-28T03:44:48.117Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-28T23:10:22.039Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"v0.9.x","level":"1.5.1","depth":2,"next":{"title":"Changelog","level":"1.5.1.1","depth":3,"path":"release-sdk-0.9.changelog.md","ref":"release-sdk-0.9.changelog.md","articles":[]},"previous":{"title":"API Reference","level":"1.5","depth":1,"path":"reference.md","ref":"reference.md","articles":[{"title":"v0.9.x","level":"1.5.1","depth":2,"path":"release-sdk-0.9.generated-api.md","ref":"release-sdk-0.9.generated-api.md","articles":[{"title":"Changelog","level":"1.5.1.1","depth":3,"path":"release-sdk-0.9.changelog.md","ref":"release-sdk-0.9.changelog.md","articles":[]}]},{"title":"v0.22.x","level":"1.5.2","depth":2,"path":"release-4.0.generated-api.md","ref":"release-4.0.generated-api.md","articles":[{"title":"Changelog","level":"1.5.2.1","depth":3,"path":"release-4.0.changelog.md","ref":"release-4.0.changelog.md","articles":[]}]},{"title":"Nightly","level":"1.5.3","depth":2,"path":"master.generated-api.md","ref":"master.generated-api.md","articles":[{"title":"Changelog","level":"1.5.3.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]}]}]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"release-sdk-0.9.generated-api.md","mtime":"2018-12-26T21:04:46.480Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-26T21:06:30.392Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
