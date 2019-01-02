@@ -11,11 +11,11 @@
 
 [grpc092]: release-sdk-0.9.generated-api.md
 [rest092]: https://libopenstorage.github.io/w/swagger-ui/release-sdk-0.9.index.html
-[client092]: https://github.com/libopenstorage/openstorage-sdk-clients/releases/tag/v0.9.2
+[client092]: https://github.com/libopenstorage/openstorage-sdk-clients/releases/tag/v0.9.3
 
 [grpc022x]: release-4.0.generated-api.md
 [rest022x]: https://libopenstorage.github.io/w/swagger-ui/release-4.0.index.html
-[client022x]: https://github.com/libopenstorage/openstorage-sdk-clients/releases/tag/v0.22.7
+[client022x]: https://github.com/libopenstorage/openstorage-sdk-clients/releases/tag/v0.22.9
 
 [grpc]: master.generated-api.md
 [rest]: https://libopenstorage.github.io/w/swagger-ui/index.html
