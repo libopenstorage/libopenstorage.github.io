@@ -387,6 +387,7 @@
 <li><a href="#serviceopenstorageapiopenstoragemountattach">OpenStorageMountAttach</a></li>
 <li><a href="#serviceopenstorageapiopenstoragenode">OpenStorageNode</a></li>
 <li><a href="#serviceopenstorageapiopenstorageobjectstore">OpenStorageObjectstore</a></li>
+<li><a href="#serviceopenstorageapiopenstoragerole">OpenStorageRole</a></li>
 <li><a href="#serviceopenstorageapiopenstorageschedulepolicy">OpenStorageSchedulePolicy</a></li>
 <li><a href="#serviceopenstorageapiopenstoragevolume">OpenStorageVolume</a></li>
 </ul>
@@ -539,6 +540,18 @@
 <li><a href="#sdkobjectstoreinspectresponse">SdkObjectstoreInspectResponse</a></li>
 <li><a href="#sdkobjectstoreupdaterequest">SdkObjectstoreUpdateRequest</a></li>
 <li><a href="#sdkobjectstoreupdateresponse">SdkObjectstoreUpdateResponse</a></li>
+<li><a href="#sdkrole">SdkRole</a></li>
+<li><a href="#sdkrolecreaterequest">SdkRoleCreateRequest</a></li>
+<li><a href="#sdkrolecreateresponse">SdkRoleCreateResponse</a></li>
+<li><a href="#sdkroledeleterequest">SdkRoleDeleteRequest</a></li>
+<li><a href="#sdkroledeleteresponse">SdkRoleDeleteResponse</a></li>
+<li><a href="#sdkroleenumeraterequest">SdkRoleEnumerateRequest</a></li>
+<li><a href="#sdkroleenumerateresponse">SdkRoleEnumerateResponse</a></li>
+<li><a href="#sdkroleinspectrequest">SdkRoleInspectRequest</a></li>
+<li><a href="#sdkroleinspectresponse">SdkRoleInspectResponse</a></li>
+<li><a href="#sdkroleupdaterequest">SdkRoleUpdateRequest</a></li>
+<li><a href="#sdkroleupdateresponse">SdkRoleUpdateResponse</a></li>
+<li><a href="#sdkrule">SdkRule</a></li>
 <li><a href="#sdkschedulepolicy">SdkSchedulePolicy</a></li>
 <li><a href="#sdkschedulepolicycreaterequest">SdkSchedulePolicyCreateRequest</a></li>
 <li><a href="#sdkschedulepolicycreateresponse">SdkSchedulePolicyCreateResponse</a></li>
@@ -1043,6 +1056,52 @@ where the client is currently connected to.</p>
 <p>Updates provided objectstore status.
 This call can be used to stop and start the server while maintaining the same
 object storage id.
+ <!-- end methods --></p>
+<h1 id="serviceopenstorageapiopenstoragerole">OpenStorageRole </h1>
+<p>OpenStorageRole service provides methods to manage user roles</p>
+<h3 id="custom-roles">Custom roles</h3>
+<p>The OpenStorage SDK server is equipped to handle customized authorization
+roles. Using this model it allows administrators to customize the permission
+rules of a role to be used by a user.</p>
+<p>Creating a custom role, or an SdkRole, is done by setting up a set of allowed <em>rules</em>,
+or SdkRules, directives which are sequentially scanned until a match is found. Rules
+are created using the names of OpenStorage SDK services and APIs as follows:</p>
+<p>The message SdkRules has the following properties:</p>
+<ul>
+<li>Services: Is the gRPC service name in <code>OpenStorage<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>service</span> <span class="token attr-name">name</span><span class="token punctuation">&gt;</span></span></code> in lowercase</li>
+<li>Apis: Is the API name in the service in lowercase</li>
+</ul>
+<p>Please see SdkRule for more information on the format.</p>
+<h2 id="methodopenstorageapiopenstoragerolecreate">Create </h2>
+<blockquote>
+<p><strong>rpc</strong> Create(<a href="#sdkrolecreaterequest">SdkRoleCreateRequest</a>)
+    <a href="#sdkrolecreateresponse">SdkRoleCreateResponse</a></p>
+</blockquote>
+<p>Create a role for users in the system</p>
+<h2 id="methodopenstorageapiopenstorageroleenumerate">Enumerate </h2>
+<blockquote>
+<p><strong>rpc</strong> Enumerate(<a href="#sdkroleenumeraterequest">SdkRoleEnumerateRequest</a>)
+    <a href="#sdkroleenumerateresponse">SdkRoleEnumerateResponse</a></p>
+</blockquote>
+<p>List all roles</p>
+<h2 id="methodopenstorageapiopenstorageroleinspect">Inspect </h2>
+<blockquote>
+<p><strong>rpc</strong> Inspect(<a href="#sdkroleinspectrequest">SdkRoleInspectRequest</a>)
+    <a href="#sdkroleinspectresponse">SdkRoleInspectResponse</a></p>
+</blockquote>
+<p>Get information about a role</p>
+<h2 id="methodopenstorageapiopenstorageroledelete">Delete </h2>
+<blockquote>
+<p><strong>rpc</strong> Delete(<a href="#sdkroledeleterequest">SdkRoleDeleteRequest</a>)
+    <a href="#sdkroledeleteresponse">SdkRoleDeleteResponse</a></p>
+</blockquote>
+<p>Delete an existing role</p>
+<h2 id="methodopenstorageapiopenstorageroleupdate">Update </h2>
+<blockquote>
+<p><strong>rpc</strong> Update(<a href="#sdkroleupdaterequest">SdkRoleUpdateRequest</a>)
+    <a href="#sdkroleupdateresponse">SdkRoleUpdateResponse</a></p>
+</blockquote>
+<p>Update an existing role
  <!-- end methods --></p>
 <h1 id="serviceopenstorageapiopenstorageschedulepolicy">OpenStorageSchedulePolicy </h1>
 <p>OpenStorageSchedulePolicy service is used to manage the automated
@@ -4549,6 +4608,252 @@ specified volume</p>
 <h2 id="sdkobjectstoreupdateresponse">SdkObjectstoreUpdateResponse </h2>
 <p>Empty response</p>
  <!-- end HasFields -->
+<h2 id="sdkrole">SdkRole </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>rules</td>
+<td><a href="#sdkrule">repeated SdkRule</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkrolecreaterequest">SdkRoleCreateRequest </h2>
+<p>Defines a request for creating a role</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>role</td>
+<td><a href="#sdkrole"> SdkRole</a></td>
+<td>Role</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkrolecreateresponse">SdkRoleCreateResponse </h2>
+<p>Response contains informaiton about the creation of the role</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>role</td>
+<td><a href="#sdkrole"> SdkRole</a></td>
+<td>Role created</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkroledeleterequest">SdkRoleDeleteRequest </h2>
+<p>Defines a request to delete a role</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkroledeleteresponse">SdkRoleDeleteResponse </h2>
+<p>Empty response</p>
+ <!-- end HasFields -->
+<h2 id="sdkroleenumeraterequest">SdkRoleEnumerateRequest </h2>
+<p>Empty request</p>
+ <!-- end HasFields -->
+<h2 id="sdkroleenumerateresponse">SdkRoleEnumerateResponse </h2>
+<p>Respose to enumerate all roles</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>names</td>
+<td><a href="#string">repeated string</a></td>
+<td>List of role names</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkroleinspectrequest">SdkRoleInspectRequest </h2>
+<p>Defines a request to inspect a role</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td><a href="#string"> string</a></td>
+<td>Name of role</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkroleinspectresponse">SdkRoleInspectResponse </h2>
+<p>Response to inspection request</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>role</td>
+<td><a href="#sdkrole"> SdkRole</a></td>
+<td>Role requested</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkroleupdaterequest">SdkRoleUpdateRequest </h2>
+<p>Defines a request to update an existing role</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>role</td>
+<td><a href="#sdkrole"> SdkRole</a></td>
+<td>New role update</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkroleupdateresponse">SdkRoleUpdateResponse </h2>
+<p>Response contains information about the updated role</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>role</td>
+<td><a href="#sdkrole"> SdkRole</a></td>
+<td>Role updated</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkrule">SdkRule </h2>
+<p>SdkRule is the message used to construct custom roles in the OpenStorage SDK.</p>
+<h3 id="format">Format</h3>
+<p>The following shows the supported format for SdkRule:</p>
+<ul>
+<li>Services: Is the gRPC service name in <code>OpenStorage<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>service</span> <span class="token attr-name">name</span><span class="token punctuation">&gt;</span></span></code> in lowercase</li>
+<li>Apis: Is the API name in the service in lowercase</li>
+</ul>
+<p>Values can also be set to <code>*</code>, or start or end with <code>*</code> to allow multiple matches in services or apis.</p>
+<h3 id="examples">Examples</h3>
+<ul>
+<li>Allow any call:</li>
+</ul>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">SdkRule</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">Services</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&quot;*&quot;</span><span class="token punctuation">]</span>
+    <span class="token key atrule">Apis</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&quot;*&quot;</span><span class="token punctuation">]</span>
+</code></pre>
+<ul>
+<li>Allow only cluster operations:</li>
+</ul>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">SdkRule</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">services</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&quot;cluster&quot;</span><span class="token punctuation">]</span>
+    <span class="token key atrule">apis</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&quot;*&quot;</span><span class="token punctuation">]</span>
+</code></pre>
+<ul>
+<li>Allow inspection of any object and listings of only volumes</li>
+</ul>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">SdkRule</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">Services</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&quot;volumes&quot;</span><span class="token punctuation">]</span>
+    <span class="token key atrule">Apis</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&quot;*enumerate*&quot;</span><span class="token punctuation">]</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">Services</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&quot;*&quot;</span><span class="token punctuation">]</span>
+    <span class="token key atrule">Apis</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&quot;inspect*&quot;</span><span class="token punctuation">]</span>
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>services</td>
+<td><a href="#string">repeated string</a></td>
+<td>The gRPC service name in <code>OpenStorage<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>service</span> <span class="token attr-name">name</span><span class="token punctuation">&gt;</span></span></code> in lowercase</td>
+</tr>
+<tr>
+<td>apis</td>
+<td><a href="#string">repeated string</a></td>
+<td>The API name in the service in lowercase</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
 <h2 id="sdkschedulepolicy">SdkSchedulePolicy </h2>
 <p>Defines a schedule policy</p>
 <table>
@@ -7770,6 +8075,21 @@ to or from a cloud provider</p>
 <td>9</td>
 <td>Mount/Attach Support</td>
 </tr>
+<tr>
+<td>ROLE</td>
+<td>10</td>
+<td>Role service</td>
+</tr>
+<tr>
+<td>CLUSTER_PAIR</td>
+<td>11</td>
+<td>Cluster Pair service</td>
+</tr>
+<tr>
+<td>MIGRATE</td>
+<td>12</td>
+<td>Migrate service</td>
+</tr>
 </tbody>
 </table>
 <h2 id="sdktimeweekday">SdkTimeWeekday </h2>
@@ -7844,7 +8164,7 @@ client and server applications</p>
 </tr>
 <tr>
 <td>Minor</td>
-<td>33</td>
+<td>34</td>
 <td>SDK version minor value of this specification</td>
 </tr>
 <tr>
@@ -8338,7 +8658,7 @@ client and server applications</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Nightly","level":"1.5.3","depth":2,"next":{"title":"Changelog","level":"1.5.3.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.2.1","depth":3,"path":"release-4.0.changelog.md","ref":"release-4.0.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"master.generated-api.md","mtime":"2018-12-26T21:04:44.953Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-02T20:46:17.509Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Nightly","level":"1.5.3","depth":2,"next":{"title":"Changelog","level":"1.5.3.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.2.1","depth":3,"path":"release-4.0.changelog.md","ref":"release-4.0.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"master.generated-api.md","mtime":"2019-01-03T04:29:35.920Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-03T04:29:41.383Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

@@ -14,6 +14,7 @@
     - [OpenStorageMountAttach](#serviceopenstorageapiopenstoragemountattach)
     - [OpenStorageNode](#serviceopenstorageapiopenstoragenode)
     - [OpenStorageObjectstore](#serviceopenstorageapiopenstorageobjectstore)
+    - [OpenStorageRole](#serviceopenstorageapiopenstoragerole)
     - [OpenStorageSchedulePolicy](#serviceopenstorageapiopenstorageschedulepolicy)
     - [OpenStorageVolume](#serviceopenstorageapiopenstoragevolume)
   
@@ -165,6 +166,18 @@
     - [SdkObjectstoreInspectResponse](#sdkobjectstoreinspectresponse)
     - [SdkObjectstoreUpdateRequest](#sdkobjectstoreupdaterequest)
     - [SdkObjectstoreUpdateResponse](#sdkobjectstoreupdateresponse)
+    - [SdkRole](#sdkrole)
+    - [SdkRoleCreateRequest](#sdkrolecreaterequest)
+    - [SdkRoleCreateResponse](#sdkrolecreateresponse)
+    - [SdkRoleDeleteRequest](#sdkroledeleterequest)
+    - [SdkRoleDeleteResponse](#sdkroledeleteresponse)
+    - [SdkRoleEnumerateRequest](#sdkroleenumeraterequest)
+    - [SdkRoleEnumerateResponse](#sdkroleenumerateresponse)
+    - [SdkRoleInspectRequest](#sdkroleinspectrequest)
+    - [SdkRoleInspectResponse](#sdkroleinspectresponse)
+    - [SdkRoleUpdateRequest](#sdkroleupdaterequest)
+    - [SdkRoleUpdateResponse](#sdkroleupdateresponse)
+    - [SdkRule](#sdkrule)
     - [SdkSchedulePolicy](#sdkschedulepolicy)
     - [SdkSchedulePolicyCreateRequest](#sdkschedulepolicycreaterequest)
     - [SdkSchedulePolicyCreateResponse](#sdkschedulepolicycreateresponse)
@@ -702,6 +715,57 @@ Delete destroys the object store endpoint on the volume
 Updates provided objectstore status.
 This call can be used to stop and start the server while maintaining the same
 object storage id.
+ <!-- end methods -->
+
+# OpenStorageRole {#serviceopenstorageapiopenstoragerole}
+OpenStorageRole service provides methods to manage user roles
+
+### Custom roles
+The OpenStorage SDK server is equipped to handle customized authorization
+roles. Using this model it allows administrators to customize the permission
+rules of a role to be used by a user.
+
+Creating a custom role, or an SdkRole, is done by setting up a set of allowed _rules_,
+or SdkRules, directives which are sequentially scanned until a match is found. Rules
+are created using the names of OpenStorage SDK services and APIs as follows:
+
+The message SdkRules has the following properties:
+
+* Services: Is the gRPC service name in `OpenStorage<service name>` in lowercase
+* Apis: Is the API name in the service in lowercase
+
+Please see SdkRule for more information on the format.
+
+## Create {#methodopenstorageapiopenstoragerolecreate}
+
+> **rpc** Create([SdkRoleCreateRequest](#sdkrolecreaterequest))
+    [SdkRoleCreateResponse](#sdkrolecreateresponse)
+
+Create a role for users in the system
+## Enumerate {#methodopenstorageapiopenstorageroleenumerate}
+
+> **rpc** Enumerate([SdkRoleEnumerateRequest](#sdkroleenumeraterequest))
+    [SdkRoleEnumerateResponse](#sdkroleenumerateresponse)
+
+List all roles
+## Inspect {#methodopenstorageapiopenstorageroleinspect}
+
+> **rpc** Inspect([SdkRoleInspectRequest](#sdkroleinspectrequest))
+    [SdkRoleInspectResponse](#sdkroleinspectresponse)
+
+Get information about a role
+## Delete {#methodopenstorageapiopenstorageroledelete}
+
+> **rpc** Delete([SdkRoleDeleteRequest](#sdkroledeleterequest))
+    [SdkRoleDeleteResponse](#sdkroledeleteresponse)
+
+Delete an existing role
+## Update {#methodopenstorageapiopenstorageroleupdate}
+
+> **rpc** Update([SdkRoleUpdateRequest](#sdkroleupdaterequest))
+    [SdkRoleUpdateResponse](#sdkroleupdateresponse)
+
+Update an existing role
  <!-- end methods -->
 
 # OpenStorageSchedulePolicy {#serviceopenstorageapiopenstorageschedulepolicy}
@@ -2565,6 +2629,166 @@ Empty response
  <!-- end HasFields -->
 
 
+## SdkRole {#sdkrole}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| name | [ string](#string) | none |
+| rules | [repeated SdkRule](#sdkrule) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkRoleCreateRequest {#sdkrolecreaterequest}
+Defines a request for creating a role
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| role | [ SdkRole](#sdkrole) | Role |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkRoleCreateResponse {#sdkrolecreateresponse}
+Response contains informaiton about the creation of the role
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| role | [ SdkRole](#sdkrole) | Role created |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkRoleDeleteRequest {#sdkroledeleterequest}
+Defines a request to delete a role
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| name | [ string](#string) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkRoleDeleteResponse {#sdkroledeleteresponse}
+Empty response
+
+ <!-- end HasFields -->
+
+
+## SdkRoleEnumerateRequest {#sdkroleenumeraterequest}
+Empty request
+
+ <!-- end HasFields -->
+
+
+## SdkRoleEnumerateResponse {#sdkroleenumerateresponse}
+Respose to enumerate all roles
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| names | [repeated string](#string) | List of role names |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkRoleInspectRequest {#sdkroleinspectrequest}
+Defines a request to inspect a role
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| name | [ string](#string) | Name of role |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkRoleInspectResponse {#sdkroleinspectresponse}
+Response to inspection request
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| role | [ SdkRole](#sdkrole) | Role requested |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkRoleUpdateRequest {#sdkroleupdaterequest}
+Defines a request to update an existing role
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| role | [ SdkRole](#sdkrole) | New role update |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkRoleUpdateResponse {#sdkroleupdateresponse}
+Response contains information about the updated role
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| role | [ SdkRole](#sdkrole) | Role updated |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkRule {#sdkrule}
+SdkRule is the message used to construct custom roles in the OpenStorage SDK.
+
+### Format
+The following shows the supported format for SdkRule:
+
+* Services: Is the gRPC service name in `OpenStorage<service name>` in lowercase
+* Apis: Is the API name in the service in lowercase
+
+Values can also be set to `*`, or start or end with `*` to allow multiple matches in services or apis.
+
+### Examples
+
+* Allow any call:
+
+```yaml
+SdkRule:
+  - Services: ["*"]
+    Apis: ["*"]
+```
+
+* Allow only cluster operations:
+
+```yaml
+SdkRule:
+  - services: ["cluster"]
+    apis: ["*"]
+```
+
+* Allow inspection of any object and listings of only volumes
+
+```yaml
+SdkRule:
+  - Services: ["volumes"]
+    Apis: ["*enumerate*"]
+  - Services: ["*"]
+    Apis: ["inspect*"]
+```
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| services | [repeated string](#string) | The gRPC service name in `OpenStorage<service name>` in lowercase |
+| apis | [repeated string](#string) | The API name in the service in lowercase |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
 ## SdkSchedulePolicy {#sdkschedulepolicy}
 Defines a schedule policy
 
@@ -3985,6 +4209,9 @@ CloudBackup status types
 | VOLUME | 7 | Volume management |
 | ALERTS | 8 | Alert enumeration |
 | MOUNT_ATTACH | 9 | Mount/Attach Support |
+| ROLE | 10 | Role service |
+| CLUSTER_PAIR | 11 | Cluster Pair service |
+| MIGRATE | 12 | Migrate service |
 
 
 
@@ -4013,7 +4240,7 @@ client and server applications
 | ---- | ------ | ----------- |
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
-| Minor | 33 | SDK version minor value of this specification |
+| Minor | 34 | SDK version minor value of this specification |
 | Patch | 0 | SDK version patch value of this specification |
 
 
