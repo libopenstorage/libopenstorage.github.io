@@ -197,8 +197,8 @@
     - [SdkServiceCapability](#sdkservicecapability)
     - [SdkServiceCapability.OpenStorageService](#sdkservicecapabilityopenstorageservice)
     - [SdkVersion](#sdkversion)
+    - [SdkVolumeAttachOptions](#sdkvolumeattachoptions)
     - [SdkVolumeAttachRequest](#sdkvolumeattachrequest)
-    - [SdkVolumeAttachRequest.Options](#sdkvolumeattachrequestoptions)
     - [SdkVolumeAttachResponse](#sdkvolumeattachresponse)
     - [SdkVolumeCapacityUsageRequest](#sdkvolumecapacityusagerequest)
     - [SdkVolumeCapacityUsageResponse](#sdkvolumecapacityusageresponse)
@@ -208,8 +208,8 @@
     - [SdkVolumeCreateResponse](#sdkvolumecreateresponse)
     - [SdkVolumeDeleteRequest](#sdkvolumedeleterequest)
     - [SdkVolumeDeleteResponse](#sdkvolumedeleteresponse)
+    - [SdkVolumeDetachOptions](#sdkvolumedetachoptions)
     - [SdkVolumeDetachRequest](#sdkvolumedetachrequest)
-    - [SdkVolumeDetachRequest.Options](#sdkvolumedetachrequestoptions)
     - [SdkVolumeDetachResponse](#sdkvolumedetachresponse)
     - [SdkVolumeEnumerateRequest](#sdkvolumeenumeraterequest)
     - [SdkVolumeEnumerateResponse](#sdkvolumeenumerateresponse)
@@ -233,8 +233,8 @@
     - [SdkVolumeSnapshotScheduleUpdateResponse](#sdkvolumesnapshotscheduleupdateresponse)
     - [SdkVolumeStatsRequest](#sdkvolumestatsrequest)
     - [SdkVolumeStatsResponse](#sdkvolumestatsresponse)
+    - [SdkVolumeUnmountOptions](#sdkvolumeunmountoptions)
     - [SdkVolumeUnmountRequest](#sdkvolumeunmountrequest)
-    - [SdkVolumeUnmountRequest.Options](#sdkvolumeunmountrequestoptions)
     - [SdkVolumeUnmountResponse](#sdkvolumeunmountresponse)
     - [SdkVolumeUpdateRequest](#sdkvolumeupdaterequest)
     - [SdkVolumeUpdateResponse](#sdkvolumeupdateresponse)
@@ -2993,19 +2993,7 @@ version run by an SDK server.
  <!-- end HasFields -->
 
 
-## SdkVolumeAttachRequest {#sdkvolumeattachrequest}
-Defines a request to attach a volume to the node receiving this request
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| volume_id | [ string](#string) | Id of volume |
-| options | [ SdkVolumeAttachRequest.Options](#sdkvolumeattachrequestoptions) | Options to attach device |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkVolumeAttachRequest.Options {#sdkvolumeattachrequestoptions}
+## SdkVolumeAttachOptions {#sdkvolumeattachoptions}
 Options to attach device
 
 
@@ -3014,6 +3002,18 @@ Options to attach device
 | secret_name | [ string](#string) | Indicates the name of the secret stored in a secret store In case of Hashicorp's Vault, it will be the key from the key-value pair stored in its kv backend. In case of Kubernetes secret, it is the name of the secret object itself |
 | secret_key | [ string](#string) | In case of Kubernetes, this will be the key stored in the Kubernetes secret |
 | secret_context | [ string](#string) | It indicates the additional context which could be used to retrieve the secret. In case of Kubernetes, this is the namespace in which the secret is created. |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVolumeAttachRequest {#sdkvolumeattachrequest}
+Defines a request to attach a volume to the node receiving this request
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id | [ string](#string) | Id of volume |
+| options | [ SdkVolumeAttachOptions](#sdkvolumeattachoptions) | Options to attach device |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3115,6 +3115,18 @@ Empty response
  <!-- end HasFields -->
 
 
+## SdkVolumeDetachOptions {#sdkvolumedetachoptions}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| force | [ bool](#bool) | Forcefully detach device from the kernel |
+| unmount_before_detach | [ bool](#bool) | Unmount the volume before detaching |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
 ## SdkVolumeDetachRequest {#sdkvolumedetachrequest}
 Defines a request to detach a volume
 
@@ -3122,19 +3134,7 @@ Defines a request to detach a volume
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | volume_id | [ string](#string) | Id of the volume |
-| options | [ SdkVolumeDetachRequest.Options](#sdkvolumedetachrequestoptions) | none |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkVolumeDetachRequest.Options {#sdkvolumedetachrequestoptions}
-Options to detach device
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| force | [ bool](#bool) | Forcefully detach device from the kernel |
-| unmount_before_detach | [ bool](#bool) | Unmount the volume before detaching |
+| options | [ SdkVolumeDetachOptions](#sdkvolumedetachoptions) | Options to detach device |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3214,6 +3214,7 @@ Defines a request to mount a volume to the node receiving this request
 | ----- | ---- | ----------- |
 | volume_id | [ string](#string) | Id of the volume |
 | mount_path | [ string](#string) | Mount path for mounting the volume. |
+| options | [ SdkVolumeAttachOptions](#sdkvolumeattachoptions) | Options to attach device |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3376,6 +3377,18 @@ Defines a response containing drive statistics
  <!-- end HasFields -->
 
 
+## SdkVolumeUnmountOptions {#sdkvolumeunmountoptions}
+Options to unmount device
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| delete_mount_path | [ bool](#bool) | Delete the mount path on the node after unmounting |
+| no_delay_before_deleting_mount_path | [ bool](#bool) | Do not wait for a delay before deleting path. Normally a storage driver may delay before deleting the mount path, which may be necessary to reduce the risk of race conditions. This choice will remove that delay. This value is only usable when `delete_mount_path` is set. |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
 ## SdkVolumeUnmountRequest {#sdkvolumeunmountrequest}
 Defines a request to unmount a volume on the node receiving this request
 
@@ -3384,19 +3397,7 @@ Defines a request to unmount a volume on the node receiving this request
 | ----- | ---- | ----------- |
 | volume_id | [ string](#string) | Id of volume |
 | mount_path | [ string](#string) | MountPath for device |
-| options | [ SdkVolumeUnmountRequest.Options](#sdkvolumeunmountrequestoptions) | Options to unmount device |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkVolumeUnmountRequest.Options {#sdkvolumeunmountrequestoptions}
-Options to unmount device
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| delete_mount_path | [ bool](#bool) | Delete the mount path on the node after unmounting |
-| no_delay_before_deleting_mount_path | [ bool](#bool) | Do not wait for a delay before deleting path. Normally a storage driver may delay before deleting the mount path, which may be necessary to reduce the risk of race conditions. This choice will remove that delay. This value is only usable when `delete_mount_path` is set. |
+| options | [ SdkVolumeUnmountOptions](#sdkvolumeunmountoptions) | Options to unmount device |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -4240,7 +4241,7 @@ client and server applications
 | ---- | ------ | ----------- |
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
-| Minor | 34 | SDK version minor value of this specification |
+| Minor | 35 | SDK version minor value of this specification |
 | Patch | 0 | SDK version patch value of this specification |
 
 

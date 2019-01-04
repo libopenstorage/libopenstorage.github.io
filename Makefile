@@ -5,10 +5,10 @@ all: build
 images:
 	$(MAKE) -C docs/images
 
-build: images
+build: images docs/reference.md
 	gitbook build docs/ w
 
-serve: images
+serve: images docs/reference.md
 	gitbook serve docs/ w
 
 api:
@@ -19,6 +19,8 @@ ifndef HAS_PROTOGENDOC
 	$(error "Please install protoc-gen-doc. See README.md for more information")
 endif
 	bash getcontent.sh
+
+docs/reference.md: api
 
 # If you have updated any plugins in docs/book.json from https://plugins.gitbook.com/
 # you will need to update the modules

@@ -571,8 +571,8 @@
 <li><a href="#sdkservicecapability">SdkServiceCapability</a></li>
 <li><a href="#sdkservicecapabilityopenstorageservice">SdkServiceCapability.OpenStorageService</a></li>
 <li><a href="#sdkversion">SdkVersion</a></li>
+<li><a href="#sdkvolumeattachoptions">SdkVolumeAttachOptions</a></li>
 <li><a href="#sdkvolumeattachrequest">SdkVolumeAttachRequest</a></li>
-<li><a href="#sdkvolumeattachrequestoptions">SdkVolumeAttachRequest.Options</a></li>
 <li><a href="#sdkvolumeattachresponse">SdkVolumeAttachResponse</a></li>
 <li><a href="#sdkvolumecapacityusagerequest">SdkVolumeCapacityUsageRequest</a></li>
 <li><a href="#sdkvolumecapacityusageresponse">SdkVolumeCapacityUsageResponse</a></li>
@@ -582,8 +582,8 @@
 <li><a href="#sdkvolumecreateresponse">SdkVolumeCreateResponse</a></li>
 <li><a href="#sdkvolumedeleterequest">SdkVolumeDeleteRequest</a></li>
 <li><a href="#sdkvolumedeleteresponse">SdkVolumeDeleteResponse</a></li>
+<li><a href="#sdkvolumedetachoptions">SdkVolumeDetachOptions</a></li>
 <li><a href="#sdkvolumedetachrequest">SdkVolumeDetachRequest</a></li>
-<li><a href="#sdkvolumedetachrequestoptions">SdkVolumeDetachRequest.Options</a></li>
 <li><a href="#sdkvolumedetachresponse">SdkVolumeDetachResponse</a></li>
 <li><a href="#sdkvolumeenumeraterequest">SdkVolumeEnumerateRequest</a></li>
 <li><a href="#sdkvolumeenumerateresponse">SdkVolumeEnumerateResponse</a></li>
@@ -607,8 +607,8 @@
 <li><a href="#sdkvolumesnapshotscheduleupdateresponse">SdkVolumeSnapshotScheduleUpdateResponse</a></li>
 <li><a href="#sdkvolumestatsrequest">SdkVolumeStatsRequest</a></li>
 <li><a href="#sdkvolumestatsresponse">SdkVolumeStatsResponse</a></li>
+<li><a href="#sdkvolumeunmountoptions">SdkVolumeUnmountOptions</a></li>
 <li><a href="#sdkvolumeunmountrequest">SdkVolumeUnmountRequest</a></li>
-<li><a href="#sdkvolumeunmountrequestoptions">SdkVolumeUnmountRequest.Options</a></li>
 <li><a href="#sdkvolumeunmountresponse">SdkVolumeUnmountResponse</a></li>
 <li><a href="#sdkvolumeupdaterequest">SdkVolumeUpdateRequest</a></li>
 <li><a href="#sdkvolumeupdateresponse">SdkVolumeUpdateResponse</a></li>
@@ -5232,32 +5232,7 @@ version run by an SDK server.</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
-<h2 id="sdkvolumeattachrequest">SdkVolumeAttachRequest </h2>
-<p>Defines a request to attach a volume to the node receiving this request</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>volume_id</td>
-<td><a href="#string"> string</a></td>
-<td>Id of volume</td>
-</tr>
-<tr>
-<td>options</td>
-<td><a href="#sdkvolumeattachrequestoptions"> SdkVolumeAttachRequest.Options</a></td>
-<td>Options to attach device</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkvolumeattachrequestoptions">SdkVolumeAttachRequest.Options </h2>
+<h2 id="sdkvolumeattachoptions">SdkVolumeAttachOptions </h2>
 <p>Options to attach device</p>
 <table>
 <thead>
@@ -5282,6 +5257,31 @@ version run by an SDK server.</p>
 <td>secret_context</td>
 <td><a href="#string"> string</a></td>
 <td>It indicates the additional context which could be used to retrieve the secret. In case of Kubernetes, this is the namespace in which the secret is created.</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkvolumeattachrequest">SdkVolumeAttachRequest </h2>
+<p>Defines a request to attach a volume to the node receiving this request</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of volume</td>
+</tr>
+<tr>
+<td>options</td>
+<td><a href="#sdkvolumeattachoptions"> SdkVolumeAttachOptions</a></td>
+<td>Options to attach device</td>
 </tr>
 </tbody>
 </table>
@@ -5461,33 +5461,7 @@ to update any labels on the volume.</p>
 <h2 id="sdkvolumedeleteresponse">SdkVolumeDeleteResponse </h2>
 <p>Empty response</p>
  <!-- end HasFields -->
-<h2 id="sdkvolumedetachrequest">SdkVolumeDetachRequest </h2>
-<p>Defines a request to detach a volume</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>volume_id</td>
-<td><a href="#string"> string</a></td>
-<td>Id of the volume</td>
-</tr>
-<tr>
-<td>options</td>
-<td><a href="#sdkvolumedetachrequestoptions"> SdkVolumeDetachRequest.Options</a></td>
-<td>none</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkvolumedetachrequestoptions">SdkVolumeDetachRequest.Options </h2>
-<p>Options to detach device</p>
+<h2 id="sdkvolumedetachoptions">SdkVolumeDetachOptions </h2>
 <table>
 <thead>
 <tr>
@@ -5506,6 +5480,31 @@ to update any labels on the volume.</p>
 <td>unmount_before_detach</td>
 <td><a href="#bool"> bool</a></td>
 <td>Unmount the volume before detaching</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkvolumedetachrequest">SdkVolumeDetachRequest </h2>
+<p>Defines a request to detach a volume</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of the volume</td>
+</tr>
+<tr>
+<td>options</td>
+<td><a href="#sdkvolumedetachoptions"> SdkVolumeDetachOptions</a></td>
+<td>Options to detach device</td>
 </tr>
 </tbody>
 </table>
@@ -5637,6 +5636,11 @@ to update any labels on the volume.</p>
 <td>mount_path</td>
 <td><a href="#string"> string</a></td>
 <td>Mount path for mounting the volume.</td>
+</tr>
+<tr>
+<td>options</td>
+<td><a href="#sdkvolumeattachoptions"> SdkVolumeAttachOptions</a></td>
+<td>Options to attach device</td>
 </tr>
 </tbody>
 </table>
@@ -5929,6 +5933,31 @@ to update any labels on the volume.</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
+<h2 id="sdkvolumeunmountoptions">SdkVolumeUnmountOptions </h2>
+<p>Options to unmount device</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>delete_mount_path</td>
+<td><a href="#bool"> bool</a></td>
+<td>Delete the mount path on the node after unmounting</td>
+</tr>
+<tr>
+<td>no_delay_before_deleting_mount_path</td>
+<td><a href="#bool"> bool</a></td>
+<td>Do not wait for a delay before deleting path. Normally a storage driver may delay before deleting the mount path, which may be necessary to reduce the risk of race conditions. This choice will remove that delay. This value is only usable when <code>delete_mount_path</code> is set.</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
 <h2 id="sdkvolumeunmountrequest">SdkVolumeUnmountRequest </h2>
 <p>Defines a request to unmount a volume on the node receiving this request</p>
 <table>
@@ -5952,33 +5981,8 @@ to update any labels on the volume.</p>
 </tr>
 <tr>
 <td>options</td>
-<td><a href="#sdkvolumeunmountrequestoptions"> SdkVolumeUnmountRequest.Options</a></td>
+<td><a href="#sdkvolumeunmountoptions"> SdkVolumeUnmountOptions</a></td>
 <td>Options to unmount device</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkvolumeunmountrequestoptions">SdkVolumeUnmountRequest.Options </h2>
-<p>Options to unmount device</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>delete_mount_path</td>
-<td><a href="#bool"> bool</a></td>
-<td>Delete the mount path on the node after unmounting</td>
-</tr>
-<tr>
-<td>no_delay_before_deleting_mount_path</td>
-<td><a href="#bool"> bool</a></td>
-<td>Do not wait for a delay before deleting path. Normally a storage driver may delay before deleting the mount path, which may be necessary to reduce the risk of race conditions. This choice will remove that delay. This value is only usable when <code>delete_mount_path</code> is set.</td>
 </tr>
 </tbody>
 </table>
@@ -8164,7 +8168,7 @@ client and server applications</p>
 </tr>
 <tr>
 <td>Minor</td>
-<td>34</td>
+<td>35</td>
 <td>SDK version minor value of this specification</td>
 </tr>
 <tr>
@@ -8658,7 +8662,7 @@ client and server applications</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Nightly","level":"1.5.3","depth":2,"next":{"title":"Changelog","level":"1.5.3.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.2.1","depth":3,"path":"release-4.0.changelog.md","ref":"release-4.0.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"master.generated-api.md","mtime":"2019-01-03T04:29:35.920Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-03T04:29:41.383Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Nightly","level":"1.5.3","depth":2,"next":{"title":"Changelog","level":"1.5.3.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.2.1","depth":3,"path":"release-4.0.changelog.md","ref":"release-4.0.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"master.generated-api.md","mtime":"2019-01-04T19:41:36.451Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-04T19:41:39.418Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

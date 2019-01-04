@@ -15,8 +15,15 @@ getBranch() {
 	protoc -I. -I ${GOPATH}/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
 		--doc_out=docs/ --doc_opt=./template/sdk.tmpl,${branch}.generated-api.md ${branch}.api.proto
 	rm -f ${branch}.api.proto
+
+	ver=$(cat docs/api/${branch}.api.swagger.json | jq -r '.info.version')
+
+	VERSIONS="$VERSIONS -e s#@@${branch}-version@@#$ver#g"
 }
 
 for b in ${BRANCHES} ; do
 	getBranch $b
 done
+
+echo ">>> Created docs/reference.md"
+sed $VERSIONS reference.md.tmpl > docs/reference.md
