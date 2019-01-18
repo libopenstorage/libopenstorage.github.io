@@ -62,6 +62,8 @@
     - [LocateResponse.DockeridsEntry](#locateresponsedockeridsentry)
     - [LocateResponse.MountsEntry](#locateresponsemountsentry)
     - [ObjectstoreInfo](#objectstoreinfo)
+    - [Ownership](#ownership)
+    - [Ownership.AccessControl](#ownershipaccesscontrol)
     - [ReplicaSet](#replicaset)
     - [Report](#report)
     - [RuntimeStateMap](#runtimestatemap)
@@ -205,6 +207,7 @@
     - [SdkVolumeCloneRequest](#sdkvolumeclonerequest)
     - [SdkVolumeCloneResponse](#sdkvolumecloneresponse)
     - [SdkVolumeCreateRequest](#sdkvolumecreaterequest)
+    - [SdkVolumeCreateRequest.LabelsEntry](#sdkvolumecreaterequestlabelsentry)
     - [SdkVolumeCreateResponse](#sdkvolumecreateresponse)
     - [SdkVolumeDeleteRequest](#sdkvolumedeleterequest)
     - [SdkVolumeDeleteResponse](#sdkvolumedeleteresponse)
@@ -214,9 +217,11 @@
     - [SdkVolumeEnumerateRequest](#sdkvolumeenumeraterequest)
     - [SdkVolumeEnumerateResponse](#sdkvolumeenumerateresponse)
     - [SdkVolumeEnumerateWithFiltersRequest](#sdkvolumeenumeratewithfiltersrequest)
+    - [SdkVolumeEnumerateWithFiltersRequest.LabelsEntry](#sdkvolumeenumeratewithfiltersrequestlabelsentry)
     - [SdkVolumeEnumerateWithFiltersResponse](#sdkvolumeenumeratewithfiltersresponse)
     - [SdkVolumeInspectRequest](#sdkvolumeinspectrequest)
     - [SdkVolumeInspectResponse](#sdkvolumeinspectresponse)
+    - [SdkVolumeInspectResponse.LabelsEntry](#sdkvolumeinspectresponselabelsentry)
     - [SdkVolumeMountRequest](#sdkvolumemountrequest)
     - [SdkVolumeMountResponse](#sdkvolumemountresponse)
     - [SdkVolumeSnapshotCreateRequest](#sdkvolumesnapshotcreaterequest)
@@ -237,6 +242,7 @@
     - [SdkVolumeUnmountRequest](#sdkvolumeunmountrequest)
     - [SdkVolumeUnmountResponse](#sdkvolumeunmountresponse)
     - [SdkVolumeUpdateRequest](#sdkvolumeupdaterequest)
+    - [SdkVolumeUpdateRequest.LabelsEntry](#sdkvolumeupdaterequestlabelsentry)
     - [SdkVolumeUpdateResponse](#sdkvolumeupdateresponse)
     - [SnapCreateRequest](#snapcreaterequest)
     - [SnapCreateResponse](#snapcreateresponse)
@@ -268,7 +274,6 @@
     - [VolumeSpec](#volumespec)
     - [VolumeSpec.VolumeLabelsEntry](#volumespecvolumelabelsentry)
     - [VolumeSpecUpdate](#volumespecupdate)
-    - [VolumeSpecUpdate.VolumeLabelsEntry](#volumespecupdatevolumelabelsentry)
     - [VolumeStateAction](#volumestateaction)
   
 
@@ -929,7 +934,6 @@ in the volume. To delete the policies in the volume send no policies.
 
 ## ActiveRequest {#activerequest}
 Active Request
-swagger:model
 
 
 | Field | Type | Description |
@@ -953,7 +957,6 @@ swagger:model
 
 ## ActiveRequests {#activerequests}
 Active Requests
-swagger:model
 
 
 | Field | Type | Description |
@@ -988,7 +991,6 @@ Alert is a structure that represents an alert object
 
 ## Alerts {#alerts}
 Alerts is an array of Alert objects
-swagger:model
 
 
 | Field | Type | Description |
@@ -1296,7 +1298,6 @@ Response to enumerate all the cluster pairs
 
 ## ClusterResponse {#clusterresponse}
 ClusterResponse specifies a response that gets returned when requesting the cluster
-swagger:response clusterResponse
 
 
 | Field | Type | Description |
@@ -1313,7 +1314,6 @@ GraphDriverChanges represent a list of changes between the filesystem layers
 specified by the ID and Parent.  // Parent may be an empty string, in which
 case there is no parent.
 Where the Path is the filesystem path within the layered filesystem
-swagger:model
 
 
 | Field | Type | Description |
@@ -1327,7 +1327,6 @@ swagger:model
 ## Group {#group}
 Group represents VolumeGroup / namespace
 All volumes in the same group share this object.
-swagger:model
 
 
 | Field | Type | Description |
@@ -1339,7 +1338,6 @@ swagger:model
 
 ## GroupSnapCreateRequest {#groupsnapcreaterequest}
 GroupSnapCreateRequest specifies a request to create a snapshot of given group.
-swagger:model
 
 
 | Field | Type | Description |
@@ -1365,7 +1363,6 @@ swagger:model
 
 ## GroupSnapCreateResponse {#groupsnapcreateresponse}
 GroupSnapCreateRequest specifies a response that get's returned when creating a group snapshot.
-swagger:response groupSnapCreateResponse
 
 
 | Field | Type | Description |
@@ -1457,7 +1454,6 @@ and/or Container IDs and their mount paths
 
 ## ObjectstoreInfo {#objectstoreinfo}
 ObjectstoreInfo is a structure that has current objectstore info
-swagger:model
 
 
 | Field | Type | Description |
@@ -1477,10 +1473,38 @@ swagger:model
  <!-- end HasFields -->
 
 
+## Ownership {#ownership}
+Ownership information for resource.
+Administrators are users who belong to the group `*`, meaning, every group.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| owner | [ string](#string) | Username of owner.
+
+The storage system uses the username taken from the security authorization token and is saved on this field. Only users with system administration can edit this value. |
+| acls | [ Ownership.AccessControl](#ownershipaccesscontrol) | Permissions to share resource which can be set by the owner.
+
+NOTE: To create an "admin" user which has access to any resource set the group value in the token of the user to `*`. |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## Ownership.AccessControl {#ownershipaccesscontrol}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| groups | [repeated string](#string) | Group access to resource which must be set in the authorization token. Can be set by the owner or the system administrator only. Possible values are: 1. an empty list: An empty list means no groups are allowed. 2. `["*"]`: All groups are allowed. 3. `["group1", "group2"]`: Only certain groups are allowed. In this example only _group1_ and _group2_ are allowed. |
+| collaborators | [repeated string](#string) | Collaborator access to resource gives access to other usernames. Must be the username set in the authorization token. The owner or the system administrator can set this value. Possible values are: 1. an empty list: An empty list means no users are allowed. 2. `["*"]`: All users are allowed. 3. `["username1", "username2"]`: Only certain usernames are allowed. In this example only _username1_ and _username2_ are allowed. |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
 ## ReplicaSet {#replicaset}
 ReplicaSet set of machine IDs (nodes) to which part of this volume is erasure
 coded - for clustered storage arrays
-swagger:model
 
 
 | Field | Type | Description |
@@ -1505,7 +1529,6 @@ swagger:model
 ## RuntimeStateMap {#runtimestatemap}
 RuntimeStateMap is a list of name value mapping of driver specific runtime
 information.
-swagger:model
 
 
 | Field | Type | Description |
@@ -3083,6 +3106,19 @@ to update any labels on the volume.
 | ----- | ---- | ----------- |
 | name | [ string](#string) | Unique name of the volume. This will be used for idempotency. |
 | spec | [ VolumeSpec](#volumespec) | Volume specification |
+| labels | [map SdkVolumeCreateRequest.LabelsEntry](#sdkvolumecreaterequestlabelsentry) | Labels to apply to the volume |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVolumeCreateRequest.LabelsEntry {#sdkvolumecreaterequestlabelsentry}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [ string](#string) | none |
+| value | [ string](#string) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3168,7 +3204,21 @@ Defines a request to list volumes
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| locator | [ VolumeLocator](#volumelocator) | Volumes to match to this locator. If not provided, all volumes will be returned. |
+| name | [ string](#string) | (optional) Name to search |
+| labels | [map SdkVolumeEnumerateWithFiltersRequest.LabelsEntry](#sdkvolumeenumeratewithfiltersrequestlabelsentry) | (optional) Labels to search |
+| ownership | [ Ownership](#ownership) | (optional) Ownership to match |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVolumeEnumerateWithFiltersRequest.LabelsEntry {#sdkvolumeenumeratewithfiltersrequestlabelsentry}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [ string](#string) | none |
+| value | [ string](#string) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3202,6 +3252,20 @@ Defines the response when inspecting a volume
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | volume | [ Volume](#volume) | Information about the volume |
+| name | [ string](#string) | Name of volume |
+| labels | [map SdkVolumeInspectResponse.LabelsEntry](#sdkvolumeinspectresponselabelsentry) | Volume labels |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVolumeInspectResponse.LabelsEntry {#sdkvolumeinspectresponselabelsentry}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [ string](#string) | none |
+| value | [ string](#string) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3415,8 +3479,24 @@ This request is used to adjust or set new values in the volume
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | volume_id | [ string](#string) | Id of the volume to update |
-| locator | [ VolumeLocator](#volumelocator) | Change locator values. Some of these values may not be able to be changed. New labels will be added to the current volume labels. To delete a label, set the value of the label to an empty string. |
-| spec | [ VolumeSpecUpdate](#volumespecupdate) | VolumeSpecUpdate provides a method to request that certain values in the VolumeSpec are changed. This is necessary as a separate variable because values like int and bool in the VolumeSpec cannot be determined if they are being requested to change in gRPC proto3. Some of these values may not be able to be changed. Here are a few examples of actions that can be accomplished using the VolumeSpec. To resize the volume: Set a new value in spec.size. To change number of replicas: Adjust spec.ha_level. To change the I/O Profile: Adjust spec.io_profile. |
+| labels | [map SdkVolumeUpdateRequest.LabelsEntry](#sdkvolumeupdaterequestlabelsentry) | Change label values. Some of these values may not be able to be changed. New labels will be added to the current volume labels. To delete a label, set the value of the label to an empty string. |
+| spec | [ VolumeSpecUpdate](#volumespecupdate) | VolumeSpecUpdate provides a method to request that certain values in the VolumeSpec are changed. This is necessary as a separate variable because values like int and bool in the VolumeSpec cannot be determined if they are being requested to change in gRPC proto3. Some of these values may not be able to be changed.
+
+Here are a few examples of actions that can be accomplished using the VolumeSpec:
+
+* To resize the volume: Set a new value in spec.size_opt.size. * To change number of replicas: Adjust spec.ha_level_opt.ha_level. * To change the I/O Profile: Adjust spec.io_profile_opt.io_profile. |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVolumeUpdateRequest.LabelsEntry {#sdkvolumeupdaterequestlabelsentry}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [ string](#string) | none |
+| value | [ string](#string) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3429,7 +3509,6 @@ Empty response
 
 ## SnapCreateRequest {#snapcreaterequest}
 SnapCreateRequest specifies a request to create a snapshot of given volume.
-swagger:parameters snapVolume
 
 
 | Field | Type | Description |
@@ -3444,7 +3523,6 @@ swagger:parameters snapVolume
 
 ## SnapCreateResponse {#snapcreateresponse}
 SnapCreateRequest specifies a response that get's returned when creating a snapshot.
-swagger:response snapCreateResponse
 
 
 | Field | Type | Description |
@@ -3459,7 +3537,6 @@ in: body Required: true |
 ## Source {#source}
 Source is a structure that can be given to a volume
 to seed the volume with data.
-swagger:model
 
 
 | Field | Type | Description |
@@ -3582,7 +3659,6 @@ StoragePool groups different storage devices based on their CosType
 
 ## StorageResource {#storageresource}
 StorageResource groups properties of a storage device.
-swagger:model
 
 
 | Field | Type | Description |
@@ -3632,7 +3708,6 @@ Version information about the storage system
 
 ## Volume {#volume}
 Volume represents an abstract storage volume.
-swagger:model
 
 
 | Field | Type | Description |
@@ -3680,7 +3755,6 @@ swagger:model
 VolumeConsumer identifies a consumer for a Volume. An example of a VolumeConsumer
 would be a Pod in Kubernetes who has mounted the PersistentVolumeClaim for the
 Volume
-swagger: model
 
 
 | Field | Type | Description |
@@ -3698,7 +3772,6 @@ swagger: model
 ## VolumeCreateRequest {#volumecreaterequest}
 VolumeCreateRequest is a structure that has the locator, source and spec
 to create a volume
-swagger:model
 
 
 | Field | Type | Description |
@@ -3712,7 +3785,6 @@ swagger:model
 
 ## VolumeCreateResponse {#volumecreateresponse}
 VolumeCreateResponse
-swagger:response volumeCreateResponse
 
 
 | Field | Type | Description |
@@ -3729,7 +3801,6 @@ in: body Required: true |
 
 ## VolumeInfo {#volumeinfo}
 VolumeInfo
-swagger:model
 
 
 | Field | Type | Description |
@@ -3744,13 +3815,13 @@ swagger:model
 ## VolumeLocator {#volumelocator}
 VolumeLocator is a structure that is attached to a volume
 and is used to carry opaque metadata.
-swagger:model
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | name | [ string](#string) | User friendly identifier |
 | volume_labels | [map VolumeLocator.VolumeLabelsEntry](#volumelocatorvolumelabelsentry) | A set of name-value pairs that acts as search filters |
+| ownership | [ Ownership](#ownership) | Filter with ownership |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3795,7 +3866,6 @@ VolumePlacementStrategy defines a strategy for placing volumes in the cluster wh
 
 ## VolumeResponse {#volumeresponse}
 VolumeResponse is a structure that wraps an error.
-swagger:response volumeResponse
 
 
 | Field | Type | Description |
@@ -3809,7 +3879,6 @@ in: body Required: true |
 
 ## VolumeSetRequest {#volumesetrequest}
 VolumeSet specifies a request to update a volume.
-swagger:model
 
 
 | Field | Type | Description |
@@ -3836,24 +3905,18 @@ swagger:model
 
 ## VolumeSetResponse {#volumesetresponse}
 VolumeSetResponse
-swagger:response volumeSetResponse
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| volume | [ Volume](#volume) | Volume
-
-in: body Required: true |
-| volume_response | [ VolumeResponse](#volumeresponse) | VolumeResponse
-
-in: body Required: true |
+| volume | [ Volume](#volume) | Volume |
+| volume_response | [ VolumeResponse](#volumeresponse) | VolumeResponse |
  <!-- end Fields -->
  <!-- end HasFields -->
 
 
 ## VolumeSpec {#volumespec}
 VolumeSpec has the properties needed to create a volume.
-swagger:model
 
 
 | Field | Type | Description |
@@ -3867,7 +3930,7 @@ swagger:model
 | io_profile | [ IoProfile](#ioprofile) | IoProfile provides a hint about application using this volume. |
 | dedupe | [ bool](#bool) | Dedupe specifies if the volume data is to be de-duplicated. |
 | snapshot_interval | [ uint32](#uint32) | SnapshotInterval in minutes, set to 0 to disable snapshots |
-| volume_labels | [map VolumeSpec.VolumeLabelsEntry](#volumespecvolumelabelsentry) | VolumeLabels configuration labels |
+| volume_labels | [map VolumeSpec.VolumeLabelsEntry](#volumespecvolumelabelsentry) | (deprecated, do not use) VolumeLabels configuration labels |
 | shared | [ bool](#bool) | Shared is true if this volume can be concurrently accessed by multiple users. |
 | replica_set | [ ReplicaSet](#replicaset) | ReplicaSet is the desired set of nodes for the volume data. |
 | aggregation_level | [ uint32](#uint32) | Aggregatiokn level Specifies the number of parts the volume can be aggregated from. |
@@ -3887,6 +3950,7 @@ swagger:model
 | nodiscard | [ bool](#bool) | Nodiscard specifies if the volume will be mounted with discard support disabled. i.e. FS will not release allocated blocks back to the backing storage pool. |
 | io_strategy | [ IoStrategy](#iostrategy) | IoStrategy preferred strategy for I/O. |
 | placement_strategy | [ VolumePlacementStrategy](#volumeplacementstrategy) | PlacementStrategy specifies a spec to indicate where to place the volume. |
+| ownership | [ Ownership](#ownership) | Owner |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3915,7 +3979,6 @@ VolumeSpecUpdate provides a method to set any of the VolumeSpec of an existing v
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) io_profile_opt.io_profile | [ IoProfile](#ioprofile) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) dedupe_opt.dedupe | [ bool](#bool) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) snapshot_interval_opt.snapshot_interval | [ uint32](#uint32) | none |
-| volume_labels | [map VolumeSpecUpdate.VolumeLabelsEntry](#volumespecupdatevolumelabelsentry) | VolumeLabels configuration labels |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) shared_opt.shared | [ bool](#bool) | none |
 | replica_set | [ ReplicaSet](#replicaset) | ReplicaSet is the desired set of nodes for the volume data. |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) passphrase_opt.passphrase | [ string](#string) | none |
@@ -3926,25 +3989,13 @@ VolumeSpecUpdate provides a method to set any of the VolumeSpec of an existing v
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) journal_opt.journal | [ bool](#bool) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) sharedv4_opt.sharedv4 | [ bool](#bool) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) queue_depth_opt.queue_depth | [ uint32](#uint32) | none |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## VolumeSpecUpdate.VolumeLabelsEntry {#volumespecupdatevolumelabelsentry}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| key | [ string](#string) | none |
-| value | [ string](#string) | none |
+| ownership | [ Ownership](#ownership) | Ownership volume information to update. If the value of `owner` in the `ownership` message is an empty string then the value of `owner` in the `VolumeSpec.Ownership.owner` will not be updated. |
  <!-- end Fields -->
  <!-- end HasFields -->
 
 
 ## VolumeStateAction {#volumestateaction}
 VolumeStateAction specifies desired actions.
-swagger:model
 
 
 | Field | Type | Description |
@@ -4241,7 +4292,7 @@ client and server applications
 | ---- | ------ | ----------- |
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
-| Minor | 35 | SDK version minor value of this specification |
+| Minor | 37 | SDK version minor value of this specification |
 | Patch | 0 | SDK version patch value of this specification |
 
 

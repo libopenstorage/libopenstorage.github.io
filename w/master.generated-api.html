@@ -436,6 +436,8 @@
 <li><a href="#locateresponsedockeridsentry">LocateResponse.DockeridsEntry</a></li>
 <li><a href="#locateresponsemountsentry">LocateResponse.MountsEntry</a></li>
 <li><a href="#objectstoreinfo">ObjectstoreInfo</a></li>
+<li><a href="#ownership">Ownership</a></li>
+<li><a href="#ownershipaccesscontrol">Ownership.AccessControl</a></li>
 <li><a href="#replicaset">ReplicaSet</a></li>
 <li><a href="#report">Report</a></li>
 <li><a href="#runtimestatemap">RuntimeStateMap</a></li>
@@ -579,6 +581,7 @@
 <li><a href="#sdkvolumeclonerequest">SdkVolumeCloneRequest</a></li>
 <li><a href="#sdkvolumecloneresponse">SdkVolumeCloneResponse</a></li>
 <li><a href="#sdkvolumecreaterequest">SdkVolumeCreateRequest</a></li>
+<li><a href="#sdkvolumecreaterequestlabelsentry">SdkVolumeCreateRequest.LabelsEntry</a></li>
 <li><a href="#sdkvolumecreateresponse">SdkVolumeCreateResponse</a></li>
 <li><a href="#sdkvolumedeleterequest">SdkVolumeDeleteRequest</a></li>
 <li><a href="#sdkvolumedeleteresponse">SdkVolumeDeleteResponse</a></li>
@@ -588,9 +591,11 @@
 <li><a href="#sdkvolumeenumeraterequest">SdkVolumeEnumerateRequest</a></li>
 <li><a href="#sdkvolumeenumerateresponse">SdkVolumeEnumerateResponse</a></li>
 <li><a href="#sdkvolumeenumeratewithfiltersrequest">SdkVolumeEnumerateWithFiltersRequest</a></li>
+<li><a href="#sdkvolumeenumeratewithfiltersrequestlabelsentry">SdkVolumeEnumerateWithFiltersRequest.LabelsEntry</a></li>
 <li><a href="#sdkvolumeenumeratewithfiltersresponse">SdkVolumeEnumerateWithFiltersResponse</a></li>
 <li><a href="#sdkvolumeinspectrequest">SdkVolumeInspectRequest</a></li>
 <li><a href="#sdkvolumeinspectresponse">SdkVolumeInspectResponse</a></li>
+<li><a href="#sdkvolumeinspectresponselabelsentry">SdkVolumeInspectResponse.LabelsEntry</a></li>
 <li><a href="#sdkvolumemountrequest">SdkVolumeMountRequest</a></li>
 <li><a href="#sdkvolumemountresponse">SdkVolumeMountResponse</a></li>
 <li><a href="#sdkvolumesnapshotcreaterequest">SdkVolumeSnapshotCreateRequest</a></li>
@@ -611,6 +616,7 @@
 <li><a href="#sdkvolumeunmountrequest">SdkVolumeUnmountRequest</a></li>
 <li><a href="#sdkvolumeunmountresponse">SdkVolumeUnmountResponse</a></li>
 <li><a href="#sdkvolumeupdaterequest">SdkVolumeUpdateRequest</a></li>
+<li><a href="#sdkvolumeupdaterequestlabelsentry">SdkVolumeUpdateRequest.LabelsEntry</a></li>
 <li><a href="#sdkvolumeupdateresponse">SdkVolumeUpdateResponse</a></li>
 <li><a href="#snapcreaterequest">SnapCreateRequest</a></li>
 <li><a href="#snapcreateresponse">SnapCreateResponse</a></li>
@@ -642,7 +648,6 @@
 <li><a href="#volumespec">VolumeSpec</a></li>
 <li><a href="#volumespecvolumelabelsentry">VolumeSpec.VolumeLabelsEntry</a></li>
 <li><a href="#volumespecupdate">VolumeSpecUpdate</a></li>
-<li><a href="#volumespecupdatevolumelabelsentry">VolumeSpecUpdate.VolumeLabelsEntry</a></li>
 <li><a href="#volumestateaction">VolumeStateAction</a></li>
 </ul>
 </li>
@@ -1252,8 +1257,7 @@ in the volume. To delete the policies in the volume send no policies.
  <!-- end services --></p>
 <h1 id="messages">Messages</h1>
 <h2 id="activerequest">ActiveRequest </h2>
-<p>Active Request
-swagger:model</p>
+<p>Active Request</p>
 <table>
 <thead>
 <tr>
@@ -1297,8 +1301,7 @@ swagger:model</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="activerequests">ActiveRequests </h2>
-<p>Active Requests
-swagger:model</p>
+<p>Active Requests</p>
 <table>
 <thead>
 <tr>
@@ -1398,8 +1401,7 @@ swagger:model</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="alerts">Alerts </h2>
-<p>Alerts is an array of Alert objects
-swagger:model</p>
+<p>Alerts is an array of Alert objects</p>
 <table>
 <thead>
 <tr>
@@ -2081,8 +2083,7 @@ used by the other dependent snaps and parent volume.</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="clusterresponse">ClusterResponse </h2>
-<p>ClusterResponse specifies a response that gets returned when requesting the cluster
-swagger:response clusterResponse</p>
+<p>ClusterResponse specifies a response that gets returned when requesting the cluster</p>
 <table>
 <thead>
 <tr>
@@ -2106,8 +2107,7 @@ swagger:response clusterResponse</p>
 <p>GraphDriverChanges represent a list of changes between the filesystem layers
 specified by the ID and Parent.  // Parent may be an empty string, in which
 case there is no parent.
-Where the Path is the filesystem path within the layered filesystem
-swagger:model</p>
+Where the Path is the filesystem path within the layered filesystem</p>
 <table>
 <thead>
 <tr>
@@ -2133,8 +2133,7 @@ swagger:model</p>
  <!-- end HasFields -->
 <h2 id="group">Group </h2>
 <p>Group represents VolumeGroup / namespace
-All volumes in the same group share this object.
-swagger:model</p>
+All volumes in the same group share this object.</p>
 <table>
 <thead>
 <tr>
@@ -2154,8 +2153,7 @@ swagger:model</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="groupsnapcreaterequest">GroupSnapCreateRequest </h2>
-<p>GroupSnapCreateRequest specifies a request to create a snapshot of given group.
-swagger:model</p>
+<p>GroupSnapCreateRequest specifies a request to create a snapshot of given group.</p>
 <table>
 <thead>
 <tr>
@@ -2209,8 +2207,7 @@ swagger:model</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="groupsnapcreateresponse">GroupSnapCreateResponse </h2>
-<p>GroupSnapCreateRequest specifies a response that get&apos;s returned when creating a group snapshot.
-swagger:response groupSnapCreateResponse</p>
+<p>GroupSnapCreateRequest specifies a response that get&apos;s returned when creating a group snapshot.</p>
 <table>
 <thead>
 <tr>
@@ -2387,8 +2384,7 @@ and/or Container IDs and their mount paths</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="objectstoreinfo">ObjectstoreInfo </h2>
-<p>ObjectstoreInfo is a structure that has current objectstore info
-swagger:model</p>
+<p>ObjectstoreInfo is a structure that has current objectstore info</p>
 <table>
 <thead>
 <tr>
@@ -2457,10 +2453,57 @@ swagger:model</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
+<h2 id="ownership">Ownership </h2>
+<p>Ownership information for resource.
+Administrators are users who belong to the group <code>*</code>, meaning, every group.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>owner</td>
+<td><a href="#string"> string</a></td>
+<td>Username of owner.</td>
+</tr>
+</tbody>
+</table>
+<p>The storage system uses the username taken from the security authorization token and is saved on this field. Only users with system administration can edit this value. |
+| acls | <a href="#ownershipaccesscontrol"> Ownership.AccessControl</a> | Permissions to share resource which can be set by the owner.</p>
+<p>NOTE: To create an &quot;admin&quot; user which has access to any resource set the group value in the token of the user to <code>*</code>. |
+ <!-- end Fields -->
+ <!-- end HasFields --></p>
+<h2 id="ownershipaccesscontrol">Ownership.AccessControl </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>groups</td>
+<td><a href="#string">repeated string</a></td>
+<td>Group access to resource which must be set in the authorization token. Can be set by the owner or the system administrator only. Possible values are: 1. an empty list: An empty list means no groups are allowed. 2. <code>[&quot;*&quot;]</code>: All groups are allowed. 3. <code>[&quot;group1&quot;, &quot;group2&quot;]</code>: Only certain groups are allowed. In this example only <em>group1</em> and <em>group2</em> are allowed.</td>
+</tr>
+<tr>
+<td>collaborators</td>
+<td><a href="#string">repeated string</a></td>
+<td>Collaborator access to resource gives access to other usernames. Must be the username set in the authorization token. The owner or the system administrator can set this value. Possible values are: 1. an empty list: An empty list means no users are allowed. 2. <code>[&quot;*&quot;]</code>: All users are allowed. 3. <code>[&quot;username1&quot;, &quot;username2&quot;]</code>: Only certain usernames are allowed. In this example only <em>username1</em> and <em>username2</em> are allowed.</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
 <h2 id="replicaset">ReplicaSet </h2>
 <p>ReplicaSet set of machine IDs (nodes) to which part of this volume is erasure
-coded - for clustered storage arrays
-swagger:model</p>
+coded - for clustered storage arrays</p>
 <table>
 <thead>
 <tr>
@@ -2505,8 +2548,7 @@ swagger:model</p>
  <!-- end HasFields -->
 <h2 id="runtimestatemap">RuntimeStateMap </h2>
 <p>RuntimeStateMap is a list of name value mapping of driver specific runtime
-information.
-swagger:model</p>
+information.</p>
 <table>
 <thead>
 <tr>
@@ -5414,6 +5456,35 @@ to update any labels on the volume.</p>
 <td><a href="#volumespec"> VolumeSpec</a></td>
 <td>Volume specification</td>
 </tr>
+<tr>
+<td>labels</td>
+<td><a href="#sdkvolumecreaterequestlabelsentry">map SdkVolumeCreateRequest.LabelsEntry</a></td>
+<td>Labels to apply to the volume</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkvolumecreaterequestlabelsentry">SdkVolumeCreateRequest.LabelsEntry </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -5548,9 +5619,43 @@ to update any labels on the volume.</p>
 </thead>
 <tbody>
 <tr>
-<td>locator</td>
-<td><a href="#volumelocator"> VolumeLocator</a></td>
-<td>Volumes to match to this locator. If not provided, all volumes will be returned.</td>
+<td>name</td>
+<td><a href="#string"> string</a></td>
+<td>(optional) Name to search</td>
+</tr>
+<tr>
+<td>labels</td>
+<td><a href="#sdkvolumeenumeratewithfiltersrequestlabelsentry">map SdkVolumeEnumerateWithFiltersRequest.LabelsEntry</a></td>
+<td>(optional) Labels to search</td>
+</tr>
+<tr>
+<td>ownership</td>
+<td><a href="#ownership"> Ownership</a></td>
+<td>(optional) Ownership to match</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkvolumeenumeratewithfiltersrequestlabelsentry">SdkVolumeEnumerateWithFiltersRequest.LabelsEntry </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
 </tr>
 </tbody>
 </table>
@@ -5611,6 +5716,40 @@ to update any labels on the volume.</p>
 <td>volume</td>
 <td><a href="#volume"> Volume</a></td>
 <td>Information about the volume</td>
+</tr>
+<tr>
+<td>name</td>
+<td><a href="#string"> string</a></td>
+<td>Name of volume</td>
+</tr>
+<tr>
+<td>labels</td>
+<td><a href="#sdkvolumeinspectresponselabelsentry">map SdkVolumeInspectResponse.LabelsEntry</a></td>
+<td>Volume labels</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkvolumeinspectresponselabelsentry">SdkVolumeInspectResponse.LabelsEntry </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
 </tr>
 </tbody>
 </table>
@@ -6008,14 +6147,42 @@ to update any labels on the volume.</p>
 <td>Id of the volume to update</td>
 </tr>
 <tr>
-<td>locator</td>
-<td><a href="#volumelocator"> VolumeLocator</a></td>
-<td>Change locator values. Some of these values may not be able to be changed. New labels will be added to the current volume labels. To delete a label, set the value of the label to an empty string.</td>
+<td>labels</td>
+<td><a href="#sdkvolumeupdaterequestlabelsentry">map SdkVolumeUpdateRequest.LabelsEntry</a></td>
+<td>Change label values. Some of these values may not be able to be changed. New labels will be added to the current volume labels. To delete a label, set the value of the label to an empty string.</td>
 </tr>
 <tr>
 <td>spec</td>
 <td><a href="#volumespecupdate"> VolumeSpecUpdate</a></td>
-<td>VolumeSpecUpdate provides a method to request that certain values in the VolumeSpec are changed. This is necessary as a separate variable because values like int and bool in the VolumeSpec cannot be determined if they are being requested to change in gRPC proto3. Some of these values may not be able to be changed. Here are a few examples of actions that can be accomplished using the VolumeSpec. To resize the volume: Set a new value in spec.size. To change number of replicas: Adjust spec.ha_level. To change the I/O Profile: Adjust spec.io_profile.</td>
+<td>VolumeSpecUpdate provides a method to request that certain values in the VolumeSpec are changed. This is necessary as a separate variable because values like int and bool in the VolumeSpec cannot be determined if they are being requested to change in gRPC proto3. Some of these values may not be able to be changed.</td>
+</tr>
+</tbody>
+</table>
+<p>Here are a few examples of actions that can be accomplished using the VolumeSpec:</p>
+<ul>
+<li>To resize the volume: Set a new value in spec.size_opt.size. <em> To change number of replicas: Adjust spec.ha_level_opt.ha_level. </em> To change the I/O Profile: Adjust spec.io_profile_opt.io_profile. |<!-- end Fields -->
+<!-- end HasFields -->
+</li>
+</ul>
+<h2 id="sdkvolumeupdaterequestlabelsentry">SdkVolumeUpdateRequest.LabelsEntry </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
 </tr>
 </tbody>
 </table>
@@ -6025,8 +6192,7 @@ to update any labels on the volume.</p>
 <p>Empty response</p>
  <!-- end HasFields -->
 <h2 id="snapcreaterequest">SnapCreateRequest </h2>
-<p>SnapCreateRequest specifies a request to create a snapshot of given volume.
-swagger:parameters snapVolume</p>
+<p>SnapCreateRequest specifies a request to create a snapshot of given volume.</p>
 <table>
 <thead>
 <tr>
@@ -6061,8 +6227,7 @@ swagger:parameters snapVolume</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="snapcreateresponse">SnapCreateResponse </h2>
-<p>SnapCreateRequest specifies a response that get&apos;s returned when creating a snapshot.
-swagger:response snapCreateResponse</p>
+<p>SnapCreateRequest specifies a response that get&apos;s returned when creating a snapshot.</p>
 <table>
 <thead>
 <tr>
@@ -6084,8 +6249,7 @@ swagger:response snapCreateResponse</p>
  <!-- end HasFields --></p>
 <h2 id="source">Source </h2>
 <p>Source is a structure that can be given to a volume
-to seed the volume with data.
-swagger:model</p>
+to seed the volume with data.</p>
 <table>
 <thead>
 <tr>
@@ -6412,8 +6576,7 @@ swagger:model</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="storageresource">StorageResource </h2>
-<p>StorageResource groups properties of a storage device.
-swagger:model</p>
+<p>StorageResource groups properties of a storage device.</p>
 <table>
 <thead>
 <tr>
@@ -6552,8 +6715,7 @@ swagger:model</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="volume">Volume </h2>
-<p>Volume represents an abstract storage volume.
-swagger:model</p>
+<p>Volume represents an abstract storage volume.</p>
 <table>
 <thead>
 <tr>
@@ -6709,8 +6871,7 @@ swagger:model</p>
 <h2 id="volumeconsumer">VolumeConsumer </h2>
 <p>VolumeConsumer identifies a consumer for a Volume. An example of a VolumeConsumer
 would be a Pod in Kubernetes who has mounted the PersistentVolumeClaim for the
-Volume
-swagger: model</p>
+Volume</p>
 <table>
 <thead>
 <tr>
@@ -6756,8 +6917,7 @@ swagger: model</p>
  <!-- end HasFields -->
 <h2 id="volumecreaterequest">VolumeCreateRequest </h2>
 <p>VolumeCreateRequest is a structure that has the locator, source and spec
-to create a volume
-swagger:model</p>
+to create a volume</p>
 <table>
 <thead>
 <tr>
@@ -6787,8 +6947,7 @@ swagger:model</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="volumecreateresponse">VolumeCreateResponse </h2>
-<p>VolumeCreateResponse
-swagger:response volumeCreateResponse</p>
+<p>VolumeCreateResponse</p>
 <table>
 <thead>
 <tr>
@@ -6811,8 +6970,7 @@ swagger:response volumeCreateResponse</p>
  <!-- end Fields -->
  <!-- end HasFields --></p>
 <h2 id="volumeinfo">VolumeInfo </h2>
-<p>VolumeInfo
-swagger:model</p>
+<p>VolumeInfo</p>
 <table>
 <thead>
 <tr>
@@ -6843,8 +7001,7 @@ swagger:model</p>
  <!-- end HasFields -->
 <h2 id="volumelocator">VolumeLocator </h2>
 <p>VolumeLocator is a structure that is attached to a volume
-and is used to carry opaque metadata.
-swagger:model</p>
+and is used to carry opaque metadata.</p>
 <table>
 <thead>
 <tr>
@@ -6863,6 +7020,11 @@ swagger:model</p>
 <td>volume_labels</td>
 <td><a href="#volumelocatorvolumelabelsentry">map VolumeLocator.VolumeLabelsEntry</a></td>
 <td>A set of name-value pairs that acts as search filters</td>
+</tr>
+<tr>
+<td>ownership</td>
+<td><a href="#ownership"> Ownership</a></td>
+<td>Filter with ownership</td>
 </tr>
 </tbody>
 </table>
@@ -6953,8 +7115,7 @@ swagger:model</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="volumeresponse">VolumeResponse </h2>
-<p>VolumeResponse is a structure that wraps an error.
-swagger:response volumeResponse</p>
+<p>VolumeResponse is a structure that wraps an error.</p>
 <table>
 <thead>
 <tr>
@@ -6975,8 +7136,7 @@ swagger:response volumeResponse</p>
  <!-- end Fields -->
  <!-- end HasFields --></p>
 <h2 id="volumesetrequest">VolumeSetRequest </h2>
-<p>VolumeSet specifies a request to update a volume.
-swagger:model</p>
+<p>VolumeSet specifies a request to update a volume.</p>
 <table>
 <thead>
 <tr>
@@ -7035,8 +7195,7 @@ swagger:model</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="volumesetresponse">VolumeSetResponse </h2>
-<p>VolumeSetResponse
-swagger:response volumeSetResponse</p>
+<p>VolumeSetResponse</p>
 <table>
 <thead>
 <tr>
@@ -7051,16 +7210,17 @@ swagger:response volumeSetResponse</p>
 <td><a href="#volume"> Volume</a></td>
 <td>Volume</td>
 </tr>
+<tr>
+<td>volume_response</td>
+<td><a href="#volumeresponse"> VolumeResponse</a></td>
+<td>VolumeResponse</td>
+</tr>
 </tbody>
 </table>
-<p>in: body Required: true |
-| volume_response | <a href="#volumeresponse"> VolumeResponse</a> | VolumeResponse</p>
-<p>in: body Required: true |
  <!-- end Fields -->
- <!-- end HasFields --></p>
+ <!-- end HasFields -->
 <h2 id="volumespec">VolumeSpec </h2>
-<p>VolumeSpec has the properties needed to create a volume.
-swagger:model</p>
+<p>VolumeSpec has the properties needed to create a volume.</p>
 <table>
 <thead>
 <tr>
@@ -7118,7 +7278,7 @@ swagger:model</p>
 <tr>
 <td>volume_labels</td>
 <td><a href="#volumespecvolumelabelsentry">map VolumeSpec.VolumeLabelsEntry</a></td>
-<td>VolumeLabels configuration labels</td>
+<td>(deprecated, do not use) VolumeLabels configuration labels</td>
 </tr>
 <tr>
 <td>shared</td>
@@ -7215,6 +7375,11 @@ swagger:model</p>
 <td><a href="#volumeplacementstrategy"> VolumePlacementStrategy</a></td>
 <td>PlacementStrategy specifies a spec to indicate where to place the volume.</td>
 </tr>
+<tr>
+<td>ownership</td>
+<td><a href="#ownership"> Ownership</a></td>
+<td>Owner</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -7285,11 +7450,6 @@ swagger:model</p>
 <td>none</td>
 </tr>
 <tr>
-<td>volume_labels</td>
-<td><a href="#volumespecupdatevolumelabelsentry">map VolumeSpecUpdate.VolumeLabelsEntry</a></td>
-<td>VolumeLabels configuration labels</td>
-</tr>
-<tr>
 <td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> shared_opt.shared</td>
 <td><a href="#bool"> bool</a></td>
 <td>none</td>
@@ -7339,37 +7499,17 @@ swagger:model</p>
 <td><a href="#uint32"> uint32</a></td>
 <td>none</td>
 </tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="volumespecupdatevolumelabelsentry">VolumeSpecUpdate.VolumeLabelsEntry </h2>
-<table>
-<thead>
 <tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>key</td>
-<td><a href="#string"> string</a></td>
-<td>none</td>
-</tr>
-<tr>
-<td>value</td>
-<td><a href="#string"> string</a></td>
-<td>none</td>
+<td>ownership</td>
+<td><a href="#ownership"> Ownership</a></td>
+<td>Ownership volume information to update. If the value of <code>owner</code> in the <code>ownership</code> message is an empty string then the value of <code>owner</code> in the <code>VolumeSpec.Ownership.owner</code> will not be updated.</td>
 </tr>
 </tbody>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="volumestateaction">VolumeStateAction </h2>
-<p>VolumeStateAction specifies desired actions.
-swagger:model</p>
+<p>VolumeStateAction specifies desired actions.</p>
 <table>
 <thead>
 <tr>
@@ -8168,7 +8308,7 @@ client and server applications</p>
 </tr>
 <tr>
 <td>Minor</td>
-<td>35</td>
+<td>37</td>
 <td>SDK version minor value of this specification</td>
 </tr>
 <tr>
@@ -8662,7 +8802,7 @@ client and server applications</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Nightly","level":"1.5.3","depth":2,"next":{"title":"Changelog","level":"1.5.3.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.2.1","depth":3,"path":"release-4.0.changelog.md","ref":"release-4.0.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"master.generated-api.md","mtime":"2019-01-04T19:41:36.451Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-04T19:41:39.418Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Nightly","level":"1.5.3","depth":2,"next":{"title":"Changelog","level":"1.5.3.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.2.1","depth":3,"path":"release-4.0.changelog.md","ref":"release-4.0.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"master.generated-api.md","mtime":"2019-01-18T20:08:12.585Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-18T20:08:15.021Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

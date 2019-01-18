@@ -1,9 +1,19 @@
 # Changelog
 
-> NOTE: The SDK is still in tech preview. Once officially released, this changelog will also
-> use the SDK version numbers.
-
 ## Releases
+
+### v0.37.0 - Tech Preview (1/16/2019)
+
+* Ownership support in the VolumeSpec
+
+### v0.36.0 - Tech Preview (1/7/2019)
+
+* Refactor confusing labels.
+    * Deprecated Volume.Spec.VolumeLabels.
+    * Any labels in Volume.Spec.VolumeLabels will be copied to Volume.Locator
+    * Added Labels to Volume.Create
+    * Volume.Update now takes Labels and Name instead of VolumeLocator
+    * Volume.Inspect now also returns Name and Labels to match Volume.Create
 
 ### v0.35.0 - Tech Preview (1/4/2019)
 
