@@ -292,6 +292,7 @@
     - [IoProfile](#ioprofile)
     - [LabelSelectorRequirement.Operator](#labelselectorrequirementoperator)
     - [OperationFlags](#operationflags)
+    - [Ownership.AccessType](#ownershipaccesstype)
     - [ResourceType](#resourcetype)
     - [SdkCloudBackupOpType](#sdkcloudbackupoptype)
     - [SdkCloudBackupRequestedState](#sdkcloudbackuprequestedstate)
@@ -394,6 +395,8 @@ restore, pass volume id returned by Restore() to input to Status()
 Creates a backup request for a specified volume. Use
 OpenStorageCloudBackup.Status() to get the current status of the
 backup request.
+
+Requires access AccessType.Read of volume
 ## Restore {#methodopenstorageapiopenstoragecloudbackuprestore}
 
 > **rpc** Restore([SdkCloudBackupRestoreRequest](#sdkcloudbackuprestorerequest))
@@ -647,24 +650,32 @@ are created, to let the CO manage the node access functions to the volume.
     [SdkVolumeAttachResponse](#sdkvolumeattachresponse)
 
 Attach attaches device to the host that the client is communicating with.
+
+Requires access AccessType.Write of volume
 ## Detach {#methodopenstorageapiopenstoragemountattachdetach}
 
 > **rpc** Detach([SdkVolumeDetachRequest](#sdkvolumedetachrequest))
     [SdkVolumeDetachResponse](#sdkvolumedetachresponse)
 
 Detaches a the volume from the host
+
+Requires access AccessType.Write of volume
 ## Mount {#methodopenstorageapiopenstoragemountattachmount}
 
 > **rpc** Mount([SdkVolumeMountRequest](#sdkvolumemountrequest))
     [SdkVolumeMountResponse](#sdkvolumemountresponse)
 
 Mount mounts an attached volume in the host that the client is communicating with
+
+Requires access AccessType.Write of volume
 ## Unmount {#methodopenstorageapiopenstoragemountattachunmount}
 
 > **rpc** Unmount([SdkVolumeUnmountRequest](#sdkvolumeunmountrequest))
     [SdkVolumeUnmountResponse](#sdkvolumeunmountresponse)
 
 Unmount unmounts a mounted volume in the host that the client is communicating with
+
+Requires access AccessType.Write of volume
  <!-- end methods -->
 
 # OpenStorageNode {#serviceopenstorageapiopenstoragenode}
@@ -820,6 +831,8 @@ OpenStorageVolume is a service used to manage the volumes of a storage system
 
 Create creates a volume according to the specification provided
 
+Requires access AccessType.Read when cloning from a parent volume.
+
 ##### Example
 {% codetabs name="Golang", type="go" -%}
 id, err := client.Create(context.Background(), &api.SdkVolumeCreateRequest{
@@ -839,18 +852,24 @@ en_resp = client.Create(api_pb2.SdkVolumeCreateRequest(
     [SdkVolumeCloneResponse](#sdkvolumecloneresponse)
 
 Clone creates a new writable volume cloned from an existing volume
+
+Requires access AccessType.Read of volume
 ## Delete {#methodopenstorageapiopenstoragevolumedelete}
 
 > **rpc** Delete([SdkVolumeDeleteRequest](#sdkvolumedeleterequest))
     [SdkVolumeDeleteResponse](#sdkvolumedeleteresponse)
 
 Delete deletes the provided volume
+
+Requires access AccessType.Admin of volume
 ## Inspect {#methodopenstorageapiopenstoragevolumeinspect}
 
 > **rpc** Inspect([SdkVolumeInspectRequest](#sdkvolumeinspectrequest))
     [SdkVolumeInspectResponse](#sdkvolumeinspectresponse)
 
 Inspect returns information about a volume
+
+Requires access AccessType.Read of volume
 ## Update {#methodopenstorageapiopenstoragevolumeupdate}
 
 > **rpc** Update([SdkVolumeUpdateRequest](#sdkvolumeupdaterequest))
@@ -858,18 +877,24 @@ Inspect returns information about a volume
 
 Update provides a method for manipulating the specification and attributes of a volume.
 Set can be used to resize a volume, update labels, change replica count, and much more.
+
+Requires access AccessType.Write of volume
 ## Stats {#methodopenstorageapiopenstoragevolumestats}
 
 > **rpc** Stats([SdkVolumeStatsRequest](#sdkvolumestatsrequest))
     [SdkVolumeStatsResponse](#sdkvolumestatsresponse)
 
 Stats returns the statistics for the requested volume
+
+Requires access AccessType.Read of volume
 ## CapacityUsage {#methodopenstorageapiopenstoragevolumecapacityusage}
 
 > **rpc** CapacityUsage([SdkVolumeCapacityUsageRequest](#sdkvolumecapacityusagerequest))
     [SdkVolumeCapacityUsageResponse](#sdkvolumecapacityusageresponse)
 
 CapacityUsage returns volume/snapshot's capacity usage details
+
+Requires access AccessType.Read of volume
 
 ##### Error codes:
 
@@ -896,12 +921,16 @@ Enumerate returns a list of volume ids that match the labels if any are provided
 SnapshotCreate creates a snapshot of a volume. This creates an immutable (read-only),
 point-in-time snapshot of a volume. To create a new writable volume from
 a snapshot, please use OpenStorageVolume.Clone().
+
+Requires access AccessType.Read of volume
 ## SnapshotRestore {#methodopenstorageapiopenstoragevolumesnapshotrestore}
 
 > **rpc** SnapshotRestore([SdkVolumeSnapshotRestoreRequest](#sdkvolumesnapshotrestorerequest))
     [SdkVolumeSnapshotRestoreResponse](#sdkvolumesnapshotrestoreresponse)
 
 SnapshotRestore restores a volume to a specified snapshot
+
+Requires access AccessType.Write of volume
 ## SnapshotEnumerate {#methodopenstorageapiopenstoragevolumesnapshotenumerate}
 
 > **rpc** SnapshotEnumerate([SdkVolumeSnapshotEnumerateRequest](#sdkvolumesnapshotenumeraterequest))
@@ -926,6 +955,8 @@ If neither are provided all snapshots will be returned.
 Sets the snapshot schedules. This information is saved in the VolumeSpec.snapshot_schedule
 as `policy=<name>,...`. This function will overwrite any policy values
 in the volume. To delete the policies in the volume send no policies.
+
+Requires access AccessType.Write of volume
  <!-- end methods -->
  <!-- end services -->
 
@@ -1496,8 +1527,8 @@ NOTE: To create an "admin" user which has access to any resource set the group v
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| groups | [repeated string](#string) | Group access to resource which must be set in the authorization token. Can be set by the owner or the system administrator only. Possible values are: 1. an empty list: An empty list means no groups are allowed. 2. `["*"]`: All groups are allowed. 3. `["group1", "group2"]`: Only certain groups are allowed. In this example only _group1_ and _group2_ are allowed. |
-| collaborators | [repeated string](#string) | Collaborator access to resource gives access to other usernames. Must be the username set in the authorization token. The owner or the system administrator can set this value. Possible values are: 1. an empty list: An empty list means no users are allowed. 2. `["*"]`: All users are allowed. 3. `["username1", "username2"]`: Only certain usernames are allowed. In this example only _username1_ and _username2_ are allowed. |
+| groups | [map Ownership.AccessControl.GroupsEntry](#ownershipaccesscontrolgroupsentry) | Group access to resource which must match the group set in the authorization token. Can be set by the owner or the system administrator only. Possible values are: 1. no groups: Means no groups are given access. 2. `["*"]`: All groups are allowed. 3. `["group1", "group2"]`: Only certain groups are allowed. In this example only _group1_ and _group2_ are allowed. |
+| collaborators | [map Ownership.AccessControl.CollaboratorsEntry](#ownershipaccesscontrolcollaboratorsentry) | Collaborator access to resource gives access to other user. Must be the username (unique id) set in the authorization token. The owner or the administrator can set this value. Possible values are: 1. no collaborators: Means no users are given access. 2. `["*"]`: All users are allowed. 3. `["username1", "username2"]`: Only certain usernames are allowed. In this example only _username1_ and _username2_ are allowed. |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -4189,6 +4220,22 @@ This defines operator types used in a label matching rule
 
 
 
+## Ownership.AccessType {#ownershipaccesstype}
+Access types can be set by owner to have different levels of access to
+a resource.
+
+It is up to the resource to interpret what the types mean and are
+used for.
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| Read | 0 | Read access only and cannot affect the resource. |
+| Write | 1 | Write access and can affect the resource. This type automatically provides Read access also. |
+| Admin | 2 | Administrator access. This type automatically provides Read and Write access also. |
+
+
+
+
 ## ResourceType {#resourcetype}
 
 
@@ -4292,7 +4339,7 @@ client and server applications
 | ---- | ------ | ----------- |
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
-| Minor | 37 | SDK version minor value of this specification |
+| Minor | 38 | SDK version minor value of this specification |
 | Patch | 0 | SDK version patch value of this specification |
 
 
