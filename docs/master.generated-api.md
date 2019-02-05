@@ -4339,7 +4339,7 @@ client and server applications
 | ---- | ------ | ----------- |
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
-| Minor | 38 | SDK version minor value of this specification |
+| Minor | 39 | SDK version minor value of this specification |
 | Patch | 0 | SDK version patch value of this specification |
 
 
