@@ -26,6 +26,17 @@ which is able to translate REST calls to gRPC requests.
 [Swagger](https://swagger.io/) is also provided by going to the REST gRPC Gateway
 and passing the path `/swagger-ui`.
 
+## Security
+Starting at _v0.38.0_, the OpenStorage SDK supports security based on the
+following set of technologies:
+
+* **TLS**: The SDK now supports TLS to secure client server communications.
+* **Authentication**: Support for authentication based on JWT and OpenID Connect(OIDC)
+* **Authorization**: Support for role based access control (RBAC) access to
+  OpenStorage SDK API calls
+* **Ownership**: Support for resource access control based on owner, groups,
+  and collaborators.
+
 ## Error Handling
 All API calls use the [standard gRPC status](https://github.com/grpc/grpc/blob/master/src/proto/grpc/status/status.proto).
 

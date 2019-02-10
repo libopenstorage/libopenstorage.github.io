@@ -393,6 +393,17 @@ available in the OpenStorage github repo.</p>
 which is able to translate REST calls to gRPC requests.</p>
 <p><a href="https://swagger.io/" target="_blank">Swagger</a> is also provided by going to the REST gRPC Gateway
 and passing the path <code>/swagger-ui</code>.</p>
+<h2 id="security">Security</h2>
+<p>Starting at <em>v0.38.0</em>, the OpenStorage SDK supports security based on the
+following set of technologies:</p>
+<ul>
+<li><strong>TLS</strong>: The SDK now supports TLS to secure client server communications.</li>
+<li><strong>Authentication</strong>: Support for authentication based on JWT and OpenID Connect(OIDC)</li>
+<li><strong>Authorization</strong>: Support for role based access control (RBAC) access to
+OpenStorage SDK API calls</li>
+<li><strong>Ownership</strong>: Support for resource access control based on owner, groups,
+and collaborators.</li>
+</ul>
 <h2 id="error-handling">Error Handling</h2>
 <p>All API calls use the <a href="https://github.com/grpc/grpc/blob/master/src/proto/grpc/status/status.proto" target="_blank">standard gRPC status</a>.</p>
 <h2 id="openstorage-sdk-implementations">OpenStorage SDK Implementations</h2>
@@ -441,7 +452,7 @@ and Portworx OpenStorage drivers.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Architecture","level":"1.2","depth":1,"next":{"title":"Installation","level":"1.3","depth":1,"path":"installation.md","ref":"installation.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"arch.md","mtime":"2018-07-22T23:34:05.731Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-05T04:38:29.962Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Architecture","level":"1.2","depth":1,"next":{"title":"Installation","level":"1.3","depth":1,"path":"installation.md","ref":"installation.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"arch.md","mtime":"2019-02-10T19:25:30.193Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-10T19:26:49.677Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

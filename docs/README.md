@@ -48,7 +48,10 @@ Results in:
 ```
 
 The `mock-sdk-server` container also comes with a full [Swagger](https://swagger.io)
-UI located at [http://localhost:9110/swagger-ui/](http://localhost:9110/swagger-ui/).
+UI located:
+
+* **Starting at v0.38.0**: [http://localhost:9110/sdk/](http://localhost:9110/sdk/).
+* **Before v0.38.0**: [http://localhost:9110/swagger-ui/](http://localhost:9110/swagger-ui/).
 
 ## What's next
 

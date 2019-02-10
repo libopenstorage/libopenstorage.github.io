@@ -4013,7 +4013,7 @@ client and server applications
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
 | Minor | 22 | SDK version minor value of this specification |
-| Patch | 9 | SDK version patch value of this specification |
+| Patch | 10 | SDK version patch value of this specification |
 
 
 
