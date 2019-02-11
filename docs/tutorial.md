@@ -40,3 +40,48 @@ This should return information about the cluster in JSON format, for example:
 ```json
 {"cluster":{"status":"STATUS_OK","id":"mock"}}
 ```
+
+## Setting up security in the mock-sdk-server
+This section will help you enable security in the _mock-sdk-server_.
+
+### Enabling TLS
+You will need the server _crt_ and _key_ files to provide them to the
+mock-sdk-server. Since the mock-sdk-server is running in a container, you
+will need to map into the container the directory where the certificates are
+located. Here is an example:
+
+```
+$ ls ./certs/
+server.crt server.key
+$ docker run --rm --name sdk -d -p 9100:9100 -p 9110:9110 \
+  -v $PWD/certs:/certs \
+  openstorage/mock-sdk-server \
+  -d --driver=name=fake \
+  --tls-cert-file=/certs/server.crt \
+  --tls-key-file=/certs/server.key
+```
+
+> NOTE: For development simplicity, cert files are provided under the
+  [`examples/unsecure_certs`](https://github.com/libopenstorage/libopenstorage.github.io/tree/master/examples/unsecure_certs)
+
+### Enabling Authorization Using A Shared Key
+The simplest method to enable authorization is to use the shared secret key
+model. To enable the server authorization with a shared secret, you will need
+to pass the secret using the command line. In the following example, the secret
+`mysecret` is passed to the server as the shared secret:
+
+```
+$ docker run --rm --name sdk -d -p 9100:9100 -p 9110:9110 \
+  openstorage/mock-sdk-server \
+  -d --driver=name=fake \
+  --jwt-shared-secret=mysecret
+```
+
+RSA and ECDSA authorization using public keys are also supported. Check
+out the help by typing:
+
+```
+$ docker run --rm --name sdk -d -p 9100:9100 -p 9110:9110 \
+  openstorage/mock-sdk-server \
+  --help
+```

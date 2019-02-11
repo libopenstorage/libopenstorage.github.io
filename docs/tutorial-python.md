@@ -50,9 +50,8 @@ channel = grpc.insecure_channel('localhost:9100')
 ```
 
 > **NOTE**: Notice the call [`grpc.insecure_channel()`](https://grpc.io/docs/guides/auth.html). The mock-sdk-server
-currently does not support HTTPS or authentication, so the tutorial will
-only focus on an insecure connection. The SDK project will add HTTPS and
-authentication support in following releases.
+supports HTTPS and authentication starting at v0.38.0. See [Tutorial](tutorial.html)
+for more information.
 
 ## Cluster operations
 Now that we have made a connection, we can use the `channel` object to create

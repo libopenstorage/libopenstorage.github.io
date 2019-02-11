@@ -53,9 +53,8 @@ the OpenStorage SDK server:
 ```
 
 > **NOTE**: Notice the call [`grpc.WithInsecure()`](https://grpc.io/docs/guides/auth.html). The mock-sdk-server
-currently does not support HTTPS or authentication, so the tutorial will
-only focus on an insecure connection. The SDK project will add HTTPS and
-authentication support in following releases.
+currently supports HTTPS and authentication starting at v0.38.0. See [Tutorial](tutorial.html)
+for more information.
 
 ## Cluster operations
 Now that we have made a connection, we can use the `conn` object to create

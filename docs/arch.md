@@ -37,6 +37,38 @@ following set of technologies:
 * **Ownership**: Support for resource access control based on owner, groups,
   and collaborators.
 
+### Authentication
+OpenStorage SDK server authenticates and authorizes access using the token
+provided by the client. The SDK server expects the token to be passed in
+the metadata of the gRPC context. Here is an example of how to pass the token
+in gRPC:
+
+{% codetabs name="Go", type="go" -%}
+import "google.golang.org/grpc/metadata"
+
+md := metadata.New(map[string]string{
+        "authorization": "bearer" + token,
+    })
+ctx = metadata.NewOutgoingContext(context.Background(), md)
+{%- language name="Python", type="py" -%}
+md = []
+md.append(("authorization", "bearer "+token))
+
+# Now add metadata to the call
+clusters = api_pb2_grpc.OpenStorageClusterStub(channel)
+response = clusters.InspectCurrent(api_pb2.SdkClusterInspectCurrentRequest(), metadata=md)
+{%- endcodetabs %}
+
+If your language supports gRPC interceptors, you may be able to simply your
+client code by making the interceptor add the authorization token on every
+call automatically.
+
+To pass the token using the REST Gateway, you can use the [standard header](https://tools.ietf.org/html/rfc6750):
+
+```
+"authorization": "bearer token..."
+```
+
 ## Error Handling
 All API calls use the [standard gRPC status](https://github.com/grpc/grpc/blob/master/src/proto/grpc/status/status.proto).
 
