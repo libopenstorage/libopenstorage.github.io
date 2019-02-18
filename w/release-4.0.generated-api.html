@@ -387,6 +387,7 @@
 <li><a href="#serviceopenstorageapiopenstoragemountattach">OpenStorageMountAttach</a></li>
 <li><a href="#serviceopenstorageapiopenstoragenode">OpenStorageNode</a></li>
 <li><a href="#serviceopenstorageapiopenstorageobjectstore">OpenStorageObjectstore</a></li>
+<li><a href="#serviceopenstorageapiopenstoragepolicy">OpenStoragePolicy</a></li>
 <li><a href="#serviceopenstorageapiopenstorageschedulepolicy">OpenStorageSchedulePolicy</a></li>
 <li><a href="#serviceopenstorageapiopenstoragevolume">OpenStorageVolume</a></li>
 </ul>
@@ -539,6 +540,22 @@
 <li><a href="#sdkobjectstoreinspectresponse">SdkObjectstoreInspectResponse</a></li>
 <li><a href="#sdkobjectstoreupdaterequest">SdkObjectstoreUpdateRequest</a></li>
 <li><a href="#sdkobjectstoreupdateresponse">SdkObjectstoreUpdateResponse</a></li>
+<li><a href="#sdkopenstoragepolicycreaterequest">SdkOpenStoragePolicyCreateRequest</a></li>
+<li><a href="#sdkopenstoragepolicycreateresponse">SdkOpenStoragePolicyCreateResponse</a></li>
+<li><a href="#sdkopenstoragepolicydeleterequest">SdkOpenStoragePolicyDeleteRequest</a></li>
+<li><a href="#sdkopenstoragepolicydeleteresponse">SdkOpenStoragePolicyDeleteResponse</a></li>
+<li><a href="#sdkopenstoragepolicyenforceinspectrequest">SdkOpenStoragePolicyEnforceInspectRequest</a></li>
+<li><a href="#sdkopenstoragepolicyenforceinspectresponse">SdkOpenStoragePolicyEnforceInspectResponse</a></li>
+<li><a href="#sdkopenstoragepolicyenforcerequest">SdkOpenStoragePolicyEnforceRequest</a></li>
+<li><a href="#sdkopenstoragepolicyenforceresponse">SdkOpenStoragePolicyEnforceResponse</a></li>
+<li><a href="#sdkopenstoragepolicyenumeraterequest">SdkOpenStoragePolicyEnumerateRequest</a></li>
+<li><a href="#sdkopenstoragepolicyenumerateresponse">SdkOpenStoragePolicyEnumerateResponse</a></li>
+<li><a href="#sdkopenstoragepolicyinspectrequest">SdkOpenStoragePolicyInspectRequest</a></li>
+<li><a href="#sdkopenstoragepolicyinspectresponse">SdkOpenStoragePolicyInspectResponse</a></li>
+<li><a href="#sdkopenstoragepolicyreleaserequest">SdkOpenStoragePolicyReleaseRequest</a></li>
+<li><a href="#sdkopenstoragepolicyreleaseresponse">SdkOpenStoragePolicyReleaseResponse</a></li>
+<li><a href="#sdkopenstoragepolicyupdaterequest">SdkOpenStoragePolicyUpdateRequest</a></li>
+<li><a href="#sdkopenstoragepolicyupdateresponse">SdkOpenStoragePolicyUpdateResponse</a></li>
 <li><a href="#sdkschedulepolicy">SdkSchedulePolicy</a></li>
 <li><a href="#sdkschedulepolicycreaterequest">SdkSchedulePolicyCreateRequest</a></li>
 <li><a href="#sdkschedulepolicycreateresponse">SdkSchedulePolicyCreateResponse</a></li>
@@ -557,6 +574,7 @@
 <li><a href="#sdkschedulepolicyupdateresponse">SdkSchedulePolicyUpdateResponse</a></li>
 <li><a href="#sdkservicecapability">SdkServiceCapability</a></li>
 <li><a href="#sdkservicecapabilityopenstorageservice">SdkServiceCapability.OpenStorageService</a></li>
+<li><a href="#sdkstoragepolicy">SdkStoragePolicy</a></li>
 <li><a href="#sdkversion">SdkVersion</a></li>
 <li><a href="#sdkvolumeattachrequest">SdkVolumeAttachRequest</a></li>
 <li><a href="#sdkvolumeattachrequestoptions">SdkVolumeAttachRequest.Options</a></li>
@@ -628,6 +646,8 @@
 <li><a href="#volumesetresponse">VolumeSetResponse</a></li>
 <li><a href="#volumespec">VolumeSpec</a></li>
 <li><a href="#volumespecvolumelabelsentry">VolumeSpec.VolumeLabelsEntry</a></li>
+<li><a href="#volumespecpolicy">VolumeSpecPolicy</a></li>
+<li><a href="#volumespecpolicyvolumelabelsentry">VolumeSpecPolicy.VolumeLabelsEntry</a></li>
 <li><a href="#volumespecupdate">VolumeSpecUpdate</a></li>
 <li><a href="#volumespecupdatevolumelabelsentry">VolumeSpecUpdate.VolumeLabelsEntry</a></li>
 <li><a href="#volumestateaction">VolumeStateAction</a></li>
@@ -662,6 +682,7 @@
 <li><a href="#volumeactionparam">VolumeActionParam</a></li>
 <li><a href="#volumeplacementruleaffinityruletype">VolumePlacementRule.AffinityRuleType</a></li>
 <li><a href="#volumeplacementruleenforcementtype">VolumePlacementRule.EnforcementType</a></li>
+<li><a href="#volumespecpolicypolicyop">VolumeSpecPolicy.PolicyOp</a></li>
 <li><a href="#volumestate">VolumeState</a></li>
 <li><a href="#volumestatus">VolumeStatus</a></li>
 </ul>
@@ -1043,6 +1064,61 @@ where the client is currently connected to.</p>
 <p>Updates provided objectstore status.
 This call can be used to stop and start the server while maintaining the same
 object storage id.
+ <!-- end methods --></p>
+<h1 id="serviceopenstorageapiopenstoragepolicy">OpenStoragePolicy </h1>
+<p>OpenStoragePolicy service provides methods to manager storage policies.</p>
+<p>Policies can be used to enforces a set of volume configurations to be followed
+while creating volumes.</p>
+<h2 id="methodopenstorageapiopenstoragepolicycreate">Create </h2>
+<blockquote>
+<p><strong>rpc</strong> Create(<a href="#sdkopenstoragepolicycreaterequest">SdkOpenStoragePolicyCreateRequest</a>)
+    <a href="#sdkopenstoragepolicycreateresponse">SdkOpenStoragePolicyCreateResponse</a></p>
+</blockquote>
+<p>Creates a storage policy</p>
+<h2 id="methodopenstorageapiopenstoragepolicyenumerate">Enumerate </h2>
+<blockquote>
+<p><strong>rpc</strong> Enumerate(<a href="#sdkopenstoragepolicyenumeraterequest">SdkOpenStoragePolicyEnumerateRequest</a>)
+    <a href="#sdkopenstoragepolicyenumerateresponse">SdkOpenStoragePolicyEnumerateResponse</a></p>
+</blockquote>
+<p>Enumerate returns a list of storage policies</p>
+<h2 id="methodopenstorageapiopenstoragepolicyinspect">Inspect </h2>
+<blockquote>
+<p><strong>rpc</strong> Inspect(<a href="#sdkopenstoragepolicyinspectrequest">SdkOpenStoragePolicyInspectRequest</a>)
+    <a href="#sdkopenstoragepolicyinspectresponse">SdkOpenStoragePolicyInspectResponse</a></p>
+</blockquote>
+<p>Inspect returns information about a specified storage policy</p>
+<h2 id="methodopenstorageapiopenstoragepolicyupdate">Update </h2>
+<blockquote>
+<p><strong>rpc</strong> Update(<a href="#sdkopenstoragepolicyupdaterequest">SdkOpenStoragePolicyUpdateRequest</a>)
+    <a href="#sdkopenstoragepolicyupdateresponse">SdkOpenStoragePolicyUpdateResponse</a></p>
+</blockquote>
+<p>Updates specified storage policy</p>
+<h2 id="methodopenstorageapiopenstoragepolicydelete">Delete </h2>
+<blockquote>
+<p><strong>rpc</strong> Delete(<a href="#sdkopenstoragepolicydeleterequest">SdkOpenStoragePolicyDeleteRequest</a>)
+    <a href="#sdkopenstoragepolicydeleteresponse">SdkOpenStoragePolicyDeleteResponse</a></p>
+</blockquote>
+<p>Deletes specified storage policy</p>
+<h2 id="methodopenstorageapiopenstoragepolicyenforce">Enforce </h2>
+<blockquote>
+<p><strong>rpc</strong> Enforce(<a href="#sdkopenstoragepolicyenforcerequest">SdkOpenStoragePolicyEnforceRequest</a>)
+    <a href="#sdkopenstoragepolicyenforceresponse">SdkOpenStoragePolicyEnforceResponse</a></p>
+</blockquote>
+<p>Enforces specified storage policy</p>
+<h2 id="methodopenstorageapiopenstoragepolicyenforceinspect">EnforceInspect </h2>
+<blockquote>
+<p><strong>rpc</strong> EnforceInspect(<a href="#sdkopenstoragepolicyenforceinspectrequest">SdkOpenStoragePolicyEnforceInspectRequest</a>)
+    <a href="#sdkopenstoragepolicyenforceinspectresponse">SdkOpenStoragePolicyEnforceInspectResponse</a></p>
+</blockquote>
+<p>EnforcesInspect return enforced storage policy if any, otherwise
+empty response</p>
+<h2 id="methodopenstorageapiopenstoragepolicyrelease">Release </h2>
+<blockquote>
+<p><strong>rpc</strong> Release(<a href="#sdkopenstoragepolicyreleaserequest">SdkOpenStoragePolicyReleaseRequest</a>)
+    <a href="#sdkopenstoragepolicyreleaseresponse">SdkOpenStoragePolicyReleaseResponse</a></p>
+</blockquote>
+<p>Release specified storage policy constraint for volume
+creation
  <!-- end methods --></p>
 <h1 id="serviceopenstorageapiopenstorageschedulepolicy">OpenStorageSchedulePolicy </h1>
 <p>OpenStorageSchedulePolicy service is used to manage the automated
@@ -4549,6 +4625,190 @@ specified volume</p>
 <h2 id="sdkobjectstoreupdateresponse">SdkObjectstoreUpdateResponse </h2>
 <p>Empty response</p>
  <!-- end HasFields -->
+<h2 id="sdkopenstoragepolicycreaterequest">SdkOpenStoragePolicyCreateRequest </h2>
+<p>Define a request to create storage policy</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>storage_policy</td>
+<td><a href="#sdkstoragepolicy"> SdkStoragePolicy</a></td>
+<td>storage policy to create</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkopenstoragepolicycreateresponse">SdkOpenStoragePolicyCreateResponse </h2>
+<p>Empty response</p>
+ <!-- end HasFields -->
+<h2 id="sdkopenstoragepolicydeleterequest">SdkOpenStoragePolicyDeleteRequest </h2>
+<p>Define a request to delete storage policy</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td><a href="#string"> string</a></td>
+<td>name of storage policy to delete</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkopenstoragepolicydeleteresponse">SdkOpenStoragePolicyDeleteResponse </h2>
+<p>Empty Response</p>
+ <!-- end HasFields -->
+<h2 id="sdkopenstoragepolicyenforceinspectrequest">SdkOpenStoragePolicyEnforceInspectRequest </h2>
+<p>Empty Request</p>
+ <!-- end HasFields -->
+<h2 id="sdkopenstoragepolicyenforceinspectresponse">SdkOpenStoragePolicyEnforceInspectResponse </h2>
+<p>Define storage policy enforce response</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>storage_policy</td>
+<td><a href="#sdkstoragepolicy"> SdkStoragePolicy</a></td>
+<td>storage policy information which is enforced</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkopenstoragepolicyenforcerequest">SdkOpenStoragePolicyEnforceRequest </h2>
+<p>Define a request to enforce storage policy</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td><a href="#string"> string</a></td>
+<td>name of policy to set as default enforcement for volume creation This policy will be used to enforce volume configuration</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkopenstoragepolicyenforceresponse">SdkOpenStoragePolicyEnforceResponse </h2>
+<p>Empty Response</p>
+ <!-- end HasFields -->
+<h2 id="sdkopenstoragepolicyenumeraterequest">SdkOpenStoragePolicyEnumerateRequest </h2>
+<p>Empty request</p>
+ <!-- end HasFields -->
+<h2 id="sdkopenstoragepolicyenumerateresponse">SdkOpenStoragePolicyEnumerateResponse </h2>
+<p>Define a storage policy enumerate response</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>storage_policies</td>
+<td><a href="#sdkstoragepolicy">repeated SdkStoragePolicy</a></td>
+<td>List of storage policies</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkopenstoragepolicyinspectrequest">SdkOpenStoragePolicyInspectRequest </h2>
+<p>Define a request to inspect storage policy</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td><a href="#string"> string</a></td>
+<td>name of storage policy to retrive</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkopenstoragepolicyinspectresponse">SdkOpenStoragePolicyInspectResponse </h2>
+<p>Define a storage policy inspect response</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>storage_policy</td>
+<td><a href="#sdkstoragepolicy"> SdkStoragePolicy</a></td>
+<td>storage policy information requested by name</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkopenstoragepolicyreleaserequest">SdkOpenStoragePolicyReleaseRequest </h2>
+<p>Empty Request</p>
+ <!-- end HasFields -->
+<h2 id="sdkopenstoragepolicyreleaseresponse">SdkOpenStoragePolicyReleaseResponse </h2>
+<p>Empty Response</p>
+ <!-- end HasFields -->
+<h2 id="sdkopenstoragepolicyupdaterequest">SdkOpenStoragePolicyUpdateRequest </h2>
+<p>Define a request to update storage policy</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>storage_policy</td>
+<td><a href="#sdkstoragepolicy"> SdkStoragePolicy</a></td>
+<td>storage policy to update</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkopenstoragepolicyupdateresponse">SdkOpenStoragePolicyUpdateResponse </h2>
+<p>Empty Response</p>
+ <!-- end HasFields -->
 <h2 id="sdkschedulepolicy">SdkSchedulePolicy </h2>
 <p>Defines a schedule policy</p>
 <table>
@@ -4885,6 +5145,35 @@ specified volume</p>
 <td>type</td>
 <td><a href="#sdkservicecapabilityopenstorageservicetype"> SdkServiceCapability.OpenStorageService.Type</a></td>
 <td>Type of service supported</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkstoragepolicy">SdkStoragePolicy </h2>
+<p>A SdkStoragePolicy represents minimum set of volume specs to be 
+follow while creating volumes.
+If enforce in OpenStoragePolicy service, VolumeSpecPolicy will be 
+used before creating volume to ensure minimum volume creation rules
+are enforced.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td><a href="#string"> string</a></td>
+<td>Name of storage policy.</td>
+</tr>
+<tr>
+<td>policy</td>
+<td><a href="#volumespecpolicy"> VolumeSpecPolicy</a></td>
+<td>VolumeSpecs to apply while creating volume.</td>
 </tr>
 </tbody>
 </table>
@@ -6819,7 +7108,7 @@ swagger:model</p>
 <tr>
 <td>aggregation_level</td>
 <td><a href="#uint32"> uint32</a></td>
-<td>Aggregatiokn level Specifies the number of parts the volume can be aggregated from.</td>
+<td>Aggregation level Specifies the number of parts the volume can be aggregated from.</td>
 </tr>
 <tr>
 <td>encrypted</td>
@@ -6901,11 +7190,170 @@ swagger:model</p>
 <td><a href="#volumeplacementstrategy"> VolumePlacementStrategy</a></td>
 <td>PlacementStrategy specifies a spec to indicate where to place the volume.</td>
 </tr>
+<tr>
+<td>storage_policy</td>
+<td><a href="#string"> string</a></td>
+<td>StoragePolicy to be enforced while creating volume</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="volumespecvolumelabelsentry">VolumeSpec.VolumeLabelsEntry </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="volumespecpolicy">VolumeSpecPolicy </h2>
+<p>VolumeSpecPolicy provides a method to set volume storage policy</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> size_opt.size</td>
+<td><a href="#uint64"> uint64</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> ha_level_opt.ha_level</td>
+<td><a href="#int64"> int64</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> cos_opt.cos</td>
+<td><a href="#costype"> CosType</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> io_profile_opt.io_profile</td>
+<td><a href="#ioprofile"> IoProfile</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> dedupe_opt.dedupe</td>
+<td><a href="#bool"> bool</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> snapshot_interval_opt.snapshot_interval</td>
+<td><a href="#uint32"> uint32</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>volume_labels</td>
+<td><a href="#volumespecpolicyvolumelabelsentry">map VolumeSpecPolicy.VolumeLabelsEntry</a></td>
+<td>VolumeLabels configuration labels</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> shared_opt.shared</td>
+<td><a href="#bool"> bool</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>replica_set</td>
+<td><a href="#replicaset"> ReplicaSet</a></td>
+<td>ReplicaSet is the desired set of nodes for the volume data.</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> passphrase_opt.passphrase</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> snapshot_schedule_opt.snapshot_schedule</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> scale_opt.scale</td>
+<td><a href="#uint32"> uint32</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> sticky_opt.sticky</td>
+<td><a href="#bool"> bool</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> group_opt.group</td>
+<td><a href="#group"> Group</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> journal_opt.journal</td>
+<td><a href="#bool"> bool</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> sharedv4_opt.sharedv4</td>
+<td><a href="#bool"> bool</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> queue_depth_opt.queue_depth</td>
+<td><a href="#uint32"> uint32</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> encrypted_opt.encrypted</td>
+<td><a href="#bool"> bool</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> aggregation_level_opt.aggregation_level</td>
+<td><a href="#uint32"> uint32</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>size_operator</td>
+<td><a href="#volumespecpolicypolicyop"> VolumeSpecPolicy.PolicyOp</a></td>
+<td>Operator to check size</td>
+</tr>
+<tr>
+<td>ha_level_operator</td>
+<td><a href="#volumespecpolicypolicyop"> VolumeSpecPolicy.PolicyOp</a></td>
+<td>Operator to check ha_level</td>
+</tr>
+<tr>
+<td>scale_operator</td>
+<td><a href="#volumespecpolicypolicyop"> VolumeSpecPolicy.PolicyOp</a></td>
+<td>Operator to check scale</td>
+</tr>
+<tr>
+<td>snapshot_interval_operator</td>
+<td><a href="#volumespecpolicypolicyop"> VolumeSpecPolicy.PolicyOp</a></td>
+<td>Operator to check snapshot_interval</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="volumespecpolicyvolumelabelsentry">VolumeSpecPolicy.VolumeLabelsEntry </h2>
 <table>
 <thead>
 <tr>
@@ -7765,6 +8213,11 @@ to or from a cloud provider</p>
 <td>9</td>
 <td>Mount/Attach Support</td>
 </tr>
+<tr>
+<td>STORAGE_POLICY</td>
+<td>13</td>
+<td>StoragePolicy Service</td>
+</tr>
 </tbody>
 </table>
 <h2 id="sdktimeweekday">SdkTimeWeekday </h2>
@@ -7844,7 +8297,7 @@ client and server applications</p>
 </tr>
 <tr>
 <td>Patch</td>
-<td>10</td>
+<td>11</td>
 <td>SDK version patch value of this specification</td>
 </tr>
 </tbody>
@@ -8065,6 +8518,34 @@ client and server applications</p>
 <td>Preferred</td>
 <td>1</td>
 <td>This specifies that the rule is preferred and can be best effort</td>
+</tr>
+</tbody>
+</table>
+<h2 id="volumespecpolicypolicyop">VolumeSpecPolicy.PolicyOp </h2>
+<p>This defines an operator for the policy comparisons</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Equal</td>
+<td>0</td>
+<td>Policy will make sure the value must be equal</td>
+</tr>
+<tr>
+<td>Minimum</td>
+<td>1</td>
+<td>Policy will make sure the requested value must be greater than or equal</td>
+</tr>
+<tr>
+<td>Maximum</td>
+<td>2</td>
+<td>Policy will make sure the requested value must be less than or equal</td>
 </tr>
 </tbody>
 </table>
@@ -8333,7 +8814,7 @@ client and server applications</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"v0.22.x","level":"1.5.2","depth":2,"next":{"title":"Changelog","level":"1.5.2.1","depth":3,"path":"release-4.0.changelog.md","ref":"release-4.0.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.1.1","depth":3,"path":"release-sdk-0.9.changelog.md","ref":"release-sdk-0.9.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"release-4.0.generated-api.md","mtime":"2019-02-11T07:12:04.260Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-11T07:12:07.475Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"v0.22.x","level":"1.5.2","depth":2,"next":{"title":"Changelog","level":"1.5.2.1","depth":3,"path":"release-4.0.changelog.md","ref":"release-4.0.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.1.1","depth":3,"path":"release-sdk-0.9.changelog.md","ref":"release-sdk-0.9.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"release-4.0.generated-api.md","mtime":"2019-02-18T21:54:39.188Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-18T21:54:42.102Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

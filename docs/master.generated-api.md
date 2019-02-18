@@ -14,6 +14,7 @@
     - [OpenStorageMountAttach](#serviceopenstorageapiopenstoragemountattach)
     - [OpenStorageNode](#serviceopenstorageapiopenstoragenode)
     - [OpenStorageObjectstore](#serviceopenstorageapiopenstorageobjectstore)
+    - [OpenStoragePolicy](#serviceopenstorageapiopenstoragepolicy)
     - [OpenStorageRole](#serviceopenstorageapiopenstoragerole)
     - [OpenStorageSchedulePolicy](#serviceopenstorageapiopenstorageschedulepolicy)
     - [OpenStorageVolume](#serviceopenstorageapiopenstoragevolume)
@@ -168,6 +169,22 @@
     - [SdkObjectstoreInspectResponse](#sdkobjectstoreinspectresponse)
     - [SdkObjectstoreUpdateRequest](#sdkobjectstoreupdaterequest)
     - [SdkObjectstoreUpdateResponse](#sdkobjectstoreupdateresponse)
+    - [SdkOpenStoragePolicyCreateRequest](#sdkopenstoragepolicycreaterequest)
+    - [SdkOpenStoragePolicyCreateResponse](#sdkopenstoragepolicycreateresponse)
+    - [SdkOpenStoragePolicyDeleteRequest](#sdkopenstoragepolicydeleterequest)
+    - [SdkOpenStoragePolicyDeleteResponse](#sdkopenstoragepolicydeleteresponse)
+    - [SdkOpenStoragePolicyEnforceInspectRequest](#sdkopenstoragepolicyenforceinspectrequest)
+    - [SdkOpenStoragePolicyEnforceInspectResponse](#sdkopenstoragepolicyenforceinspectresponse)
+    - [SdkOpenStoragePolicyEnforceRequest](#sdkopenstoragepolicyenforcerequest)
+    - [SdkOpenStoragePolicyEnforceResponse](#sdkopenstoragepolicyenforceresponse)
+    - [SdkOpenStoragePolicyEnumerateRequest](#sdkopenstoragepolicyenumeraterequest)
+    - [SdkOpenStoragePolicyEnumerateResponse](#sdkopenstoragepolicyenumerateresponse)
+    - [SdkOpenStoragePolicyInspectRequest](#sdkopenstoragepolicyinspectrequest)
+    - [SdkOpenStoragePolicyInspectResponse](#sdkopenstoragepolicyinspectresponse)
+    - [SdkOpenStoragePolicyReleaseRequest](#sdkopenstoragepolicyreleaserequest)
+    - [SdkOpenStoragePolicyReleaseResponse](#sdkopenstoragepolicyreleaseresponse)
+    - [SdkOpenStoragePolicyUpdateRequest](#sdkopenstoragepolicyupdaterequest)
+    - [SdkOpenStoragePolicyUpdateResponse](#sdkopenstoragepolicyupdateresponse)
     - [SdkRole](#sdkrole)
     - [SdkRoleCreateRequest](#sdkrolecreaterequest)
     - [SdkRoleCreateResponse](#sdkrolecreateresponse)
@@ -198,9 +215,11 @@
     - [SdkSchedulePolicyUpdateResponse](#sdkschedulepolicyupdateresponse)
     - [SdkServiceCapability](#sdkservicecapability)
     - [SdkServiceCapability.OpenStorageService](#sdkservicecapabilityopenstorageservice)
+    - [SdkStoragePolicy](#sdkstoragepolicy)
     - [SdkVersion](#sdkversion)
     - [SdkVolumeAttachOptions](#sdkvolumeattachoptions)
     - [SdkVolumeAttachRequest](#sdkvolumeattachrequest)
+    - [SdkVolumeAttachRequest.DriverOptionsEntry](#sdkvolumeattachrequestdriveroptionsentry)
     - [SdkVolumeAttachResponse](#sdkvolumeattachresponse)
     - [SdkVolumeCapacityUsageRequest](#sdkvolumecapacityusagerequest)
     - [SdkVolumeCapacityUsageResponse](#sdkvolumecapacityusageresponse)
@@ -213,6 +232,7 @@
     - [SdkVolumeDeleteResponse](#sdkvolumedeleteresponse)
     - [SdkVolumeDetachOptions](#sdkvolumedetachoptions)
     - [SdkVolumeDetachRequest](#sdkvolumedetachrequest)
+    - [SdkVolumeDetachRequest.DriverOptionsEntry](#sdkvolumedetachrequestdriveroptionsentry)
     - [SdkVolumeDetachResponse](#sdkvolumedetachresponse)
     - [SdkVolumeEnumerateRequest](#sdkvolumeenumeraterequest)
     - [SdkVolumeEnumerateResponse](#sdkvolumeenumerateresponse)
@@ -223,6 +243,7 @@
     - [SdkVolumeInspectResponse](#sdkvolumeinspectresponse)
     - [SdkVolumeInspectResponse.LabelsEntry](#sdkvolumeinspectresponselabelsentry)
     - [SdkVolumeMountRequest](#sdkvolumemountrequest)
+    - [SdkVolumeMountRequest.DriverOptionsEntry](#sdkvolumemountrequestdriveroptionsentry)
     - [SdkVolumeMountResponse](#sdkvolumemountresponse)
     - [SdkVolumeSnapshotCreateRequest](#sdkvolumesnapshotcreaterequest)
     - [SdkVolumeSnapshotCreateRequest.LabelsEntry](#sdkvolumesnapshotcreaterequestlabelsentry)
@@ -240,6 +261,7 @@
     - [SdkVolumeStatsResponse](#sdkvolumestatsresponse)
     - [SdkVolumeUnmountOptions](#sdkvolumeunmountoptions)
     - [SdkVolumeUnmountRequest](#sdkvolumeunmountrequest)
+    - [SdkVolumeUnmountRequest.DriverOptionsEntry](#sdkvolumeunmountrequestdriveroptionsentry)
     - [SdkVolumeUnmountResponse](#sdkvolumeunmountresponse)
     - [SdkVolumeUpdateRequest](#sdkvolumeupdaterequest)
     - [SdkVolumeUpdateRequest.LabelsEntry](#sdkvolumeupdaterequestlabelsentry)
@@ -273,6 +295,8 @@
     - [VolumeSetResponse](#volumesetresponse)
     - [VolumeSpec](#volumespec)
     - [VolumeSpec.VolumeLabelsEntry](#volumespecvolumelabelsentry)
+    - [VolumeSpecPolicy](#volumespecpolicy)
+    - [VolumeSpecPolicy.VolumeLabelsEntry](#volumespecpolicyvolumelabelsentry)
     - [VolumeSpecUpdate](#volumespecupdate)
     - [VolumeStateAction](#volumestateaction)
   
@@ -306,6 +330,7 @@
     - [VolumeActionParam](#volumeactionparam)
     - [VolumePlacementRule.AffinityRuleType](#volumeplacementruleaffinityruletype)
     - [VolumePlacementRule.EnforcementType](#volumeplacementruleenforcementtype)
+    - [VolumeSpecPolicy.PolicyOp](#volumespecpolicypolicyop)
     - [VolumeState](#volumestate)
     - [VolumeStatus](#volumestatus)
   
@@ -731,6 +756,64 @@ Delete destroys the object store endpoint on the volume
 Updates provided objectstore status.
 This call can be used to stop and start the server while maintaining the same
 object storage id.
+ <!-- end methods -->
+
+# OpenStoragePolicy {#serviceopenstorageapiopenstoragepolicy}
+OpenStoragePolicy service provides methods to manager storage policies.
+
+Policies can be used to enforces a set of volume configurations to be followed
+while creating volumes.
+
+## Create {#methodopenstorageapiopenstoragepolicycreate}
+
+> **rpc** Create([SdkOpenStoragePolicyCreateRequest](#sdkopenstoragepolicycreaterequest))
+    [SdkOpenStoragePolicyCreateResponse](#sdkopenstoragepolicycreateresponse)
+
+Creates a storage policy
+## Enumerate {#methodopenstorageapiopenstoragepolicyenumerate}
+
+> **rpc** Enumerate([SdkOpenStoragePolicyEnumerateRequest](#sdkopenstoragepolicyenumeraterequest))
+    [SdkOpenStoragePolicyEnumerateResponse](#sdkopenstoragepolicyenumerateresponse)
+
+Enumerate returns a list of storage policies
+## Inspect {#methodopenstorageapiopenstoragepolicyinspect}
+
+> **rpc** Inspect([SdkOpenStoragePolicyInspectRequest](#sdkopenstoragepolicyinspectrequest))
+    [SdkOpenStoragePolicyInspectResponse](#sdkopenstoragepolicyinspectresponse)
+
+Inspect returns information about a specified storage policy
+## Update {#methodopenstorageapiopenstoragepolicyupdate}
+
+> **rpc** Update([SdkOpenStoragePolicyUpdateRequest](#sdkopenstoragepolicyupdaterequest))
+    [SdkOpenStoragePolicyUpdateResponse](#sdkopenstoragepolicyupdateresponse)
+
+Updates specified storage policy
+## Delete {#methodopenstorageapiopenstoragepolicydelete}
+
+> **rpc** Delete([SdkOpenStoragePolicyDeleteRequest](#sdkopenstoragepolicydeleterequest))
+    [SdkOpenStoragePolicyDeleteResponse](#sdkopenstoragepolicydeleteresponse)
+
+Deletes specified storage policy
+## Enforce {#methodopenstorageapiopenstoragepolicyenforce}
+
+> **rpc** Enforce([SdkOpenStoragePolicyEnforceRequest](#sdkopenstoragepolicyenforcerequest))
+    [SdkOpenStoragePolicyEnforceResponse](#sdkopenstoragepolicyenforceresponse)
+
+Enforces specified storage policy
+## EnforceInspect {#methodopenstorageapiopenstoragepolicyenforceinspect}
+
+> **rpc** EnforceInspect([SdkOpenStoragePolicyEnforceInspectRequest](#sdkopenstoragepolicyenforceinspectrequest))
+    [SdkOpenStoragePolicyEnforceInspectResponse](#sdkopenstoragepolicyenforceinspectresponse)
+
+EnforcesInspect return enforced storage policy if any, otherwise
+empty response
+## Release {#methodopenstorageapiopenstoragepolicyrelease}
+
+> **rpc** Release([SdkOpenStoragePolicyReleaseRequest](#sdkopenstoragepolicyreleaserequest))
+    [SdkOpenStoragePolicyReleaseResponse](#sdkopenstoragepolicyreleaseresponse)
+
+Release specified storage policy constraint for volume
+creation
  <!-- end methods -->
 
 # OpenStorageRole {#serviceopenstorageapiopenstoragerole}
@@ -2683,6 +2766,142 @@ Empty response
  <!-- end HasFields -->
 
 
+## SdkOpenStoragePolicyCreateRequest {#sdkopenstoragepolicycreaterequest}
+Define a request to create storage policy
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| storage_policy | [ SdkStoragePolicy](#sdkstoragepolicy) | storage policy to create |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkOpenStoragePolicyCreateResponse {#sdkopenstoragepolicycreateresponse}
+Empty response
+
+ <!-- end HasFields -->
+
+
+## SdkOpenStoragePolicyDeleteRequest {#sdkopenstoragepolicydeleterequest}
+Define a request to delete storage policy
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| name | [ string](#string) | name of storage policy to delete |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkOpenStoragePolicyDeleteResponse {#sdkopenstoragepolicydeleteresponse}
+Empty Response
+
+ <!-- end HasFields -->
+
+
+## SdkOpenStoragePolicyEnforceInspectRequest {#sdkopenstoragepolicyenforceinspectrequest}
+Empty Request
+
+ <!-- end HasFields -->
+
+
+## SdkOpenStoragePolicyEnforceInspectResponse {#sdkopenstoragepolicyenforceinspectresponse}
+Define storage policy enforce response
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| storage_policy | [ SdkStoragePolicy](#sdkstoragepolicy) | storage policy information which is enforced |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkOpenStoragePolicyEnforceRequest {#sdkopenstoragepolicyenforcerequest}
+Define a request to enforce storage policy
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| name | [ string](#string) | name of policy to set as default enforcement for volume creation This policy will be used to enforce volume configuration |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkOpenStoragePolicyEnforceResponse {#sdkopenstoragepolicyenforceresponse}
+Empty Response
+
+ <!-- end HasFields -->
+
+
+## SdkOpenStoragePolicyEnumerateRequest {#sdkopenstoragepolicyenumeraterequest}
+Empty request
+
+ <!-- end HasFields -->
+
+
+## SdkOpenStoragePolicyEnumerateResponse {#sdkopenstoragepolicyenumerateresponse}
+Define a storage policy enumerate response
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| storage_policies | [repeated SdkStoragePolicy](#sdkstoragepolicy) | List of storage policies |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkOpenStoragePolicyInspectRequest {#sdkopenstoragepolicyinspectrequest}
+Define a request to inspect storage policy
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| name | [ string](#string) | name of storage policy to retrive |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkOpenStoragePolicyInspectResponse {#sdkopenstoragepolicyinspectresponse}
+Define a storage policy inspect response
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| storage_policy | [ SdkStoragePolicy](#sdkstoragepolicy) | storage policy information requested by name |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkOpenStoragePolicyReleaseRequest {#sdkopenstoragepolicyreleaserequest}
+Empty Request
+
+ <!-- end HasFields -->
+
+
+## SdkOpenStoragePolicyReleaseResponse {#sdkopenstoragepolicyreleaseresponse}
+Empty Response
+
+ <!-- end HasFields -->
+
+
+## SdkOpenStoragePolicyUpdateRequest {#sdkopenstoragepolicyupdaterequest}
+Define a request to update storage policy
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| storage_policy | [ SdkStoragePolicy](#sdkstoragepolicy) | storage policy to update |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkOpenStoragePolicyUpdateResponse {#sdkopenstoragepolicyupdateresponse}
+Empty Response
+
+ <!-- end HasFields -->
+
+
 ## SdkRole {#sdkrole}
 
 
@@ -3031,6 +3250,22 @@ Defines a capability of he cluster
  <!-- end HasFields -->
 
 
+## SdkStoragePolicy {#sdkstoragepolicy}
+A SdkStoragePolicy represents minimum set of volume specs to be 
+follow while creating volumes.
+If enforce in OpenStoragePolicy service, VolumeSpecPolicy will be 
+used before creating volume to ensure minimum volume creation rules
+are enforced.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| name | [ string](#string) | Name of storage policy. |
+| policy | [ VolumeSpecPolicy](#volumespecpolicy) | VolumeSpecs to apply while creating volume. |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
 ## SdkVersion {#sdkversion}
 SDK version in Major.Minor.Patch format. The goal of this
 message is to provide clients a method to determine the SDK
@@ -3068,6 +3303,19 @@ Defines a request to attach a volume to the node receiving this request
 | ----- | ---- | ----------- |
 | volume_id | [ string](#string) | Id of volume |
 | options | [ SdkVolumeAttachOptions](#sdkvolumeattachoptions) | Options to attach device |
+| driver_options | [map SdkVolumeAttachRequest.DriverOptionsEntry](#sdkvolumeattachrequestdriveroptionsentry) | The following options are private to the driver plugin running the OpenStorage SDK. Contact your driver developer for any special values that need to be provided here. |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVolumeAttachRequest.DriverOptionsEntry {#sdkvolumeattachrequestdriveroptionsentry}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [ string](#string) | none |
+| value | [ string](#string) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3202,6 +3450,19 @@ Defines a request to detach a volume
 | ----- | ---- | ----------- |
 | volume_id | [ string](#string) | Id of the volume |
 | options | [ SdkVolumeDetachOptions](#sdkvolumedetachoptions) | Options to detach device |
+| driver_options | [map SdkVolumeDetachRequest.DriverOptionsEntry](#sdkvolumedetachrequestdriveroptionsentry) | The following options are private to the driver plugin running the OpenStorage SDK. Contact your driver developer for any special values that need to be provided here. |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVolumeDetachRequest.DriverOptionsEntry {#sdkvolumedetachrequestdriveroptionsentry}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [ string](#string) | none |
+| value | [ string](#string) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3310,6 +3571,19 @@ Defines a request to mount a volume to the node receiving this request
 | volume_id | [ string](#string) | Id of the volume |
 | mount_path | [ string](#string) | Mount path for mounting the volume. |
 | options | [ SdkVolumeAttachOptions](#sdkvolumeattachoptions) | Options to attach device |
+| driver_options | [map SdkVolumeMountRequest.DriverOptionsEntry](#sdkvolumemountrequestdriveroptionsentry) | The following options are private to the driver plugin running the OpenStorage SDK. Contact your driver developer for any special values that need to be provided here. |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVolumeMountRequest.DriverOptionsEntry {#sdkvolumemountrequestdriveroptionsentry}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [ string](#string) | none |
+| value | [ string](#string) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3493,6 +3767,19 @@ Defines a request to unmount a volume on the node receiving this request
 | volume_id | [ string](#string) | Id of volume |
 | mount_path | [ string](#string) | MountPath for device |
 | options | [ SdkVolumeUnmountOptions](#sdkvolumeunmountoptions) | Options to unmount device |
+| driver_options | [map SdkVolumeUnmountRequest.DriverOptionsEntry](#sdkvolumeunmountrequestdriveroptionsentry) | The following options are private to the driver plugin running the OpenStorage SDK. Contact your driver developer for any special values that need to be provided here. |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVolumeUnmountRequest.DriverOptionsEntry {#sdkvolumeunmountrequestdriveroptionsentry}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [ string](#string) | none |
+| value | [ string](#string) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3964,7 +4251,7 @@ VolumeSpec has the properties needed to create a volume.
 | volume_labels | [map VolumeSpec.VolumeLabelsEntry](#volumespecvolumelabelsentry) | (deprecated, do not use) VolumeLabels configuration labels |
 | shared | [ bool](#bool) | Shared is true if this volume can be concurrently accessed by multiple users. |
 | replica_set | [ ReplicaSet](#replicaset) | ReplicaSet is the desired set of nodes for the volume data. |
-| aggregation_level | [ uint32](#uint32) | Aggregatiokn level Specifies the number of parts the volume can be aggregated from. |
+| aggregation_level | [ uint32](#uint32) | Aggregation level Specifies the number of parts the volume can be aggregated from. |
 | encrypted | [ bool](#bool) | Encrypted is true if this volume will be cryptographically secured. |
 | passphrase | [ string](#string) | Passphrase for an encrypted volume |
 | snapshot_schedule | [ string](#string) | SnapshotSchedule a well known string that specifies when snapshots should be taken. |
@@ -3981,12 +4268,58 @@ VolumeSpec has the properties needed to create a volume.
 | nodiscard | [ bool](#bool) | Nodiscard specifies if the volume will be mounted with discard support disabled. i.e. FS will not release allocated blocks back to the backing storage pool. |
 | io_strategy | [ IoStrategy](#iostrategy) | IoStrategy preferred strategy for I/O. |
 | placement_strategy | [ VolumePlacementStrategy](#volumeplacementstrategy) | PlacementStrategy specifies a spec to indicate where to place the volume. |
+| storage_policy | [ string](#string) | StoragePolicy to be enforced while creating volume |
 | ownership | [ Ownership](#ownership) | Owner |
  <!-- end Fields -->
  <!-- end HasFields -->
 
 
 ## VolumeSpec.VolumeLabelsEntry {#volumespecvolumelabelsentry}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [ string](#string) | none |
+| value | [ string](#string) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## VolumeSpecPolicy {#volumespecpolicy}
+VolumeSpecPolicy provides a method to set volume storage policy
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) size_opt.size | [ uint64](#uint64) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) ha_level_opt.ha_level | [ int64](#int64) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) cos_opt.cos | [ CosType](#costype) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) io_profile_opt.io_profile | [ IoProfile](#ioprofile) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) dedupe_opt.dedupe | [ bool](#bool) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) snapshot_interval_opt.snapshot_interval | [ uint32](#uint32) | none |
+| volume_labels | [map VolumeSpecPolicy.VolumeLabelsEntry](#volumespecpolicyvolumelabelsentry) | VolumeLabels configuration labels |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) shared_opt.shared | [ bool](#bool) | none |
+| replica_set | [ ReplicaSet](#replicaset) | ReplicaSet is the desired set of nodes for the volume data. |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) passphrase_opt.passphrase | [ string](#string) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) snapshot_schedule_opt.snapshot_schedule | [ string](#string) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) scale_opt.scale | [ uint32](#uint32) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) sticky_opt.sticky | [ bool](#bool) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) group_opt.group | [ Group](#group) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) journal_opt.journal | [ bool](#bool) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) sharedv4_opt.sharedv4 | [ bool](#bool) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) queue_depth_opt.queue_depth | [ uint32](#uint32) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) encrypted_opt.encrypted | [ bool](#bool) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) aggregation_level_opt.aggregation_level | [ uint32](#uint32) | none |
+| size_operator | [ VolumeSpecPolicy.PolicyOp](#volumespecpolicypolicyop) | Operator to check size |
+| ha_level_operator | [ VolumeSpecPolicy.PolicyOp](#volumespecpolicypolicyop) | Operator to check ha_level |
+| scale_operator | [ VolumeSpecPolicy.PolicyOp](#volumespecpolicypolicyop) | Operator to check scale |
+| snapshot_interval_operator | [ VolumeSpecPolicy.PolicyOp](#volumespecpolicypolicyop) | Operator to check snapshot_interval |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## VolumeSpecPolicy.VolumeLabelsEntry {#volumespecpolicyvolumelabelsentry}
 
 
 
@@ -4311,6 +4644,7 @@ CloudBackup status types
 | ROLE | 10 | Role service |
 | CLUSTER_PAIR | 11 | Cluster Pair service |
 | MIGRATE | 12 | Migrate service |
+| STORAGE_POLICY | 13 | StoragePolicy Service |
 
 
 
@@ -4339,7 +4673,7 @@ client and server applications
 | ---- | ------ | ----------- |
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
-| Minor | 39 | SDK version minor value of this specification |
+| Minor | 41 | SDK version minor value of this specification |
 | Patch | 0 | SDK version patch value of this specification |
 
 
@@ -4424,6 +4758,18 @@ Defines the types of enforcement on the given rules
 | ---- | ------ | ----------- |
 | required | 0 | This specifies that the rule is required and must be strictly enforced |
 | preferred | 1 | This specifies that the rule is preferred and can be best effort |
+
+
+
+
+## VolumeSpecPolicy.PolicyOp {#volumespecpolicypolicyop}
+This defines an operator for the policy comparisons
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| Equal | 0 | Policy will make sure the value must be equal |
+| Minimum | 1 | Policy will make sure the requested value must be greater than or equal |
+| Maximum | 2 | Policy will make sure the requested value must be less than or equal |
 
 
 

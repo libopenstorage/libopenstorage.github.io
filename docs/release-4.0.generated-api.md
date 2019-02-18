@@ -14,6 +14,7 @@
     - [OpenStorageMountAttach](#serviceopenstorageapiopenstoragemountattach)
     - [OpenStorageNode](#serviceopenstorageapiopenstoragenode)
     - [OpenStorageObjectstore](#serviceopenstorageapiopenstorageobjectstore)
+    - [OpenStoragePolicy](#serviceopenstorageapiopenstoragepolicy)
     - [OpenStorageSchedulePolicy](#serviceopenstorageapiopenstorageschedulepolicy)
     - [OpenStorageVolume](#serviceopenstorageapiopenstoragevolume)
   
@@ -165,6 +166,22 @@
     - [SdkObjectstoreInspectResponse](#sdkobjectstoreinspectresponse)
     - [SdkObjectstoreUpdateRequest](#sdkobjectstoreupdaterequest)
     - [SdkObjectstoreUpdateResponse](#sdkobjectstoreupdateresponse)
+    - [SdkOpenStoragePolicyCreateRequest](#sdkopenstoragepolicycreaterequest)
+    - [SdkOpenStoragePolicyCreateResponse](#sdkopenstoragepolicycreateresponse)
+    - [SdkOpenStoragePolicyDeleteRequest](#sdkopenstoragepolicydeleterequest)
+    - [SdkOpenStoragePolicyDeleteResponse](#sdkopenstoragepolicydeleteresponse)
+    - [SdkOpenStoragePolicyEnforceInspectRequest](#sdkopenstoragepolicyenforceinspectrequest)
+    - [SdkOpenStoragePolicyEnforceInspectResponse](#sdkopenstoragepolicyenforceinspectresponse)
+    - [SdkOpenStoragePolicyEnforceRequest](#sdkopenstoragepolicyenforcerequest)
+    - [SdkOpenStoragePolicyEnforceResponse](#sdkopenstoragepolicyenforceresponse)
+    - [SdkOpenStoragePolicyEnumerateRequest](#sdkopenstoragepolicyenumeraterequest)
+    - [SdkOpenStoragePolicyEnumerateResponse](#sdkopenstoragepolicyenumerateresponse)
+    - [SdkOpenStoragePolicyInspectRequest](#sdkopenstoragepolicyinspectrequest)
+    - [SdkOpenStoragePolicyInspectResponse](#sdkopenstoragepolicyinspectresponse)
+    - [SdkOpenStoragePolicyReleaseRequest](#sdkopenstoragepolicyreleaserequest)
+    - [SdkOpenStoragePolicyReleaseResponse](#sdkopenstoragepolicyreleaseresponse)
+    - [SdkOpenStoragePolicyUpdateRequest](#sdkopenstoragepolicyupdaterequest)
+    - [SdkOpenStoragePolicyUpdateResponse](#sdkopenstoragepolicyupdateresponse)
     - [SdkSchedulePolicy](#sdkschedulepolicy)
     - [SdkSchedulePolicyCreateRequest](#sdkschedulepolicycreaterequest)
     - [SdkSchedulePolicyCreateResponse](#sdkschedulepolicycreateresponse)
@@ -183,6 +200,7 @@
     - [SdkSchedulePolicyUpdateResponse](#sdkschedulepolicyupdateresponse)
     - [SdkServiceCapability](#sdkservicecapability)
     - [SdkServiceCapability.OpenStorageService](#sdkservicecapabilityopenstorageservice)
+    - [SdkStoragePolicy](#sdkstoragepolicy)
     - [SdkVersion](#sdkversion)
     - [SdkVolumeAttachRequest](#sdkvolumeattachrequest)
     - [SdkVolumeAttachRequest.Options](#sdkvolumeattachrequestoptions)
@@ -254,6 +272,8 @@
     - [VolumeSetResponse](#volumesetresponse)
     - [VolumeSpec](#volumespec)
     - [VolumeSpec.VolumeLabelsEntry](#volumespecvolumelabelsentry)
+    - [VolumeSpecPolicy](#volumespecpolicy)
+    - [VolumeSpecPolicy.VolumeLabelsEntry](#volumespecpolicyvolumelabelsentry)
     - [VolumeSpecUpdate](#volumespecupdate)
     - [VolumeSpecUpdate.VolumeLabelsEntry](#volumespecupdatevolumelabelsentry)
     - [VolumeStateAction](#volumestateaction)
@@ -287,6 +307,7 @@
     - [VolumeActionParam](#volumeactionparam)
     - [VolumePlacementRule.AffinityRuleType](#volumeplacementruleaffinityruletype)
     - [VolumePlacementRule.EnforcementType](#volumeplacementruleenforcementtype)
+    - [VolumeSpecPolicy.PolicyOp](#volumespecpolicypolicyop)
     - [VolumeState](#volumestate)
     - [VolumeStatus](#volumestatus)
   
@@ -702,6 +723,64 @@ Delete destroys the object store endpoint on the volume
 Updates provided objectstore status.
 This call can be used to stop and start the server while maintaining the same
 object storage id.
+ <!-- end methods -->
+
+# OpenStoragePolicy {#serviceopenstorageapiopenstoragepolicy}
+OpenStoragePolicy service provides methods to manager storage policies.
+
+Policies can be used to enforces a set of volume configurations to be followed
+while creating volumes.
+
+## Create {#methodopenstorageapiopenstoragepolicycreate}
+
+> **rpc** Create([SdkOpenStoragePolicyCreateRequest](#sdkopenstoragepolicycreaterequest))
+    [SdkOpenStoragePolicyCreateResponse](#sdkopenstoragepolicycreateresponse)
+
+Creates a storage policy
+## Enumerate {#methodopenstorageapiopenstoragepolicyenumerate}
+
+> **rpc** Enumerate([SdkOpenStoragePolicyEnumerateRequest](#sdkopenstoragepolicyenumeraterequest))
+    [SdkOpenStoragePolicyEnumerateResponse](#sdkopenstoragepolicyenumerateresponse)
+
+Enumerate returns a list of storage policies
+## Inspect {#methodopenstorageapiopenstoragepolicyinspect}
+
+> **rpc** Inspect([SdkOpenStoragePolicyInspectRequest](#sdkopenstoragepolicyinspectrequest))
+    [SdkOpenStoragePolicyInspectResponse](#sdkopenstoragepolicyinspectresponse)
+
+Inspect returns information about a specified storage policy
+## Update {#methodopenstorageapiopenstoragepolicyupdate}
+
+> **rpc** Update([SdkOpenStoragePolicyUpdateRequest](#sdkopenstoragepolicyupdaterequest))
+    [SdkOpenStoragePolicyUpdateResponse](#sdkopenstoragepolicyupdateresponse)
+
+Updates specified storage policy
+## Delete {#methodopenstorageapiopenstoragepolicydelete}
+
+> **rpc** Delete([SdkOpenStoragePolicyDeleteRequest](#sdkopenstoragepolicydeleterequest))
+    [SdkOpenStoragePolicyDeleteResponse](#sdkopenstoragepolicydeleteresponse)
+
+Deletes specified storage policy
+## Enforce {#methodopenstorageapiopenstoragepolicyenforce}
+
+> **rpc** Enforce([SdkOpenStoragePolicyEnforceRequest](#sdkopenstoragepolicyenforcerequest))
+    [SdkOpenStoragePolicyEnforceResponse](#sdkopenstoragepolicyenforceresponse)
+
+Enforces specified storage policy
+## EnforceInspect {#methodopenstorageapiopenstoragepolicyenforceinspect}
+
+> **rpc** EnforceInspect([SdkOpenStoragePolicyEnforceInspectRequest](#sdkopenstoragepolicyenforceinspectrequest))
+    [SdkOpenStoragePolicyEnforceInspectResponse](#sdkopenstoragepolicyenforceinspectresponse)
+
+EnforcesInspect return enforced storage policy if any, otherwise
+empty response
+## Release {#methodopenstorageapiopenstoragepolicyrelease}
+
+> **rpc** Release([SdkOpenStoragePolicyReleaseRequest](#sdkopenstoragepolicyreleaserequest))
+    [SdkOpenStoragePolicyReleaseResponse](#sdkopenstoragepolicyreleaseresponse)
+
+Release specified storage policy constraint for volume
+creation
  <!-- end methods -->
 
 # OpenStorageSchedulePolicy {#serviceopenstorageapiopenstorageschedulepolicy}
@@ -2565,6 +2644,142 @@ Empty response
  <!-- end HasFields -->
 
 
+## SdkOpenStoragePolicyCreateRequest {#sdkopenstoragepolicycreaterequest}
+Define a request to create storage policy
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| storage_policy | [ SdkStoragePolicy](#sdkstoragepolicy) | storage policy to create |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkOpenStoragePolicyCreateResponse {#sdkopenstoragepolicycreateresponse}
+Empty response
+
+ <!-- end HasFields -->
+
+
+## SdkOpenStoragePolicyDeleteRequest {#sdkopenstoragepolicydeleterequest}
+Define a request to delete storage policy
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| name | [ string](#string) | name of storage policy to delete |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkOpenStoragePolicyDeleteResponse {#sdkopenstoragepolicydeleteresponse}
+Empty Response
+
+ <!-- end HasFields -->
+
+
+## SdkOpenStoragePolicyEnforceInspectRequest {#sdkopenstoragepolicyenforceinspectrequest}
+Empty Request
+
+ <!-- end HasFields -->
+
+
+## SdkOpenStoragePolicyEnforceInspectResponse {#sdkopenstoragepolicyenforceinspectresponse}
+Define storage policy enforce response
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| storage_policy | [ SdkStoragePolicy](#sdkstoragepolicy) | storage policy information which is enforced |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkOpenStoragePolicyEnforceRequest {#sdkopenstoragepolicyenforcerequest}
+Define a request to enforce storage policy
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| name | [ string](#string) | name of policy to set as default enforcement for volume creation This policy will be used to enforce volume configuration |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkOpenStoragePolicyEnforceResponse {#sdkopenstoragepolicyenforceresponse}
+Empty Response
+
+ <!-- end HasFields -->
+
+
+## SdkOpenStoragePolicyEnumerateRequest {#sdkopenstoragepolicyenumeraterequest}
+Empty request
+
+ <!-- end HasFields -->
+
+
+## SdkOpenStoragePolicyEnumerateResponse {#sdkopenstoragepolicyenumerateresponse}
+Define a storage policy enumerate response
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| storage_policies | [repeated SdkStoragePolicy](#sdkstoragepolicy) | List of storage policies |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkOpenStoragePolicyInspectRequest {#sdkopenstoragepolicyinspectrequest}
+Define a request to inspect storage policy
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| name | [ string](#string) | name of storage policy to retrive |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkOpenStoragePolicyInspectResponse {#sdkopenstoragepolicyinspectresponse}
+Define a storage policy inspect response
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| storage_policy | [ SdkStoragePolicy](#sdkstoragepolicy) | storage policy information requested by name |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkOpenStoragePolicyReleaseRequest {#sdkopenstoragepolicyreleaserequest}
+Empty Request
+
+ <!-- end HasFields -->
+
+
+## SdkOpenStoragePolicyReleaseResponse {#sdkopenstoragepolicyreleaseresponse}
+Empty Response
+
+ <!-- end HasFields -->
+
+
+## SdkOpenStoragePolicyUpdateRequest {#sdkopenstoragepolicyupdaterequest}
+Define a request to update storage policy
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| storage_policy | [ SdkStoragePolicy](#sdkstoragepolicy) | storage policy to update |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkOpenStoragePolicyUpdateResponse {#sdkopenstoragepolicyupdateresponse}
+Empty Response
+
+ <!-- end HasFields -->
+
+
 ## SdkSchedulePolicy {#sdkschedulepolicy}
 Defines a schedule policy
 
@@ -2749,6 +2964,22 @@ Defines a capability of he cluster
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | type | [ SdkServiceCapability.OpenStorageService.Type](#sdkservicecapabilityopenstorageservicetype) | Type of service supported |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkStoragePolicy {#sdkstoragepolicy}
+A SdkStoragePolicy represents minimum set of volume specs to be 
+follow while creating volumes.
+If enforce in OpenStoragePolicy service, VolumeSpecPolicy will be 
+used before creating volume to ensure minimum volume creation rules
+are enforced.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| name | [ string](#string) | Name of storage policy. |
+| policy | [ VolumeSpecPolicy](#volumespecpolicy) | VolumeSpecs to apply while creating volume. |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3644,7 +3875,7 @@ swagger:model
 | volume_labels | [map VolumeSpec.VolumeLabelsEntry](#volumespecvolumelabelsentry) | VolumeLabels configuration labels |
 | shared | [ bool](#bool) | Shared is true if this volume can be concurrently accessed by multiple users. |
 | replica_set | [ ReplicaSet](#replicaset) | ReplicaSet is the desired set of nodes for the volume data. |
-| aggregation_level | [ uint32](#uint32) | Aggregatiokn level Specifies the number of parts the volume can be aggregated from. |
+| aggregation_level | [ uint32](#uint32) | Aggregation level Specifies the number of parts the volume can be aggregated from. |
 | encrypted | [ bool](#bool) | Encrypted is true if this volume will be cryptographically secured. |
 | passphrase | [ string](#string) | Passphrase for an encrypted volume |
 | snapshot_schedule | [ string](#string) | SnapshotSchedule a well known string that specifies when snapshots should be taken. |
@@ -3661,11 +3892,57 @@ swagger:model
 | nodiscard | [ bool](#bool) | Nodiscard specifies if the volume will be mounted with discard support disabled. i.e. FS will not release allocated blocks back to the backing storage pool. |
 | io_strategy | [ IoStrategy](#iostrategy) | IoStrategy preferred strategy for I/O. |
 | placement_strategy | [ VolumePlacementStrategy](#volumeplacementstrategy) | PlacementStrategy specifies a spec to indicate where to place the volume. |
+| storage_policy | [ string](#string) | StoragePolicy to be enforced while creating volume |
  <!-- end Fields -->
  <!-- end HasFields -->
 
 
 ## VolumeSpec.VolumeLabelsEntry {#volumespecvolumelabelsentry}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [ string](#string) | none |
+| value | [ string](#string) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## VolumeSpecPolicy {#volumespecpolicy}
+VolumeSpecPolicy provides a method to set volume storage policy
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) size_opt.size | [ uint64](#uint64) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) ha_level_opt.ha_level | [ int64](#int64) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) cos_opt.cos | [ CosType](#costype) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) io_profile_opt.io_profile | [ IoProfile](#ioprofile) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) dedupe_opt.dedupe | [ bool](#bool) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) snapshot_interval_opt.snapshot_interval | [ uint32](#uint32) | none |
+| volume_labels | [map VolumeSpecPolicy.VolumeLabelsEntry](#volumespecpolicyvolumelabelsentry) | VolumeLabels configuration labels |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) shared_opt.shared | [ bool](#bool) | none |
+| replica_set | [ ReplicaSet](#replicaset) | ReplicaSet is the desired set of nodes for the volume data. |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) passphrase_opt.passphrase | [ string](#string) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) snapshot_schedule_opt.snapshot_schedule | [ string](#string) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) scale_opt.scale | [ uint32](#uint32) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) sticky_opt.sticky | [ bool](#bool) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) group_opt.group | [ Group](#group) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) journal_opt.journal | [ bool](#bool) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) sharedv4_opt.sharedv4 | [ bool](#bool) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) queue_depth_opt.queue_depth | [ uint32](#uint32) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) encrypted_opt.encrypted | [ bool](#bool) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) aggregation_level_opt.aggregation_level | [ uint32](#uint32) | none |
+| size_operator | [ VolumeSpecPolicy.PolicyOp](#volumespecpolicypolicyop) | Operator to check size |
+| ha_level_operator | [ VolumeSpecPolicy.PolicyOp](#volumespecpolicypolicyop) | Operator to check ha_level |
+| scale_operator | [ VolumeSpecPolicy.PolicyOp](#volumespecpolicypolicyop) | Operator to check scale |
+| snapshot_interval_operator | [ VolumeSpecPolicy.PolicyOp](#volumespecpolicypolicyop) | Operator to check snapshot_interval |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## VolumeSpecPolicy.VolumeLabelsEntry {#volumespecpolicyvolumelabelsentry}
 
 
 
@@ -3984,6 +4261,7 @@ CloudBackup status types
 | VOLUME | 7 | Volume management |
 | ALERTS | 8 | Alert enumeration |
 | MOUNT_ATTACH | 9 | Mount/Attach Support |
+| STORAGE_POLICY | 13 | StoragePolicy Service |
 
 
 
@@ -4013,7 +4291,7 @@ client and server applications
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
 | Minor | 22 | SDK version minor value of this specification |
-| Patch | 10 | SDK version patch value of this specification |
+| Patch | 11 | SDK version patch value of this specification |
 
 
 
@@ -4097,6 +4375,18 @@ Defines the types of enforcement on the given rules
 | ---- | ------ | ----------- |
 | Required | 0 | This specifies that the rule is required and must be strictly enforced |
 | Preferred | 1 | This specifies that the rule is preferred and can be best effort |
+
+
+
+
+## VolumeSpecPolicy.PolicyOp {#volumespecpolicypolicyop}
+This defines an operator for the policy comparisons
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| Equal | 0 | Policy will make sure the value must be equal |
+| Minimum | 1 | Policy will make sure the requested value must be greater than or equal |
+| Maximum | 2 | Policy will make sure the requested value must be less than or equal |
 
 
 

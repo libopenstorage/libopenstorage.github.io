@@ -2,6 +2,15 @@
 
 ## Releases
 
+### v0.41.0 - Tech Preview (2/20/2019)
+
+* Add driver options to RPCs in the MountAttach service
+
+### v0.40.0 - Tech Preview (2/19/2019)
+
+* Storage policy support
+* Allow Enforce/Release of storage policy
+
 ### v0.39.0 - Tech Preview (1/29/2019)
 
 * Additional fields to cloud-backup data structure to track group cloud backups.
