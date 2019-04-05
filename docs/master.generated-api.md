@@ -7,6 +7,7 @@
     - [OpenStorageAlerts](#serviceopenstorageapiopenstoragealerts)
     - [OpenStorageCloudBackup](#serviceopenstorageapiopenstoragecloudbackup)
     - [OpenStorageCluster](#serviceopenstorageapiopenstoragecluster)
+    - [OpenStorageClusterDomains](#serviceopenstorageapiopenstorageclusterdomains)
     - [OpenStorageClusterPair](#serviceopenstorageapiopenstorageclusterpair)
     - [OpenStorageCredentials](#serviceopenstorageapiopenstoragecredentials)
     - [OpenStorageIdentity](#serviceopenstorageapiopenstorageidentity)
@@ -44,6 +45,7 @@
     - [ClusterPairGetResponse](#clusterpairgetresponse)
     - [ClusterPairInfo](#clusterpairinfo)
     - [ClusterPairInfo.OptionsEntry](#clusterpairinfooptionsentry)
+    - [ClusterPairMode](#clusterpairmode)
     - [ClusterPairProcessRequest](#clusterpairprocessrequest)
     - [ClusterPairProcessResponse](#clusterpairprocessresponse)
     - [ClusterPairProcessResponse.OptionsEntry](#clusterpairprocessresponseoptionsentry)
@@ -125,6 +127,14 @@
     - [SdkCloudMigrateStartResponse](#sdkcloudmigratestartresponse)
     - [SdkCloudMigrateStatusRequest](#sdkcloudmigratestatusrequest)
     - [SdkCloudMigrateStatusResponse](#sdkcloudmigratestatusresponse)
+    - [SdkClusterDomainActivateRequest](#sdkclusterdomainactivaterequest)
+    - [SdkClusterDomainActivateResponse](#sdkclusterdomainactivateresponse)
+    - [SdkClusterDomainDeactivateRequest](#sdkclusterdomaindeactivaterequest)
+    - [SdkClusterDomainDeactivateResponse](#sdkclusterdomaindeactivateresponse)
+    - [SdkClusterDomainInspectRequest](#sdkclusterdomaininspectrequest)
+    - [SdkClusterDomainInspectResponse](#sdkclusterdomaininspectresponse)
+    - [SdkClusterDomainsEnumerateRequest](#sdkclusterdomainsenumeraterequest)
+    - [SdkClusterDomainsEnumerateResponse](#sdkclusterdomainsenumerateresponse)
     - [SdkClusterInspectCurrentRequest](#sdkclusterinspectcurrentrequest)
     - [SdkClusterInspectCurrentResponse](#sdkclusterinspectcurrentresponse)
     - [SdkClusterPairCreateRequest](#sdkclusterpaircreaterequest)
@@ -171,18 +181,18 @@
     - [SdkObjectstoreUpdateResponse](#sdkobjectstoreupdateresponse)
     - [SdkOpenStoragePolicyCreateRequest](#sdkopenstoragepolicycreaterequest)
     - [SdkOpenStoragePolicyCreateResponse](#sdkopenstoragepolicycreateresponse)
+    - [SdkOpenStoragePolicyDefaultInspectRequest](#sdkopenstoragepolicydefaultinspectrequest)
+    - [SdkOpenStoragePolicyDefaultInspectResponse](#sdkopenstoragepolicydefaultinspectresponse)
     - [SdkOpenStoragePolicyDeleteRequest](#sdkopenstoragepolicydeleterequest)
     - [SdkOpenStoragePolicyDeleteResponse](#sdkopenstoragepolicydeleteresponse)
-    - [SdkOpenStoragePolicyEnforceInspectRequest](#sdkopenstoragepolicyenforceinspectrequest)
-    - [SdkOpenStoragePolicyEnforceInspectResponse](#sdkopenstoragepolicyenforceinspectresponse)
-    - [SdkOpenStoragePolicyEnforceRequest](#sdkopenstoragepolicyenforcerequest)
-    - [SdkOpenStoragePolicyEnforceResponse](#sdkopenstoragepolicyenforceresponse)
     - [SdkOpenStoragePolicyEnumerateRequest](#sdkopenstoragepolicyenumeraterequest)
     - [SdkOpenStoragePolicyEnumerateResponse](#sdkopenstoragepolicyenumerateresponse)
     - [SdkOpenStoragePolicyInspectRequest](#sdkopenstoragepolicyinspectrequest)
     - [SdkOpenStoragePolicyInspectResponse](#sdkopenstoragepolicyinspectresponse)
     - [SdkOpenStoragePolicyReleaseRequest](#sdkopenstoragepolicyreleaserequest)
     - [SdkOpenStoragePolicyReleaseResponse](#sdkopenstoragepolicyreleaseresponse)
+    - [SdkOpenStoragePolicySetDefaultRequest](#sdkopenstoragepolicysetdefaultrequest)
+    - [SdkOpenStoragePolicySetDefaultResponse](#sdkopenstoragepolicysetdefaultresponse)
     - [SdkOpenStoragePolicyUpdateRequest](#sdkopenstoragepolicyupdaterequest)
     - [SdkOpenStoragePolicyUpdateResponse](#sdkopenstoragepolicyupdateresponse)
     - [SdkRole](#sdkrole)
@@ -308,7 +318,7 @@
     - [CloudMigrate.OperationType](#cloudmigrateoperationtype)
     - [CloudMigrate.Stage](#cloudmigratestage)
     - [CloudMigrate.Status](#cloudmigratestatus)
-    - [ClusterNotify](#clusternotify)
+    - [ClusterPairMode.Mode](#clusterpairmodemode)
     - [CosType](#costype)
     - [DriverType](#drivertype)
     - [FSType](#fstype)
@@ -502,6 +512,45 @@ OpenStorageCluster service provides the methods to manage the cluster
     [SdkClusterInspectCurrentResponse](#sdkclusterinspectcurrentresponse)
 
 InspectCurrent returns information about the current cluster
+ <!-- end methods -->
+
+# OpenStorageClusterDomains {#serviceopenstorageapiopenstorageclusterdomains}
+OpenStorageClusterDomains is a service used to manage cluster domains in an openstorage cluster.
+A single openstorage cluster can stretch across multiple cluster domains. In other words it can
+span across multiple Container Orchestrator clusters. Each node in the cluster is assigned a
+a cluster domain to start with. A cluster domain and in turn the nodes which are a part of it
+are assigned a status indicating whether the cluster domain is actively participating in the
+cluster or whether it is inactive.
+
+## Enumerate {#methodopenstorageapiopenstorageclusterdomainsenumerate}
+
+> **rpc** Enumerate([SdkClusterDomainsEnumerateRequest](#sdkclusterdomainsenumeraterequest))
+    [SdkClusterDomainsEnumerateResponse](#sdkclusterdomainsenumerateresponse)
+
+Enumerate returns names of all the cluster domains in the cluster
+## Inspect {#methodopenstorageapiopenstorageclusterdomainsinspect}
+
+> **rpc** Inspect([SdkClusterDomainInspectRequest](#sdkclusterdomaininspectrequest))
+    [SdkClusterDomainInspectResponse](#sdkclusterdomaininspectresponse)
+
+Inspect returns information about a cluster domain and a
+status indicating whether the cluster domain is active
+## Activate {#methodopenstorageapiopenstorageclusterdomainsactivate}
+
+> **rpc** Activate([SdkClusterDomainActivateRequest](#sdkclusterdomainactivaterequest))
+    [SdkClusterDomainActivateResponse](#sdkclusterdomainactivateresponse)
+
+Activates a cluster domain in the cluster.
+All the nodes which are part of an active cluster domain
+will participate in cluster quorum calculation
+## Deactivate {#methodopenstorageapiopenstorageclusterdomainsdeactivate}
+
+> **rpc** Deactivate([SdkClusterDomainDeactivateRequest](#sdkclusterdomaindeactivaterequest))
+    [SdkClusterDomainDeactivateResponse](#sdkclusterdomaindeactivateresponse)
+
+Deactivates a cluster domain in the cluster.
+All the nodes which are part of a deactivated cluster domain.
+will not participate in cluster quorum calculation
  <!-- end methods -->
 
 # OpenStorageClusterPair {#serviceopenstorageapiopenstorageclusterpair}
@@ -761,7 +810,7 @@ object storage id.
 # OpenStoragePolicy {#serviceopenstorageapiopenstoragepolicy}
 OpenStoragePolicy service provides methods to manager storage policies.
 
-Policies can be used to enforces a set of volume configurations to be followed
+Policies can be used to validate/ensure a set of volume configurations to be followed
 while creating volumes.
 
 ## Create {#methodopenstorageapiopenstoragepolicycreate}
@@ -794,18 +843,18 @@ Updates specified storage policy
     [SdkOpenStoragePolicyDeleteResponse](#sdkopenstoragepolicydeleteresponse)
 
 Deletes specified storage policy
-## Enforce {#methodopenstorageapiopenstoragepolicyenforce}
+## SetDefault {#methodopenstorageapiopenstoragepolicysetdefault}
 
-> **rpc** Enforce([SdkOpenStoragePolicyEnforceRequest](#sdkopenstoragepolicyenforcerequest))
-    [SdkOpenStoragePolicyEnforceResponse](#sdkopenstoragepolicyenforceresponse)
+> **rpc** SetDefault([SdkOpenStoragePolicySetDefaultRequest](#sdkopenstoragepolicysetdefaultrequest))
+    [SdkOpenStoragePolicySetDefaultResponse](#sdkopenstoragepolicysetdefaultresponse)
 
-Enforces specified storage policy
-## EnforceInspect {#methodopenstorageapiopenstoragepolicyenforceinspect}
+Set specified storage policy as default policy
+## DefaultInspect {#methodopenstorageapiopenstoragepolicydefaultinspect}
 
-> **rpc** EnforceInspect([SdkOpenStoragePolicyEnforceInspectRequest](#sdkopenstoragepolicyenforceinspectrequest))
-    [SdkOpenStoragePolicyEnforceInspectResponse](#sdkopenstoragepolicyenforceinspectresponse)
+> **rpc** DefaultInspect([SdkOpenStoragePolicyDefaultInspectRequest](#sdkopenstoragepolicydefaultinspectrequest))
+    [SdkOpenStoragePolicyDefaultInspectResponse](#sdkopenstoragepolicydefaultinspectresponse)
 
-EnforcesInspect return enforced storage policy if any, otherwise
+DefaultInspect return default storage policy if any, otherwise
 empty response
 ## Release {#methodopenstorageapiopenstoragepolicyrelease}
 
@@ -1281,6 +1330,7 @@ Used to send a request to create a cluster pair
 | remote_cluster_port | [ uint32](#uint32) | Port for the remote cluster |
 | remote_cluster_token | [ string](#string) | Token used to authenticate with the remote cluster |
 | set_default | [ bool](#bool) | Set the new pair as the default |
+| mode | [ ClusterPairMode.Mode](#clusterpairmodemode) | The mode to use for the cluster pair |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -1321,6 +1371,7 @@ Information about a cluster pair
 | secure | [ bool](#bool) | Flag used to determine if communication is over a secure channel |
 | token | [ string](#string) | Token associated with cluster |
 | options | [map ClusterPairInfo.OptionsEntry](#clusterpairinfooptionsentry) | Key/value pair of options associated with the cluster Opaque to openstorage and interpreted by the drivers |
+| mode | [ ClusterPairMode.Mode](#clusterpairmodemode) | Mode for the cluster pair |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -1337,6 +1388,12 @@ Information about a cluster pair
  <!-- end HasFields -->
 
 
+## ClusterPairMode {#clusterpairmode}
+
+
+ <!-- end HasFields -->
+
+
 ## ClusterPairProcessRequest {#clusterpairprocessrequest}
 Used to process a pair request from a remote cluster
 
@@ -1345,6 +1402,7 @@ Used to process a pair request from a remote cluster
 | ----- | ---- | ----------- |
 | source_cluster_id | [ string](#string) | ID of the cluster requesting the pairing |
 | remote_cluster_token | [ string](#string) | Token used to authenticate with the remote cluster |
+| mode | [ ClusterPairMode.Mode](#clusterpairmodemode) | The mode to use for the cluster pair |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -2336,6 +2394,80 @@ Defines a response for the status request
  <!-- end HasFields -->
 
 
+## SdkClusterDomainActivateRequest {#sdkclusterdomainactivaterequest}
+Defines a request to activate a cluster domain
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| cluster_domain_name | [ string](#string) | Name of the cluster domain to activate |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkClusterDomainActivateResponse {#sdkclusterdomainactivateresponse}
+Empty response
+
+ <!-- end HasFields -->
+
+
+## SdkClusterDomainDeactivateRequest {#sdkclusterdomaindeactivaterequest}
+Defines a request to deactivate a cluster domain
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| cluster_domain_name | [ string](#string) | Name of the cluster domain to deactivate |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkClusterDomainDeactivateResponse {#sdkclusterdomaindeactivateresponse}
+Empty response
+
+ <!-- end HasFields -->
+
+
+## SdkClusterDomainInspectRequest {#sdkclusterdomaininspectrequest}
+Defines a request to inspect a cluster domain
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| cluster_domain_name | [ string](#string) | Name of the cluster domain to inspect |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkClusterDomainInspectResponse {#sdkclusterdomaininspectresponse}
+Defines a response to inspecting a cluster domain
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| cluster_domain_name | [ string](#string) | Name of the cluster domain |
+| is_active | [ bool](#bool) | IsActive indicates whether this cluster domain is active |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkClusterDomainsEnumerateRequest {#sdkclusterdomainsenumeraterequest}
+Empty request
+
+ <!-- end HasFields -->
+
+
+## SdkClusterDomainsEnumerateResponse {#sdkclusterdomainsenumerateresponse}
+Defines a response when enumerating cluster domains
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| cluster_domain_names | [repeated string](#string) | List of names of all the cluster domains in a cluster |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
 ## SdkClusterInspectCurrentRequest {#sdkclusterinspectcurrentrequest}
 Empty request
 
@@ -2474,6 +2606,7 @@ Defines a request to create credentials
 | name | [ string](#string) | Name of the credential |
 | bucket | [ string](#string) | (optional) Name of bucket |
 | encryption_key | [ string](#string) | (optional) Key used to encrypt the data |
+| ownership | [ Ownership](#ownership) | Ownership of the credential. Collaborators and groups may be added here with their appropriate ACLS. |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.aws_credential | [ SdkAwsCredentialRequest](#sdkawscredentialrequest) | Credentials for AWS/S3 |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.azure_credential | [ SdkAzureCredentialRequest](#sdkazurecredentialrequest) | Credentials for Azure |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.google_credential | [ SdkGoogleCredentialRequest](#sdkgooglecredentialrequest) | Credentials for Google |
@@ -2548,6 +2681,7 @@ you will need to check if the value of credential_type is one of the ones below.
 | credential_id | [ string](#string) | Credential id |
 | name | [ string](#string) | Name of the credential |
 | bucket | [ string](#string) | (optional) Name of bucket |
+| ownership | [ Ownership](#ownership) | Ownership of the credential |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.aws_credential | [ SdkAwsCredentialResponse](#sdkawscredentialresponse) | Aws credentials |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.azure_credential | [ SdkAzureCredentialResponse](#sdkazurecredentialresponse) | Azure credentials |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.google_credential | [ SdkGoogleCredentialResponse](#sdkgooglecredentialresponse) | Google credentials |
@@ -2783,6 +2917,23 @@ Empty response
  <!-- end HasFields -->
 
 
+## SdkOpenStoragePolicyDefaultInspectRequest {#sdkopenstoragepolicydefaultinspectrequest}
+Empty Request
+
+ <!-- end HasFields -->
+
+
+## SdkOpenStoragePolicyDefaultInspectResponse {#sdkopenstoragepolicydefaultinspectresponse}
+Define default storage policy response
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| storage_policy | [ SdkStoragePolicy](#sdkstoragepolicy) | storage policy information which is set as default |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
 ## SdkOpenStoragePolicyDeleteRequest {#sdkopenstoragepolicydeleterequest}
 Define a request to delete storage policy
 
@@ -2795,40 +2946,6 @@ Define a request to delete storage policy
 
 
 ## SdkOpenStoragePolicyDeleteResponse {#sdkopenstoragepolicydeleteresponse}
-Empty Response
-
- <!-- end HasFields -->
-
-
-## SdkOpenStoragePolicyEnforceInspectRequest {#sdkopenstoragepolicyenforceinspectrequest}
-Empty Request
-
- <!-- end HasFields -->
-
-
-## SdkOpenStoragePolicyEnforceInspectResponse {#sdkopenstoragepolicyenforceinspectresponse}
-Define storage policy enforce response
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| storage_policy | [ SdkStoragePolicy](#sdkstoragepolicy) | storage policy information which is enforced |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkOpenStoragePolicyEnforceRequest {#sdkopenstoragepolicyenforcerequest}
-Define a request to enforce storage policy
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| name | [ string](#string) | name of policy to set as default enforcement for volume creation This policy will be used to enforce volume configuration |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkOpenStoragePolicyEnforceResponse {#sdkopenstoragepolicyenforceresponse}
 Empty Response
 
  <!-- end HasFields -->
@@ -2880,6 +2997,23 @@ Empty Request
 
 
 ## SdkOpenStoragePolicyReleaseResponse {#sdkopenstoragepolicyreleaseresponse}
+Empty Response
+
+ <!-- end HasFields -->
+
+
+## SdkOpenStoragePolicySetDefaultRequest {#sdkopenstoragepolicysetdefaultrequest}
+Define a request to set default storage policy
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| name | [ string](#string) | name of policy to set as default storage policy for volume creation This policy will be used to validate/update volume configuration |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkOpenStoragePolicySetDefaultResponse {#sdkopenstoragepolicysetdefaultresponse}
 Empty Response
 
  <!-- end HasFields -->
@@ -3251,17 +3385,20 @@ Defines a capability of he cluster
 
 
 ## SdkStoragePolicy {#sdkstoragepolicy}
-A SdkStoragePolicy represents minimum set of volume specs to be 
+A SdkStoragePolicy represents minimum set of volume specs to be
 follow while creating volumes.
-If enforce in OpenStoragePolicy service, VolumeSpecPolicy will be 
-used before creating volume to ensure minimum volume creation rules
-are enforced.
+If storage policy is set default in OpenStoragePolicy service, VolumeSpecPolicy will be
+used before creating volume to validate volume specs or ensure minimum volume creation
+rules followed
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | name | [ string](#string) | Name of storage policy. |
 | policy | [ VolumeSpecPolicy](#volumespecpolicy) | VolumeSpecs to apply while creating volume. |
+| force | [ bool](#bool) | Force if set to true volume specs will be overwritten, otherwise volume creation will fail if the volume specifications are not inline with storage policy |
+| allow_update | [ bool](#bool) | If set a volume can be updated without storage Policy restriction, otherwise volume update will be followed as per storage policy specification |
+| ownership | [ Ownership](#ownership) | Owner info of storage policy |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3499,6 +3636,7 @@ Defines a request to list volumes
 | name | [ string](#string) | (optional) Name to search |
 | labels | [map SdkVolumeEnumerateWithFiltersRequest.LabelsEntry](#sdkvolumeenumeratewithfiltersrequestlabelsentry) | (optional) Labels to search |
 | ownership | [ Ownership](#ownership) | (optional) Ownership to match |
+| group | [ Group](#group) | (optional) Group to match |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -4140,6 +4278,7 @@ and is used to carry opaque metadata.
 | name | [ string](#string) | User friendly identifier |
 | volume_labels | [map VolumeLocator.VolumeLabelsEntry](#volumelocatorvolumelabelsentry) | A set of name-value pairs that acts as search filters |
 | ownership | [ Ownership](#ownership) | Filter with ownership |
+| group | [ Group](#group) | Filter by group |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -4268,7 +4407,7 @@ VolumeSpec has the properties needed to create a volume.
 | nodiscard | [ bool](#bool) | Nodiscard specifies if the volume will be mounted with discard support disabled. i.e. FS will not release allocated blocks back to the backing storage pool. |
 | io_strategy | [ IoStrategy](#iostrategy) | IoStrategy preferred strategy for I/O. |
 | placement_strategy | [ VolumePlacementStrategy](#volumeplacementstrategy) | PlacementStrategy specifies a spec to indicate where to place the volume. |
-| storage_policy | [ string](#string) | StoragePolicy to be enforced while creating volume |
+| storage_policy | [ string](#string) | StoragePolicy if applied/specified while creating volume |
 | ownership | [ Ownership](#ownership) | Owner |
  <!-- end Fields -->
  <!-- end HasFields -->
@@ -4315,6 +4454,8 @@ VolumeSpecPolicy provides a method to set volume storage policy
 | ha_level_operator | [ VolumeSpecPolicy.PolicyOp](#volumespecpolicypolicyop) | Operator to check ha_level |
 | scale_operator | [ VolumeSpecPolicy.PolicyOp](#volumespecpolicypolicyop) | Operator to check scale |
 | snapshot_interval_operator | [ VolumeSpecPolicy.PolicyOp](#volumespecpolicypolicyop) | Operator to check snapshot_interval |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) nodiscard_opt.nodiscard | [ bool](#bool) | none |
+| io_strategy | [ IoStrategy](#iostrategy) | IoStrategy preferred strategy for I/O. |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -4354,6 +4495,8 @@ VolumeSpecUpdate provides a method to set any of the VolumeSpec of an existing v
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) sharedv4_opt.sharedv4 | [ bool](#bool) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) queue_depth_opt.queue_depth | [ uint32](#uint32) | none |
 | ownership | [ Ownership](#ownership) | Ownership volume information to update. If the value of `owner` in the `ownership` message is an empty string then the value of `owner` in the `VolumeSpec.Ownership.owner` will not be updated. |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) nodiscard_opt.nodiscard | [ bool](#bool) | none |
+| io_strategy | [ IoStrategy](#iostrategy) | IoStrategy preferred strategy for I/O. |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -4443,12 +4586,13 @@ VolumeStateAction specifies desired actions.
 
 
 
-## ClusterNotify {#clusternotify}
+## ClusterPairMode.Mode {#clusterpairmodemode}
 
 
 | Name | Number | Description |
 | ---- | ------ | ----------- |
-| CLUSTER_NOTIFY_DOWN | 0 | Node is down |
+| Default | 0 | Default pairing mode |
+| DisasterRecovery | 1 | Paired for DisasterRecovery |
 
 
 
@@ -4673,7 +4817,7 @@ client and server applications
 | ---- | ------ | ----------- |
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
-| Minor | 42 | SDK version minor value of this specification |
+| Minor | 49 | SDK version minor value of this specification |
 | Patch | 0 | SDK version patch value of this specification |
 
 

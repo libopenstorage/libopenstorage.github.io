@@ -2,6 +2,34 @@
 
 ## Releases
 
+### v0.42.7 - Tech Preview (4/3/2019)
+                                                                                                                                                                                                                                    
+* Add Group to VolumeLocator  
+
+### v0.42.6 - Tech Preview (4/2/2019)
+
+* Add cluster pair Mode option in CreatePair and ProcessPair requests
+
+### v0.42.5 - Tech Preview (3/26/2019)
+
+* Change io_strategy type from oneof to pointer
+
+### v0.42.4 - Tech Preview (3/26/2019)
+
+* Handle spec update for nodiscard, io_strategy
+
+### v0.42.3 - Tech Preview (3/24/2019)
+
+* Add new APIs for managing OpenStorage ClusterDomains
+
+### v0.42.2 - Tech Preview (3/13/2019)
+
+* Add ownership support to OpenStorageStoragePolicy
+
+### v0.42.1 - Tech Preview (3/12/2019)
+
+* Add ownership support to OpenStorageCredential service APIs
+
 ### v0.42.0 - Tech Preview (2/20/2019)
 
 * SnapEnumerate REST endpoint now accepts empty volume ids

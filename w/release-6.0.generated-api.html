@@ -416,6 +416,7 @@
 <li><a href="#serviceopenstorageapiopenstoragealerts">OpenStorageAlerts</a></li>
 <li><a href="#serviceopenstorageapiopenstoragecloudbackup">OpenStorageCloudBackup</a></li>
 <li><a href="#serviceopenstorageapiopenstoragecluster">OpenStorageCluster</a></li>
+<li><a href="#serviceopenstorageapiopenstorageclusterdomains">OpenStorageClusterDomains</a></li>
 <li><a href="#serviceopenstorageapiopenstorageclusterpair">OpenStorageClusterPair</a></li>
 <li><a href="#serviceopenstorageapiopenstoragecredentials">OpenStorageCredentials</a></li>
 <li><a href="#serviceopenstorageapiopenstorageidentity">OpenStorageIdentity</a></li>
@@ -454,6 +455,7 @@
 <li><a href="#clusterpairgetresponse">ClusterPairGetResponse</a></li>
 <li><a href="#clusterpairinfo">ClusterPairInfo</a></li>
 <li><a href="#clusterpairinfooptionsentry">ClusterPairInfo.OptionsEntry</a></li>
+<li><a href="#clusterpairmode">ClusterPairMode</a></li>
 <li><a href="#clusterpairprocessrequest">ClusterPairProcessRequest</a></li>
 <li><a href="#clusterpairprocessresponse">ClusterPairProcessResponse</a></li>
 <li><a href="#clusterpairprocessresponseoptionsentry">ClusterPairProcessResponse.OptionsEntry</a></li>
@@ -535,6 +537,14 @@
 <li><a href="#sdkcloudmigratestartresponse">SdkCloudMigrateStartResponse</a></li>
 <li><a href="#sdkcloudmigratestatusrequest">SdkCloudMigrateStatusRequest</a></li>
 <li><a href="#sdkcloudmigratestatusresponse">SdkCloudMigrateStatusResponse</a></li>
+<li><a href="#sdkclusterdomainactivaterequest">SdkClusterDomainActivateRequest</a></li>
+<li><a href="#sdkclusterdomainactivateresponse">SdkClusterDomainActivateResponse</a></li>
+<li><a href="#sdkclusterdomaindeactivaterequest">SdkClusterDomainDeactivateRequest</a></li>
+<li><a href="#sdkclusterdomaindeactivateresponse">SdkClusterDomainDeactivateResponse</a></li>
+<li><a href="#sdkclusterdomaininspectrequest">SdkClusterDomainInspectRequest</a></li>
+<li><a href="#sdkclusterdomaininspectresponse">SdkClusterDomainInspectResponse</a></li>
+<li><a href="#sdkclusterdomainsenumeraterequest">SdkClusterDomainsEnumerateRequest</a></li>
+<li><a href="#sdkclusterdomainsenumerateresponse">SdkClusterDomainsEnumerateResponse</a></li>
 <li><a href="#sdkclusterinspectcurrentrequest">SdkClusterInspectCurrentRequest</a></li>
 <li><a href="#sdkclusterinspectcurrentresponse">SdkClusterInspectCurrentResponse</a></li>
 <li><a href="#sdkclusterpaircreaterequest">SdkClusterPairCreateRequest</a></li>
@@ -581,18 +591,18 @@
 <li><a href="#sdkobjectstoreupdateresponse">SdkObjectstoreUpdateResponse</a></li>
 <li><a href="#sdkopenstoragepolicycreaterequest">SdkOpenStoragePolicyCreateRequest</a></li>
 <li><a href="#sdkopenstoragepolicycreateresponse">SdkOpenStoragePolicyCreateResponse</a></li>
+<li><a href="#sdkopenstoragepolicydefaultinspectrequest">SdkOpenStoragePolicyDefaultInspectRequest</a></li>
+<li><a href="#sdkopenstoragepolicydefaultinspectresponse">SdkOpenStoragePolicyDefaultInspectResponse</a></li>
 <li><a href="#sdkopenstoragepolicydeleterequest">SdkOpenStoragePolicyDeleteRequest</a></li>
 <li><a href="#sdkopenstoragepolicydeleteresponse">SdkOpenStoragePolicyDeleteResponse</a></li>
-<li><a href="#sdkopenstoragepolicyenforceinspectrequest">SdkOpenStoragePolicyEnforceInspectRequest</a></li>
-<li><a href="#sdkopenstoragepolicyenforceinspectresponse">SdkOpenStoragePolicyEnforceInspectResponse</a></li>
-<li><a href="#sdkopenstoragepolicyenforcerequest">SdkOpenStoragePolicyEnforceRequest</a></li>
-<li><a href="#sdkopenstoragepolicyenforceresponse">SdkOpenStoragePolicyEnforceResponse</a></li>
 <li><a href="#sdkopenstoragepolicyenumeraterequest">SdkOpenStoragePolicyEnumerateRequest</a></li>
 <li><a href="#sdkopenstoragepolicyenumerateresponse">SdkOpenStoragePolicyEnumerateResponse</a></li>
 <li><a href="#sdkopenstoragepolicyinspectrequest">SdkOpenStoragePolicyInspectRequest</a></li>
 <li><a href="#sdkopenstoragepolicyinspectresponse">SdkOpenStoragePolicyInspectResponse</a></li>
 <li><a href="#sdkopenstoragepolicyreleaserequest">SdkOpenStoragePolicyReleaseRequest</a></li>
 <li><a href="#sdkopenstoragepolicyreleaseresponse">SdkOpenStoragePolicyReleaseResponse</a></li>
+<li><a href="#sdkopenstoragepolicysetdefaultrequest">SdkOpenStoragePolicySetDefaultRequest</a></li>
+<li><a href="#sdkopenstoragepolicysetdefaultresponse">SdkOpenStoragePolicySetDefaultResponse</a></li>
 <li><a href="#sdkopenstoragepolicyupdaterequest">SdkOpenStoragePolicyUpdateRequest</a></li>
 <li><a href="#sdkopenstoragepolicyupdateresponse">SdkOpenStoragePolicyUpdateResponse</a></li>
 <li><a href="#sdkrole">SdkRole</a></li>
@@ -719,7 +729,7 @@
 <li><a href="#cloudmigrateoperationtype">CloudMigrate.OperationType</a></li>
 <li><a href="#cloudmigratestage">CloudMigrate.Stage</a></li>
 <li><a href="#cloudmigratestatus">CloudMigrate.Status</a></li>
-<li><a href="#clusternotify">ClusterNotify</a></li>
+<li><a href="#clusterpairmodemode">ClusterPairMode.Mode</a></li>
 <li><a href="#costype">CosType</a></li>
 <li><a href="#drivertype">DriverType</a></li>
 <li><a href="#fstype">FSType</a></li>
@@ -900,6 +910,43 @@ backup and other backups are dependent on it, it will not be able to be deleted.
     <a href="#sdkclusterinspectcurrentresponse">SdkClusterInspectCurrentResponse</a></p>
 </blockquote>
 <p>InspectCurrent returns information about the current cluster
+ <!-- end methods --></p>
+<h1 id="serviceopenstorageapiopenstorageclusterdomains">OpenStorageClusterDomains </h1>
+<p>OpenStorageClusterDomains is a service used to manage cluster domains in an openstorage cluster.
+A single openstorage cluster can stretch across multiple cluster domains. In other words it can
+span across multiple Container Orchestrator clusters. Each node in the cluster is assigned a
+a cluster domain to start with. A cluster domain and in turn the nodes which are a part of it
+are assigned a status indicating whether the cluster domain is actively participating in the
+cluster or whether it is inactive.</p>
+<h2 id="methodopenstorageapiopenstorageclusterdomainsenumerate">Enumerate </h2>
+<blockquote>
+<p><strong>rpc</strong> Enumerate(<a href="#sdkclusterdomainsenumeraterequest">SdkClusterDomainsEnumerateRequest</a>)
+    <a href="#sdkclusterdomainsenumerateresponse">SdkClusterDomainsEnumerateResponse</a></p>
+</blockquote>
+<p>Enumerate returns names of all the cluster domains in the cluster</p>
+<h2 id="methodopenstorageapiopenstorageclusterdomainsinspect">Inspect </h2>
+<blockquote>
+<p><strong>rpc</strong> Inspect(<a href="#sdkclusterdomaininspectrequest">SdkClusterDomainInspectRequest</a>)
+    <a href="#sdkclusterdomaininspectresponse">SdkClusterDomainInspectResponse</a></p>
+</blockquote>
+<p>Inspect returns information about a cluster domain and a
+status indicating whether the cluster domain is active</p>
+<h2 id="methodopenstorageapiopenstorageclusterdomainsactivate">Activate </h2>
+<blockquote>
+<p><strong>rpc</strong> Activate(<a href="#sdkclusterdomainactivaterequest">SdkClusterDomainActivateRequest</a>)
+    <a href="#sdkclusterdomainactivateresponse">SdkClusterDomainActivateResponse</a></p>
+</blockquote>
+<p>Activates a cluster domain in the cluster.
+All the nodes which are part of an active cluster domain
+will participate in cluster quorum calculation</p>
+<h2 id="methodopenstorageapiopenstorageclusterdomainsdeactivate">Deactivate </h2>
+<blockquote>
+<p><strong>rpc</strong> Deactivate(<a href="#sdkclusterdomaindeactivaterequest">SdkClusterDomainDeactivateRequest</a>)
+    <a href="#sdkclusterdomaindeactivateresponse">SdkClusterDomainDeactivateResponse</a></p>
+</blockquote>
+<p>Deactivates a cluster domain in the cluster.
+All the nodes which are part of a deactivated cluster domain.
+will not participate in cluster quorum calculation
  <!-- end methods --></p>
 <h1 id="serviceopenstorageapiopenstorageclusterpair">OpenStorageClusterPair </h1>
 <p>OpenStorageClusterPair service provides the methods to manage a cluster pair</p>
@@ -1131,7 +1178,7 @@ object storage id.
  <!-- end methods --></p>
 <h1 id="serviceopenstorageapiopenstoragepolicy">OpenStoragePolicy </h1>
 <p>OpenStoragePolicy service provides methods to manager storage policies.</p>
-<p>Policies can be used to enforces a set of volume configurations to be followed
+<p>Policies can be used to validate/ensure a set of volume configurations to be followed
 while creating volumes.</p>
 <h2 id="methodopenstorageapiopenstoragepolicycreate">Create </h2>
 <blockquote>
@@ -1163,18 +1210,18 @@ while creating volumes.</p>
     <a href="#sdkopenstoragepolicydeleteresponse">SdkOpenStoragePolicyDeleteResponse</a></p>
 </blockquote>
 <p>Deletes specified storage policy</p>
-<h2 id="methodopenstorageapiopenstoragepolicyenforce">Enforce </h2>
+<h2 id="methodopenstorageapiopenstoragepolicysetdefault">SetDefault </h2>
 <blockquote>
-<p><strong>rpc</strong> Enforce(<a href="#sdkopenstoragepolicyenforcerequest">SdkOpenStoragePolicyEnforceRequest</a>)
-    <a href="#sdkopenstoragepolicyenforceresponse">SdkOpenStoragePolicyEnforceResponse</a></p>
+<p><strong>rpc</strong> SetDefault(<a href="#sdkopenstoragepolicysetdefaultrequest">SdkOpenStoragePolicySetDefaultRequest</a>)
+    <a href="#sdkopenstoragepolicysetdefaultresponse">SdkOpenStoragePolicySetDefaultResponse</a></p>
 </blockquote>
-<p>Enforces specified storage policy</p>
-<h2 id="methodopenstorageapiopenstoragepolicyenforceinspect">EnforceInspect </h2>
+<p>Set specified storage policy as default policy</p>
+<h2 id="methodopenstorageapiopenstoragepolicydefaultinspect">DefaultInspect </h2>
 <blockquote>
-<p><strong>rpc</strong> EnforceInspect(<a href="#sdkopenstoragepolicyenforceinspectrequest">SdkOpenStoragePolicyEnforceInspectRequest</a>)
-    <a href="#sdkopenstoragepolicyenforceinspectresponse">SdkOpenStoragePolicyEnforceInspectResponse</a></p>
+<p><strong>rpc</strong> DefaultInspect(<a href="#sdkopenstoragepolicydefaultinspectrequest">SdkOpenStoragePolicyDefaultInspectRequest</a>)
+    <a href="#sdkopenstoragepolicydefaultinspectresponse">SdkOpenStoragePolicyDefaultInspectResponse</a></p>
 </blockquote>
-<p>EnforcesInspect return enforced storage policy if any, otherwise
+<p>DefaultInspect return default storage policy if any, otherwise
 empty response</p>
 <h2 id="methodopenstorageapiopenstoragepolicyrelease">Release </h2>
 <blockquote>
@@ -1938,6 +1985,11 @@ used by the other dependent snaps and parent volume.</p>
 <td><a href="#bool"> bool</a></td>
 <td>Set the new pair as the default</td>
 </tr>
+<tr>
+<td>mode</td>
+<td><a href="#clusterpairmodemode"> ClusterPairMode.Mode</a></td>
+<td>The mode to use for the cluster pair</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -2033,6 +2085,11 @@ used by the other dependent snaps and parent volume.</p>
 <td><a href="#clusterpairinfooptionsentry">map ClusterPairInfo.OptionsEntry</a></td>
 <td>Key/value pair of options associated with the cluster Opaque to openstorage and interpreted by the drivers</td>
 </tr>
+<tr>
+<td>mode</td>
+<td><a href="#clusterpairmodemode"> ClusterPairMode.Mode</a></td>
+<td>Mode for the cluster pair</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -2061,6 +2118,8 @@ used by the other dependent snaps and parent volume.</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
+<h2 id="clusterpairmode">ClusterPairMode </h2>
+ <!-- end HasFields -->
 <h2 id="clusterpairprocessrequest">ClusterPairProcessRequest </h2>
 <p>Used to process a pair request from a remote cluster</p>
 <table>
@@ -2081,6 +2140,11 @@ used by the other dependent snaps and parent volume.</p>
 <td>remote_cluster_token</td>
 <td><a href="#string"> string</a></td>
 <td>Token used to authenticate with the remote cluster</td>
+</tr>
+<tr>
+<td>mode</td>
+<td><a href="#clusterpairmodemode"> ClusterPairMode.Mode</a></td>
+<td>The mode to use for the cluster pair</td>
 </tr>
 </tbody>
 </table>
@@ -4072,6 +4136,120 @@ specified volume</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
+<h2 id="sdkclusterdomainactivaterequest">SdkClusterDomainActivateRequest </h2>
+<p>Defines a request to activate a cluster domain</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cluster_domain_name</td>
+<td><a href="#string"> string</a></td>
+<td>Name of the cluster domain to activate</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkclusterdomainactivateresponse">SdkClusterDomainActivateResponse </h2>
+<p>Empty response</p>
+ <!-- end HasFields -->
+<h2 id="sdkclusterdomaindeactivaterequest">SdkClusterDomainDeactivateRequest </h2>
+<p>Defines a request to deactivate a cluster domain</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cluster_domain_name</td>
+<td><a href="#string"> string</a></td>
+<td>Name of the cluster domain to deactivate</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkclusterdomaindeactivateresponse">SdkClusterDomainDeactivateResponse </h2>
+<p>Empty response</p>
+ <!-- end HasFields -->
+<h2 id="sdkclusterdomaininspectrequest">SdkClusterDomainInspectRequest </h2>
+<p>Defines a request to inspect a cluster domain</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cluster_domain_name</td>
+<td><a href="#string"> string</a></td>
+<td>Name of the cluster domain to inspect</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkclusterdomaininspectresponse">SdkClusterDomainInspectResponse </h2>
+<p>Defines a response to inspecting a cluster domain</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cluster_domain_name</td>
+<td><a href="#string"> string</a></td>
+<td>Name of the cluster domain</td>
+</tr>
+<tr>
+<td>is_active</td>
+<td><a href="#bool"> bool</a></td>
+<td>IsActive indicates whether this cluster domain is active</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkclusterdomainsenumeraterequest">SdkClusterDomainsEnumerateRequest </h2>
+<p>Empty request</p>
+ <!-- end HasFields -->
+<h2 id="sdkclusterdomainsenumerateresponse">SdkClusterDomainsEnumerateResponse </h2>
+<p>Defines a response when enumerating cluster domains</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cluster_domain_names</td>
+<td><a href="#string">repeated string</a></td>
+<td>List of names of all the cluster domains in a cluster</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
 <h2 id="sdkclusterinspectcurrentrequest">SdkClusterInspectCurrentRequest </h2>
 <p>Empty request</p>
  <!-- end HasFields -->
@@ -4294,6 +4472,11 @@ specified volume</p>
 <td>(optional) Key used to encrypt the data</td>
 </tr>
 <tr>
+<td>ownership</td>
+<td><a href="#ownership"> Ownership</a></td>
+<td>Ownership of the credential. Collaborators and groups may be added here with their appropriate ACLS.</td>
+</tr>
+<tr>
 <td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> credential_type.aws_credential</td>
 <td><a href="#sdkawscredentialrequest"> SdkAwsCredentialRequest</a></td>
 <td>Credentials for AWS/S3</td>
@@ -4425,6 +4608,11 @@ you will need to check if the value of credential_type is one of the ones below.
 <td>bucket</td>
 <td><a href="#string"> string</a></td>
 <td>(optional) Name of bucket</td>
+</tr>
+<tr>
+<td>ownership</td>
+<td><a href="#ownership"> Ownership</a></td>
+<td>Ownership of the credential</td>
 </tr>
 <tr>
 <td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> credential_type.aws_credential</td>
@@ -4805,6 +4993,29 @@ specified volume</p>
 <h2 id="sdkopenstoragepolicycreateresponse">SdkOpenStoragePolicyCreateResponse </h2>
 <p>Empty response</p>
  <!-- end HasFields -->
+<h2 id="sdkopenstoragepolicydefaultinspectrequest">SdkOpenStoragePolicyDefaultInspectRequest </h2>
+<p>Empty Request</p>
+ <!-- end HasFields -->
+<h2 id="sdkopenstoragepolicydefaultinspectresponse">SdkOpenStoragePolicyDefaultInspectResponse </h2>
+<p>Define default storage policy response</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>storage_policy</td>
+<td><a href="#sdkstoragepolicy"> SdkStoragePolicy</a></td>
+<td>storage policy information which is set as default</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
 <h2 id="sdkopenstoragepolicydeleterequest">SdkOpenStoragePolicyDeleteRequest </h2>
 <p>Define a request to delete storage policy</p>
 <table>
@@ -4826,52 +5037,6 @@ specified volume</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkopenstoragepolicydeleteresponse">SdkOpenStoragePolicyDeleteResponse </h2>
-<p>Empty Response</p>
- <!-- end HasFields -->
-<h2 id="sdkopenstoragepolicyenforceinspectrequest">SdkOpenStoragePolicyEnforceInspectRequest </h2>
-<p>Empty Request</p>
- <!-- end HasFields -->
-<h2 id="sdkopenstoragepolicyenforceinspectresponse">SdkOpenStoragePolicyEnforceInspectResponse </h2>
-<p>Define storage policy enforce response</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>storage_policy</td>
-<td><a href="#sdkstoragepolicy"> SdkStoragePolicy</a></td>
-<td>storage policy information which is enforced</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkopenstoragepolicyenforcerequest">SdkOpenStoragePolicyEnforceRequest </h2>
-<p>Define a request to enforce storage policy</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>name</td>
-<td><a href="#string"> string</a></td>
-<td>name of policy to set as default enforcement for volume creation This policy will be used to enforce volume configuration</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkopenstoragepolicyenforceresponse">SdkOpenStoragePolicyEnforceResponse </h2>
 <p>Empty Response</p>
  <!-- end HasFields -->
 <h2 id="sdkopenstoragepolicyenumeraterequest">SdkOpenStoragePolicyEnumerateRequest </h2>
@@ -4941,6 +5106,29 @@ specified volume</p>
 <p>Empty Request</p>
  <!-- end HasFields -->
 <h2 id="sdkopenstoragepolicyreleaseresponse">SdkOpenStoragePolicyReleaseResponse </h2>
+<p>Empty Response</p>
+ <!-- end HasFields -->
+<h2 id="sdkopenstoragepolicysetdefaultrequest">SdkOpenStoragePolicySetDefaultRequest </h2>
+<p>Define a request to set default storage policy</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td><a href="#string"> string</a></td>
+<td>name of policy to set as default storage policy for volume creation This policy will be used to validate/update volume configuration</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkopenstoragepolicysetdefaultresponse">SdkOpenStoragePolicySetDefaultResponse </h2>
 <p>Empty Response</p>
  <!-- end HasFields -->
 <h2 id="sdkopenstoragepolicyupdaterequest">SdkOpenStoragePolicyUpdateRequest </h2>
@@ -5554,11 +5742,11 @@ specified volume</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkstoragepolicy">SdkStoragePolicy </h2>
-<p>A SdkStoragePolicy represents minimum set of volume specs to be 
+<p>A SdkStoragePolicy represents minimum set of volume specs to be
 follow while creating volumes.
-If enforce in OpenStoragePolicy service, VolumeSpecPolicy will be 
-used before creating volume to ensure minimum volume creation rules
-are enforced.</p>
+If storage policy is set default in OpenStoragePolicy service, VolumeSpecPolicy will be
+used before creating volume to validate volume specs or ensure minimum volume creation
+rules followed</p>
 <table>
 <thead>
 <tr>
@@ -5577,6 +5765,21 @@ are enforced.</p>
 <td>policy</td>
 <td><a href="#volumespecpolicy"> VolumeSpecPolicy</a></td>
 <td>VolumeSpecs to apply while creating volume.</td>
+</tr>
+<tr>
+<td>force</td>
+<td><a href="#bool"> bool</a></td>
+<td>Force if set to true volume specs will be overwritten, otherwise volume creation will fail if the volume specifications are not inline with storage policy</td>
+</tr>
+<tr>
+<td>allow_update</td>
+<td><a href="#bool"> bool</a></td>
+<td>If set a volume can be updated without storage Policy restriction, otherwise volume update will be followed as per storage policy specification</td>
+</tr>
+<tr>
+<td>ownership</td>
+<td><a href="#ownership"> Ownership</a></td>
+<td>Owner info of storage policy</td>
 </tr>
 </tbody>
 </table>
@@ -6035,6 +6238,11 @@ to update any labels on the volume.</p>
 <td>ownership</td>
 <td><a href="#ownership"> Ownership</a></td>
 <td>(optional) Ownership to match</td>
+</tr>
+<tr>
+<td>group</td>
+<td><a href="#group"> Group</a></td>
+<td>(optional) Group to match</td>
 </tr>
 </tbody>
 </table>
@@ -7487,6 +7695,11 @@ and is used to carry opaque metadata.</p>
 <td><a href="#ownership"> Ownership</a></td>
 <td>Filter with ownership</td>
 </tr>
+<tr>
+<td>group</td>
+<td><a href="#group"> Group</a></td>
+<td>Filter by group</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -7839,7 +8052,7 @@ and is used to carry opaque metadata.</p>
 <tr>
 <td>storage_policy</td>
 <td><a href="#string"> string</a></td>
-<td>StoragePolicy to be enforced while creating volume</td>
+<td>StoragePolicy if applied/specified while creating volume</td>
 </tr>
 <tr>
 <td>ownership</td>
@@ -8000,6 +8213,16 @@ and is used to carry opaque metadata.</p>
 <td><a href="#volumespecpolicypolicyop"> VolumeSpecPolicy.PolicyOp</a></td>
 <td>Operator to check snapshot_interval</td>
 </tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> nodiscard_opt.nodiscard</td>
+<td><a href="#bool"> bool</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>io_strategy</td>
+<td><a href="#iostrategy"> IoStrategy</a></td>
+<td>IoStrategy preferred strategy for I/O.</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -8123,6 +8346,16 @@ and is used to carry opaque metadata.</p>
 <td>ownership</td>
 <td><a href="#ownership"> Ownership</a></td>
 <td>Ownership volume information to update. If the value of <code>owner</code> in the <code>ownership</code> message is an empty string then the value of <code>owner</code> in the <code>VolumeSpec.Ownership.owner</code> will not be updated.</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> nodiscard_opt.nodiscard</td>
+<td><a href="#bool"> bool</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>io_strategy</td>
+<td><a href="#iostrategy"> IoStrategy</a></td>
+<td>IoStrategy preferred strategy for I/O.</td>
 </tr>
 </tbody>
 </table>
@@ -8340,7 +8573,7 @@ and is used to carry opaque metadata.</p>
 </tr>
 </tbody>
 </table>
-<h2 id="clusternotify">ClusterNotify </h2>
+<h2 id="clusterpairmodemode">ClusterPairMode.Mode </h2>
 <table>
 <thead>
 <tr>
@@ -8351,9 +8584,14 @@ and is used to carry opaque metadata.</p>
 </thead>
 <tbody>
 <tr>
-<td>CLUSTER_NOTIFY_DOWN</td>
+<td>Default</td>
 <td>0</td>
-<td>Node is down</td>
+<td>Default pairing mode</td>
+</tr>
+<tr>
+<td>DisasterRecovery</td>
+<td>1</td>
+<td>Paired for DisasterRecovery</td>
 </tr>
 </tbody>
 </table>
@@ -8969,7 +9207,7 @@ client and server applications</p>
 </tr>
 <tr>
 <td>Patch</td>
-<td>0</td>
+<td>7</td>
 <td>SDK version patch value of this specification</td>
 </tr>
 </tbody>
@@ -9486,7 +9724,7 @@ client and server applications</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"v0.42.x","level":"1.5.3","depth":2,"next":{"title":"Changelog","level":"1.5.3.1","depth":3,"path":"release-6.0.changelog.md","ref":"release-6.0.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.2.1","depth":3,"path":"release-4.0.changelog.md","ref":"release-4.0.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"livereload":{},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"release-6.0.generated-api.md","mtime":"2019-03-09T02:22:16.846Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-09T02:22:20.059Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"v0.42.x","level":"1.5.3","depth":2,"next":{"title":"Changelog","level":"1.5.3.1","depth":3,"path":"release-6.0.changelog.md","ref":"release-6.0.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.2.1","depth":3,"path":"release-4.0.changelog.md","ref":"release-4.0.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"release-6.0.generated-api.md","mtime":"2019-04-05T01:02:40.508Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-05T01:02:43.259Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
@@ -9521,10 +9759,6 @@ client and server applications</p>
     
         
         <script src="gitbook/gitbook-plugin-page-toc/page-toc.js"></script>
-        
-    
-        
-        <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
         
     
         
