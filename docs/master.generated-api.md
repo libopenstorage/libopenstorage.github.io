@@ -2260,6 +2260,7 @@ SdkCloudBackupStatus defines the status of a backup stored by a cloud provider
 | credential_id | [ string](#string) | CredentialId is the credential used for cloud with this backup/restore op |
 | bytes_total | [ uint64](#uint64) | BytesTotal is the total number of bytes being transferred |
 | eta_seconds | [ int64](#int64) | ETASeconds is the number of seconds for cloud backup completion |
+| group_id | [ string](#string) | string group_id volume's group id if this was group cloud backup |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -4817,7 +4818,7 @@ client and server applications
 | ---- | ------ | ----------- |
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
-| Minor | 49 | SDK version minor value of this specification |
+| Minor | 50 | SDK version minor value of this specification |
 | Patch | 0 | SDK version patch value of this specification |
 
 
