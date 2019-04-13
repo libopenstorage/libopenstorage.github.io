@@ -662,6 +662,9 @@
 <li><a href="#sdkvolumeinspectrequest">SdkVolumeInspectRequest</a></li>
 <li><a href="#sdkvolumeinspectresponse">SdkVolumeInspectResponse</a></li>
 <li><a href="#sdkvolumeinspectresponselabelsentry">SdkVolumeInspectResponse.LabelsEntry</a></li>
+<li><a href="#sdkvolumeinspectwithfiltersrequest">SdkVolumeInspectWithFiltersRequest</a></li>
+<li><a href="#sdkvolumeinspectwithfiltersrequestlabelsentry">SdkVolumeInspectWithFiltersRequest.LabelsEntry</a></li>
+<li><a href="#sdkvolumeinspectwithfiltersresponse">SdkVolumeInspectWithFiltersResponse</a></li>
 <li><a href="#sdkvolumemountrequest">SdkVolumeMountRequest</a></li>
 <li><a href="#sdkvolumemountrequestdriveroptionsentry">SdkVolumeMountRequest.DriverOptionsEntry</a></li>
 <li><a href="#sdkvolumemountresponse">SdkVolumeMountResponse</a></li>
@@ -705,6 +708,7 @@
 <li><a href="#volumecreaterequest">VolumeCreateRequest</a></li>
 <li><a href="#volumecreateresponse">VolumeCreateResponse</a></li>
 <li><a href="#volumeinfo">VolumeInfo</a></li>
+<li><a href="#volumeinspectoptions">VolumeInspectOptions</a></li>
 <li><a href="#volumelocator">VolumeLocator</a></li>
 <li><a href="#volumelocatorvolumelabelsentry">VolumeLocator.VolumeLabelsEntry</a></li>
 <li><a href="#volumeplacementrule">VolumePlacementRule</a></li>
@@ -1351,6 +1355,19 @@ weekly, or monthly.</p>
 </blockquote>
 <p>Inspect returns information about a volume</p>
 <p>Requires access AccessType.Read of volume</p>
+<h2 id="methodopenstorageapiopenstoragevolumeinspectwithfilters">InspectWithFilters </h2>
+<blockquote>
+<p><strong>rpc</strong> InspectWithFilters(<a href="#sdkvolumeinspectwithfiltersrequest">SdkVolumeInspectWithFiltersRequest</a>)
+    <a href="#sdkvolumeinspectwithfiltersresponse">SdkVolumeInspectWithFiltersResponse</a></p>
+</blockquote>
+<p>Returns information for a list of volumes that match a filter.
+This call is a helper function like calling
+<code>OpenStorageVolume.EnumerateWithFilters</code> then having it
+return the contents of each of those volumes
+<code>OpenStorageVolume.Inspect()</code>. Take care in using this call
+when requesting large number of volumes because it will
+block until it has all the information requested before
+returning.</p>
 <h2 id="methodopenstorageapiopenstoragevolumeupdate">Update </h2>
 <blockquote>
 <p><strong>rpc</strong> Update(<a href="#sdkvolumeupdaterequest">SdkVolumeUpdateRequest</a>)
@@ -6313,6 +6330,11 @@ to update any labels on the volume.</p>
 <td><a href="#string"> string</a></td>
 <td>Id of volume to inspect</td>
 </tr>
+<tr>
+<td>options</td>
+<td><a href="#volumeinspectoptions"> VolumeInspectOptions</a></td>
+<td>Options during inspection</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -6366,6 +6388,90 @@ to update any labels on the volume.</p>
 <td>value</td>
 <td><a href="#string"> string</a></td>
 <td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkvolumeinspectwithfiltersrequest">SdkVolumeInspectWithFiltersRequest </h2>
+<p>Defines the request to inspect volumes using a filter</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td><a href="#string"> string</a></td>
+<td>(optional) Name to search</td>
+</tr>
+<tr>
+<td>labels</td>
+<td><a href="#sdkvolumeinspectwithfiltersrequestlabelsentry">map SdkVolumeInspectWithFiltersRequest.LabelsEntry</a></td>
+<td>(optional) Labels to search</td>
+</tr>
+<tr>
+<td>ownership</td>
+<td><a href="#ownership"> Ownership</a></td>
+<td>(optional) Ownership to match</td>
+</tr>
+<tr>
+<td>group</td>
+<td><a href="#group"> Group</a></td>
+<td>(optional) Group to match</td>
+</tr>
+<tr>
+<td>options</td>
+<td><a href="#volumeinspectoptions"> VolumeInspectOptions</a></td>
+<td>Options during inspection</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkvolumeinspectwithfiltersrequestlabelsentry">SdkVolumeInspectWithFiltersRequest.LabelsEntry </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkvolumeinspectwithfiltersresponse">SdkVolumeInspectWithFiltersResponse </h2>
+<p>Defines the response when inspecting volumes using a filter</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volumes</td>
+<td><a href="#sdkvolumeinspectresponse">repeated SdkVolumeInspectResponse</a></td>
+<td>List of <code>SdkVolumeInspectResponse</code> objects describing the volumes</td>
 </tr>
 </tbody>
 </table>
@@ -7673,6 +7779,26 @@ to create a volume</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
+<h2 id="volumeinspectoptions">VolumeInspectOptions </h2>
+<p>Options used for volume inspection</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>deep</td>
+<td><a href="#bool"> bool</a></td>
+<td>Deep inspection is used to collect more information about the volume. Setting this value may delay the request.</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
 <h2 id="volumelocator">VolumeLocator </h2>
 <p>VolumeLocator is a structure that is attached to a volume
 and is used to carry opaque metadata.</p>
@@ -7704,6 +7830,11 @@ and is used to carry opaque metadata.</p>
 <td>group</td>
 <td><a href="#group"> Group</a></td>
 <td>Filter by group</td>
+</tr>
+<tr>
+<td>volume_ids</td>
+<td><a href="#string">repeated string</a></td>
+<td>Volume Ids to match</td>
 </tr>
 </tbody>
 </table>
@@ -9212,7 +9343,7 @@ client and server applications</p>
 </tr>
 <tr>
 <td>Patch</td>
-<td>8</td>
+<td>9</td>
 <td>SDK version patch value of this specification</td>
 </tr>
 </tbody>
@@ -9729,7 +9860,7 @@ client and server applications</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"v0.42.x","level":"1.5.3","depth":2,"next":{"title":"Changelog","level":"1.5.3.1","depth":3,"path":"release-6.0.changelog.md","ref":"release-6.0.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.2.1","depth":3,"path":"release-4.0.changelog.md","ref":"release-4.0.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"release-6.0.generated-api.md","mtime":"2019-04-09T21:31:59.236Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-09T21:32:02.407Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"v0.42.x","level":"1.5.3","depth":2,"next":{"title":"Changelog","level":"1.5.3.1","depth":3,"path":"release-6.0.changelog.md","ref":"release-6.0.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.2.1","depth":3,"path":"release-4.0.changelog.md","ref":"release-4.0.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"release-6.0.generated-api.md","mtime":"2019-04-13T03:01:53.579Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-13T03:01:56.448Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

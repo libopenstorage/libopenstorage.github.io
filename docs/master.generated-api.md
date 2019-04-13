@@ -252,6 +252,9 @@
     - [SdkVolumeInspectRequest](#sdkvolumeinspectrequest)
     - [SdkVolumeInspectResponse](#sdkvolumeinspectresponse)
     - [SdkVolumeInspectResponse.LabelsEntry](#sdkvolumeinspectresponselabelsentry)
+    - [SdkVolumeInspectWithFiltersRequest](#sdkvolumeinspectwithfiltersrequest)
+    - [SdkVolumeInspectWithFiltersRequest.LabelsEntry](#sdkvolumeinspectwithfiltersrequestlabelsentry)
+    - [SdkVolumeInspectWithFiltersResponse](#sdkvolumeinspectwithfiltersresponse)
     - [SdkVolumeMountRequest](#sdkvolumemountrequest)
     - [SdkVolumeMountRequest.DriverOptionsEntry](#sdkvolumemountrequestdriveroptionsentry)
     - [SdkVolumeMountResponse](#sdkvolumemountresponse)
@@ -295,6 +298,7 @@
     - [VolumeCreateRequest](#volumecreaterequest)
     - [VolumeCreateResponse](#volumecreateresponse)
     - [VolumeInfo](#volumeinfo)
+    - [VolumeInspectOptions](#volumeinspectoptions)
     - [VolumeLocator](#volumelocator)
     - [VolumeLocator.VolumeLabelsEntry](#volumelocatorvolumelabelsentry)
     - [VolumePlacementRule](#volumeplacementrule)
@@ -1002,6 +1006,19 @@ Requires access AccessType.Admin of volume
 Inspect returns information about a volume
 
 Requires access AccessType.Read of volume
+## InspectWithFilters {#methodopenstorageapiopenstoragevolumeinspectwithfilters}
+
+> **rpc** InspectWithFilters([SdkVolumeInspectWithFiltersRequest](#sdkvolumeinspectwithfiltersrequest))
+    [SdkVolumeInspectWithFiltersResponse](#sdkvolumeinspectwithfiltersresponse)
+
+Returns information for a list of volumes that match a filter.
+This call is a helper function like calling
+`OpenStorageVolume.EnumerateWithFilters` then having it
+return the contents of each of those volumes
+`OpenStorageVolume.Inspect()`. Take care in using this call
+when requesting large number of volumes because it will
+block until it has all the information requested before
+returning.
 ## Update {#methodopenstorageapiopenstoragevolumeupdate}
 
 > **rpc** Update([SdkVolumeUpdateRequest](#sdkvolumeupdaterequest))
@@ -3672,6 +3689,7 @@ Defines the request to inspect a volume
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | volume_id | [ string](#string) | Id of volume to inspect |
+| options | [ VolumeInspectOptions](#volumeinspectoptions) | Options during inspection |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3697,6 +3715,44 @@ Defines the response when inspecting a volume
 | ----- | ---- | ----------- |
 | key | [ string](#string) | none |
 | value | [ string](#string) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVolumeInspectWithFiltersRequest {#sdkvolumeinspectwithfiltersrequest}
+Defines the request to inspect volumes using a filter
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| name | [ string](#string) | (optional) Name to search |
+| labels | [map SdkVolumeInspectWithFiltersRequest.LabelsEntry](#sdkvolumeinspectwithfiltersrequestlabelsentry) | (optional) Labels to search |
+| ownership | [ Ownership](#ownership) | (optional) Ownership to match |
+| group | [ Group](#group) | (optional) Group to match |
+| options | [ VolumeInspectOptions](#volumeinspectoptions) | Options during inspection |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVolumeInspectWithFiltersRequest.LabelsEntry {#sdkvolumeinspectwithfiltersrequestlabelsentry}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [ string](#string) | none |
+| value | [ string](#string) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVolumeInspectWithFiltersResponse {#sdkvolumeinspectwithfiltersresponse}
+Defines the response when inspecting volumes using a filter
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volumes | [repeated SdkVolumeInspectResponse](#sdkvolumeinspectresponse) | List of `SdkVolumeInspectResponse` objects describing the volumes |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -4269,6 +4325,17 @@ VolumeInfo
  <!-- end HasFields -->
 
 
+## VolumeInspectOptions {#volumeinspectoptions}
+Options used for volume inspection
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| deep | [ bool](#bool) | Deep inspection is used to collect more information about the volume. Setting this value may delay the request. |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
 ## VolumeLocator {#volumelocator}
 VolumeLocator is a structure that is attached to a volume
 and is used to carry opaque metadata.
@@ -4280,6 +4347,7 @@ and is used to carry opaque metadata.
 | volume_labels | [map VolumeLocator.VolumeLabelsEntry](#volumelocatorvolumelabelsentry) | A set of name-value pairs that acts as search filters |
 | ownership | [ Ownership](#ownership) | Filter with ownership |
 | group | [ Group](#group) | Filter by group |
+| volume_ids | [repeated string](#string) | Volume Ids to match |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -4818,7 +4886,7 @@ client and server applications
 | ---- | ------ | ----------- |
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
-| Minor | 50 | SDK version minor value of this specification |
+| Minor | 51 | SDK version minor value of this specification |
 | Patch | 0 | SDK version patch value of this specification |
 
 
