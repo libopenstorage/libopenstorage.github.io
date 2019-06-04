@@ -72,7 +72,7 @@
     <link rel="next" href="master.changelog.html" />
     
     
-    <link rel="prev" href="release-6.0.changelog.html" />
+    <link rel="prev" href="release-6.1.changelog.html" />
     
 
     </head>
@@ -287,9 +287,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.3" data-path="release-6.0.generated-api.html">
+        <li class="chapter " data-level="1.5.3" data-path="release-6.1.generated-api.html">
             
-                <a href="release-6.0.generated-api.html">
+                <a href="release-6.1.generated-api.html">
             
                     
                         <b>1.5.3.</b>
@@ -303,9 +303,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.5.3.1" data-path="release-6.0.changelog.html">
+        <li class="chapter " data-level="1.5.3.1" data-path="release-6.1.changelog.html">
             
-                <a href="release-6.0.changelog.html">
+                <a href="release-6.1.changelog.html">
             
                     
                         <b>1.5.3.1.</b>
@@ -477,6 +477,7 @@
 <li><a href="#objectstoreinfo">ObjectstoreInfo</a></li>
 <li><a href="#ownership">Ownership</a></li>
 <li><a href="#ownershipaccesscontrol">Ownership.AccessControl</a></li>
+<li><a href="#replicaplacementspec">ReplicaPlacementSpec</a></li>
 <li><a href="#replicaset">ReplicaSet</a></li>
 <li><a href="#report">Report</a></li>
 <li><a href="#runtimestatemap">RuntimeStateMap</a></li>
@@ -506,6 +507,7 @@
 <li><a href="#sdkcloudbackupdeleterequest">SdkCloudBackupDeleteRequest</a></li>
 <li><a href="#sdkcloudbackupdeleteresponse">SdkCloudBackupDeleteResponse</a></li>
 <li><a href="#sdkcloudbackupenumeratewithfiltersrequest">SdkCloudBackupEnumerateWithFiltersRequest</a></li>
+<li><a href="#sdkcloudbackupenumeratewithfiltersrequestmetadatafilterentry">SdkCloudBackupEnumerateWithFiltersRequest.MetadataFilterEntry</a></li>
 <li><a href="#sdkcloudbackupenumeratewithfiltersresponse">SdkCloudBackupEnumerateWithFiltersResponse</a></li>
 <li><a href="#sdkcloudbackuphistoryitem">SdkCloudBackupHistoryItem</a></li>
 <li><a href="#sdkcloudbackuphistoryrequest">SdkCloudBackupHistoryRequest</a></li>
@@ -711,7 +713,7 @@
 <li><a href="#volumeinspectoptions">VolumeInspectOptions</a></li>
 <li><a href="#volumelocator">VolumeLocator</a></li>
 <li><a href="#volumelocatorvolumelabelsentry">VolumeLocator.VolumeLabelsEntry</a></li>
-<li><a href="#volumeplacementrule">VolumePlacementRule</a></li>
+<li><a href="#volumeplacementspec">VolumePlacementSpec</a></li>
 <li><a href="#volumeplacementstrategy">VolumePlacementStrategy</a></li>
 <li><a href="#volumeresponse">VolumeResponse</a></li>
 <li><a href="#volumesetrequest">VolumeSetRequest</a></li>
@@ -736,8 +738,10 @@
 <li><a href="#clusterpairmodemode">ClusterPairMode.Mode</a></li>
 <li><a href="#costype">CosType</a></li>
 <li><a href="#drivertype">DriverType</a></li>
+<li><a href="#enforcementtype">EnforcementType</a></li>
 <li><a href="#fstype">FSType</a></li>
 <li><a href="#graphdriverchangetype">GraphDriverChangeType</a></li>
+<li><a href="#hardwaretype">HardwareType</a></li>
 <li><a href="#ioprofile">IoProfile</a></li>
 <li><a href="#labelselectorrequirementoperator">LabelSelectorRequirement.Operator</a></li>
 <li><a href="#operationflags">OperationFlags</a></li>
@@ -753,8 +757,6 @@
 <li><a href="#status">Status</a></li>
 <li><a href="#storagemedium">StorageMedium</a></li>
 <li><a href="#volumeactionparam">VolumeActionParam</a></li>
-<li><a href="#volumeplacementruleaffinityruletype">VolumePlacementRule.AffinityRuleType</a></li>
-<li><a href="#volumeplacementruleenforcementtype">VolumePlacementRule.EnforcementType</a></li>
 <li><a href="#volumespecpolicypolicyop">VolumeSpecPolicy.PolicyOp</a></li>
 <li><a href="#volumestate">VolumeState</a></li>
 <li><a href="#volumestatus">VolumeStatus</a></li>
@@ -2714,6 +2716,45 @@ Administrators are users who belong to the group <code>*</code>, meaning, every 
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
+<h2 id="replicaplacementspec">ReplicaPlacementSpec </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>weight</td>
+<td><a href="#int64"> int64</a></td>
+<td>Weight defines the weight of the rule which allows to break the tie with other matching rules. A rule with higher weight wins over a rule with lower weight. (optional)</td>
+</tr>
+<tr>
+<td>enforcement</td>
+<td><a href="#enforcementtype"> EnforcementType</a></td>
+<td>Enforcement specifies the rule enforcement policy. Can take values: required or preferred. (optional)</td>
+</tr>
+<tr>
+<td>affected_replicas</td>
+<td><a href="#int32"> int32</a></td>
+<td>AffectedReplicas defines the number of volume replicas affected by this rule. If not provided, rule would affect all replicas (optional)</td>
+</tr>
+<tr>
+<td>topology_key</td>
+<td><a href="#string"> string</a></td>
+<td>TopologyKey key for the matching all segments of the cluster topology with the same key e.g If the key is failure-domain.beta.kubernetes.io/zone, this should match all nodes with the same value for this key (i.e in the same zone)</td>
+</tr>
+<tr>
+<td>match_expressions</td>
+<td><a href="#labelselectorrequirement">repeated LabelSelectorRequirement</a></td>
+<td>MatchExpressions is a list of label selector requirements. The requirements are ANDed.</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
 <h2 id="replicaset">ReplicaSet </h2>
 <p>ReplicaSet set of machine IDs (nodes) to which part of this volume is erasure
 coded - for clustered storage arrays</p>
@@ -3268,6 +3309,11 @@ as well.</p>
 <td><a href="#sdkcloudbackupcreaterequestlabelsentry">map SdkCloudBackupCreateRequest.LabelsEntry</a></td>
 <td>Labels are list of key value pairs to tag the cloud backup. These labels are stored in the metadata associated with the backup.</td>
 </tr>
+<tr>
+<td>full_backup_frequency</td>
+<td><a href="#uint32"> uint32</a></td>
+<td>FullBackupFrequency indicates number of incremental backup after whcih a fullbackup must be created. This is to override the default value for manual/user triggerred backups and not applicable for scheduled backups Value of 0 retains the default behavior.</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -3422,6 +3468,50 @@ and do not provide <code>volume_id</code> and <code>all</code>.</li>
 <td><a href="#bool"> bool</a></td>
 <td>(optional) All indicates if the request should show cloud backups for all clusters or the current cluster.</td>
 </tr>
+<tr>
+<td>status_filter</td>
+<td><a href="#sdkcloudbackupstatustype"> SdkCloudBackupStatusType</a></td>
+<td>(optional) enumerates backups that have status specified by this type</td>
+</tr>
+<tr>
+<td>metadata_filter</td>
+<td><a href="#sdkcloudbackupenumeratewithfiltersrequestmetadatafilterentry">map SdkCloudBackupEnumerateWithFiltersRequest.MetadataFilterEntry</a></td>
+<td>(optional) Enumerates backups that have tags of this type</td>
+</tr>
+<tr>
+<td>max_backups</td>
+<td><a href="#uint64"> uint64</a></td>
+<td>(optional) if caller wished to limit number of backups returned by enumerate</td>
+</tr>
+<tr>
+<td>continuation_token</td>
+<td><a href="#string"> string</a></td>
+<td>Returned in the enumerate response if not all of the backups could be returned in the response.</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcloudbackupenumeratewithfiltersrequestmetadatafilterentry">SdkCloudBackupEnumerateWithFiltersRequest.MetadataFilterEntry </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -3441,6 +3531,11 @@ and do not provide <code>volume_id</code> and <code>all</code>.</li>
 <td>backups</td>
 <td><a href="#sdkcloudbackupinfo">repeated SdkCloudBackupInfo</a></td>
 <td>none</td>
+</tr>
+<tr>
+<td>continuation_token</td>
+<td><a href="#string"> string</a></td>
+<td>if this is not an empty string, callers must pass this to get next list of backups</td>
 </tr>
 </tbody>
 </table>
@@ -3797,12 +3892,17 @@ a cloud provider</p>
 <tr>
 <td>max_backups</td>
 <td><a href="#uint64"> uint64</a></td>
-<td>MaxBackups are the maximum number of backups retained in cloud.Older backups are deleted</td>
+<td>MaxBackups indicates when to force full backup to cloud. If RetentionDays is not specified or is 0 (older scheme), this is also the maximum number of scheduled backups retained in the cloud. Older backups are deleted</td>
 </tr>
 <tr>
 <td>full</td>
 <td><a href="#bool"> bool</a></td>
 <td>Full indicates if scheduled backups should always be full and never incremental.</td>
+</tr>
+<tr>
+<td>retention_days</td>
+<td><a href="#uint32"> uint32</a></td>
+<td>Number of days that Scheduled CloudBackups will be kept after which they are deleted</td>
 </tr>
 </tbody>
 </table>
@@ -7229,6 +7329,11 @@ to seed the volume with data.</p>
 <td><a href="#string"> string</a></td>
 <td>SchedulerNodeName is name of the node in scheduler context. It can be empty if unable to get the name from the scheduler.</td>
 </tr>
+<tr>
+<td>HWType</td>
+<td><a href="#hardwaretype"> HardwareType</a></td>
+<td>HardwareType is the type of the hardware the node has</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -7864,8 +7969,7 @@ and is used to carry opaque metadata.</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
-<h2 id="volumeplacementrule">VolumePlacementRule </h2>
-<p>VolumePlacementRule defines a single placement rule</p>
+<h2 id="volumeplacementspec">VolumePlacementSpec </h2>
 <table>
 <thead>
 <tr>
@@ -7876,24 +7980,19 @@ and is used to carry opaque metadata.</p>
 </thead>
 <tbody>
 <tr>
-<td>affected_replicas</td>
-<td><a href="#int32"> int32</a></td>
-<td>AffectedReplicas defines the number of volume replicas affected by this rule. If not provided, rule would affect all replicas (optional)</td>
-</tr>
-<tr>
 <td>weight</td>
 <td><a href="#int64"> int64</a></td>
 <td>Weight defines the weight of the rule which allows to break the tie with other matching rules. A rule with higher weight wins over a rule with lower weight. (optional)</td>
 </tr>
 <tr>
 <td>enforcement</td>
-<td><a href="#volumeplacementruleenforcementtype"> VolumePlacementRule.EnforcementType</a></td>
+<td><a href="#enforcementtype"> EnforcementType</a></td>
 <td>Enforcement specifies the rule enforcement policy. Can take values: required or preferred. (optional)</td>
 </tr>
 <tr>
-<td>type</td>
-<td><a href="#volumeplacementruleaffinityruletype"> VolumePlacementRule.AffinityRuleType</a></td>
-<td>Type is the type of the affinity rule</td>
+<td>topology_key</td>
+<td><a href="#string"> string</a></td>
+<td>TopologyKey key for the matching all segments of the cluster topology with the same key e.g If the key is failure-domain.beta.kubernetes.io/zone, this should match all nodes with the same value for this key (i.e in the same zone)</td>
 </tr>
 <tr>
 <td>match_expressions</td>
@@ -7905,7 +8004,10 @@ and is used to carry opaque metadata.</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="volumeplacementstrategy">VolumePlacementStrategy </h2>
-<p>VolumePlacementStrategy defines a strategy for placing volumes in the cluster which will be a series of rules</p>
+<p>VolumePlacementStrategy defines a strategy for placing volumes in the cluster which will be a series of rules
+All the rules specified will be applied for volume placement.
+Rules that have enforcement as &quot;required&quot; are strictly enforced while &quot;preferred&quot; are best effort.
+In situations, where 2 or more rules conflict, the weight of the rules will dictate which wins.</p>
 <table>
 <thead>
 <tr>
@@ -7916,9 +8018,24 @@ and is used to carry opaque metadata.</p>
 </thead>
 <tbody>
 <tr>
-<td>rules</td>
-<td><a href="#volumeplacementrule">repeated VolumePlacementRule</a></td>
-<td>Rules defines a list of rules as part of the placement spec. All the rules specified will be applied for volume placement. Rules that have enforcement as &quot;required&quot; are strictly enforced while &quot;preferred&quot; are best effort. In situations, where 2 or more rules conflict, the weight of the rules will dictate which wins.</td>
+<td>replica_affinity</td>
+<td><a href="#replicaplacementspec">repeated ReplicaPlacementSpec</a></td>
+<td>ReplicaAffinity defines affinity rules between replicas within a volume</td>
+</tr>
+<tr>
+<td>replica_anti_affinity</td>
+<td><a href="#replicaplacementspec">repeated ReplicaPlacementSpec</a></td>
+<td>ReplicaAntiAffinity defines anti-affinity rules between replicas within a volume</td>
+</tr>
+<tr>
+<td>volume_affinity</td>
+<td><a href="#volumeplacementspec">repeated VolumePlacementSpec</a></td>
+<td>VolumeAffinity defines affinity rules between volumes</td>
+</tr>
+<tr>
+<td>volume_anti_affinity</td>
+<td><a href="#volumeplacementspec">repeated VolumePlacementSpec</a></td>
+<td>VolumeAntiAffinity defines anti-affinity rules between volumes</td>
 </tr>
 </tbody>
 </table>
@@ -8805,6 +8922,29 @@ and is used to carry opaque metadata.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="enforcementtype">EnforcementType </h2>
+<p>Defines the types of enforcement on the given rules</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>required</td>
+<td>0</td>
+<td>This specifies that the rule is required and must be strictly enforced</td>
+</tr>
+<tr>
+<td>preferred</td>
+<td>1</td>
+<td>This specifies that the rule is preferred and can be best effort</td>
+</tr>
+</tbody>
+</table>
 <h2 id="fstype">FSType </h2>
 <table>
 <thead>
@@ -8894,6 +9034,33 @@ and is used to carry opaque metadata.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="hardwaretype">HardwareType </h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UnknownMachine</td>
+<td>0</td>
+<td>When we do not know the machine type alsp the default</td>
+</tr>
+<tr>
+<td>VirtualMachine</td>
+<td>1</td>
+<td>when we are running on virtual machine</td>
+</tr>
+<tr>
+<td>BareMetalMachine</td>
+<td>2</td>
+<td>when we are running on physical hardware</td>
+</tr>
+</tbody>
+</table>
 <h2 id="ioprofile">IoProfile </h2>
 <table>
 <thead>
@@ -8927,6 +9094,11 @@ and is used to carry opaque metadata.</p>
 <tr>
 <td>IO_PROFILE_CMS</td>
 <td>4</td>
+<td>none</td>
+</tr>
+<tr>
+<td>IO_PROFILE_SYNC_SHARED</td>
+<td>5</td>
 <td>none</td>
 </tr>
 </tbody>
@@ -9182,6 +9354,16 @@ to or from a cloud provider</p>
 <td>7</td>
 <td>Failed</td>
 </tr>
+<tr>
+<td>SdkCloudBackupStatusTypeQueued</td>
+<td>8</td>
+<td>Queued</td>
+</tr>
+<tr>
+<td>SdkCloudBackupStatusTypeInvalid</td>
+<td>9</td>
+<td>Invalid, used by enumerate, includes failed, stopped and aborted</td>
+</tr>
 </tbody>
 </table>
 <h2 id="sdkservicecapabilityopenstorageservicetype">SdkServiceCapability.OpenStorageService.Type </h2>
@@ -9338,7 +9520,7 @@ client and server applications</p>
 </tr>
 <tr>
 <td>Minor</td>
-<td>51</td>
+<td>55</td>
 <td>SDK version minor value of this specification</td>
 </tr>
 <tr>
@@ -9518,52 +9700,6 @@ client and server applications</p>
 <td>VOLUME_ACTION_PARAM_ON</td>
 <td>2</td>
 <td>Maps to the boolean value true.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="volumeplacementruleaffinityruletype">VolumePlacementRule.AffinityRuleType </h2>
-<p>This specifies the type an affinity rule can take</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Number</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>affinity</td>
-<td>0</td>
-<td>Affinity means the rule specifies an affinity to objects that match the below label selector requirements</td>
-</tr>
-<tr>
-<td>antiAffinity</td>
-<td>1</td>
-<td>AntiAffinity means the rule specifies an anti-affinity to objects that match the below label selector requirements</td>
-</tr>
-</tbody>
-</table>
-<h2 id="volumeplacementruleenforcementtype">VolumePlacementRule.EnforcementType </h2>
-<p>Defines the types of enforcement on the given rules</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Number</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>required</td>
-<td>0</td>
-<td>This specifies that the rule is required and must be strictly enforced</td>
-</tr>
-<tr>
-<td>preferred</td>
-<td>1</td>
-<td>This specifies that the rule is preferred and can be best effort</td>
 </tr>
 </tbody>
 </table>
@@ -9844,7 +9980,7 @@ client and server applications</p>
 
             
                 
-                <a href="release-6.0.changelog.html" class="navigation navigation-prev " aria-label="Previous page: Changelog">
+                <a href="release-6.1.changelog.html" class="navigation navigation-prev " aria-label="Previous page: Changelog">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -9860,7 +9996,7 @@ client and server applications</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Nightly","level":"1.5.4","depth":2,"next":{"title":"Changelog","level":"1.5.4.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.3.1","depth":3,"path":"release-6.0.changelog.md","ref":"release-6.0.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"master.generated-api.md","mtime":"2019-04-13T03:01:52.995Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-13T03:01:56.448Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Nightly","level":"1.5.4","depth":2,"next":{"title":"Changelog","level":"1.5.4.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.3.1","depth":3,"path":"release-6.1.changelog.md","ref":"release-6.1.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"master.generated-api.md","mtime":"2019-06-04T20:48:25.391Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-04T20:48:29.440Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

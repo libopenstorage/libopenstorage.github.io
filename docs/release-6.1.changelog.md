@@ -2,60 +2,52 @@
 
 ## Releases
 
-### v0.56.0 - Tech Preview (6/3/2019)
-
-* Addition to Node details, to store the hardware type
-
-### v0.55.0 - Tech Preview (5/7/2019)
+### v0.42.12 - Tech Preview (5/7/2019)
 
 * Additions to cloudbackup enumerate filters.
 
-### v0.54.0 - Tech Preview (5/2/2019)
+### v0.42.11 - Tech Preview (5/7/2019)
 
 * Added new field FullBackupFrequency to cloudbackup create API
 
-### v0.53.0 - Tech Preview (4/23/2019)
+### v0.42.10 - Tech Preview (4/25/2019)
 
 * Added new field RetentionDays to cloudbackup schedule
 
-### v0.52.0 - Tech Preview (4/23/2019)
-
-* (breaking change) Fix REST Gateway Snapshot enumerate with filters endpoint
-
-### v0.51.0 - Tech Preview (4/11/2019)
+### v0.42.9 - Tech Preview (4/11/2019)
 
 * Added VolumeInspectOptions to OpenStorageVolume.Inspect
 * Added new OpenStorageVolume.InspectWithFilters API
 
-### v0.50.0 - Tech Preview (4/2/2019)
+### v0.42.8 - Tech Preview (4/2/2019)
 
 * Add groupId field to SdkCloudBackupStatus structure
 
-### v0.49.0 - Tech Preview (4/3/2019)
+### v0.42.7 - Tech Preview (4/3/2019)
 
 * Add Group to VolumeLocator
 
-### v0.48.0 - Tech Preview (4/2/2019)
+### v0.42.6 - Tech Preview (4/2/2019)
 
 * Add cluster pair Mode option in CreatePair and ProcessPair requests
 
-### v0.47.0 - Tech Preview (3/26/2019)
+### v0.42.5 - Tech Preview (3/26/2019)
 
 * Change io_strategy type from oneof to pointer
 
-### v0.46.0 - Tech Preview (3/26/2019)
+### v0.42.4 - Tech Preview (3/26/2019)
 
 * Handle spec update for nodiscard, io_strategy
 
-### v0.45.0 - Tech Preview (3/13/2019)
+### v0.42.3 - Tech Preview (3/24/2019)
 
 * Add new APIs for managing OpenStorage ClusterDomains
 
-### v0.44.0 - Tech Preview (3/21/2019)
+### v0.42.2 - Tech Preview (3/13/2019)
 
 * Add ownership support to OpenStorageStoragePolicy
 
-### v0.43.0 - Tech Preview (3/12/2019)
+### v0.42.1 - Tech Preview (3/12/2019)
 
 * Add ownership support to OpenStorageCredential service APIs
 

@@ -330,7 +330,6 @@
     - [EnforcementType](#enforcementtype)
     - [FSType](#fstype)
     - [GraphDriverChangeType](#graphdriverchangetype)
-    - [HardwareType](#hardwaretype)
     - [IoProfile](#ioprofile)
     - [LabelSelectorRequirement.Operator](#labelselectorrequirementoperator)
     - [OperationFlags](#operationflags)
@@ -4149,7 +4148,6 @@ StorageNode describes the state of the node
 | hostname | [ string](#string) | Hostname of the node |
 | node_labels | [map StorageNode.NodeLabelsEntry](#storagenodenodelabelsentry) | User defined labels for the node |
 | scheduler_node_name | [ string](#string) | SchedulerNodeName is name of the node in scheduler context. It can be empty if unable to get the name from the scheduler. |
-| HWType | [ HardwareType](#hardwaretype) | HardwareType is the type of the hardware the node has |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -4778,18 +4776,6 @@ Defines the types of enforcement on the given rules
 
 
 
-## HardwareType {#hardwaretype}
-
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| UnknownMachine | 0 | When we do not know the machine type alsp the default |
-| VirtualMachine | 1 | when we are running on virtual machine |
-| BareMetalMachine | 2 | when we are running on physical hardware |
-
-
-
-
 ## IoProfile {#ioprofile}
 
 
@@ -4954,8 +4940,8 @@ client and server applications
 | ---- | ------ | ----------- |
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
-| Minor | 55 | SDK version minor value of this specification |
-| Patch | 0 | SDK version patch value of this specification |
+| Minor | 42 | SDK version minor value of this specification |
+| Patch | 12 | SDK version patch value of this specification |
 
 
 
