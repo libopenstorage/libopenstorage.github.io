@@ -509,6 +509,9 @@
 <li><a href="#sdkcloudbackupenumeratewithfiltersrequest">SdkCloudBackupEnumerateWithFiltersRequest</a></li>
 <li><a href="#sdkcloudbackupenumeratewithfiltersrequestmetadatafilterentry">SdkCloudBackupEnumerateWithFiltersRequest.MetadataFilterEntry</a></li>
 <li><a href="#sdkcloudbackupenumeratewithfiltersresponse">SdkCloudBackupEnumerateWithFiltersResponse</a></li>
+<li><a href="#sdkcloudbackupgroupcreaterequest">SdkCloudBackupGroupCreateRequest</a></li>
+<li><a href="#sdkcloudbackupgroupcreaterequestlabelsentry">SdkCloudBackupGroupCreateRequest.LabelsEntry</a></li>
+<li><a href="#sdkcloudbackupgroupcreateresponse">SdkCloudBackupGroupCreateResponse</a></li>
 <li><a href="#sdkcloudbackuphistoryitem">SdkCloudBackupHistoryItem</a></li>
 <li><a href="#sdkcloudbackuphistoryrequest">SdkCloudBackupHistoryRequest</a></li>
 <li><a href="#sdkcloudbackuphistoryresponse">SdkCloudBackupHistoryResponse</a></li>
@@ -838,6 +841,15 @@ restore, pass volume id returned by Restore() to input to Status()</p>
 OpenStorageCloudBackup.Status() to get the current status of the
 backup request.</p>
 <p>Requires access AccessType.Read of volume</p>
+<h2 id="methodopenstorageapiopenstoragecloudbackupgroupcreate">GroupCreate </h2>
+<blockquote>
+<p><strong>rpc</strong> GroupCreate(<a href="#sdkcloudbackupgroupcreaterequest">SdkCloudBackupGroupCreateRequest</a>)
+    <a href="#sdkcloudbackupgroupcreateresponse">SdkCloudBackupGroupCreateResponse</a></p>
+</blockquote>
+<p>Creates a group backup request for a specified group. Use
+OpenStorageCloudBackup.Status() to get the current status of the
+backup request.</p>
+<p>This will only backup volumes which the user has read_access to.</p>
 <h2 id="methodopenstorageapiopenstoragecloudbackuprestore">Restore </h2>
 <blockquote>
 <p><strong>rpc</strong> Restore(<a href="#sdkcloudbackuprestorerequest">SdkCloudBackupRestoreRequest</a>)
@@ -3144,6 +3156,11 @@ as well.</p>
 <td><a href="#bool"> bool</a></td>
 <td>(optional) Disable SSL connection</td>
 </tr>
+<tr>
+<td>disable_path_style</td>
+<td><a href="#bool"> bool</a></td>
+<td>(optional) Disable path-style access</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -3178,6 +3195,11 @@ as well.</p>
 <td>disable_ssl</td>
 <td><a href="#bool"> bool</a></td>
 <td>(optional) Disable SSL connection</td>
+</tr>
+<tr>
+<td>disable_path_style</td>
+<td><a href="#bool"> bool</a></td>
+<td>(optional) Disable path-style access</td>
 </tr>
 </tbody>
 </table>
@@ -3536,6 +3558,95 @@ and do not provide <code>volume_id</code> and <code>all</code>.</li>
 <td>continuation_token</td>
 <td><a href="#string"> string</a></td>
 <td>if this is not an empty string, callers must pass this to get next list of backups</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcloudbackupgroupcreaterequest">SdkCloudBackupGroupCreateRequest </h2>
+<p>Defines a request to create a group backup of a group to the cloud</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>group_id</td>
+<td><a href="#string"> string</a></td>
+<td>GroupID of the volume for which cloudbackup is requested</td>
+</tr>
+<tr>
+<td>volume_ids</td>
+<td><a href="#string">repeated string</a></td>
+<td>VolumeIds are a list of volume IDs to use for the backup request. If multiple of GroupID, Labels or VolumeIDs are specified, volumes matching all of them are backed uup</td>
+</tr>
+<tr>
+<td>credential_id</td>
+<td><a href="#string"> string</a></td>
+<td>Credential id refers to the cloud credentials needed to backup</td>
+</tr>
+<tr>
+<td>full</td>
+<td><a href="#bool"> bool</a></td>
+<td>Full indicates if full backup is desired even though incremental is possible</td>
+</tr>
+<tr>
+<td>labels</td>
+<td><a href="#sdkcloudbackupgroupcreaterequestlabelsentry">map SdkCloudBackupGroupCreateRequest.LabelsEntry</a></td>
+<td>Labels are list of key value pairs to tag the cloud backup. These labels are stored in the metadata associated with the backup.</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcloudbackupgroupcreaterequestlabelsentry">SdkCloudBackupGroupCreateRequest.LabelsEntry </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcloudbackupgroupcreateresponse">SdkCloudBackupGroupCreateResponse </h2>
+<p>Empty response</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>group_cloud_backup_id</td>
+<td><a href="#string"> string</a></td>
+<td>ID for this group of backups</td>
+</tr>
+<tr>
+<td>task_ids</td>
+<td><a href="#string">repeated string</a></td>
+<td>TaskIds of the tasks performing the group backup</td>
 </tr>
 </tbody>
 </table>
@@ -9520,7 +9631,7 @@ client and server applications</p>
 </tr>
 <tr>
 <td>Minor</td>
-<td>55</td>
+<td>58</td>
 <td>SDK version minor value of this specification</td>
 </tr>
 <tr>
@@ -9996,7 +10107,7 @@ client and server applications</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Nightly","level":"1.5.4","depth":2,"next":{"title":"Changelog","level":"1.5.4.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.3.1","depth":3,"path":"release-6.1.changelog.md","ref":"release-6.1.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"master.generated-api.md","mtime":"2019-06-04T20:48:25.391Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-04T20:48:29.440Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Nightly","level":"1.5.4","depth":2,"next":{"title":"Changelog","level":"1.5.4.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.3.1","depth":3,"path":"release-6.1.changelog.md","ref":"release-6.1.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"master.generated-api.md","mtime":"2019-06-22T01:32:37.899Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-22T01:32:42.434Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

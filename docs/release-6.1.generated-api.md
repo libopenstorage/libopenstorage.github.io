@@ -99,6 +99,9 @@
     - [SdkCloudBackupEnumerateWithFiltersRequest](#sdkcloudbackupenumeratewithfiltersrequest)
     - [SdkCloudBackupEnumerateWithFiltersRequest.MetadataFilterEntry](#sdkcloudbackupenumeratewithfiltersrequestmetadatafilterentry)
     - [SdkCloudBackupEnumerateWithFiltersResponse](#sdkcloudbackupenumeratewithfiltersresponse)
+    - [SdkCloudBackupGroupCreateRequest](#sdkcloudbackupgroupcreaterequest)
+    - [SdkCloudBackupGroupCreateRequest.LabelsEntry](#sdkcloudbackupgroupcreaterequestlabelsentry)
+    - [SdkCloudBackupGroupCreateResponse](#sdkcloudbackupgroupcreateresponse)
     - [SdkCloudBackupHistoryItem](#sdkcloudbackuphistoryitem)
     - [SdkCloudBackupHistoryRequest](#sdkcloudbackuphistoryrequest)
     - [SdkCloudBackupHistoryResponse](#sdkcloudbackuphistoryresponse)
@@ -437,6 +440,16 @@ OpenStorageCloudBackup.Status() to get the current status of the
 backup request.
 
 Requires access AccessType.Read of volume
+## GroupCreate {#methodopenstorageapiopenstoragecloudbackupgroupcreate}
+
+> **rpc** GroupCreate([SdkCloudBackupGroupCreateRequest](#sdkcloudbackupgroupcreaterequest))
+    [SdkCloudBackupGroupCreateResponse](#sdkcloudbackupgroupcreateresponse)
+
+Creates a group backup request for a specified group. Use
+OpenStorageCloudBackup.Status() to get the current status of the
+backup request.
+
+This will only backup volumes which the user has read_access to.
 ## Restore {#methodopenstorageapiopenstoragecloudbackuprestore}
 
 > **rpc** Restore([SdkCloudBackupRestoreRequest](#sdkcloudbackuprestorerequest))
@@ -1898,6 +1911,7 @@ Defines credentials for Aws/S3 endpoints
 | endpoint | [ string](#string) | Endpoint |
 | region | [ string](#string) | Region |
 | disable_ssl | [ bool](#bool) | (optional) Disable SSL connection |
+| disable_path_style | [ bool](#bool) | (optional) Disable path-style access |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -1912,6 +1926,7 @@ Defines the response for AWS/S3 credentials
 | endpoint | [ string](#string) | Endpoint |
 | region | [ string](#string) | Region |
 | disable_ssl | [ bool](#bool) | (optional) Disable SSL connection |
+| disable_path_style | [ bool](#bool) | (optional) Disable path-style access |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -2089,6 +2104,45 @@ Defines a response which lists all the backups stored by a cloud provider
 | ----- | ---- | ----------- |
 | backups | [repeated SdkCloudBackupInfo](#sdkcloudbackupinfo) | none |
 | continuation_token | [ string](#string) | if this is not an empty string, callers must pass this to get next list of backups |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCloudBackupGroupCreateRequest {#sdkcloudbackupgroupcreaterequest}
+Defines a request to create a group backup of a group to the cloud
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| group_id | [ string](#string) | GroupID of the volume for which cloudbackup is requested |
+| volume_ids | [repeated string](#string) | VolumeIds are a list of volume IDs to use for the backup request. If multiple of GroupID, Labels or VolumeIDs are specified, volumes matching all of them are backed uup |
+| credential_id | [ string](#string) | Credential id refers to the cloud credentials needed to backup |
+| full | [ bool](#bool) | Full indicates if full backup is desired even though incremental is possible |
+| labels | [map SdkCloudBackupGroupCreateRequest.LabelsEntry](#sdkcloudbackupgroupcreaterequestlabelsentry) | Labels are list of key value pairs to tag the cloud backup. These labels are stored in the metadata associated with the backup. |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCloudBackupGroupCreateRequest.LabelsEntry {#sdkcloudbackupgroupcreaterequestlabelsentry}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [ string](#string) | none |
+| value | [ string](#string) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCloudBackupGroupCreateResponse {#sdkcloudbackupgroupcreateresponse}
+Empty response
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| group_cloud_backup_id | [ string](#string) | ID for this group of backups |
+| task_ids | [repeated string](#string) | TaskIds of the tasks performing the group backup |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -4941,7 +4995,7 @@ client and server applications
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
 | Minor | 42 | SDK version minor value of this specification |
-| Patch | 12 | SDK version patch value of this specification |
+| Patch | 14 | SDK version patch value of this specification |
 
 
 
