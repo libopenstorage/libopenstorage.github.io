@@ -2,6 +2,15 @@
 
 ## Releases
 
+
+### v0.60.0 - Tech Preview (6/11/2019)
+
+* Added new api for cloudbackup schedule update
+
+### v0.59.0 - Tech Preview (7/16/2019)
+
+* Add EnumerateWithFilters api for Node server which returns complete StorageNode object
+
 ### v0.58.0 - Tech Preview (6/5/2019)
 
 * Add cloud group-backup API

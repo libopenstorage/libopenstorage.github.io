@@ -582,6 +582,8 @@
 <li><a href="#sdkidentityversionresponse">SdkIdentityVersionResponse</a></li>
 <li><a href="#sdknodeenumeraterequest">SdkNodeEnumerateRequest</a></li>
 <li><a href="#sdknodeenumerateresponse">SdkNodeEnumerateResponse</a></li>
+<li><a href="#sdknodeenumeratewithfiltersrequest">SdkNodeEnumerateWithFiltersRequest</a></li>
+<li><a href="#sdknodeenumeratewithfiltersresponse">SdkNodeEnumerateWithFiltersResponse</a></li>
 <li><a href="#sdknodeinspectcurrentrequest">SdkNodeInspectCurrentRequest</a></li>
 <li><a href="#sdknodeinspectcurrentresponse">SdkNodeInspectCurrentResponse</a></li>
 <li><a href="#sdknodeinspectrequest">SdkNodeInspectRequest</a></li>
@@ -744,6 +746,7 @@
 <li><a href="#enforcementtype">EnforcementType</a></li>
 <li><a href="#fstype">FSType</a></li>
 <li><a href="#graphdriverchangetype">GraphDriverChangeType</a></li>
+<li><a href="#hardwaretype">HardwareType</a></li>
 <li><a href="#ioprofile">IoProfile</a></li>
 <li><a href="#labelselectorrequirementoperator">LabelSelectorRequirement.Operator</a></li>
 <li><a href="#operationflags">OperationFlags</a></li>
@@ -1162,7 +1165,13 @@ where the client is currently connected to.</p>
 <p><strong>rpc</strong> Enumerate(<a href="#sdknodeenumeraterequest">SdkNodeEnumerateRequest</a>)
     <a href="#sdknodeenumerateresponse">SdkNodeEnumerateResponse</a></p>
 </blockquote>
-<p>Enumerate returns the ids of all the nodes in the current cluster
+<p>Enumerate returns the ids of all the nodes in the current cluster</p>
+<h2 id="methodopenstorageapiopenstoragenodeenumeratewithfilters">EnumerateWithFilters </h2>
+<blockquote>
+<p><strong>rpc</strong> EnumerateWithFilters(<a href="#sdknodeenumeratewithfiltersrequest">SdkNodeEnumerateWithFiltersRequest</a>)
+    <a href="#sdknodeenumeratewithfiltersresponse">SdkNodeEnumerateWithFiltersResponse</a></p>
+</blockquote>
+<p>EnumerateWithFilters returns all the nodes in the current cluster
  <!-- end methods --></p>
 <h1 id="serviceopenstorageapiopenstorageobjectstore">OpenStorageObjectstore </h1>
 <p>OpenStorageObjectstore is a service used to manage object store services on volumes</p>
@@ -4988,7 +4997,7 @@ you will need to check if the value of credential_type is one of the ones below.
 <p>Empty request</p>
  <!-- end HasFields -->
 <h2 id="sdknodeenumerateresponse">SdkNodeEnumerateResponse </h2>
-<p>Defines a response with a list of nodes</p>
+<p>Defines a response with a list of node ids</p>
 <table>
 <thead>
 <tr>
@@ -5002,6 +5011,30 @@ you will need to check if the value of credential_type is one of the ones below.
 <td>node_ids</td>
 <td><a href="#string">repeated string</a></td>
 <td>List of all the node ids in the cluster</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdknodeenumeratewithfiltersrequest">SdkNodeEnumerateWithFiltersRequest </h2>
+<p>Defines a request to list nodes with given filter. Currently there are
+no filters and all the nodes will be returned.</p>
+ <!-- end HasFields -->
+<h2 id="sdknodeenumeratewithfiltersresponse">SdkNodeEnumerateWithFiltersResponse </h2>
+<p>Defines a response with a list of nodes</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nodes</td>
+<td><a href="#storagenode">repeated StorageNode</a></td>
+<td>List of all the nodes in the cluster</td>
 </tr>
 </tbody>
 </table>
@@ -7439,6 +7472,11 @@ to seed the volume with data.</p>
 <td><a href="#string"> string</a></td>
 <td>SchedulerNodeName is name of the node in scheduler context. It can be empty if unable to get the name from the scheduler.</td>
 </tr>
+<tr>
+<td>HWType</td>
+<td><a href="#hardwaretype"> HardwareType</a></td>
+<td>HardwareType is the type of the hardware the node has</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -9139,6 +9177,33 @@ In situations, where 2 or more rules conflict, the weight of the rules will dict
 </tr>
 </tbody>
 </table>
+<h2 id="hardwaretype">HardwareType </h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UnknownMachine</td>
+<td>0</td>
+<td>When we do not know the machine type alsp the default</td>
+</tr>
+<tr>
+<td>VirtualMachine</td>
+<td>1</td>
+<td>when we are running on virtual machine</td>
+</tr>
+<tr>
+<td>BareMetalMachine</td>
+<td>2</td>
+<td>when we are running on physical hardware</td>
+</tr>
+</tbody>
+</table>
 <h2 id="ioprofile">IoProfile </h2>
 <table>
 <thead>
@@ -9603,7 +9668,7 @@ client and server applications</p>
 </tr>
 <tr>
 <td>Patch</td>
-<td>14</td>
+<td>16</td>
 <td>SDK version patch value of this specification</td>
 </tr>
 </tbody>
@@ -10074,7 +10139,7 @@ client and server applications</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"v0.42.x","level":"1.5.3","depth":2,"next":{"title":"Changelog","level":"1.5.3.1","depth":3,"path":"release-6.1.changelog.md","ref":"release-6.1.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.2.1","depth":3,"path":"release-4.0.changelog.md","ref":"release-4.0.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"release-6.1.generated-api.md","mtime":"2019-06-22T01:32:38.824Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-22T01:32:42.434Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"v0.42.x","level":"1.5.3","depth":2,"next":{"title":"Changelog","level":"1.5.3.1","depth":3,"path":"release-6.1.changelog.md","ref":"release-6.1.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.2.1","depth":3,"path":"release-4.0.changelog.md","ref":"release-4.0.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"release-6.1.generated-api.md","mtime":"2019-08-07T19:47:29.346Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-07T19:47:33.266Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

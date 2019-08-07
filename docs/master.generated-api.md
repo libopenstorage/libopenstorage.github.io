@@ -116,6 +116,8 @@
     - [SdkCloudBackupSchedEnumerateRequest](#sdkcloudbackupschedenumeraterequest)
     - [SdkCloudBackupSchedEnumerateResponse](#sdkcloudbackupschedenumerateresponse)
     - [SdkCloudBackupSchedEnumerateResponse.CloudSchedListEntry](#sdkcloudbackupschedenumerateresponsecloudschedlistentry)
+    - [SdkCloudBackupSchedUpdateRequest](#sdkcloudbackupschedupdaterequest)
+    - [SdkCloudBackupSchedUpdateResponse](#sdkcloudbackupschedupdateresponse)
     - [SdkCloudBackupScheduleInfo](#sdkcloudbackupscheduleinfo)
     - [SdkCloudBackupStateChangeRequest](#sdkcloudbackupstatechangerequest)
     - [SdkCloudBackupStateChangeResponse](#sdkcloudbackupstatechangeresponse)
@@ -172,6 +174,8 @@
     - [SdkIdentityVersionResponse](#sdkidentityversionresponse)
     - [SdkNodeEnumerateRequest](#sdknodeenumeraterequest)
     - [SdkNodeEnumerateResponse](#sdknodeenumerateresponse)
+    - [SdkNodeEnumerateWithFiltersRequest](#sdknodeenumeratewithfiltersrequest)
+    - [SdkNodeEnumerateWithFiltersResponse](#sdknodeenumeratewithfiltersresponse)
     - [SdkNodeInspectCurrentRequest](#sdknodeinspectcurrentrequest)
     - [SdkNodeInspectCurrentResponse](#sdknodeinspectcurrentresponse)
     - [SdkNodeInspectRequest](#sdknodeinspectrequest)
@@ -508,6 +512,12 @@ StateChange can be used to stop, pause, and restart a backup
     [SdkCloudBackupSchedCreateResponse](#sdkcloudbackupschedcreateresponse)
 
 Create cloud backup schedule
+## SchedUpdate {#methodopenstorageapiopenstoragecloudbackupschedupdate}
+
+> **rpc** SchedUpdate([SdkCloudBackupSchedUpdateRequest](#sdkcloudbackupschedupdaterequest))
+    [SdkCloudBackupSchedUpdateResponse](#sdkcloudbackupschedupdateresponse)
+
+Update existing cloud backup schedule
 ## SchedDelete {#methodopenstorageapiopenstoragecloudbackupscheddelete}
 
 > **rpc** SchedDelete([SdkCloudBackupSchedDeleteRequest](#sdkcloudbackupscheddeleterequest))
@@ -793,6 +803,12 @@ where the client is currently connected to.
     [SdkNodeEnumerateResponse](#sdknodeenumerateresponse)
 
 Enumerate returns the ids of all the nodes in the current cluster
+## EnumerateWithFilters {#methodopenstorageapiopenstoragenodeenumeratewithfilters}
+
+> **rpc** EnumerateWithFilters([SdkNodeEnumerateWithFiltersRequest](#sdknodeenumeratewithfiltersrequest))
+    [SdkNodeEnumerateWithFiltersResponse](#sdknodeenumeratewithfiltersresponse)
+
+EnumerateWithFilters returns all the nodes in the current cluster
  <!-- end methods -->
 
 # OpenStorageObjectstore {#serviceopenstorageapiopenstorageobjectstore}
@@ -2313,6 +2329,25 @@ backups to a cloud provider
  <!-- end HasFields -->
 
 
+## SdkCloudBackupSchedUpdateRequest {#sdkcloudbackupschedupdaterequest}
+Defines a request to update a schedule for volume backups to a
+cloud provider
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| cloud_sched_info | [ SdkCloudBackupScheduleInfo](#sdkcloudbackupscheduleinfo) | Cloud Backup Schedule info |
+| sched_uuid | [ string](#string) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCloudBackupSchedUpdateResponse {#sdkcloudbackupschedupdateresponse}
+Empty response
+
+ <!-- end HasFields -->
+
+
 ## SdkCloudBackupScheduleInfo {#sdkcloudbackupscheduleinfo}
 SdkCloudBackupScheduleInfo describes a schedule for volume backups to
 a cloud provider
@@ -2879,12 +2914,30 @@ Empty request
 
 
 ## SdkNodeEnumerateResponse {#sdknodeenumerateresponse}
-Defines a response with a list of nodes
+Defines a response with a list of node ids
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | node_ids | [repeated string](#string) | List of all the node ids in the cluster |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkNodeEnumerateWithFiltersRequest {#sdknodeenumeratewithfiltersrequest}
+Defines a request to list nodes with given filter. Currently there are
+no filters and all the nodes will be returned.
+
+ <!-- end HasFields -->
+
+
+## SdkNodeEnumerateWithFiltersResponse {#sdknodeenumeratewithfiltersresponse}
+Defines a response with a list of nodes
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| nodes | [repeated StorageNode](#storagenode) | List of all the nodes in the cluster |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -5008,7 +5061,7 @@ client and server applications
 | ---- | ------ | ----------- |
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
-| Minor | 58 | SDK version minor value of this specification |
+| Minor | 60 | SDK version minor value of this specification |
 | Patch | 0 | SDK version patch value of this specification |
 
 

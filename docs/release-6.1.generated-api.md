@@ -172,6 +172,8 @@
     - [SdkIdentityVersionResponse](#sdkidentityversionresponse)
     - [SdkNodeEnumerateRequest](#sdknodeenumeraterequest)
     - [SdkNodeEnumerateResponse](#sdknodeenumerateresponse)
+    - [SdkNodeEnumerateWithFiltersRequest](#sdknodeenumeratewithfiltersrequest)
+    - [SdkNodeEnumerateWithFiltersResponse](#sdknodeenumeratewithfiltersresponse)
     - [SdkNodeInspectCurrentRequest](#sdknodeinspectcurrentrequest)
     - [SdkNodeInspectCurrentResponse](#sdknodeinspectcurrentresponse)
     - [SdkNodeInspectRequest](#sdknodeinspectrequest)
@@ -333,6 +335,7 @@
     - [EnforcementType](#enforcementtype)
     - [FSType](#fstype)
     - [GraphDriverChangeType](#graphdriverchangetype)
+    - [HardwareType](#hardwaretype)
     - [IoProfile](#ioprofile)
     - [LabelSelectorRequirement.Operator](#labelselectorrequirementoperator)
     - [OperationFlags](#operationflags)
@@ -792,6 +795,12 @@ where the client is currently connected to.
     [SdkNodeEnumerateResponse](#sdknodeenumerateresponse)
 
 Enumerate returns the ids of all the nodes in the current cluster
+## EnumerateWithFilters {#methodopenstorageapiopenstoragenodeenumeratewithfilters}
+
+> **rpc** EnumerateWithFilters([SdkNodeEnumerateWithFiltersRequest](#sdknodeenumeratewithfiltersrequest))
+    [SdkNodeEnumerateWithFiltersResponse](#sdknodeenumeratewithfiltersresponse)
+
+EnumerateWithFilters returns all the nodes in the current cluster
  <!-- end methods -->
 
 # OpenStorageObjectstore {#serviceopenstorageapiopenstorageobjectstore}
@@ -2878,12 +2887,30 @@ Empty request
 
 
 ## SdkNodeEnumerateResponse {#sdknodeenumerateresponse}
-Defines a response with a list of nodes
+Defines a response with a list of node ids
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | node_ids | [repeated string](#string) | List of all the node ids in the cluster |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkNodeEnumerateWithFiltersRequest {#sdknodeenumeratewithfiltersrequest}
+Defines a request to list nodes with given filter. Currently there are
+no filters and all the nodes will be returned.
+
+ <!-- end HasFields -->
+
+
+## SdkNodeEnumerateWithFiltersResponse {#sdknodeenumeratewithfiltersresponse}
+Defines a response with a list of nodes
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| nodes | [repeated StorageNode](#storagenode) | List of all the nodes in the cluster |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -4202,6 +4229,7 @@ StorageNode describes the state of the node
 | hostname | [ string](#string) | Hostname of the node |
 | node_labels | [map StorageNode.NodeLabelsEntry](#storagenodenodelabelsentry) | User defined labels for the node |
 | scheduler_node_name | [ string](#string) | SchedulerNodeName is name of the node in scheduler context. It can be empty if unable to get the name from the scheduler. |
+| HWType | [ HardwareType](#hardwaretype) | HardwareType is the type of the hardware the node has |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -4830,6 +4858,18 @@ Defines the types of enforcement on the given rules
 
 
 
+## HardwareType {#hardwaretype}
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| UnknownMachine | 0 | When we do not know the machine type alsp the default |
+| VirtualMachine | 1 | when we are running on virtual machine |
+| BareMetalMachine | 2 | when we are running on physical hardware |
+
+
+
+
 ## IoProfile {#ioprofile}
 
 
@@ -4995,7 +5035,7 @@ client and server applications
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
 | Minor | 42 | SDK version minor value of this specification |
-| Patch | 14 | SDK version patch value of this specification |
+| Patch | 16 | SDK version patch value of this specification |
 
 
 

@@ -526,6 +526,8 @@
 <li><a href="#sdkcloudbackupschedenumeraterequest">SdkCloudBackupSchedEnumerateRequest</a></li>
 <li><a href="#sdkcloudbackupschedenumerateresponse">SdkCloudBackupSchedEnumerateResponse</a></li>
 <li><a href="#sdkcloudbackupschedenumerateresponsecloudschedlistentry">SdkCloudBackupSchedEnumerateResponse.CloudSchedListEntry</a></li>
+<li><a href="#sdkcloudbackupschedupdaterequest">SdkCloudBackupSchedUpdateRequest</a></li>
+<li><a href="#sdkcloudbackupschedupdateresponse">SdkCloudBackupSchedUpdateResponse</a></li>
 <li><a href="#sdkcloudbackupscheduleinfo">SdkCloudBackupScheduleInfo</a></li>
 <li><a href="#sdkcloudbackupstatechangerequest">SdkCloudBackupStateChangeRequest</a></li>
 <li><a href="#sdkcloudbackupstatechangeresponse">SdkCloudBackupStateChangeResponse</a></li>
@@ -582,6 +584,8 @@
 <li><a href="#sdkidentityversionresponse">SdkIdentityVersionResponse</a></li>
 <li><a href="#sdknodeenumeraterequest">SdkNodeEnumerateRequest</a></li>
 <li><a href="#sdknodeenumerateresponse">SdkNodeEnumerateResponse</a></li>
+<li><a href="#sdknodeenumeratewithfiltersrequest">SdkNodeEnumerateWithFiltersRequest</a></li>
+<li><a href="#sdknodeenumeratewithfiltersresponse">SdkNodeEnumerateWithFiltersResponse</a></li>
 <li><a href="#sdknodeinspectcurrentrequest">SdkNodeInspectCurrentRequest</a></li>
 <li><a href="#sdknodeinspectcurrentresponse">SdkNodeInspectCurrentResponse</a></li>
 <li><a href="#sdknodeinspectrequest">SdkNodeInspectRequest</a></li>
@@ -907,6 +911,12 @@ backup and other backups are dependent on it, it will not be able to be deleted.
     <a href="#sdkcloudbackupschedcreateresponse">SdkCloudBackupSchedCreateResponse</a></p>
 </blockquote>
 <p>Create cloud backup schedule</p>
+<h2 id="methodopenstorageapiopenstoragecloudbackupschedupdate">SchedUpdate </h2>
+<blockquote>
+<p><strong>rpc</strong> SchedUpdate(<a href="#sdkcloudbackupschedupdaterequest">SdkCloudBackupSchedUpdateRequest</a>)
+    <a href="#sdkcloudbackupschedupdateresponse">SdkCloudBackupSchedUpdateResponse</a></p>
+</blockquote>
+<p>Update existing cloud backup schedule</p>
 <h2 id="methodopenstorageapiopenstoragecloudbackupscheddelete">SchedDelete </h2>
 <blockquote>
 <p><strong>rpc</strong> SchedDelete(<a href="#sdkcloudbackupscheddeleterequest">SdkCloudBackupSchedDeleteRequest</a>)
@@ -1163,7 +1173,13 @@ where the client is currently connected to.</p>
 <p><strong>rpc</strong> Enumerate(<a href="#sdknodeenumeraterequest">SdkNodeEnumerateRequest</a>)
     <a href="#sdknodeenumerateresponse">SdkNodeEnumerateResponse</a></p>
 </blockquote>
-<p>Enumerate returns the ids of all the nodes in the current cluster
+<p>Enumerate returns the ids of all the nodes in the current cluster</p>
+<h2 id="methodopenstorageapiopenstoragenodeenumeratewithfilters">EnumerateWithFilters </h2>
+<blockquote>
+<p><strong>rpc</strong> EnumerateWithFilters(<a href="#sdknodeenumeratewithfiltersrequest">SdkNodeEnumerateWithFiltersRequest</a>)
+    <a href="#sdknodeenumeratewithfiltersresponse">SdkNodeEnumerateWithFiltersResponse</a></p>
+</blockquote>
+<p>EnumerateWithFilters returns all the nodes in the current cluster
  <!-- end methods --></p>
 <h1 id="serviceopenstorageapiopenstorageobjectstore">OpenStorageObjectstore </h1>
 <p>OpenStorageObjectstore is a service used to manage object store services on volumes</p>
@@ -3973,6 +3989,35 @@ backups to a cloud provider</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
+<h2 id="sdkcloudbackupschedupdaterequest">SdkCloudBackupSchedUpdateRequest </h2>
+<p>Defines a request to update a schedule for volume backups to a
+cloud provider</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cloud_sched_info</td>
+<td><a href="#sdkcloudbackupscheduleinfo"> SdkCloudBackupScheduleInfo</a></td>
+<td>Cloud Backup Schedule info</td>
+</tr>
+<tr>
+<td>sched_uuid</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcloudbackupschedupdateresponse">SdkCloudBackupSchedUpdateResponse </h2>
+<p>Empty response</p>
+ <!-- end HasFields -->
 <h2 id="sdkcloudbackupscheduleinfo">SdkCloudBackupScheduleInfo </h2>
 <p>SdkCloudBackupScheduleInfo describes a schedule for volume backups to
 a cloud provider</p>
@@ -4989,7 +5034,7 @@ you will need to check if the value of credential_type is one of the ones below.
 <p>Empty request</p>
  <!-- end HasFields -->
 <h2 id="sdknodeenumerateresponse">SdkNodeEnumerateResponse </h2>
-<p>Defines a response with a list of nodes</p>
+<p>Defines a response with a list of node ids</p>
 <table>
 <thead>
 <tr>
@@ -5003,6 +5048,30 @@ you will need to check if the value of credential_type is one of the ones below.
 <td>node_ids</td>
 <td><a href="#string">repeated string</a></td>
 <td>List of all the node ids in the cluster</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdknodeenumeratewithfiltersrequest">SdkNodeEnumerateWithFiltersRequest </h2>
+<p>Defines a request to list nodes with given filter. Currently there are
+no filters and all the nodes will be returned.</p>
+ <!-- end HasFields -->
+<h2 id="sdknodeenumeratewithfiltersresponse">SdkNodeEnumerateWithFiltersResponse </h2>
+<p>Defines a response with a list of nodes</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nodes</td>
+<td><a href="#storagenode">repeated StorageNode</a></td>
+<td>List of all the nodes in the cluster</td>
 </tr>
 </tbody>
 </table>
@@ -9631,7 +9700,7 @@ client and server applications</p>
 </tr>
 <tr>
 <td>Minor</td>
-<td>58</td>
+<td>60</td>
 <td>SDK version minor value of this specification</td>
 </tr>
 <tr>
@@ -10107,7 +10176,7 @@ client and server applications</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Nightly","level":"1.5.4","depth":2,"next":{"title":"Changelog","level":"1.5.4.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.3.1","depth":3,"path":"release-6.1.changelog.md","ref":"release-6.1.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"master.generated-api.md","mtime":"2019-06-22T01:32:37.899Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-22T01:32:42.434Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Nightly","level":"1.5.4","depth":2,"next":{"title":"Changelog","level":"1.5.4.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.3.1","depth":3,"path":"release-6.1.changelog.md","ref":"release-6.1.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"master.generated-api.md","mtime":"2019-08-07T19:47:28.612Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-07T19:47:33.266Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
