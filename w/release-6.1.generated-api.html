@@ -425,6 +425,7 @@
 <li><a href="#serviceopenstorageapiopenstoragenode">OpenStorageNode</a></li>
 <li><a href="#serviceopenstorageapiopenstorageobjectstore">OpenStorageObjectstore</a></li>
 <li><a href="#serviceopenstorageapiopenstoragepolicy">OpenStoragePolicy</a></li>
+<li><a href="#serviceopenstorageapiopenstoragepool">OpenStoragePool</a></li>
 <li><a href="#serviceopenstorageapiopenstoragerole">OpenStorageRole</a></li>
 <li><a href="#serviceopenstorageapiopenstorageschedulepolicy">OpenStorageSchedulePolicy</a></li>
 <li><a href="#serviceopenstorageapiopenstoragevolume">OpenStorageVolume</a></li>
@@ -526,6 +527,8 @@
 <li><a href="#sdkcloudbackupschedenumeraterequest">SdkCloudBackupSchedEnumerateRequest</a></li>
 <li><a href="#sdkcloudbackupschedenumerateresponse">SdkCloudBackupSchedEnumerateResponse</a></li>
 <li><a href="#sdkcloudbackupschedenumerateresponsecloudschedlistentry">SdkCloudBackupSchedEnumerateResponse.CloudSchedListEntry</a></li>
+<li><a href="#sdkcloudbackupschedupdaterequest">SdkCloudBackupSchedUpdateRequest</a></li>
+<li><a href="#sdkcloudbackupschedupdateresponse">SdkCloudBackupSchedUpdateResponse</a></li>
 <li><a href="#sdkcloudbackupscheduleinfo">SdkCloudBackupScheduleInfo</a></li>
 <li><a href="#sdkcloudbackupstatechangerequest">SdkCloudBackupStateChangeRequest</a></li>
 <li><a href="#sdkcloudbackupstatechangeresponse">SdkCloudBackupStateChangeResponse</a></li>
@@ -643,6 +646,9 @@
 <li><a href="#sdkservicecapability">SdkServiceCapability</a></li>
 <li><a href="#sdkservicecapabilityopenstorageservice">SdkServiceCapability.OpenStorageService</a></li>
 <li><a href="#sdkstoragepolicy">SdkStoragePolicy</a></li>
+<li><a href="#sdkstoragepool">SdkStoragePool</a></li>
+<li><a href="#sdkstoragepoolresizerequest">SdkStoragePoolResizeRequest</a></li>
+<li><a href="#sdkstoragepoolresizeresponse">SdkStoragePoolResizeResponse</a></li>
 <li><a href="#sdkversion">SdkVersion</a></li>
 <li><a href="#sdkvolumeattachoptions">SdkVolumeAttachOptions</a></li>
 <li><a href="#sdkvolumeattachrequest">SdkVolumeAttachRequest</a></li>
@@ -706,6 +712,8 @@
 <li><a href="#storagenodenodelabelsentry">StorageNode.NodeLabelsEntry</a></li>
 <li><a href="#storagepool">StoragePool</a></li>
 <li><a href="#storagepoollabelsentry">StoragePool.LabelsEntry</a></li>
+<li><a href="#storagepooloperation">StoragePoolOperation</a></li>
+<li><a href="#storagepooloperationparamsentry">StoragePoolOperation.ParamsEntry</a></li>
 <li><a href="#storageresource">StorageResource</a></li>
 <li><a href="#storageversion">StorageVersion</a></li>
 <li><a href="#storageversiondetailsentry">StorageVersion.DetailsEntry</a></li>
@@ -756,6 +764,9 @@
 <li><a href="#sdkcloudbackuprequestedstate">SdkCloudBackupRequestedState</a></li>
 <li><a href="#sdkcloudbackupstatustype">SdkCloudBackupStatusType</a></li>
 <li><a href="#sdkservicecapabilityopenstorageservicetype">SdkServiceCapability.OpenStorageService.Type</a></li>
+<li><a href="#sdkstoragepooloperationstatus">SdkStoragePool.OperationStatus</a></li>
+<li><a href="#sdkstoragepooloperationtype">SdkStoragePool.OperationType</a></li>
+<li><a href="#sdkstoragepoolresizeoperationtype">SdkStoragePool.ResizeOperationType</a></li>
 <li><a href="#sdktimeweekday">SdkTimeWeekday</a></li>
 <li><a href="#sdkversionversion">SdkVersion.Version</a></li>
 <li><a href="#severitytype">SeverityType</a></li>
@@ -909,6 +920,12 @@ backup and other backups are dependent on it, it will not be able to be deleted.
     <a href="#sdkcloudbackupschedcreateresponse">SdkCloudBackupSchedCreateResponse</a></p>
 </blockquote>
 <p>Create cloud backup schedule</p>
+<h2 id="methodopenstorageapiopenstoragecloudbackupschedupdate">SchedUpdate </h2>
+<blockquote>
+<p><strong>rpc</strong> SchedUpdate(<a href="#sdkcloudbackupschedupdaterequest">SdkCloudBackupSchedUpdateRequest</a>)
+    <a href="#sdkcloudbackupschedupdateresponse">SdkCloudBackupSchedUpdateResponse</a></p>
+</blockquote>
+<p>Update existing cloud backup schedule</p>
 <h2 id="methodopenstorageapiopenstoragecloudbackupscheddelete">SchedDelete </h2>
 <blockquote>
 <p><strong>rpc</strong> SchedDelete(<a href="#sdkcloudbackupscheddeleterequest">SdkCloudBackupSchedDeleteRequest</a>)
@@ -1256,6 +1273,15 @@ empty response</p>
 </blockquote>
 <p>Release specified storage policy constraint for volume
 creation
+ <!-- end methods --></p>
+<h1 id="serviceopenstorageapiopenstoragepool">OpenStoragePool </h1>
+<p>OpenStoragePool is a service used to manage storage pools in the cluster</p>
+<h2 id="methodopenstorageapiopenstoragepoolresize">Resize </h2>
+<blockquote>
+<p><strong>rpc</strong> Resize(<a href="#sdkstoragepoolresizerequest">SdkStoragePoolResizeRequest</a>)
+    <a href="#sdkstoragepoolresizeresponse">SdkStoragePoolResizeResponse</a></p>
+</blockquote>
+<p>Resize resizes the specified storage pool based on the request parameters
  <!-- end methods --></p>
 <h1 id="serviceopenstorageapiopenstoragerole">OpenStorageRole </h1>
 <p>OpenStorageRole service provides methods to manage user roles</p>
@@ -3981,6 +4007,35 @@ backups to a cloud provider</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
+<h2 id="sdkcloudbackupschedupdaterequest">SdkCloudBackupSchedUpdateRequest </h2>
+<p>Defines a request to update a schedule for volume backups to a
+cloud provider</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cloud_sched_info</td>
+<td><a href="#sdkcloudbackupscheduleinfo"> SdkCloudBackupScheduleInfo</a></td>
+<td>Cloud Backup Schedule info</td>
+</tr>
+<tr>
+<td>sched_uuid</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcloudbackupschedupdateresponse">SdkCloudBackupSchedUpdateResponse </h2>
+<p>Empty response</p>
+ <!-- end HasFields -->
 <h2 id="sdkcloudbackupscheduleinfo">SdkCloudBackupScheduleInfo </h2>
 <p>SdkCloudBackupScheduleInfo describes a schedule for volume backups to
 a cloud provider</p>
@@ -6050,6 +6105,46 @@ rules followed</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
+<h2 id="sdkstoragepool">SdkStoragePool </h2>
+ <!-- end HasFields -->
+<h2 id="sdkstoragepoolresizerequest">SdkStoragePoolResizeRequest </h2>
+<p>Defines a request when inspect a storage pool</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>uuid</td>
+<td><a href="#string"> string</a></td>
+<td>UUID of the storage pool to inspect</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> resize_factor.size</td>
+<td><a href="#uint64"> uint64</a></td>
+<td>Size is the new desired size of the storage pool</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> resize_factor.percentage</td>
+<td><a href="#uint64"> uint64</a></td>
+<td>Size is the new desired size of the storage pool</td>
+</tr>
+<tr>
+<td>operation_type</td>
+<td><a href="#sdkstoragepoolresizeoperationtype"> SdkStoragePool.ResizeOperationType</a></td>
+<td>OperationType is the operation that&apos;s used to resize the storage pool (optional)</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkstoragepoolresizeresponse">SdkStoragePoolResizeResponse </h2>
+<p>Defines a response when resizing a storage pool</p>
+ <!-- end HasFields -->
 <h2 id="sdkversion">SdkVersion </h2>
 <p>SDK version in Major.Minor.Patch format. The goal of this
 message is to provide clients a method to determine the SDK
@@ -6393,6 +6488,11 @@ to update any labels on the volume.</p>
 <td>unmount_before_detach</td>
 <td><a href="#bool"> bool</a></td>
 <td>Unmount the volume before detaching</td>
+</tr>
+<tr>
+<td>redirect</td>
+<td><a href="#bool"> bool</a></td>
+<td>redirect the request to the attached node</td>
 </tr>
 </tbody>
 </table>
@@ -7575,11 +7675,80 @@ to seed the volume with data.</p>
 <td><a href="#storagepoollabelsentry">map StoragePool.LabelsEntry</a></td>
 <td>Labels is a list of user defined name-value pairs</td>
 </tr>
+<tr>
+<td>uuid</td>
+<td><a href="#string"> string</a></td>
+<td>UUID is the unique identifier for a storage pool</td>
+</tr>
+<tr>
+<td>last_operation</td>
+<td><a href="#storagepooloperation"> StoragePoolOperation</a></td>
+<td>LastOperation is the most recent operation being performed on a storage pool</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="storagepoollabelsentry">StoragePool.LabelsEntry </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="storagepooloperation">StoragePoolOperation </h2>
+<p>StoragePoolOperation defines an operation being performed on a storage pool</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="#sdkstoragepooloperationtype"> SdkStoragePool.OperationType</a></td>
+<td>Type is the type of the operation</td>
+</tr>
+<tr>
+<td>msg</td>
+<td><a href="#string"> string</a></td>
+<td>Msg is a user friendly message for the operation</td>
+</tr>
+<tr>
+<td>params</td>
+<td><a href="#storagepooloperationparamsentry">map StoragePoolOperation.ParamsEntry</a></td>
+<td>Params for the parameters for the operation</td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="#sdkstoragepooloperationstatus"> SdkStoragePool.OperationStatus</a></td>
+<td>Status is the status of the operation</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="storagepooloperationparamsentry">StoragePoolOperation.ParamsEntry </h2>
 <table>
 <thead>
 <tr>
@@ -9591,6 +9760,85 @@ to or from a cloud provider</p>
 </tr>
 </tbody>
 </table>
+<h2 id="sdkstoragepooloperationstatus">SdkStoragePool.OperationStatus </h2>
+<p>OperationStatus captures the various statuses of a storage pool operation</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OPERATION_PENDING</td>
+<td>0</td>
+<td>Operation pending</td>
+</tr>
+<tr>
+<td>OPERATION_IN_PROGRESS</td>
+<td>1</td>
+<td>Operation is in progress</td>
+</tr>
+<tr>
+<td>OPERATION_SUCCESSFUL</td>
+<td>2</td>
+<td>Operation is successful</td>
+</tr>
+<tr>
+<td>OPERATION_FAILED</td>
+<td>3</td>
+<td>Operation failed</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sdkstoragepooloperationtype">SdkStoragePool.OperationType </h2>
+<p>OperationType defines the various operations that are performed on a storage pool</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OPERATION_RESIZE</td>
+<td>0</td>
+<td>Resize operation</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sdkstoragepoolresizeoperationtype">SdkStoragePool.ResizeOperationType </h2>
+<p>Defines the operation types available to resize a storage pool</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RESIZE_TYPE_AUTO</td>
+<td>0</td>
+<td>Automatically pick the optimum resize operation type</td>
+</tr>
+<tr>
+<td>RESIZE_TYPE_ADD_DISK</td>
+<td>1</td>
+<td>Add a new drive to resize the pool</td>
+</tr>
+<tr>
+<td>RESIZE_TYPE_RESIZE_DISK</td>
+<td>2</td>
+<td>Resize existing drives to resize the pool</td>
+</tr>
+</tbody>
+</table>
 <h2 id="sdktimeweekday">SdkTimeWeekday </h2>
 <p>Defines times of day</p>
 <table>
@@ -9668,7 +9916,7 @@ client and server applications</p>
 </tr>
 <tr>
 <td>Patch</td>
-<td>16</td>
+<td>18</td>
 <td>SDK version patch value of this specification</td>
 </tr>
 </tbody>
@@ -10139,7 +10387,7 @@ client and server applications</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"v0.42.x","level":"1.5.3","depth":2,"next":{"title":"Changelog","level":"1.5.3.1","depth":3,"path":"release-6.1.changelog.md","ref":"release-6.1.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.2.1","depth":3,"path":"release-4.0.changelog.md","ref":"release-4.0.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"release-6.1.generated-api.md","mtime":"2019-08-07T19:49:45.890Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-07T19:49:48.265Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"v0.42.x","level":"1.5.3","depth":2,"next":{"title":"Changelog","level":"1.5.3.1","depth":3,"path":"release-6.1.changelog.md","ref":"release-6.1.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.2.1","depth":3,"path":"release-4.0.changelog.md","ref":"release-4.0.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"release-6.1.generated-api.md","mtime":"2019-10-07T19:46:29.845Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-10-07T19:46:33.018Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

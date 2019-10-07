@@ -16,6 +16,7 @@
     - [OpenStorageNode](#serviceopenstorageapiopenstoragenode)
     - [OpenStorageObjectstore](#serviceopenstorageapiopenstorageobjectstore)
     - [OpenStoragePolicy](#serviceopenstorageapiopenstoragepolicy)
+    - [OpenStoragePool](#serviceopenstorageapiopenstoragepool)
     - [OpenStorageRole](#serviceopenstorageapiopenstoragerole)
     - [OpenStorageSchedulePolicy](#serviceopenstorageapiopenstorageschedulepolicy)
     - [OpenStorageVolume](#serviceopenstorageapiopenstoragevolume)
@@ -116,6 +117,8 @@
     - [SdkCloudBackupSchedEnumerateRequest](#sdkcloudbackupschedenumeraterequest)
     - [SdkCloudBackupSchedEnumerateResponse](#sdkcloudbackupschedenumerateresponse)
     - [SdkCloudBackupSchedEnumerateResponse.CloudSchedListEntry](#sdkcloudbackupschedenumerateresponsecloudschedlistentry)
+    - [SdkCloudBackupSchedUpdateRequest](#sdkcloudbackupschedupdaterequest)
+    - [SdkCloudBackupSchedUpdateResponse](#sdkcloudbackupschedupdateresponse)
     - [SdkCloudBackupScheduleInfo](#sdkcloudbackupscheduleinfo)
     - [SdkCloudBackupStateChangeRequest](#sdkcloudbackupstatechangerequest)
     - [SdkCloudBackupStateChangeResponse](#sdkcloudbackupstatechangeresponse)
@@ -233,6 +236,9 @@
     - [SdkServiceCapability](#sdkservicecapability)
     - [SdkServiceCapability.OpenStorageService](#sdkservicecapabilityopenstorageservice)
     - [SdkStoragePolicy](#sdkstoragepolicy)
+    - [SdkStoragePool](#sdkstoragepool)
+    - [SdkStoragePoolResizeRequest](#sdkstoragepoolresizerequest)
+    - [SdkStoragePoolResizeResponse](#sdkstoragepoolresizeresponse)
     - [SdkVersion](#sdkversion)
     - [SdkVolumeAttachOptions](#sdkvolumeattachoptions)
     - [SdkVolumeAttachRequest](#sdkvolumeattachrequest)
@@ -296,6 +302,8 @@
     - [StorageNode.NodeLabelsEntry](#storagenodenodelabelsentry)
     - [StoragePool](#storagepool)
     - [StoragePool.LabelsEntry](#storagepoollabelsentry)
+    - [StoragePoolOperation](#storagepooloperation)
+    - [StoragePoolOperation.ParamsEntry](#storagepooloperationparamsentry)
     - [StorageResource](#storageresource)
     - [StorageVersion](#storageversion)
     - [StorageVersion.DetailsEntry](#storageversiondetailsentry)
@@ -345,6 +353,9 @@
     - [SdkCloudBackupRequestedState](#sdkcloudbackuprequestedstate)
     - [SdkCloudBackupStatusType](#sdkcloudbackupstatustype)
     - [SdkServiceCapability.OpenStorageService.Type](#sdkservicecapabilityopenstorageservicetype)
+    - [SdkStoragePool.OperationStatus](#sdkstoragepooloperationstatus)
+    - [SdkStoragePool.OperationType](#sdkstoragepooloperationtype)
+    - [SdkStoragePool.ResizeOperationType](#sdkstoragepoolresizeoperationtype)
     - [SdkTimeWeekday](#sdktimeweekday)
     - [SdkVersion.Version](#sdkversionversion)
     - [SeverityType](#severitytype)
@@ -510,6 +521,12 @@ StateChange can be used to stop, pause, and restart a backup
     [SdkCloudBackupSchedCreateResponse](#sdkcloudbackupschedcreateresponse)
 
 Create cloud backup schedule
+## SchedUpdate {#methodopenstorageapiopenstoragecloudbackupschedupdate}
+
+> **rpc** SchedUpdate([SdkCloudBackupSchedUpdateRequest](#sdkcloudbackupschedupdaterequest))
+    [SdkCloudBackupSchedUpdateResponse](#sdkcloudbackupschedupdateresponse)
+
+Update existing cloud backup schedule
 ## SchedDelete {#methodopenstorageapiopenstoragecloudbackupscheddelete}
 
 > **rpc** SchedDelete([SdkCloudBackupSchedDeleteRequest](#sdkcloudbackupscheddeleterequest))
@@ -890,6 +907,17 @@ empty response
 
 Release specified storage policy constraint for volume
 creation
+ <!-- end methods -->
+
+# OpenStoragePool {#serviceopenstorageapiopenstoragepool}
+OpenStoragePool is a service used to manage storage pools in the cluster
+
+## Resize {#methodopenstorageapiopenstoragepoolresize}
+
+> **rpc** Resize([SdkStoragePoolResizeRequest](#sdkstoragepoolresizerequest))
+    [SdkStoragePoolResizeResponse](#sdkstoragepoolresizeresponse)
+
+Resize resizes the specified storage pool based on the request parameters
  <!-- end methods -->
 
 # OpenStorageRole {#serviceopenstorageapiopenstoragerole}
@@ -2321,6 +2349,25 @@ backups to a cloud provider
  <!-- end HasFields -->
 
 
+## SdkCloudBackupSchedUpdateRequest {#sdkcloudbackupschedupdaterequest}
+Defines a request to update a schedule for volume backups to a
+cloud provider
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| cloud_sched_info | [ SdkCloudBackupScheduleInfo](#sdkcloudbackupscheduleinfo) | Cloud Backup Schedule info |
+| sched_uuid | [ string](#string) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCloudBackupSchedUpdateResponse {#sdkcloudbackupschedupdateresponse}
+Empty response
+
+ <!-- end HasFields -->
+
+
 ## SdkCloudBackupScheduleInfo {#sdkcloudbackupscheduleinfo}
 SdkCloudBackupScheduleInfo describes a schedule for volume backups to
 a cloud provider
@@ -3537,6 +3584,32 @@ rules followed
  <!-- end HasFields -->
 
 
+## SdkStoragePool {#sdkstoragepool}
+
+
+ <!-- end HasFields -->
+
+
+## SdkStoragePoolResizeRequest {#sdkstoragepoolresizerequest}
+Defines a request when inspect a storage pool
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| uuid | [ string](#string) | UUID of the storage pool to inspect |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) resize_factor.size | [ uint64](#uint64) | Size is the new desired size of the storage pool |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) resize_factor.percentage | [ uint64](#uint64) | Size is the new desired size of the storage pool |
+| operation_type | [ SdkStoragePool.ResizeOperationType](#sdkstoragepoolresizeoperationtype) | OperationType is the operation that's used to resize the storage pool (optional) |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkStoragePoolResizeResponse {#sdkstoragepoolresizeresponse}
+Defines a response when resizing a storage pool
+
+ <!-- end HasFields -->
+
+
 ## SdkVersion {#sdkversion}
 SDK version in Major.Minor.Patch format. The goal of this
 message is to provide clients a method to determine the SDK
@@ -3709,6 +3782,7 @@ Empty response
 | ----- | ---- | ----------- |
 | force | [ bool](#bool) | Forcefully detach device from the kernel |
 | unmount_before_detach | [ bool](#bool) | Unmount the volume before detaching |
+| redirect | [ bool](#bool) | redirect the request to the attached node |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -4271,11 +4345,39 @@ StoragePool groups different storage devices based on their CosType
 | TotalSize | [ uint64](#uint64) | TotalSize of the pool |
 | Used | [ uint64](#uint64) | Used size of the pool |
 | labels | [map StoragePool.LabelsEntry](#storagepoollabelsentry) | Labels is a list of user defined name-value pairs |
+| uuid | [ string](#string) | UUID is the unique identifier for a storage pool |
+| last_operation | [ StoragePoolOperation](#storagepooloperation) | LastOperation is the most recent operation being performed on a storage pool |
  <!-- end Fields -->
  <!-- end HasFields -->
 
 
 ## StoragePool.LabelsEntry {#storagepoollabelsentry}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [ string](#string) | none |
+| value | [ string](#string) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## StoragePoolOperation {#storagepooloperation}
+StoragePoolOperation defines an operation being performed on a storage pool
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| type | [ SdkStoragePool.OperationType](#sdkstoragepooloperationtype) | Type is the type of the operation |
+| msg | [ string](#string) | Msg is a user friendly message for the operation |
+| params | [map StoragePoolOperation.ParamsEntry](#storagepooloperationparamsentry) | Params for the parameters for the operation |
+| status | [ SdkStoragePool.OperationStatus](#sdkstoragepooloperationstatus) | Status is the status of the operation |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## StoragePoolOperation.ParamsEntry {#storagepooloperationparamsentry}
 
 
 
@@ -5010,6 +5112,41 @@ CloudBackup status types
 
 
 
+## SdkStoragePool.OperationStatus {#sdkstoragepooloperationstatus}
+OperationStatus captures the various statuses of a storage pool operation
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| OPERATION_PENDING | 0 | Operation pending |
+| OPERATION_IN_PROGRESS | 1 | Operation is in progress |
+| OPERATION_SUCCESSFUL | 2 | Operation is successful |
+| OPERATION_FAILED | 3 | Operation failed |
+
+
+
+
+## SdkStoragePool.OperationType {#sdkstoragepooloperationtype}
+OperationType defines the various operations that are performed on a storage pool
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| OPERATION_RESIZE | 0 | Resize operation |
+
+
+
+
+## SdkStoragePool.ResizeOperationType {#sdkstoragepoolresizeoperationtype}
+Defines the operation types available to resize a storage pool
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| RESIZE_TYPE_AUTO | 0 | Automatically pick the optimum resize operation type |
+| RESIZE_TYPE_ADD_DISK | 1 | Add a new drive to resize the pool |
+| RESIZE_TYPE_RESIZE_DISK | 2 | Resize existing drives to resize the pool |
+
+
+
+
 ## SdkTimeWeekday {#sdktimeweekday}
 Defines times of day
 
@@ -5035,7 +5172,7 @@ client and server applications
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
 | Minor | 42 | SDK version minor value of this specification |
-| Patch | 16 | SDK version patch value of this specification |
+| Patch | 18 | SDK version patch value of this specification |
 
 
 

@@ -2,6 +2,15 @@
 
 ## Releases
 
+### v0.42.18 - Tech Preview (9/26/2019)
+
+* Added new api to resize storage pools
+* Added new fields UUID and LastOperation to the StoragePool object
+
+### v0.42.17 - Tech Preview (6/11/2019)
+
+* Added new api for cloudbackup schedule update
+
 ### v0.42.16 - Tech Preview (6/5/2019)
 
 * Addition to Node details, to store the hardware type
