@@ -10,18 +10,12 @@ If you would like to try this tutorial on the web, check out our
 [Katacoda Scenario: OpenStorage SDK Python Client Tutorial](https://www.katacoda.com/lpabon/scenarios/tutorial-python).
 
 ## Setting up your environment
-To setup your environment, you will need to copy `openstorage` and `google`
-directories from [`openstorage-sdk-clients/sdk/python`](https://github.com/libopenstorage/openstorage-sdk-clients/tree/master/sdk/python)
-to your project.
-
-> **NOTE**: We will be adding this package to pip in future releases.
-
-We will now use `virutalenv` to install a python local environment:
+To setup your environment, run the following:
 
 ```
-$ virtualenv sdk
+$ python3 -m venv sdk
 $ source sdk/bin/activate
-$ pip install grpcio grpcio-tools
+$ pip3 install libopenstorage-openstorage
 ```
 
 You will now have access to the OpenStorage SDK Python client which was
@@ -38,6 +32,7 @@ For most of the examples below, you will need the following `import`'s.
 import grpc
 from openstorage import api_pb2
 from openstorage import api_pb2_grpc
+from openstorage import connector
 ```
 
 ## Creating a connection
@@ -45,13 +40,17 @@ To use any of the gRPC functions, you must first create a connection with
 the OpenStorage SDK server:
 
 ```python
-# Cluster connection
-channel = grpc.insecure_channel('localhost:9100')
+c = connector.Connector('localhost:9100')
 ```
 
-> **NOTE**: Notice the call [`grpc.insecure_channel()`](https://grpc.io/docs/guides/auth.html). The mock-sdk-server
-supports HTTPS and authentication starting at v0.38.0. See [Tutorial](tutorial.html)
-for more information.
+>The `connector.Connector()` object supports not only insecure access,
+>but also TLS, Token Authentication, and fetching tokens from Kubernetes secrets. For
+>more inforamtion, type:
+>
+>   ```
+>   $ pydoc3 openstorage.connector
+>   ```
+>
 
 ## Cluster operations
 Now that we have made a connection, we can use the `channel` object to create
