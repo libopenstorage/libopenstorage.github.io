@@ -54,6 +54,7 @@
     - [ClusterPairsEnumerateResponse](#clusterpairsenumerateresponse)
     - [ClusterPairsEnumerateResponse.PairsEntry](#clusterpairsenumerateresponsepairsentry)
     - [ClusterResponse](#clusterresponse)
+    - [ExportSpec](#exportspec)
     - [GraphDriverChanges](#graphdriverchanges)
     - [Group](#group)
     - [GroupSnapCreateRequest](#groupsnapcreaterequest)
@@ -342,6 +343,7 @@
     - [CosType](#costype)
     - [DriverType](#drivertype)
     - [EnforcementType](#enforcementtype)
+    - [ExportProtocol](#exportprotocol)
     - [FSType](#fstype)
     - [GraphDriverChangeType](#graphdriverchangetype)
     - [HardwareType](#hardwaretype)
@@ -1546,6 +1548,18 @@ ClusterResponse specifies a response that gets returned when requesting the clus
 | error | [ string](#string) | Error code
 
 in: body |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## ExportSpec {#exportspec}
+ExportSpec defines how the volume is exported..
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| export_protocol | [ ExportProtocol](#exportprotocol) | ExportProtocol defines how the volume is exported. |
+| export_options | [ string](#string) | ExportOptions options exporting the volume. |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3617,6 +3631,7 @@ Defines a request when inspect a storage pool
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) resize_factor.size | [ uint64](#uint64) | Size is the new desired size of the storage pool |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) resize_factor.percentage | [ uint64](#uint64) | Size is the new desired size of the storage pool |
 | operation_type | [ SdkStoragePool.ResizeOperationType](#sdkstoragepoolresizeoperationtype) | OperationType is the operation that's used to resize the storage pool (optional) |
+| skip_wait_for_clean_volumes | [ bool](#bool) | SkipWaitForCleanVolumes would skip the wait for all volumes on the pool to be clean before doing a resize |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -4720,7 +4735,8 @@ VolumeSpec has the properties needed to create a volume.
 | io_strategy | [ IoStrategy](#iostrategy) | IoStrategy preferred strategy for I/O. |
 | placement_strategy | [ VolumePlacementStrategy](#volumeplacementstrategy) | PlacementStrategy specifies a spec to indicate where to place the volume. |
 | storage_policy | [ string](#string) | StoragePolicy if applied/specified while creating volume |
-| ownership | [ Ownership](#ownership) | Owner |
+| ownership | [ Ownership](#ownership) | Ownership |
+| export_spec | [ ExportSpec](#exportspec) | ExportSpec defines how the volume should be exported. |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -4768,6 +4784,7 @@ VolumeSpecPolicy provides a method to set volume storage policy
 | snapshot_interval_operator | [ VolumeSpecPolicy.PolicyOp](#volumespecpolicypolicyop) | Operator to check snapshot_interval |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) nodiscard_opt.nodiscard | [ bool](#bool) | none |
 | io_strategy | [ IoStrategy](#iostrategy) | IoStrategy preferred strategy for I/O. |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) export_spec_opt.export_spec | [ ExportSpec](#exportspec) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -4809,6 +4826,7 @@ VolumeSpecUpdate provides a method to set any of the VolumeSpec of an existing v
 | ownership | [ Ownership](#ownership) | Ownership volume information to update. If the value of `owner` in the `ownership` message is an empty string then the value of `owner` in the `VolumeSpec.Ownership.owner` will not be updated. |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) nodiscard_opt.nodiscard | [ bool](#bool) | none |
 | io_strategy | [ IoStrategy](#iostrategy) | IoStrategy preferred strategy for I/O. |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) export_spec_opt.export_spec | [ ExportSpec](#exportspec) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -4948,6 +4966,20 @@ Defines the types of enforcement on the given rules
 
 
 
+## ExportProtocol {#exportprotocol}
+ExportProtocol defines how the device is exported..
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| INVALID | 0 | Invalid uninitialized value |
+| PXD | 1 | PXD the volume is exported over Portworx block interace. |
+| ISCSI | 2 | ISCSI the volume is exported over ISCSI. |
+| NFS | 3 | NFS the volume is exported over NFS. |
+| CUSTOM | 4 | Custom the volume is exported over custom interace. |
+
+
+
+
 ## FSType {#fstype}
 
 
@@ -5059,6 +5091,7 @@ used for.
 | RESOURCE_TYPE_NODE | 2 | none |
 | RESOURCE_TYPE_CLUSTER | 3 | none |
 | RESOURCE_TYPE_DRIVE | 4 | none |
+| RESOURCE_TYPE_POOL | 5 | none |
 
 
 
@@ -5191,7 +5224,7 @@ client and server applications
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
 | Minor | 42 | SDK version minor value of this specification |
-| Patch | 22 | SDK version patch value of this specification |
+| Patch | 24 | SDK version patch value of this specification |
 
 
 

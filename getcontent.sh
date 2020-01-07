@@ -1,6 +1,6 @@
 #!/bin/sh
 
-BRANCHES="master release-6.1 release-4.0 release-sdk-0.9"
+BRANCHES="master release-6.3 release-4.0 release-sdk-0.9"
 
 getBranch() {
 	local branch=$1

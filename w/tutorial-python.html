@@ -287,9 +287,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.3" data-path="release-6.1.generated-api.html">
+        <li class="chapter " data-level="1.5.3" data-path="release-6.3.generated-api.html">
             
-                <a href="release-6.1.generated-api.html">
+                <a href="release-6.3.generated-api.html">
             
                     
                         <b>1.5.3.</b>
@@ -303,9 +303,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.5.3.1" data-path="release-6.1.changelog.html">
+        <li class="chapter " data-level="1.5.3.1" data-path="release-6.3.changelog.html">
             
-                <a href="release-6.1.changelog.html">
+                <a href="release-6.3.changelog.html">
             
                     
                         <b>1.5.3.1.</b>
@@ -417,16 +417,10 @@ volume.</p>
 <p>If you would like to try this tutorial on the web, check out our
 <a href="https://www.katacoda.com/lpabon/scenarios/tutorial-python" target="_blank">Katacoda Scenario: OpenStorage SDK Python Client Tutorial</a>.</p>
 <h2 id="setting-up-your-environment">Setting up your environment</h2>
-<p>To setup your environment, you will need to copy <code>openstorage</code> and <code>google</code>
-directories from <a href="https://github.com/libopenstorage/openstorage-sdk-clients/tree/master/sdk/python" target="_blank"><code>openstorage-sdk-clients/sdk/python</code></a>
-to your project.</p>
-<blockquote>
-<p><strong>NOTE</strong>: We will be adding this package to pip in future releases.</p>
-</blockquote>
-<p>We will now use <code>virutalenv</code> to install a python local environment:</p>
-<pre class="language-"><code>$ virtualenv sdk
+<p>To setup your environment, run the following:</p>
+<pre class="language-"><code>$ python3 -m venv sdk
 $ source sdk/bin/activate
-$ pip install grpcio grpcio-tools
+$ pip3 install libopenstorage-openstorage
 </code></pre><p>You will now have access to the OpenStorage SDK Python client which was
 generated from the protobuf file <a href="https://github.com/libopenstorage/openstorage/blob/master/api/api.proto" target="_blank"><code>api.proto</code></a>.</p>
 <p>With the <a href="tutorial.html#setting-up-the-mock-sdk-server"><code>mock-sdk-server</code></a>
@@ -437,18 +431,19 @@ with the OpenStorage SDK.</p>
 <pre class="language-"><code class="lang-python"><span class="token keyword">import</span> grpc
 <span class="token keyword">from</span> openstorage <span class="token keyword">import</span> api_pb2
 <span class="token keyword">from</span> openstorage <span class="token keyword">import</span> api_pb2_grpc
+<span class="token keyword">from</span> openstorage <span class="token keyword">import</span> connector
 </code></pre>
 <h2 id="creating-a-connection">Creating a connection</h2>
 <p>To use any of the gRPC functions, you must first create a connection with
 the OpenStorage SDK server:</p>
-<pre class="language-"><code class="lang-python"><span class="token comment"># Cluster connection</span>
-channel <span class="token operator">=</span> grpc<span class="token punctuation">.</span>insecure_channel<span class="token punctuation">(</span><span class="token string">&apos;localhost:9100&apos;</span><span class="token punctuation">)</span>
+<pre class="language-"><code class="lang-python">c <span class="token operator">=</span> connector<span class="token punctuation">.</span>Connector<span class="token punctuation">(</span><span class="token string">&apos;localhost:9100&apos;</span><span class="token punctuation">)</span>
 </code></pre>
 <blockquote>
-<p><strong>NOTE</strong>: Notice the call <a href="https://grpc.io/docs/guides/auth.html" target="_blank"><code>grpc.insecure_channel()</code></a>. The mock-sdk-server
-supports HTTPS and authentication starting at v0.38.0. See <a href="tutorial.html">Tutorial</a>
-for more information.</p>
-</blockquote>
+<p>The <code>connector.Connector()</code> object supports not only insecure access,
+but also TLS, Token Authentication, and fetching tokens from Kubernetes secrets. For
+more inforamtion, type:</p>
+<pre class="language-"><code>  $ pydoc3 openstorage.connector
+</code></pre></blockquote>
 <h2 id="cluster-operations">Cluster operations</h2>
 <p>Now that we have made a connection, we can use the <code>channel</code> object to create
 clients for each of the services we would like to use. Let&apos;s use the <a href="generated-api.html#openstorageapiopenstoragecluster">OpenStorageCluster</a>
@@ -604,7 +599,7 @@ for a complete list of services.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Python","level":"1.4.2","depth":2,"next":{"title":"API Reference","level":"1.5","depth":1,"path":"reference.md","ref":"reference.md","articles":[{"title":"v0.9.x","level":"1.5.1","depth":2,"path":"release-sdk-0.9.generated-api.md","ref":"release-sdk-0.9.generated-api.md","articles":[{"title":"Changelog","level":"1.5.1.1","depth":3,"path":"release-sdk-0.9.changelog.md","ref":"release-sdk-0.9.changelog.md","articles":[]}]},{"title":"v0.22.x","level":"1.5.2","depth":2,"path":"release-4.0.generated-api.md","ref":"release-4.0.generated-api.md","articles":[{"title":"Changelog","level":"1.5.2.1","depth":3,"path":"release-4.0.changelog.md","ref":"release-4.0.changelog.md","articles":[]}]},{"title":"v0.42.x","level":"1.5.3","depth":2,"path":"release-6.1.generated-api.md","ref":"release-6.1.generated-api.md","articles":[{"title":"Changelog","level":"1.5.3.1","depth":3,"path":"release-6.1.changelog.md","ref":"release-6.1.changelog.md","articles":[]}]},{"title":"Nightly","level":"1.5.4","depth":2,"path":"master.generated-api.md","ref":"master.generated-api.md","articles":[{"title":"Changelog","level":"1.5.4.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]}]}]},"previous":{"title":"Golang","level":"1.4.1","depth":2,"path":"tutorial-golang.md","ref":"tutorial-golang.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"tutorial-python.md","mtime":"2019-02-18T21:54:33.321Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-10-07T19:46:33.018Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Python","level":"1.4.2","depth":2,"next":{"title":"API Reference","level":"1.5","depth":1,"path":"reference.md","ref":"reference.md","articles":[{"title":"v0.9.x","level":"1.5.1","depth":2,"path":"release-sdk-0.9.generated-api.md","ref":"release-sdk-0.9.generated-api.md","articles":[{"title":"Changelog","level":"1.5.1.1","depth":3,"path":"release-sdk-0.9.changelog.md","ref":"release-sdk-0.9.changelog.md","articles":[]}]},{"title":"v0.22.x","level":"1.5.2","depth":2,"path":"release-4.0.generated-api.md","ref":"release-4.0.generated-api.md","articles":[{"title":"Changelog","level":"1.5.2.1","depth":3,"path":"release-4.0.changelog.md","ref":"release-4.0.changelog.md","articles":[]}]},{"title":"v0.42.x","level":"1.5.3","depth":2,"path":"release-6.3.generated-api.md","ref":"release-6.3.generated-api.md","articles":[{"title":"Changelog","level":"1.5.3.1","depth":3,"path":"release-6.3.changelog.md","ref":"release-6.3.changelog.md","articles":[]}]},{"title":"Nightly","level":"1.5.4","depth":2,"path":"master.generated-api.md","ref":"master.generated-api.md","articles":[{"title":"Changelog","level":"1.5.4.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]}]}]},"previous":{"title":"Golang","level":"1.4.1","depth":2,"path":"tutorial-golang.md","ref":"tutorial-golang.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"tutorial-python.md","mtime":"2020-01-07T22:49:23.822Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-07T23:14:00.984Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

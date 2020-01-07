@@ -2,6 +2,27 @@
 
 ## Releases
 
+### v0.69.0 - Tech Preview (10/12/2019)
+
+* Add support for filesystem trim background operation
+* Add support for filesystem check background operation
+
+### v0.68.0 - Tech Preview (11/01/2019)
+
+* Add ExportSpec to Volume object
+
+### v0.67.0 - Tech Preview (11/01/2019)
+
+* Add proxy flag for credentials
+
+### v0.66.0 - Tech Preview (10/22/2019)
+
+* Add missing fields to cloudbackup schedule structure in sdk
+
+### v0.65.0 - Tech Preview (09/10/2019)
+
+* Add pool UUIDs in ReplicaSet object
+
 ### v0.64.0 - Tech Preview (9/26/2019)
 
 * Deprecated StoragePool.ID. Please use StoragePool.Uuid

@@ -69,7 +69,7 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="release-6.1.changelog.html" />
+    <link rel="next" href="release-6.3.changelog.html" />
     
     
     <link rel="prev" href="release-4.0.changelog.html" />
@@ -287,9 +287,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.5.3" data-path="release-6.1.generated-api.html">
+        <li class="chapter active" data-level="1.5.3" data-path="release-6.3.generated-api.html">
             
-                <a href="release-6.1.generated-api.html">
+                <a href="release-6.3.generated-api.html">
             
                     
                         <b>1.5.3.</b>
@@ -303,9 +303,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.5.3.1" data-path="release-6.1.changelog.html">
+        <li class="chapter " data-level="1.5.3.1" data-path="release-6.3.changelog.html">
             
-                <a href="release-6.1.changelog.html">
+                <a href="release-6.3.changelog.html">
             
                     
                         <b>1.5.3.1.</b>
@@ -464,6 +464,7 @@
 <li><a href="#clusterpairsenumerateresponse">ClusterPairsEnumerateResponse</a></li>
 <li><a href="#clusterpairsenumerateresponsepairsentry">ClusterPairsEnumerateResponse.PairsEntry</a></li>
 <li><a href="#clusterresponse">ClusterResponse</a></li>
+<li><a href="#exportspec">ExportSpec</a></li>
 <li><a href="#graphdriverchanges">GraphDriverChanges</a></li>
 <li><a href="#group">Group</a></li>
 <li><a href="#groupsnapcreaterequest">GroupSnapCreateRequest</a></li>
@@ -530,6 +531,7 @@
 <li><a href="#sdkcloudbackupschedupdaterequest">SdkCloudBackupSchedUpdateRequest</a></li>
 <li><a href="#sdkcloudbackupschedupdateresponse">SdkCloudBackupSchedUpdateResponse</a></li>
 <li><a href="#sdkcloudbackupscheduleinfo">SdkCloudBackupScheduleInfo</a></li>
+<li><a href="#sdkcloudbackupscheduleinfolabelsentry">SdkCloudBackupScheduleInfo.LabelsEntry</a></li>
 <li><a href="#sdkcloudbackupstatechangerequest">SdkCloudBackupStateChangeRequest</a></li>
 <li><a href="#sdkcloudbackupstatechangeresponse">SdkCloudBackupStateChangeResponse</a></li>
 <li><a href="#sdkcloudbackupstatus">SdkCloudBackupStatus</a></li>
@@ -752,6 +754,7 @@
 <li><a href="#costype">CosType</a></li>
 <li><a href="#drivertype">DriverType</a></li>
 <li><a href="#enforcementtype">EnforcementType</a></li>
+<li><a href="#exportprotocol">ExportProtocol</a></li>
 <li><a href="#fstype">FSType</a></li>
 <li><a href="#graphdriverchangetype">GraphDriverChangeType</a></li>
 <li><a href="#hardwaretype">HardwareType</a></li>
@@ -2364,6 +2367,31 @@ used by the other dependent snaps and parent volume.</p>
 <p>in: body |
  <!-- end Fields -->
  <!-- end HasFields --></p>
+<h2 id="exportspec">ExportSpec </h2>
+<p>ExportSpec defines how the volume is exported..</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>export_protocol</td>
+<td><a href="#exportprotocol"> ExportProtocol</a></td>
+<td>ExportProtocol defines how the volume is exported.</td>
+</tr>
+<tr>
+<td>export_options</td>
+<td><a href="#string"> string</a></td>
+<td>ExportOptions options exporting the volume.</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
 <h2 id="graphdriverchanges">GraphDriverChanges </h2>
 <p>GraphDriverChanges represent a list of changes between the filesystem layers
 specified by the ID and Parent.  // Parent may be an empty string, in which
@@ -2817,6 +2845,11 @@ coded - for clustered storage arrays</p>
 <td>nodes</td>
 <td><a href="#string">repeated string</a></td>
 <td>none</td>
+</tr>
+<tr>
+<td>pool_uuids</td>
+<td><a href="#string">repeated string</a></td>
+<td>Unique IDs of the storage pools for this replica set</td>
 </tr>
 </tbody>
 </table>
@@ -3544,6 +3577,11 @@ and do not provide <code>volume_id</code> and <code>all</code>.</li>
 <td><a href="#string"> string</a></td>
 <td>Returned in the enumerate response if not all of the backups could be returned in the response.</td>
 </tr>
+<tr>
+<td>cloud_backup_id</td>
+<td><a href="#string"> string</a></td>
+<td>If one wants to enumerate known backup, set this field to the backup ID naming format :clusteruuidORbicketname/srcVolId-snapId(-incr)</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -4077,6 +4115,40 @@ a cloud provider</p>
 <td>retention_days</td>
 <td><a href="#uint32"> uint32</a></td>
 <td>Number of days that Scheduled CloudBackups will be kept after which they are deleted</td>
+</tr>
+<tr>
+<td>group_id</td>
+<td><a href="#string"> string</a></td>
+<td>GroupId indicates the group of volumes for which this schedule applies</td>
+</tr>
+<tr>
+<td>labels</td>
+<td><a href="#sdkcloudbackupscheduleinfolabelsentry">map SdkCloudBackupScheduleInfo.LabelsEntry</a></td>
+<td>labels indicates group of volumes with similar labels for which this schedule applies</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcloudbackupscheduleinfolabelsentry">SdkCloudBackupScheduleInfo.LabelsEntry </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
 </tr>
 </tbody>
 </table>
@@ -6138,6 +6210,11 @@ rules followed</p>
 <td><a href="#sdkstoragepoolresizeoperationtype"> SdkStoragePool.ResizeOperationType</a></td>
 <td>OperationType is the operation that&apos;s used to resize the storage pool (optional)</td>
 </tr>
+<tr>
+<td>skip_wait_for_clean_volumes</td>
+<td><a href="#bool"> bool</a></td>
+<td>SkipWaitForCleanVolumes would skip the wait for all volumes on the pool to be clean before doing a resize</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -7643,7 +7720,7 @@ to seed the volume with data.</p>
 <tr>
 <td>ID</td>
 <td><a href="#int32"> int32</a></td>
-<td>ID pool ID</td>
+<td>Deprecated! Use <code>uuid</code> instead. ID pool ID</td>
 </tr>
 <tr>
 <td>Cos</td>
@@ -7960,7 +8037,7 @@ to seed the volume with data.</p>
 <tr>
 <td>usage</td>
 <td><a href="#uint64"> uint64</a></td>
-<td>Usage is bytes consumed by vtheis volume.</td>
+<td>Usage is bytes consumed by this volume.</td>
 </tr>
 <tr>
 <td>last_scan</td>
@@ -7975,12 +8052,12 @@ to seed the volume with data.</p>
 <tr>
 <td>status</td>
 <td><a href="#volumestatus"> VolumeStatus</a></td>
-<td>Status is the availability status of this volume.</td>
+<td>VolumeStatus is the availability status of this volume.</td>
 </tr>
 <tr>
 <td>state</td>
 <td><a href="#volumestate"> VolumeState</a></td>
-<td>State is the current runtime state of this volume.</td>
+<td>VolumeState is the current runtime state of this volume.</td>
 </tr>
 <tr>
 <td>attached_on</td>
@@ -7990,7 +8067,7 @@ to seed the volume with data.</p>
 <tr>
 <td>attached_state</td>
 <td><a href="#attachstate"> AttachState</a></td>
-<td>AttachedState shows whether the device is attached for internal or external use.</td>
+<td>AttachState shows whether the device is attached for internal or external use.</td>
 </tr>
 <tr>
 <td>device_path</td>
@@ -8036,6 +8113,16 @@ to seed the volume with data.</p>
 <td>fs_resize_required</td>
 <td><a href="#bool"> bool</a></td>
 <td>FsResizeRequired if an FS resize is required on the volume.</td>
+</tr>
+<tr>
+<td>attach_time</td>
+<td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
+<td>AttachTime time this device was last attached externally.</td>
+</tr>
+<tr>
+<td>detach_time</td>
+<td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
+<td>DetachTime time this device was detached.</td>
 </tr>
 </tbody>
 </table>
@@ -8622,7 +8709,12 @@ In situations, where 2 or more rules conflict, the weight of the rules will dict
 <tr>
 <td>ownership</td>
 <td><a href="#ownership"> Ownership</a></td>
-<td>Owner</td>
+<td>Ownership</td>
+</tr>
+<tr>
+<td>export_spec</td>
+<td><a href="#exportspec"> ExportSpec</a></td>
+<td>ExportSpec defines how the volume should be exported.</td>
 </tr>
 </tbody>
 </table>
@@ -8788,6 +8880,11 @@ In situations, where 2 or more rules conflict, the weight of the rules will dict
 <td><a href="#iostrategy"> IoStrategy</a></td>
 <td>IoStrategy preferred strategy for I/O.</td>
 </tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> export_spec_opt.export_spec</td>
+<td><a href="#exportspec"> ExportSpec</a></td>
+<td>none</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -8921,6 +9018,11 @@ In situations, where 2 or more rules conflict, the weight of the rules will dict
 <td>io_strategy</td>
 <td><a href="#iostrategy"> IoStrategy</a></td>
 <td>IoStrategy preferred strategy for I/O.</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> export_spec_opt.export_spec</td>
+<td><a href="#exportspec"> ExportSpec</a></td>
+<td>none</td>
 </tr>
 </tbody>
 </table>
@@ -9257,6 +9359,44 @@ In situations, where 2 or more rules conflict, the weight of the rules will dict
 </tr>
 </tbody>
 </table>
+<h2 id="exportprotocol">ExportProtocol </h2>
+<p>ExportProtocol defines how the device is exported..</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>INVALID</td>
+<td>0</td>
+<td>Invalid uninitialized value</td>
+</tr>
+<tr>
+<td>PXD</td>
+<td>1</td>
+<td>PXD the volume is exported over Portworx block interace.</td>
+</tr>
+<tr>
+<td>ISCSI</td>
+<td>2</td>
+<td>ISCSI the volume is exported over ISCSI.</td>
+</tr>
+<tr>
+<td>NFS</td>
+<td>3</td>
+<td>NFS the volume is exported over NFS.</td>
+</tr>
+<tr>
+<td>CUSTOM</td>
+<td>4</td>
+<td>Custom the volume is exported over custom interace.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="fstype">FSType </h2>
 <table>
 <thead>
@@ -9549,6 +9689,11 @@ used for.</p>
 <tr>
 <td>RESOURCE_TYPE_DRIVE</td>
 <td>4</td>
+<td>none</td>
+</tr>
+<tr>
+<td>RESOURCE_TYPE_POOL</td>
+<td>5</td>
 <td>none</td>
 </tr>
 </tbody>
@@ -9916,7 +10061,7 @@ client and server applications</p>
 </tr>
 <tr>
 <td>Patch</td>
-<td>18</td>
+<td>24</td>
 <td>SDK version patch value of this specification</td>
 </tr>
 </tbody>
@@ -10376,7 +10521,7 @@ client and server applications</p>
                 </a>
                 
                 
-                <a href="release-6.1.changelog.html" class="navigation navigation-next " aria-label="Next page: Changelog">
+                <a href="release-6.3.changelog.html" class="navigation navigation-next " aria-label="Next page: Changelog">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -10387,7 +10532,7 @@ client and server applications</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"v0.42.x","level":"1.5.3","depth":2,"next":{"title":"Changelog","level":"1.5.3.1","depth":3,"path":"release-6.1.changelog.md","ref":"release-6.1.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.2.1","depth":3,"path":"release-4.0.changelog.md","ref":"release-4.0.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"release-6.1.generated-api.md","mtime":"2019-10-07T19:46:29.845Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-10-07T19:46:33.018Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"v0.42.x","level":"1.5.3","depth":2,"next":{"title":"Changelog","level":"1.5.3.1","depth":3,"path":"release-6.3.changelog.md","ref":"release-6.3.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.2.1","depth":3,"path":"release-4.0.changelog.md","ref":"release-4.0.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"release-6.3.generated-api.md","mtime":"2020-01-07T23:13:58.432Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-07T23:14:00.984Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

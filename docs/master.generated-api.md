@@ -10,6 +10,8 @@
     - [OpenStorageClusterDomains](#serviceopenstorageapiopenstorageclusterdomains)
     - [OpenStorageClusterPair](#serviceopenstorageapiopenstorageclusterpair)
     - [OpenStorageCredentials](#serviceopenstorageapiopenstoragecredentials)
+    - [OpenStorageFilesystemCheck](#serviceopenstorageapiopenstoragefilesystemcheck)
+    - [OpenStorageFilesystemTrim](#serviceopenstorageapiopenstoragefilesystemtrim)
     - [OpenStorageIdentity](#serviceopenstorageapiopenstorageidentity)
     - [OpenStorageMigrate](#serviceopenstorageapiopenstoragemigrate)
     - [OpenStorageMountAttach](#serviceopenstorageapiopenstoragemountattach)
@@ -54,6 +56,11 @@
     - [ClusterPairsEnumerateResponse](#clusterpairsenumerateresponse)
     - [ClusterPairsEnumerateResponse.PairsEntry](#clusterpairsenumerateresponsepairsentry)
     - [ClusterResponse](#clusterresponse)
+    - [ExportSpec](#exportspec)
+    - [FastpathConfig](#fastpathconfig)
+    - [FastpathReplState](#fastpathreplstate)
+    - [FilesystemCheck](#filesystemcheck)
+    - [FilesystemTrim](#filesystemtrim)
     - [GraphDriverChanges](#graphdriverchanges)
     - [Group](#group)
     - [GroupSnapCreateRequest](#groupsnapcreaterequest)
@@ -120,6 +127,7 @@
     - [SdkCloudBackupSchedUpdateRequest](#sdkcloudbackupschedupdaterequest)
     - [SdkCloudBackupSchedUpdateResponse](#sdkcloudbackupschedupdateresponse)
     - [SdkCloudBackupScheduleInfo](#sdkcloudbackupscheduleinfo)
+    - [SdkCloudBackupScheduleInfo.LabelsEntry](#sdkcloudbackupscheduleinfolabelsentry)
     - [SdkCloudBackupStateChangeRequest](#sdkcloudbackupstatechangerequest)
     - [SdkCloudBackupStateChangeResponse](#sdkcloudbackupstatechangeresponse)
     - [SdkCloudBackupStatus](#sdkcloudbackupstatus)
@@ -167,6 +175,22 @@
     - [SdkCredentialInspectResponse](#sdkcredentialinspectresponse)
     - [SdkCredentialValidateRequest](#sdkcredentialvalidaterequest)
     - [SdkCredentialValidateResponse](#sdkcredentialvalidateresponse)
+    - [SdkFilesystemCheckCheckHealthGetStatusRequest](#sdkfilesystemcheckcheckhealthgetstatusrequest)
+    - [SdkFilesystemCheckCheckHealthGetStatusResponse](#sdkfilesystemcheckcheckhealthgetstatusresponse)
+    - [SdkFilesystemCheckCheckHealthRequest](#sdkfilesystemcheckcheckhealthrequest)
+    - [SdkFilesystemCheckCheckHealthResponse](#sdkfilesystemcheckcheckhealthresponse)
+    - [SdkFilesystemCheckFixAllGetStatusRequest](#sdkfilesystemcheckfixallgetstatusrequest)
+    - [SdkFilesystemCheckFixAllGetStatusResponse](#sdkfilesystemcheckfixallgetstatusresponse)
+    - [SdkFilesystemCheckFixAllRequest](#sdkfilesystemcheckfixallrequest)
+    - [SdkFilesystemCheckFixAllResponse](#sdkfilesystemcheckfixallresponse)
+    - [SdkFilesystemCheckStopRequest](#sdkfilesystemcheckstoprequest)
+    - [SdkFilesystemCheckStopResponse](#sdkfilesystemcheckstopresponse)
+    - [SdkFilesystemTrimGetStatusRequest](#sdkfilesystemtrimgetstatusrequest)
+    - [SdkFilesystemTrimGetStatusResponse](#sdkfilesystemtrimgetstatusresponse)
+    - [SdkFilesystemTrimStartRequest](#sdkfilesystemtrimstartrequest)
+    - [SdkFilesystemTrimStartResponse](#sdkfilesystemtrimstartresponse)
+    - [SdkFilesystemTrimStopRequest](#sdkfilesystemtrimstoprequest)
+    - [SdkFilesystemTrimStopResponse](#sdkfilesystemtrimstopresponse)
     - [SdkGoogleCredentialRequest](#sdkgooglecredentialrequest)
     - [SdkGoogleCredentialResponse](#sdkgooglecredentialresponse)
     - [SdkIdentityCapabilitiesRequest](#sdkidentitycapabilitiesrequest)
@@ -319,6 +343,11 @@
     - [VolumePlacementSpec](#volumeplacementspec)
     - [VolumePlacementStrategy](#volumeplacementstrategy)
     - [VolumeResponse](#volumeresponse)
+    - [VolumeServiceInstanceResponse](#volumeserviceinstanceresponse)
+    - [VolumeServiceInstanceResponse.StatusEntry](#volumeserviceinstanceresponsestatusentry)
+    - [VolumeServiceRequest](#volumeservicerequest)
+    - [VolumeServiceRequest.SrvCmdParamsEntry](#volumeservicerequestsrvcmdparamsentry)
+    - [VolumeServiceResponse](#volumeserviceresponse)
     - [VolumeSetRequest](#volumesetrequest)
     - [VolumeSetRequest.OptionsEntry](#volumesetrequestoptionsentry)
     - [VolumeSetResponse](#volumesetresponse)
@@ -341,7 +370,14 @@
     - [CosType](#costype)
     - [DriverType](#drivertype)
     - [EnforcementType](#enforcementtype)
+    - [ExportProtocol](#exportprotocol)
     - [FSType](#fstype)
+    - [FastpathProtocol](#fastpathprotocol)
+    - [FastpathStatus](#fastpathstatus)
+    - [FilesystemCheck.CheckHealthStatus](#filesystemcheckcheckhealthstatus)
+    - [FilesystemCheck.FilesystemCheckStatus](#filesystemcheckfilesystemcheckstatus)
+    - [FilesystemCheck.FixAllStatus](#filesystemcheckfixallstatus)
+    - [FilesystemTrim.FilesystemTrimStatus](#filesystemtrimfilesystemtrimstatus)
     - [GraphDriverChangeType](#graphdriverchangetype)
     - [HardwareType](#hardwaretype)
     - [IoProfile](#ioprofile)
@@ -660,6 +696,7 @@ id of the credentials once they are verified to work.
 {% codetabs name="Golang", type="go" -%}
 id, err := client.Create(context.Background(), &api.SdkCredentialCreateRequest{
     Name: "awscred",
+    UseProxy: false,
     CredentialType: &api.SdkCredentialCreateRequest_AwsCredential{
       AwsCredential: &api.SdkAwsCredentialRequest{
       AccessKey: "dummy-access",
@@ -704,6 +741,120 @@ Delete a specified credential
 Validate is used to validate credentials
  <!-- end methods -->
 
+# OpenStorageFilesystemCheck {#serviceopenstorageapiopenstoragefilesystemcheck}
+## OpenStorageFilesystemCheckService
+This service provides methods to manage filesystem check operation on a
+volume. 
+
+This operation is run in the background on an **unmounted volume**.
+If the volume is mounted, then these APIs return error.
+
+Once the filesystem check operation(either CheckHealth() or FixAll()) is
+started, the clients have to poll for the status of the background operation
+using the `OpenStorageFilesystemcheck.CheckHealthGetStatus()` rpc request or
+`OpenStorageFilesystemCheck.FixAllGetStatus()` rpc request.
+
+**Note: CheckHealth() and FixAll() cannot run in parallel for the same volume**
+
+A typical workflow involving filesystem check would be as follows
+1. Attach the volume
+   `OpenStorageMountAttachClient.Attach()`
+2. Check the health of the filesystem by issuing a grpc call to
+   `OpenStorageFilesystemCheckClient.CheckHealth()`
+3. Status of the CheckHealth() operation can be retrieved by polling for the
+   status using `OpenStorageFilesystemCheck.CheckHealthGetStatus()`
+4. If the CheckHealth Operations status reports filesystem is in unhealthy
+   state, then to fix all the problems issue a grpc call to 
+   `OpenStorageFilesystemCheckClient.FixAll()`
+5. Status of the FixAll() operation can be retrieved by polling for the
+   status using `OpenStorageFilesystemCheck.FixAllGetStatus()`
+6. CheckHealth() and FixAll() operations run in the background, to stop these
+   operations, issue a call to
+   `OpenStorageFilesystemCheckClient.Stop()`
+
+## CheckHealth {#methodopenstorageapiopenstoragefilesystemcheckcheckhealth}
+
+> **rpc** CheckHealth([SdkFilesystemCheckCheckHealthRequest](#sdkfilesystemcheckcheckhealthrequest))
+    [SdkFilesystemCheckCheckHealthResponse](#sdkfilesystemcheckcheckhealthresponse)
+
+Get a report of issues found on the filesystem. This operation works on an
+unmounted volume.
+## CheckHealthGetStatus {#methodopenstorageapiopenstoragefilesystemcheckcheckhealthgetstatus}
+
+> **rpc** CheckHealthGetStatus([SdkFilesystemCheckCheckHealthGetStatusRequest](#sdkfilesystemcheckcheckhealthgetstatusrequest))
+    [SdkFilesystemCheckCheckHealthGetStatusResponse](#sdkfilesystemcheckcheckhealthgetstatusresponse)
+
+Get Status of a filesystem CheckHealth background operation on an unmounted
+volume, if any
+## FixAll {#methodopenstorageapiopenstoragefilesystemcheckfixall}
+
+> **rpc** FixAll([SdkFilesystemCheckFixAllRequest](#sdkfilesystemcheckfixallrequest))
+    [SdkFilesystemCheckFixAllResponse](#sdkfilesystemcheckfixallresponse)
+
+FixAll fixes all the issues reported in the response to CheckHealth API on
+a filesystem. This operation works on an unmounted volume.
+## FixAllGetStatus {#methodopenstorageapiopenstoragefilesystemcheckfixallgetstatus}
+
+> **rpc** FixAllGetStatus([SdkFilesystemCheckFixAllGetStatusRequest](#sdkfilesystemcheckfixallgetstatusrequest))
+    [SdkFilesystemCheckFixAllGetStatusResponse](#sdkfilesystemcheckfixallgetstatusresponse)
+
+Get Status of a filesystem FixAll background operation on an unmounted
+volume, if any
+## Stop {#methodopenstorageapiopenstoragefilesystemcheckstop}
+
+> **rpc** Stop([SdkFilesystemCheckStopRequest](#sdkfilesystemcheckstoprequest))
+    [SdkFilesystemCheckStopResponse](#sdkfilesystemcheckstopresponse)
+
+Stop a filesystem check background operation on an unmounted volume, if any
+ <!-- end methods -->
+
+# OpenStorageFilesystemTrim {#serviceopenstorageapiopenstoragefilesystemtrim}
+## OpenStorageFilesystemTrim Service
+This service provides methods to manage filesystem trim operation on a
+volume. 
+
+This operation runs in the background on a **mounted volume**. If the volumes
+are not mounted, these API return error.
+
+Once the filesystem trim operation is started, the clients have to poll for
+the status of the background operation using the
+`OpenStorageFilesystemTrim.GetStatus()` rpc request
+
+A typical workflow involving filesystem trim would be as follows
+1. Attach the volume
+   `OpenStorageMountAttachClient.Attach()`
+2. Mount the volume
+   `OpenStorageMountAttachClient.Mount()`
+3. Start the filesystem trim operation by issuing a grpc call to
+   `OpenStorageFilesystemTrimClient.Start()`
+   This call returns immediately with a status code indicating if the
+   operation was successfully started or not.
+4. To get the status of the Filesystem Trim operation, issue a grpc call to 
+   `OpenStorageFilesystemTrimClient.GetStatus()`
+5. To stop the Filesystem Trim operation, issue a grpc call to
+   `OpenStorageFilesystemTrimClient.Stop()`
+
+## Start {#methodopenstorageapiopenstoragefilesystemtrimstart}
+
+> **rpc** Start([SdkFilesystemTrimStartRequest](#sdkfilesystemtrimstartrequest))
+    [SdkFilesystemTrimStartResponse](#sdkfilesystemtrimstartresponse)
+
+Start a filesystem Trim background operation on a mounted volume
+## GetStatus {#methodopenstorageapiopenstoragefilesystemtrimgetstatus}
+
+> **rpc** GetStatus([SdkFilesystemTrimGetStatusRequest](#sdkfilesystemtrimgetstatusrequest))
+    [SdkFilesystemTrimGetStatusResponse](#sdkfilesystemtrimgetstatusresponse)
+
+Get Status of a filesystem Trim background operation on a mounted
+volume, if any
+## Stop {#methodopenstorageapiopenstoragefilesystemtrimstop}
+
+> **rpc** Stop([SdkFilesystemTrimStopRequest](#sdkfilesystemtrimstoprequest))
+    [SdkFilesystemTrimStopResponse](#sdkfilesystemtrimstopresponse)
+
+Stop a filesystem Trim background operation on a mounted volume, if any
+ <!-- end methods -->
+
 # OpenStorageIdentity {#serviceopenstorageapiopenstorageidentity}
 OpenStorageIdentity service provides methods to obtain information
 about the cluster
@@ -746,7 +897,8 @@ Cancel a migration operation
 > **rpc** Status([SdkCloudMigrateStatusRequest](#sdkcloudmigratestatusrequest))
     [SdkCloudMigrateStatusResponse](#sdkcloudmigratestatusresponse)
 
-Inspect the status of migration operation
+Status for migration operation.
+If status request is empty, status for all migration operation will be returned.
  <!-- end methods -->
 
 # OpenStorageMountAttach {#serviceopenstorageapiopenstoragemountattach}
@@ -1549,6 +1701,64 @@ in: body |
  <!-- end HasFields -->
 
 
+## ExportSpec {#exportspec}
+ExportSpec defines how the volume is exported..
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| export_protocol | [ ExportProtocol](#exportprotocol) | ExportProtocol defines how the volume is exported. |
+| export_options | [ string](#string) | ExportOptions options exporting the volume. |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## FastpathConfig {#fastpathconfig}
+FastpathConfig part of volume
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| setup_on | [ int32](#int32) | fastpath setup on this node |
+| promote | [ bool](#bool) | Fastpath temporary promotion during attach |
+| status | [ FastpathStatus](#fastpathstatus) | Fastpath consolidated current status across replicas |
+| replicas | [repeated FastpathReplState](#fastpathreplstate) | Fastpath replica state for each replica in replica set |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## FastpathReplState {#fastpathreplstate}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| dev_id | [ uint64](#uint64) | none |
+| node_id | [ uint32](#uint32) | none |
+| protocol | [ FastpathProtocol](#fastpathprotocol) | none |
+| acl | [ bool](#bool) | none |
+| exported_device | [ string](#string) | target info |
+| block | [ bool](#bool) | none |
+| target | [ string](#string) | none |
+| exported | [ bool](#bool) | none |
+| imported | [ bool](#bool) | initiator info |
+| devpath | [ string](#string) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## FilesystemCheck {#filesystemcheck}
+
+
+ <!-- end HasFields -->
+
+
+## FilesystemTrim {#filesystemtrim}
+
+
+ <!-- end HasFields -->
+
+
 ## GraphDriverChanges {#graphdriverchanges}
 GraphDriverChanges represent a list of changes between the filesystem layers
 specified by the ID and Parent.  // Parent may be an empty string, in which
@@ -1765,6 +1975,7 @@ coded - for clustered storage arrays
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | nodes | [repeated string](#string) | none |
+| pool_uuids | [repeated string](#string) | Unique IDs of the storage pools for this replica set |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -2382,6 +2593,20 @@ a cloud provider
 | max_backups | [ uint64](#uint64) | MaxBackups indicates when to force full backup to cloud. If RetentionDays is not specified or is 0 (older scheme), this is also the maximum number of scheduled backups retained in the cloud. Older backups are deleted |
 | full | [ bool](#bool) | Full indicates if scheduled backups should always be full and never incremental. |
 | retention_days | [ uint32](#uint32) | Number of days that Scheduled CloudBackups will be kept after which they are deleted |
+| group_id | [ string](#string) | GroupId indicates the group of volumes for which this schedule applies |
+| labels | [map SdkCloudBackupScheduleInfo.LabelsEntry](#sdkcloudbackupscheduleinfolabelsentry) | labels indicates group of volumes with similar labels for which this schedule applies |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCloudBackupScheduleInfo.LabelsEntry {#sdkcloudbackupscheduleinfolabelsentry}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [ string](#string) | none |
+| value | [ string](#string) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -2771,6 +2996,7 @@ Defines a request to create credentials
 | bucket | [ string](#string) | (optional) Name of bucket |
 | encryption_key | [ string](#string) | (optional) Key used to encrypt the data |
 | ownership | [ Ownership](#ownership) | Ownership of the credential. Collaborators and groups may be added here with their appropriate ACLS. |
+| use_proxy | [ bool](#bool) | use_proxy indicates if a proxy must be used |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.aws_credential | [ SdkAwsCredentialRequest](#sdkawscredentialrequest) | Credentials for AWS/S3 |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.azure_credential | [ SdkAzureCredentialRequest](#sdkazurecredentialrequest) | Credentials for Azure |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.google_credential | [ SdkGoogleCredentialRequest](#sdkgooglecredentialrequest) | Credentials for Google |
@@ -2846,6 +3072,7 @@ you will need to check if the value of credential_type is one of the ones below.
 | name | [ string](#string) | Name of the credential |
 | bucket | [ string](#string) | (optional) Name of bucket |
 | ownership | [ Ownership](#ownership) | Ownership of the credential |
+| use_proxy | [ bool](#bool) | proxy flag for the credential |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.aws_credential | [ SdkAwsCredentialResponse](#sdkawscredentialresponse) | Aws credentials |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.azure_credential | [ SdkAzureCredentialResponse](#sdkazurecredentialresponse) | Azure credentials |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.google_credential | [ SdkGoogleCredentialResponse](#sdkgooglecredentialresponse) | Google credentials |
@@ -2865,6 +3092,196 @@ Defines a request to validate credentials
 
 
 ## SdkCredentialValidateResponse {#sdkcredentialvalidateresponse}
+Empty response
+
+ <!-- end HasFields -->
+
+
+## SdkFilesystemCheckCheckHealthGetStatusRequest {#sdkfilesystemcheckcheckhealthgetstatusrequest}
+SdkFilesystemCheckCheckHealthGetStatusRequest defines a request to get status of a
+background filesystem check operation
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id | [ string](#string) | Id of the volume |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkFilesystemCheckCheckHealthGetStatusResponse {#sdkfilesystemcheckcheckhealthgetstatusresponse}
+SdkFilesystemCheckCheckHealthGetStatusResponse defines the response for a
+SdkFilesystemCheckCheckHealthGetStatusRequest.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| status | [ FilesystemCheck.FilesystemCheckStatus](#filesystemcheckfilesystemcheckstatus) | Status code representing the state of the filesystem check operation |
+| health_status | [ FilesystemCheck.CheckHealthStatus](#filesystemcheckcheckhealthstatus) | Status code representing the health of the filesystem after a checkHealth operation |
+| message | [ string](#string) | Text blob containing ASCII text providing details of the operation |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkFilesystemCheckCheckHealthRequest {#sdkfilesystemcheckcheckhealthrequest}
+SdkFilesystemCheckCheckHealthRequest defines a request to report the
+filesystem consistency issues
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id | [ string](#string) | Id of the volume |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkFilesystemCheckCheckHealthResponse {#sdkfilesystemcheckcheckhealthresponse}
+SdkFilesystemCheckCheckHealthResponse defines the response for a
+SdkFilesystemCheckCheckHealthRequest.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| status | [ FilesystemCheck.FilesystemCheckStatus](#filesystemcheckfilesystemcheckstatus) | Status code representing the state of the filesystem check operation |
+| message | [ string](#string) | Text blob containing ASCII text providing details of the operation |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkFilesystemCheckFixAllGetStatusRequest {#sdkfilesystemcheckfixallgetstatusrequest}
+SdkFilesystemCheckFixAllGetStatusRequest defines a request to get status of a
+background filesystem check operation
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id | [ string](#string) | Id of the volume |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkFilesystemCheckFixAllGetStatusResponse {#sdkfilesystemcheckfixallgetstatusresponse}
+SdkFilesystemCheckFixAllGetStatusResponse defines the response for a
+SdkFilesystemCheckFixAllGetStatusRequest.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| status | [ FilesystemCheck.FilesystemCheckStatus](#filesystemcheckfilesystemcheckstatus) | Status code representing the state of the filesystem check operation |
+| health_status | [ FilesystemCheck.FixAllStatus](#filesystemcheckfixallstatus) | Status code representing the health of the filesystem after FixAll operation |
+| message | [ string](#string) | Text blob containing ASCII text providing details of the operation |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkFilesystemCheckFixAllRequest {#sdkfilesystemcheckfixallrequest}
+SdkFilesystemCheckFixAllRequest defines a request to fix all the filesystem
+consistency issues
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id | [ string](#string) | Id of the volume |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkFilesystemCheckFixAllResponse {#sdkfilesystemcheckfixallresponse}
+SdkFilesystemCheckFixAllResponse defines the response for a
+SdkFilesystemCheckFixAllRequest.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| status | [ FilesystemCheck.FilesystemCheckStatus](#filesystemcheckfilesystemcheckstatus) | Status code representing the state of the filesystem check operation |
+| message | [ string](#string) | Text blob containing ASCII text providing details of the operation |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkFilesystemCheckStopRequest {#sdkfilesystemcheckstoprequest}
+SdkFilesystemCheckStopRequest defines a request to stop a background
+filesystem check operation
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id | [ string](#string) | Id of the volume |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkFilesystemCheckStopResponse {#sdkfilesystemcheckstopresponse}
+Empty response
+
+ <!-- end HasFields -->
+
+
+## SdkFilesystemTrimGetStatusRequest {#sdkfilesystemtrimgetstatusrequest}
+SdkFilesystemTrimGetStatusRequest defines a request to get status of a
+background filesystem trim operation
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id | [ string](#string) | Id of the volume |
+| mount_path | [ string](#string) | Path where the volume is mounted |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkFilesystemTrimGetStatusResponse {#sdkfilesystemtrimgetstatusresponse}
+SdkFilesystemTrimGetStatusResponse defines the response for a
+SdkFilesystemTrimGetStatusRequest.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| status | [ FilesystemTrim.FilesystemTrimStatus](#filesystemtrimfilesystemtrimstatus) | Status code representing the state of the filesystem trim operation |
+| message | [ string](#string) | Text blob containing ASCII text providing details of the operation |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkFilesystemTrimStartRequest {#sdkfilesystemtrimstartrequest}
+SdkFilesystemTrimStartRequest defines a request to start a background filesystem trim operation
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id | [ string](#string) | Id of the volume |
+| mount_path | [ string](#string) | Path where the volume is mounted |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkFilesystemTrimStartResponse {#sdkfilesystemtrimstartresponse}
+SdkFilesystemTrimStartResponse defines the response for a 
+SdkFilesystemTrimStartRequest.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| status | [ FilesystemTrim.FilesystemTrimStatus](#filesystemtrimfilesystemtrimstatus) | Status code representing the state of the filesystem trim operation |
+| message | [ string](#string) | Text blob containing ASCII text providing details of the operation |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkFilesystemTrimStopRequest {#sdkfilesystemtrimstoprequest}
+SdkFilesystemTrimStopRequest defines a request to stop a background
+filesystem trim operation
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id | [ string](#string) | Id of the volume |
+| mount_path | [ string](#string) | Path where the volume is mounted |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkFilesystemTrimStopResponse {#sdkfilesystemtrimstopresponse}
 Empty response
 
  <!-- end HasFields -->
@@ -3601,6 +4018,7 @@ Defines a request when inspect a storage pool
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) resize_factor.size | [ uint64](#uint64) | Size is the new desired size of the storage pool |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) resize_factor.percentage | [ uint64](#uint64) | Size is the new desired size of the storage pool |
 | operation_type | [ SdkStoragePool.ResizeOperationType](#sdkstoragepoolresizeoperationtype) | OperationType is the operation that's used to resize the storage pool (optional) |
+| skip_wait_for_clean_volumes | [ bool](#bool) | SkipWaitForCleanVolumes would skip the wait for all volumes on the pool to be clean before doing a resize |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3636,6 +4054,7 @@ Options to attach device
 | secret_name | [ string](#string) | Indicates the name of the secret stored in a secret store In case of Hashicorp's Vault, it will be the key from the key-value pair stored in its kv backend. In case of Kubernetes secret, it is the name of the secret object itself |
 | secret_key | [ string](#string) | In case of Kubernetes, this will be the key stored in the Kubernetes secret |
 | secret_context | [ string](#string) | It indicates the additional context which could be used to retrieve the secret. In case of Kubernetes, this is the namespace in which the secret is created. |
+| fastpath | [ string](#string) | Indicates whether fastpath needs to be enabled during attach |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -4470,6 +4889,7 @@ Volume represents an abstract storage volume.
 | fs_resize_required | [ bool](#bool) | FsResizeRequired if an FS resize is required on the volume. |
 | attach_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | AttachTime time this device was last attached externally. |
 | detach_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | DetachTime time this device was detached. |
+| fpConfig | [ FastpathConfig](#fastpathconfig) | Fastpath extensions |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -4630,6 +5050,68 @@ in: body Required: true |
  <!-- end HasFields -->
 
 
+## VolumeServiceInstanceResponse {#volumeserviceinstanceresponse}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| error | [ string](#string) | Error code |
+| status | [map VolumeServiceInstanceResponse.StatusEntry](#volumeserviceinstanceresponsestatusentry) | Status information exposed a map |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## VolumeServiceInstanceResponse.StatusEntry {#volumeserviceinstanceresponsestatusentry}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [ string](#string) | none |
+| value | [ string](#string) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## VolumeServiceRequest {#volumeservicerequest}
+VolumeServiceRequest provides details on what volume service command to 
+perform in background on the volume
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| srv_cmd | [ string](#string) | User specified volume service command |
+| srv_cmd_params | [map VolumeServiceRequest.SrvCmdParamsEntry](#volumeservicerequestsrvcmdparamsentry) | User specified volume service command's params |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## VolumeServiceRequest.SrvCmdParamsEntry {#volumeservicerequestsrvcmdparamsentry}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [ string](#string) | none |
+| value | [ string](#string) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## VolumeServiceResponse {#volumeserviceresponse}
+VolumeServiceResponse specifies the response to a Volume Service command
+performed on a volumen
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| vol_srv_rsp_obj_cnt | [ int32](#int32) | Number of VolumeServiceInstanceResponse returned as part of this response structure |
+| vol_srv_rsp | [repeated VolumeServiceInstanceResponse](#volumeserviceinstanceresponse) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
 ## VolumeSetRequest {#volumesetrequest}
 VolumeSet specifies a request to update a volume.
 
@@ -4704,7 +5186,9 @@ VolumeSpec has the properties needed to create a volume.
 | io_strategy | [ IoStrategy](#iostrategy) | IoStrategy preferred strategy for I/O. |
 | placement_strategy | [ VolumePlacementStrategy](#volumeplacementstrategy) | PlacementStrategy specifies a spec to indicate where to place the volume. |
 | storage_policy | [ string](#string) | StoragePolicy if applied/specified while creating volume |
-| ownership | [ Ownership](#ownership) | Owner |
+| ownership | [ Ownership](#ownership) | Ownership |
+| export_spec | [ ExportSpec](#exportspec) | ExportSpec defines how the volume should be exported. |
+| fp_preference | [ bool](#bool) | fastpath extensions |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -4752,6 +5236,7 @@ VolumeSpecPolicy provides a method to set volume storage policy
 | snapshot_interval_operator | [ VolumeSpecPolicy.PolicyOp](#volumespecpolicypolicyop) | Operator to check snapshot_interval |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) nodiscard_opt.nodiscard | [ bool](#bool) | none |
 | io_strategy | [ IoStrategy](#iostrategy) | IoStrategy preferred strategy for I/O. |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) export_spec_opt.export_spec | [ ExportSpec](#exportspec) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -4793,6 +5278,8 @@ VolumeSpecUpdate provides a method to set any of the VolumeSpec of an existing v
 | ownership | [ Ownership](#ownership) | Ownership volume information to update. If the value of `owner` in the `ownership` message is an empty string then the value of `owner` in the `VolumeSpec.Ownership.owner` will not be updated. |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) nodiscard_opt.nodiscard | [ bool](#bool) | none |
 | io_strategy | [ IoStrategy](#iostrategy) | IoStrategy preferred strategy for I/O. |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) export_spec_opt.export_spec | [ ExportSpec](#exportspec) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) fastpath_opt.fastpath | [ bool](#bool) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -4932,6 +5419,20 @@ Defines the types of enforcement on the given rules
 
 
 
+## ExportProtocol {#exportprotocol}
+ExportProtocol defines how the device is exported..
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| INVALID | 0 | Invalid uninitialized value |
+| PXD | 1 | PXD the volume is exported over Portworx block interace. |
+| ISCSI | 2 | ISCSI the volume is exported over ISCSI. |
+| NFS | 3 | NFS the volume is exported over NFS. |
+| CUSTOM | 4 | Custom the volume is exported over custom interace. |
+
+
+
+
 ## FSType {#fstype}
 
 
@@ -4946,6 +5447,95 @@ Defines the types of enforcement on the given rules
 | FS_TYPE_XFS | 6 | none |
 | FS_TYPE_ZFS | 7 | none |
 | FS_TYPE_XFSv2 | 8 | none |
+
+
+
+
+## FastpathProtocol {#fastpathprotocol}
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| FASTPATH_PROTO_UNKNOWN | 0 | none |
+| FASTPATH_PROTO_NVMEOF_TCP | 1 | none |
+| FASTPATH_PROTO_ISCSI | 2 | none |
+
+
+
+
+## FastpathStatus {#fastpathstatus}
+fastpath extensions
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| FASTPATH_UNKNOWN | 0 | backward compatible state |
+| FASTPATH_ACTIVE | 1 | fastpath activated and enabled |
+| FASTPATH_INACTIVE | 2 | fastpath inactive |
+| FASTPATH_UNSUPPORTED | 3 | fastpath unsupported, disabled |
+| FASTPATH_PENDING | 4 | fastpath operation setup in progress |
+| FASTPATH_ERRORED | 5 | fastpath error'd, possible stuck failure |
+
+
+
+
+## FilesystemCheck.CheckHealthStatus {#filesystemcheckcheckhealthstatus}
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| CHECK_HEALTH_STATUS_UNKNOWN | 0 | filesystem health status is unknown |
+| CHECK_HEALTH_STATUS_HEALTHY | 1 | filesystem health is healthy |
+| CHECK_HEALTH_STATUS_NOT_HEALTHY | 2 | filesystem health is not healthy |
+
+
+
+
+## FilesystemCheck.FilesystemCheckStatus {#filesystemcheckfilesystemcheckstatus}
+FilesystemChecktatus represents the status codes returned from
+OpenStorageFilesystemCheck service APIs()
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| FS_CHECK_UNKNOWN | 0 | Filesystem Check operation is an unknown state |
+| FS_CHECK_NOT_RUNNING | 1 | FilesystemCheck operation not running for the specified volume |
+| FS_CHECK_STARTED | 2 | FilesystemCheck operation started for the specified volume |
+| FS_CHECK_CHECK_HEALTH_INPROGRESS | 3 | FilesystemCheck CheckHealth operation is in progress |
+| FS_CHECK_CHECK_HEALTH_STOPPED | 4 | FilesystemCheck CheckHealth operation was stopped by the user |
+| FS_CHECK_CHECK_HEALTH_COMPLETED | 5 | FilesystemCheck CheckHealth operation completed successfully |
+| FS_CHECK_CHECK_HEALTH_FAILED | 6 | FilesystemCheck CheckHealth operation failed due to internal error |
+| FS_CHECK_FIXALL_INPROGRESS | 7 | FilesystemCheck FixAll operation is in progress |
+| FS_CHECK_FIXALL_STOPPED | 8 | FilesystemCheck FixAll operation was stopped by the user |
+| FS_CHECK_FIXALL_COMPLETED | 9 | FilesystemCheck FixAll operation completed successfully |
+| FS_CHECK_FIXALL_FAILED | 10 | FilesystemCheck FixAll operation failed due to internal error |
+
+
+
+
+## FilesystemCheck.FixAllStatus {#filesystemcheckfixallstatus}
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| FIXALL_STATUS_UNKNOWN | 0 | filesystem check fixall status is unknown |
+| FIXALL_STATUS_HEALTHY | 1 | filesystem check fixall is healthy |
+| FIXALL_STATUS_NOT_HEALTHY | 2 | check fixall is not healthy |
+
+
+
+
+## FilesystemTrim.FilesystemTrimStatus {#filesystemtrimfilesystemtrimstatus}
+FilesystemTrimStatus represents the status codes returned from
+OpenStorageFilesystemTrim service APIs()
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| FS_TRIM_UNKNOWN | 0 | Filesystem Trim operation is an unknown state |
+| FS_TRIM_NOT_RUNNING | 1 | Filesystem Trim operation is not running for the specified volume |
+| FS_TRIM_STARTED | 2 | Filesystem Trim operation started for the specified volume |
+| FS_TRIM_INPROGRESS | 3 | Filesystem Trim operation is in progress for the specified volume |
+| FS_TRIM_STOPPED | 4 | Filesystem Trim operation was stopped by the user for the specified volume |
+| FS_TRIM_COMPLETED | 5 | Filesystem Trim operation completed successfully for the specified volume |
+| FS_TRIM_FAILED | 6 | Filesystem Trim operation failed due to internal error for the specified volume |
 
 
 
@@ -5043,6 +5633,7 @@ used for.
 | RESOURCE_TYPE_NODE | 2 | none |
 | RESOURCE_TYPE_CLUSTER | 3 | none |
 | RESOURCE_TYPE_DRIVE | 4 | none |
+| RESOURCE_TYPE_POOL | 5 | none |
 
 
 
@@ -5174,7 +5765,7 @@ client and server applications
 | ---- | ------ | ----------- |
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
-| Minor | 64 | SDK version minor value of this specification |
+| Minor | 69 | SDK version minor value of this specification |
 | Patch | 0 | SDK version patch value of this specification |
 
 

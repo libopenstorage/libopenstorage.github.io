@@ -10,8 +10,8 @@
         * [Changelog](release-sdk-0.9.changelog.md)
     * [v0.22.x](release-4.0.generated-api.md)
         * [Changelog](release-4.0.changelog.md)
-    * [v0.42.x](release-6.1.generated-api.md)
-        * [Changelog](release-6.1.changelog.md)
+    * [v0.42.x](release-6.3.generated-api.md)
+        * [Changelog](release-6.3.changelog.md)
     * [Nightly](master.generated-api.md)
         * [Changelog](master.changelog.md)
 
