@@ -45,7 +45,7 @@ c = connector.Connector('localhost:9100')
 
 >The `connector.Connector()` object supports not only insecure access,
 >but also TLS, Token Authentication, and fetching tokens from Kubernetes secrets. For
->more inforamtion, type:
+>more information, type:
 >
 >   ```
 >   $ pydoc3 openstorage.connector
