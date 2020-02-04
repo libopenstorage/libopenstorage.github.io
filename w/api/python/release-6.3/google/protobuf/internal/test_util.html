@@ -1,0 +1,1940 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.4" />
+<title>google.protobuf.internal.test_util API documentation</title>
+<meta name="description" content="Utilities for Python proto2 tests …" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>google.protobuf.internal.test_util</code></h1>
+</header>
+<section id="section-intro">
+<p>Utilities for Python proto2 tests.</p>
+<p>This is intentionally modeled on C++ code in
+//google/protobuf/test_util.*.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Protocol Buffers - Google&#39;s data interchange format
+# Copyright 2008 Google Inc.  All rights reserved.
+# https://developers.google.com/protocol-buffers/
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are
+# met:
+#
+#     * Redistributions of source code must retain the above copyright
+# notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above
+# copyright notice, this list of conditions and the following disclaimer
+# in the documentation and/or other materials provided with the
+# distribution.
+#     * Neither the name of Google Inc. nor the names of its
+# contributors may be used to endorse or promote products derived from
+# this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+# &#34;AS IS&#34; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+# LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+# A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+# OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+# SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+# LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+# DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+# THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+&#34;&#34;&#34;Utilities for Python proto2 tests.
+
+This is intentionally modeled on C++ code in
+//google/protobuf/test_util.*.
+&#34;&#34;&#34;
+
+__author__ = &#39;robinson@google.com (Will Robinson)&#39;
+
+import numbers
+import operator
+import os.path
+
+from google.protobuf import unittest_import_pb2
+from google.protobuf import unittest_pb2
+
+try:
+  long        # Python 2
+except NameError:
+  long = int  # Python 3
+
+
+# Tests whether the given TestAllTypes message is proto2 or not.
+# This is used to gate several fields/features that only exist
+# for the proto2 version of the message.
+def IsProto2(message):
+  return message.DESCRIPTOR.syntax == &#34;proto2&#34;
+
+
+def SetAllNonLazyFields(message):
+  &#34;&#34;&#34;Sets every non-lazy field in the message to a unique value.
+
+  Args:
+    message: A TestAllTypes instance.
+  &#34;&#34;&#34;
+
+  #
+  # Optional fields.
+  #
+
+  message.optional_int32    = 101
+  message.optional_int64    = 102
+  message.optional_uint32   = 103
+  message.optional_uint64   = 104
+  message.optional_sint32   = 105
+  message.optional_sint64   = 106
+  message.optional_fixed32  = 107
+  message.optional_fixed64  = 108
+  message.optional_sfixed32 = 109
+  message.optional_sfixed64 = 110
+  message.optional_float    = 111
+  message.optional_double   = 112
+  message.optional_bool     = True
+  message.optional_string   = u&#39;115&#39;
+  message.optional_bytes    = b&#39;116&#39;
+
+  if IsProto2(message):
+    message.optionalgroup.a = 117
+  message.optional_nested_message.bb = 118
+  message.optional_foreign_message.c = 119
+  message.optional_import_message.d = 120
+  message.optional_public_import_message.e = 126
+
+  message.optional_nested_enum = unittest_pb2.TestAllTypes.BAZ
+  message.optional_foreign_enum = unittest_pb2.FOREIGN_BAZ
+  if IsProto2(message):
+    message.optional_import_enum = unittest_import_pb2.IMPORT_BAZ
+
+  message.optional_string_piece = u&#39;124&#39;
+  message.optional_cord = u&#39;125&#39;
+
+  #
+  # Repeated fields.
+  #
+
+  message.repeated_int32.append(201)
+  message.repeated_int64.append(202)
+  message.repeated_uint32.append(203)
+  message.repeated_uint64.append(204)
+  message.repeated_sint32.append(205)
+  message.repeated_sint64.append(206)
+  message.repeated_fixed32.append(207)
+  message.repeated_fixed64.append(208)
+  message.repeated_sfixed32.append(209)
+  message.repeated_sfixed64.append(210)
+  message.repeated_float.append(211)
+  message.repeated_double.append(212)
+  message.repeated_bool.append(True)
+  message.repeated_string.append(u&#39;215&#39;)
+  message.repeated_bytes.append(b&#39;216&#39;)
+
+  if IsProto2(message):
+    message.repeatedgroup.add().a = 217
+  message.repeated_nested_message.add().bb = 218
+  message.repeated_foreign_message.add().c = 219
+  message.repeated_import_message.add().d = 220
+  message.repeated_lazy_message.add().bb = 227
+
+  message.repeated_nested_enum.append(unittest_pb2.TestAllTypes.BAR)
+  message.repeated_foreign_enum.append(unittest_pb2.FOREIGN_BAR)
+  if IsProto2(message):
+    message.repeated_import_enum.append(unittest_import_pb2.IMPORT_BAR)
+
+  message.repeated_string_piece.append(u&#39;224&#39;)
+  message.repeated_cord.append(u&#39;225&#39;)
+
+  # Add a second one of each field and set value by index.
+  message.repeated_int32.append(0)
+  message.repeated_int64.append(0)
+  message.repeated_uint32.append(0)
+  message.repeated_uint64.append(0)
+  message.repeated_sint32.append(0)
+  message.repeated_sint64.append(0)
+  message.repeated_fixed32.append(0)
+  message.repeated_fixed64.append(0)
+  message.repeated_sfixed32.append(0)
+  message.repeated_sfixed64.append(0)
+  message.repeated_float.append(0)
+  message.repeated_double.append(0)
+  message.repeated_bool.append(True)
+  message.repeated_string.append(u&#39;0&#39;)
+  message.repeated_bytes.append(b&#39;0&#39;)
+  message.repeated_int32[1] = 301
+  message.repeated_int64[1] = 302
+  message.repeated_uint32[1] = 303
+  message.repeated_uint64[1] = 304
+  message.repeated_sint32[1] = 305
+  message.repeated_sint64[1] = 306
+  message.repeated_fixed32[1] = 307
+  message.repeated_fixed64[1] = 308
+  message.repeated_sfixed32[1] = 309
+  message.repeated_sfixed64[1] = 310
+  message.repeated_float[1] = 311
+  message.repeated_double[1] = 312
+  message.repeated_bool[1] = False
+  message.repeated_string[1] = u&#39;315&#39;
+  message.repeated_bytes[1] = b&#39;316&#39;
+
+  if IsProto2(message):
+    message.repeatedgroup.add().a = 317
+  message.repeated_nested_message.add().bb = 318
+  message.repeated_foreign_message.add().c = 319
+  message.repeated_import_message.add().d = 320
+  message.repeated_lazy_message.add().bb = 327
+
+  message.repeated_nested_enum.append(unittest_pb2.TestAllTypes.BAR)
+  message.repeated_nested_enum[1] = unittest_pb2.TestAllTypes.BAZ
+  message.repeated_foreign_enum.append(unittest_pb2.FOREIGN_BAZ)
+  if IsProto2(message):
+    message.repeated_import_enum.append(unittest_import_pb2.IMPORT_BAZ)
+
+  message.repeated_string_piece.append(u&#39;324&#39;)
+  message.repeated_cord.append(u&#39;325&#39;)
+
+  #
+  # Fields that have defaults.
+  #
+
+  if IsProto2(message):
+    message.default_int32 = 401
+    message.default_int64 = 402
+    message.default_uint32 = 403
+    message.default_uint64 = 404
+    message.default_sint32 = 405
+    message.default_sint64 = 406
+    message.default_fixed32 = 407
+    message.default_fixed64 = 408
+    message.default_sfixed32 = 409
+    message.default_sfixed64 = 410
+    message.default_float = 411
+    message.default_double = 412
+    message.default_bool = False
+    message.default_string = &#39;415&#39;
+    message.default_bytes = b&#39;416&#39;
+
+    message.default_nested_enum = unittest_pb2.TestAllTypes.FOO
+    message.default_foreign_enum = unittest_pb2.FOREIGN_FOO
+    message.default_import_enum = unittest_import_pb2.IMPORT_FOO
+
+    message.default_string_piece = &#39;424&#39;
+    message.default_cord = &#39;425&#39;
+
+  message.oneof_uint32 = 601
+  message.oneof_nested_message.bb = 602
+  message.oneof_string = &#39;603&#39;
+  message.oneof_bytes = b&#39;604&#39;
+
+
+def SetAllFields(message):
+  SetAllNonLazyFields(message)
+  message.optional_lazy_message.bb = 127
+
+
+def SetAllExtensions(message):
+  &#34;&#34;&#34;Sets every extension in the message to a unique value.
+
+  Args:
+    message: A unittest_pb2.TestAllExtensions instance.
+  &#34;&#34;&#34;
+
+  extensions = message.Extensions
+  pb2 = unittest_pb2
+  import_pb2 = unittest_import_pb2
+
+  #
+  # Optional fields.
+  #
+
+  extensions[pb2.optional_int32_extension] = 101
+  extensions[pb2.optional_int64_extension] = 102
+  extensions[pb2.optional_uint32_extension] = 103
+  extensions[pb2.optional_uint64_extension] = 104
+  extensions[pb2.optional_sint32_extension] = 105
+  extensions[pb2.optional_sint64_extension] = 106
+  extensions[pb2.optional_fixed32_extension] = 107
+  extensions[pb2.optional_fixed64_extension] = 108
+  extensions[pb2.optional_sfixed32_extension] = 109
+  extensions[pb2.optional_sfixed64_extension] = 110
+  extensions[pb2.optional_float_extension] = 111
+  extensions[pb2.optional_double_extension] = 112
+  extensions[pb2.optional_bool_extension] = True
+  extensions[pb2.optional_string_extension] = u&#39;115&#39;
+  extensions[pb2.optional_bytes_extension] = b&#39;116&#39;
+
+  extensions[pb2.optionalgroup_extension].a = 117
+  extensions[pb2.optional_nested_message_extension].bb = 118
+  extensions[pb2.optional_foreign_message_extension].c = 119
+  extensions[pb2.optional_import_message_extension].d = 120
+  extensions[pb2.optional_public_import_message_extension].e = 126
+  extensions[pb2.optional_lazy_message_extension].bb = 127
+
+  extensions[pb2.optional_nested_enum_extension] = pb2.TestAllTypes.BAZ
+  extensions[pb2.optional_nested_enum_extension] = pb2.TestAllTypes.BAZ
+  extensions[pb2.optional_foreign_enum_extension] = pb2.FOREIGN_BAZ
+  extensions[pb2.optional_import_enum_extension] = import_pb2.IMPORT_BAZ
+
+  extensions[pb2.optional_string_piece_extension] = u&#39;124&#39;
+  extensions[pb2.optional_cord_extension] = u&#39;125&#39;
+
+  #
+  # Repeated fields.
+  #
+
+  extensions[pb2.repeated_int32_extension].append(201)
+  extensions[pb2.repeated_int64_extension].append(202)
+  extensions[pb2.repeated_uint32_extension].append(203)
+  extensions[pb2.repeated_uint64_extension].append(204)
+  extensions[pb2.repeated_sint32_extension].append(205)
+  extensions[pb2.repeated_sint64_extension].append(206)
+  extensions[pb2.repeated_fixed32_extension].append(207)
+  extensions[pb2.repeated_fixed64_extension].append(208)
+  extensions[pb2.repeated_sfixed32_extension].append(209)
+  extensions[pb2.repeated_sfixed64_extension].append(210)
+  extensions[pb2.repeated_float_extension].append(211)
+  extensions[pb2.repeated_double_extension].append(212)
+  extensions[pb2.repeated_bool_extension].append(True)
+  extensions[pb2.repeated_string_extension].append(u&#39;215&#39;)
+  extensions[pb2.repeated_bytes_extension].append(b&#39;216&#39;)
+
+  extensions[pb2.repeatedgroup_extension].add().a = 217
+  extensions[pb2.repeated_nested_message_extension].add().bb = 218
+  extensions[pb2.repeated_foreign_message_extension].add().c = 219
+  extensions[pb2.repeated_import_message_extension].add().d = 220
+  extensions[pb2.repeated_lazy_message_extension].add().bb = 227
+
+  extensions[pb2.repeated_nested_enum_extension].append(pb2.TestAllTypes.BAR)
+  extensions[pb2.repeated_foreign_enum_extension].append(pb2.FOREIGN_BAR)
+  extensions[pb2.repeated_import_enum_extension].append(import_pb2.IMPORT_BAR)
+
+  extensions[pb2.repeated_string_piece_extension].append(u&#39;224&#39;)
+  extensions[pb2.repeated_cord_extension].append(u&#39;225&#39;)
+
+  # Append a second one of each field.
+  extensions[pb2.repeated_int32_extension].append(301)
+  extensions[pb2.repeated_int64_extension].append(302)
+  extensions[pb2.repeated_uint32_extension].append(303)
+  extensions[pb2.repeated_uint64_extension].append(304)
+  extensions[pb2.repeated_sint32_extension].append(305)
+  extensions[pb2.repeated_sint64_extension].append(306)
+  extensions[pb2.repeated_fixed32_extension].append(307)
+  extensions[pb2.repeated_fixed64_extension].append(308)
+  extensions[pb2.repeated_sfixed32_extension].append(309)
+  extensions[pb2.repeated_sfixed64_extension].append(310)
+  extensions[pb2.repeated_float_extension].append(311)
+  extensions[pb2.repeated_double_extension].append(312)
+  extensions[pb2.repeated_bool_extension].append(False)
+  extensions[pb2.repeated_string_extension].append(u&#39;315&#39;)
+  extensions[pb2.repeated_bytes_extension].append(b&#39;316&#39;)
+
+  extensions[pb2.repeatedgroup_extension].add().a = 317
+  extensions[pb2.repeated_nested_message_extension].add().bb = 318
+  extensions[pb2.repeated_foreign_message_extension].add().c = 319
+  extensions[pb2.repeated_import_message_extension].add().d = 320
+  extensions[pb2.repeated_lazy_message_extension].add().bb = 327
+
+  extensions[pb2.repeated_nested_enum_extension].append(pb2.TestAllTypes.BAZ)
+  extensions[pb2.repeated_foreign_enum_extension].append(pb2.FOREIGN_BAZ)
+  extensions[pb2.repeated_import_enum_extension].append(import_pb2.IMPORT_BAZ)
+
+  extensions[pb2.repeated_string_piece_extension].append(u&#39;324&#39;)
+  extensions[pb2.repeated_cord_extension].append(u&#39;325&#39;)
+
+  #
+  # Fields with defaults.
+  #
+
+  extensions[pb2.default_int32_extension] = 401
+  extensions[pb2.default_int64_extension] = 402
+  extensions[pb2.default_uint32_extension] = 403
+  extensions[pb2.default_uint64_extension] = 404
+  extensions[pb2.default_sint32_extension] = 405
+  extensions[pb2.default_sint64_extension] = 406
+  extensions[pb2.default_fixed32_extension] = 407
+  extensions[pb2.default_fixed64_extension] = 408
+  extensions[pb2.default_sfixed32_extension] = 409
+  extensions[pb2.default_sfixed64_extension] = 410
+  extensions[pb2.default_float_extension] = 411
+  extensions[pb2.default_double_extension] = 412
+  extensions[pb2.default_bool_extension] = False
+  extensions[pb2.default_string_extension] = u&#39;415&#39;
+  extensions[pb2.default_bytes_extension] = b&#39;416&#39;
+
+  extensions[pb2.default_nested_enum_extension] = pb2.TestAllTypes.FOO
+  extensions[pb2.default_foreign_enum_extension] = pb2.FOREIGN_FOO
+  extensions[pb2.default_import_enum_extension] = import_pb2.IMPORT_FOO
+
+  extensions[pb2.default_string_piece_extension] = u&#39;424&#39;
+  extensions[pb2.default_cord_extension] = &#39;425&#39;
+
+  extensions[pb2.oneof_uint32_extension] = 601
+  extensions[pb2.oneof_nested_message_extension].bb = 602
+  extensions[pb2.oneof_string_extension] = u&#39;603&#39;
+  extensions[pb2.oneof_bytes_extension] = b&#39;604&#39;
+
+
+def SetAllFieldsAndExtensions(message):
+  &#34;&#34;&#34;Sets every field and extension in the message to a unique value.
+
+  Args:
+    message: A unittest_pb2.TestAllExtensions message.
+  &#34;&#34;&#34;
+  message.my_int = 1
+  message.my_string = &#39;foo&#39;
+  message.my_float = 1.0
+  message.Extensions[unittest_pb2.my_extension_int] = 23
+  message.Extensions[unittest_pb2.my_extension_string] = &#39;bar&#39;
+
+
+def ExpectAllFieldsAndExtensionsInOrder(serialized):
+  &#34;&#34;&#34;Ensures that serialized is the serialization we expect for a message
+  filled with SetAllFieldsAndExtensions().  (Specifically, ensures that the
+  serialization is in canonical, tag-number order).
+  &#34;&#34;&#34;
+  my_extension_int = unittest_pb2.my_extension_int
+  my_extension_string = unittest_pb2.my_extension_string
+  expected_strings = []
+  message = unittest_pb2.TestFieldOrderings()
+  message.my_int = 1  # Field 1.
+  expected_strings.append(message.SerializeToString())
+  message.Clear()
+  message.Extensions[my_extension_int] = 23  # Field 5.
+  expected_strings.append(message.SerializeToString())
+  message.Clear()
+  message.my_string = &#39;foo&#39;  # Field 11.
+  expected_strings.append(message.SerializeToString())
+  message.Clear()
+  message.Extensions[my_extension_string] = &#39;bar&#39;  # Field 50.
+  expected_strings.append(message.SerializeToString())
+  message.Clear()
+  message.my_float = 1.0
+  expected_strings.append(message.SerializeToString())
+  message.Clear()
+  expected = b&#39;&#39;.join(expected_strings)
+
+  if expected != serialized:
+    raise ValueError(&#39;Expected %r, found %r&#39; % (expected, serialized))
+
+
+def ExpectAllFieldsSet(test_case, message):
+  &#34;&#34;&#34;Check all fields for correct values have after Set*Fields() is called.&#34;&#34;&#34;
+  test_case.assertTrue(message.HasField(&#39;optional_int32&#39;))
+  test_case.assertTrue(message.HasField(&#39;optional_int64&#39;))
+  test_case.assertTrue(message.HasField(&#39;optional_uint32&#39;))
+  test_case.assertTrue(message.HasField(&#39;optional_uint64&#39;))
+  test_case.assertTrue(message.HasField(&#39;optional_sint32&#39;))
+  test_case.assertTrue(message.HasField(&#39;optional_sint64&#39;))
+  test_case.assertTrue(message.HasField(&#39;optional_fixed32&#39;))
+  test_case.assertTrue(message.HasField(&#39;optional_fixed64&#39;))
+  test_case.assertTrue(message.HasField(&#39;optional_sfixed32&#39;))
+  test_case.assertTrue(message.HasField(&#39;optional_sfixed64&#39;))
+  test_case.assertTrue(message.HasField(&#39;optional_float&#39;))
+  test_case.assertTrue(message.HasField(&#39;optional_double&#39;))
+  test_case.assertTrue(message.HasField(&#39;optional_bool&#39;))
+  test_case.assertTrue(message.HasField(&#39;optional_string&#39;))
+  test_case.assertTrue(message.HasField(&#39;optional_bytes&#39;))
+
+  if IsProto2(message):
+    test_case.assertTrue(message.HasField(&#39;optionalgroup&#39;))
+  test_case.assertTrue(message.HasField(&#39;optional_nested_message&#39;))
+  test_case.assertTrue(message.HasField(&#39;optional_foreign_message&#39;))
+  test_case.assertTrue(message.HasField(&#39;optional_import_message&#39;))
+
+  test_case.assertTrue(message.optionalgroup.HasField(&#39;a&#39;))
+  test_case.assertTrue(message.optional_nested_message.HasField(&#39;bb&#39;))
+  test_case.assertTrue(message.optional_foreign_message.HasField(&#39;c&#39;))
+  test_case.assertTrue(message.optional_import_message.HasField(&#39;d&#39;))
+
+  test_case.assertTrue(message.HasField(&#39;optional_nested_enum&#39;))
+  test_case.assertTrue(message.HasField(&#39;optional_foreign_enum&#39;))
+  if IsProto2(message):
+    test_case.assertTrue(message.HasField(&#39;optional_import_enum&#39;))
+
+  test_case.assertTrue(message.HasField(&#39;optional_string_piece&#39;))
+  test_case.assertTrue(message.HasField(&#39;optional_cord&#39;))
+
+  test_case.assertEqual(101, message.optional_int32)
+  test_case.assertEqual(102, message.optional_int64)
+  test_case.assertEqual(103, message.optional_uint32)
+  test_case.assertEqual(104, message.optional_uint64)
+  test_case.assertEqual(105, message.optional_sint32)
+  test_case.assertEqual(106, message.optional_sint64)
+  test_case.assertEqual(107, message.optional_fixed32)
+  test_case.assertEqual(108, message.optional_fixed64)
+  test_case.assertEqual(109, message.optional_sfixed32)
+  test_case.assertEqual(110, message.optional_sfixed64)
+  test_case.assertEqual(111, message.optional_float)
+  test_case.assertEqual(112, message.optional_double)
+  test_case.assertEqual(True, message.optional_bool)
+  test_case.assertEqual(&#39;115&#39;, message.optional_string)
+  test_case.assertEqual(b&#39;116&#39;, message.optional_bytes)
+
+  if IsProto2(message):
+    test_case.assertEqual(117, message.optionalgroup.a)
+  test_case.assertEqual(118, message.optional_nested_message.bb)
+  test_case.assertEqual(119, message.optional_foreign_message.c)
+  test_case.assertEqual(120, message.optional_import_message.d)
+  test_case.assertEqual(126, message.optional_public_import_message.e)
+  test_case.assertEqual(127, message.optional_lazy_message.bb)
+
+  test_case.assertEqual(unittest_pb2.TestAllTypes.BAZ,
+                        message.optional_nested_enum)
+  test_case.assertEqual(unittest_pb2.FOREIGN_BAZ,
+                        message.optional_foreign_enum)
+  if IsProto2(message):
+    test_case.assertEqual(unittest_import_pb2.IMPORT_BAZ,
+                          message.optional_import_enum)
+
+  # -----------------------------------------------------------------
+
+  test_case.assertEqual(2, len(message.repeated_int32))
+  test_case.assertEqual(2, len(message.repeated_int64))
+  test_case.assertEqual(2, len(message.repeated_uint32))
+  test_case.assertEqual(2, len(message.repeated_uint64))
+  test_case.assertEqual(2, len(message.repeated_sint32))
+  test_case.assertEqual(2, len(message.repeated_sint64))
+  test_case.assertEqual(2, len(message.repeated_fixed32))
+  test_case.assertEqual(2, len(message.repeated_fixed64))
+  test_case.assertEqual(2, len(message.repeated_sfixed32))
+  test_case.assertEqual(2, len(message.repeated_sfixed64))
+  test_case.assertEqual(2, len(message.repeated_float))
+  test_case.assertEqual(2, len(message.repeated_double))
+  test_case.assertEqual(2, len(message.repeated_bool))
+  test_case.assertEqual(2, len(message.repeated_string))
+  test_case.assertEqual(2, len(message.repeated_bytes))
+
+  if IsProto2(message):
+    test_case.assertEqual(2, len(message.repeatedgroup))
+  test_case.assertEqual(2, len(message.repeated_nested_message))
+  test_case.assertEqual(2, len(message.repeated_foreign_message))
+  test_case.assertEqual(2, len(message.repeated_import_message))
+  test_case.assertEqual(2, len(message.repeated_nested_enum))
+  test_case.assertEqual(2, len(message.repeated_foreign_enum))
+  if IsProto2(message):
+    test_case.assertEqual(2, len(message.repeated_import_enum))
+
+  test_case.assertEqual(2, len(message.repeated_string_piece))
+  test_case.assertEqual(2, len(message.repeated_cord))
+
+  test_case.assertEqual(201, message.repeated_int32[0])
+  test_case.assertEqual(202, message.repeated_int64[0])
+  test_case.assertEqual(203, message.repeated_uint32[0])
+  test_case.assertEqual(204, message.repeated_uint64[0])
+  test_case.assertEqual(205, message.repeated_sint32[0])
+  test_case.assertEqual(206, message.repeated_sint64[0])
+  test_case.assertEqual(207, message.repeated_fixed32[0])
+  test_case.assertEqual(208, message.repeated_fixed64[0])
+  test_case.assertEqual(209, message.repeated_sfixed32[0])
+  test_case.assertEqual(210, message.repeated_sfixed64[0])
+  test_case.assertEqual(211, message.repeated_float[0])
+  test_case.assertEqual(212, message.repeated_double[0])
+  test_case.assertEqual(True, message.repeated_bool[0])
+  test_case.assertEqual(&#39;215&#39;, message.repeated_string[0])
+  test_case.assertEqual(b&#39;216&#39;, message.repeated_bytes[0])
+
+  if IsProto2(message):
+    test_case.assertEqual(217, message.repeatedgroup[0].a)
+  test_case.assertEqual(218, message.repeated_nested_message[0].bb)
+  test_case.assertEqual(219, message.repeated_foreign_message[0].c)
+  test_case.assertEqual(220, message.repeated_import_message[0].d)
+  test_case.assertEqual(227, message.repeated_lazy_message[0].bb)
+
+  test_case.assertEqual(unittest_pb2.TestAllTypes.BAR,
+                        message.repeated_nested_enum[0])
+  test_case.assertEqual(unittest_pb2.FOREIGN_BAR,
+                        message.repeated_foreign_enum[0])
+  if IsProto2(message):
+    test_case.assertEqual(unittest_import_pb2.IMPORT_BAR,
+                          message.repeated_import_enum[0])
+
+  test_case.assertEqual(301, message.repeated_int32[1])
+  test_case.assertEqual(302, message.repeated_int64[1])
+  test_case.assertEqual(303, message.repeated_uint32[1])
+  test_case.assertEqual(304, message.repeated_uint64[1])
+  test_case.assertEqual(305, message.repeated_sint32[1])
+  test_case.assertEqual(306, message.repeated_sint64[1])
+  test_case.assertEqual(307, message.repeated_fixed32[1])
+  test_case.assertEqual(308, message.repeated_fixed64[1])
+  test_case.assertEqual(309, message.repeated_sfixed32[1])
+  test_case.assertEqual(310, message.repeated_sfixed64[1])
+  test_case.assertEqual(311, message.repeated_float[1])
+  test_case.assertEqual(312, message.repeated_double[1])
+  test_case.assertEqual(False, message.repeated_bool[1])
+  test_case.assertEqual(&#39;315&#39;, message.repeated_string[1])
+  test_case.assertEqual(b&#39;316&#39;, message.repeated_bytes[1])
+
+  if IsProto2(message):
+    test_case.assertEqual(317, message.repeatedgroup[1].a)
+  test_case.assertEqual(318, message.repeated_nested_message[1].bb)
+  test_case.assertEqual(319, message.repeated_foreign_message[1].c)
+  test_case.assertEqual(320, message.repeated_import_message[1].d)
+  test_case.assertEqual(327, message.repeated_lazy_message[1].bb)
+
+  test_case.assertEqual(unittest_pb2.TestAllTypes.BAZ,
+                        message.repeated_nested_enum[1])
+  test_case.assertEqual(unittest_pb2.FOREIGN_BAZ,
+                        message.repeated_foreign_enum[1])
+  if IsProto2(message):
+    test_case.assertEqual(unittest_import_pb2.IMPORT_BAZ,
+                          message.repeated_import_enum[1])
+
+  # -----------------------------------------------------------------
+
+  if IsProto2(message):
+    test_case.assertTrue(message.HasField(&#39;default_int32&#39;))
+    test_case.assertTrue(message.HasField(&#39;default_int64&#39;))
+    test_case.assertTrue(message.HasField(&#39;default_uint32&#39;))
+    test_case.assertTrue(message.HasField(&#39;default_uint64&#39;))
+    test_case.assertTrue(message.HasField(&#39;default_sint32&#39;))
+    test_case.assertTrue(message.HasField(&#39;default_sint64&#39;))
+    test_case.assertTrue(message.HasField(&#39;default_fixed32&#39;))
+    test_case.assertTrue(message.HasField(&#39;default_fixed64&#39;))
+    test_case.assertTrue(message.HasField(&#39;default_sfixed32&#39;))
+    test_case.assertTrue(message.HasField(&#39;default_sfixed64&#39;))
+    test_case.assertTrue(message.HasField(&#39;default_float&#39;))
+    test_case.assertTrue(message.HasField(&#39;default_double&#39;))
+    test_case.assertTrue(message.HasField(&#39;default_bool&#39;))
+    test_case.assertTrue(message.HasField(&#39;default_string&#39;))
+    test_case.assertTrue(message.HasField(&#39;default_bytes&#39;))
+
+    test_case.assertTrue(message.HasField(&#39;default_nested_enum&#39;))
+    test_case.assertTrue(message.HasField(&#39;default_foreign_enum&#39;))
+    test_case.assertTrue(message.HasField(&#39;default_import_enum&#39;))
+
+    test_case.assertEqual(401, message.default_int32)
+    test_case.assertEqual(402, message.default_int64)
+    test_case.assertEqual(403, message.default_uint32)
+    test_case.assertEqual(404, message.default_uint64)
+    test_case.assertEqual(405, message.default_sint32)
+    test_case.assertEqual(406, message.default_sint64)
+    test_case.assertEqual(407, message.default_fixed32)
+    test_case.assertEqual(408, message.default_fixed64)
+    test_case.assertEqual(409, message.default_sfixed32)
+    test_case.assertEqual(410, message.default_sfixed64)
+    test_case.assertEqual(411, message.default_float)
+    test_case.assertEqual(412, message.default_double)
+    test_case.assertEqual(False, message.default_bool)
+    test_case.assertEqual(&#39;415&#39;, message.default_string)
+    test_case.assertEqual(b&#39;416&#39;, message.default_bytes)
+
+    test_case.assertEqual(unittest_pb2.TestAllTypes.FOO,
+                          message.default_nested_enum)
+    test_case.assertEqual(unittest_pb2.FOREIGN_FOO,
+                          message.default_foreign_enum)
+    test_case.assertEqual(unittest_import_pb2.IMPORT_FOO,
+                          message.default_import_enum)
+
+
+def GoldenFile(filename):
+  &#34;&#34;&#34;Finds the given golden file and returns a file object representing it.&#34;&#34;&#34;
+
+  # Search up the directory tree looking for the C++ protobuf source code.
+  path = &#39;.&#39;
+  while os.path.exists(path):
+    if os.path.exists(os.path.join(path, &#39;src/google/protobuf&#39;)):
+      # Found it.  Load the golden file from the testdata directory.
+      full_path = os.path.join(path, &#39;src/google/protobuf/testdata&#39;, filename)
+      return open(full_path, &#39;rb&#39;)
+    path = os.path.join(path, &#39;..&#39;)
+
+  # Search internally.
+  path = &#39;.&#39;
+  full_path = os.path.join(path, &#39;third_party/py/google/protobuf/testdata&#39;,
+                           filename)
+  if os.path.exists(full_path):
+    # Found it.  Load the golden file from the testdata directory.
+    return open(full_path, &#39;rb&#39;)
+
+  raise RuntimeError(
+      &#39;Could not find golden files.  This test must be run from within the &#39;
+      &#39;protobuf source package so that it can read test data files from the &#39;
+      &#39;C++ source tree.&#39;)
+
+
+def GoldenFileData(filename):
+  &#34;&#34;&#34;Finds the given golden file and returns its contents.&#34;&#34;&#34;
+  with GoldenFile(filename) as f:
+    return f.read()
+
+
+def SetAllPackedFields(message):
+  &#34;&#34;&#34;Sets every field in the message to a unique value.
+
+  Args:
+    message: A TestPackedTypes instance.
+  &#34;&#34;&#34;
+  message.packed_int32.extend([601, 701])
+  message.packed_int64.extend([602, 702])
+  message.packed_uint32.extend([603, 703])
+  message.packed_uint64.extend([604, 704])
+  message.packed_sint32.extend([605, 705])
+  message.packed_sint64.extend([606, 706])
+  message.packed_fixed32.extend([607, 707])
+  message.packed_fixed64.extend([608, 708])
+  message.packed_sfixed32.extend([609, 709])
+  message.packed_sfixed64.extend([610, 710])
+  message.packed_float.extend([611.0, 711.0])
+  message.packed_double.extend([612.0, 712.0])
+  message.packed_bool.extend([True, False])
+  message.packed_enum.extend([unittest_pb2.FOREIGN_BAR,
+                              unittest_pb2.FOREIGN_BAZ])
+
+
+def SetAllPackedExtensions(message):
+  &#34;&#34;&#34;Sets every extension in the message to a unique value.
+
+  Args:
+    message: A unittest_pb2.TestPackedExtensions instance.
+  &#34;&#34;&#34;
+  extensions = message.Extensions
+  pb2 = unittest_pb2
+
+  extensions[pb2.packed_int32_extension].extend([601, 701])
+  extensions[pb2.packed_int64_extension].extend([602, 702])
+  extensions[pb2.packed_uint32_extension].extend([603, 703])
+  extensions[pb2.packed_uint64_extension].extend([604, 704])
+  extensions[pb2.packed_sint32_extension].extend([605, 705])
+  extensions[pb2.packed_sint64_extension].extend([606, 706])
+  extensions[pb2.packed_fixed32_extension].extend([607, 707])
+  extensions[pb2.packed_fixed64_extension].extend([608, 708])
+  extensions[pb2.packed_sfixed32_extension].extend([609, 709])
+  extensions[pb2.packed_sfixed64_extension].extend([610, 710])
+  extensions[pb2.packed_float_extension].extend([611.0, 711.0])
+  extensions[pb2.packed_double_extension].extend([612.0, 712.0])
+  extensions[pb2.packed_bool_extension].extend([True, False])
+  extensions[pb2.packed_enum_extension].extend([unittest_pb2.FOREIGN_BAR,
+                                                unittest_pb2.FOREIGN_BAZ])
+
+
+def SetAllUnpackedFields(message):
+  &#34;&#34;&#34;Sets every field in the message to a unique value.
+
+  Args:
+    message: A unittest_pb2.TestUnpackedTypes instance.
+  &#34;&#34;&#34;
+  message.unpacked_int32.extend([601, 701])
+  message.unpacked_int64.extend([602, 702])
+  message.unpacked_uint32.extend([603, 703])
+  message.unpacked_uint64.extend([604, 704])
+  message.unpacked_sint32.extend([605, 705])
+  message.unpacked_sint64.extend([606, 706])
+  message.unpacked_fixed32.extend([607, 707])
+  message.unpacked_fixed64.extend([608, 708])
+  message.unpacked_sfixed32.extend([609, 709])
+  message.unpacked_sfixed64.extend([610, 710])
+  message.unpacked_float.extend([611.0, 711.0])
+  message.unpacked_double.extend([612.0, 712.0])
+  message.unpacked_bool.extend([True, False])
+  message.unpacked_enum.extend([unittest_pb2.FOREIGN_BAR,
+                                unittest_pb2.FOREIGN_BAZ])
+
+
+class NonStandardInteger(numbers.Integral):
+  &#34;&#34;&#34;An integer object that does not subclass int.
+
+  This is used to verify that both C++ and regular proto systems can handle
+  integer others than int and long and that they handle them in predictable
+  ways.
+
+  NonStandardInteger is the minimal legal specification for a custom Integral.
+  As such, it does not support 0 &lt; x &lt; 5 and it is not hashable.
+
+  Note: This is added here instead of relying on numpy or a similar library
+  with custom integers to limit dependencies.
+  &#34;&#34;&#34;
+
+  def __init__(self, val, error_string_on_conversion=None):
+    assert isinstance(val, numbers.Integral)
+    if isinstance(val, NonStandardInteger):
+      val = val.val
+    self.val = val
+    self.error_string_on_conversion = error_string_on_conversion
+
+  def __long__(self):
+    if self.error_string_on_conversion:
+      raise RuntimeError(self.error_string_on_conversion)
+    return long(self.val)
+
+  def __abs__(self):
+    return NonStandardInteger(operator.abs(self.val))
+
+  def __add__(self, y):
+    return NonStandardInteger(operator.add(self.val, y))
+
+  def __div__(self, y):
+    return NonStandardInteger(operator.div(self.val, y))
+
+  def __eq__(self, y):
+    return operator.eq(self.val, y)
+
+  def __floordiv__(self, y):
+    return NonStandardInteger(operator.floordiv(self.val, y))
+
+  def __truediv__(self, y):
+    return NonStandardInteger(operator.truediv(self.val, y))
+
+  def __invert__(self):
+    return NonStandardInteger(operator.invert(self.val))
+
+  def __mod__(self, y):
+    return NonStandardInteger(operator.mod(self.val, y))
+
+  def __mul__(self, y):
+    return NonStandardInteger(operator.mul(self.val, y))
+
+  def __neg__(self):
+    return NonStandardInteger(operator.neg(self.val))
+
+  def __pos__(self):
+    return NonStandardInteger(operator.pos(self.val))
+
+  def __pow__(self, y):
+    return NonStandardInteger(operator.pow(self.val, y))
+
+  def __trunc__(self):
+    return int(self.val)
+
+  def __radd__(self, y):
+    return NonStandardInteger(operator.add(y, self.val))
+
+  def __rdiv__(self, y):
+    return NonStandardInteger(operator.div(y, self.val))
+
+  def __rmod__(self, y):
+    return NonStandardInteger(operator.mod(y, self.val))
+
+  def __rmul__(self, y):
+    return NonStandardInteger(operator.mul(y, self.val))
+
+  def __rpow__(self, y):
+    return NonStandardInteger(operator.pow(y, self.val))
+
+  def __rfloordiv__(self, y):
+    return NonStandardInteger(operator.floordiv(y, self.val))
+
+  def __rtruediv__(self, y):
+    return NonStandardInteger(operator.truediv(y, self.val))
+
+  def __lshift__(self, y):
+    return NonStandardInteger(operator.lshift(self.val, y))
+
+  def __rshift__(self, y):
+    return NonStandardInteger(operator.rshift(self.val, y))
+
+  def __rlshift__(self, y):
+    return NonStandardInteger(operator.lshift(y, self.val))
+
+  def __rrshift__(self, y):
+    return NonStandardInteger(operator.rshift(y, self.val))
+
+  def __le__(self, y):
+    if isinstance(y, NonStandardInteger):
+      y = y.val
+    return operator.le(self.val, y)
+
+  def __lt__(self, y):
+    if isinstance(y, NonStandardInteger):
+      y = y.val
+    return operator.lt(self.val, y)
+
+  def __and__(self, y):
+    return NonStandardInteger(operator.and_(self.val, y))
+
+  def __or__(self, y):
+    return NonStandardInteger(operator.or_(self.val, y))
+
+  def __xor__(self, y):
+    return NonStandardInteger(operator.xor(self.val, y))
+
+  def __rand__(self, y):
+    return NonStandardInteger(operator.and_(y, self.val))
+
+  def __ror__(self, y):
+    return NonStandardInteger(operator.or_(y, self.val))
+
+  def __rxor__(self, y):
+    return NonStandardInteger(operator.xor(y, self.val))
+
+  def __bool__(self):
+    return self.val
+
+  def __nonzero__(self):
+    return self.val
+
+  def __ceil__(self):
+    return self
+
+  def __floor__(self):
+    return self
+
+  def __int__(self):
+    if self.error_string_on_conversion:
+      raise RuntimeError(self.error_string_on_conversion)
+    return int(self.val)
+
+  def __round__(self):
+    return self
+
+  def __repr__(self):
+    return &#39;NonStandardInteger(%s)&#39; % self.val</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="google.protobuf.internal.test_util.ExpectAllFieldsAndExtensionsInOrder"><code class="name flex">
+<span>def <span class="ident">ExpectAllFieldsAndExtensionsInOrder</span></span>(<span>serialized)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Ensures that serialized is the serialization we expect for a message
+filled with SetAllFieldsAndExtensions().
+(Specifically, ensures that the
+serialization is in canonical, tag-number order).</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def ExpectAllFieldsAndExtensionsInOrder(serialized):
+  &#34;&#34;&#34;Ensures that serialized is the serialization we expect for a message
+  filled with SetAllFieldsAndExtensions().  (Specifically, ensures that the
+  serialization is in canonical, tag-number order).
+  &#34;&#34;&#34;
+  my_extension_int = unittest_pb2.my_extension_int
+  my_extension_string = unittest_pb2.my_extension_string
+  expected_strings = []
+  message = unittest_pb2.TestFieldOrderings()
+  message.my_int = 1  # Field 1.
+  expected_strings.append(message.SerializeToString())
+  message.Clear()
+  message.Extensions[my_extension_int] = 23  # Field 5.
+  expected_strings.append(message.SerializeToString())
+  message.Clear()
+  message.my_string = &#39;foo&#39;  # Field 11.
+  expected_strings.append(message.SerializeToString())
+  message.Clear()
+  message.Extensions[my_extension_string] = &#39;bar&#39;  # Field 50.
+  expected_strings.append(message.SerializeToString())
+  message.Clear()
+  message.my_float = 1.0
+  expected_strings.append(message.SerializeToString())
+  message.Clear()
+  expected = b&#39;&#39;.join(expected_strings)
+
+  if expected != serialized:
+    raise ValueError(&#39;Expected %r, found %r&#39; % (expected, serialized))</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.test_util.ExpectAllFieldsSet"><code class="name flex">
+<span>def <span class="ident">ExpectAllFieldsSet</span></span>(<span>test_case, message)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Check all fields for correct values have after Set*Fields() is called.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def ExpectAllFieldsSet(test_case, message):
+  &#34;&#34;&#34;Check all fields for correct values have after Set*Fields() is called.&#34;&#34;&#34;
+  test_case.assertTrue(message.HasField(&#39;optional_int32&#39;))
+  test_case.assertTrue(message.HasField(&#39;optional_int64&#39;))
+  test_case.assertTrue(message.HasField(&#39;optional_uint32&#39;))
+  test_case.assertTrue(message.HasField(&#39;optional_uint64&#39;))
+  test_case.assertTrue(message.HasField(&#39;optional_sint32&#39;))
+  test_case.assertTrue(message.HasField(&#39;optional_sint64&#39;))
+  test_case.assertTrue(message.HasField(&#39;optional_fixed32&#39;))
+  test_case.assertTrue(message.HasField(&#39;optional_fixed64&#39;))
+  test_case.assertTrue(message.HasField(&#39;optional_sfixed32&#39;))
+  test_case.assertTrue(message.HasField(&#39;optional_sfixed64&#39;))
+  test_case.assertTrue(message.HasField(&#39;optional_float&#39;))
+  test_case.assertTrue(message.HasField(&#39;optional_double&#39;))
+  test_case.assertTrue(message.HasField(&#39;optional_bool&#39;))
+  test_case.assertTrue(message.HasField(&#39;optional_string&#39;))
+  test_case.assertTrue(message.HasField(&#39;optional_bytes&#39;))
+
+  if IsProto2(message):
+    test_case.assertTrue(message.HasField(&#39;optionalgroup&#39;))
+  test_case.assertTrue(message.HasField(&#39;optional_nested_message&#39;))
+  test_case.assertTrue(message.HasField(&#39;optional_foreign_message&#39;))
+  test_case.assertTrue(message.HasField(&#39;optional_import_message&#39;))
+
+  test_case.assertTrue(message.optionalgroup.HasField(&#39;a&#39;))
+  test_case.assertTrue(message.optional_nested_message.HasField(&#39;bb&#39;))
+  test_case.assertTrue(message.optional_foreign_message.HasField(&#39;c&#39;))
+  test_case.assertTrue(message.optional_import_message.HasField(&#39;d&#39;))
+
+  test_case.assertTrue(message.HasField(&#39;optional_nested_enum&#39;))
+  test_case.assertTrue(message.HasField(&#39;optional_foreign_enum&#39;))
+  if IsProto2(message):
+    test_case.assertTrue(message.HasField(&#39;optional_import_enum&#39;))
+
+  test_case.assertTrue(message.HasField(&#39;optional_string_piece&#39;))
+  test_case.assertTrue(message.HasField(&#39;optional_cord&#39;))
+
+  test_case.assertEqual(101, message.optional_int32)
+  test_case.assertEqual(102, message.optional_int64)
+  test_case.assertEqual(103, message.optional_uint32)
+  test_case.assertEqual(104, message.optional_uint64)
+  test_case.assertEqual(105, message.optional_sint32)
+  test_case.assertEqual(106, message.optional_sint64)
+  test_case.assertEqual(107, message.optional_fixed32)
+  test_case.assertEqual(108, message.optional_fixed64)
+  test_case.assertEqual(109, message.optional_sfixed32)
+  test_case.assertEqual(110, message.optional_sfixed64)
+  test_case.assertEqual(111, message.optional_float)
+  test_case.assertEqual(112, message.optional_double)
+  test_case.assertEqual(True, message.optional_bool)
+  test_case.assertEqual(&#39;115&#39;, message.optional_string)
+  test_case.assertEqual(b&#39;116&#39;, message.optional_bytes)
+
+  if IsProto2(message):
+    test_case.assertEqual(117, message.optionalgroup.a)
+  test_case.assertEqual(118, message.optional_nested_message.bb)
+  test_case.assertEqual(119, message.optional_foreign_message.c)
+  test_case.assertEqual(120, message.optional_import_message.d)
+  test_case.assertEqual(126, message.optional_public_import_message.e)
+  test_case.assertEqual(127, message.optional_lazy_message.bb)
+
+  test_case.assertEqual(unittest_pb2.TestAllTypes.BAZ,
+                        message.optional_nested_enum)
+  test_case.assertEqual(unittest_pb2.FOREIGN_BAZ,
+                        message.optional_foreign_enum)
+  if IsProto2(message):
+    test_case.assertEqual(unittest_import_pb2.IMPORT_BAZ,
+                          message.optional_import_enum)
+
+  # -----------------------------------------------------------------
+
+  test_case.assertEqual(2, len(message.repeated_int32))
+  test_case.assertEqual(2, len(message.repeated_int64))
+  test_case.assertEqual(2, len(message.repeated_uint32))
+  test_case.assertEqual(2, len(message.repeated_uint64))
+  test_case.assertEqual(2, len(message.repeated_sint32))
+  test_case.assertEqual(2, len(message.repeated_sint64))
+  test_case.assertEqual(2, len(message.repeated_fixed32))
+  test_case.assertEqual(2, len(message.repeated_fixed64))
+  test_case.assertEqual(2, len(message.repeated_sfixed32))
+  test_case.assertEqual(2, len(message.repeated_sfixed64))
+  test_case.assertEqual(2, len(message.repeated_float))
+  test_case.assertEqual(2, len(message.repeated_double))
+  test_case.assertEqual(2, len(message.repeated_bool))
+  test_case.assertEqual(2, len(message.repeated_string))
+  test_case.assertEqual(2, len(message.repeated_bytes))
+
+  if IsProto2(message):
+    test_case.assertEqual(2, len(message.repeatedgroup))
+  test_case.assertEqual(2, len(message.repeated_nested_message))
+  test_case.assertEqual(2, len(message.repeated_foreign_message))
+  test_case.assertEqual(2, len(message.repeated_import_message))
+  test_case.assertEqual(2, len(message.repeated_nested_enum))
+  test_case.assertEqual(2, len(message.repeated_foreign_enum))
+  if IsProto2(message):
+    test_case.assertEqual(2, len(message.repeated_import_enum))
+
+  test_case.assertEqual(2, len(message.repeated_string_piece))
+  test_case.assertEqual(2, len(message.repeated_cord))
+
+  test_case.assertEqual(201, message.repeated_int32[0])
+  test_case.assertEqual(202, message.repeated_int64[0])
+  test_case.assertEqual(203, message.repeated_uint32[0])
+  test_case.assertEqual(204, message.repeated_uint64[0])
+  test_case.assertEqual(205, message.repeated_sint32[0])
+  test_case.assertEqual(206, message.repeated_sint64[0])
+  test_case.assertEqual(207, message.repeated_fixed32[0])
+  test_case.assertEqual(208, message.repeated_fixed64[0])
+  test_case.assertEqual(209, message.repeated_sfixed32[0])
+  test_case.assertEqual(210, message.repeated_sfixed64[0])
+  test_case.assertEqual(211, message.repeated_float[0])
+  test_case.assertEqual(212, message.repeated_double[0])
+  test_case.assertEqual(True, message.repeated_bool[0])
+  test_case.assertEqual(&#39;215&#39;, message.repeated_string[0])
+  test_case.assertEqual(b&#39;216&#39;, message.repeated_bytes[0])
+
+  if IsProto2(message):
+    test_case.assertEqual(217, message.repeatedgroup[0].a)
+  test_case.assertEqual(218, message.repeated_nested_message[0].bb)
+  test_case.assertEqual(219, message.repeated_foreign_message[0].c)
+  test_case.assertEqual(220, message.repeated_import_message[0].d)
+  test_case.assertEqual(227, message.repeated_lazy_message[0].bb)
+
+  test_case.assertEqual(unittest_pb2.TestAllTypes.BAR,
+                        message.repeated_nested_enum[0])
+  test_case.assertEqual(unittest_pb2.FOREIGN_BAR,
+                        message.repeated_foreign_enum[0])
+  if IsProto2(message):
+    test_case.assertEqual(unittest_import_pb2.IMPORT_BAR,
+                          message.repeated_import_enum[0])
+
+  test_case.assertEqual(301, message.repeated_int32[1])
+  test_case.assertEqual(302, message.repeated_int64[1])
+  test_case.assertEqual(303, message.repeated_uint32[1])
+  test_case.assertEqual(304, message.repeated_uint64[1])
+  test_case.assertEqual(305, message.repeated_sint32[1])
+  test_case.assertEqual(306, message.repeated_sint64[1])
+  test_case.assertEqual(307, message.repeated_fixed32[1])
+  test_case.assertEqual(308, message.repeated_fixed64[1])
+  test_case.assertEqual(309, message.repeated_sfixed32[1])
+  test_case.assertEqual(310, message.repeated_sfixed64[1])
+  test_case.assertEqual(311, message.repeated_float[1])
+  test_case.assertEqual(312, message.repeated_double[1])
+  test_case.assertEqual(False, message.repeated_bool[1])
+  test_case.assertEqual(&#39;315&#39;, message.repeated_string[1])
+  test_case.assertEqual(b&#39;316&#39;, message.repeated_bytes[1])
+
+  if IsProto2(message):
+    test_case.assertEqual(317, message.repeatedgroup[1].a)
+  test_case.assertEqual(318, message.repeated_nested_message[1].bb)
+  test_case.assertEqual(319, message.repeated_foreign_message[1].c)
+  test_case.assertEqual(320, message.repeated_import_message[1].d)
+  test_case.assertEqual(327, message.repeated_lazy_message[1].bb)
+
+  test_case.assertEqual(unittest_pb2.TestAllTypes.BAZ,
+                        message.repeated_nested_enum[1])
+  test_case.assertEqual(unittest_pb2.FOREIGN_BAZ,
+                        message.repeated_foreign_enum[1])
+  if IsProto2(message):
+    test_case.assertEqual(unittest_import_pb2.IMPORT_BAZ,
+                          message.repeated_import_enum[1])
+
+  # -----------------------------------------------------------------
+
+  if IsProto2(message):
+    test_case.assertTrue(message.HasField(&#39;default_int32&#39;))
+    test_case.assertTrue(message.HasField(&#39;default_int64&#39;))
+    test_case.assertTrue(message.HasField(&#39;default_uint32&#39;))
+    test_case.assertTrue(message.HasField(&#39;default_uint64&#39;))
+    test_case.assertTrue(message.HasField(&#39;default_sint32&#39;))
+    test_case.assertTrue(message.HasField(&#39;default_sint64&#39;))
+    test_case.assertTrue(message.HasField(&#39;default_fixed32&#39;))
+    test_case.assertTrue(message.HasField(&#39;default_fixed64&#39;))
+    test_case.assertTrue(message.HasField(&#39;default_sfixed32&#39;))
+    test_case.assertTrue(message.HasField(&#39;default_sfixed64&#39;))
+    test_case.assertTrue(message.HasField(&#39;default_float&#39;))
+    test_case.assertTrue(message.HasField(&#39;default_double&#39;))
+    test_case.assertTrue(message.HasField(&#39;default_bool&#39;))
+    test_case.assertTrue(message.HasField(&#39;default_string&#39;))
+    test_case.assertTrue(message.HasField(&#39;default_bytes&#39;))
+
+    test_case.assertTrue(message.HasField(&#39;default_nested_enum&#39;))
+    test_case.assertTrue(message.HasField(&#39;default_foreign_enum&#39;))
+    test_case.assertTrue(message.HasField(&#39;default_import_enum&#39;))
+
+    test_case.assertEqual(401, message.default_int32)
+    test_case.assertEqual(402, message.default_int64)
+    test_case.assertEqual(403, message.default_uint32)
+    test_case.assertEqual(404, message.default_uint64)
+    test_case.assertEqual(405, message.default_sint32)
+    test_case.assertEqual(406, message.default_sint64)
+    test_case.assertEqual(407, message.default_fixed32)
+    test_case.assertEqual(408, message.default_fixed64)
+    test_case.assertEqual(409, message.default_sfixed32)
+    test_case.assertEqual(410, message.default_sfixed64)
+    test_case.assertEqual(411, message.default_float)
+    test_case.assertEqual(412, message.default_double)
+    test_case.assertEqual(False, message.default_bool)
+    test_case.assertEqual(&#39;415&#39;, message.default_string)
+    test_case.assertEqual(b&#39;416&#39;, message.default_bytes)
+
+    test_case.assertEqual(unittest_pb2.TestAllTypes.FOO,
+                          message.default_nested_enum)
+    test_case.assertEqual(unittest_pb2.FOREIGN_FOO,
+                          message.default_foreign_enum)
+    test_case.assertEqual(unittest_import_pb2.IMPORT_FOO,
+                          message.default_import_enum)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.test_util.GoldenFile"><code class="name flex">
+<span>def <span class="ident">GoldenFile</span></span>(<span>filename)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Finds the given golden file and returns a file object representing it.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def GoldenFile(filename):
+  &#34;&#34;&#34;Finds the given golden file and returns a file object representing it.&#34;&#34;&#34;
+
+  # Search up the directory tree looking for the C++ protobuf source code.
+  path = &#39;.&#39;
+  while os.path.exists(path):
+    if os.path.exists(os.path.join(path, &#39;src/google/protobuf&#39;)):
+      # Found it.  Load the golden file from the testdata directory.
+      full_path = os.path.join(path, &#39;src/google/protobuf/testdata&#39;, filename)
+      return open(full_path, &#39;rb&#39;)
+    path = os.path.join(path, &#39;..&#39;)
+
+  # Search internally.
+  path = &#39;.&#39;
+  full_path = os.path.join(path, &#39;third_party/py/google/protobuf/testdata&#39;,
+                           filename)
+  if os.path.exists(full_path):
+    # Found it.  Load the golden file from the testdata directory.
+    return open(full_path, &#39;rb&#39;)
+
+  raise RuntimeError(
+      &#39;Could not find golden files.  This test must be run from within the &#39;
+      &#39;protobuf source package so that it can read test data files from the &#39;
+      &#39;C++ source tree.&#39;)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.test_util.GoldenFileData"><code class="name flex">
+<span>def <span class="ident">GoldenFileData</span></span>(<span>filename)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Finds the given golden file and returns its contents.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def GoldenFileData(filename):
+  &#34;&#34;&#34;Finds the given golden file and returns its contents.&#34;&#34;&#34;
+  with GoldenFile(filename) as f:
+    return f.read()</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.test_util.IsProto2"><code class="name flex">
+<span>def <span class="ident">IsProto2</span></span>(<span>message)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def IsProto2(message):
+  return message.DESCRIPTOR.syntax == &#34;proto2&#34;</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.test_util.SetAllExtensions"><code class="name flex">
+<span>def <span class="ident">SetAllExtensions</span></span>(<span>message)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Sets every extension in the message to a unique value.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>message</code></strong></dt>
+<dd>A unittest_pb2.TestAllExtensions instance.</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def SetAllExtensions(message):
+  &#34;&#34;&#34;Sets every extension in the message to a unique value.
+
+  Args:
+    message: A unittest_pb2.TestAllExtensions instance.
+  &#34;&#34;&#34;
+
+  extensions = message.Extensions
+  pb2 = unittest_pb2
+  import_pb2 = unittest_import_pb2
+
+  #
+  # Optional fields.
+  #
+
+  extensions[pb2.optional_int32_extension] = 101
+  extensions[pb2.optional_int64_extension] = 102
+  extensions[pb2.optional_uint32_extension] = 103
+  extensions[pb2.optional_uint64_extension] = 104
+  extensions[pb2.optional_sint32_extension] = 105
+  extensions[pb2.optional_sint64_extension] = 106
+  extensions[pb2.optional_fixed32_extension] = 107
+  extensions[pb2.optional_fixed64_extension] = 108
+  extensions[pb2.optional_sfixed32_extension] = 109
+  extensions[pb2.optional_sfixed64_extension] = 110
+  extensions[pb2.optional_float_extension] = 111
+  extensions[pb2.optional_double_extension] = 112
+  extensions[pb2.optional_bool_extension] = True
+  extensions[pb2.optional_string_extension] = u&#39;115&#39;
+  extensions[pb2.optional_bytes_extension] = b&#39;116&#39;
+
+  extensions[pb2.optionalgroup_extension].a = 117
+  extensions[pb2.optional_nested_message_extension].bb = 118
+  extensions[pb2.optional_foreign_message_extension].c = 119
+  extensions[pb2.optional_import_message_extension].d = 120
+  extensions[pb2.optional_public_import_message_extension].e = 126
+  extensions[pb2.optional_lazy_message_extension].bb = 127
+
+  extensions[pb2.optional_nested_enum_extension] = pb2.TestAllTypes.BAZ
+  extensions[pb2.optional_nested_enum_extension] = pb2.TestAllTypes.BAZ
+  extensions[pb2.optional_foreign_enum_extension] = pb2.FOREIGN_BAZ
+  extensions[pb2.optional_import_enum_extension] = import_pb2.IMPORT_BAZ
+
+  extensions[pb2.optional_string_piece_extension] = u&#39;124&#39;
+  extensions[pb2.optional_cord_extension] = u&#39;125&#39;
+
+  #
+  # Repeated fields.
+  #
+
+  extensions[pb2.repeated_int32_extension].append(201)
+  extensions[pb2.repeated_int64_extension].append(202)
+  extensions[pb2.repeated_uint32_extension].append(203)
+  extensions[pb2.repeated_uint64_extension].append(204)
+  extensions[pb2.repeated_sint32_extension].append(205)
+  extensions[pb2.repeated_sint64_extension].append(206)
+  extensions[pb2.repeated_fixed32_extension].append(207)
+  extensions[pb2.repeated_fixed64_extension].append(208)
+  extensions[pb2.repeated_sfixed32_extension].append(209)
+  extensions[pb2.repeated_sfixed64_extension].append(210)
+  extensions[pb2.repeated_float_extension].append(211)
+  extensions[pb2.repeated_double_extension].append(212)
+  extensions[pb2.repeated_bool_extension].append(True)
+  extensions[pb2.repeated_string_extension].append(u&#39;215&#39;)
+  extensions[pb2.repeated_bytes_extension].append(b&#39;216&#39;)
+
+  extensions[pb2.repeatedgroup_extension].add().a = 217
+  extensions[pb2.repeated_nested_message_extension].add().bb = 218
+  extensions[pb2.repeated_foreign_message_extension].add().c = 219
+  extensions[pb2.repeated_import_message_extension].add().d = 220
+  extensions[pb2.repeated_lazy_message_extension].add().bb = 227
+
+  extensions[pb2.repeated_nested_enum_extension].append(pb2.TestAllTypes.BAR)
+  extensions[pb2.repeated_foreign_enum_extension].append(pb2.FOREIGN_BAR)
+  extensions[pb2.repeated_import_enum_extension].append(import_pb2.IMPORT_BAR)
+
+  extensions[pb2.repeated_string_piece_extension].append(u&#39;224&#39;)
+  extensions[pb2.repeated_cord_extension].append(u&#39;225&#39;)
+
+  # Append a second one of each field.
+  extensions[pb2.repeated_int32_extension].append(301)
+  extensions[pb2.repeated_int64_extension].append(302)
+  extensions[pb2.repeated_uint32_extension].append(303)
+  extensions[pb2.repeated_uint64_extension].append(304)
+  extensions[pb2.repeated_sint32_extension].append(305)
+  extensions[pb2.repeated_sint64_extension].append(306)
+  extensions[pb2.repeated_fixed32_extension].append(307)
+  extensions[pb2.repeated_fixed64_extension].append(308)
+  extensions[pb2.repeated_sfixed32_extension].append(309)
+  extensions[pb2.repeated_sfixed64_extension].append(310)
+  extensions[pb2.repeated_float_extension].append(311)
+  extensions[pb2.repeated_double_extension].append(312)
+  extensions[pb2.repeated_bool_extension].append(False)
+  extensions[pb2.repeated_string_extension].append(u&#39;315&#39;)
+  extensions[pb2.repeated_bytes_extension].append(b&#39;316&#39;)
+
+  extensions[pb2.repeatedgroup_extension].add().a = 317
+  extensions[pb2.repeated_nested_message_extension].add().bb = 318
+  extensions[pb2.repeated_foreign_message_extension].add().c = 319
+  extensions[pb2.repeated_import_message_extension].add().d = 320
+  extensions[pb2.repeated_lazy_message_extension].add().bb = 327
+
+  extensions[pb2.repeated_nested_enum_extension].append(pb2.TestAllTypes.BAZ)
+  extensions[pb2.repeated_foreign_enum_extension].append(pb2.FOREIGN_BAZ)
+  extensions[pb2.repeated_import_enum_extension].append(import_pb2.IMPORT_BAZ)
+
+  extensions[pb2.repeated_string_piece_extension].append(u&#39;324&#39;)
+  extensions[pb2.repeated_cord_extension].append(u&#39;325&#39;)
+
+  #
+  # Fields with defaults.
+  #
+
+  extensions[pb2.default_int32_extension] = 401
+  extensions[pb2.default_int64_extension] = 402
+  extensions[pb2.default_uint32_extension] = 403
+  extensions[pb2.default_uint64_extension] = 404
+  extensions[pb2.default_sint32_extension] = 405
+  extensions[pb2.default_sint64_extension] = 406
+  extensions[pb2.default_fixed32_extension] = 407
+  extensions[pb2.default_fixed64_extension] = 408
+  extensions[pb2.default_sfixed32_extension] = 409
+  extensions[pb2.default_sfixed64_extension] = 410
+  extensions[pb2.default_float_extension] = 411
+  extensions[pb2.default_double_extension] = 412
+  extensions[pb2.default_bool_extension] = False
+  extensions[pb2.default_string_extension] = u&#39;415&#39;
+  extensions[pb2.default_bytes_extension] = b&#39;416&#39;
+
+  extensions[pb2.default_nested_enum_extension] = pb2.TestAllTypes.FOO
+  extensions[pb2.default_foreign_enum_extension] = pb2.FOREIGN_FOO
+  extensions[pb2.default_import_enum_extension] = import_pb2.IMPORT_FOO
+
+  extensions[pb2.default_string_piece_extension] = u&#39;424&#39;
+  extensions[pb2.default_cord_extension] = &#39;425&#39;
+
+  extensions[pb2.oneof_uint32_extension] = 601
+  extensions[pb2.oneof_nested_message_extension].bb = 602
+  extensions[pb2.oneof_string_extension] = u&#39;603&#39;
+  extensions[pb2.oneof_bytes_extension] = b&#39;604&#39;</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.test_util.SetAllFields"><code class="name flex">
+<span>def <span class="ident">SetAllFields</span></span>(<span>message)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def SetAllFields(message):
+  SetAllNonLazyFields(message)
+  message.optional_lazy_message.bb = 127</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.test_util.SetAllFieldsAndExtensions"><code class="name flex">
+<span>def <span class="ident">SetAllFieldsAndExtensions</span></span>(<span>message)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Sets every field and extension in the message to a unique value.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>message</code></strong></dt>
+<dd>A unittest_pb2.TestAllExtensions message.</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def SetAllFieldsAndExtensions(message):
+  &#34;&#34;&#34;Sets every field and extension in the message to a unique value.
+
+  Args:
+    message: A unittest_pb2.TestAllExtensions message.
+  &#34;&#34;&#34;
+  message.my_int = 1
+  message.my_string = &#39;foo&#39;
+  message.my_float = 1.0
+  message.Extensions[unittest_pb2.my_extension_int] = 23
+  message.Extensions[unittest_pb2.my_extension_string] = &#39;bar&#39;</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.test_util.SetAllNonLazyFields"><code class="name flex">
+<span>def <span class="ident">SetAllNonLazyFields</span></span>(<span>message)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Sets every non-lazy field in the message to a unique value.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>message</code></strong></dt>
+<dd>A TestAllTypes instance.</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def SetAllNonLazyFields(message):
+  &#34;&#34;&#34;Sets every non-lazy field in the message to a unique value.
+
+  Args:
+    message: A TestAllTypes instance.
+  &#34;&#34;&#34;
+
+  #
+  # Optional fields.
+  #
+
+  message.optional_int32    = 101
+  message.optional_int64    = 102
+  message.optional_uint32   = 103
+  message.optional_uint64   = 104
+  message.optional_sint32   = 105
+  message.optional_sint64   = 106
+  message.optional_fixed32  = 107
+  message.optional_fixed64  = 108
+  message.optional_sfixed32 = 109
+  message.optional_sfixed64 = 110
+  message.optional_float    = 111
+  message.optional_double   = 112
+  message.optional_bool     = True
+  message.optional_string   = u&#39;115&#39;
+  message.optional_bytes    = b&#39;116&#39;
+
+  if IsProto2(message):
+    message.optionalgroup.a = 117
+  message.optional_nested_message.bb = 118
+  message.optional_foreign_message.c = 119
+  message.optional_import_message.d = 120
+  message.optional_public_import_message.e = 126
+
+  message.optional_nested_enum = unittest_pb2.TestAllTypes.BAZ
+  message.optional_foreign_enum = unittest_pb2.FOREIGN_BAZ
+  if IsProto2(message):
+    message.optional_import_enum = unittest_import_pb2.IMPORT_BAZ
+
+  message.optional_string_piece = u&#39;124&#39;
+  message.optional_cord = u&#39;125&#39;
+
+  #
+  # Repeated fields.
+  #
+
+  message.repeated_int32.append(201)
+  message.repeated_int64.append(202)
+  message.repeated_uint32.append(203)
+  message.repeated_uint64.append(204)
+  message.repeated_sint32.append(205)
+  message.repeated_sint64.append(206)
+  message.repeated_fixed32.append(207)
+  message.repeated_fixed64.append(208)
+  message.repeated_sfixed32.append(209)
+  message.repeated_sfixed64.append(210)
+  message.repeated_float.append(211)
+  message.repeated_double.append(212)
+  message.repeated_bool.append(True)
+  message.repeated_string.append(u&#39;215&#39;)
+  message.repeated_bytes.append(b&#39;216&#39;)
+
+  if IsProto2(message):
+    message.repeatedgroup.add().a = 217
+  message.repeated_nested_message.add().bb = 218
+  message.repeated_foreign_message.add().c = 219
+  message.repeated_import_message.add().d = 220
+  message.repeated_lazy_message.add().bb = 227
+
+  message.repeated_nested_enum.append(unittest_pb2.TestAllTypes.BAR)
+  message.repeated_foreign_enum.append(unittest_pb2.FOREIGN_BAR)
+  if IsProto2(message):
+    message.repeated_import_enum.append(unittest_import_pb2.IMPORT_BAR)
+
+  message.repeated_string_piece.append(u&#39;224&#39;)
+  message.repeated_cord.append(u&#39;225&#39;)
+
+  # Add a second one of each field and set value by index.
+  message.repeated_int32.append(0)
+  message.repeated_int64.append(0)
+  message.repeated_uint32.append(0)
+  message.repeated_uint64.append(0)
+  message.repeated_sint32.append(0)
+  message.repeated_sint64.append(0)
+  message.repeated_fixed32.append(0)
+  message.repeated_fixed64.append(0)
+  message.repeated_sfixed32.append(0)
+  message.repeated_sfixed64.append(0)
+  message.repeated_float.append(0)
+  message.repeated_double.append(0)
+  message.repeated_bool.append(True)
+  message.repeated_string.append(u&#39;0&#39;)
+  message.repeated_bytes.append(b&#39;0&#39;)
+  message.repeated_int32[1] = 301
+  message.repeated_int64[1] = 302
+  message.repeated_uint32[1] = 303
+  message.repeated_uint64[1] = 304
+  message.repeated_sint32[1] = 305
+  message.repeated_sint64[1] = 306
+  message.repeated_fixed32[1] = 307
+  message.repeated_fixed64[1] = 308
+  message.repeated_sfixed32[1] = 309
+  message.repeated_sfixed64[1] = 310
+  message.repeated_float[1] = 311
+  message.repeated_double[1] = 312
+  message.repeated_bool[1] = False
+  message.repeated_string[1] = u&#39;315&#39;
+  message.repeated_bytes[1] = b&#39;316&#39;
+
+  if IsProto2(message):
+    message.repeatedgroup.add().a = 317
+  message.repeated_nested_message.add().bb = 318
+  message.repeated_foreign_message.add().c = 319
+  message.repeated_import_message.add().d = 320
+  message.repeated_lazy_message.add().bb = 327
+
+  message.repeated_nested_enum.append(unittest_pb2.TestAllTypes.BAR)
+  message.repeated_nested_enum[1] = unittest_pb2.TestAllTypes.BAZ
+  message.repeated_foreign_enum.append(unittest_pb2.FOREIGN_BAZ)
+  if IsProto2(message):
+    message.repeated_import_enum.append(unittest_import_pb2.IMPORT_BAZ)
+
+  message.repeated_string_piece.append(u&#39;324&#39;)
+  message.repeated_cord.append(u&#39;325&#39;)
+
+  #
+  # Fields that have defaults.
+  #
+
+  if IsProto2(message):
+    message.default_int32 = 401
+    message.default_int64 = 402
+    message.default_uint32 = 403
+    message.default_uint64 = 404
+    message.default_sint32 = 405
+    message.default_sint64 = 406
+    message.default_fixed32 = 407
+    message.default_fixed64 = 408
+    message.default_sfixed32 = 409
+    message.default_sfixed64 = 410
+    message.default_float = 411
+    message.default_double = 412
+    message.default_bool = False
+    message.default_string = &#39;415&#39;
+    message.default_bytes = b&#39;416&#39;
+
+    message.default_nested_enum = unittest_pb2.TestAllTypes.FOO
+    message.default_foreign_enum = unittest_pb2.FOREIGN_FOO
+    message.default_import_enum = unittest_import_pb2.IMPORT_FOO
+
+    message.default_string_piece = &#39;424&#39;
+    message.default_cord = &#39;425&#39;
+
+  message.oneof_uint32 = 601
+  message.oneof_nested_message.bb = 602
+  message.oneof_string = &#39;603&#39;
+  message.oneof_bytes = b&#39;604&#39;</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.test_util.SetAllPackedExtensions"><code class="name flex">
+<span>def <span class="ident">SetAllPackedExtensions</span></span>(<span>message)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Sets every extension in the message to a unique value.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>message</code></strong></dt>
+<dd>A unittest_pb2.TestPackedExtensions instance.</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def SetAllPackedExtensions(message):
+  &#34;&#34;&#34;Sets every extension in the message to a unique value.
+
+  Args:
+    message: A unittest_pb2.TestPackedExtensions instance.
+  &#34;&#34;&#34;
+  extensions = message.Extensions
+  pb2 = unittest_pb2
+
+  extensions[pb2.packed_int32_extension].extend([601, 701])
+  extensions[pb2.packed_int64_extension].extend([602, 702])
+  extensions[pb2.packed_uint32_extension].extend([603, 703])
+  extensions[pb2.packed_uint64_extension].extend([604, 704])
+  extensions[pb2.packed_sint32_extension].extend([605, 705])
+  extensions[pb2.packed_sint64_extension].extend([606, 706])
+  extensions[pb2.packed_fixed32_extension].extend([607, 707])
+  extensions[pb2.packed_fixed64_extension].extend([608, 708])
+  extensions[pb2.packed_sfixed32_extension].extend([609, 709])
+  extensions[pb2.packed_sfixed64_extension].extend([610, 710])
+  extensions[pb2.packed_float_extension].extend([611.0, 711.0])
+  extensions[pb2.packed_double_extension].extend([612.0, 712.0])
+  extensions[pb2.packed_bool_extension].extend([True, False])
+  extensions[pb2.packed_enum_extension].extend([unittest_pb2.FOREIGN_BAR,
+                                                unittest_pb2.FOREIGN_BAZ])</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.test_util.SetAllPackedFields"><code class="name flex">
+<span>def <span class="ident">SetAllPackedFields</span></span>(<span>message)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Sets every field in the message to a unique value.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>message</code></strong></dt>
+<dd>A TestPackedTypes instance.</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def SetAllPackedFields(message):
+  &#34;&#34;&#34;Sets every field in the message to a unique value.
+
+  Args:
+    message: A TestPackedTypes instance.
+  &#34;&#34;&#34;
+  message.packed_int32.extend([601, 701])
+  message.packed_int64.extend([602, 702])
+  message.packed_uint32.extend([603, 703])
+  message.packed_uint64.extend([604, 704])
+  message.packed_sint32.extend([605, 705])
+  message.packed_sint64.extend([606, 706])
+  message.packed_fixed32.extend([607, 707])
+  message.packed_fixed64.extend([608, 708])
+  message.packed_sfixed32.extend([609, 709])
+  message.packed_sfixed64.extend([610, 710])
+  message.packed_float.extend([611.0, 711.0])
+  message.packed_double.extend([612.0, 712.0])
+  message.packed_bool.extend([True, False])
+  message.packed_enum.extend([unittest_pb2.FOREIGN_BAR,
+                              unittest_pb2.FOREIGN_BAZ])</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.test_util.SetAllUnpackedFields"><code class="name flex">
+<span>def <span class="ident">SetAllUnpackedFields</span></span>(<span>message)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Sets every field in the message to a unique value.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>message</code></strong></dt>
+<dd>A unittest_pb2.TestUnpackedTypes instance.</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def SetAllUnpackedFields(message):
+  &#34;&#34;&#34;Sets every field in the message to a unique value.
+
+  Args:
+    message: A unittest_pb2.TestUnpackedTypes instance.
+  &#34;&#34;&#34;
+  message.unpacked_int32.extend([601, 701])
+  message.unpacked_int64.extend([602, 702])
+  message.unpacked_uint32.extend([603, 703])
+  message.unpacked_uint64.extend([604, 704])
+  message.unpacked_sint32.extend([605, 705])
+  message.unpacked_sint64.extend([606, 706])
+  message.unpacked_fixed32.extend([607, 707])
+  message.unpacked_fixed64.extend([608, 708])
+  message.unpacked_sfixed32.extend([609, 709])
+  message.unpacked_sfixed64.extend([610, 710])
+  message.unpacked_float.extend([611.0, 711.0])
+  message.unpacked_double.extend([612.0, 712.0])
+  message.unpacked_bool.extend([True, False])
+  message.unpacked_enum.extend([unittest_pb2.FOREIGN_BAR,
+                                unittest_pb2.FOREIGN_BAZ])</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="google.protobuf.internal.test_util.NonStandardInteger"><code class="flex name class">
+<span>class <span class="ident">NonStandardInteger</span></span>
+<span>(</span><span>val, error_string_on_conversion=None)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>An integer object that does not subclass int.</p>
+<p>This is used to verify that both C++ and regular proto systems can handle
+integer others than int and long and that they handle them in predictable
+ways.</p>
+<p>NonStandardInteger is the minimal legal specification for a custom Integral.
+As such, it does not support 0 &lt; x &lt; 5 and it is not hashable.</p>
+<p>Note: This is added here instead of relying on numpy or a similar library
+with custom integers to limit dependencies.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class NonStandardInteger(numbers.Integral):
+  &#34;&#34;&#34;An integer object that does not subclass int.
+
+  This is used to verify that both C++ and regular proto systems can handle
+  integer others than int and long and that they handle them in predictable
+  ways.
+
+  NonStandardInteger is the minimal legal specification for a custom Integral.
+  As such, it does not support 0 &lt; x &lt; 5 and it is not hashable.
+
+  Note: This is added here instead of relying on numpy or a similar library
+  with custom integers to limit dependencies.
+  &#34;&#34;&#34;
+
+  def __init__(self, val, error_string_on_conversion=None):
+    assert isinstance(val, numbers.Integral)
+    if isinstance(val, NonStandardInteger):
+      val = val.val
+    self.val = val
+    self.error_string_on_conversion = error_string_on_conversion
+
+  def __long__(self):
+    if self.error_string_on_conversion:
+      raise RuntimeError(self.error_string_on_conversion)
+    return long(self.val)
+
+  def __abs__(self):
+    return NonStandardInteger(operator.abs(self.val))
+
+  def __add__(self, y):
+    return NonStandardInteger(operator.add(self.val, y))
+
+  def __div__(self, y):
+    return NonStandardInteger(operator.div(self.val, y))
+
+  def __eq__(self, y):
+    return operator.eq(self.val, y)
+
+  def __floordiv__(self, y):
+    return NonStandardInteger(operator.floordiv(self.val, y))
+
+  def __truediv__(self, y):
+    return NonStandardInteger(operator.truediv(self.val, y))
+
+  def __invert__(self):
+    return NonStandardInteger(operator.invert(self.val))
+
+  def __mod__(self, y):
+    return NonStandardInteger(operator.mod(self.val, y))
+
+  def __mul__(self, y):
+    return NonStandardInteger(operator.mul(self.val, y))
+
+  def __neg__(self):
+    return NonStandardInteger(operator.neg(self.val))
+
+  def __pos__(self):
+    return NonStandardInteger(operator.pos(self.val))
+
+  def __pow__(self, y):
+    return NonStandardInteger(operator.pow(self.val, y))
+
+  def __trunc__(self):
+    return int(self.val)
+
+  def __radd__(self, y):
+    return NonStandardInteger(operator.add(y, self.val))
+
+  def __rdiv__(self, y):
+    return NonStandardInteger(operator.div(y, self.val))
+
+  def __rmod__(self, y):
+    return NonStandardInteger(operator.mod(y, self.val))
+
+  def __rmul__(self, y):
+    return NonStandardInteger(operator.mul(y, self.val))
+
+  def __rpow__(self, y):
+    return NonStandardInteger(operator.pow(y, self.val))
+
+  def __rfloordiv__(self, y):
+    return NonStandardInteger(operator.floordiv(y, self.val))
+
+  def __rtruediv__(self, y):
+    return NonStandardInteger(operator.truediv(y, self.val))
+
+  def __lshift__(self, y):
+    return NonStandardInteger(operator.lshift(self.val, y))
+
+  def __rshift__(self, y):
+    return NonStandardInteger(operator.rshift(self.val, y))
+
+  def __rlshift__(self, y):
+    return NonStandardInteger(operator.lshift(y, self.val))
+
+  def __rrshift__(self, y):
+    return NonStandardInteger(operator.rshift(y, self.val))
+
+  def __le__(self, y):
+    if isinstance(y, NonStandardInteger):
+      y = y.val
+    return operator.le(self.val, y)
+
+  def __lt__(self, y):
+    if isinstance(y, NonStandardInteger):
+      y = y.val
+    return operator.lt(self.val, y)
+
+  def __and__(self, y):
+    return NonStandardInteger(operator.and_(self.val, y))
+
+  def __or__(self, y):
+    return NonStandardInteger(operator.or_(self.val, y))
+
+  def __xor__(self, y):
+    return NonStandardInteger(operator.xor(self.val, y))
+
+  def __rand__(self, y):
+    return NonStandardInteger(operator.and_(y, self.val))
+
+  def __ror__(self, y):
+    return NonStandardInteger(operator.or_(y, self.val))
+
+  def __rxor__(self, y):
+    return NonStandardInteger(operator.xor(y, self.val))
+
+  def __bool__(self):
+    return self.val
+
+  def __nonzero__(self):
+    return self.val
+
+  def __ceil__(self):
+    return self
+
+  def __floor__(self):
+    return self
+
+  def __int__(self):
+    if self.error_string_on_conversion:
+      raise RuntimeError(self.error_string_on_conversion)
+    return int(self.val)
+
+  def __round__(self):
+    return self
+
+  def __repr__(self):
+    return &#39;NonStandardInteger(%s)&#39; % self.val</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>numbers.Integral</li>
+<li>numbers.Rational</li>
+<li>numbers.Real</li>
+<li>numbers.Complex</li>
+<li>numbers.Number</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="google.protobuf.internal" href="index.html">google.protobuf.internal</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="google.protobuf.internal.test_util.ExpectAllFieldsAndExtensionsInOrder" href="#google.protobuf.internal.test_util.ExpectAllFieldsAndExtensionsInOrder">ExpectAllFieldsAndExtensionsInOrder</a></code></li>
+<li><code><a title="google.protobuf.internal.test_util.ExpectAllFieldsSet" href="#google.protobuf.internal.test_util.ExpectAllFieldsSet">ExpectAllFieldsSet</a></code></li>
+<li><code><a title="google.protobuf.internal.test_util.GoldenFile" href="#google.protobuf.internal.test_util.GoldenFile">GoldenFile</a></code></li>
+<li><code><a title="google.protobuf.internal.test_util.GoldenFileData" href="#google.protobuf.internal.test_util.GoldenFileData">GoldenFileData</a></code></li>
+<li><code><a title="google.protobuf.internal.test_util.IsProto2" href="#google.protobuf.internal.test_util.IsProto2">IsProto2</a></code></li>
+<li><code><a title="google.protobuf.internal.test_util.SetAllExtensions" href="#google.protobuf.internal.test_util.SetAllExtensions">SetAllExtensions</a></code></li>
+<li><code><a title="google.protobuf.internal.test_util.SetAllFields" href="#google.protobuf.internal.test_util.SetAllFields">SetAllFields</a></code></li>
+<li><code><a title="google.protobuf.internal.test_util.SetAllFieldsAndExtensions" href="#google.protobuf.internal.test_util.SetAllFieldsAndExtensions">SetAllFieldsAndExtensions</a></code></li>
+<li><code><a title="google.protobuf.internal.test_util.SetAllNonLazyFields" href="#google.protobuf.internal.test_util.SetAllNonLazyFields">SetAllNonLazyFields</a></code></li>
+<li><code><a title="google.protobuf.internal.test_util.SetAllPackedExtensions" href="#google.protobuf.internal.test_util.SetAllPackedExtensions">SetAllPackedExtensions</a></code></li>
+<li><code><a title="google.protobuf.internal.test_util.SetAllPackedFields" href="#google.protobuf.internal.test_util.SetAllPackedFields">SetAllPackedFields</a></code></li>
+<li><code><a title="google.protobuf.internal.test_util.SetAllUnpackedFields" href="#google.protobuf.internal.test_util.SetAllUnpackedFields">SetAllUnpackedFields</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="google.protobuf.internal.test_util.NonStandardInteger" href="#google.protobuf.internal.test_util.NonStandardInteger">NonStandardInteger</a></code></h4>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.4</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

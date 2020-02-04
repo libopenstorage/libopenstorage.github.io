@@ -1,0 +1,3764 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.4" />
+<title>google.protobuf.internal.descriptor_test API documentation</title>
+<meta name="description" content="Unittest for google.protobuf.internal.descriptor." />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>google.protobuf.internal.descriptor_test</code></h1>
+</header>
+<section id="section-intro">
+<p>Unittest for google.protobuf.internal.descriptor.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">#! /usr/bin/env python
+#
+# Protocol Buffers - Google&#39;s data interchange format
+# Copyright 2008 Google Inc.  All rights reserved.
+# https://developers.google.com/protocol-buffers/
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are
+# met:
+#
+#     * Redistributions of source code must retain the above copyright
+# notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above
+# copyright notice, this list of conditions and the following disclaimer
+# in the documentation and/or other materials provided with the
+# distribution.
+#     * Neither the name of Google Inc. nor the names of its
+# contributors may be used to endorse or promote products derived from
+# this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+# &#34;AS IS&#34; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+# LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+# A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+# OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+# SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+# LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+# DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+# THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+&#34;&#34;&#34;Unittest for google.protobuf.internal.descriptor.&#34;&#34;&#34;
+
+__author__ = &#39;robinson@google.com (Will Robinson)&#39;
+
+import sys
+
+try:
+  import unittest2 as unittest  #PY26
+except ImportError:
+  import unittest
+
+from google.protobuf import unittest_custom_options_pb2
+from google.protobuf import unittest_import_pb2
+from google.protobuf import unittest_pb2
+from google.protobuf import descriptor_pb2
+from google.protobuf.internal import api_implementation
+from google.protobuf.internal import test_util
+from google.protobuf import descriptor
+from google.protobuf import descriptor_pool
+from google.protobuf import symbol_database
+from google.protobuf import text_format
+
+
+TEST_EMPTY_MESSAGE_DESCRIPTOR_ASCII = &#34;&#34;&#34;
+name: &#39;TestEmptyMessage&#39;
+&#34;&#34;&#34;
+
+
+class DescriptorTest(unittest.TestCase):
+
+  def setUp(self):
+    file_proto = descriptor_pb2.FileDescriptorProto(
+        name=&#39;some/filename/some.proto&#39;,
+        package=&#39;protobuf_unittest&#39;)
+    message_proto = file_proto.message_type.add(
+        name=&#39;NestedMessage&#39;)
+    message_proto.field.add(
+        name=&#39;bb&#39;,
+        number=1,
+        type=descriptor_pb2.FieldDescriptorProto.TYPE_INT32,
+        label=descriptor_pb2.FieldDescriptorProto.LABEL_OPTIONAL)
+    enum_proto = message_proto.enum_type.add(
+        name=&#39;ForeignEnum&#39;)
+    enum_proto.value.add(name=&#39;FOREIGN_FOO&#39;, number=4)
+    enum_proto.value.add(name=&#39;FOREIGN_BAR&#39;, number=5)
+    enum_proto.value.add(name=&#39;FOREIGN_BAZ&#39;, number=6)
+
+    file_proto.message_type.add(name=&#39;ResponseMessage&#39;)
+    service_proto = file_proto.service.add(
+        name=&#39;Service&#39;)
+    method_proto = service_proto.method.add(
+        name=&#39;CallMethod&#39;,
+        input_type=&#39;.protobuf_unittest.NestedMessage&#39;,
+        output_type=&#39;.protobuf_unittest.ResponseMessage&#39;)
+
+    # Note: Calling DescriptorPool.Add() multiple times with the same file only
+    # works if the input is canonical; in particular, all type names must be
+    # fully qualified.
+    self.pool = self.GetDescriptorPool()
+    self.pool.Add(file_proto)
+    self.my_file = self.pool.FindFileByName(file_proto.name)
+    self.my_message = self.my_file.message_types_by_name[message_proto.name]
+    self.my_enum = self.my_message.enum_types_by_name[enum_proto.name]
+    self.my_service = self.my_file.services_by_name[service_proto.name]
+    self.my_method = self.my_service.methods_by_name[method_proto.name]
+
+  def GetDescriptorPool(self):
+    return symbol_database.Default().pool
+
+  def testEnumValueName(self):
+    self.assertEqual(self.my_message.EnumValueName(&#39;ForeignEnum&#39;, 4),
+                     &#39;FOREIGN_FOO&#39;)
+
+    self.assertEqual(
+        self.my_message.enum_types_by_name[
+            &#39;ForeignEnum&#39;].values_by_number[4].name,
+        self.my_message.EnumValueName(&#39;ForeignEnum&#39;, 4))
+    with self.assertRaises(KeyError):
+      self.my_message.EnumValueName(&#39;ForeignEnum&#39;, 999)
+    with self.assertRaises(KeyError):
+      self.my_message.EnumValueName(&#39;NoneEnum&#39;, 999)
+    with self.assertRaises(TypeError):
+      self.my_message.EnumValueName()
+
+  def testEnumFixups(self):
+    self.assertEqual(self.my_enum, self.my_enum.values[0].type)
+
+  def testContainingTypeFixups(self):
+    self.assertEqual(self.my_message, self.my_message.fields[0].containing_type)
+    self.assertEqual(self.my_message, self.my_enum.containing_type)
+
+  def testContainingServiceFixups(self):
+    self.assertEqual(self.my_service, self.my_method.containing_service)
+
+  def testGetOptions(self):
+    self.assertEqual(self.my_enum.GetOptions(),
+                     descriptor_pb2.EnumOptions())
+    self.assertEqual(self.my_enum.values[0].GetOptions(),
+                     descriptor_pb2.EnumValueOptions())
+    self.assertEqual(self.my_message.GetOptions(),
+                     descriptor_pb2.MessageOptions())
+    self.assertEqual(self.my_message.fields[0].GetOptions(),
+                     descriptor_pb2.FieldOptions())
+    self.assertEqual(self.my_method.GetOptions(),
+                     descriptor_pb2.MethodOptions())
+    self.assertEqual(self.my_service.GetOptions(),
+                     descriptor_pb2.ServiceOptions())
+
+  def testSimpleCustomOptions(self):
+    file_descriptor = unittest_custom_options_pb2.DESCRIPTOR
+    message_descriptor = (unittest_custom_options_pb2.
+                          TestMessageWithCustomOptions.DESCRIPTOR)
+    field_descriptor = message_descriptor.fields_by_name[&#39;field1&#39;]
+    oneof_descriptor = message_descriptor.oneofs_by_name[&#39;AnOneof&#39;]
+    enum_descriptor = message_descriptor.enum_types_by_name[&#39;AnEnum&#39;]
+    enum_value_descriptor = (message_descriptor.
+                             enum_values_by_name[&#39;ANENUM_VAL2&#39;])
+    other_enum_value_descriptor = (message_descriptor.
+                                   enum_values_by_name[&#39;ANENUM_VAL1&#39;])
+    service_descriptor = (unittest_custom_options_pb2.
+                          TestServiceWithCustomOptions.DESCRIPTOR)
+    method_descriptor = service_descriptor.FindMethodByName(&#39;Foo&#39;)
+
+    file_options = file_descriptor.GetOptions()
+    file_opt1 = unittest_custom_options_pb2.file_opt1
+    self.assertEqual(9876543210, file_options.Extensions[file_opt1])
+    message_options = message_descriptor.GetOptions()
+    message_opt1 = unittest_custom_options_pb2.message_opt1
+    self.assertEqual(-56, message_options.Extensions[message_opt1])
+    field_options = field_descriptor.GetOptions()
+    field_opt1 = unittest_custom_options_pb2.field_opt1
+    self.assertEqual(8765432109, field_options.Extensions[field_opt1])
+    field_opt2 = unittest_custom_options_pb2.field_opt2
+    self.assertEqual(42, field_options.Extensions[field_opt2])
+    oneof_options = oneof_descriptor.GetOptions()
+    oneof_opt1 = unittest_custom_options_pb2.oneof_opt1
+    self.assertEqual(-99, oneof_options.Extensions[oneof_opt1])
+    enum_options = enum_descriptor.GetOptions()
+    enum_opt1 = unittest_custom_options_pb2.enum_opt1
+    self.assertEqual(-789, enum_options.Extensions[enum_opt1])
+    enum_value_options = enum_value_descriptor.GetOptions()
+    enum_value_opt1 = unittest_custom_options_pb2.enum_value_opt1
+    self.assertEqual(123, enum_value_options.Extensions[enum_value_opt1])
+
+    service_options = service_descriptor.GetOptions()
+    service_opt1 = unittest_custom_options_pb2.service_opt1
+    self.assertEqual(-9876543210, service_options.Extensions[service_opt1])
+    method_options = method_descriptor.GetOptions()
+    method_opt1 = unittest_custom_options_pb2.method_opt1
+    self.assertEqual(unittest_custom_options_pb2.METHODOPT1_VAL2,
+                     method_options.Extensions[method_opt1])
+
+    message_descriptor = (
+        unittest_custom_options_pb2.DummyMessageContainingEnum.DESCRIPTOR)
+    self.assertTrue(file_descriptor.has_options)
+    self.assertFalse(message_descriptor.has_options)
+    self.assertTrue(field_descriptor.has_options)
+    self.assertTrue(oneof_descriptor.has_options)
+    self.assertTrue(enum_descriptor.has_options)
+    self.assertTrue(enum_value_descriptor.has_options)
+    self.assertFalse(other_enum_value_descriptor.has_options)
+
+  def testCustomOptionsCopyTo(self):
+    message_descriptor = (unittest_custom_options_pb2.
+                          TestMessageWithCustomOptions.DESCRIPTOR)
+    message_proto = descriptor_pb2.DescriptorProto()
+    message_descriptor.CopyToProto(message_proto)
+    self.assertEqual(len(message_proto.options.ListFields()),
+                     2)
+
+  def testDifferentCustomOptionTypes(self):
+    kint32min = -2**31
+    kint64min = -2**63
+    kint32max = 2**31 - 1
+    kint64max = 2**63 - 1
+    kuint32max = 2**32 - 1
+    kuint64max = 2**64 - 1
+
+    message_descriptor =\
+        unittest_custom_options_pb2.CustomOptionMinIntegerValues.DESCRIPTOR
+    message_options = message_descriptor.GetOptions()
+    self.assertEqual(False, message_options.Extensions[
+        unittest_custom_options_pb2.bool_opt])
+    self.assertEqual(kint32min, message_options.Extensions[
+        unittest_custom_options_pb2.int32_opt])
+    self.assertEqual(kint64min, message_options.Extensions[
+        unittest_custom_options_pb2.int64_opt])
+    self.assertEqual(0, message_options.Extensions[
+        unittest_custom_options_pb2.uint32_opt])
+    self.assertEqual(0, message_options.Extensions[
+        unittest_custom_options_pb2.uint64_opt])
+    self.assertEqual(kint32min, message_options.Extensions[
+        unittest_custom_options_pb2.sint32_opt])
+    self.assertEqual(kint64min, message_options.Extensions[
+        unittest_custom_options_pb2.sint64_opt])
+    self.assertEqual(0, message_options.Extensions[
+        unittest_custom_options_pb2.fixed32_opt])
+    self.assertEqual(0, message_options.Extensions[
+        unittest_custom_options_pb2.fixed64_opt])
+    self.assertEqual(kint32min, message_options.Extensions[
+        unittest_custom_options_pb2.sfixed32_opt])
+    self.assertEqual(kint64min, message_options.Extensions[
+        unittest_custom_options_pb2.sfixed64_opt])
+
+    message_descriptor =\
+        unittest_custom_options_pb2.CustomOptionMaxIntegerValues.DESCRIPTOR
+    message_options = message_descriptor.GetOptions()
+    self.assertEqual(True, message_options.Extensions[
+        unittest_custom_options_pb2.bool_opt])
+    self.assertEqual(kint32max, message_options.Extensions[
+        unittest_custom_options_pb2.int32_opt])
+    self.assertEqual(kint64max, message_options.Extensions[
+        unittest_custom_options_pb2.int64_opt])
+    self.assertEqual(kuint32max, message_options.Extensions[
+        unittest_custom_options_pb2.uint32_opt])
+    self.assertEqual(kuint64max, message_options.Extensions[
+        unittest_custom_options_pb2.uint64_opt])
+    self.assertEqual(kint32max, message_options.Extensions[
+        unittest_custom_options_pb2.sint32_opt])
+    self.assertEqual(kint64max, message_options.Extensions[
+        unittest_custom_options_pb2.sint64_opt])
+    self.assertEqual(kuint32max, message_options.Extensions[
+        unittest_custom_options_pb2.fixed32_opt])
+    self.assertEqual(kuint64max, message_options.Extensions[
+        unittest_custom_options_pb2.fixed64_opt])
+    self.assertEqual(kint32max, message_options.Extensions[
+        unittest_custom_options_pb2.sfixed32_opt])
+    self.assertEqual(kint64max, message_options.Extensions[
+        unittest_custom_options_pb2.sfixed64_opt])
+
+    message_descriptor =\
+        unittest_custom_options_pb2.CustomOptionOtherValues.DESCRIPTOR
+    message_options = message_descriptor.GetOptions()
+    self.assertEqual(-100, message_options.Extensions[
+        unittest_custom_options_pb2.int32_opt])
+    self.assertAlmostEqual(12.3456789, message_options.Extensions[
+        unittest_custom_options_pb2.float_opt], 6)
+    self.assertAlmostEqual(1.234567890123456789, message_options.Extensions[
+        unittest_custom_options_pb2.double_opt])
+    self.assertEqual(&#34;Hello, \&#34;World\&#34;&#34;, message_options.Extensions[
+        unittest_custom_options_pb2.string_opt])
+    self.assertEqual(b&#34;Hello\0World&#34;, message_options.Extensions[
+        unittest_custom_options_pb2.bytes_opt])
+    dummy_enum = unittest_custom_options_pb2.DummyMessageContainingEnum
+    self.assertEqual(
+        dummy_enum.TEST_OPTION_ENUM_TYPE2,
+        message_options.Extensions[unittest_custom_options_pb2.enum_opt])
+
+    message_descriptor =\
+        unittest_custom_options_pb2.SettingRealsFromPositiveInts.DESCRIPTOR
+    message_options = message_descriptor.GetOptions()
+    self.assertAlmostEqual(12, message_options.Extensions[
+        unittest_custom_options_pb2.float_opt], 6)
+    self.assertAlmostEqual(154, message_options.Extensions[
+        unittest_custom_options_pb2.double_opt])
+
+    message_descriptor =\
+        unittest_custom_options_pb2.SettingRealsFromNegativeInts.DESCRIPTOR
+    message_options = message_descriptor.GetOptions()
+    self.assertAlmostEqual(-12, message_options.Extensions[
+        unittest_custom_options_pb2.float_opt], 6)
+    self.assertAlmostEqual(-154, message_options.Extensions[
+        unittest_custom_options_pb2.double_opt])
+
+  def testComplexExtensionOptions(self):
+    descriptor =\
+        unittest_custom_options_pb2.VariousComplexOptions.DESCRIPTOR
+    options = descriptor.GetOptions()
+    self.assertEqual(42, options.Extensions[
+        unittest_custom_options_pb2.complex_opt1].foo)
+    self.assertEqual(324, options.Extensions[
+        unittest_custom_options_pb2.complex_opt1].Extensions[
+            unittest_custom_options_pb2.quux])
+    self.assertEqual(876, options.Extensions[
+        unittest_custom_options_pb2.complex_opt1].Extensions[
+            unittest_custom_options_pb2.corge].qux)
+    self.assertEqual(987, options.Extensions[
+        unittest_custom_options_pb2.complex_opt2].baz)
+    self.assertEqual(654, options.Extensions[
+        unittest_custom_options_pb2.complex_opt2].Extensions[
+            unittest_custom_options_pb2.grault])
+    self.assertEqual(743, options.Extensions[
+        unittest_custom_options_pb2.complex_opt2].bar.foo)
+    self.assertEqual(1999, options.Extensions[
+        unittest_custom_options_pb2.complex_opt2].bar.Extensions[
+            unittest_custom_options_pb2.quux])
+    self.assertEqual(2008, options.Extensions[
+        unittest_custom_options_pb2.complex_opt2].bar.Extensions[
+            unittest_custom_options_pb2.corge].qux)
+    self.assertEqual(741, options.Extensions[
+        unittest_custom_options_pb2.complex_opt2].Extensions[
+            unittest_custom_options_pb2.garply].foo)
+    self.assertEqual(1998, options.Extensions[
+        unittest_custom_options_pb2.complex_opt2].Extensions[
+            unittest_custom_options_pb2.garply].Extensions[
+                unittest_custom_options_pb2.quux])
+    self.assertEqual(2121, options.Extensions[
+        unittest_custom_options_pb2.complex_opt2].Extensions[
+            unittest_custom_options_pb2.garply].Extensions[
+                unittest_custom_options_pb2.corge].qux)
+    self.assertEqual(1971, options.Extensions[
+        unittest_custom_options_pb2.ComplexOptionType2
+        .ComplexOptionType4.complex_opt4].waldo)
+    self.assertEqual(321, options.Extensions[
+        unittest_custom_options_pb2.complex_opt2].fred.waldo)
+    self.assertEqual(9, options.Extensions[
+        unittest_custom_options_pb2.complex_opt3].qux)
+    self.assertEqual(22, options.Extensions[
+        unittest_custom_options_pb2.complex_opt3].complexoptiontype5.plugh)
+    self.assertEqual(24, options.Extensions[
+        unittest_custom_options_pb2.complexopt6].xyzzy)
+
+  # Check that aggregate options were parsed and saved correctly in
+  # the appropriate descriptors.
+  def testAggregateOptions(self):
+    file_descriptor = unittest_custom_options_pb2.DESCRIPTOR
+    message_descriptor =\
+        unittest_custom_options_pb2.AggregateMessage.DESCRIPTOR
+    field_descriptor = message_descriptor.fields_by_name[&#34;fieldname&#34;]
+    enum_descriptor = unittest_custom_options_pb2.AggregateEnum.DESCRIPTOR
+    enum_value_descriptor = enum_descriptor.values_by_name[&#34;VALUE&#34;]
+    service_descriptor =\
+        unittest_custom_options_pb2.AggregateService.DESCRIPTOR
+    method_descriptor = service_descriptor.FindMethodByName(&#34;Method&#34;)
+
+    # Tests for the different types of data embedded in fileopt
+    file_options = file_descriptor.GetOptions().Extensions[
+        unittest_custom_options_pb2.fileopt]
+    self.assertEqual(100, file_options.i)
+    self.assertEqual(&#34;FileAnnotation&#34;, file_options.s)
+    self.assertEqual(&#34;NestedFileAnnotation&#34;, file_options.sub.s)
+    self.assertEqual(&#34;FileExtensionAnnotation&#34;, file_options.file.Extensions[
+        unittest_custom_options_pb2.fileopt].s)
+    self.assertEqual(&#34;EmbeddedMessageSetElement&#34;, file_options.mset.Extensions[
+        unittest_custom_options_pb2.AggregateMessageSetElement
+        .message_set_extension].s)
+
+    # Simple tests for all the other types of annotations
+    self.assertEqual(
+        &#34;MessageAnnotation&#34;,
+        message_descriptor.GetOptions().Extensions[
+            unittest_custom_options_pb2.msgopt].s)
+    self.assertEqual(
+        &#34;FieldAnnotation&#34;,
+        field_descriptor.GetOptions().Extensions[
+            unittest_custom_options_pb2.fieldopt].s)
+    self.assertEqual(
+        &#34;EnumAnnotation&#34;,
+        enum_descriptor.GetOptions().Extensions[
+            unittest_custom_options_pb2.enumopt].s)
+    self.assertEqual(
+        &#34;EnumValueAnnotation&#34;,
+        enum_value_descriptor.GetOptions().Extensions[
+            unittest_custom_options_pb2.enumvalopt].s)
+    self.assertEqual(
+        &#34;ServiceAnnotation&#34;,
+        service_descriptor.GetOptions().Extensions[
+            unittest_custom_options_pb2.serviceopt].s)
+    self.assertEqual(
+        &#34;MethodAnnotation&#34;,
+        method_descriptor.GetOptions().Extensions[
+            unittest_custom_options_pb2.methodopt].s)
+
+  def testNestedOptions(self):
+    nested_message =\
+        unittest_custom_options_pb2.NestedOptionType.NestedMessage.DESCRIPTOR
+    self.assertEqual(1001, nested_message.GetOptions().Extensions[
+        unittest_custom_options_pb2.message_opt1])
+    nested_field = nested_message.fields_by_name[&#34;nested_field&#34;]
+    self.assertEqual(1002, nested_field.GetOptions().Extensions[
+        unittest_custom_options_pb2.field_opt1])
+    outer_message =\
+        unittest_custom_options_pb2.NestedOptionType.DESCRIPTOR
+    nested_enum = outer_message.enum_types_by_name[&#34;NestedEnum&#34;]
+    self.assertEqual(1003, nested_enum.GetOptions().Extensions[
+        unittest_custom_options_pb2.enum_opt1])
+    nested_enum_value = outer_message.enum_values_by_name[&#34;NESTED_ENUM_VALUE&#34;]
+    self.assertEqual(1004, nested_enum_value.GetOptions().Extensions[
+        unittest_custom_options_pb2.enum_value_opt1])
+    nested_extension = outer_message.extensions_by_name[&#34;nested_extension&#34;]
+    self.assertEqual(1005, nested_extension.GetOptions().Extensions[
+        unittest_custom_options_pb2.field_opt2])
+
+  def testFileDescriptorReferences(self):
+    self.assertEqual(self.my_enum.file, self.my_file)
+    self.assertEqual(self.my_message.file, self.my_file)
+
+  def testFileDescriptor(self):
+    self.assertEqual(self.my_file.name, &#39;some/filename/some.proto&#39;)
+    self.assertEqual(self.my_file.package, &#39;protobuf_unittest&#39;)
+    self.assertEqual(self.my_file.pool, self.pool)
+    self.assertFalse(self.my_file.has_options)
+    self.assertEqual(&#39;proto2&#39;, self.my_file.syntax)
+    file_proto = descriptor_pb2.FileDescriptorProto()
+    self.my_file.CopyToProto(file_proto)
+    self.assertEqual(self.my_file.serialized_pb,
+                     file_proto.SerializeToString())
+    # Generated modules also belong to the default pool.
+    self.assertEqual(unittest_pb2.DESCRIPTOR.pool, descriptor_pool.Default())
+
+  @unittest.skipIf(
+      api_implementation.Type() != &#39;cpp&#39; or api_implementation.Version() != 2,
+      &#39;Immutability of descriptors is only enforced in v2 implementation&#39;)
+  def testImmutableCppDescriptor(self):
+    file_descriptor = unittest_pb2.DESCRIPTOR
+    message_descriptor = unittest_pb2.TestAllTypes.DESCRIPTOR
+    field_descriptor = message_descriptor.fields_by_name[&#39;optional_int32&#39;]
+    enum_descriptor = message_descriptor.enum_types_by_name[&#39;NestedEnum&#39;]
+    oneof_descriptor = message_descriptor.oneofs_by_name[&#39;oneof_field&#39;]
+    with self.assertRaises(AttributeError):
+      message_descriptor.fields_by_name = None
+    with self.assertRaises(TypeError):
+      message_descriptor.fields_by_name[&#39;Another&#39;] = None
+    with self.assertRaises(TypeError):
+      message_descriptor.fields.append(None)
+    with self.assertRaises(AttributeError):
+      field_descriptor.containing_type = message_descriptor
+    with self.assertRaises(AttributeError):
+      file_descriptor.has_options = False
+    with self.assertRaises(AttributeError):
+      field_descriptor.has_options = False
+    with self.assertRaises(AttributeError):
+      oneof_descriptor.has_options = False
+    with self.assertRaises(AttributeError):
+      enum_descriptor.has_options = False
+    with self.assertRaises(AttributeError) as e:
+      message_descriptor.has_options = True
+    self.assertEqual(&#39;attribute is not writable: has_options&#39;,
+                     str(e.exception))
+
+  def testDefault(self):
+    message_descriptor = unittest_pb2.TestAllTypes.DESCRIPTOR
+    field = message_descriptor.fields_by_name[&#39;repeated_int32&#39;]
+    self.assertEqual(field.default_value, [])
+    field = message_descriptor.fields_by_name[&#39;repeated_nested_message&#39;]
+    self.assertEqual(field.default_value, [])
+    field = message_descriptor.fields_by_name[&#39;optionalgroup&#39;]
+    self.assertEqual(field.default_value, None)
+    field = message_descriptor.fields_by_name[&#39;optional_nested_message&#39;]
+    self.assertEqual(field.default_value, None)
+
+
+class NewDescriptorTest(DescriptorTest):
+  &#34;&#34;&#34;Redo the same tests as above, but with a separate DescriptorPool.&#34;&#34;&#34;
+
+  def GetDescriptorPool(self):
+    return descriptor_pool.DescriptorPool()
+
+
+class GeneratedDescriptorTest(unittest.TestCase):
+  &#34;&#34;&#34;Tests for the properties of descriptors in generated code.&#34;&#34;&#34;
+
+  def CheckMessageDescriptor(self, message_descriptor):
+    # Basic properties
+    self.assertEqual(message_descriptor.name, &#39;TestAllTypes&#39;)
+    self.assertEqual(message_descriptor.full_name,
+                     &#39;protobuf_unittest.TestAllTypes&#39;)
+    # Test equality and hashability
+    self.assertEqual(message_descriptor, message_descriptor)
+    self.assertEqual(message_descriptor.fields[0].containing_type,
+                     message_descriptor)
+    self.assertIn(message_descriptor, [message_descriptor])
+    self.assertIn(message_descriptor, {message_descriptor: None})
+    # Test field containers
+    self.CheckDescriptorSequence(message_descriptor.fields)
+    self.CheckDescriptorMapping(message_descriptor.fields_by_name)
+    self.CheckDescriptorMapping(message_descriptor.fields_by_number)
+    self.CheckDescriptorMapping(message_descriptor.fields_by_camelcase_name)
+    self.CheckDescriptorMapping(message_descriptor.enum_types_by_name)
+    self.CheckDescriptorMapping(message_descriptor.enum_values_by_name)
+    self.CheckDescriptorMapping(message_descriptor.oneofs_by_name)
+    self.CheckDescriptorMapping(message_descriptor.enum_types[0].values_by_name)
+    # Test extension range
+    self.assertEqual(message_descriptor.extension_ranges, [])
+
+  def CheckFieldDescriptor(self, field_descriptor):
+    # Basic properties
+    self.assertEqual(field_descriptor.name, &#39;optional_int32&#39;)
+    self.assertEqual(field_descriptor.camelcase_name, &#39;optionalInt32&#39;)
+    self.assertEqual(field_descriptor.full_name,
+                     &#39;protobuf_unittest.TestAllTypes.optional_int32&#39;)
+    self.assertEqual(field_descriptor.containing_type.name, &#39;TestAllTypes&#39;)
+    self.assertEqual(field_descriptor.file, unittest_pb2.DESCRIPTOR)
+    # Test equality and hashability
+    self.assertEqual(field_descriptor, field_descriptor)
+    self.assertEqual(
+        field_descriptor.containing_type.fields_by_name[&#39;optional_int32&#39;],
+        field_descriptor)
+    self.assertEqual(
+        field_descriptor.containing_type.fields_by_camelcase_name[
+            &#39;optionalInt32&#39;],
+        field_descriptor)
+    self.assertIn(field_descriptor, [field_descriptor])
+    self.assertIn(field_descriptor, {field_descriptor: None})
+    self.assertEqual(None, field_descriptor.extension_scope)
+    self.assertEqual(None, field_descriptor.enum_type)
+    if api_implementation.Type() == &#39;cpp&#39;:
+      # For test coverage only
+      self.assertEqual(field_descriptor.id, field_descriptor.id)
+
+  def CheckDescriptorSequence(self, sequence):
+    # Verifies that a property like &#39;messageDescriptor.fields&#39; has all the
+    # properties of an immutable abc.Sequence.
+    self.assertNotEqual(sequence,
+                        unittest_pb2.TestAllExtensions.DESCRIPTOR.fields)
+    self.assertNotEqual(sequence, [])
+    self.assertNotEqual(sequence, 1)
+    self.assertFalse(sequence == 1)  # Only for cpp test coverage
+    self.assertEqual(sequence, sequence)
+    expected_list = list(sequence)
+    self.assertEqual(expected_list, sequence)
+    self.assertGreater(len(sequence), 0)  # Sized
+    self.assertEqual(len(sequence), len(expected_list))  # Iterable
+    self.assertEqual(sequence[len(sequence) -1], sequence[-1])
+    item = sequence[0]
+    self.assertEqual(item, sequence[0])
+    self.assertIn(item, sequence)  # Container
+    self.assertEqual(sequence.index(item), 0)
+    self.assertEqual(sequence.count(item), 1)
+    other_item = unittest_pb2.NestedTestAllTypes.DESCRIPTOR.fields[0]
+    self.assertNotIn(other_item, sequence)
+    self.assertEqual(sequence.count(other_item), 0)
+    self.assertRaises(ValueError, sequence.index, other_item)
+    self.assertRaises(ValueError, sequence.index, [])
+    reversed_iterator = reversed(sequence)
+    self.assertEqual(list(reversed_iterator), list(sequence)[::-1])
+    self.assertRaises(StopIteration, next, reversed_iterator)
+    expected_list[0] = &#39;change value&#39;
+    self.assertNotEqual(expected_list, sequence)
+    # TODO(jieluo): Change __repr__ support for DescriptorSequence.
+    if api_implementation.Type() == &#39;python&#39;:
+      self.assertEqual(str(list(sequence)), str(sequence))
+    else:
+      self.assertEqual(str(sequence)[0], &#39;&lt;&#39;)
+
+  def CheckDescriptorMapping(self, mapping):
+    # Verifies that a property like &#39;messageDescriptor.fields&#39; has all the
+    # properties of an immutable abc.Mapping.
+    self.assertNotEqual(
+        mapping, unittest_pb2.TestAllExtensions.DESCRIPTOR.fields_by_name)
+    self.assertNotEqual(mapping, {})
+    self.assertNotEqual(mapping, 1)
+    self.assertFalse(mapping == 1)  # Only for cpp test coverage
+    excepted_dict = dict(mapping.items())
+    self.assertEqual(mapping, excepted_dict)
+    self.assertEqual(mapping, mapping)
+    self.assertGreater(len(mapping), 0)  # Sized
+    self.assertEqual(len(mapping), len(excepted_dict))  # Iterable
+    if sys.version_info &gt;= (3,):
+      key, item = next(iter(mapping.items()))
+    else:
+      key, item = mapping.items()[0]
+    self.assertIn(key, mapping)  # Container
+    self.assertEqual(mapping.get(key), item)
+    with self.assertRaises(TypeError):
+      mapping.get()
+    # TODO(jieluo): Fix python and cpp extension diff.
+    if api_implementation.Type() == &#39;python&#39;:
+      self.assertRaises(TypeError, mapping.get, [])
+    else:
+      self.assertEqual(None, mapping.get([]))
+    # keys(), iterkeys() &amp;co
+    item = (next(iter(mapping.keys())), next(iter(mapping.values())))
+    self.assertEqual(item, next(iter(mapping.items())))
+    if sys.version_info &lt; (3,):
+      def CheckItems(seq, iterator):
+        self.assertEqual(next(iterator), seq[0])
+        self.assertEqual(list(iterator), seq[1:])
+      CheckItems(mapping.keys(), mapping.iterkeys())
+      CheckItems(mapping.values(), mapping.itervalues())
+      CheckItems(mapping.items(), mapping.iteritems())
+    excepted_dict[key] = &#39;change value&#39;
+    self.assertNotEqual(mapping, excepted_dict)
+    del excepted_dict[key]
+    excepted_dict[&#39;new_key&#39;] = &#39;new&#39;
+    self.assertNotEqual(mapping, excepted_dict)
+    self.assertRaises(KeyError, mapping.__getitem__, &#39;key_error&#39;)
+    self.assertRaises(KeyError, mapping.__getitem__, len(mapping) + 1)
+    # TODO(jieluo): Add __repr__ support for DescriptorMapping.
+    if api_implementation.Type() == &#39;python&#39;:
+      self.assertEqual(len(str(dict(mapping.items()))), len(str(mapping)))
+    else:
+      self.assertEqual(str(mapping)[0], &#39;&lt;&#39;)
+
+  def testDescriptor(self):
+    message_descriptor = unittest_pb2.TestAllTypes.DESCRIPTOR
+    self.CheckMessageDescriptor(message_descriptor)
+    field_descriptor = message_descriptor.fields_by_name[&#39;optional_int32&#39;]
+    self.CheckFieldDescriptor(field_descriptor)
+    field_descriptor = message_descriptor.fields_by_camelcase_name[
+        &#39;optionalInt32&#39;]
+    self.CheckFieldDescriptor(field_descriptor)
+    enum_descriptor = unittest_pb2.DESCRIPTOR.enum_types_by_name[
+        &#39;ForeignEnum&#39;]
+    self.assertEqual(None, enum_descriptor.containing_type)
+    # Test extension range
+    self.assertEqual(
+        unittest_pb2.TestAllExtensions.DESCRIPTOR.extension_ranges,
+        [(1, 536870912)])
+    self.assertEqual(
+        unittest_pb2.TestMultipleExtensionRanges.DESCRIPTOR.extension_ranges,
+        [(42, 43), (4143, 4244), (65536, 536870912)])
+
+  def testCppDescriptorContainer(self):
+    containing_file = unittest_pb2.DESCRIPTOR
+    self.CheckDescriptorSequence(containing_file.dependencies)
+    self.CheckDescriptorMapping(containing_file.message_types_by_name)
+    self.CheckDescriptorMapping(containing_file.enum_types_by_name)
+    self.CheckDescriptorMapping(containing_file.services_by_name)
+    self.CheckDescriptorMapping(containing_file.extensions_by_name)
+    self.CheckDescriptorMapping(
+        unittest_pb2.TestNestedExtension.DESCRIPTOR.extensions_by_name)
+
+  def testCppDescriptorContainer_Iterator(self):
+    # Same test with the iterator
+    enum = unittest_pb2.TestAllTypes.DESCRIPTOR.enum_types_by_name[&#39;NestedEnum&#39;]
+    values_iter = iter(enum.values)
+    del enum
+    self.assertEqual(&#39;FOO&#39;, next(values_iter).name)
+
+  def testDescriptorNestedTypesContainer(self):
+    message_descriptor = unittest_pb2.TestAllTypes.DESCRIPTOR
+    nested_message_descriptor = unittest_pb2.TestAllTypes.NestedMessage.DESCRIPTOR
+    self.assertEqual(len(message_descriptor.nested_types), 3)
+    self.assertFalse(None in message_descriptor.nested_types)
+    self.assertTrue(
+        nested_message_descriptor in message_descriptor.nested_types)
+
+  def testServiceDescriptor(self):
+    service_descriptor = unittest_pb2.DESCRIPTOR.services_by_name[&#39;TestService&#39;]
+    self.assertEqual(service_descriptor.name, &#39;TestService&#39;)
+    self.assertEqual(service_descriptor.methods[0].name, &#39;Foo&#39;)
+    self.assertIs(service_descriptor.file, unittest_pb2.DESCRIPTOR)
+    self.assertEqual(service_descriptor.index, 0)
+    self.CheckDescriptorMapping(service_descriptor.methods_by_name)
+
+  def testOneofDescriptor(self):
+    message_descriptor = unittest_pb2.TestAllTypes.DESCRIPTOR
+    oneof_descriptor = message_descriptor.oneofs_by_name[&#39;oneof_field&#39;]
+    self.assertFalse(oneof_descriptor.has_options)
+    self.assertEqual(message_descriptor, oneof_descriptor.containing_type)
+    self.assertEqual(&#39;oneof_field&#39;, oneof_descriptor.name)
+    self.assertEqual(&#39;protobuf_unittest.TestAllTypes.oneof_field&#39;,
+                     oneof_descriptor.full_name)
+    self.assertEqual(0, oneof_descriptor.index)
+
+
+class DescriptorCopyToProtoTest(unittest.TestCase):
+  &#34;&#34;&#34;Tests for CopyTo functions of Descriptor.&#34;&#34;&#34;
+
+  def _AssertProtoEqual(self, actual_proto, expected_class, expected_ascii):
+    expected_proto = expected_class()
+    text_format.Merge(expected_ascii, expected_proto)
+
+    self.assertEqual(
+        actual_proto, expected_proto,
+        &#39;Not equal,\nActual:\n%s\nExpected:\n%s\n&#39;
+        % (str(actual_proto), str(expected_proto)))
+
+  def _InternalTestCopyToProto(self, desc, expected_proto_class,
+                               expected_proto_ascii):
+    actual = expected_proto_class()
+    desc.CopyToProto(actual)
+    self._AssertProtoEqual(
+        actual, expected_proto_class, expected_proto_ascii)
+
+  def testCopyToProto_EmptyMessage(self):
+    self._InternalTestCopyToProto(
+        unittest_pb2.TestEmptyMessage.DESCRIPTOR,
+        descriptor_pb2.DescriptorProto,
+        TEST_EMPTY_MESSAGE_DESCRIPTOR_ASCII)
+
+  def testCopyToProto_NestedMessage(self):
+    TEST_NESTED_MESSAGE_ASCII = &#34;&#34;&#34;
+      name: &#39;NestedMessage&#39;
+      field: &lt;
+        name: &#39;bb&#39;
+        number: 1
+        label: 1  # Optional
+        type: 5  # TYPE_INT32
+      &gt;
+      &#34;&#34;&#34;
+
+    self._InternalTestCopyToProto(
+        unittest_pb2.TestAllTypes.NestedMessage.DESCRIPTOR,
+        descriptor_pb2.DescriptorProto,
+        TEST_NESTED_MESSAGE_ASCII)
+
+  def testCopyToProto_ForeignNestedMessage(self):
+    TEST_FOREIGN_NESTED_ASCII = &#34;&#34;&#34;
+      name: &#39;TestForeignNested&#39;
+      field: &lt;
+        name: &#39;foreign_nested&#39;
+        number: 1
+        label: 1  # Optional
+        type: 11  # TYPE_MESSAGE
+        type_name: &#39;.protobuf_unittest.TestAllTypes.NestedMessage&#39;
+      &gt;
+      &#34;&#34;&#34;
+
+    self._InternalTestCopyToProto(
+        unittest_pb2.TestForeignNested.DESCRIPTOR,
+        descriptor_pb2.DescriptorProto,
+        TEST_FOREIGN_NESTED_ASCII)
+
+  def testCopyToProto_ForeignEnum(self):
+    TEST_FOREIGN_ENUM_ASCII = &#34;&#34;&#34;
+      name: &#39;ForeignEnum&#39;
+      value: &lt;
+        name: &#39;FOREIGN_FOO&#39;
+        number: 4
+      &gt;
+      value: &lt;
+        name: &#39;FOREIGN_BAR&#39;
+        number: 5
+      &gt;
+      value: &lt;
+        name: &#39;FOREIGN_BAZ&#39;
+        number: 6
+      &gt;
+      &#34;&#34;&#34;
+
+    self._InternalTestCopyToProto(
+        unittest_pb2.ForeignEnum.DESCRIPTOR,
+        descriptor_pb2.EnumDescriptorProto,
+        TEST_FOREIGN_ENUM_ASCII)
+
+  def testCopyToProto_Options(self):
+    TEST_DEPRECATED_FIELDS_ASCII = &#34;&#34;&#34;
+      name: &#39;TestDeprecatedFields&#39;
+      field: &lt;
+        name: &#39;deprecated_int32&#39;
+        number: 1
+        label: 1  # Optional
+        type: 5  # TYPE_INT32
+        options: &lt;
+          deprecated: true
+        &gt;
+      &gt;
+      field {
+        name: &#34;deprecated_int32_in_oneof&#34;
+        number: 2
+        label: LABEL_OPTIONAL
+        type: TYPE_INT32
+        options {
+          deprecated: true
+        }
+        oneof_index: 0
+      }
+      oneof_decl {
+        name: &#34;oneof_fields&#34;
+      }
+      &#34;&#34;&#34;
+
+    self._InternalTestCopyToProto(
+        unittest_pb2.TestDeprecatedFields.DESCRIPTOR,
+        descriptor_pb2.DescriptorProto,
+        TEST_DEPRECATED_FIELDS_ASCII)
+
+  def testCopyToProto_AllExtensions(self):
+    TEST_EMPTY_MESSAGE_WITH_EXTENSIONS_ASCII = &#34;&#34;&#34;
+      name: &#39;TestEmptyMessageWithExtensions&#39;
+      extension_range: &lt;
+        start: 1
+        end: 536870912
+      &gt;
+      &#34;&#34;&#34;
+
+    self._InternalTestCopyToProto(
+        unittest_pb2.TestEmptyMessageWithExtensions.DESCRIPTOR,
+        descriptor_pb2.DescriptorProto,
+        TEST_EMPTY_MESSAGE_WITH_EXTENSIONS_ASCII)
+
+  def testCopyToProto_SeveralExtensions(self):
+    TEST_MESSAGE_WITH_SEVERAL_EXTENSIONS_ASCII = &#34;&#34;&#34;
+      name: &#39;TestMultipleExtensionRanges&#39;
+      extension_range: &lt;
+        start: 42
+        end: 43
+      &gt;
+      extension_range: &lt;
+        start: 4143
+        end: 4244
+      &gt;
+      extension_range: &lt;
+        start: 65536
+        end: 536870912
+      &gt;
+      &#34;&#34;&#34;
+
+    self._InternalTestCopyToProto(
+        unittest_pb2.TestMultipleExtensionRanges.DESCRIPTOR,
+        descriptor_pb2.DescriptorProto,
+        TEST_MESSAGE_WITH_SEVERAL_EXTENSIONS_ASCII)
+
+  def testCopyToProto_FileDescriptor(self):
+    UNITTEST_IMPORT_FILE_DESCRIPTOR_ASCII = (&#34;&#34;&#34;
+      name: &#39;google/protobuf/unittest_import.proto&#39;
+      package: &#39;protobuf_unittest_import&#39;
+      dependency: &#39;google/protobuf/unittest_import_public.proto&#39;
+      message_type: &lt;
+        name: &#39;ImportMessage&#39;
+        field: &lt;
+          name: &#39;d&#39;
+          number: 1
+          label: 1  # Optional
+          type: 5  # TYPE_INT32
+        &gt;
+      &gt;
+      &#34;&#34;&#34; +
+      &#34;&#34;&#34;enum_type: &lt;
+        name: &#39;ImportEnum&#39;
+        value: &lt;
+          name: &#39;IMPORT_FOO&#39;
+          number: 7
+        &gt;
+        value: &lt;
+          name: &#39;IMPORT_BAR&#39;
+          number: 8
+        &gt;
+        value: &lt;
+          name: &#39;IMPORT_BAZ&#39;
+          number: 9
+        &gt;
+      &gt;
+      enum_type: &lt;
+        name: &#39;ImportEnumForMap&#39;
+        value: &lt;
+          name: &#39;UNKNOWN&#39;
+          number: 0
+        &gt;
+        value: &lt;
+          name: &#39;FOO&#39;
+          number: 1
+        &gt;
+        value: &lt;
+          name: &#39;BAR&#39;
+          number: 2
+        &gt;
+      &gt;
+      options: &lt;
+        java_package: &#39;com.google.protobuf.test&#39;
+        optimize_for: 1  # SPEED
+      &#34;&#34;&#34; +
+      &#34;&#34;&#34;
+        cc_enable_arenas: true
+      &gt;
+      public_dependency: 0
+    &#34;&#34;&#34;)
+    self._InternalTestCopyToProto(
+        unittest_import_pb2.DESCRIPTOR,
+        descriptor_pb2.FileDescriptorProto,
+        UNITTEST_IMPORT_FILE_DESCRIPTOR_ASCII)
+
+  def testCopyToProto_ServiceDescriptor(self):
+    TEST_SERVICE_ASCII = &#34;&#34;&#34;
+      name: &#39;TestService&#39;
+      method: &lt;
+        name: &#39;Foo&#39;
+        input_type: &#39;.protobuf_unittest.FooRequest&#39;
+        output_type: &#39;.protobuf_unittest.FooResponse&#39;
+      &gt;
+      method: &lt;
+        name: &#39;Bar&#39;
+        input_type: &#39;.protobuf_unittest.BarRequest&#39;
+        output_type: &#39;.protobuf_unittest.BarResponse&#39;
+      &gt;
+      &#34;&#34;&#34;
+    self._InternalTestCopyToProto(
+        unittest_pb2.TestService.DESCRIPTOR,
+        descriptor_pb2.ServiceDescriptorProto,
+        TEST_SERVICE_ASCII)
+
+  @unittest.skipIf(
+      api_implementation.Type() == &#39;python&#39;,
+      &#39;It is not implemented in python.&#39;)
+  # TODO(jieluo): Add support for pure python or remove in c extension.
+  def testCopyToProto_MethodDescriptor(self):
+    expected_ascii = &#34;&#34;&#34;
+      name: &#39;Foo&#39;
+      input_type: &#39;.protobuf_unittest.FooRequest&#39;
+      output_type: &#39;.protobuf_unittest.FooResponse&#39;
+    &#34;&#34;&#34;
+    method_descriptor = unittest_pb2.TestService.DESCRIPTOR.FindMethodByName(
+        &#39;Foo&#39;)
+    self._InternalTestCopyToProto(
+        method_descriptor,
+        descriptor_pb2.MethodDescriptorProto,
+        expected_ascii)
+
+  @unittest.skipIf(
+      api_implementation.Type() == &#39;python&#39;,
+      &#39;Pure python does not raise error.&#39;)
+  # TODO(jieluo): Fix pure python to check with the proto type.
+  def testCopyToProto_TypeError(self):
+    file_proto = descriptor_pb2.FileDescriptorProto()
+    self.assertRaises(TypeError,
+                      unittest_pb2.TestEmptyMessage.DESCRIPTOR.CopyToProto,
+                      file_proto)
+    self.assertRaises(TypeError,
+                      unittest_pb2.ForeignEnum.DESCRIPTOR.CopyToProto,
+                      file_proto)
+    self.assertRaises(TypeError,
+                      unittest_pb2.TestService.DESCRIPTOR.CopyToProto,
+                      file_proto)
+    proto = descriptor_pb2.DescriptorProto()
+    self.assertRaises(TypeError,
+                      unittest_import_pb2.DESCRIPTOR.CopyToProto,
+                      proto)
+
+
+class MakeDescriptorTest(unittest.TestCase):
+
+  def testMakeDescriptorWithNestedFields(self):
+    file_descriptor_proto = descriptor_pb2.FileDescriptorProto()
+    file_descriptor_proto.name = &#39;Foo2&#39;
+    message_type = file_descriptor_proto.message_type.add()
+    message_type.name = file_descriptor_proto.name
+    nested_type = message_type.nested_type.add()
+    nested_type.name = &#39;Sub&#39;
+    enum_type = nested_type.enum_type.add()
+    enum_type.name = &#39;FOO&#39;
+    enum_type_val = enum_type.value.add()
+    enum_type_val.name = &#39;BAR&#39;
+    enum_type_val.number = 3
+    field = message_type.field.add()
+    field.number = 1
+    field.name = &#39;uint64_field&#39;
+    field.label = descriptor.FieldDescriptor.LABEL_REQUIRED
+    field.type = descriptor.FieldDescriptor.TYPE_UINT64
+    field = message_type.field.add()
+    field.number = 2
+    field.name = &#39;nested_message_field&#39;
+    field.label = descriptor.FieldDescriptor.LABEL_REQUIRED
+    field.type = descriptor.FieldDescriptor.TYPE_MESSAGE
+    field.type_name = &#39;Sub&#39;
+    enum_field = nested_type.field.add()
+    enum_field.number = 2
+    enum_field.name = &#39;bar_field&#39;
+    enum_field.label = descriptor.FieldDescriptor.LABEL_REQUIRED
+    enum_field.type = descriptor.FieldDescriptor.TYPE_ENUM
+    enum_field.type_name = &#39;Foo2.Sub.FOO&#39;
+
+    result = descriptor.MakeDescriptor(message_type)
+    self.assertEqual(result.fields[0].cpp_type,
+                     descriptor.FieldDescriptor.CPPTYPE_UINT64)
+    self.assertEqual(result.fields[1].cpp_type,
+                     descriptor.FieldDescriptor.CPPTYPE_MESSAGE)
+    self.assertEqual(result.fields[1].message_type.containing_type,
+                     result)
+    self.assertEqual(result.nested_types[0].fields[0].full_name,
+                     &#39;Foo2.Sub.bar_field&#39;)
+    self.assertEqual(result.nested_types[0].fields[0].enum_type,
+                     result.nested_types[0].enum_types[0])
+    self.assertFalse(result.has_options)
+    self.assertFalse(result.fields[0].has_options)
+    if api_implementation.Type() == &#39;cpp&#39;:
+      with self.assertRaises(AttributeError):
+        result.fields[0].has_options = False
+
+  def testMakeDescriptorWithUnsignedIntField(self):
+    file_descriptor_proto = descriptor_pb2.FileDescriptorProto()
+    file_descriptor_proto.name = &#39;Foo&#39;
+    message_type = file_descriptor_proto.message_type.add()
+    message_type.name = file_descriptor_proto.name
+    enum_type = message_type.enum_type.add()
+    enum_type.name = &#39;FOO&#39;
+    enum_type_val = enum_type.value.add()
+    enum_type_val.name = &#39;BAR&#39;
+    enum_type_val.number = 3
+    field = message_type.field.add()
+    field.number = 1
+    field.name = &#39;uint64_field&#39;
+    field.label = descriptor.FieldDescriptor.LABEL_REQUIRED
+    field.type = descriptor.FieldDescriptor.TYPE_UINT64
+    enum_field = message_type.field.add()
+    enum_field.number = 2
+    enum_field.name = &#39;bar_field&#39;
+    enum_field.label = descriptor.FieldDescriptor.LABEL_REQUIRED
+    enum_field.type = descriptor.FieldDescriptor.TYPE_ENUM
+    enum_field.type_name = &#39;Foo.FOO&#39;
+
+    result = descriptor.MakeDescriptor(message_type)
+    self.assertEqual(result.fields[0].cpp_type,
+                     descriptor.FieldDescriptor.CPPTYPE_UINT64)
+
+
+  def testMakeDescriptorWithOptions(self):
+    descriptor_proto = descriptor_pb2.DescriptorProto()
+    aggregate_message = unittest_custom_options_pb2.AggregateMessage
+    aggregate_message.DESCRIPTOR.CopyToProto(descriptor_proto)
+    reformed_descriptor = descriptor.MakeDescriptor(descriptor_proto)
+
+    options = reformed_descriptor.GetOptions()
+    self.assertEqual(101,
+                      options.Extensions[unittest_custom_options_pb2.msgopt].i)
+
+  def testCamelcaseName(self):
+    descriptor_proto = descriptor_pb2.DescriptorProto()
+    descriptor_proto.name = &#39;Bar&#39;
+    names = [&#39;foo_foo&#39;, &#39;FooBar&#39;, &#39;fooBaz&#39;, &#39;fooFoo&#39;, &#39;foobar&#39;]
+    camelcase_names = [&#39;fooFoo&#39;, &#39;fooBar&#39;, &#39;fooBaz&#39;, &#39;fooFoo&#39;, &#39;foobar&#39;]
+    for index in range(len(names)):
+      field = descriptor_proto.field.add()
+      field.number = index + 1
+      field.name = names[index]
+    result = descriptor.MakeDescriptor(descriptor_proto)
+    for index in range(len(camelcase_names)):
+      self.assertEqual(result.fields[index].camelcase_name,
+                       camelcase_names[index])
+
+  def testJsonName(self):
+    descriptor_proto = descriptor_pb2.DescriptorProto()
+    descriptor_proto.name = &#39;TestJsonName&#39;
+    names = [&#39;field_name&#39;, &#39;fieldName&#39;, &#39;FieldName&#39;,
+             &#39;_field_name&#39;, &#39;FIELD_NAME&#39;, &#39;json_name&#39;]
+    json_names = [&#39;fieldName&#39;, &#39;fieldName&#39;, &#39;FieldName&#39;,
+                  &#39;FieldName&#39;, &#39;FIELDNAME&#39;, &#39;@type&#39;]
+    for index in range(len(names)):
+      field = descriptor_proto.field.add()
+      field.number = index + 1
+      field.name = names[index]
+    field.json_name = &#39;@type&#39;
+    result = descriptor.MakeDescriptor(descriptor_proto)
+    for index in range(len(json_names)):
+      self.assertEqual(result.fields[index].json_name,
+                       json_names[index])
+
+
+if __name__ == &#39;__main__&#39;:
+  unittest.main()</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="google.protobuf.internal.descriptor_test.DescriptorCopyToProtoTest"><code class="flex name class">
+<span>class <span class="ident">DescriptorCopyToProtoTest</span></span>
+<span>(</span><span>methodName='runTest')</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Tests for CopyTo functions of Descriptor.</p>
+<p>Create an instance of the class that will use the named test
+method when executed. Raises a ValueError if the instance does
+not have a method with the specified name.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class DescriptorCopyToProtoTest(unittest.TestCase):
+  &#34;&#34;&#34;Tests for CopyTo functions of Descriptor.&#34;&#34;&#34;
+
+  def _AssertProtoEqual(self, actual_proto, expected_class, expected_ascii):
+    expected_proto = expected_class()
+    text_format.Merge(expected_ascii, expected_proto)
+
+    self.assertEqual(
+        actual_proto, expected_proto,
+        &#39;Not equal,\nActual:\n%s\nExpected:\n%s\n&#39;
+        % (str(actual_proto), str(expected_proto)))
+
+  def _InternalTestCopyToProto(self, desc, expected_proto_class,
+                               expected_proto_ascii):
+    actual = expected_proto_class()
+    desc.CopyToProto(actual)
+    self._AssertProtoEqual(
+        actual, expected_proto_class, expected_proto_ascii)
+
+  def testCopyToProto_EmptyMessage(self):
+    self._InternalTestCopyToProto(
+        unittest_pb2.TestEmptyMessage.DESCRIPTOR,
+        descriptor_pb2.DescriptorProto,
+        TEST_EMPTY_MESSAGE_DESCRIPTOR_ASCII)
+
+  def testCopyToProto_NestedMessage(self):
+    TEST_NESTED_MESSAGE_ASCII = &#34;&#34;&#34;
+      name: &#39;NestedMessage&#39;
+      field: &lt;
+        name: &#39;bb&#39;
+        number: 1
+        label: 1  # Optional
+        type: 5  # TYPE_INT32
+      &gt;
+      &#34;&#34;&#34;
+
+    self._InternalTestCopyToProto(
+        unittest_pb2.TestAllTypes.NestedMessage.DESCRIPTOR,
+        descriptor_pb2.DescriptorProto,
+        TEST_NESTED_MESSAGE_ASCII)
+
+  def testCopyToProto_ForeignNestedMessage(self):
+    TEST_FOREIGN_NESTED_ASCII = &#34;&#34;&#34;
+      name: &#39;TestForeignNested&#39;
+      field: &lt;
+        name: &#39;foreign_nested&#39;
+        number: 1
+        label: 1  # Optional
+        type: 11  # TYPE_MESSAGE
+        type_name: &#39;.protobuf_unittest.TestAllTypes.NestedMessage&#39;
+      &gt;
+      &#34;&#34;&#34;
+
+    self._InternalTestCopyToProto(
+        unittest_pb2.TestForeignNested.DESCRIPTOR,
+        descriptor_pb2.DescriptorProto,
+        TEST_FOREIGN_NESTED_ASCII)
+
+  def testCopyToProto_ForeignEnum(self):
+    TEST_FOREIGN_ENUM_ASCII = &#34;&#34;&#34;
+      name: &#39;ForeignEnum&#39;
+      value: &lt;
+        name: &#39;FOREIGN_FOO&#39;
+        number: 4
+      &gt;
+      value: &lt;
+        name: &#39;FOREIGN_BAR&#39;
+        number: 5
+      &gt;
+      value: &lt;
+        name: &#39;FOREIGN_BAZ&#39;
+        number: 6
+      &gt;
+      &#34;&#34;&#34;
+
+    self._InternalTestCopyToProto(
+        unittest_pb2.ForeignEnum.DESCRIPTOR,
+        descriptor_pb2.EnumDescriptorProto,
+        TEST_FOREIGN_ENUM_ASCII)
+
+  def testCopyToProto_Options(self):
+    TEST_DEPRECATED_FIELDS_ASCII = &#34;&#34;&#34;
+      name: &#39;TestDeprecatedFields&#39;
+      field: &lt;
+        name: &#39;deprecated_int32&#39;
+        number: 1
+        label: 1  # Optional
+        type: 5  # TYPE_INT32
+        options: &lt;
+          deprecated: true
+        &gt;
+      &gt;
+      field {
+        name: &#34;deprecated_int32_in_oneof&#34;
+        number: 2
+        label: LABEL_OPTIONAL
+        type: TYPE_INT32
+        options {
+          deprecated: true
+        }
+        oneof_index: 0
+      }
+      oneof_decl {
+        name: &#34;oneof_fields&#34;
+      }
+      &#34;&#34;&#34;
+
+    self._InternalTestCopyToProto(
+        unittest_pb2.TestDeprecatedFields.DESCRIPTOR,
+        descriptor_pb2.DescriptorProto,
+        TEST_DEPRECATED_FIELDS_ASCII)
+
+  def testCopyToProto_AllExtensions(self):
+    TEST_EMPTY_MESSAGE_WITH_EXTENSIONS_ASCII = &#34;&#34;&#34;
+      name: &#39;TestEmptyMessageWithExtensions&#39;
+      extension_range: &lt;
+        start: 1
+        end: 536870912
+      &gt;
+      &#34;&#34;&#34;
+
+    self._InternalTestCopyToProto(
+        unittest_pb2.TestEmptyMessageWithExtensions.DESCRIPTOR,
+        descriptor_pb2.DescriptorProto,
+        TEST_EMPTY_MESSAGE_WITH_EXTENSIONS_ASCII)
+
+  def testCopyToProto_SeveralExtensions(self):
+    TEST_MESSAGE_WITH_SEVERAL_EXTENSIONS_ASCII = &#34;&#34;&#34;
+      name: &#39;TestMultipleExtensionRanges&#39;
+      extension_range: &lt;
+        start: 42
+        end: 43
+      &gt;
+      extension_range: &lt;
+        start: 4143
+        end: 4244
+      &gt;
+      extension_range: &lt;
+        start: 65536
+        end: 536870912
+      &gt;
+      &#34;&#34;&#34;
+
+    self._InternalTestCopyToProto(
+        unittest_pb2.TestMultipleExtensionRanges.DESCRIPTOR,
+        descriptor_pb2.DescriptorProto,
+        TEST_MESSAGE_WITH_SEVERAL_EXTENSIONS_ASCII)
+
+  def testCopyToProto_FileDescriptor(self):
+    UNITTEST_IMPORT_FILE_DESCRIPTOR_ASCII = (&#34;&#34;&#34;
+      name: &#39;google/protobuf/unittest_import.proto&#39;
+      package: &#39;protobuf_unittest_import&#39;
+      dependency: &#39;google/protobuf/unittest_import_public.proto&#39;
+      message_type: &lt;
+        name: &#39;ImportMessage&#39;
+        field: &lt;
+          name: &#39;d&#39;
+          number: 1
+          label: 1  # Optional
+          type: 5  # TYPE_INT32
+        &gt;
+      &gt;
+      &#34;&#34;&#34; +
+      &#34;&#34;&#34;enum_type: &lt;
+        name: &#39;ImportEnum&#39;
+        value: &lt;
+          name: &#39;IMPORT_FOO&#39;
+          number: 7
+        &gt;
+        value: &lt;
+          name: &#39;IMPORT_BAR&#39;
+          number: 8
+        &gt;
+        value: &lt;
+          name: &#39;IMPORT_BAZ&#39;
+          number: 9
+        &gt;
+      &gt;
+      enum_type: &lt;
+        name: &#39;ImportEnumForMap&#39;
+        value: &lt;
+          name: &#39;UNKNOWN&#39;
+          number: 0
+        &gt;
+        value: &lt;
+          name: &#39;FOO&#39;
+          number: 1
+        &gt;
+        value: &lt;
+          name: &#39;BAR&#39;
+          number: 2
+        &gt;
+      &gt;
+      options: &lt;
+        java_package: &#39;com.google.protobuf.test&#39;
+        optimize_for: 1  # SPEED
+      &#34;&#34;&#34; +
+      &#34;&#34;&#34;
+        cc_enable_arenas: true
+      &gt;
+      public_dependency: 0
+    &#34;&#34;&#34;)
+    self._InternalTestCopyToProto(
+        unittest_import_pb2.DESCRIPTOR,
+        descriptor_pb2.FileDescriptorProto,
+        UNITTEST_IMPORT_FILE_DESCRIPTOR_ASCII)
+
+  def testCopyToProto_ServiceDescriptor(self):
+    TEST_SERVICE_ASCII = &#34;&#34;&#34;
+      name: &#39;TestService&#39;
+      method: &lt;
+        name: &#39;Foo&#39;
+        input_type: &#39;.protobuf_unittest.FooRequest&#39;
+        output_type: &#39;.protobuf_unittest.FooResponse&#39;
+      &gt;
+      method: &lt;
+        name: &#39;Bar&#39;
+        input_type: &#39;.protobuf_unittest.BarRequest&#39;
+        output_type: &#39;.protobuf_unittest.BarResponse&#39;
+      &gt;
+      &#34;&#34;&#34;
+    self._InternalTestCopyToProto(
+        unittest_pb2.TestService.DESCRIPTOR,
+        descriptor_pb2.ServiceDescriptorProto,
+        TEST_SERVICE_ASCII)
+
+  @unittest.skipIf(
+      api_implementation.Type() == &#39;python&#39;,
+      &#39;It is not implemented in python.&#39;)
+  # TODO(jieluo): Add support for pure python or remove in c extension.
+  def testCopyToProto_MethodDescriptor(self):
+    expected_ascii = &#34;&#34;&#34;
+      name: &#39;Foo&#39;
+      input_type: &#39;.protobuf_unittest.FooRequest&#39;
+      output_type: &#39;.protobuf_unittest.FooResponse&#39;
+    &#34;&#34;&#34;
+    method_descriptor = unittest_pb2.TestService.DESCRIPTOR.FindMethodByName(
+        &#39;Foo&#39;)
+    self._InternalTestCopyToProto(
+        method_descriptor,
+        descriptor_pb2.MethodDescriptorProto,
+        expected_ascii)
+
+  @unittest.skipIf(
+      api_implementation.Type() == &#39;python&#39;,
+      &#39;Pure python does not raise error.&#39;)
+  # TODO(jieluo): Fix pure python to check with the proto type.
+  def testCopyToProto_TypeError(self):
+    file_proto = descriptor_pb2.FileDescriptorProto()
+    self.assertRaises(TypeError,
+                      unittest_pb2.TestEmptyMessage.DESCRIPTOR.CopyToProto,
+                      file_proto)
+    self.assertRaises(TypeError,
+                      unittest_pb2.ForeignEnum.DESCRIPTOR.CopyToProto,
+                      file_proto)
+    self.assertRaises(TypeError,
+                      unittest_pb2.TestService.DESCRIPTOR.CopyToProto,
+                      file_proto)
+    proto = descriptor_pb2.DescriptorProto()
+    self.assertRaises(TypeError,
+                      unittest_import_pb2.DESCRIPTOR.CopyToProto,
+                      proto)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>unittest.case.TestCase</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="google.protobuf.internal.descriptor_test.DescriptorCopyToProtoTest.testCopyToProto_AllExtensions"><code class="name flex">
+<span>def <span class="ident">testCopyToProto_AllExtensions</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testCopyToProto_AllExtensions(self):
+  TEST_EMPTY_MESSAGE_WITH_EXTENSIONS_ASCII = &#34;&#34;&#34;
+    name: &#39;TestEmptyMessageWithExtensions&#39;
+    extension_range: &lt;
+      start: 1
+      end: 536870912
+    &gt;
+    &#34;&#34;&#34;
+
+  self._InternalTestCopyToProto(
+      unittest_pb2.TestEmptyMessageWithExtensions.DESCRIPTOR,
+      descriptor_pb2.DescriptorProto,
+      TEST_EMPTY_MESSAGE_WITH_EXTENSIONS_ASCII)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.descriptor_test.DescriptorCopyToProtoTest.testCopyToProto_EmptyMessage"><code class="name flex">
+<span>def <span class="ident">testCopyToProto_EmptyMessage</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testCopyToProto_EmptyMessage(self):
+  self._InternalTestCopyToProto(
+      unittest_pb2.TestEmptyMessage.DESCRIPTOR,
+      descriptor_pb2.DescriptorProto,
+      TEST_EMPTY_MESSAGE_DESCRIPTOR_ASCII)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.descriptor_test.DescriptorCopyToProtoTest.testCopyToProto_FileDescriptor"><code class="name flex">
+<span>def <span class="ident">testCopyToProto_FileDescriptor</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testCopyToProto_FileDescriptor(self):
+  UNITTEST_IMPORT_FILE_DESCRIPTOR_ASCII = (&#34;&#34;&#34;
+    name: &#39;google/protobuf/unittest_import.proto&#39;
+    package: &#39;protobuf_unittest_import&#39;
+    dependency: &#39;google/protobuf/unittest_import_public.proto&#39;
+    message_type: &lt;
+      name: &#39;ImportMessage&#39;
+      field: &lt;
+        name: &#39;d&#39;
+        number: 1
+        label: 1  # Optional
+        type: 5  # TYPE_INT32
+      &gt;
+    &gt;
+    &#34;&#34;&#34; +
+    &#34;&#34;&#34;enum_type: &lt;
+      name: &#39;ImportEnum&#39;
+      value: &lt;
+        name: &#39;IMPORT_FOO&#39;
+        number: 7
+      &gt;
+      value: &lt;
+        name: &#39;IMPORT_BAR&#39;
+        number: 8
+      &gt;
+      value: &lt;
+        name: &#39;IMPORT_BAZ&#39;
+        number: 9
+      &gt;
+    &gt;
+    enum_type: &lt;
+      name: &#39;ImportEnumForMap&#39;
+      value: &lt;
+        name: &#39;UNKNOWN&#39;
+        number: 0
+      &gt;
+      value: &lt;
+        name: &#39;FOO&#39;
+        number: 1
+      &gt;
+      value: &lt;
+        name: &#39;BAR&#39;
+        number: 2
+      &gt;
+    &gt;
+    options: &lt;
+      java_package: &#39;com.google.protobuf.test&#39;
+      optimize_for: 1  # SPEED
+    &#34;&#34;&#34; +
+    &#34;&#34;&#34;
+      cc_enable_arenas: true
+    &gt;
+    public_dependency: 0
+  &#34;&#34;&#34;)
+  self._InternalTestCopyToProto(
+      unittest_import_pb2.DESCRIPTOR,
+      descriptor_pb2.FileDescriptorProto,
+      UNITTEST_IMPORT_FILE_DESCRIPTOR_ASCII)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.descriptor_test.DescriptorCopyToProtoTest.testCopyToProto_ForeignEnum"><code class="name flex">
+<span>def <span class="ident">testCopyToProto_ForeignEnum</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testCopyToProto_ForeignEnum(self):
+  TEST_FOREIGN_ENUM_ASCII = &#34;&#34;&#34;
+    name: &#39;ForeignEnum&#39;
+    value: &lt;
+      name: &#39;FOREIGN_FOO&#39;
+      number: 4
+    &gt;
+    value: &lt;
+      name: &#39;FOREIGN_BAR&#39;
+      number: 5
+    &gt;
+    value: &lt;
+      name: &#39;FOREIGN_BAZ&#39;
+      number: 6
+    &gt;
+    &#34;&#34;&#34;
+
+  self._InternalTestCopyToProto(
+      unittest_pb2.ForeignEnum.DESCRIPTOR,
+      descriptor_pb2.EnumDescriptorProto,
+      TEST_FOREIGN_ENUM_ASCII)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.descriptor_test.DescriptorCopyToProtoTest.testCopyToProto_ForeignNestedMessage"><code class="name flex">
+<span>def <span class="ident">testCopyToProto_ForeignNestedMessage</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testCopyToProto_ForeignNestedMessage(self):
+  TEST_FOREIGN_NESTED_ASCII = &#34;&#34;&#34;
+    name: &#39;TestForeignNested&#39;
+    field: &lt;
+      name: &#39;foreign_nested&#39;
+      number: 1
+      label: 1  # Optional
+      type: 11  # TYPE_MESSAGE
+      type_name: &#39;.protobuf_unittest.TestAllTypes.NestedMessage&#39;
+    &gt;
+    &#34;&#34;&#34;
+
+  self._InternalTestCopyToProto(
+      unittest_pb2.TestForeignNested.DESCRIPTOR,
+      descriptor_pb2.DescriptorProto,
+      TEST_FOREIGN_NESTED_ASCII)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.descriptor_test.DescriptorCopyToProtoTest.testCopyToProto_MethodDescriptor"><code class="name flex">
+<span>def <span class="ident">testCopyToProto_MethodDescriptor</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@unittest.skipIf(
+    api_implementation.Type() == &#39;python&#39;,
+    &#39;It is not implemented in python.&#39;)
+# TODO(jieluo): Add support for pure python or remove in c extension.
+def testCopyToProto_MethodDescriptor(self):
+  expected_ascii = &#34;&#34;&#34;
+    name: &#39;Foo&#39;
+    input_type: &#39;.protobuf_unittest.FooRequest&#39;
+    output_type: &#39;.protobuf_unittest.FooResponse&#39;
+  &#34;&#34;&#34;
+  method_descriptor = unittest_pb2.TestService.DESCRIPTOR.FindMethodByName(
+      &#39;Foo&#39;)
+  self._InternalTestCopyToProto(
+      method_descriptor,
+      descriptor_pb2.MethodDescriptorProto,
+      expected_ascii)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.descriptor_test.DescriptorCopyToProtoTest.testCopyToProto_NestedMessage"><code class="name flex">
+<span>def <span class="ident">testCopyToProto_NestedMessage</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testCopyToProto_NestedMessage(self):
+  TEST_NESTED_MESSAGE_ASCII = &#34;&#34;&#34;
+    name: &#39;NestedMessage&#39;
+    field: &lt;
+      name: &#39;bb&#39;
+      number: 1
+      label: 1  # Optional
+      type: 5  # TYPE_INT32
+    &gt;
+    &#34;&#34;&#34;
+
+  self._InternalTestCopyToProto(
+      unittest_pb2.TestAllTypes.NestedMessage.DESCRIPTOR,
+      descriptor_pb2.DescriptorProto,
+      TEST_NESTED_MESSAGE_ASCII)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.descriptor_test.DescriptorCopyToProtoTest.testCopyToProto_Options"><code class="name flex">
+<span>def <span class="ident">testCopyToProto_Options</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testCopyToProto_Options(self):
+  TEST_DEPRECATED_FIELDS_ASCII = &#34;&#34;&#34;
+    name: &#39;TestDeprecatedFields&#39;
+    field: &lt;
+      name: &#39;deprecated_int32&#39;
+      number: 1
+      label: 1  # Optional
+      type: 5  # TYPE_INT32
+      options: &lt;
+        deprecated: true
+      &gt;
+    &gt;
+    field {
+      name: &#34;deprecated_int32_in_oneof&#34;
+      number: 2
+      label: LABEL_OPTIONAL
+      type: TYPE_INT32
+      options {
+        deprecated: true
+      }
+      oneof_index: 0
+    }
+    oneof_decl {
+      name: &#34;oneof_fields&#34;
+    }
+    &#34;&#34;&#34;
+
+  self._InternalTestCopyToProto(
+      unittest_pb2.TestDeprecatedFields.DESCRIPTOR,
+      descriptor_pb2.DescriptorProto,
+      TEST_DEPRECATED_FIELDS_ASCII)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.descriptor_test.DescriptorCopyToProtoTest.testCopyToProto_ServiceDescriptor"><code class="name flex">
+<span>def <span class="ident">testCopyToProto_ServiceDescriptor</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testCopyToProto_ServiceDescriptor(self):
+  TEST_SERVICE_ASCII = &#34;&#34;&#34;
+    name: &#39;TestService&#39;
+    method: &lt;
+      name: &#39;Foo&#39;
+      input_type: &#39;.protobuf_unittest.FooRequest&#39;
+      output_type: &#39;.protobuf_unittest.FooResponse&#39;
+    &gt;
+    method: &lt;
+      name: &#39;Bar&#39;
+      input_type: &#39;.protobuf_unittest.BarRequest&#39;
+      output_type: &#39;.protobuf_unittest.BarResponse&#39;
+    &gt;
+    &#34;&#34;&#34;
+  self._InternalTestCopyToProto(
+      unittest_pb2.TestService.DESCRIPTOR,
+      descriptor_pb2.ServiceDescriptorProto,
+      TEST_SERVICE_ASCII)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.descriptor_test.DescriptorCopyToProtoTest.testCopyToProto_SeveralExtensions"><code class="name flex">
+<span>def <span class="ident">testCopyToProto_SeveralExtensions</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testCopyToProto_SeveralExtensions(self):
+  TEST_MESSAGE_WITH_SEVERAL_EXTENSIONS_ASCII = &#34;&#34;&#34;
+    name: &#39;TestMultipleExtensionRanges&#39;
+    extension_range: &lt;
+      start: 42
+      end: 43
+    &gt;
+    extension_range: &lt;
+      start: 4143
+      end: 4244
+    &gt;
+    extension_range: &lt;
+      start: 65536
+      end: 536870912
+    &gt;
+    &#34;&#34;&#34;
+
+  self._InternalTestCopyToProto(
+      unittest_pb2.TestMultipleExtensionRanges.DESCRIPTOR,
+      descriptor_pb2.DescriptorProto,
+      TEST_MESSAGE_WITH_SEVERAL_EXTENSIONS_ASCII)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.descriptor_test.DescriptorCopyToProtoTest.testCopyToProto_TypeError"><code class="name flex">
+<span>def <span class="ident">testCopyToProto_TypeError</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@unittest.skipIf(
+    api_implementation.Type() == &#39;python&#39;,
+    &#39;Pure python does not raise error.&#39;)
+# TODO(jieluo): Fix pure python to check with the proto type.
+def testCopyToProto_TypeError(self):
+  file_proto = descriptor_pb2.FileDescriptorProto()
+  self.assertRaises(TypeError,
+                    unittest_pb2.TestEmptyMessage.DESCRIPTOR.CopyToProto,
+                    file_proto)
+  self.assertRaises(TypeError,
+                    unittest_pb2.ForeignEnum.DESCRIPTOR.CopyToProto,
+                    file_proto)
+  self.assertRaises(TypeError,
+                    unittest_pb2.TestService.DESCRIPTOR.CopyToProto,
+                    file_proto)
+  proto = descriptor_pb2.DescriptorProto()
+  self.assertRaises(TypeError,
+                    unittest_import_pb2.DESCRIPTOR.CopyToProto,
+                    proto)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="google.protobuf.internal.descriptor_test.DescriptorTest"><code class="flex name class">
+<span>class <span class="ident">DescriptorTest</span></span>
+<span>(</span><span>methodName='runTest')</span>
+</code></dt>
+<dd>
+<section class="desc"><p>A class whose instances are single test cases.</p>
+<p>By default, the test code itself should be placed in a method named
+'runTest'.</p>
+<p>If the fixture may be used for many test cases, create as
+many test methods as are needed. When instantiating such a TestCase
+subclass, specify in the constructor arguments the name of the test method
+that the instance is to execute.</p>
+<p>Test authors should subclass TestCase for their own tests. Construction
+and deconstruction of the test's environment ('fixture') can be
+implemented by overriding the 'setUp' and 'tearDown' methods respectively.</p>
+<p>If it is necessary to override the <strong>init</strong> method, the base class
+<strong>init</strong> method must always be called. It is important that subclasses
+should not change the signature of their <strong>init</strong> method, since instances
+of the classes are instantiated automatically by parts of the framework
+in order to be run.</p>
+<p>When subclassing TestCase, you can set these attributes:
+* failureException: determines which exception will be raised when
+the instance's assertion methods fail; test methods raising this
+exception will be deemed to have 'failed' rather than 'errored'.
+* longMessage: determines whether long messages (including repr of
+objects used in assert methods) will be printed on failure in <em>addition</em>
+to any explicit message passed.
+* maxDiff: sets the maximum length of a diff in failure messages
+by assert methods using difflib. It is looked up as an instance
+attribute so can be configured by individual tests if required.</p>
+<p>Create an instance of the class that will use the named test
+method when executed. Raises a ValueError if the instance does
+not have a method with the specified name.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class DescriptorTest(unittest.TestCase):
+
+  def setUp(self):
+    file_proto = descriptor_pb2.FileDescriptorProto(
+        name=&#39;some/filename/some.proto&#39;,
+        package=&#39;protobuf_unittest&#39;)
+    message_proto = file_proto.message_type.add(
+        name=&#39;NestedMessage&#39;)
+    message_proto.field.add(
+        name=&#39;bb&#39;,
+        number=1,
+        type=descriptor_pb2.FieldDescriptorProto.TYPE_INT32,
+        label=descriptor_pb2.FieldDescriptorProto.LABEL_OPTIONAL)
+    enum_proto = message_proto.enum_type.add(
+        name=&#39;ForeignEnum&#39;)
+    enum_proto.value.add(name=&#39;FOREIGN_FOO&#39;, number=4)
+    enum_proto.value.add(name=&#39;FOREIGN_BAR&#39;, number=5)
+    enum_proto.value.add(name=&#39;FOREIGN_BAZ&#39;, number=6)
+
+    file_proto.message_type.add(name=&#39;ResponseMessage&#39;)
+    service_proto = file_proto.service.add(
+        name=&#39;Service&#39;)
+    method_proto = service_proto.method.add(
+        name=&#39;CallMethod&#39;,
+        input_type=&#39;.protobuf_unittest.NestedMessage&#39;,
+        output_type=&#39;.protobuf_unittest.ResponseMessage&#39;)
+
+    # Note: Calling DescriptorPool.Add() multiple times with the same file only
+    # works if the input is canonical; in particular, all type names must be
+    # fully qualified.
+    self.pool = self.GetDescriptorPool()
+    self.pool.Add(file_proto)
+    self.my_file = self.pool.FindFileByName(file_proto.name)
+    self.my_message = self.my_file.message_types_by_name[message_proto.name]
+    self.my_enum = self.my_message.enum_types_by_name[enum_proto.name]
+    self.my_service = self.my_file.services_by_name[service_proto.name]
+    self.my_method = self.my_service.methods_by_name[method_proto.name]
+
+  def GetDescriptorPool(self):
+    return symbol_database.Default().pool
+
+  def testEnumValueName(self):
+    self.assertEqual(self.my_message.EnumValueName(&#39;ForeignEnum&#39;, 4),
+                     &#39;FOREIGN_FOO&#39;)
+
+    self.assertEqual(
+        self.my_message.enum_types_by_name[
+            &#39;ForeignEnum&#39;].values_by_number[4].name,
+        self.my_message.EnumValueName(&#39;ForeignEnum&#39;, 4))
+    with self.assertRaises(KeyError):
+      self.my_message.EnumValueName(&#39;ForeignEnum&#39;, 999)
+    with self.assertRaises(KeyError):
+      self.my_message.EnumValueName(&#39;NoneEnum&#39;, 999)
+    with self.assertRaises(TypeError):
+      self.my_message.EnumValueName()
+
+  def testEnumFixups(self):
+    self.assertEqual(self.my_enum, self.my_enum.values[0].type)
+
+  def testContainingTypeFixups(self):
+    self.assertEqual(self.my_message, self.my_message.fields[0].containing_type)
+    self.assertEqual(self.my_message, self.my_enum.containing_type)
+
+  def testContainingServiceFixups(self):
+    self.assertEqual(self.my_service, self.my_method.containing_service)
+
+  def testGetOptions(self):
+    self.assertEqual(self.my_enum.GetOptions(),
+                     descriptor_pb2.EnumOptions())
+    self.assertEqual(self.my_enum.values[0].GetOptions(),
+                     descriptor_pb2.EnumValueOptions())
+    self.assertEqual(self.my_message.GetOptions(),
+                     descriptor_pb2.MessageOptions())
+    self.assertEqual(self.my_message.fields[0].GetOptions(),
+                     descriptor_pb2.FieldOptions())
+    self.assertEqual(self.my_method.GetOptions(),
+                     descriptor_pb2.MethodOptions())
+    self.assertEqual(self.my_service.GetOptions(),
+                     descriptor_pb2.ServiceOptions())
+
+  def testSimpleCustomOptions(self):
+    file_descriptor = unittest_custom_options_pb2.DESCRIPTOR
+    message_descriptor = (unittest_custom_options_pb2.
+                          TestMessageWithCustomOptions.DESCRIPTOR)
+    field_descriptor = message_descriptor.fields_by_name[&#39;field1&#39;]
+    oneof_descriptor = message_descriptor.oneofs_by_name[&#39;AnOneof&#39;]
+    enum_descriptor = message_descriptor.enum_types_by_name[&#39;AnEnum&#39;]
+    enum_value_descriptor = (message_descriptor.
+                             enum_values_by_name[&#39;ANENUM_VAL2&#39;])
+    other_enum_value_descriptor = (message_descriptor.
+                                   enum_values_by_name[&#39;ANENUM_VAL1&#39;])
+    service_descriptor = (unittest_custom_options_pb2.
+                          TestServiceWithCustomOptions.DESCRIPTOR)
+    method_descriptor = service_descriptor.FindMethodByName(&#39;Foo&#39;)
+
+    file_options = file_descriptor.GetOptions()
+    file_opt1 = unittest_custom_options_pb2.file_opt1
+    self.assertEqual(9876543210, file_options.Extensions[file_opt1])
+    message_options = message_descriptor.GetOptions()
+    message_opt1 = unittest_custom_options_pb2.message_opt1
+    self.assertEqual(-56, message_options.Extensions[message_opt1])
+    field_options = field_descriptor.GetOptions()
+    field_opt1 = unittest_custom_options_pb2.field_opt1
+    self.assertEqual(8765432109, field_options.Extensions[field_opt1])
+    field_opt2 = unittest_custom_options_pb2.field_opt2
+    self.assertEqual(42, field_options.Extensions[field_opt2])
+    oneof_options = oneof_descriptor.GetOptions()
+    oneof_opt1 = unittest_custom_options_pb2.oneof_opt1
+    self.assertEqual(-99, oneof_options.Extensions[oneof_opt1])
+    enum_options = enum_descriptor.GetOptions()
+    enum_opt1 = unittest_custom_options_pb2.enum_opt1
+    self.assertEqual(-789, enum_options.Extensions[enum_opt1])
+    enum_value_options = enum_value_descriptor.GetOptions()
+    enum_value_opt1 = unittest_custom_options_pb2.enum_value_opt1
+    self.assertEqual(123, enum_value_options.Extensions[enum_value_opt1])
+
+    service_options = service_descriptor.GetOptions()
+    service_opt1 = unittest_custom_options_pb2.service_opt1
+    self.assertEqual(-9876543210, service_options.Extensions[service_opt1])
+    method_options = method_descriptor.GetOptions()
+    method_opt1 = unittest_custom_options_pb2.method_opt1
+    self.assertEqual(unittest_custom_options_pb2.METHODOPT1_VAL2,
+                     method_options.Extensions[method_opt1])
+
+    message_descriptor = (
+        unittest_custom_options_pb2.DummyMessageContainingEnum.DESCRIPTOR)
+    self.assertTrue(file_descriptor.has_options)
+    self.assertFalse(message_descriptor.has_options)
+    self.assertTrue(field_descriptor.has_options)
+    self.assertTrue(oneof_descriptor.has_options)
+    self.assertTrue(enum_descriptor.has_options)
+    self.assertTrue(enum_value_descriptor.has_options)
+    self.assertFalse(other_enum_value_descriptor.has_options)
+
+  def testCustomOptionsCopyTo(self):
+    message_descriptor = (unittest_custom_options_pb2.
+                          TestMessageWithCustomOptions.DESCRIPTOR)
+    message_proto = descriptor_pb2.DescriptorProto()
+    message_descriptor.CopyToProto(message_proto)
+    self.assertEqual(len(message_proto.options.ListFields()),
+                     2)
+
+  def testDifferentCustomOptionTypes(self):
+    kint32min = -2**31
+    kint64min = -2**63
+    kint32max = 2**31 - 1
+    kint64max = 2**63 - 1
+    kuint32max = 2**32 - 1
+    kuint64max = 2**64 - 1
+
+    message_descriptor =\
+        unittest_custom_options_pb2.CustomOptionMinIntegerValues.DESCRIPTOR
+    message_options = message_descriptor.GetOptions()
+    self.assertEqual(False, message_options.Extensions[
+        unittest_custom_options_pb2.bool_opt])
+    self.assertEqual(kint32min, message_options.Extensions[
+        unittest_custom_options_pb2.int32_opt])
+    self.assertEqual(kint64min, message_options.Extensions[
+        unittest_custom_options_pb2.int64_opt])
+    self.assertEqual(0, message_options.Extensions[
+        unittest_custom_options_pb2.uint32_opt])
+    self.assertEqual(0, message_options.Extensions[
+        unittest_custom_options_pb2.uint64_opt])
+    self.assertEqual(kint32min, message_options.Extensions[
+        unittest_custom_options_pb2.sint32_opt])
+    self.assertEqual(kint64min, message_options.Extensions[
+        unittest_custom_options_pb2.sint64_opt])
+    self.assertEqual(0, message_options.Extensions[
+        unittest_custom_options_pb2.fixed32_opt])
+    self.assertEqual(0, message_options.Extensions[
+        unittest_custom_options_pb2.fixed64_opt])
+    self.assertEqual(kint32min, message_options.Extensions[
+        unittest_custom_options_pb2.sfixed32_opt])
+    self.assertEqual(kint64min, message_options.Extensions[
+        unittest_custom_options_pb2.sfixed64_opt])
+
+    message_descriptor =\
+        unittest_custom_options_pb2.CustomOptionMaxIntegerValues.DESCRIPTOR
+    message_options = message_descriptor.GetOptions()
+    self.assertEqual(True, message_options.Extensions[
+        unittest_custom_options_pb2.bool_opt])
+    self.assertEqual(kint32max, message_options.Extensions[
+        unittest_custom_options_pb2.int32_opt])
+    self.assertEqual(kint64max, message_options.Extensions[
+        unittest_custom_options_pb2.int64_opt])
+    self.assertEqual(kuint32max, message_options.Extensions[
+        unittest_custom_options_pb2.uint32_opt])
+    self.assertEqual(kuint64max, message_options.Extensions[
+        unittest_custom_options_pb2.uint64_opt])
+    self.assertEqual(kint32max, message_options.Extensions[
+        unittest_custom_options_pb2.sint32_opt])
+    self.assertEqual(kint64max, message_options.Extensions[
+        unittest_custom_options_pb2.sint64_opt])
+    self.assertEqual(kuint32max, message_options.Extensions[
+        unittest_custom_options_pb2.fixed32_opt])
+    self.assertEqual(kuint64max, message_options.Extensions[
+        unittest_custom_options_pb2.fixed64_opt])
+    self.assertEqual(kint32max, message_options.Extensions[
+        unittest_custom_options_pb2.sfixed32_opt])
+    self.assertEqual(kint64max, message_options.Extensions[
+        unittest_custom_options_pb2.sfixed64_opt])
+
+    message_descriptor =\
+        unittest_custom_options_pb2.CustomOptionOtherValues.DESCRIPTOR
+    message_options = message_descriptor.GetOptions()
+    self.assertEqual(-100, message_options.Extensions[
+        unittest_custom_options_pb2.int32_opt])
+    self.assertAlmostEqual(12.3456789, message_options.Extensions[
+        unittest_custom_options_pb2.float_opt], 6)
+    self.assertAlmostEqual(1.234567890123456789, message_options.Extensions[
+        unittest_custom_options_pb2.double_opt])
+    self.assertEqual(&#34;Hello, \&#34;World\&#34;&#34;, message_options.Extensions[
+        unittest_custom_options_pb2.string_opt])
+    self.assertEqual(b&#34;Hello\0World&#34;, message_options.Extensions[
+        unittest_custom_options_pb2.bytes_opt])
+    dummy_enum = unittest_custom_options_pb2.DummyMessageContainingEnum
+    self.assertEqual(
+        dummy_enum.TEST_OPTION_ENUM_TYPE2,
+        message_options.Extensions[unittest_custom_options_pb2.enum_opt])
+
+    message_descriptor =\
+        unittest_custom_options_pb2.SettingRealsFromPositiveInts.DESCRIPTOR
+    message_options = message_descriptor.GetOptions()
+    self.assertAlmostEqual(12, message_options.Extensions[
+        unittest_custom_options_pb2.float_opt], 6)
+    self.assertAlmostEqual(154, message_options.Extensions[
+        unittest_custom_options_pb2.double_opt])
+
+    message_descriptor =\
+        unittest_custom_options_pb2.SettingRealsFromNegativeInts.DESCRIPTOR
+    message_options = message_descriptor.GetOptions()
+    self.assertAlmostEqual(-12, message_options.Extensions[
+        unittest_custom_options_pb2.float_opt], 6)
+    self.assertAlmostEqual(-154, message_options.Extensions[
+        unittest_custom_options_pb2.double_opt])
+
+  def testComplexExtensionOptions(self):
+    descriptor =\
+        unittest_custom_options_pb2.VariousComplexOptions.DESCRIPTOR
+    options = descriptor.GetOptions()
+    self.assertEqual(42, options.Extensions[
+        unittest_custom_options_pb2.complex_opt1].foo)
+    self.assertEqual(324, options.Extensions[
+        unittest_custom_options_pb2.complex_opt1].Extensions[
+            unittest_custom_options_pb2.quux])
+    self.assertEqual(876, options.Extensions[
+        unittest_custom_options_pb2.complex_opt1].Extensions[
+            unittest_custom_options_pb2.corge].qux)
+    self.assertEqual(987, options.Extensions[
+        unittest_custom_options_pb2.complex_opt2].baz)
+    self.assertEqual(654, options.Extensions[
+        unittest_custom_options_pb2.complex_opt2].Extensions[
+            unittest_custom_options_pb2.grault])
+    self.assertEqual(743, options.Extensions[
+        unittest_custom_options_pb2.complex_opt2].bar.foo)
+    self.assertEqual(1999, options.Extensions[
+        unittest_custom_options_pb2.complex_opt2].bar.Extensions[
+            unittest_custom_options_pb2.quux])
+    self.assertEqual(2008, options.Extensions[
+        unittest_custom_options_pb2.complex_opt2].bar.Extensions[
+            unittest_custom_options_pb2.corge].qux)
+    self.assertEqual(741, options.Extensions[
+        unittest_custom_options_pb2.complex_opt2].Extensions[
+            unittest_custom_options_pb2.garply].foo)
+    self.assertEqual(1998, options.Extensions[
+        unittest_custom_options_pb2.complex_opt2].Extensions[
+            unittest_custom_options_pb2.garply].Extensions[
+                unittest_custom_options_pb2.quux])
+    self.assertEqual(2121, options.Extensions[
+        unittest_custom_options_pb2.complex_opt2].Extensions[
+            unittest_custom_options_pb2.garply].Extensions[
+                unittest_custom_options_pb2.corge].qux)
+    self.assertEqual(1971, options.Extensions[
+        unittest_custom_options_pb2.ComplexOptionType2
+        .ComplexOptionType4.complex_opt4].waldo)
+    self.assertEqual(321, options.Extensions[
+        unittest_custom_options_pb2.complex_opt2].fred.waldo)
+    self.assertEqual(9, options.Extensions[
+        unittest_custom_options_pb2.complex_opt3].qux)
+    self.assertEqual(22, options.Extensions[
+        unittest_custom_options_pb2.complex_opt3].complexoptiontype5.plugh)
+    self.assertEqual(24, options.Extensions[
+        unittest_custom_options_pb2.complexopt6].xyzzy)
+
+  # Check that aggregate options were parsed and saved correctly in
+  # the appropriate descriptors.
+  def testAggregateOptions(self):
+    file_descriptor = unittest_custom_options_pb2.DESCRIPTOR
+    message_descriptor =\
+        unittest_custom_options_pb2.AggregateMessage.DESCRIPTOR
+    field_descriptor = message_descriptor.fields_by_name[&#34;fieldname&#34;]
+    enum_descriptor = unittest_custom_options_pb2.AggregateEnum.DESCRIPTOR
+    enum_value_descriptor = enum_descriptor.values_by_name[&#34;VALUE&#34;]
+    service_descriptor =\
+        unittest_custom_options_pb2.AggregateService.DESCRIPTOR
+    method_descriptor = service_descriptor.FindMethodByName(&#34;Method&#34;)
+
+    # Tests for the different types of data embedded in fileopt
+    file_options = file_descriptor.GetOptions().Extensions[
+        unittest_custom_options_pb2.fileopt]
+    self.assertEqual(100, file_options.i)
+    self.assertEqual(&#34;FileAnnotation&#34;, file_options.s)
+    self.assertEqual(&#34;NestedFileAnnotation&#34;, file_options.sub.s)
+    self.assertEqual(&#34;FileExtensionAnnotation&#34;, file_options.file.Extensions[
+        unittest_custom_options_pb2.fileopt].s)
+    self.assertEqual(&#34;EmbeddedMessageSetElement&#34;, file_options.mset.Extensions[
+        unittest_custom_options_pb2.AggregateMessageSetElement
+        .message_set_extension].s)
+
+    # Simple tests for all the other types of annotations
+    self.assertEqual(
+        &#34;MessageAnnotation&#34;,
+        message_descriptor.GetOptions().Extensions[
+            unittest_custom_options_pb2.msgopt].s)
+    self.assertEqual(
+        &#34;FieldAnnotation&#34;,
+        field_descriptor.GetOptions().Extensions[
+            unittest_custom_options_pb2.fieldopt].s)
+    self.assertEqual(
+        &#34;EnumAnnotation&#34;,
+        enum_descriptor.GetOptions().Extensions[
+            unittest_custom_options_pb2.enumopt].s)
+    self.assertEqual(
+        &#34;EnumValueAnnotation&#34;,
+        enum_value_descriptor.GetOptions().Extensions[
+            unittest_custom_options_pb2.enumvalopt].s)
+    self.assertEqual(
+        &#34;ServiceAnnotation&#34;,
+        service_descriptor.GetOptions().Extensions[
+            unittest_custom_options_pb2.serviceopt].s)
+    self.assertEqual(
+        &#34;MethodAnnotation&#34;,
+        method_descriptor.GetOptions().Extensions[
+            unittest_custom_options_pb2.methodopt].s)
+
+  def testNestedOptions(self):
+    nested_message =\
+        unittest_custom_options_pb2.NestedOptionType.NestedMessage.DESCRIPTOR
+    self.assertEqual(1001, nested_message.GetOptions().Extensions[
+        unittest_custom_options_pb2.message_opt1])
+    nested_field = nested_message.fields_by_name[&#34;nested_field&#34;]
+    self.assertEqual(1002, nested_field.GetOptions().Extensions[
+        unittest_custom_options_pb2.field_opt1])
+    outer_message =\
+        unittest_custom_options_pb2.NestedOptionType.DESCRIPTOR
+    nested_enum = outer_message.enum_types_by_name[&#34;NestedEnum&#34;]
+    self.assertEqual(1003, nested_enum.GetOptions().Extensions[
+        unittest_custom_options_pb2.enum_opt1])
+    nested_enum_value = outer_message.enum_values_by_name[&#34;NESTED_ENUM_VALUE&#34;]
+    self.assertEqual(1004, nested_enum_value.GetOptions().Extensions[
+        unittest_custom_options_pb2.enum_value_opt1])
+    nested_extension = outer_message.extensions_by_name[&#34;nested_extension&#34;]
+    self.assertEqual(1005, nested_extension.GetOptions().Extensions[
+        unittest_custom_options_pb2.field_opt2])
+
+  def testFileDescriptorReferences(self):
+    self.assertEqual(self.my_enum.file, self.my_file)
+    self.assertEqual(self.my_message.file, self.my_file)
+
+  def testFileDescriptor(self):
+    self.assertEqual(self.my_file.name, &#39;some/filename/some.proto&#39;)
+    self.assertEqual(self.my_file.package, &#39;protobuf_unittest&#39;)
+    self.assertEqual(self.my_file.pool, self.pool)
+    self.assertFalse(self.my_file.has_options)
+    self.assertEqual(&#39;proto2&#39;, self.my_file.syntax)
+    file_proto = descriptor_pb2.FileDescriptorProto()
+    self.my_file.CopyToProto(file_proto)
+    self.assertEqual(self.my_file.serialized_pb,
+                     file_proto.SerializeToString())
+    # Generated modules also belong to the default pool.
+    self.assertEqual(unittest_pb2.DESCRIPTOR.pool, descriptor_pool.Default())
+
+  @unittest.skipIf(
+      api_implementation.Type() != &#39;cpp&#39; or api_implementation.Version() != 2,
+      &#39;Immutability of descriptors is only enforced in v2 implementation&#39;)
+  def testImmutableCppDescriptor(self):
+    file_descriptor = unittest_pb2.DESCRIPTOR
+    message_descriptor = unittest_pb2.TestAllTypes.DESCRIPTOR
+    field_descriptor = message_descriptor.fields_by_name[&#39;optional_int32&#39;]
+    enum_descriptor = message_descriptor.enum_types_by_name[&#39;NestedEnum&#39;]
+    oneof_descriptor = message_descriptor.oneofs_by_name[&#39;oneof_field&#39;]
+    with self.assertRaises(AttributeError):
+      message_descriptor.fields_by_name = None
+    with self.assertRaises(TypeError):
+      message_descriptor.fields_by_name[&#39;Another&#39;] = None
+    with self.assertRaises(TypeError):
+      message_descriptor.fields.append(None)
+    with self.assertRaises(AttributeError):
+      field_descriptor.containing_type = message_descriptor
+    with self.assertRaises(AttributeError):
+      file_descriptor.has_options = False
+    with self.assertRaises(AttributeError):
+      field_descriptor.has_options = False
+    with self.assertRaises(AttributeError):
+      oneof_descriptor.has_options = False
+    with self.assertRaises(AttributeError):
+      enum_descriptor.has_options = False
+    with self.assertRaises(AttributeError) as e:
+      message_descriptor.has_options = True
+    self.assertEqual(&#39;attribute is not writable: has_options&#39;,
+                     str(e.exception))
+
+  def testDefault(self):
+    message_descriptor = unittest_pb2.TestAllTypes.DESCRIPTOR
+    field = message_descriptor.fields_by_name[&#39;repeated_int32&#39;]
+    self.assertEqual(field.default_value, [])
+    field = message_descriptor.fields_by_name[&#39;repeated_nested_message&#39;]
+    self.assertEqual(field.default_value, [])
+    field = message_descriptor.fields_by_name[&#39;optionalgroup&#39;]
+    self.assertEqual(field.default_value, None)
+    field = message_descriptor.fields_by_name[&#39;optional_nested_message&#39;]
+    self.assertEqual(field.default_value, None)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>unittest.case.TestCase</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="google.protobuf.internal.descriptor_test.NewDescriptorTest" href="#google.protobuf.internal.descriptor_test.NewDescriptorTest">NewDescriptorTest</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="google.protobuf.internal.descriptor_test.DescriptorTest.GetDescriptorPool"><code class="name flex">
+<span>def <span class="ident">GetDescriptorPool</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def GetDescriptorPool(self):
+  return symbol_database.Default().pool</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.descriptor_test.DescriptorTest.setUp"><code class="name flex">
+<span>def <span class="ident">setUp</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Hook method for setting up the test fixture before exercising it.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def setUp(self):
+  file_proto = descriptor_pb2.FileDescriptorProto(
+      name=&#39;some/filename/some.proto&#39;,
+      package=&#39;protobuf_unittest&#39;)
+  message_proto = file_proto.message_type.add(
+      name=&#39;NestedMessage&#39;)
+  message_proto.field.add(
+      name=&#39;bb&#39;,
+      number=1,
+      type=descriptor_pb2.FieldDescriptorProto.TYPE_INT32,
+      label=descriptor_pb2.FieldDescriptorProto.LABEL_OPTIONAL)
+  enum_proto = message_proto.enum_type.add(
+      name=&#39;ForeignEnum&#39;)
+  enum_proto.value.add(name=&#39;FOREIGN_FOO&#39;, number=4)
+  enum_proto.value.add(name=&#39;FOREIGN_BAR&#39;, number=5)
+  enum_proto.value.add(name=&#39;FOREIGN_BAZ&#39;, number=6)
+
+  file_proto.message_type.add(name=&#39;ResponseMessage&#39;)
+  service_proto = file_proto.service.add(
+      name=&#39;Service&#39;)
+  method_proto = service_proto.method.add(
+      name=&#39;CallMethod&#39;,
+      input_type=&#39;.protobuf_unittest.NestedMessage&#39;,
+      output_type=&#39;.protobuf_unittest.ResponseMessage&#39;)
+
+  # Note: Calling DescriptorPool.Add() multiple times with the same file only
+  # works if the input is canonical; in particular, all type names must be
+  # fully qualified.
+  self.pool = self.GetDescriptorPool()
+  self.pool.Add(file_proto)
+  self.my_file = self.pool.FindFileByName(file_proto.name)
+  self.my_message = self.my_file.message_types_by_name[message_proto.name]
+  self.my_enum = self.my_message.enum_types_by_name[enum_proto.name]
+  self.my_service = self.my_file.services_by_name[service_proto.name]
+  self.my_method = self.my_service.methods_by_name[method_proto.name]</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.descriptor_test.DescriptorTest.testAggregateOptions"><code class="name flex">
+<span>def <span class="ident">testAggregateOptions</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testAggregateOptions(self):
+  file_descriptor = unittest_custom_options_pb2.DESCRIPTOR
+  message_descriptor =\
+      unittest_custom_options_pb2.AggregateMessage.DESCRIPTOR
+  field_descriptor = message_descriptor.fields_by_name[&#34;fieldname&#34;]
+  enum_descriptor = unittest_custom_options_pb2.AggregateEnum.DESCRIPTOR
+  enum_value_descriptor = enum_descriptor.values_by_name[&#34;VALUE&#34;]
+  service_descriptor =\
+      unittest_custom_options_pb2.AggregateService.DESCRIPTOR
+  method_descriptor = service_descriptor.FindMethodByName(&#34;Method&#34;)
+
+  # Tests for the different types of data embedded in fileopt
+  file_options = file_descriptor.GetOptions().Extensions[
+      unittest_custom_options_pb2.fileopt]
+  self.assertEqual(100, file_options.i)
+  self.assertEqual(&#34;FileAnnotation&#34;, file_options.s)
+  self.assertEqual(&#34;NestedFileAnnotation&#34;, file_options.sub.s)
+  self.assertEqual(&#34;FileExtensionAnnotation&#34;, file_options.file.Extensions[
+      unittest_custom_options_pb2.fileopt].s)
+  self.assertEqual(&#34;EmbeddedMessageSetElement&#34;, file_options.mset.Extensions[
+      unittest_custom_options_pb2.AggregateMessageSetElement
+      .message_set_extension].s)
+
+  # Simple tests for all the other types of annotations
+  self.assertEqual(
+      &#34;MessageAnnotation&#34;,
+      message_descriptor.GetOptions().Extensions[
+          unittest_custom_options_pb2.msgopt].s)
+  self.assertEqual(
+      &#34;FieldAnnotation&#34;,
+      field_descriptor.GetOptions().Extensions[
+          unittest_custom_options_pb2.fieldopt].s)
+  self.assertEqual(
+      &#34;EnumAnnotation&#34;,
+      enum_descriptor.GetOptions().Extensions[
+          unittest_custom_options_pb2.enumopt].s)
+  self.assertEqual(
+      &#34;EnumValueAnnotation&#34;,
+      enum_value_descriptor.GetOptions().Extensions[
+          unittest_custom_options_pb2.enumvalopt].s)
+  self.assertEqual(
+      &#34;ServiceAnnotation&#34;,
+      service_descriptor.GetOptions().Extensions[
+          unittest_custom_options_pb2.serviceopt].s)
+  self.assertEqual(
+      &#34;MethodAnnotation&#34;,
+      method_descriptor.GetOptions().Extensions[
+          unittest_custom_options_pb2.methodopt].s)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.descriptor_test.DescriptorTest.testComplexExtensionOptions"><code class="name flex">
+<span>def <span class="ident">testComplexExtensionOptions</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testComplexExtensionOptions(self):
+  descriptor =\
+      unittest_custom_options_pb2.VariousComplexOptions.DESCRIPTOR
+  options = descriptor.GetOptions()
+  self.assertEqual(42, options.Extensions[
+      unittest_custom_options_pb2.complex_opt1].foo)
+  self.assertEqual(324, options.Extensions[
+      unittest_custom_options_pb2.complex_opt1].Extensions[
+          unittest_custom_options_pb2.quux])
+  self.assertEqual(876, options.Extensions[
+      unittest_custom_options_pb2.complex_opt1].Extensions[
+          unittest_custom_options_pb2.corge].qux)
+  self.assertEqual(987, options.Extensions[
+      unittest_custom_options_pb2.complex_opt2].baz)
+  self.assertEqual(654, options.Extensions[
+      unittest_custom_options_pb2.complex_opt2].Extensions[
+          unittest_custom_options_pb2.grault])
+  self.assertEqual(743, options.Extensions[
+      unittest_custom_options_pb2.complex_opt2].bar.foo)
+  self.assertEqual(1999, options.Extensions[
+      unittest_custom_options_pb2.complex_opt2].bar.Extensions[
+          unittest_custom_options_pb2.quux])
+  self.assertEqual(2008, options.Extensions[
+      unittest_custom_options_pb2.complex_opt2].bar.Extensions[
+          unittest_custom_options_pb2.corge].qux)
+  self.assertEqual(741, options.Extensions[
+      unittest_custom_options_pb2.complex_opt2].Extensions[
+          unittest_custom_options_pb2.garply].foo)
+  self.assertEqual(1998, options.Extensions[
+      unittest_custom_options_pb2.complex_opt2].Extensions[
+          unittest_custom_options_pb2.garply].Extensions[
+              unittest_custom_options_pb2.quux])
+  self.assertEqual(2121, options.Extensions[
+      unittest_custom_options_pb2.complex_opt2].Extensions[
+          unittest_custom_options_pb2.garply].Extensions[
+              unittest_custom_options_pb2.corge].qux)
+  self.assertEqual(1971, options.Extensions[
+      unittest_custom_options_pb2.ComplexOptionType2
+      .ComplexOptionType4.complex_opt4].waldo)
+  self.assertEqual(321, options.Extensions[
+      unittest_custom_options_pb2.complex_opt2].fred.waldo)
+  self.assertEqual(9, options.Extensions[
+      unittest_custom_options_pb2.complex_opt3].qux)
+  self.assertEqual(22, options.Extensions[
+      unittest_custom_options_pb2.complex_opt3].complexoptiontype5.plugh)
+  self.assertEqual(24, options.Extensions[
+      unittest_custom_options_pb2.complexopt6].xyzzy)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.descriptor_test.DescriptorTest.testContainingServiceFixups"><code class="name flex">
+<span>def <span class="ident">testContainingServiceFixups</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testContainingServiceFixups(self):
+  self.assertEqual(self.my_service, self.my_method.containing_service)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.descriptor_test.DescriptorTest.testContainingTypeFixups"><code class="name flex">
+<span>def <span class="ident">testContainingTypeFixups</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testContainingTypeFixups(self):
+  self.assertEqual(self.my_message, self.my_message.fields[0].containing_type)
+  self.assertEqual(self.my_message, self.my_enum.containing_type)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.descriptor_test.DescriptorTest.testCustomOptionsCopyTo"><code class="name flex">
+<span>def <span class="ident">testCustomOptionsCopyTo</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testCustomOptionsCopyTo(self):
+  message_descriptor = (unittest_custom_options_pb2.
+                        TestMessageWithCustomOptions.DESCRIPTOR)
+  message_proto = descriptor_pb2.DescriptorProto()
+  message_descriptor.CopyToProto(message_proto)
+  self.assertEqual(len(message_proto.options.ListFields()),
+                   2)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.descriptor_test.DescriptorTest.testDefault"><code class="name flex">
+<span>def <span class="ident">testDefault</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testDefault(self):
+  message_descriptor = unittest_pb2.TestAllTypes.DESCRIPTOR
+  field = message_descriptor.fields_by_name[&#39;repeated_int32&#39;]
+  self.assertEqual(field.default_value, [])
+  field = message_descriptor.fields_by_name[&#39;repeated_nested_message&#39;]
+  self.assertEqual(field.default_value, [])
+  field = message_descriptor.fields_by_name[&#39;optionalgroup&#39;]
+  self.assertEqual(field.default_value, None)
+  field = message_descriptor.fields_by_name[&#39;optional_nested_message&#39;]
+  self.assertEqual(field.default_value, None)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.descriptor_test.DescriptorTest.testDifferentCustomOptionTypes"><code class="name flex">
+<span>def <span class="ident">testDifferentCustomOptionTypes</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testDifferentCustomOptionTypes(self):
+  kint32min = -2**31
+  kint64min = -2**63
+  kint32max = 2**31 - 1
+  kint64max = 2**63 - 1
+  kuint32max = 2**32 - 1
+  kuint64max = 2**64 - 1
+
+  message_descriptor =\
+      unittest_custom_options_pb2.CustomOptionMinIntegerValues.DESCRIPTOR
+  message_options = message_descriptor.GetOptions()
+  self.assertEqual(False, message_options.Extensions[
+      unittest_custom_options_pb2.bool_opt])
+  self.assertEqual(kint32min, message_options.Extensions[
+      unittest_custom_options_pb2.int32_opt])
+  self.assertEqual(kint64min, message_options.Extensions[
+      unittest_custom_options_pb2.int64_opt])
+  self.assertEqual(0, message_options.Extensions[
+      unittest_custom_options_pb2.uint32_opt])
+  self.assertEqual(0, message_options.Extensions[
+      unittest_custom_options_pb2.uint64_opt])
+  self.assertEqual(kint32min, message_options.Extensions[
+      unittest_custom_options_pb2.sint32_opt])
+  self.assertEqual(kint64min, message_options.Extensions[
+      unittest_custom_options_pb2.sint64_opt])
+  self.assertEqual(0, message_options.Extensions[
+      unittest_custom_options_pb2.fixed32_opt])
+  self.assertEqual(0, message_options.Extensions[
+      unittest_custom_options_pb2.fixed64_opt])
+  self.assertEqual(kint32min, message_options.Extensions[
+      unittest_custom_options_pb2.sfixed32_opt])
+  self.assertEqual(kint64min, message_options.Extensions[
+      unittest_custom_options_pb2.sfixed64_opt])
+
+  message_descriptor =\
+      unittest_custom_options_pb2.CustomOptionMaxIntegerValues.DESCRIPTOR
+  message_options = message_descriptor.GetOptions()
+  self.assertEqual(True, message_options.Extensions[
+      unittest_custom_options_pb2.bool_opt])
+  self.assertEqual(kint32max, message_options.Extensions[
+      unittest_custom_options_pb2.int32_opt])
+  self.assertEqual(kint64max, message_options.Extensions[
+      unittest_custom_options_pb2.int64_opt])
+  self.assertEqual(kuint32max, message_options.Extensions[
+      unittest_custom_options_pb2.uint32_opt])
+  self.assertEqual(kuint64max, message_options.Extensions[
+      unittest_custom_options_pb2.uint64_opt])
+  self.assertEqual(kint32max, message_options.Extensions[
+      unittest_custom_options_pb2.sint32_opt])
+  self.assertEqual(kint64max, message_options.Extensions[
+      unittest_custom_options_pb2.sint64_opt])
+  self.assertEqual(kuint32max, message_options.Extensions[
+      unittest_custom_options_pb2.fixed32_opt])
+  self.assertEqual(kuint64max, message_options.Extensions[
+      unittest_custom_options_pb2.fixed64_opt])
+  self.assertEqual(kint32max, message_options.Extensions[
+      unittest_custom_options_pb2.sfixed32_opt])
+  self.assertEqual(kint64max, message_options.Extensions[
+      unittest_custom_options_pb2.sfixed64_opt])
+
+  message_descriptor =\
+      unittest_custom_options_pb2.CustomOptionOtherValues.DESCRIPTOR
+  message_options = message_descriptor.GetOptions()
+  self.assertEqual(-100, message_options.Extensions[
+      unittest_custom_options_pb2.int32_opt])
+  self.assertAlmostEqual(12.3456789, message_options.Extensions[
+      unittest_custom_options_pb2.float_opt], 6)
+  self.assertAlmostEqual(1.234567890123456789, message_options.Extensions[
+      unittest_custom_options_pb2.double_opt])
+  self.assertEqual(&#34;Hello, \&#34;World\&#34;&#34;, message_options.Extensions[
+      unittest_custom_options_pb2.string_opt])
+  self.assertEqual(b&#34;Hello\0World&#34;, message_options.Extensions[
+      unittest_custom_options_pb2.bytes_opt])
+  dummy_enum = unittest_custom_options_pb2.DummyMessageContainingEnum
+  self.assertEqual(
+      dummy_enum.TEST_OPTION_ENUM_TYPE2,
+      message_options.Extensions[unittest_custom_options_pb2.enum_opt])
+
+  message_descriptor =\
+      unittest_custom_options_pb2.SettingRealsFromPositiveInts.DESCRIPTOR
+  message_options = message_descriptor.GetOptions()
+  self.assertAlmostEqual(12, message_options.Extensions[
+      unittest_custom_options_pb2.float_opt], 6)
+  self.assertAlmostEqual(154, message_options.Extensions[
+      unittest_custom_options_pb2.double_opt])
+
+  message_descriptor =\
+      unittest_custom_options_pb2.SettingRealsFromNegativeInts.DESCRIPTOR
+  message_options = message_descriptor.GetOptions()
+  self.assertAlmostEqual(-12, message_options.Extensions[
+      unittest_custom_options_pb2.float_opt], 6)
+  self.assertAlmostEqual(-154, message_options.Extensions[
+      unittest_custom_options_pb2.double_opt])</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.descriptor_test.DescriptorTest.testEnumFixups"><code class="name flex">
+<span>def <span class="ident">testEnumFixups</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testEnumFixups(self):
+  self.assertEqual(self.my_enum, self.my_enum.values[0].type)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.descriptor_test.DescriptorTest.testEnumValueName"><code class="name flex">
+<span>def <span class="ident">testEnumValueName</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testEnumValueName(self):
+  self.assertEqual(self.my_message.EnumValueName(&#39;ForeignEnum&#39;, 4),
+                   &#39;FOREIGN_FOO&#39;)
+
+  self.assertEqual(
+      self.my_message.enum_types_by_name[
+          &#39;ForeignEnum&#39;].values_by_number[4].name,
+      self.my_message.EnumValueName(&#39;ForeignEnum&#39;, 4))
+  with self.assertRaises(KeyError):
+    self.my_message.EnumValueName(&#39;ForeignEnum&#39;, 999)
+  with self.assertRaises(KeyError):
+    self.my_message.EnumValueName(&#39;NoneEnum&#39;, 999)
+  with self.assertRaises(TypeError):
+    self.my_message.EnumValueName()</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.descriptor_test.DescriptorTest.testFileDescriptor"><code class="name flex">
+<span>def <span class="ident">testFileDescriptor</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testFileDescriptor(self):
+  self.assertEqual(self.my_file.name, &#39;some/filename/some.proto&#39;)
+  self.assertEqual(self.my_file.package, &#39;protobuf_unittest&#39;)
+  self.assertEqual(self.my_file.pool, self.pool)
+  self.assertFalse(self.my_file.has_options)
+  self.assertEqual(&#39;proto2&#39;, self.my_file.syntax)
+  file_proto = descriptor_pb2.FileDescriptorProto()
+  self.my_file.CopyToProto(file_proto)
+  self.assertEqual(self.my_file.serialized_pb,
+                   file_proto.SerializeToString())
+  # Generated modules also belong to the default pool.
+  self.assertEqual(unittest_pb2.DESCRIPTOR.pool, descriptor_pool.Default())</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.descriptor_test.DescriptorTest.testFileDescriptorReferences"><code class="name flex">
+<span>def <span class="ident">testFileDescriptorReferences</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testFileDescriptorReferences(self):
+  self.assertEqual(self.my_enum.file, self.my_file)
+  self.assertEqual(self.my_message.file, self.my_file)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.descriptor_test.DescriptorTest.testGetOptions"><code class="name flex">
+<span>def <span class="ident">testGetOptions</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testGetOptions(self):
+  self.assertEqual(self.my_enum.GetOptions(),
+                   descriptor_pb2.EnumOptions())
+  self.assertEqual(self.my_enum.values[0].GetOptions(),
+                   descriptor_pb2.EnumValueOptions())
+  self.assertEqual(self.my_message.GetOptions(),
+                   descriptor_pb2.MessageOptions())
+  self.assertEqual(self.my_message.fields[0].GetOptions(),
+                   descriptor_pb2.FieldOptions())
+  self.assertEqual(self.my_method.GetOptions(),
+                   descriptor_pb2.MethodOptions())
+  self.assertEqual(self.my_service.GetOptions(),
+                   descriptor_pb2.ServiceOptions())</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.descriptor_test.DescriptorTest.testImmutableCppDescriptor"><code class="name flex">
+<span>def <span class="ident">testImmutableCppDescriptor</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@unittest.skipIf(
+    api_implementation.Type() != &#39;cpp&#39; or api_implementation.Version() != 2,
+    &#39;Immutability of descriptors is only enforced in v2 implementation&#39;)
+def testImmutableCppDescriptor(self):
+  file_descriptor = unittest_pb2.DESCRIPTOR
+  message_descriptor = unittest_pb2.TestAllTypes.DESCRIPTOR
+  field_descriptor = message_descriptor.fields_by_name[&#39;optional_int32&#39;]
+  enum_descriptor = message_descriptor.enum_types_by_name[&#39;NestedEnum&#39;]
+  oneof_descriptor = message_descriptor.oneofs_by_name[&#39;oneof_field&#39;]
+  with self.assertRaises(AttributeError):
+    message_descriptor.fields_by_name = None
+  with self.assertRaises(TypeError):
+    message_descriptor.fields_by_name[&#39;Another&#39;] = None
+  with self.assertRaises(TypeError):
+    message_descriptor.fields.append(None)
+  with self.assertRaises(AttributeError):
+    field_descriptor.containing_type = message_descriptor
+  with self.assertRaises(AttributeError):
+    file_descriptor.has_options = False
+  with self.assertRaises(AttributeError):
+    field_descriptor.has_options = False
+  with self.assertRaises(AttributeError):
+    oneof_descriptor.has_options = False
+  with self.assertRaises(AttributeError):
+    enum_descriptor.has_options = False
+  with self.assertRaises(AttributeError) as e:
+    message_descriptor.has_options = True
+  self.assertEqual(&#39;attribute is not writable: has_options&#39;,
+                   str(e.exception))</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.descriptor_test.DescriptorTest.testNestedOptions"><code class="name flex">
+<span>def <span class="ident">testNestedOptions</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testNestedOptions(self):
+  nested_message =\
+      unittest_custom_options_pb2.NestedOptionType.NestedMessage.DESCRIPTOR
+  self.assertEqual(1001, nested_message.GetOptions().Extensions[
+      unittest_custom_options_pb2.message_opt1])
+  nested_field = nested_message.fields_by_name[&#34;nested_field&#34;]
+  self.assertEqual(1002, nested_field.GetOptions().Extensions[
+      unittest_custom_options_pb2.field_opt1])
+  outer_message =\
+      unittest_custom_options_pb2.NestedOptionType.DESCRIPTOR
+  nested_enum = outer_message.enum_types_by_name[&#34;NestedEnum&#34;]
+  self.assertEqual(1003, nested_enum.GetOptions().Extensions[
+      unittest_custom_options_pb2.enum_opt1])
+  nested_enum_value = outer_message.enum_values_by_name[&#34;NESTED_ENUM_VALUE&#34;]
+  self.assertEqual(1004, nested_enum_value.GetOptions().Extensions[
+      unittest_custom_options_pb2.enum_value_opt1])
+  nested_extension = outer_message.extensions_by_name[&#34;nested_extension&#34;]
+  self.assertEqual(1005, nested_extension.GetOptions().Extensions[
+      unittest_custom_options_pb2.field_opt2])</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.descriptor_test.DescriptorTest.testSimpleCustomOptions"><code class="name flex">
+<span>def <span class="ident">testSimpleCustomOptions</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testSimpleCustomOptions(self):
+  file_descriptor = unittest_custom_options_pb2.DESCRIPTOR
+  message_descriptor = (unittest_custom_options_pb2.
+                        TestMessageWithCustomOptions.DESCRIPTOR)
+  field_descriptor = message_descriptor.fields_by_name[&#39;field1&#39;]
+  oneof_descriptor = message_descriptor.oneofs_by_name[&#39;AnOneof&#39;]
+  enum_descriptor = message_descriptor.enum_types_by_name[&#39;AnEnum&#39;]
+  enum_value_descriptor = (message_descriptor.
+                           enum_values_by_name[&#39;ANENUM_VAL2&#39;])
+  other_enum_value_descriptor = (message_descriptor.
+                                 enum_values_by_name[&#39;ANENUM_VAL1&#39;])
+  service_descriptor = (unittest_custom_options_pb2.
+                        TestServiceWithCustomOptions.DESCRIPTOR)
+  method_descriptor = service_descriptor.FindMethodByName(&#39;Foo&#39;)
+
+  file_options = file_descriptor.GetOptions()
+  file_opt1 = unittest_custom_options_pb2.file_opt1
+  self.assertEqual(9876543210, file_options.Extensions[file_opt1])
+  message_options = message_descriptor.GetOptions()
+  message_opt1 = unittest_custom_options_pb2.message_opt1
+  self.assertEqual(-56, message_options.Extensions[message_opt1])
+  field_options = field_descriptor.GetOptions()
+  field_opt1 = unittest_custom_options_pb2.field_opt1
+  self.assertEqual(8765432109, field_options.Extensions[field_opt1])
+  field_opt2 = unittest_custom_options_pb2.field_opt2
+  self.assertEqual(42, field_options.Extensions[field_opt2])
+  oneof_options = oneof_descriptor.GetOptions()
+  oneof_opt1 = unittest_custom_options_pb2.oneof_opt1
+  self.assertEqual(-99, oneof_options.Extensions[oneof_opt1])
+  enum_options = enum_descriptor.GetOptions()
+  enum_opt1 = unittest_custom_options_pb2.enum_opt1
+  self.assertEqual(-789, enum_options.Extensions[enum_opt1])
+  enum_value_options = enum_value_descriptor.GetOptions()
+  enum_value_opt1 = unittest_custom_options_pb2.enum_value_opt1
+  self.assertEqual(123, enum_value_options.Extensions[enum_value_opt1])
+
+  service_options = service_descriptor.GetOptions()
+  service_opt1 = unittest_custom_options_pb2.service_opt1
+  self.assertEqual(-9876543210, service_options.Extensions[service_opt1])
+  method_options = method_descriptor.GetOptions()
+  method_opt1 = unittest_custom_options_pb2.method_opt1
+  self.assertEqual(unittest_custom_options_pb2.METHODOPT1_VAL2,
+                   method_options.Extensions[method_opt1])
+
+  message_descriptor = (
+      unittest_custom_options_pb2.DummyMessageContainingEnum.DESCRIPTOR)
+  self.assertTrue(file_descriptor.has_options)
+  self.assertFalse(message_descriptor.has_options)
+  self.assertTrue(field_descriptor.has_options)
+  self.assertTrue(oneof_descriptor.has_options)
+  self.assertTrue(enum_descriptor.has_options)
+  self.assertTrue(enum_value_descriptor.has_options)
+  self.assertFalse(other_enum_value_descriptor.has_options)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="google.protobuf.internal.descriptor_test.GeneratedDescriptorTest"><code class="flex name class">
+<span>class <span class="ident">GeneratedDescriptorTest</span></span>
+<span>(</span><span>methodName='runTest')</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Tests for the properties of descriptors in generated code.</p>
+<p>Create an instance of the class that will use the named test
+method when executed. Raises a ValueError if the instance does
+not have a method with the specified name.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class GeneratedDescriptorTest(unittest.TestCase):
+  &#34;&#34;&#34;Tests for the properties of descriptors in generated code.&#34;&#34;&#34;
+
+  def CheckMessageDescriptor(self, message_descriptor):
+    # Basic properties
+    self.assertEqual(message_descriptor.name, &#39;TestAllTypes&#39;)
+    self.assertEqual(message_descriptor.full_name,
+                     &#39;protobuf_unittest.TestAllTypes&#39;)
+    # Test equality and hashability
+    self.assertEqual(message_descriptor, message_descriptor)
+    self.assertEqual(message_descriptor.fields[0].containing_type,
+                     message_descriptor)
+    self.assertIn(message_descriptor, [message_descriptor])
+    self.assertIn(message_descriptor, {message_descriptor: None})
+    # Test field containers
+    self.CheckDescriptorSequence(message_descriptor.fields)
+    self.CheckDescriptorMapping(message_descriptor.fields_by_name)
+    self.CheckDescriptorMapping(message_descriptor.fields_by_number)
+    self.CheckDescriptorMapping(message_descriptor.fields_by_camelcase_name)
+    self.CheckDescriptorMapping(message_descriptor.enum_types_by_name)
+    self.CheckDescriptorMapping(message_descriptor.enum_values_by_name)
+    self.CheckDescriptorMapping(message_descriptor.oneofs_by_name)
+    self.CheckDescriptorMapping(message_descriptor.enum_types[0].values_by_name)
+    # Test extension range
+    self.assertEqual(message_descriptor.extension_ranges, [])
+
+  def CheckFieldDescriptor(self, field_descriptor):
+    # Basic properties
+    self.assertEqual(field_descriptor.name, &#39;optional_int32&#39;)
+    self.assertEqual(field_descriptor.camelcase_name, &#39;optionalInt32&#39;)
+    self.assertEqual(field_descriptor.full_name,
+                     &#39;protobuf_unittest.TestAllTypes.optional_int32&#39;)
+    self.assertEqual(field_descriptor.containing_type.name, &#39;TestAllTypes&#39;)
+    self.assertEqual(field_descriptor.file, unittest_pb2.DESCRIPTOR)
+    # Test equality and hashability
+    self.assertEqual(field_descriptor, field_descriptor)
+    self.assertEqual(
+        field_descriptor.containing_type.fields_by_name[&#39;optional_int32&#39;],
+        field_descriptor)
+    self.assertEqual(
+        field_descriptor.containing_type.fields_by_camelcase_name[
+            &#39;optionalInt32&#39;],
+        field_descriptor)
+    self.assertIn(field_descriptor, [field_descriptor])
+    self.assertIn(field_descriptor, {field_descriptor: None})
+    self.assertEqual(None, field_descriptor.extension_scope)
+    self.assertEqual(None, field_descriptor.enum_type)
+    if api_implementation.Type() == &#39;cpp&#39;:
+      # For test coverage only
+      self.assertEqual(field_descriptor.id, field_descriptor.id)
+
+  def CheckDescriptorSequence(self, sequence):
+    # Verifies that a property like &#39;messageDescriptor.fields&#39; has all the
+    # properties of an immutable abc.Sequence.
+    self.assertNotEqual(sequence,
+                        unittest_pb2.TestAllExtensions.DESCRIPTOR.fields)
+    self.assertNotEqual(sequence, [])
+    self.assertNotEqual(sequence, 1)
+    self.assertFalse(sequence == 1)  # Only for cpp test coverage
+    self.assertEqual(sequence, sequence)
+    expected_list = list(sequence)
+    self.assertEqual(expected_list, sequence)
+    self.assertGreater(len(sequence), 0)  # Sized
+    self.assertEqual(len(sequence), len(expected_list))  # Iterable
+    self.assertEqual(sequence[len(sequence) -1], sequence[-1])
+    item = sequence[0]
+    self.assertEqual(item, sequence[0])
+    self.assertIn(item, sequence)  # Container
+    self.assertEqual(sequence.index(item), 0)
+    self.assertEqual(sequence.count(item), 1)
+    other_item = unittest_pb2.NestedTestAllTypes.DESCRIPTOR.fields[0]
+    self.assertNotIn(other_item, sequence)
+    self.assertEqual(sequence.count(other_item), 0)
+    self.assertRaises(ValueError, sequence.index, other_item)
+    self.assertRaises(ValueError, sequence.index, [])
+    reversed_iterator = reversed(sequence)
+    self.assertEqual(list(reversed_iterator), list(sequence)[::-1])
+    self.assertRaises(StopIteration, next, reversed_iterator)
+    expected_list[0] = &#39;change value&#39;
+    self.assertNotEqual(expected_list, sequence)
+    # TODO(jieluo): Change __repr__ support for DescriptorSequence.
+    if api_implementation.Type() == &#39;python&#39;:
+      self.assertEqual(str(list(sequence)), str(sequence))
+    else:
+      self.assertEqual(str(sequence)[0], &#39;&lt;&#39;)
+
+  def CheckDescriptorMapping(self, mapping):
+    # Verifies that a property like &#39;messageDescriptor.fields&#39; has all the
+    # properties of an immutable abc.Mapping.
+    self.assertNotEqual(
+        mapping, unittest_pb2.TestAllExtensions.DESCRIPTOR.fields_by_name)
+    self.assertNotEqual(mapping, {})
+    self.assertNotEqual(mapping, 1)
+    self.assertFalse(mapping == 1)  # Only for cpp test coverage
+    excepted_dict = dict(mapping.items())
+    self.assertEqual(mapping, excepted_dict)
+    self.assertEqual(mapping, mapping)
+    self.assertGreater(len(mapping), 0)  # Sized
+    self.assertEqual(len(mapping), len(excepted_dict))  # Iterable
+    if sys.version_info &gt;= (3,):
+      key, item = next(iter(mapping.items()))
+    else:
+      key, item = mapping.items()[0]
+    self.assertIn(key, mapping)  # Container
+    self.assertEqual(mapping.get(key), item)
+    with self.assertRaises(TypeError):
+      mapping.get()
+    # TODO(jieluo): Fix python and cpp extension diff.
+    if api_implementation.Type() == &#39;python&#39;:
+      self.assertRaises(TypeError, mapping.get, [])
+    else:
+      self.assertEqual(None, mapping.get([]))
+    # keys(), iterkeys() &amp;co
+    item = (next(iter(mapping.keys())), next(iter(mapping.values())))
+    self.assertEqual(item, next(iter(mapping.items())))
+    if sys.version_info &lt; (3,):
+      def CheckItems(seq, iterator):
+        self.assertEqual(next(iterator), seq[0])
+        self.assertEqual(list(iterator), seq[1:])
+      CheckItems(mapping.keys(), mapping.iterkeys())
+      CheckItems(mapping.values(), mapping.itervalues())
+      CheckItems(mapping.items(), mapping.iteritems())
+    excepted_dict[key] = &#39;change value&#39;
+    self.assertNotEqual(mapping, excepted_dict)
+    del excepted_dict[key]
+    excepted_dict[&#39;new_key&#39;] = &#39;new&#39;
+    self.assertNotEqual(mapping, excepted_dict)
+    self.assertRaises(KeyError, mapping.__getitem__, &#39;key_error&#39;)
+    self.assertRaises(KeyError, mapping.__getitem__, len(mapping) + 1)
+    # TODO(jieluo): Add __repr__ support for DescriptorMapping.
+    if api_implementation.Type() == &#39;python&#39;:
+      self.assertEqual(len(str(dict(mapping.items()))), len(str(mapping)))
+    else:
+      self.assertEqual(str(mapping)[0], &#39;&lt;&#39;)
+
+  def testDescriptor(self):
+    message_descriptor = unittest_pb2.TestAllTypes.DESCRIPTOR
+    self.CheckMessageDescriptor(message_descriptor)
+    field_descriptor = message_descriptor.fields_by_name[&#39;optional_int32&#39;]
+    self.CheckFieldDescriptor(field_descriptor)
+    field_descriptor = message_descriptor.fields_by_camelcase_name[
+        &#39;optionalInt32&#39;]
+    self.CheckFieldDescriptor(field_descriptor)
+    enum_descriptor = unittest_pb2.DESCRIPTOR.enum_types_by_name[
+        &#39;ForeignEnum&#39;]
+    self.assertEqual(None, enum_descriptor.containing_type)
+    # Test extension range
+    self.assertEqual(
+        unittest_pb2.TestAllExtensions.DESCRIPTOR.extension_ranges,
+        [(1, 536870912)])
+    self.assertEqual(
+        unittest_pb2.TestMultipleExtensionRanges.DESCRIPTOR.extension_ranges,
+        [(42, 43), (4143, 4244), (65536, 536870912)])
+
+  def testCppDescriptorContainer(self):
+    containing_file = unittest_pb2.DESCRIPTOR
+    self.CheckDescriptorSequence(containing_file.dependencies)
+    self.CheckDescriptorMapping(containing_file.message_types_by_name)
+    self.CheckDescriptorMapping(containing_file.enum_types_by_name)
+    self.CheckDescriptorMapping(containing_file.services_by_name)
+    self.CheckDescriptorMapping(containing_file.extensions_by_name)
+    self.CheckDescriptorMapping(
+        unittest_pb2.TestNestedExtension.DESCRIPTOR.extensions_by_name)
+
+  def testCppDescriptorContainer_Iterator(self):
+    # Same test with the iterator
+    enum = unittest_pb2.TestAllTypes.DESCRIPTOR.enum_types_by_name[&#39;NestedEnum&#39;]
+    values_iter = iter(enum.values)
+    del enum
+    self.assertEqual(&#39;FOO&#39;, next(values_iter).name)
+
+  def testDescriptorNestedTypesContainer(self):
+    message_descriptor = unittest_pb2.TestAllTypes.DESCRIPTOR
+    nested_message_descriptor = unittest_pb2.TestAllTypes.NestedMessage.DESCRIPTOR
+    self.assertEqual(len(message_descriptor.nested_types), 3)
+    self.assertFalse(None in message_descriptor.nested_types)
+    self.assertTrue(
+        nested_message_descriptor in message_descriptor.nested_types)
+
+  def testServiceDescriptor(self):
+    service_descriptor = unittest_pb2.DESCRIPTOR.services_by_name[&#39;TestService&#39;]
+    self.assertEqual(service_descriptor.name, &#39;TestService&#39;)
+    self.assertEqual(service_descriptor.methods[0].name, &#39;Foo&#39;)
+    self.assertIs(service_descriptor.file, unittest_pb2.DESCRIPTOR)
+    self.assertEqual(service_descriptor.index, 0)
+    self.CheckDescriptorMapping(service_descriptor.methods_by_name)
+
+  def testOneofDescriptor(self):
+    message_descriptor = unittest_pb2.TestAllTypes.DESCRIPTOR
+    oneof_descriptor = message_descriptor.oneofs_by_name[&#39;oneof_field&#39;]
+    self.assertFalse(oneof_descriptor.has_options)
+    self.assertEqual(message_descriptor, oneof_descriptor.containing_type)
+    self.assertEqual(&#39;oneof_field&#39;, oneof_descriptor.name)
+    self.assertEqual(&#39;protobuf_unittest.TestAllTypes.oneof_field&#39;,
+                     oneof_descriptor.full_name)
+    self.assertEqual(0, oneof_descriptor.index)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>unittest.case.TestCase</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="google.protobuf.internal.descriptor_test.GeneratedDescriptorTest.CheckDescriptorMapping"><code class="name flex">
+<span>def <span class="ident">CheckDescriptorMapping</span></span>(<span>self, mapping)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def CheckDescriptorMapping(self, mapping):
+  # Verifies that a property like &#39;messageDescriptor.fields&#39; has all the
+  # properties of an immutable abc.Mapping.
+  self.assertNotEqual(
+      mapping, unittest_pb2.TestAllExtensions.DESCRIPTOR.fields_by_name)
+  self.assertNotEqual(mapping, {})
+  self.assertNotEqual(mapping, 1)
+  self.assertFalse(mapping == 1)  # Only for cpp test coverage
+  excepted_dict = dict(mapping.items())
+  self.assertEqual(mapping, excepted_dict)
+  self.assertEqual(mapping, mapping)
+  self.assertGreater(len(mapping), 0)  # Sized
+  self.assertEqual(len(mapping), len(excepted_dict))  # Iterable
+  if sys.version_info &gt;= (3,):
+    key, item = next(iter(mapping.items()))
+  else:
+    key, item = mapping.items()[0]
+  self.assertIn(key, mapping)  # Container
+  self.assertEqual(mapping.get(key), item)
+  with self.assertRaises(TypeError):
+    mapping.get()
+  # TODO(jieluo): Fix python and cpp extension diff.
+  if api_implementation.Type() == &#39;python&#39;:
+    self.assertRaises(TypeError, mapping.get, [])
+  else:
+    self.assertEqual(None, mapping.get([]))
+  # keys(), iterkeys() &amp;co
+  item = (next(iter(mapping.keys())), next(iter(mapping.values())))
+  self.assertEqual(item, next(iter(mapping.items())))
+  if sys.version_info &lt; (3,):
+    def CheckItems(seq, iterator):
+      self.assertEqual(next(iterator), seq[0])
+      self.assertEqual(list(iterator), seq[1:])
+    CheckItems(mapping.keys(), mapping.iterkeys())
+    CheckItems(mapping.values(), mapping.itervalues())
+    CheckItems(mapping.items(), mapping.iteritems())
+  excepted_dict[key] = &#39;change value&#39;
+  self.assertNotEqual(mapping, excepted_dict)
+  del excepted_dict[key]
+  excepted_dict[&#39;new_key&#39;] = &#39;new&#39;
+  self.assertNotEqual(mapping, excepted_dict)
+  self.assertRaises(KeyError, mapping.__getitem__, &#39;key_error&#39;)
+  self.assertRaises(KeyError, mapping.__getitem__, len(mapping) + 1)
+  # TODO(jieluo): Add __repr__ support for DescriptorMapping.
+  if api_implementation.Type() == &#39;python&#39;:
+    self.assertEqual(len(str(dict(mapping.items()))), len(str(mapping)))
+  else:
+    self.assertEqual(str(mapping)[0], &#39;&lt;&#39;)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.descriptor_test.GeneratedDescriptorTest.CheckDescriptorSequence"><code class="name flex">
+<span>def <span class="ident">CheckDescriptorSequence</span></span>(<span>self, sequence)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def CheckDescriptorSequence(self, sequence):
+  # Verifies that a property like &#39;messageDescriptor.fields&#39; has all the
+  # properties of an immutable abc.Sequence.
+  self.assertNotEqual(sequence,
+                      unittest_pb2.TestAllExtensions.DESCRIPTOR.fields)
+  self.assertNotEqual(sequence, [])
+  self.assertNotEqual(sequence, 1)
+  self.assertFalse(sequence == 1)  # Only for cpp test coverage
+  self.assertEqual(sequence, sequence)
+  expected_list = list(sequence)
+  self.assertEqual(expected_list, sequence)
+  self.assertGreater(len(sequence), 0)  # Sized
+  self.assertEqual(len(sequence), len(expected_list))  # Iterable
+  self.assertEqual(sequence[len(sequence) -1], sequence[-1])
+  item = sequence[0]
+  self.assertEqual(item, sequence[0])
+  self.assertIn(item, sequence)  # Container
+  self.assertEqual(sequence.index(item), 0)
+  self.assertEqual(sequence.count(item), 1)
+  other_item = unittest_pb2.NestedTestAllTypes.DESCRIPTOR.fields[0]
+  self.assertNotIn(other_item, sequence)
+  self.assertEqual(sequence.count(other_item), 0)
+  self.assertRaises(ValueError, sequence.index, other_item)
+  self.assertRaises(ValueError, sequence.index, [])
+  reversed_iterator = reversed(sequence)
+  self.assertEqual(list(reversed_iterator), list(sequence)[::-1])
+  self.assertRaises(StopIteration, next, reversed_iterator)
+  expected_list[0] = &#39;change value&#39;
+  self.assertNotEqual(expected_list, sequence)
+  # TODO(jieluo): Change __repr__ support for DescriptorSequence.
+  if api_implementation.Type() == &#39;python&#39;:
+    self.assertEqual(str(list(sequence)), str(sequence))
+  else:
+    self.assertEqual(str(sequence)[0], &#39;&lt;&#39;)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.descriptor_test.GeneratedDescriptorTest.CheckFieldDescriptor"><code class="name flex">
+<span>def <span class="ident">CheckFieldDescriptor</span></span>(<span>self, field_descriptor)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def CheckFieldDescriptor(self, field_descriptor):
+  # Basic properties
+  self.assertEqual(field_descriptor.name, &#39;optional_int32&#39;)
+  self.assertEqual(field_descriptor.camelcase_name, &#39;optionalInt32&#39;)
+  self.assertEqual(field_descriptor.full_name,
+                   &#39;protobuf_unittest.TestAllTypes.optional_int32&#39;)
+  self.assertEqual(field_descriptor.containing_type.name, &#39;TestAllTypes&#39;)
+  self.assertEqual(field_descriptor.file, unittest_pb2.DESCRIPTOR)
+  # Test equality and hashability
+  self.assertEqual(field_descriptor, field_descriptor)
+  self.assertEqual(
+      field_descriptor.containing_type.fields_by_name[&#39;optional_int32&#39;],
+      field_descriptor)
+  self.assertEqual(
+      field_descriptor.containing_type.fields_by_camelcase_name[
+          &#39;optionalInt32&#39;],
+      field_descriptor)
+  self.assertIn(field_descriptor, [field_descriptor])
+  self.assertIn(field_descriptor, {field_descriptor: None})
+  self.assertEqual(None, field_descriptor.extension_scope)
+  self.assertEqual(None, field_descriptor.enum_type)
+  if api_implementation.Type() == &#39;cpp&#39;:
+    # For test coverage only
+    self.assertEqual(field_descriptor.id, field_descriptor.id)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.descriptor_test.GeneratedDescriptorTest.CheckMessageDescriptor"><code class="name flex">
+<span>def <span class="ident">CheckMessageDescriptor</span></span>(<span>self, message_descriptor)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def CheckMessageDescriptor(self, message_descriptor):
+  # Basic properties
+  self.assertEqual(message_descriptor.name, &#39;TestAllTypes&#39;)
+  self.assertEqual(message_descriptor.full_name,
+                   &#39;protobuf_unittest.TestAllTypes&#39;)
+  # Test equality and hashability
+  self.assertEqual(message_descriptor, message_descriptor)
+  self.assertEqual(message_descriptor.fields[0].containing_type,
+                   message_descriptor)
+  self.assertIn(message_descriptor, [message_descriptor])
+  self.assertIn(message_descriptor, {message_descriptor: None})
+  # Test field containers
+  self.CheckDescriptorSequence(message_descriptor.fields)
+  self.CheckDescriptorMapping(message_descriptor.fields_by_name)
+  self.CheckDescriptorMapping(message_descriptor.fields_by_number)
+  self.CheckDescriptorMapping(message_descriptor.fields_by_camelcase_name)
+  self.CheckDescriptorMapping(message_descriptor.enum_types_by_name)
+  self.CheckDescriptorMapping(message_descriptor.enum_values_by_name)
+  self.CheckDescriptorMapping(message_descriptor.oneofs_by_name)
+  self.CheckDescriptorMapping(message_descriptor.enum_types[0].values_by_name)
+  # Test extension range
+  self.assertEqual(message_descriptor.extension_ranges, [])</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.descriptor_test.GeneratedDescriptorTest.testCppDescriptorContainer"><code class="name flex">
+<span>def <span class="ident">testCppDescriptorContainer</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testCppDescriptorContainer(self):
+  containing_file = unittest_pb2.DESCRIPTOR
+  self.CheckDescriptorSequence(containing_file.dependencies)
+  self.CheckDescriptorMapping(containing_file.message_types_by_name)
+  self.CheckDescriptorMapping(containing_file.enum_types_by_name)
+  self.CheckDescriptorMapping(containing_file.services_by_name)
+  self.CheckDescriptorMapping(containing_file.extensions_by_name)
+  self.CheckDescriptorMapping(
+      unittest_pb2.TestNestedExtension.DESCRIPTOR.extensions_by_name)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.descriptor_test.GeneratedDescriptorTest.testCppDescriptorContainer_Iterator"><code class="name flex">
+<span>def <span class="ident">testCppDescriptorContainer_Iterator</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testCppDescriptorContainer_Iterator(self):
+  # Same test with the iterator
+  enum = unittest_pb2.TestAllTypes.DESCRIPTOR.enum_types_by_name[&#39;NestedEnum&#39;]
+  values_iter = iter(enum.values)
+  del enum
+  self.assertEqual(&#39;FOO&#39;, next(values_iter).name)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.descriptor_test.GeneratedDescriptorTest.testDescriptor"><code class="name flex">
+<span>def <span class="ident">testDescriptor</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testDescriptor(self):
+  message_descriptor = unittest_pb2.TestAllTypes.DESCRIPTOR
+  self.CheckMessageDescriptor(message_descriptor)
+  field_descriptor = message_descriptor.fields_by_name[&#39;optional_int32&#39;]
+  self.CheckFieldDescriptor(field_descriptor)
+  field_descriptor = message_descriptor.fields_by_camelcase_name[
+      &#39;optionalInt32&#39;]
+  self.CheckFieldDescriptor(field_descriptor)
+  enum_descriptor = unittest_pb2.DESCRIPTOR.enum_types_by_name[
+      &#39;ForeignEnum&#39;]
+  self.assertEqual(None, enum_descriptor.containing_type)
+  # Test extension range
+  self.assertEqual(
+      unittest_pb2.TestAllExtensions.DESCRIPTOR.extension_ranges,
+      [(1, 536870912)])
+  self.assertEqual(
+      unittest_pb2.TestMultipleExtensionRanges.DESCRIPTOR.extension_ranges,
+      [(42, 43), (4143, 4244), (65536, 536870912)])</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.descriptor_test.GeneratedDescriptorTest.testDescriptorNestedTypesContainer"><code class="name flex">
+<span>def <span class="ident">testDescriptorNestedTypesContainer</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testDescriptorNestedTypesContainer(self):
+  message_descriptor = unittest_pb2.TestAllTypes.DESCRIPTOR
+  nested_message_descriptor = unittest_pb2.TestAllTypes.NestedMessage.DESCRIPTOR
+  self.assertEqual(len(message_descriptor.nested_types), 3)
+  self.assertFalse(None in message_descriptor.nested_types)
+  self.assertTrue(
+      nested_message_descriptor in message_descriptor.nested_types)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.descriptor_test.GeneratedDescriptorTest.testOneofDescriptor"><code class="name flex">
+<span>def <span class="ident">testOneofDescriptor</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testOneofDescriptor(self):
+  message_descriptor = unittest_pb2.TestAllTypes.DESCRIPTOR
+  oneof_descriptor = message_descriptor.oneofs_by_name[&#39;oneof_field&#39;]
+  self.assertFalse(oneof_descriptor.has_options)
+  self.assertEqual(message_descriptor, oneof_descriptor.containing_type)
+  self.assertEqual(&#39;oneof_field&#39;, oneof_descriptor.name)
+  self.assertEqual(&#39;protobuf_unittest.TestAllTypes.oneof_field&#39;,
+                   oneof_descriptor.full_name)
+  self.assertEqual(0, oneof_descriptor.index)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.descriptor_test.GeneratedDescriptorTest.testServiceDescriptor"><code class="name flex">
+<span>def <span class="ident">testServiceDescriptor</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testServiceDescriptor(self):
+  service_descriptor = unittest_pb2.DESCRIPTOR.services_by_name[&#39;TestService&#39;]
+  self.assertEqual(service_descriptor.name, &#39;TestService&#39;)
+  self.assertEqual(service_descriptor.methods[0].name, &#39;Foo&#39;)
+  self.assertIs(service_descriptor.file, unittest_pb2.DESCRIPTOR)
+  self.assertEqual(service_descriptor.index, 0)
+  self.CheckDescriptorMapping(service_descriptor.methods_by_name)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="google.protobuf.internal.descriptor_test.MakeDescriptorTest"><code class="flex name class">
+<span>class <span class="ident">MakeDescriptorTest</span></span>
+<span>(</span><span>methodName='runTest')</span>
+</code></dt>
+<dd>
+<section class="desc"><p>A class whose instances are single test cases.</p>
+<p>By default, the test code itself should be placed in a method named
+'runTest'.</p>
+<p>If the fixture may be used for many test cases, create as
+many test methods as are needed. When instantiating such a TestCase
+subclass, specify in the constructor arguments the name of the test method
+that the instance is to execute.</p>
+<p>Test authors should subclass TestCase for their own tests. Construction
+and deconstruction of the test's environment ('fixture') can be
+implemented by overriding the 'setUp' and 'tearDown' methods respectively.</p>
+<p>If it is necessary to override the <strong>init</strong> method, the base class
+<strong>init</strong> method must always be called. It is important that subclasses
+should not change the signature of their <strong>init</strong> method, since instances
+of the classes are instantiated automatically by parts of the framework
+in order to be run.</p>
+<p>When subclassing TestCase, you can set these attributes:
+* failureException: determines which exception will be raised when
+the instance's assertion methods fail; test methods raising this
+exception will be deemed to have 'failed' rather than 'errored'.
+* longMessage: determines whether long messages (including repr of
+objects used in assert methods) will be printed on failure in <em>addition</em>
+to any explicit message passed.
+* maxDiff: sets the maximum length of a diff in failure messages
+by assert methods using difflib. It is looked up as an instance
+attribute so can be configured by individual tests if required.</p>
+<p>Create an instance of the class that will use the named test
+method when executed. Raises a ValueError if the instance does
+not have a method with the specified name.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MakeDescriptorTest(unittest.TestCase):
+
+  def testMakeDescriptorWithNestedFields(self):
+    file_descriptor_proto = descriptor_pb2.FileDescriptorProto()
+    file_descriptor_proto.name = &#39;Foo2&#39;
+    message_type = file_descriptor_proto.message_type.add()
+    message_type.name = file_descriptor_proto.name
+    nested_type = message_type.nested_type.add()
+    nested_type.name = &#39;Sub&#39;
+    enum_type = nested_type.enum_type.add()
+    enum_type.name = &#39;FOO&#39;
+    enum_type_val = enum_type.value.add()
+    enum_type_val.name = &#39;BAR&#39;
+    enum_type_val.number = 3
+    field = message_type.field.add()
+    field.number = 1
+    field.name = &#39;uint64_field&#39;
+    field.label = descriptor.FieldDescriptor.LABEL_REQUIRED
+    field.type = descriptor.FieldDescriptor.TYPE_UINT64
+    field = message_type.field.add()
+    field.number = 2
+    field.name = &#39;nested_message_field&#39;
+    field.label = descriptor.FieldDescriptor.LABEL_REQUIRED
+    field.type = descriptor.FieldDescriptor.TYPE_MESSAGE
+    field.type_name = &#39;Sub&#39;
+    enum_field = nested_type.field.add()
+    enum_field.number = 2
+    enum_field.name = &#39;bar_field&#39;
+    enum_field.label = descriptor.FieldDescriptor.LABEL_REQUIRED
+    enum_field.type = descriptor.FieldDescriptor.TYPE_ENUM
+    enum_field.type_name = &#39;Foo2.Sub.FOO&#39;
+
+    result = descriptor.MakeDescriptor(message_type)
+    self.assertEqual(result.fields[0].cpp_type,
+                     descriptor.FieldDescriptor.CPPTYPE_UINT64)
+    self.assertEqual(result.fields[1].cpp_type,
+                     descriptor.FieldDescriptor.CPPTYPE_MESSAGE)
+    self.assertEqual(result.fields[1].message_type.containing_type,
+                     result)
+    self.assertEqual(result.nested_types[0].fields[0].full_name,
+                     &#39;Foo2.Sub.bar_field&#39;)
+    self.assertEqual(result.nested_types[0].fields[0].enum_type,
+                     result.nested_types[0].enum_types[0])
+    self.assertFalse(result.has_options)
+    self.assertFalse(result.fields[0].has_options)
+    if api_implementation.Type() == &#39;cpp&#39;:
+      with self.assertRaises(AttributeError):
+        result.fields[0].has_options = False
+
+  def testMakeDescriptorWithUnsignedIntField(self):
+    file_descriptor_proto = descriptor_pb2.FileDescriptorProto()
+    file_descriptor_proto.name = &#39;Foo&#39;
+    message_type = file_descriptor_proto.message_type.add()
+    message_type.name = file_descriptor_proto.name
+    enum_type = message_type.enum_type.add()
+    enum_type.name = &#39;FOO&#39;
+    enum_type_val = enum_type.value.add()
+    enum_type_val.name = &#39;BAR&#39;
+    enum_type_val.number = 3
+    field = message_type.field.add()
+    field.number = 1
+    field.name = &#39;uint64_field&#39;
+    field.label = descriptor.FieldDescriptor.LABEL_REQUIRED
+    field.type = descriptor.FieldDescriptor.TYPE_UINT64
+    enum_field = message_type.field.add()
+    enum_field.number = 2
+    enum_field.name = &#39;bar_field&#39;
+    enum_field.label = descriptor.FieldDescriptor.LABEL_REQUIRED
+    enum_field.type = descriptor.FieldDescriptor.TYPE_ENUM
+    enum_field.type_name = &#39;Foo.FOO&#39;
+
+    result = descriptor.MakeDescriptor(message_type)
+    self.assertEqual(result.fields[0].cpp_type,
+                     descriptor.FieldDescriptor.CPPTYPE_UINT64)
+
+
+  def testMakeDescriptorWithOptions(self):
+    descriptor_proto = descriptor_pb2.DescriptorProto()
+    aggregate_message = unittest_custom_options_pb2.AggregateMessage
+    aggregate_message.DESCRIPTOR.CopyToProto(descriptor_proto)
+    reformed_descriptor = descriptor.MakeDescriptor(descriptor_proto)
+
+    options = reformed_descriptor.GetOptions()
+    self.assertEqual(101,
+                      options.Extensions[unittest_custom_options_pb2.msgopt].i)
+
+  def testCamelcaseName(self):
+    descriptor_proto = descriptor_pb2.DescriptorProto()
+    descriptor_proto.name = &#39;Bar&#39;
+    names = [&#39;foo_foo&#39;, &#39;FooBar&#39;, &#39;fooBaz&#39;, &#39;fooFoo&#39;, &#39;foobar&#39;]
+    camelcase_names = [&#39;fooFoo&#39;, &#39;fooBar&#39;, &#39;fooBaz&#39;, &#39;fooFoo&#39;, &#39;foobar&#39;]
+    for index in range(len(names)):
+      field = descriptor_proto.field.add()
+      field.number = index + 1
+      field.name = names[index]
+    result = descriptor.MakeDescriptor(descriptor_proto)
+    for index in range(len(camelcase_names)):
+      self.assertEqual(result.fields[index].camelcase_name,
+                       camelcase_names[index])
+
+  def testJsonName(self):
+    descriptor_proto = descriptor_pb2.DescriptorProto()
+    descriptor_proto.name = &#39;TestJsonName&#39;
+    names = [&#39;field_name&#39;, &#39;fieldName&#39;, &#39;FieldName&#39;,
+             &#39;_field_name&#39;, &#39;FIELD_NAME&#39;, &#39;json_name&#39;]
+    json_names = [&#39;fieldName&#39;, &#39;fieldName&#39;, &#39;FieldName&#39;,
+                  &#39;FieldName&#39;, &#39;FIELDNAME&#39;, &#39;@type&#39;]
+    for index in range(len(names)):
+      field = descriptor_proto.field.add()
+      field.number = index + 1
+      field.name = names[index]
+    field.json_name = &#39;@type&#39;
+    result = descriptor.MakeDescriptor(descriptor_proto)
+    for index in range(len(json_names)):
+      self.assertEqual(result.fields[index].json_name,
+                       json_names[index])</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>unittest.case.TestCase</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="google.protobuf.internal.descriptor_test.MakeDescriptorTest.testCamelcaseName"><code class="name flex">
+<span>def <span class="ident">testCamelcaseName</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testCamelcaseName(self):
+  descriptor_proto = descriptor_pb2.DescriptorProto()
+  descriptor_proto.name = &#39;Bar&#39;
+  names = [&#39;foo_foo&#39;, &#39;FooBar&#39;, &#39;fooBaz&#39;, &#39;fooFoo&#39;, &#39;foobar&#39;]
+  camelcase_names = [&#39;fooFoo&#39;, &#39;fooBar&#39;, &#39;fooBaz&#39;, &#39;fooFoo&#39;, &#39;foobar&#39;]
+  for index in range(len(names)):
+    field = descriptor_proto.field.add()
+    field.number = index + 1
+    field.name = names[index]
+  result = descriptor.MakeDescriptor(descriptor_proto)
+  for index in range(len(camelcase_names)):
+    self.assertEqual(result.fields[index].camelcase_name,
+                     camelcase_names[index])</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.descriptor_test.MakeDescriptorTest.testJsonName"><code class="name flex">
+<span>def <span class="ident">testJsonName</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testJsonName(self):
+  descriptor_proto = descriptor_pb2.DescriptorProto()
+  descriptor_proto.name = &#39;TestJsonName&#39;
+  names = [&#39;field_name&#39;, &#39;fieldName&#39;, &#39;FieldName&#39;,
+           &#39;_field_name&#39;, &#39;FIELD_NAME&#39;, &#39;json_name&#39;]
+  json_names = [&#39;fieldName&#39;, &#39;fieldName&#39;, &#39;FieldName&#39;,
+                &#39;FieldName&#39;, &#39;FIELDNAME&#39;, &#39;@type&#39;]
+  for index in range(len(names)):
+    field = descriptor_proto.field.add()
+    field.number = index + 1
+    field.name = names[index]
+  field.json_name = &#39;@type&#39;
+  result = descriptor.MakeDescriptor(descriptor_proto)
+  for index in range(len(json_names)):
+    self.assertEqual(result.fields[index].json_name,
+                     json_names[index])</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.descriptor_test.MakeDescriptorTest.testMakeDescriptorWithNestedFields"><code class="name flex">
+<span>def <span class="ident">testMakeDescriptorWithNestedFields</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testMakeDescriptorWithNestedFields(self):
+  file_descriptor_proto = descriptor_pb2.FileDescriptorProto()
+  file_descriptor_proto.name = &#39;Foo2&#39;
+  message_type = file_descriptor_proto.message_type.add()
+  message_type.name = file_descriptor_proto.name
+  nested_type = message_type.nested_type.add()
+  nested_type.name = &#39;Sub&#39;
+  enum_type = nested_type.enum_type.add()
+  enum_type.name = &#39;FOO&#39;
+  enum_type_val = enum_type.value.add()
+  enum_type_val.name = &#39;BAR&#39;
+  enum_type_val.number = 3
+  field = message_type.field.add()
+  field.number = 1
+  field.name = &#39;uint64_field&#39;
+  field.label = descriptor.FieldDescriptor.LABEL_REQUIRED
+  field.type = descriptor.FieldDescriptor.TYPE_UINT64
+  field = message_type.field.add()
+  field.number = 2
+  field.name = &#39;nested_message_field&#39;
+  field.label = descriptor.FieldDescriptor.LABEL_REQUIRED
+  field.type = descriptor.FieldDescriptor.TYPE_MESSAGE
+  field.type_name = &#39;Sub&#39;
+  enum_field = nested_type.field.add()
+  enum_field.number = 2
+  enum_field.name = &#39;bar_field&#39;
+  enum_field.label = descriptor.FieldDescriptor.LABEL_REQUIRED
+  enum_field.type = descriptor.FieldDescriptor.TYPE_ENUM
+  enum_field.type_name = &#39;Foo2.Sub.FOO&#39;
+
+  result = descriptor.MakeDescriptor(message_type)
+  self.assertEqual(result.fields[0].cpp_type,
+                   descriptor.FieldDescriptor.CPPTYPE_UINT64)
+  self.assertEqual(result.fields[1].cpp_type,
+                   descriptor.FieldDescriptor.CPPTYPE_MESSAGE)
+  self.assertEqual(result.fields[1].message_type.containing_type,
+                   result)
+  self.assertEqual(result.nested_types[0].fields[0].full_name,
+                   &#39;Foo2.Sub.bar_field&#39;)
+  self.assertEqual(result.nested_types[0].fields[0].enum_type,
+                   result.nested_types[0].enum_types[0])
+  self.assertFalse(result.has_options)
+  self.assertFalse(result.fields[0].has_options)
+  if api_implementation.Type() == &#39;cpp&#39;:
+    with self.assertRaises(AttributeError):
+      result.fields[0].has_options = False</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.descriptor_test.MakeDescriptorTest.testMakeDescriptorWithOptions"><code class="name flex">
+<span>def <span class="ident">testMakeDescriptorWithOptions</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testMakeDescriptorWithOptions(self):
+  descriptor_proto = descriptor_pb2.DescriptorProto()
+  aggregate_message = unittest_custom_options_pb2.AggregateMessage
+  aggregate_message.DESCRIPTOR.CopyToProto(descriptor_proto)
+  reformed_descriptor = descriptor.MakeDescriptor(descriptor_proto)
+
+  options = reformed_descriptor.GetOptions()
+  self.assertEqual(101,
+                    options.Extensions[unittest_custom_options_pb2.msgopt].i)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.descriptor_test.MakeDescriptorTest.testMakeDescriptorWithUnsignedIntField"><code class="name flex">
+<span>def <span class="ident">testMakeDescriptorWithUnsignedIntField</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testMakeDescriptorWithUnsignedIntField(self):
+  file_descriptor_proto = descriptor_pb2.FileDescriptorProto()
+  file_descriptor_proto.name = &#39;Foo&#39;
+  message_type = file_descriptor_proto.message_type.add()
+  message_type.name = file_descriptor_proto.name
+  enum_type = message_type.enum_type.add()
+  enum_type.name = &#39;FOO&#39;
+  enum_type_val = enum_type.value.add()
+  enum_type_val.name = &#39;BAR&#39;
+  enum_type_val.number = 3
+  field = message_type.field.add()
+  field.number = 1
+  field.name = &#39;uint64_field&#39;
+  field.label = descriptor.FieldDescriptor.LABEL_REQUIRED
+  field.type = descriptor.FieldDescriptor.TYPE_UINT64
+  enum_field = message_type.field.add()
+  enum_field.number = 2
+  enum_field.name = &#39;bar_field&#39;
+  enum_field.label = descriptor.FieldDescriptor.LABEL_REQUIRED
+  enum_field.type = descriptor.FieldDescriptor.TYPE_ENUM
+  enum_field.type_name = &#39;Foo.FOO&#39;
+
+  result = descriptor.MakeDescriptor(message_type)
+  self.assertEqual(result.fields[0].cpp_type,
+                   descriptor.FieldDescriptor.CPPTYPE_UINT64)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="google.protobuf.internal.descriptor_test.NewDescriptorTest"><code class="flex name class">
+<span>class <span class="ident">NewDescriptorTest</span></span>
+<span>(</span><span>methodName='runTest')</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Redo the same tests as above, but with a separate DescriptorPool.</p>
+<p>Create an instance of the class that will use the named test
+method when executed. Raises a ValueError if the instance does
+not have a method with the specified name.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class NewDescriptorTest(DescriptorTest):
+  &#34;&#34;&#34;Redo the same tests as above, but with a separate DescriptorPool.&#34;&#34;&#34;
+
+  def GetDescriptorPool(self):
+    return descriptor_pool.DescriptorPool()</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="google.protobuf.internal.descriptor_test.DescriptorTest" href="#google.protobuf.internal.descriptor_test.DescriptorTest">DescriptorTest</a></li>
+<li>unittest.case.TestCase</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="google.protobuf.internal.descriptor_test.NewDescriptorTest.GetDescriptorPool"><code class="name flex">
+<span>def <span class="ident">GetDescriptorPool</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def GetDescriptorPool(self):
+  return descriptor_pool.DescriptorPool()</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="google.protobuf.internal.descriptor_test.DescriptorTest" href="#google.protobuf.internal.descriptor_test.DescriptorTest">DescriptorTest</a></b></code>:
+<ul class="hlist">
+<li><code><a title="google.protobuf.internal.descriptor_test.DescriptorTest.setUp" href="#google.protobuf.internal.descriptor_test.DescriptorTest.setUp">setUp</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="google.protobuf.internal" href="index.html">google.protobuf.internal</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="google.protobuf.internal.descriptor_test.DescriptorCopyToProtoTest" href="#google.protobuf.internal.descriptor_test.DescriptorCopyToProtoTest">DescriptorCopyToProtoTest</a></code></h4>
+<ul class="">
+<li><code><a title="google.protobuf.internal.descriptor_test.DescriptorCopyToProtoTest.testCopyToProto_AllExtensions" href="#google.protobuf.internal.descriptor_test.DescriptorCopyToProtoTest.testCopyToProto_AllExtensions">testCopyToProto_AllExtensions</a></code></li>
+<li><code><a title="google.protobuf.internal.descriptor_test.DescriptorCopyToProtoTest.testCopyToProto_EmptyMessage" href="#google.protobuf.internal.descriptor_test.DescriptorCopyToProtoTest.testCopyToProto_EmptyMessage">testCopyToProto_EmptyMessage</a></code></li>
+<li><code><a title="google.protobuf.internal.descriptor_test.DescriptorCopyToProtoTest.testCopyToProto_FileDescriptor" href="#google.protobuf.internal.descriptor_test.DescriptorCopyToProtoTest.testCopyToProto_FileDescriptor">testCopyToProto_FileDescriptor</a></code></li>
+<li><code><a title="google.protobuf.internal.descriptor_test.DescriptorCopyToProtoTest.testCopyToProto_ForeignEnum" href="#google.protobuf.internal.descriptor_test.DescriptorCopyToProtoTest.testCopyToProto_ForeignEnum">testCopyToProto_ForeignEnum</a></code></li>
+<li><code><a title="google.protobuf.internal.descriptor_test.DescriptorCopyToProtoTest.testCopyToProto_ForeignNestedMessage" href="#google.protobuf.internal.descriptor_test.DescriptorCopyToProtoTest.testCopyToProto_ForeignNestedMessage">testCopyToProto_ForeignNestedMessage</a></code></li>
+<li><code><a title="google.protobuf.internal.descriptor_test.DescriptorCopyToProtoTest.testCopyToProto_MethodDescriptor" href="#google.protobuf.internal.descriptor_test.DescriptorCopyToProtoTest.testCopyToProto_MethodDescriptor">testCopyToProto_MethodDescriptor</a></code></li>
+<li><code><a title="google.protobuf.internal.descriptor_test.DescriptorCopyToProtoTest.testCopyToProto_NestedMessage" href="#google.protobuf.internal.descriptor_test.DescriptorCopyToProtoTest.testCopyToProto_NestedMessage">testCopyToProto_NestedMessage</a></code></li>
+<li><code><a title="google.protobuf.internal.descriptor_test.DescriptorCopyToProtoTest.testCopyToProto_Options" href="#google.protobuf.internal.descriptor_test.DescriptorCopyToProtoTest.testCopyToProto_Options">testCopyToProto_Options</a></code></li>
+<li><code><a title="google.protobuf.internal.descriptor_test.DescriptorCopyToProtoTest.testCopyToProto_ServiceDescriptor" href="#google.protobuf.internal.descriptor_test.DescriptorCopyToProtoTest.testCopyToProto_ServiceDescriptor">testCopyToProto_ServiceDescriptor</a></code></li>
+<li><code><a title="google.protobuf.internal.descriptor_test.DescriptorCopyToProtoTest.testCopyToProto_SeveralExtensions" href="#google.protobuf.internal.descriptor_test.DescriptorCopyToProtoTest.testCopyToProto_SeveralExtensions">testCopyToProto_SeveralExtensions</a></code></li>
+<li><code><a title="google.protobuf.internal.descriptor_test.DescriptorCopyToProtoTest.testCopyToProto_TypeError" href="#google.protobuf.internal.descriptor_test.DescriptorCopyToProtoTest.testCopyToProto_TypeError">testCopyToProto_TypeError</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="google.protobuf.internal.descriptor_test.DescriptorTest" href="#google.protobuf.internal.descriptor_test.DescriptorTest">DescriptorTest</a></code></h4>
+<ul class="">
+<li><code><a title="google.protobuf.internal.descriptor_test.DescriptorTest.GetDescriptorPool" href="#google.protobuf.internal.descriptor_test.DescriptorTest.GetDescriptorPool">GetDescriptorPool</a></code></li>
+<li><code><a title="google.protobuf.internal.descriptor_test.DescriptorTest.setUp" href="#google.protobuf.internal.descriptor_test.DescriptorTest.setUp">setUp</a></code></li>
+<li><code><a title="google.protobuf.internal.descriptor_test.DescriptorTest.testAggregateOptions" href="#google.protobuf.internal.descriptor_test.DescriptorTest.testAggregateOptions">testAggregateOptions</a></code></li>
+<li><code><a title="google.protobuf.internal.descriptor_test.DescriptorTest.testComplexExtensionOptions" href="#google.protobuf.internal.descriptor_test.DescriptorTest.testComplexExtensionOptions">testComplexExtensionOptions</a></code></li>
+<li><code><a title="google.protobuf.internal.descriptor_test.DescriptorTest.testContainingServiceFixups" href="#google.protobuf.internal.descriptor_test.DescriptorTest.testContainingServiceFixups">testContainingServiceFixups</a></code></li>
+<li><code><a title="google.protobuf.internal.descriptor_test.DescriptorTest.testContainingTypeFixups" href="#google.protobuf.internal.descriptor_test.DescriptorTest.testContainingTypeFixups">testContainingTypeFixups</a></code></li>
+<li><code><a title="google.protobuf.internal.descriptor_test.DescriptorTest.testCustomOptionsCopyTo" href="#google.protobuf.internal.descriptor_test.DescriptorTest.testCustomOptionsCopyTo">testCustomOptionsCopyTo</a></code></li>
+<li><code><a title="google.protobuf.internal.descriptor_test.DescriptorTest.testDefault" href="#google.protobuf.internal.descriptor_test.DescriptorTest.testDefault">testDefault</a></code></li>
+<li><code><a title="google.protobuf.internal.descriptor_test.DescriptorTest.testDifferentCustomOptionTypes" href="#google.protobuf.internal.descriptor_test.DescriptorTest.testDifferentCustomOptionTypes">testDifferentCustomOptionTypes</a></code></li>
+<li><code><a title="google.protobuf.internal.descriptor_test.DescriptorTest.testEnumFixups" href="#google.protobuf.internal.descriptor_test.DescriptorTest.testEnumFixups">testEnumFixups</a></code></li>
+<li><code><a title="google.protobuf.internal.descriptor_test.DescriptorTest.testEnumValueName" href="#google.protobuf.internal.descriptor_test.DescriptorTest.testEnumValueName">testEnumValueName</a></code></li>
+<li><code><a title="google.protobuf.internal.descriptor_test.DescriptorTest.testFileDescriptor" href="#google.protobuf.internal.descriptor_test.DescriptorTest.testFileDescriptor">testFileDescriptor</a></code></li>
+<li><code><a title="google.protobuf.internal.descriptor_test.DescriptorTest.testFileDescriptorReferences" href="#google.protobuf.internal.descriptor_test.DescriptorTest.testFileDescriptorReferences">testFileDescriptorReferences</a></code></li>
+<li><code><a title="google.protobuf.internal.descriptor_test.DescriptorTest.testGetOptions" href="#google.protobuf.internal.descriptor_test.DescriptorTest.testGetOptions">testGetOptions</a></code></li>
+<li><code><a title="google.protobuf.internal.descriptor_test.DescriptorTest.testImmutableCppDescriptor" href="#google.protobuf.internal.descriptor_test.DescriptorTest.testImmutableCppDescriptor">testImmutableCppDescriptor</a></code></li>
+<li><code><a title="google.protobuf.internal.descriptor_test.DescriptorTest.testNestedOptions" href="#google.protobuf.internal.descriptor_test.DescriptorTest.testNestedOptions">testNestedOptions</a></code></li>
+<li><code><a title="google.protobuf.internal.descriptor_test.DescriptorTest.testSimpleCustomOptions" href="#google.protobuf.internal.descriptor_test.DescriptorTest.testSimpleCustomOptions">testSimpleCustomOptions</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="google.protobuf.internal.descriptor_test.GeneratedDescriptorTest" href="#google.protobuf.internal.descriptor_test.GeneratedDescriptorTest">GeneratedDescriptorTest</a></code></h4>
+<ul class="">
+<li><code><a title="google.protobuf.internal.descriptor_test.GeneratedDescriptorTest.CheckDescriptorMapping" href="#google.protobuf.internal.descriptor_test.GeneratedDescriptorTest.CheckDescriptorMapping">CheckDescriptorMapping</a></code></li>
+<li><code><a title="google.protobuf.internal.descriptor_test.GeneratedDescriptorTest.CheckDescriptorSequence" href="#google.protobuf.internal.descriptor_test.GeneratedDescriptorTest.CheckDescriptorSequence">CheckDescriptorSequence</a></code></li>
+<li><code><a title="google.protobuf.internal.descriptor_test.GeneratedDescriptorTest.CheckFieldDescriptor" href="#google.protobuf.internal.descriptor_test.GeneratedDescriptorTest.CheckFieldDescriptor">CheckFieldDescriptor</a></code></li>
+<li><code><a title="google.protobuf.internal.descriptor_test.GeneratedDescriptorTest.CheckMessageDescriptor" href="#google.protobuf.internal.descriptor_test.GeneratedDescriptorTest.CheckMessageDescriptor">CheckMessageDescriptor</a></code></li>
+<li><code><a title="google.protobuf.internal.descriptor_test.GeneratedDescriptorTest.testCppDescriptorContainer" href="#google.protobuf.internal.descriptor_test.GeneratedDescriptorTest.testCppDescriptorContainer">testCppDescriptorContainer</a></code></li>
+<li><code><a title="google.protobuf.internal.descriptor_test.GeneratedDescriptorTest.testCppDescriptorContainer_Iterator" href="#google.protobuf.internal.descriptor_test.GeneratedDescriptorTest.testCppDescriptorContainer_Iterator">testCppDescriptorContainer_Iterator</a></code></li>
+<li><code><a title="google.protobuf.internal.descriptor_test.GeneratedDescriptorTest.testDescriptor" href="#google.protobuf.internal.descriptor_test.GeneratedDescriptorTest.testDescriptor">testDescriptor</a></code></li>
+<li><code><a title="google.protobuf.internal.descriptor_test.GeneratedDescriptorTest.testDescriptorNestedTypesContainer" href="#google.protobuf.internal.descriptor_test.GeneratedDescriptorTest.testDescriptorNestedTypesContainer">testDescriptorNestedTypesContainer</a></code></li>
+<li><code><a title="google.protobuf.internal.descriptor_test.GeneratedDescriptorTest.testOneofDescriptor" href="#google.protobuf.internal.descriptor_test.GeneratedDescriptorTest.testOneofDescriptor">testOneofDescriptor</a></code></li>
+<li><code><a title="google.protobuf.internal.descriptor_test.GeneratedDescriptorTest.testServiceDescriptor" href="#google.protobuf.internal.descriptor_test.GeneratedDescriptorTest.testServiceDescriptor">testServiceDescriptor</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="google.protobuf.internal.descriptor_test.MakeDescriptorTest" href="#google.protobuf.internal.descriptor_test.MakeDescriptorTest">MakeDescriptorTest</a></code></h4>
+<ul class="">
+<li><code><a title="google.protobuf.internal.descriptor_test.MakeDescriptorTest.testCamelcaseName" href="#google.protobuf.internal.descriptor_test.MakeDescriptorTest.testCamelcaseName">testCamelcaseName</a></code></li>
+<li><code><a title="google.protobuf.internal.descriptor_test.MakeDescriptorTest.testJsonName" href="#google.protobuf.internal.descriptor_test.MakeDescriptorTest.testJsonName">testJsonName</a></code></li>
+<li><code><a title="google.protobuf.internal.descriptor_test.MakeDescriptorTest.testMakeDescriptorWithNestedFields" href="#google.protobuf.internal.descriptor_test.MakeDescriptorTest.testMakeDescriptorWithNestedFields">testMakeDescriptorWithNestedFields</a></code></li>
+<li><code><a title="google.protobuf.internal.descriptor_test.MakeDescriptorTest.testMakeDescriptorWithOptions" href="#google.protobuf.internal.descriptor_test.MakeDescriptorTest.testMakeDescriptorWithOptions">testMakeDescriptorWithOptions</a></code></li>
+<li><code><a title="google.protobuf.internal.descriptor_test.MakeDescriptorTest.testMakeDescriptorWithUnsignedIntField" href="#google.protobuf.internal.descriptor_test.MakeDescriptorTest.testMakeDescriptorWithUnsignedIntField">testMakeDescriptorWithUnsignedIntField</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="google.protobuf.internal.descriptor_test.NewDescriptorTest" href="#google.protobuf.internal.descriptor_test.NewDescriptorTest">NewDescriptorTest</a></code></h4>
+<ul class="">
+<li><code><a title="google.protobuf.internal.descriptor_test.NewDescriptorTest.GetDescriptorPool" href="#google.protobuf.internal.descriptor_test.NewDescriptorTest.GetDescriptorPool">GetDescriptorPool</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.4</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

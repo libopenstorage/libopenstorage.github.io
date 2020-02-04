@@ -1,0 +1,1717 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.4" />
+<title>google.protobuf.unittest_no_arena_pb2 API documentation</title>
+<meta name="description" content="" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>google.protobuf.unittest_no_arena_pb2</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># -*- coding: utf-8 -*-
+# Generated by the protocol buffer compiler.  DO NOT EDIT!
+# source: google/protobuf/unittest_no_arena.proto
+
+from google.protobuf.internal import enum_type_wrapper
+from google.protobuf import descriptor as _descriptor
+from google.protobuf import message as _message
+from google.protobuf import reflection as _reflection
+from google.protobuf import symbol_database as _symbol_database
+# @@protoc_insertion_point(imports)
+
+_sym_db = _symbol_database.Default()
+
+
+from google.protobuf import unittest_import_pb2 as google_dot_protobuf_dot_unittest__import__pb2
+try:
+  google_dot_protobuf_dot_unittest__import__public__pb2 = google_dot_protobuf_dot_unittest__import__pb2.google_dot_protobuf_dot_unittest__import__public__pb2
+except AttributeError:
+  google_dot_protobuf_dot_unittest__import__public__pb2 = google_dot_protobuf_dot_unittest__import__pb2.google.protobuf.unittest_import_public_pb2
+from google.protobuf import unittest_arena_pb2 as google_dot_protobuf_dot_unittest__arena__pb2
+
+
+DESCRIPTOR = _descriptor.FileDescriptor(
+  name=&#39;google/protobuf/unittest_no_arena.proto&#39;,
+  package=&#39;protobuf_unittest_no_arena&#39;,
+  syntax=&#39;proto2&#39;,
+  serialized_options=b&#39;B\rUnittestProtoH\001\200\001\001\210\001\001\220\001\001\370\001\000\242\002\005NOARN&#39;,
+  serialized_pb=b&#39;\n\&#39;google/protobuf/unittest_no_arena.proto\x12\x1aprotobuf_unittest_no_arena\x1a%google/protobuf/unittest_import.proto\x1a$google/protobuf/unittest_arena.proto\&#34;\xd0\x1a\n\x0cTestAllTypes\x12\x16\n\x0eoptional_int32\x18\x01 \x01(\x05\x12\x16\n\x0eoptional_int64\x18\x02 \x01(\x03\x12\x17\n\x0foptional_uint32\x18\x03 \x01(\r\x12\x17\n\x0foptional_uint64\x18\x04 \x01(\x04\x12\x17\n\x0foptional_sint32\x18\x05 \x01(\x11\x12\x17\n\x0foptional_sint64\x18\x06 \x01(\x12\x12\x18\n\x10optional_fixed32\x18\x07 \x01(\x07\x12\x18\n\x10optional_fixed64\x18\x08 \x01(\x06\x12\x19\n\x11optional_sfixed32\x18\t \x01(\x0f\x12\x19\n\x11optional_sfixed64\x18\n \x01(\x10\x12\x16\n\x0eoptional_float\x18\x0b \x01(\x02\x12\x17\n\x0foptional_double\x18\x0c \x01(\x01\x12\x15\n\roptional_bool\x18\r \x01(\x08\x12\x17\n\x0foptional_string\x18\x0e \x01(\t\x12\x16\n\x0eoptional_bytes\x18\x0f \x01(\x0c\x12M\n\roptionalgroup\x18\x10 \x01(\n26.protobuf_unittest_no_arena.TestAllTypes.OptionalGroup\x12W\n\x17optional_nested_message\x18\x12 \x01(\x0b\x32\x36.protobuf_unittest_no_arena.TestAllTypes.NestedMessage\x12L\n\x18optional_foreign_message\x18\x13 \x01(\x0b\x32*.protobuf_unittest_no_arena.ForeignMessage\x12H\n\x17optional_import_message\x18\x14 \x01(\x0b\x32\&#39;.protobuf_unittest_import.ImportMessage\x12Q\n\x14optional_nested_enum\x18\x15 \x01(\x0e\x32\x33.protobuf_unittest_no_arena.TestAllTypes.NestedEnum\x12\x46\n\x15optional_foreign_enum\x18\x16 \x01(\x0e\x32\&#39;.protobuf_unittest_no_arena.ForeignEnum\x12\x42\n\x14optional_import_enum\x18\x17 \x01(\x0e\x32$.protobuf_unittest_import.ImportEnum\x12!\n\x15optional_string_piece\x18\x18 \x01(\tB\x02\x08\x02\x12\x19\n\roptional_cord\x18\x19 \x01(\tB\x02\x08\x01\x12U\n\x1eoptional_public_import_message\x18\x1a \x01(\x0b\x32-.protobuf_unittest_import.PublicImportMessage\x12T\n\x10optional_message\x18\x1b \x01(\x0b\x32\x36.protobuf_unittest_no_arena.TestAllTypes.NestedMessageB\x02(\x01\x12\x16\n\x0erepeated_int32\x18\x1f \x03(\x05\x12\x16\n\x0erepeated_int64\x18  \x03(\x03\x12\x17\n\x0frepeated_uint32\x18! \x03(\r\x12\x17\n\x0frepeated_uint64\x18\&#34; \x03(\x04\x12\x17\n\x0frepeated_sint32\x18# \x03(\x11\x12\x17\n\x0frepeated_sint64\x18$ \x03(\x12\x12\x18\n\x10repeated_fixed32\x18% \x03(\x07\x12\x18\n\x10repeated_fixed64\x18&amp; \x03(\x06\x12\x19\n\x11repeated_sfixed32\x18\&#39; \x03(\x0f\x12\x19\n\x11repeated_sfixed64\x18( \x03(\x10\x12\x16\n\x0erepeated_float\x18) \x03(\x02\x12\x17\n\x0frepeated_double\x18* \x03(\x01\x12\x15\n\rrepeated_bool\x18+ \x03(\x08\x12\x17\n\x0frepeated_string\x18, \x03(\t\x12\x16\n\x0erepeated_bytes\x18- \x03(\x0c\x12M\n\rrepeatedgroup\x18. \x03(\n26.protobuf_unittest_no_arena.TestAllTypes.RepeatedGroup\x12W\n\x17repeated_nested_message\x18\x30 \x03(\x0b\x32\x36.protobuf_unittest_no_arena.TestAllTypes.NestedMessage\x12L\n\x18repeated_foreign_message\x18\x31 \x03(\x0b\x32*.protobuf_unittest_no_arena.ForeignMessage\x12H\n\x17repeated_import_message\x18\x32 \x03(\x0b\x32\&#39;.protobuf_unittest_import.ImportMessage\x12Q\n\x14repeated_nested_enum\x18\x33 \x03(\x0e\x32\x33.protobuf_unittest_no_arena.TestAllTypes.NestedEnum\x12\x46\n\x15repeated_foreign_enum\x18\x34 \x03(\x0e\x32\&#39;.protobuf_unittest_no_arena.ForeignEnum\x12\x42\n\x14repeated_import_enum\x18\x35 \x03(\x0e\x32$.protobuf_unittest_import.ImportEnum\x12!\n\x15repeated_string_piece\x18\x36 \x03(\tB\x02\x08\x02\x12\x19\n\rrepeated_cord\x18\x37 \x03(\tB\x02\x08\x01\x12Y\n\x15repeated_lazy_message\x18\x39 \x03(\x0b\x32\x36.protobuf_unittest_no_arena.TestAllTypes.NestedMessageB\x02(\x01\x12\x19\n\rdefault_int32\x18= \x01(\x05:\x02\x34\x31\x12\x19\n\rdefault_int64\x18&gt; \x01(\x03:\x02\x34\x32\x12\x1a\n\x0e\x64\x65\x66\x61ult_uint32\x18? \x01(\r:\x02\x34\x33\x12\x1a\n\x0e\x64\x65\x66\x61ult_uint64\x18@ \x01(\x04:\x02\x34\x34\x12\x1b\n\x0e\x64\x65\x66\x61ult_sint32\x18\x41 \x01(\x11:\x03-45\x12\x1a\n\x0e\x64\x65\x66\x61ult_sint64\x18\x42 \x01(\x12:\x02\x34\x36\x12\x1b\n\x0f\x64\x65\x66\x61ult_fixed32\x18\x43 \x01(\x07:\x02\x34\x37\x12\x1b\n\x0f\x64\x65\x66\x61ult_fixed64\x18\x44 \x01(\x06:\x02\x34\x38\x12\x1c\n\x10\x64\x65\x66\x61ult_sfixed32\x18\x45 \x01(\x0f:\x02\x34\x39\x12\x1d\n\x10\x64\x65\x66\x61ult_sfixed64\x18\x46 \x01(\x10:\x03-50\x12\x1b\n\rdefault_float\x18G \x01(\x02:\x04\x35\x31.5\x12\x1d\n\x0e\x64\x65\x66\x61ult_double\x18H \x01(\x01:\x05\x35\x32\x30\x30\x30\x12\x1a\n\x0c\x64\x65\x66\x61ult_bool\x18I \x01(\x08:\x04true\x12\x1d\n\x0e\x64\x65\x66\x61ult_string\x18J \x01(\t:\x05hello\x12\x1c\n\rdefault_bytes\x18K \x01(\x0c:\x05world\x12U\n\x13\x64\x65\x66\x61ult_nested_enum\x18Q \x01(\x0e\x32\x33.protobuf_unittest_no_arena.TestAllTypes.NestedEnum:\x03\x42\x41R\x12R\n\x14\x64\x65\x66\x61ult_foreign_enum\x18R \x01(\x0e\x32\&#39;.protobuf_unittest_no_arena.ForeignEnum:\x0b\x46OREIGN_BAR\x12M\n\x13\x64\x65\x66\x61ult_import_enum\x18S \x01(\x0e\x32$.protobuf_unittest_import.ImportEnum:\nIMPORT_BAR\x12%\n\x14\x64\x65\x66\x61ult_string_piece\x18T \x01(\t:\x03\x61\x62\x63\x42\x02\x08\x02\x12\x1d\n\x0c\x64\x65\x66\x61ult_cord\x18U \x01(\t:\x03\x31\x32\x33\x42\x02\x08\x01\x12\x16\n\x0coneof_uint32\x18o \x01(\rH\x00\x12V\n\x14oneof_nested_message\x18p \x01(\x0b\x32\x36.protobuf_unittest_no_arena.TestAllTypes.NestedMessageH\x00\x12\x16\n\x0coneof_string\x18q \x01(\tH\x00\x12\x15\n\x0boneof_bytes\x18r \x01(\x0cH\x00\x12_\n\x19lazy_oneof_nested_message\x18s \x01(\x0b\x32\x36.protobuf_unittest_no_arena.TestAllTypes.NestedMessageB\x02(\x01H\x00\x1a\x1b\n\rNestedMessage\x12\n\n\x02\x62\x62\x18\x01 \x01(\x05\x1a\x1a\n\rOptionalGroup\x12\t\n\x01\x61\x18\x11 \x01(\x05\x1a\x1a\n\rRepeatedGroup\x12\t\n\x01\x61\x18/ \x01(\x05\&#34;9\n\nNestedEnum\x12\x07\n\x03\x46OO\x10\x01\x12\x07\n\x03\x42\x41R\x10\x02\x12\x07\n\x03\x42\x41Z\x10\x03\x12\x10\n\x03NEG\x10\xff\xff\xff\xff\xff\xff\xff\xff\xff\x01\x42\r\n\x0boneof_field\&#34;\x1b\n\x0e\x46oreignMessage\x12\t\n\x01\x63\x18\x01 \x01(\x05\&#34;P\n\x12TestNoArenaMessage\x12:\n\rarena_message\x18\x01 \x01(\x0b\x32#.proto2_arena_unittest.ArenaMessage\&#34;\x19\n\tOneString\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\t*@\n\x0b\x46oreignEnum\x12\x0f\n\x0b\x46OREIGN_FOO\x10\x04\x12\x0f\n\x0b\x46OREIGN_BAR\x10\x05\x12\x0f\n\x0b\x46OREIGN_BAZ\x10\x06\x42%B\rUnittestProtoH\x01\x80\x01\x01\x88\x01\x01\x90\x01\x01\xf8\x01\x00\xa2\x02\x05NOARN&#39;
+  ,
+  dependencies=[google_dot_protobuf_dot_unittest__import__pb2.DESCRIPTOR,google_dot_protobuf_dot_unittest__arena__pb2.DESCRIPTOR,])
+
+_FOREIGNENUM = _descriptor.EnumDescriptor(
+  name=&#39;ForeignEnum&#39;,
+  full_name=&#39;protobuf_unittest_no_arena.ForeignEnum&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name=&#39;FOREIGN_FOO&#39;, index=0, number=4,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;FOREIGN_BAR&#39;, index=1, number=5,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;FOREIGN_BAZ&#39;, index=2, number=6,
+      serialized_options=None,
+      type=None),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=3697,
+  serialized_end=3761,
+)
+_sym_db.RegisterEnumDescriptor(_FOREIGNENUM)
+
+ForeignEnum = enum_type_wrapper.EnumTypeWrapper(_FOREIGNENUM)
+FOREIGN_FOO = 4
+FOREIGN_BAR = 5
+FOREIGN_BAZ = 6
+
+
+_TESTALLTYPES_NESTEDENUM = _descriptor.EnumDescriptor(
+  name=&#39;NestedEnum&#39;,
+  full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.NestedEnum&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name=&#39;FOO&#39;, index=0, number=1,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;BAR&#39;, index=1, number=2,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;BAZ&#39;, index=2, number=3,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;NEG&#39;, index=3, number=-1,
+      serialized_options=None,
+      type=None),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=3485,
+  serialized_end=3542,
+)
+_sym_db.RegisterEnumDescriptor(_TESTALLTYPES_NESTEDENUM)
+
+
+_TESTALLTYPES_NESTEDMESSAGE = _descriptor.Descriptor(
+  name=&#39;NestedMessage&#39;,
+  full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.NestedMessage&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;bb&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.NestedMessage.bb&#39;, index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto2&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=3400,
+  serialized_end=3427,
+)
+
+_TESTALLTYPES_OPTIONALGROUP = _descriptor.Descriptor(
+  name=&#39;OptionalGroup&#39;,
+  full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.OptionalGroup&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;a&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.OptionalGroup.a&#39;, index=0,
+      number=17, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto2&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=3429,
+  serialized_end=3455,
+)
+
+_TESTALLTYPES_REPEATEDGROUP = _descriptor.Descriptor(
+  name=&#39;RepeatedGroup&#39;,
+  full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.RepeatedGroup&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;a&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.RepeatedGroup.a&#39;, index=0,
+      number=47, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto2&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=3457,
+  serialized_end=3483,
+)
+
+_TESTALLTYPES = _descriptor.Descriptor(
+  name=&#39;TestAllTypes&#39;,
+  full_name=&#39;protobuf_unittest_no_arena.TestAllTypes&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;optional_int32&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.optional_int32&#39;, index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;optional_int64&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.optional_int64&#39;, index=1,
+      number=2, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;optional_uint32&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.optional_uint32&#39;, index=2,
+      number=3, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;optional_uint64&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.optional_uint64&#39;, index=3,
+      number=4, type=4, cpp_type=4, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;optional_sint32&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.optional_sint32&#39;, index=4,
+      number=5, type=17, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;optional_sint64&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.optional_sint64&#39;, index=5,
+      number=6, type=18, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;optional_fixed32&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.optional_fixed32&#39;, index=6,
+      number=7, type=7, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;optional_fixed64&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.optional_fixed64&#39;, index=7,
+      number=8, type=6, cpp_type=4, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;optional_sfixed32&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.optional_sfixed32&#39;, index=8,
+      number=9, type=15, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;optional_sfixed64&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.optional_sfixed64&#39;, index=9,
+      number=10, type=16, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;optional_float&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.optional_float&#39;, index=10,
+      number=11, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;optional_double&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.optional_double&#39;, index=11,
+      number=12, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;optional_bool&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.optional_bool&#39;, index=12,
+      number=13, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;optional_string&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.optional_string&#39;, index=13,
+      number=14, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b&#34;&#34;.decode(&#39;utf-8&#39;),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;optional_bytes&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.optional_bytes&#39;, index=14,
+      number=15, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b&#34;&#34;,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;optionalgroup&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.optionalgroup&#39;, index=15,
+      number=16, type=10, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;optional_nested_message&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.optional_nested_message&#39;, index=16,
+      number=18, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;optional_foreign_message&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.optional_foreign_message&#39;, index=17,
+      number=19, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;optional_import_message&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.optional_import_message&#39;, index=18,
+      number=20, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;optional_nested_enum&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.optional_nested_enum&#39;, index=19,
+      number=21, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=1,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;optional_foreign_enum&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.optional_foreign_enum&#39;, index=20,
+      number=22, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=4,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;optional_import_enum&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.optional_import_enum&#39;, index=21,
+      number=23, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=7,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;optional_string_piece&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.optional_string_piece&#39;, index=22,
+      number=24, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b&#34;&#34;.decode(&#39;utf-8&#39;),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=b&#39;\010\002&#39;, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;optional_cord&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.optional_cord&#39;, index=23,
+      number=25, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b&#34;&#34;.decode(&#39;utf-8&#39;),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=b&#39;\010\001&#39;, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;optional_public_import_message&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.optional_public_import_message&#39;, index=24,
+      number=26, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;optional_message&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.optional_message&#39;, index=25,
+      number=27, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=b&#39;(\001&#39;, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;repeated_int32&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.repeated_int32&#39;, index=26,
+      number=31, type=5, cpp_type=1, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;repeated_int64&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.repeated_int64&#39;, index=27,
+      number=32, type=3, cpp_type=2, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;repeated_uint32&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.repeated_uint32&#39;, index=28,
+      number=33, type=13, cpp_type=3, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;repeated_uint64&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.repeated_uint64&#39;, index=29,
+      number=34, type=4, cpp_type=4, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;repeated_sint32&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.repeated_sint32&#39;, index=30,
+      number=35, type=17, cpp_type=1, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;repeated_sint64&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.repeated_sint64&#39;, index=31,
+      number=36, type=18, cpp_type=2, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;repeated_fixed32&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.repeated_fixed32&#39;, index=32,
+      number=37, type=7, cpp_type=3, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;repeated_fixed64&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.repeated_fixed64&#39;, index=33,
+      number=38, type=6, cpp_type=4, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;repeated_sfixed32&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.repeated_sfixed32&#39;, index=34,
+      number=39, type=15, cpp_type=1, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;repeated_sfixed64&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.repeated_sfixed64&#39;, index=35,
+      number=40, type=16, cpp_type=2, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;repeated_float&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.repeated_float&#39;, index=36,
+      number=41, type=2, cpp_type=6, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;repeated_double&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.repeated_double&#39;, index=37,
+      number=42, type=1, cpp_type=5, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;repeated_bool&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.repeated_bool&#39;, index=38,
+      number=43, type=8, cpp_type=7, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;repeated_string&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.repeated_string&#39;, index=39,
+      number=44, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;repeated_bytes&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.repeated_bytes&#39;, index=40,
+      number=45, type=12, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;repeatedgroup&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.repeatedgroup&#39;, index=41,
+      number=46, type=10, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;repeated_nested_message&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.repeated_nested_message&#39;, index=42,
+      number=48, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;repeated_foreign_message&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.repeated_foreign_message&#39;, index=43,
+      number=49, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;repeated_import_message&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.repeated_import_message&#39;, index=44,
+      number=50, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;repeated_nested_enum&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.repeated_nested_enum&#39;, index=45,
+      number=51, type=14, cpp_type=8, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;repeated_foreign_enum&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.repeated_foreign_enum&#39;, index=46,
+      number=52, type=14, cpp_type=8, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;repeated_import_enum&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.repeated_import_enum&#39;, index=47,
+      number=53, type=14, cpp_type=8, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;repeated_string_piece&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.repeated_string_piece&#39;, index=48,
+      number=54, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=b&#39;\010\002&#39;, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;repeated_cord&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.repeated_cord&#39;, index=49,
+      number=55, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=b&#39;\010\001&#39;, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;repeated_lazy_message&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.repeated_lazy_message&#39;, index=50,
+      number=57, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=b&#39;(\001&#39;, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;default_int32&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.default_int32&#39;, index=51,
+      number=61, type=5, cpp_type=1, label=1,
+      has_default_value=True, default_value=41,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;default_int64&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.default_int64&#39;, index=52,
+      number=62, type=3, cpp_type=2, label=1,
+      has_default_value=True, default_value=42,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;default_uint32&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.default_uint32&#39;, index=53,
+      number=63, type=13, cpp_type=3, label=1,
+      has_default_value=True, default_value=43,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;default_uint64&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.default_uint64&#39;, index=54,
+      number=64, type=4, cpp_type=4, label=1,
+      has_default_value=True, default_value=44,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;default_sint32&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.default_sint32&#39;, index=55,
+      number=65, type=17, cpp_type=1, label=1,
+      has_default_value=True, default_value=-45,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;default_sint64&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.default_sint64&#39;, index=56,
+      number=66, type=18, cpp_type=2, label=1,
+      has_default_value=True, default_value=46,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;default_fixed32&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.default_fixed32&#39;, index=57,
+      number=67, type=7, cpp_type=3, label=1,
+      has_default_value=True, default_value=47,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;default_fixed64&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.default_fixed64&#39;, index=58,
+      number=68, type=6, cpp_type=4, label=1,
+      has_default_value=True, default_value=48,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;default_sfixed32&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.default_sfixed32&#39;, index=59,
+      number=69, type=15, cpp_type=1, label=1,
+      has_default_value=True, default_value=49,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;default_sfixed64&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.default_sfixed64&#39;, index=60,
+      number=70, type=16, cpp_type=2, label=1,
+      has_default_value=True, default_value=-50,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;default_float&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.default_float&#39;, index=61,
+      number=71, type=2, cpp_type=6, label=1,
+      has_default_value=True, default_value=float(51.5),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;default_double&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.default_double&#39;, index=62,
+      number=72, type=1, cpp_type=5, label=1,
+      has_default_value=True, default_value=float(52000),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;default_bool&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.default_bool&#39;, index=63,
+      number=73, type=8, cpp_type=7, label=1,
+      has_default_value=True, default_value=True,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;default_string&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.default_string&#39;, index=64,
+      number=74, type=9, cpp_type=9, label=1,
+      has_default_value=True, default_value=b&#34;hello&#34;.decode(&#39;utf-8&#39;),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;default_bytes&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.default_bytes&#39;, index=65,
+      number=75, type=12, cpp_type=9, label=1,
+      has_default_value=True, default_value=b&#34;world&#34;,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;default_nested_enum&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.default_nested_enum&#39;, index=66,
+      number=81, type=14, cpp_type=8, label=1,
+      has_default_value=True, default_value=2,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;default_foreign_enum&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.default_foreign_enum&#39;, index=67,
+      number=82, type=14, cpp_type=8, label=1,
+      has_default_value=True, default_value=5,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;default_import_enum&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.default_import_enum&#39;, index=68,
+      number=83, type=14, cpp_type=8, label=1,
+      has_default_value=True, default_value=8,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;default_string_piece&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.default_string_piece&#39;, index=69,
+      number=84, type=9, cpp_type=9, label=1,
+      has_default_value=True, default_value=b&#34;abc&#34;.decode(&#39;utf-8&#39;),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=b&#39;\010\002&#39;, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;default_cord&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.default_cord&#39;, index=70,
+      number=85, type=9, cpp_type=9, label=1,
+      has_default_value=True, default_value=b&#34;123&#34;.decode(&#39;utf-8&#39;),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=b&#39;\010\001&#39;, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;oneof_uint32&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.oneof_uint32&#39;, index=71,
+      number=111, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;oneof_nested_message&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.oneof_nested_message&#39;, index=72,
+      number=112, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;oneof_string&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.oneof_string&#39;, index=73,
+      number=113, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b&#34;&#34;.decode(&#39;utf-8&#39;),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;oneof_bytes&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.oneof_bytes&#39;, index=74,
+      number=114, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b&#34;&#34;,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;lazy_oneof_nested_message&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.lazy_oneof_nested_message&#39;, index=75,
+      number=115, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=b&#39;(\001&#39;, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[_TESTALLTYPES_NESTEDMESSAGE, _TESTALLTYPES_OPTIONALGROUP, _TESTALLTYPES_REPEATEDGROUP, ],
+  enum_types=[
+    _TESTALLTYPES_NESTEDENUM,
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto2&#39;,
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name=&#39;oneof_field&#39;, full_name=&#39;protobuf_unittest_no_arena.TestAllTypes.oneof_field&#39;,
+      index=0, containing_type=None, fields=[]),
+  ],
+  serialized_start=149,
+  serialized_end=3557,
+)
+
+
+_FOREIGNMESSAGE = _descriptor.Descriptor(
+  name=&#39;ForeignMessage&#39;,
+  full_name=&#39;protobuf_unittest_no_arena.ForeignMessage&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;c&#39;, full_name=&#39;protobuf_unittest_no_arena.ForeignMessage.c&#39;, index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto2&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=3559,
+  serialized_end=3586,
+)
+
+
+_TESTNOARENAMESSAGE = _descriptor.Descriptor(
+  name=&#39;TestNoArenaMessage&#39;,
+  full_name=&#39;protobuf_unittest_no_arena.TestNoArenaMessage&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;arena_message&#39;, full_name=&#39;protobuf_unittest_no_arena.TestNoArenaMessage.arena_message&#39;, index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto2&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=3588,
+  serialized_end=3668,
+)
+
+
+_ONESTRING = _descriptor.Descriptor(
+  name=&#39;OneString&#39;,
+  full_name=&#39;protobuf_unittest_no_arena.OneString&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;data&#39;, full_name=&#39;protobuf_unittest_no_arena.OneString.data&#39;, index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b&#34;&#34;.decode(&#39;utf-8&#39;),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto2&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=3670,
+  serialized_end=3695,
+)
+
+_TESTALLTYPES_NESTEDMESSAGE.containing_type = _TESTALLTYPES
+_TESTALLTYPES_OPTIONALGROUP.containing_type = _TESTALLTYPES
+_TESTALLTYPES_REPEATEDGROUP.containing_type = _TESTALLTYPES
+_TESTALLTYPES.fields_by_name[&#39;optionalgroup&#39;].message_type = _TESTALLTYPES_OPTIONALGROUP
+_TESTALLTYPES.fields_by_name[&#39;optional_nested_message&#39;].message_type = _TESTALLTYPES_NESTEDMESSAGE
+_TESTALLTYPES.fields_by_name[&#39;optional_foreign_message&#39;].message_type = _FOREIGNMESSAGE
+_TESTALLTYPES.fields_by_name[&#39;optional_import_message&#39;].message_type = google_dot_protobuf_dot_unittest__import__pb2._IMPORTMESSAGE
+_TESTALLTYPES.fields_by_name[&#39;optional_nested_enum&#39;].enum_type = _TESTALLTYPES_NESTEDENUM
+_TESTALLTYPES.fields_by_name[&#39;optional_foreign_enum&#39;].enum_type = _FOREIGNENUM
+_TESTALLTYPES.fields_by_name[&#39;optional_import_enum&#39;].enum_type = google_dot_protobuf_dot_unittest__import__pb2._IMPORTENUM
+_TESTALLTYPES.fields_by_name[&#39;optional_public_import_message&#39;].message_type = google_dot_protobuf_dot_unittest__import__public__pb2._PUBLICIMPORTMESSAGE
+_TESTALLTYPES.fields_by_name[&#39;optional_message&#39;].message_type = _TESTALLTYPES_NESTEDMESSAGE
+_TESTALLTYPES.fields_by_name[&#39;repeatedgroup&#39;].message_type = _TESTALLTYPES_REPEATEDGROUP
+_TESTALLTYPES.fields_by_name[&#39;repeated_nested_message&#39;].message_type = _TESTALLTYPES_NESTEDMESSAGE
+_TESTALLTYPES.fields_by_name[&#39;repeated_foreign_message&#39;].message_type = _FOREIGNMESSAGE
+_TESTALLTYPES.fields_by_name[&#39;repeated_import_message&#39;].message_type = google_dot_protobuf_dot_unittest__import__pb2._IMPORTMESSAGE
+_TESTALLTYPES.fields_by_name[&#39;repeated_nested_enum&#39;].enum_type = _TESTALLTYPES_NESTEDENUM
+_TESTALLTYPES.fields_by_name[&#39;repeated_foreign_enum&#39;].enum_type = _FOREIGNENUM
+_TESTALLTYPES.fields_by_name[&#39;repeated_import_enum&#39;].enum_type = google_dot_protobuf_dot_unittest__import__pb2._IMPORTENUM
+_TESTALLTYPES.fields_by_name[&#39;repeated_lazy_message&#39;].message_type = _TESTALLTYPES_NESTEDMESSAGE
+_TESTALLTYPES.fields_by_name[&#39;default_nested_enum&#39;].enum_type = _TESTALLTYPES_NESTEDENUM
+_TESTALLTYPES.fields_by_name[&#39;default_foreign_enum&#39;].enum_type = _FOREIGNENUM
+_TESTALLTYPES.fields_by_name[&#39;default_import_enum&#39;].enum_type = google_dot_protobuf_dot_unittest__import__pb2._IMPORTENUM
+_TESTALLTYPES.fields_by_name[&#39;oneof_nested_message&#39;].message_type = _TESTALLTYPES_NESTEDMESSAGE
+_TESTALLTYPES.fields_by_name[&#39;lazy_oneof_nested_message&#39;].message_type = _TESTALLTYPES_NESTEDMESSAGE
+_TESTALLTYPES_NESTEDENUM.containing_type = _TESTALLTYPES
+_TESTALLTYPES.oneofs_by_name[&#39;oneof_field&#39;].fields.append(
+  _TESTALLTYPES.fields_by_name[&#39;oneof_uint32&#39;])
+_TESTALLTYPES.fields_by_name[&#39;oneof_uint32&#39;].containing_oneof = _TESTALLTYPES.oneofs_by_name[&#39;oneof_field&#39;]
+_TESTALLTYPES.oneofs_by_name[&#39;oneof_field&#39;].fields.append(
+  _TESTALLTYPES.fields_by_name[&#39;oneof_nested_message&#39;])
+_TESTALLTYPES.fields_by_name[&#39;oneof_nested_message&#39;].containing_oneof = _TESTALLTYPES.oneofs_by_name[&#39;oneof_field&#39;]
+_TESTALLTYPES.oneofs_by_name[&#39;oneof_field&#39;].fields.append(
+  _TESTALLTYPES.fields_by_name[&#39;oneof_string&#39;])
+_TESTALLTYPES.fields_by_name[&#39;oneof_string&#39;].containing_oneof = _TESTALLTYPES.oneofs_by_name[&#39;oneof_field&#39;]
+_TESTALLTYPES.oneofs_by_name[&#39;oneof_field&#39;].fields.append(
+  _TESTALLTYPES.fields_by_name[&#39;oneof_bytes&#39;])
+_TESTALLTYPES.fields_by_name[&#39;oneof_bytes&#39;].containing_oneof = _TESTALLTYPES.oneofs_by_name[&#39;oneof_field&#39;]
+_TESTALLTYPES.oneofs_by_name[&#39;oneof_field&#39;].fields.append(
+  _TESTALLTYPES.fields_by_name[&#39;lazy_oneof_nested_message&#39;])
+_TESTALLTYPES.fields_by_name[&#39;lazy_oneof_nested_message&#39;].containing_oneof = _TESTALLTYPES.oneofs_by_name[&#39;oneof_field&#39;]
+_TESTNOARENAMESSAGE.fields_by_name[&#39;arena_message&#39;].message_type = google_dot_protobuf_dot_unittest__arena__pb2._ARENAMESSAGE
+DESCRIPTOR.message_types_by_name[&#39;TestAllTypes&#39;] = _TESTALLTYPES
+DESCRIPTOR.message_types_by_name[&#39;ForeignMessage&#39;] = _FOREIGNMESSAGE
+DESCRIPTOR.message_types_by_name[&#39;TestNoArenaMessage&#39;] = _TESTNOARENAMESSAGE
+DESCRIPTOR.message_types_by_name[&#39;OneString&#39;] = _ONESTRING
+DESCRIPTOR.enum_types_by_name[&#39;ForeignEnum&#39;] = _FOREIGNENUM
+_sym_db.RegisterFileDescriptor(DESCRIPTOR)
+
+TestAllTypes = _reflection.GeneratedProtocolMessageType(&#39;TestAllTypes&#39;, (_message.Message,), {
+
+  &#39;NestedMessage&#39; : _reflection.GeneratedProtocolMessageType(&#39;NestedMessage&#39;, (_message.Message,), {
+    &#39;DESCRIPTOR&#39; : _TESTALLTYPES_NESTEDMESSAGE,
+    &#39;__module__&#39; : &#39;google.protobuf.unittest_no_arena_pb2&#39;
+    # @@protoc_insertion_point(class_scope:protobuf_unittest_no_arena.TestAllTypes.NestedMessage)
+    })
+  ,
+
+  &#39;OptionalGroup&#39; : _reflection.GeneratedProtocolMessageType(&#39;OptionalGroup&#39;, (_message.Message,), {
+    &#39;DESCRIPTOR&#39; : _TESTALLTYPES_OPTIONALGROUP,
+    &#39;__module__&#39; : &#39;google.protobuf.unittest_no_arena_pb2&#39;
+    # @@protoc_insertion_point(class_scope:protobuf_unittest_no_arena.TestAllTypes.OptionalGroup)
+    })
+  ,
+
+  &#39;RepeatedGroup&#39; : _reflection.GeneratedProtocolMessageType(&#39;RepeatedGroup&#39;, (_message.Message,), {
+    &#39;DESCRIPTOR&#39; : _TESTALLTYPES_REPEATEDGROUP,
+    &#39;__module__&#39; : &#39;google.protobuf.unittest_no_arena_pb2&#39;
+    # @@protoc_insertion_point(class_scope:protobuf_unittest_no_arena.TestAllTypes.RepeatedGroup)
+    })
+  ,
+  &#39;DESCRIPTOR&#39; : _TESTALLTYPES,
+  &#39;__module__&#39; : &#39;google.protobuf.unittest_no_arena_pb2&#39;
+  # @@protoc_insertion_point(class_scope:protobuf_unittest_no_arena.TestAllTypes)
+  })
+_sym_db.RegisterMessage(TestAllTypes)
+_sym_db.RegisterMessage(TestAllTypes.NestedMessage)
+_sym_db.RegisterMessage(TestAllTypes.OptionalGroup)
+_sym_db.RegisterMessage(TestAllTypes.RepeatedGroup)
+
+ForeignMessage = _reflection.GeneratedProtocolMessageType(&#39;ForeignMessage&#39;, (_message.Message,), {
+  &#39;DESCRIPTOR&#39; : _FOREIGNMESSAGE,
+  &#39;__module__&#39; : &#39;google.protobuf.unittest_no_arena_pb2&#39;
+  # @@protoc_insertion_point(class_scope:protobuf_unittest_no_arena.ForeignMessage)
+  })
+_sym_db.RegisterMessage(ForeignMessage)
+
+TestNoArenaMessage = _reflection.GeneratedProtocolMessageType(&#39;TestNoArenaMessage&#39;, (_message.Message,), {
+  &#39;DESCRIPTOR&#39; : _TESTNOARENAMESSAGE,
+  &#39;__module__&#39; : &#39;google.protobuf.unittest_no_arena_pb2&#39;
+  # @@protoc_insertion_point(class_scope:protobuf_unittest_no_arena.TestNoArenaMessage)
+  })
+_sym_db.RegisterMessage(TestNoArenaMessage)
+
+OneString = _reflection.GeneratedProtocolMessageType(&#39;OneString&#39;, (_message.Message,), {
+  &#39;DESCRIPTOR&#39; : _ONESTRING,
+  &#39;__module__&#39; : &#39;google.protobuf.unittest_no_arena_pb2&#39;
+  # @@protoc_insertion_point(class_scope:protobuf_unittest_no_arena.OneString)
+  })
+_sym_db.RegisterMessage(OneString)
+
+
+DESCRIPTOR._options = None
+_TESTALLTYPES.fields_by_name[&#39;optional_string_piece&#39;]._options = None
+_TESTALLTYPES.fields_by_name[&#39;optional_cord&#39;]._options = None
+_TESTALLTYPES.fields_by_name[&#39;optional_message&#39;]._options = None
+_TESTALLTYPES.fields_by_name[&#39;repeated_string_piece&#39;]._options = None
+_TESTALLTYPES.fields_by_name[&#39;repeated_cord&#39;]._options = None
+_TESTALLTYPES.fields_by_name[&#39;repeated_lazy_message&#39;]._options = None
+_TESTALLTYPES.fields_by_name[&#39;default_string_piece&#39;]._options = None
+_TESTALLTYPES.fields_by_name[&#39;default_cord&#39;]._options = None
+_TESTALLTYPES.fields_by_name[&#39;lazy_oneof_nested_message&#39;]._options = None
+# @@protoc_insertion_point(module_scope)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="google.protobuf.unittest_no_arena_pb2.ForeignMessage"><code class="flex name class">
+<span>class <span class="ident">ForeignMessage</span></span>
+<span>(</span><span>...)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>A ProtocolMessage</p></section>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>google.protobuf.pyext._message.CMessage</li>
+<li><a title="google.protobuf.message.Message" href="message.html#google.protobuf.message.Message">Message</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="google.protobuf.unittest_no_arena_pb2.ForeignMessage.DESCRIPTOR"><code class="name">var <span class="ident">DESCRIPTOR</span></code></dt>
+<dd>
+<section class="desc"><p>A Message Descriptor</p></section>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="google.protobuf.unittest_no_arena_pb2.ForeignMessage.c"><code class="name">var <span class="ident">c</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.ForeignMessage.c</p></section>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="google.protobuf.message.Message" href="message.html#google.protobuf.message.Message">Message</a></b></code>:
+<ul class="hlist">
+<li><code><a title="google.protobuf.message.Message.ByteSize" href="message.html#google.protobuf.message.Message.ByteSize">ByteSize</a></code></li>
+<li><code><a title="google.protobuf.message.Message.Clear" href="message.html#google.protobuf.message.Message.Clear">Clear</a></code></li>
+<li><code><a title="google.protobuf.message.Message.ClearField" href="message.html#google.protobuf.message.Message.ClearField">ClearField</a></code></li>
+<li><code><a title="google.protobuf.message.Message.CopyFrom" href="message.html#google.protobuf.message.Message.CopyFrom">CopyFrom</a></code></li>
+<li><code><a title="google.protobuf.message.Message.HasField" href="message.html#google.protobuf.message.Message.HasField">HasField</a></code></li>
+<li><code><a title="google.protobuf.message.Message.IsInitialized" href="message.html#google.protobuf.message.Message.IsInitialized">IsInitialized</a></code></li>
+<li><code><a title="google.protobuf.message.Message.ListFields" href="message.html#google.protobuf.message.Message.ListFields">ListFields</a></code></li>
+<li><code><a title="google.protobuf.message.Message.MergeFrom" href="message.html#google.protobuf.message.Message.MergeFrom">MergeFrom</a></code></li>
+<li><code><a title="google.protobuf.message.Message.MergeFromString" href="message.html#google.protobuf.message.Message.MergeFromString">MergeFromString</a></code></li>
+<li><code><a title="google.protobuf.message.Message.ParseFromString" href="message.html#google.protobuf.message.Message.ParseFromString">ParseFromString</a></code></li>
+<li><code><a title="google.protobuf.message.Message.SerializePartialToString" href="message.html#google.protobuf.message.Message.SerializePartialToString">SerializePartialToString</a></code></li>
+<li><code><a title="google.protobuf.message.Message.SerializeToString" href="message.html#google.protobuf.message.Message.SerializeToString">SerializeToString</a></code></li>
+<li><code><a title="google.protobuf.message.Message.SetInParent" href="message.html#google.protobuf.message.Message.SetInParent">SetInParent</a></code></li>
+<li><code><a title="google.protobuf.message.Message.UnknownFields" href="message.html#google.protobuf.message.Message.UnknownFields">UnknownFields</a></code></li>
+<li><code><a title="google.protobuf.message.Message.WhichOneof" href="message.html#google.protobuf.message.Message.WhichOneof">WhichOneof</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.OneString"><code class="flex name class">
+<span>class <span class="ident">OneString</span></span>
+<span>(</span><span>...)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>A ProtocolMessage</p></section>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>google.protobuf.pyext._message.CMessage</li>
+<li><a title="google.protobuf.message.Message" href="message.html#google.protobuf.message.Message">Message</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="google.protobuf.unittest_no_arena_pb2.OneString.DESCRIPTOR"><code class="name">var <span class="ident">DESCRIPTOR</span></code></dt>
+<dd>
+<section class="desc"><p>A Message Descriptor</p></section>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="google.protobuf.unittest_no_arena_pb2.OneString.data"><code class="name">var <span class="ident">data</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.OneString.data</p></section>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="google.protobuf.message.Message" href="message.html#google.protobuf.message.Message">Message</a></b></code>:
+<ul class="hlist">
+<li><code><a title="google.protobuf.message.Message.ByteSize" href="message.html#google.protobuf.message.Message.ByteSize">ByteSize</a></code></li>
+<li><code><a title="google.protobuf.message.Message.Clear" href="message.html#google.protobuf.message.Message.Clear">Clear</a></code></li>
+<li><code><a title="google.protobuf.message.Message.ClearField" href="message.html#google.protobuf.message.Message.ClearField">ClearField</a></code></li>
+<li><code><a title="google.protobuf.message.Message.CopyFrom" href="message.html#google.protobuf.message.Message.CopyFrom">CopyFrom</a></code></li>
+<li><code><a title="google.protobuf.message.Message.HasField" href="message.html#google.protobuf.message.Message.HasField">HasField</a></code></li>
+<li><code><a title="google.protobuf.message.Message.IsInitialized" href="message.html#google.protobuf.message.Message.IsInitialized">IsInitialized</a></code></li>
+<li><code><a title="google.protobuf.message.Message.ListFields" href="message.html#google.protobuf.message.Message.ListFields">ListFields</a></code></li>
+<li><code><a title="google.protobuf.message.Message.MergeFrom" href="message.html#google.protobuf.message.Message.MergeFrom">MergeFrom</a></code></li>
+<li><code><a title="google.protobuf.message.Message.MergeFromString" href="message.html#google.protobuf.message.Message.MergeFromString">MergeFromString</a></code></li>
+<li><code><a title="google.protobuf.message.Message.ParseFromString" href="message.html#google.protobuf.message.Message.ParseFromString">ParseFromString</a></code></li>
+<li><code><a title="google.protobuf.message.Message.SerializePartialToString" href="message.html#google.protobuf.message.Message.SerializePartialToString">SerializePartialToString</a></code></li>
+<li><code><a title="google.protobuf.message.Message.SerializeToString" href="message.html#google.protobuf.message.Message.SerializeToString">SerializeToString</a></code></li>
+<li><code><a title="google.protobuf.message.Message.SetInParent" href="message.html#google.protobuf.message.Message.SetInParent">SetInParent</a></code></li>
+<li><code><a title="google.protobuf.message.Message.UnknownFields" href="message.html#google.protobuf.message.Message.UnknownFields">UnknownFields</a></code></li>
+<li><code><a title="google.protobuf.message.Message.WhichOneof" href="message.html#google.protobuf.message.Message.WhichOneof">WhichOneof</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes"><code class="flex name class">
+<span>class <span class="ident">TestAllTypes</span></span>
+<span>(</span><span>...)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>A ProtocolMessage</p></section>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>google.protobuf.pyext._message.CMessage</li>
+<li><a title="google.protobuf.message.Message" href="message.html#google.protobuf.message.Message">Message</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.BAR"><code class="name">var <span class="ident">BAR</span></code></dt>
+<dd>
+<section class="desc"><p>int([x]) -&gt; integer
+int(x, base=10) -&gt; integer</p>
+<p>Convert a number or string to an integer, or return 0 if no arguments
+are given.
+If x is a number, return x.<strong>int</strong>().
+For floating point
+numbers, this truncates towards zero.</p>
+<p>If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.
+The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.
+The base defaults to 10.
+Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.</p>
+<pre><code>&gt;&gt;&gt; int('0b100', base=0)
+4
+</code></pre></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.BAZ"><code class="name">var <span class="ident">BAZ</span></code></dt>
+<dd>
+<section class="desc"><p>int([x]) -&gt; integer
+int(x, base=10) -&gt; integer</p>
+<p>Convert a number or string to an integer, or return 0 if no arguments
+are given.
+If x is a number, return x.<strong>int</strong>().
+For floating point
+numbers, this truncates towards zero.</p>
+<p>If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.
+The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.
+The base defaults to 10.
+Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.</p>
+<pre><code>&gt;&gt;&gt; int('0b100', base=0)
+4
+</code></pre></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.DESCRIPTOR"><code class="name">var <span class="ident">DESCRIPTOR</span></code></dt>
+<dd>
+<section class="desc"><p>A Message Descriptor</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.FOO"><code class="name">var <span class="ident">FOO</span></code></dt>
+<dd>
+<section class="desc"><p>int([x]) -&gt; integer
+int(x, base=10) -&gt; integer</p>
+<p>Convert a number or string to an integer, or return 0 if no arguments
+are given.
+If x is a number, return x.<strong>int</strong>().
+For floating point
+numbers, this truncates towards zero.</p>
+<p>If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.
+The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.
+The base defaults to 10.
+Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.</p>
+<pre><code>&gt;&gt;&gt; int('0b100', base=0)
+4
+</code></pre></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.NEG"><code class="name">var <span class="ident">NEG</span></code></dt>
+<dd>
+<section class="desc"><p>int([x]) -&gt; integer
+int(x, base=10) -&gt; integer</p>
+<p>Convert a number or string to an integer, or return 0 if no arguments
+are given.
+If x is a number, return x.<strong>int</strong>().
+For floating point
+numbers, this truncates towards zero.</p>
+<p>If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.
+The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.
+The base defaults to 10.
+Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.</p>
+<pre><code>&gt;&gt;&gt; int('0b100', base=0)
+4
+</code></pre></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.NestedEnum"><code class="name">var <span class="ident">NestedEnum</span></code></dt>
+<dd>
+<section class="desc"><p>A utility for finding the names of enum values.</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.NestedMessage"><code class="name">var <span class="ident">NestedMessage</span></code></dt>
+<dd>
+<section class="desc"><p>A ProtocolMessage</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.OptionalGroup"><code class="name">var <span class="ident">OptionalGroup</span></code></dt>
+<dd>
+<section class="desc"><p>A ProtocolMessage</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.RepeatedGroup"><code class="name">var <span class="ident">RepeatedGroup</span></code></dt>
+<dd>
+<section class="desc"><p>A ProtocolMessage</p></section>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_bool"><code class="name">var <span class="ident">default_bool</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.default_bool</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_bytes"><code class="name">var <span class="ident">default_bytes</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.default_bytes</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_cord"><code class="name">var <span class="ident">default_cord</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.default_cord</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_double"><code class="name">var <span class="ident">default_double</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.default_double</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_fixed32"><code class="name">var <span class="ident">default_fixed32</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.default_fixed32</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_fixed64"><code class="name">var <span class="ident">default_fixed64</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.default_fixed64</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_float"><code class="name">var <span class="ident">default_float</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.default_float</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_foreign_enum"><code class="name">var <span class="ident">default_foreign_enum</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.default_foreign_enum</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_import_enum"><code class="name">var <span class="ident">default_import_enum</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.default_import_enum</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_int32"><code class="name">var <span class="ident">default_int32</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.default_int32</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_int64"><code class="name">var <span class="ident">default_int64</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.default_int64</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_nested_enum"><code class="name">var <span class="ident">default_nested_enum</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.default_nested_enum</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_sfixed32"><code class="name">var <span class="ident">default_sfixed32</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.default_sfixed32</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_sfixed64"><code class="name">var <span class="ident">default_sfixed64</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.default_sfixed64</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_sint32"><code class="name">var <span class="ident">default_sint32</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.default_sint32</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_sint64"><code class="name">var <span class="ident">default_sint64</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.default_sint64</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_string"><code class="name">var <span class="ident">default_string</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.default_string</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_string_piece"><code class="name">var <span class="ident">default_string_piece</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.default_string_piece</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_uint32"><code class="name">var <span class="ident">default_uint32</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.default_uint32</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_uint64"><code class="name">var <span class="ident">default_uint64</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.default_uint64</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.lazy_oneof_nested_message"><code class="name">var <span class="ident">lazy_oneof_nested_message</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.lazy_oneof_nested_message</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.oneof_bytes"><code class="name">var <span class="ident">oneof_bytes</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.oneof_bytes</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.oneof_nested_message"><code class="name">var <span class="ident">oneof_nested_message</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.oneof_nested_message</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.oneof_string"><code class="name">var <span class="ident">oneof_string</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.oneof_string</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.oneof_uint32"><code class="name">var <span class="ident">oneof_uint32</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.oneof_uint32</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_bool"><code class="name">var <span class="ident">optional_bool</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.optional_bool</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_bytes"><code class="name">var <span class="ident">optional_bytes</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.optional_bytes</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_cord"><code class="name">var <span class="ident">optional_cord</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.optional_cord</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_double"><code class="name">var <span class="ident">optional_double</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.optional_double</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_fixed32"><code class="name">var <span class="ident">optional_fixed32</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.optional_fixed32</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_fixed64"><code class="name">var <span class="ident">optional_fixed64</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.optional_fixed64</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_float"><code class="name">var <span class="ident">optional_float</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.optional_float</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_foreign_enum"><code class="name">var <span class="ident">optional_foreign_enum</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.optional_foreign_enum</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_foreign_message"><code class="name">var <span class="ident">optional_foreign_message</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.optional_foreign_message</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_import_enum"><code class="name">var <span class="ident">optional_import_enum</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.optional_import_enum</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_import_message"><code class="name">var <span class="ident">optional_import_message</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.optional_import_message</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_int32"><code class="name">var <span class="ident">optional_int32</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.optional_int32</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_int64"><code class="name">var <span class="ident">optional_int64</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.optional_int64</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_message"><code class="name">var <span class="ident">optional_message</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.optional_message</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_nested_enum"><code class="name">var <span class="ident">optional_nested_enum</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.optional_nested_enum</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_nested_message"><code class="name">var <span class="ident">optional_nested_message</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.optional_nested_message</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_public_import_message"><code class="name">var <span class="ident">optional_public_import_message</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.optional_public_import_message</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_sfixed32"><code class="name">var <span class="ident">optional_sfixed32</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.optional_sfixed32</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_sfixed64"><code class="name">var <span class="ident">optional_sfixed64</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.optional_sfixed64</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_sint32"><code class="name">var <span class="ident">optional_sint32</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.optional_sint32</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_sint64"><code class="name">var <span class="ident">optional_sint64</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.optional_sint64</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_string"><code class="name">var <span class="ident">optional_string</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.optional_string</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_string_piece"><code class="name">var <span class="ident">optional_string_piece</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.optional_string_piece</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_uint32"><code class="name">var <span class="ident">optional_uint32</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.optional_uint32</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_uint64"><code class="name">var <span class="ident">optional_uint64</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.optional_uint64</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optionalgroup"><code class="name">var <span class="ident">optionalgroup</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.optionalgroup</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_bool"><code class="name">var <span class="ident">repeated_bool</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.repeated_bool</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_bytes"><code class="name">var <span class="ident">repeated_bytes</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.repeated_bytes</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_cord"><code class="name">var <span class="ident">repeated_cord</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.repeated_cord</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_double"><code class="name">var <span class="ident">repeated_double</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.repeated_double</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_fixed32"><code class="name">var <span class="ident">repeated_fixed32</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.repeated_fixed32</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_fixed64"><code class="name">var <span class="ident">repeated_fixed64</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.repeated_fixed64</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_float"><code class="name">var <span class="ident">repeated_float</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.repeated_float</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_foreign_enum"><code class="name">var <span class="ident">repeated_foreign_enum</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.repeated_foreign_enum</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_foreign_message"><code class="name">var <span class="ident">repeated_foreign_message</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.repeated_foreign_message</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_import_enum"><code class="name">var <span class="ident">repeated_import_enum</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.repeated_import_enum</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_import_message"><code class="name">var <span class="ident">repeated_import_message</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.repeated_import_message</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_int32"><code class="name">var <span class="ident">repeated_int32</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.repeated_int32</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_int64"><code class="name">var <span class="ident">repeated_int64</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.repeated_int64</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_lazy_message"><code class="name">var <span class="ident">repeated_lazy_message</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.repeated_lazy_message</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_nested_enum"><code class="name">var <span class="ident">repeated_nested_enum</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.repeated_nested_enum</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_nested_message"><code class="name">var <span class="ident">repeated_nested_message</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.repeated_nested_message</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_sfixed32"><code class="name">var <span class="ident">repeated_sfixed32</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.repeated_sfixed32</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_sfixed64"><code class="name">var <span class="ident">repeated_sfixed64</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.repeated_sfixed64</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_sint32"><code class="name">var <span class="ident">repeated_sint32</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.repeated_sint32</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_sint64"><code class="name">var <span class="ident">repeated_sint64</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.repeated_sint64</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_string"><code class="name">var <span class="ident">repeated_string</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.repeated_string</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_string_piece"><code class="name">var <span class="ident">repeated_string_piece</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.repeated_string_piece</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_uint32"><code class="name">var <span class="ident">repeated_uint32</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.repeated_uint32</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_uint64"><code class="name">var <span class="ident">repeated_uint64</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.repeated_uint64</p></section>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeatedgroup"><code class="name">var <span class="ident">repeatedgroup</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestAllTypes.repeatedgroup</p></section>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="google.protobuf.message.Message" href="message.html#google.protobuf.message.Message">Message</a></b></code>:
+<ul class="hlist">
+<li><code><a title="google.protobuf.message.Message.ByteSize" href="message.html#google.protobuf.message.Message.ByteSize">ByteSize</a></code></li>
+<li><code><a title="google.protobuf.message.Message.Clear" href="message.html#google.protobuf.message.Message.Clear">Clear</a></code></li>
+<li><code><a title="google.protobuf.message.Message.ClearField" href="message.html#google.protobuf.message.Message.ClearField">ClearField</a></code></li>
+<li><code><a title="google.protobuf.message.Message.CopyFrom" href="message.html#google.protobuf.message.Message.CopyFrom">CopyFrom</a></code></li>
+<li><code><a title="google.protobuf.message.Message.HasField" href="message.html#google.protobuf.message.Message.HasField">HasField</a></code></li>
+<li><code><a title="google.protobuf.message.Message.IsInitialized" href="message.html#google.protobuf.message.Message.IsInitialized">IsInitialized</a></code></li>
+<li><code><a title="google.protobuf.message.Message.ListFields" href="message.html#google.protobuf.message.Message.ListFields">ListFields</a></code></li>
+<li><code><a title="google.protobuf.message.Message.MergeFrom" href="message.html#google.protobuf.message.Message.MergeFrom">MergeFrom</a></code></li>
+<li><code><a title="google.protobuf.message.Message.MergeFromString" href="message.html#google.protobuf.message.Message.MergeFromString">MergeFromString</a></code></li>
+<li><code><a title="google.protobuf.message.Message.ParseFromString" href="message.html#google.protobuf.message.Message.ParseFromString">ParseFromString</a></code></li>
+<li><code><a title="google.protobuf.message.Message.SerializePartialToString" href="message.html#google.protobuf.message.Message.SerializePartialToString">SerializePartialToString</a></code></li>
+<li><code><a title="google.protobuf.message.Message.SerializeToString" href="message.html#google.protobuf.message.Message.SerializeToString">SerializeToString</a></code></li>
+<li><code><a title="google.protobuf.message.Message.SetInParent" href="message.html#google.protobuf.message.Message.SetInParent">SetInParent</a></code></li>
+<li><code><a title="google.protobuf.message.Message.UnknownFields" href="message.html#google.protobuf.message.Message.UnknownFields">UnknownFields</a></code></li>
+<li><code><a title="google.protobuf.message.Message.WhichOneof" href="message.html#google.protobuf.message.Message.WhichOneof">WhichOneof</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestNoArenaMessage"><code class="flex name class">
+<span>class <span class="ident">TestNoArenaMessage</span></span>
+<span>(</span><span>...)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>A ProtocolMessage</p></section>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>google.protobuf.pyext._message.CMessage</li>
+<li><a title="google.protobuf.message.Message" href="message.html#google.protobuf.message.Message">Message</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestNoArenaMessage.DESCRIPTOR"><code class="name">var <span class="ident">DESCRIPTOR</span></code></dt>
+<dd>
+<section class="desc"><p>A Message Descriptor</p></section>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="google.protobuf.unittest_no_arena_pb2.TestNoArenaMessage.arena_message"><code class="name">var <span class="ident">arena_message</span></code></dt>
+<dd>
+<section class="desc"><p>Field protobuf_unittest_no_arena.TestNoArenaMessage.arena_message</p></section>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="google.protobuf.message.Message" href="message.html#google.protobuf.message.Message">Message</a></b></code>:
+<ul class="hlist">
+<li><code><a title="google.protobuf.message.Message.ByteSize" href="message.html#google.protobuf.message.Message.ByteSize">ByteSize</a></code></li>
+<li><code><a title="google.protobuf.message.Message.Clear" href="message.html#google.protobuf.message.Message.Clear">Clear</a></code></li>
+<li><code><a title="google.protobuf.message.Message.ClearField" href="message.html#google.protobuf.message.Message.ClearField">ClearField</a></code></li>
+<li><code><a title="google.protobuf.message.Message.CopyFrom" href="message.html#google.protobuf.message.Message.CopyFrom">CopyFrom</a></code></li>
+<li><code><a title="google.protobuf.message.Message.HasField" href="message.html#google.protobuf.message.Message.HasField">HasField</a></code></li>
+<li><code><a title="google.protobuf.message.Message.IsInitialized" href="message.html#google.protobuf.message.Message.IsInitialized">IsInitialized</a></code></li>
+<li><code><a title="google.protobuf.message.Message.ListFields" href="message.html#google.protobuf.message.Message.ListFields">ListFields</a></code></li>
+<li><code><a title="google.protobuf.message.Message.MergeFrom" href="message.html#google.protobuf.message.Message.MergeFrom">MergeFrom</a></code></li>
+<li><code><a title="google.protobuf.message.Message.MergeFromString" href="message.html#google.protobuf.message.Message.MergeFromString">MergeFromString</a></code></li>
+<li><code><a title="google.protobuf.message.Message.ParseFromString" href="message.html#google.protobuf.message.Message.ParseFromString">ParseFromString</a></code></li>
+<li><code><a title="google.protobuf.message.Message.SerializePartialToString" href="message.html#google.protobuf.message.Message.SerializePartialToString">SerializePartialToString</a></code></li>
+<li><code><a title="google.protobuf.message.Message.SerializeToString" href="message.html#google.protobuf.message.Message.SerializeToString">SerializeToString</a></code></li>
+<li><code><a title="google.protobuf.message.Message.SetInParent" href="message.html#google.protobuf.message.Message.SetInParent">SetInParent</a></code></li>
+<li><code><a title="google.protobuf.message.Message.UnknownFields" href="message.html#google.protobuf.message.Message.UnknownFields">UnknownFields</a></code></li>
+<li><code><a title="google.protobuf.message.Message.WhichOneof" href="message.html#google.protobuf.message.Message.WhichOneof">WhichOneof</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="google.protobuf" href="index.html">google.protobuf</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="google.protobuf.unittest_no_arena_pb2.ForeignMessage" href="#google.protobuf.unittest_no_arena_pb2.ForeignMessage">ForeignMessage</a></code></h4>
+<ul class="">
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.ForeignMessage.DESCRIPTOR" href="#google.protobuf.unittest_no_arena_pb2.ForeignMessage.DESCRIPTOR">DESCRIPTOR</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.ForeignMessage.c" href="#google.protobuf.unittest_no_arena_pb2.ForeignMessage.c">c</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="google.protobuf.unittest_no_arena_pb2.OneString" href="#google.protobuf.unittest_no_arena_pb2.OneString">OneString</a></code></h4>
+<ul class="">
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.OneString.DESCRIPTOR" href="#google.protobuf.unittest_no_arena_pb2.OneString.DESCRIPTOR">DESCRIPTOR</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.OneString.data" href="#google.protobuf.unittest_no_arena_pb2.OneString.data">data</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes">TestAllTypes</a></code></h4>
+<ul class="">
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.BAR" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.BAR">BAR</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.BAZ" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.BAZ">BAZ</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.DESCRIPTOR" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.DESCRIPTOR">DESCRIPTOR</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.FOO" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.FOO">FOO</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.NEG" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.NEG">NEG</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.NestedEnum" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.NestedEnum">NestedEnum</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.NestedMessage" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.NestedMessage">NestedMessage</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.OptionalGroup" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.OptionalGroup">OptionalGroup</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.RepeatedGroup" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.RepeatedGroup">RepeatedGroup</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_bool" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_bool">default_bool</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_bytes" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_bytes">default_bytes</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_cord" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_cord">default_cord</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_double" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_double">default_double</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_fixed32" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_fixed32">default_fixed32</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_fixed64" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_fixed64">default_fixed64</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_float" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_float">default_float</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_foreign_enum" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_foreign_enum">default_foreign_enum</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_import_enum" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_import_enum">default_import_enum</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_int32" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_int32">default_int32</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_int64" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_int64">default_int64</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_nested_enum" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_nested_enum">default_nested_enum</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_sfixed32" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_sfixed32">default_sfixed32</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_sfixed64" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_sfixed64">default_sfixed64</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_sint32" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_sint32">default_sint32</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_sint64" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_sint64">default_sint64</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_string" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_string">default_string</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_string_piece" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_string_piece">default_string_piece</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_uint32" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_uint32">default_uint32</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_uint64" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.default_uint64">default_uint64</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.lazy_oneof_nested_message" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.lazy_oneof_nested_message">lazy_oneof_nested_message</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.oneof_bytes" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.oneof_bytes">oneof_bytes</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.oneof_nested_message" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.oneof_nested_message">oneof_nested_message</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.oneof_string" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.oneof_string">oneof_string</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.oneof_uint32" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.oneof_uint32">oneof_uint32</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_bool" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_bool">optional_bool</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_bytes" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_bytes">optional_bytes</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_cord" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_cord">optional_cord</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_double" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_double">optional_double</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_fixed32" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_fixed32">optional_fixed32</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_fixed64" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_fixed64">optional_fixed64</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_float" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_float">optional_float</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_foreign_enum" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_foreign_enum">optional_foreign_enum</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_foreign_message" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_foreign_message">optional_foreign_message</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_import_enum" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_import_enum">optional_import_enum</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_import_message" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_import_message">optional_import_message</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_int32" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_int32">optional_int32</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_int64" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_int64">optional_int64</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_message" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_message">optional_message</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_nested_enum" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_nested_enum">optional_nested_enum</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_nested_message" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_nested_message">optional_nested_message</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_public_import_message" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_public_import_message">optional_public_import_message</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_sfixed32" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_sfixed32">optional_sfixed32</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_sfixed64" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_sfixed64">optional_sfixed64</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_sint32" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_sint32">optional_sint32</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_sint64" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_sint64">optional_sint64</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_string" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_string">optional_string</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_string_piece" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_string_piece">optional_string_piece</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_uint32" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_uint32">optional_uint32</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_uint64" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.optional_uint64">optional_uint64</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.optionalgroup" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.optionalgroup">optionalgroup</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_bool" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_bool">repeated_bool</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_bytes" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_bytes">repeated_bytes</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_cord" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_cord">repeated_cord</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_double" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_double">repeated_double</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_fixed32" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_fixed32">repeated_fixed32</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_fixed64" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_fixed64">repeated_fixed64</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_float" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_float">repeated_float</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_foreign_enum" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_foreign_enum">repeated_foreign_enum</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_foreign_message" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_foreign_message">repeated_foreign_message</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_import_enum" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_import_enum">repeated_import_enum</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_import_message" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_import_message">repeated_import_message</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_int32" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_int32">repeated_int32</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_int64" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_int64">repeated_int64</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_lazy_message" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_lazy_message">repeated_lazy_message</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_nested_enum" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_nested_enum">repeated_nested_enum</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_nested_message" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_nested_message">repeated_nested_message</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_sfixed32" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_sfixed32">repeated_sfixed32</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_sfixed64" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_sfixed64">repeated_sfixed64</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_sint32" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_sint32">repeated_sint32</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_sint64" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_sint64">repeated_sint64</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_string" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_string">repeated_string</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_string_piece" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_string_piece">repeated_string_piece</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_uint32" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_uint32">repeated_uint32</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_uint64" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeated_uint64">repeated_uint64</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeatedgroup" href="#google.protobuf.unittest_no_arena_pb2.TestAllTypes.repeatedgroup">repeatedgroup</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="google.protobuf.unittest_no_arena_pb2.TestNoArenaMessage" href="#google.protobuf.unittest_no_arena_pb2.TestNoArenaMessage">TestNoArenaMessage</a></code></h4>
+<ul class="">
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestNoArenaMessage.DESCRIPTOR" href="#google.protobuf.unittest_no_arena_pb2.TestNoArenaMessage.DESCRIPTOR">DESCRIPTOR</a></code></li>
+<li><code><a title="google.protobuf.unittest_no_arena_pb2.TestNoArenaMessage.arena_message" href="#google.protobuf.unittest_no_arena_pb2.TestNoArenaMessage.arena_message">arena_message</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.4</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

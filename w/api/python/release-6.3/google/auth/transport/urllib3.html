@@ -1,0 +1,725 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.4" />
+<title>google.auth.transport.urllib3 API documentation</title>
+<meta name="description" content="Transport adapter for urllib3." />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>google.auth.transport.urllib3</code></h1>
+</header>
+<section id="section-intro">
+<p>Transport adapter for urllib3.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Copyright 2016 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the &#34;License&#34;);
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+&#34;&#34;&#34;Transport adapter for urllib3.&#34;&#34;&#34;
+
+from __future__ import absolute_import
+
+import logging
+
+
+# Certifi is Mozilla&#39;s certificate bundle. Urllib3 needs a certificate bundle
+# to verify HTTPS requests, and certifi is the recommended and most reliable
+# way to get a root certificate bundle. See
+# http://urllib3.readthedocs.io/en/latest/user-guide.html\
+#   #certificate-verification
+# For more details.
+try:
+    import certifi
+except ImportError:  # pragma: NO COVER
+    certifi = None
+
+try:
+    import urllib3
+except ImportError as caught_exc:  # pragma: NO COVER
+    import six
+
+    six.raise_from(
+        ImportError(
+            &#34;The urllib3 library is not installed, please install the &#34;
+            &#34;urllib3 package to use the urllib3 transport.&#34;
+        ),
+        caught_exc,
+    )
+import six
+import urllib3.exceptions  # pylint: disable=ungrouped-imports
+
+from google.auth import exceptions
+from google.auth import transport
+
+_LOGGER = logging.getLogger(__name__)
+
+
+class _Response(transport.Response):
+    &#34;&#34;&#34;urllib3 transport response adapter.
+
+    Args:
+        response (urllib3.response.HTTPResponse): The raw urllib3 response.
+    &#34;&#34;&#34;
+
+    def __init__(self, response):
+        self._response = response
+
+    @property
+    def status(self):
+        return self._response.status
+
+    @property
+    def headers(self):
+        return self._response.headers
+
+    @property
+    def data(self):
+        return self._response.data
+
+
+class Request(transport.Request):
+    &#34;&#34;&#34;urllib3 request adapter.
+
+    This class is used internally for making requests using various transports
+    in a consistent way. If you use :class:`AuthorizedHttp` you do not need
+    to construct or use this class directly.
+
+    This class can be useful if you want to manually refresh a
+    :class:`~google.auth.credentials.Credentials` instance::
+
+        import google.auth.transport.urllib3
+        import urllib3
+
+        http = urllib3.PoolManager()
+        request = google.auth.transport.urllib3.Request(http)
+
+        credentials.refresh(request)
+
+    Args:
+        http (urllib3.request.RequestMethods): An instance of any urllib3
+            class that implements :class:`~urllib3.request.RequestMethods`,
+            usually :class:`urllib3.PoolManager`.
+
+    .. automethod:: __call__
+    &#34;&#34;&#34;
+
+    def __init__(self, http):
+        self.http = http
+
+    def __call__(
+        self, url, method=&#34;GET&#34;, body=None, headers=None, timeout=None, **kwargs
+    ):
+        &#34;&#34;&#34;Make an HTTP request using urllib3.
+
+        Args:
+            url (str): The URI to be requested.
+            method (str): The HTTP method to use for the request. Defaults
+                to &#39;GET&#39;.
+            body (bytes): The payload / body in HTTP request.
+            headers (Mapping[str, str]): Request headers.
+            timeout (Optional[int]): The number of seconds to wait for a
+                response from the server. If not specified or if None, the
+                urllib3 default timeout will be used.
+            kwargs: Additional arguments passed throught to the underlying
+                urllib3 :meth:`urlopen` method.
+
+        Returns:
+            google.auth.transport.Response: The HTTP response.
+
+        Raises:
+            google.auth.exceptions.TransportError: If any exception occurred.
+        &#34;&#34;&#34;
+        # urllib3 uses a sentinel default value for timeout, so only set it if
+        # specified.
+        if timeout is not None:
+            kwargs[&#34;timeout&#34;] = timeout
+
+        try:
+            _LOGGER.debug(&#34;Making request: %s %s&#34;, method, url)
+            response = self.http.request(
+                method, url, body=body, headers=headers, **kwargs
+            )
+            return _Response(response)
+        except urllib3.exceptions.HTTPError as caught_exc:
+            new_exc = exceptions.TransportError(caught_exc)
+            six.raise_from(new_exc, caught_exc)
+
+
+def _make_default_http():
+    if certifi is not None:
+        return urllib3.PoolManager(cert_reqs=&#34;CERT_REQUIRED&#34;, ca_certs=certifi.where())
+    else:
+        return urllib3.PoolManager()
+
+
+class AuthorizedHttp(urllib3.request.RequestMethods):
+    &#34;&#34;&#34;A urllib3 HTTP class with credentials.
+
+    This class is used to perform requests to API endpoints that require
+    authorization::
+
+        from google.auth.transport.urllib3 import AuthorizedHttp
+
+        authed_http = AuthorizedHttp(credentials)
+
+        response = authed_http.request(
+            &#39;GET&#39;, &#39;https://www.googleapis.com/storage/v1/b&#39;)
+
+    This class implements :class:`urllib3.request.RequestMethods` and can be
+    used just like any other :class:`urllib3.PoolManager`.
+
+    The underlying :meth:`urlopen` implementation handles adding the
+    credentials&#39; headers to the request and refreshing credentials as needed.
+
+    Args:
+        credentials (google.auth.credentials.Credentials): The credentials to
+            add to the request.
+        http (urllib3.PoolManager): The underlying HTTP object to
+            use to make requests. If not specified, a
+            :class:`urllib3.PoolManager` instance will be constructed with
+            sane defaults.
+        refresh_status_codes (Sequence[int]): Which HTTP status codes indicate
+            that credentials should be refreshed and the request should be
+            retried.
+        max_refresh_attempts (int): The maximum number of times to attempt to
+            refresh the credentials and retry the request.
+    &#34;&#34;&#34;
+
+    def __init__(
+        self,
+        credentials,
+        http=None,
+        refresh_status_codes=transport.DEFAULT_REFRESH_STATUS_CODES,
+        max_refresh_attempts=transport.DEFAULT_MAX_REFRESH_ATTEMPTS,
+    ):
+
+        if http is None:
+            http = _make_default_http()
+
+        self.credentials = credentials
+        self.http = http
+        self._refresh_status_codes = refresh_status_codes
+        self._max_refresh_attempts = max_refresh_attempts
+        # Request instance used by internal methods (for example,
+        # credentials.refresh).
+        self._request = Request(self.http)
+
+        super(AuthorizedHttp, self).__init__()
+
+    def urlopen(self, method, url, body=None, headers=None, **kwargs):
+        &#34;&#34;&#34;Implementation of urllib3&#39;s urlopen.&#34;&#34;&#34;
+        # pylint: disable=arguments-differ
+        # We use kwargs to collect additional args that we don&#39;t need to
+        # introspect here. However, we do explicitly collect the two
+        # positional arguments.
+
+        # Use a kwarg for this instead of an attribute to maintain
+        # thread-safety.
+        _credential_refresh_attempt = kwargs.pop(&#34;_credential_refresh_attempt&#34;, 0)
+
+        if headers is None:
+            headers = self.headers
+
+        # Make a copy of the headers. They will be modified by the credentials
+        # and we want to pass the original headers if we recurse.
+        request_headers = headers.copy()
+
+        self.credentials.before_request(self._request, method, url, request_headers)
+
+        response = self.http.urlopen(
+            method, url, body=body, headers=request_headers, **kwargs
+        )
+
+        # If the response indicated that the credentials needed to be
+        # refreshed, then refresh the credentials and re-attempt the
+        # request.
+        # A stored token may expire between the time it is retrieved and
+        # the time the request is made, so we may need to try twice.
+        # The reason urllib3&#39;s retries aren&#39;t used is because they
+        # don&#39;t allow you to modify the request headers. :/
+        if (
+            response.status in self._refresh_status_codes
+            and _credential_refresh_attempt &lt; self._max_refresh_attempts
+        ):
+
+            _LOGGER.info(
+                &#34;Refreshing credentials due to a %s response. Attempt %s/%s.&#34;,
+                response.status,
+                _credential_refresh_attempt + 1,
+                self._max_refresh_attempts,
+            )
+
+            self.credentials.refresh(self._request)
+
+            # Recurse. Pass in the original headers, not our modified set.
+            return self.urlopen(
+                method,
+                url,
+                body=body,
+                headers=headers,
+                _credential_refresh_attempt=_credential_refresh_attempt + 1,
+                **kwargs
+            )
+
+        return response
+
+    # Proxy methods for compliance with the urllib3.PoolManager interface
+
+    def __enter__(self):
+        &#34;&#34;&#34;Proxy to ``self.http``.&#34;&#34;&#34;
+        return self.http.__enter__()
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        &#34;&#34;&#34;Proxy to ``self.http``.&#34;&#34;&#34;
+        return self.http.__exit__(exc_type, exc_val, exc_tb)
+
+    @property
+    def headers(self):
+        &#34;&#34;&#34;Proxy to ``self.http``.&#34;&#34;&#34;
+        return self.http.headers
+
+    @headers.setter
+    def headers(self, value):
+        &#34;&#34;&#34;Proxy to ``self.http``.&#34;&#34;&#34;
+        self.http.headers = value</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="google.auth.transport.urllib3.AuthorizedHttp"><code class="flex name class">
+<span>class <span class="ident">AuthorizedHttp</span></span>
+<span>(</span><span>credentials, http=None, refresh_status_codes=(&lt;HTTPStatus.UNAUTHORIZED: 401&gt;,), max_refresh_attempts=2)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>A urllib3 HTTP class with credentials.</p>
+<p>This class is used to perform requests to API endpoints that require
+authorization::</p>
+<pre><code>from google.auth.transport.urllib3 import AuthorizedHttp
+
+authed_http = AuthorizedHttp(credentials)
+
+response = authed_http.request(
+    'GET', 'https://www.googleapis.com/storage/v1/b')
+</code></pre>
+<p>This class implements :class:<code>urllib3.request.RequestMethods</code> and can be
+used just like any other :class:<code>urllib3.PoolManager</code>.</p>
+<p>The underlying :meth:<code>urlopen</code> implementation handles adding the
+credentials' headers to the request and refreshing credentials as needed.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>credentials</code></strong> :&ensp;<a title="google.auth.credentials.Credentials" href="../credentials.html#google.auth.credentials.Credentials"><code>Credentials</code></a></dt>
+<dd>The credentials to
+add to the request.</dd>
+<dt><strong><code>http</code></strong> :&ensp;<code>urllib3.PoolManager</code></dt>
+<dd>The underlying HTTP object to
+use to make requests. If not specified, a
+:class:<code>urllib3.PoolManager</code> instance will be constructed with
+sane defaults.</dd>
+<dt><strong><code>refresh_status_codes</code></strong> :&ensp;<code>Sequence</code>[<code>int</code>]</dt>
+<dd>Which HTTP status codes indicate
+that credentials should be refreshed and the request should be
+retried.</dd>
+<dt><strong><code>max_refresh_attempts</code></strong> :&ensp;<code>int</code></dt>
+<dd>The maximum number of times to attempt to
+refresh the credentials and retry the request.</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class AuthorizedHttp(urllib3.request.RequestMethods):
+    &#34;&#34;&#34;A urllib3 HTTP class with credentials.
+
+    This class is used to perform requests to API endpoints that require
+    authorization::
+
+        from google.auth.transport.urllib3 import AuthorizedHttp
+
+        authed_http = AuthorizedHttp(credentials)
+
+        response = authed_http.request(
+            &#39;GET&#39;, &#39;https://www.googleapis.com/storage/v1/b&#39;)
+
+    This class implements :class:`urllib3.request.RequestMethods` and can be
+    used just like any other :class:`urllib3.PoolManager`.
+
+    The underlying :meth:`urlopen` implementation handles adding the
+    credentials&#39; headers to the request and refreshing credentials as needed.
+
+    Args:
+        credentials (google.auth.credentials.Credentials): The credentials to
+            add to the request.
+        http (urllib3.PoolManager): The underlying HTTP object to
+            use to make requests. If not specified, a
+            :class:`urllib3.PoolManager` instance will be constructed with
+            sane defaults.
+        refresh_status_codes (Sequence[int]): Which HTTP status codes indicate
+            that credentials should be refreshed and the request should be
+            retried.
+        max_refresh_attempts (int): The maximum number of times to attempt to
+            refresh the credentials and retry the request.
+    &#34;&#34;&#34;
+
+    def __init__(
+        self,
+        credentials,
+        http=None,
+        refresh_status_codes=transport.DEFAULT_REFRESH_STATUS_CODES,
+        max_refresh_attempts=transport.DEFAULT_MAX_REFRESH_ATTEMPTS,
+    ):
+
+        if http is None:
+            http = _make_default_http()
+
+        self.credentials = credentials
+        self.http = http
+        self._refresh_status_codes = refresh_status_codes
+        self._max_refresh_attempts = max_refresh_attempts
+        # Request instance used by internal methods (for example,
+        # credentials.refresh).
+        self._request = Request(self.http)
+
+        super(AuthorizedHttp, self).__init__()
+
+    def urlopen(self, method, url, body=None, headers=None, **kwargs):
+        &#34;&#34;&#34;Implementation of urllib3&#39;s urlopen.&#34;&#34;&#34;
+        # pylint: disable=arguments-differ
+        # We use kwargs to collect additional args that we don&#39;t need to
+        # introspect here. However, we do explicitly collect the two
+        # positional arguments.
+
+        # Use a kwarg for this instead of an attribute to maintain
+        # thread-safety.
+        _credential_refresh_attempt = kwargs.pop(&#34;_credential_refresh_attempt&#34;, 0)
+
+        if headers is None:
+            headers = self.headers
+
+        # Make a copy of the headers. They will be modified by the credentials
+        # and we want to pass the original headers if we recurse.
+        request_headers = headers.copy()
+
+        self.credentials.before_request(self._request, method, url, request_headers)
+
+        response = self.http.urlopen(
+            method, url, body=body, headers=request_headers, **kwargs
+        )
+
+        # If the response indicated that the credentials needed to be
+        # refreshed, then refresh the credentials and re-attempt the
+        # request.
+        # A stored token may expire between the time it is retrieved and
+        # the time the request is made, so we may need to try twice.
+        # The reason urllib3&#39;s retries aren&#39;t used is because they
+        # don&#39;t allow you to modify the request headers. :/
+        if (
+            response.status in self._refresh_status_codes
+            and _credential_refresh_attempt &lt; self._max_refresh_attempts
+        ):
+
+            _LOGGER.info(
+                &#34;Refreshing credentials due to a %s response. Attempt %s/%s.&#34;,
+                response.status,
+                _credential_refresh_attempt + 1,
+                self._max_refresh_attempts,
+            )
+
+            self.credentials.refresh(self._request)
+
+            # Recurse. Pass in the original headers, not our modified set.
+            return self.urlopen(
+                method,
+                url,
+                body=body,
+                headers=headers,
+                _credential_refresh_attempt=_credential_refresh_attempt + 1,
+                **kwargs
+            )
+
+        return response
+
+    # Proxy methods for compliance with the urllib3.PoolManager interface
+
+    def __enter__(self):
+        &#34;&#34;&#34;Proxy to ``self.http``.&#34;&#34;&#34;
+        return self.http.__enter__()
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        &#34;&#34;&#34;Proxy to ``self.http``.&#34;&#34;&#34;
+        return self.http.__exit__(exc_type, exc_val, exc_tb)
+
+    @property
+    def headers(self):
+        &#34;&#34;&#34;Proxy to ``self.http``.&#34;&#34;&#34;
+        return self.http.headers
+
+    @headers.setter
+    def headers(self, value):
+        &#34;&#34;&#34;Proxy to ``self.http``.&#34;&#34;&#34;
+        self.http.headers = value</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>urllib3.request.RequestMethods</li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="google.auth.transport.urllib3.AuthorizedHttp.headers"><code class="name">var <span class="ident">headers</span></code></dt>
+<dd>
+<section class="desc"><p>Proxy to <code>self.http</code>.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def headers(self):
+    &#34;&#34;&#34;Proxy to ``self.http``.&#34;&#34;&#34;
+    return self.http.headers</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="google.auth.transport.urllib3.AuthorizedHttp.urlopen"><code class="name flex">
+<span>def <span class="ident">urlopen</span></span>(<span>self, method, url, body=None, headers=None, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Implementation of urllib3's urlopen.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def urlopen(self, method, url, body=None, headers=None, **kwargs):
+    &#34;&#34;&#34;Implementation of urllib3&#39;s urlopen.&#34;&#34;&#34;
+    # pylint: disable=arguments-differ
+    # We use kwargs to collect additional args that we don&#39;t need to
+    # introspect here. However, we do explicitly collect the two
+    # positional arguments.
+
+    # Use a kwarg for this instead of an attribute to maintain
+    # thread-safety.
+    _credential_refresh_attempt = kwargs.pop(&#34;_credential_refresh_attempt&#34;, 0)
+
+    if headers is None:
+        headers = self.headers
+
+    # Make a copy of the headers. They will be modified by the credentials
+    # and we want to pass the original headers if we recurse.
+    request_headers = headers.copy()
+
+    self.credentials.before_request(self._request, method, url, request_headers)
+
+    response = self.http.urlopen(
+        method, url, body=body, headers=request_headers, **kwargs
+    )
+
+    # If the response indicated that the credentials needed to be
+    # refreshed, then refresh the credentials and re-attempt the
+    # request.
+    # A stored token may expire between the time it is retrieved and
+    # the time the request is made, so we may need to try twice.
+    # The reason urllib3&#39;s retries aren&#39;t used is because they
+    # don&#39;t allow you to modify the request headers. :/
+    if (
+        response.status in self._refresh_status_codes
+        and _credential_refresh_attempt &lt; self._max_refresh_attempts
+    ):
+
+        _LOGGER.info(
+            &#34;Refreshing credentials due to a %s response. Attempt %s/%s.&#34;,
+            response.status,
+            _credential_refresh_attempt + 1,
+            self._max_refresh_attempts,
+        )
+
+        self.credentials.refresh(self._request)
+
+        # Recurse. Pass in the original headers, not our modified set.
+        return self.urlopen(
+            method,
+            url,
+            body=body,
+            headers=headers,
+            _credential_refresh_attempt=_credential_refresh_attempt + 1,
+            **kwargs
+        )
+
+    return response</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="google.auth.transport.urllib3.Request"><code class="flex name class">
+<span>class <span class="ident">Request</span></span>
+<span>(</span><span>http)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>urllib3 request adapter.</p>
+<p>This class is used internally for making requests using various transports
+in a consistent way. If you use :class:<a title="google.auth.transport.urllib3.AuthorizedHttp" href="#google.auth.transport.urllib3.AuthorizedHttp"><code>AuthorizedHttp</code></a> you do not need
+to construct or use this class directly.</p>
+<p>This class can be useful if you want to manually refresh a
+:class:<code>~google.auth.credentials.Credentials</code> instance::</p>
+<pre><code>import google.auth.transport.urllib3
+import urllib3
+
+http = urllib3.PoolManager()
+request = google.auth.transport.urllib3.Request(http)
+
+credentials.refresh(request)
+</code></pre>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>http</code></strong> :&ensp;<code>urllib3.request.RequestMethods</code></dt>
+<dd>An instance of any urllib3
+class that implements :class:<code>~urllib3.request.RequestMethods</code>,
+usually :class:<code>urllib3.PoolManager</code>.</dd>
+</dl>
+<div class="admonition automethod">
+<p class="admonition-title">Automethod:&ensp;<strong>call</strong></p>
+</div></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Request(transport.Request):
+    &#34;&#34;&#34;urllib3 request adapter.
+
+    This class is used internally for making requests using various transports
+    in a consistent way. If you use :class:`AuthorizedHttp` you do not need
+    to construct or use this class directly.
+
+    This class can be useful if you want to manually refresh a
+    :class:`~google.auth.credentials.Credentials` instance::
+
+        import google.auth.transport.urllib3
+        import urllib3
+
+        http = urllib3.PoolManager()
+        request = google.auth.transport.urllib3.Request(http)
+
+        credentials.refresh(request)
+
+    Args:
+        http (urllib3.request.RequestMethods): An instance of any urllib3
+            class that implements :class:`~urllib3.request.RequestMethods`,
+            usually :class:`urllib3.PoolManager`.
+
+    .. automethod:: __call__
+    &#34;&#34;&#34;
+
+    def __init__(self, http):
+        self.http = http
+
+    def __call__(
+        self, url, method=&#34;GET&#34;, body=None, headers=None, timeout=None, **kwargs
+    ):
+        &#34;&#34;&#34;Make an HTTP request using urllib3.
+
+        Args:
+            url (str): The URI to be requested.
+            method (str): The HTTP method to use for the request. Defaults
+                to &#39;GET&#39;.
+            body (bytes): The payload / body in HTTP request.
+            headers (Mapping[str, str]): Request headers.
+            timeout (Optional[int]): The number of seconds to wait for a
+                response from the server. If not specified or if None, the
+                urllib3 default timeout will be used.
+            kwargs: Additional arguments passed throught to the underlying
+                urllib3 :meth:`urlopen` method.
+
+        Returns:
+            google.auth.transport.Response: The HTTP response.
+
+        Raises:
+            google.auth.exceptions.TransportError: If any exception occurred.
+        &#34;&#34;&#34;
+        # urllib3 uses a sentinel default value for timeout, so only set it if
+        # specified.
+        if timeout is not None:
+            kwargs[&#34;timeout&#34;] = timeout
+
+        try:
+            _LOGGER.debug(&#34;Making request: %s %s&#34;, method, url)
+            response = self.http.request(
+                method, url, body=body, headers=headers, **kwargs
+            )
+            return _Response(response)
+        except urllib3.exceptions.HTTPError as caught_exc:
+            new_exc = exceptions.TransportError(caught_exc)
+            six.raise_from(new_exc, caught_exc)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="google.auth.transport.Request" href="index.html#google.auth.transport.Request">Request</a></li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="google.auth.transport" href="index.html">google.auth.transport</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="google.auth.transport.urllib3.AuthorizedHttp" href="#google.auth.transport.urllib3.AuthorizedHttp">AuthorizedHttp</a></code></h4>
+<ul class="">
+<li><code><a title="google.auth.transport.urllib3.AuthorizedHttp.headers" href="#google.auth.transport.urllib3.AuthorizedHttp.headers">headers</a></code></li>
+<li><code><a title="google.auth.transport.urllib3.AuthorizedHttp.urlopen" href="#google.auth.transport.urllib3.AuthorizedHttp.urlopen">urlopen</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="google.auth.transport.urllib3.Request" href="#google.auth.transport.urllib3.Request">Request</a></code></h4>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.4</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

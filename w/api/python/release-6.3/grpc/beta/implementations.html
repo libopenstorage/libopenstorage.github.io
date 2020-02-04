@@ -1,0 +1,967 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.4" />
+<title>grpc.beta.implementations API documentation</title>
+<meta name="description" content="Entry points into the Beta API of gRPC Python." />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>grpc.beta.implementations</code></h1>
+</header>
+<section id="section-intro">
+<p>Entry points into the Beta API of gRPC Python.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Copyright 2015-2016 gRPC authors.
+#
+# Licensed under the Apache License, Version 2.0 (the &#34;License&#34;);
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+&#34;&#34;&#34;Entry points into the Beta API of gRPC Python.&#34;&#34;&#34;
+
+# threading is referenced from specification in this module.
+import threading  # pylint: disable=unused-import
+
+# interfaces, cardinality, and face are referenced from specification in this
+# module.
+import grpc
+from grpc import _auth
+from grpc.beta import _client_adaptations
+from grpc.beta import _metadata
+from grpc.beta import _server_adaptations
+from grpc.beta import interfaces  # pylint: disable=unused-import
+from grpc.framework.common import cardinality  # pylint: disable=unused-import
+from grpc.framework.interfaces.face import face  # pylint: disable=unused-import
+
+# pylint: disable=too-many-arguments
+
+ChannelCredentials = grpc.ChannelCredentials
+ssl_channel_credentials = grpc.ssl_channel_credentials
+CallCredentials = grpc.CallCredentials
+
+
+def metadata_call_credentials(metadata_plugin, name=None):
+
+    def plugin(context, callback):
+
+        def wrapped_callback(beta_metadata, error):
+            callback(_metadata.unbeta(beta_metadata), error)
+
+        metadata_plugin(context, wrapped_callback)
+
+    return grpc.metadata_call_credentials(plugin, name=name)
+
+
+def google_call_credentials(credentials):
+    &#34;&#34;&#34;Construct CallCredentials from GoogleCredentials.
+
+  Args:
+    credentials: A GoogleCredentials object from the oauth2client library.
+
+  Returns:
+    A CallCredentials object for use in a GRPCCallOptions object.
+  &#34;&#34;&#34;
+    return metadata_call_credentials(_auth.GoogleCallCredentials(credentials))
+
+
+access_token_call_credentials = grpc.access_token_call_credentials
+composite_call_credentials = grpc.composite_call_credentials
+composite_channel_credentials = grpc.composite_channel_credentials
+
+
+class Channel(object):
+    &#34;&#34;&#34;A channel to a remote host through which RPCs may be conducted.
+
+  Only the &#34;subscribe&#34; and &#34;unsubscribe&#34; methods are supported for application
+  use. This class&#39; instance constructor and all other attributes are
+  unsupported.
+  &#34;&#34;&#34;
+
+    def __init__(self, channel):
+        self._channel = channel
+
+    def subscribe(self, callback, try_to_connect=None):
+        &#34;&#34;&#34;Subscribes to this Channel&#39;s connectivity.
+
+    Args:
+      callback: A callable to be invoked and passed an
+        interfaces.ChannelConnectivity identifying this Channel&#39;s connectivity.
+        The callable will be invoked immediately upon subscription and again for
+        every change to this Channel&#39;s connectivity thereafter until it is
+        unsubscribed.
+      try_to_connect: A boolean indicating whether or not this Channel should
+        attempt to connect if it is not already connected and ready to conduct
+        RPCs.
+    &#34;&#34;&#34;
+        self._channel.subscribe(callback, try_to_connect=try_to_connect)
+
+    def unsubscribe(self, callback):
+        &#34;&#34;&#34;Unsubscribes a callback from this Channel&#39;s connectivity.
+
+    Args:
+      callback: A callable previously registered with this Channel from having
+        been passed to its &#34;subscribe&#34; method.
+    &#34;&#34;&#34;
+        self._channel.unsubscribe(callback)
+
+
+def insecure_channel(host, port):
+    &#34;&#34;&#34;Creates an insecure Channel to a remote host.
+
+  Args:
+    host: The name of the remote host to which to connect.
+    port: The port of the remote host to which to connect.
+      If None only the &#39;host&#39; part will be used.
+
+  Returns:
+    A Channel to the remote host through which RPCs may be conducted.
+  &#34;&#34;&#34;
+    channel = grpc.insecure_channel(host if port is None else &#39;%s:%d&#39; % (host,
+                                                                         port))
+    return Channel(channel)
+
+
+def secure_channel(host, port, channel_credentials):
+    &#34;&#34;&#34;Creates a secure Channel to a remote host.
+
+  Args:
+    host: The name of the remote host to which to connect.
+    port: The port of the remote host to which to connect.
+      If None only the &#39;host&#39; part will be used.
+    channel_credentials: A ChannelCredentials.
+
+  Returns:
+    A secure Channel to the remote host through which RPCs may be conducted.
+  &#34;&#34;&#34;
+    channel = grpc.secure_channel(host if port is None else
+                                  &#39;%s:%d&#39; % (host, port), channel_credentials)
+    return Channel(channel)
+
+
+class StubOptions(object):
+    &#34;&#34;&#34;A value encapsulating the various options for creation of a Stub.
+
+  This class and its instances have no supported interface - it exists to define
+  the type of its instances and its instances exist to be passed to other
+  functions.
+  &#34;&#34;&#34;
+
+    def __init__(self, host, request_serializers, response_deserializers,
+                 metadata_transformer, thread_pool, thread_pool_size):
+        self.host = host
+        self.request_serializers = request_serializers
+        self.response_deserializers = response_deserializers
+        self.metadata_transformer = metadata_transformer
+        self.thread_pool = thread_pool
+        self.thread_pool_size = thread_pool_size
+
+
+_EMPTY_STUB_OPTIONS = StubOptions(None, None, None, None, None, None)
+
+
+def stub_options(host=None,
+                 request_serializers=None,
+                 response_deserializers=None,
+                 metadata_transformer=None,
+                 thread_pool=None,
+                 thread_pool_size=None):
+    &#34;&#34;&#34;Creates a StubOptions value to be passed at stub creation.
+
+  All parameters are optional and should always be passed by keyword.
+
+  Args:
+    host: A host string to set on RPC calls.
+    request_serializers: A dictionary from service name-method name pair to
+      request serialization behavior.
+    response_deserializers: A dictionary from service name-method name pair to
+      response deserialization behavior.
+    metadata_transformer: A callable that given a metadata object produces
+      another metadata object to be used in the underlying communication on the
+      wire.
+    thread_pool: A thread pool to use in stubs.
+    thread_pool_size: The size of thread pool to create for use in stubs;
+      ignored if thread_pool has been passed.
+
+  Returns:
+    A StubOptions value created from the passed parameters.
+  &#34;&#34;&#34;
+    return StubOptions(host, request_serializers, response_deserializers,
+                       metadata_transformer, thread_pool, thread_pool_size)
+
+
+def generic_stub(channel, options=None):
+    &#34;&#34;&#34;Creates a face.GenericStub on which RPCs can be made.
+
+  Args:
+    channel: A Channel for use by the created stub.
+    options: A StubOptions customizing the created stub.
+
+  Returns:
+    A face.GenericStub on which RPCs can be made.
+  &#34;&#34;&#34;
+    effective_options = _EMPTY_STUB_OPTIONS if options is None else options
+    return _client_adaptations.generic_stub(
+        channel._channel,  # pylint: disable=protected-access
+        effective_options.host,
+        effective_options.metadata_transformer,
+        effective_options.request_serializers,
+        effective_options.response_deserializers)
+
+
+def dynamic_stub(channel, service, cardinalities, options=None):
+    &#34;&#34;&#34;Creates a face.DynamicStub with which RPCs can be invoked.
+
+  Args:
+    channel: A Channel for the returned face.DynamicStub to use.
+    service: The package-qualified full name of the service.
+    cardinalities: A dictionary from RPC method name to cardinality.Cardinality
+      value identifying the cardinality of the RPC method.
+    options: An optional StubOptions value further customizing the functionality
+      of the returned face.DynamicStub.
+
+  Returns:
+    A face.DynamicStub with which RPCs can be invoked.
+  &#34;&#34;&#34;
+    effective_options = _EMPTY_STUB_OPTIONS if options is None else options
+    return _client_adaptations.dynamic_stub(
+        channel._channel,  # pylint: disable=protected-access
+        service,
+        cardinalities,
+        effective_options.host,
+        effective_options.metadata_transformer,
+        effective_options.request_serializers,
+        effective_options.response_deserializers)
+
+
+ServerCredentials = grpc.ServerCredentials
+ssl_server_credentials = grpc.ssl_server_credentials
+
+
+class ServerOptions(object):
+    &#34;&#34;&#34;A value encapsulating the various options for creation of a Server.
+
+  This class and its instances have no supported interface - it exists to define
+  the type of its instances and its instances exist to be passed to other
+  functions.
+  &#34;&#34;&#34;
+
+    def __init__(self, multi_method_implementation, request_deserializers,
+                 response_serializers, thread_pool, thread_pool_size,
+                 default_timeout, maximum_timeout):
+        self.multi_method_implementation = multi_method_implementation
+        self.request_deserializers = request_deserializers
+        self.response_serializers = response_serializers
+        self.thread_pool = thread_pool
+        self.thread_pool_size = thread_pool_size
+        self.default_timeout = default_timeout
+        self.maximum_timeout = maximum_timeout
+
+
+_EMPTY_SERVER_OPTIONS = ServerOptions(None, None, None, None, None, None, None)
+
+
+def server_options(multi_method_implementation=None,
+                   request_deserializers=None,
+                   response_serializers=None,
+                   thread_pool=None,
+                   thread_pool_size=None,
+                   default_timeout=None,
+                   maximum_timeout=None):
+    &#34;&#34;&#34;Creates a ServerOptions value to be passed at server creation.
+
+  All parameters are optional and should always be passed by keyword.
+
+  Args:
+    multi_method_implementation: A face.MultiMethodImplementation to be called
+      to service an RPC if the server has no specific method implementation for
+      the name of the RPC for which service was requested.
+    request_deserializers: A dictionary from service name-method name pair to
+      request deserialization behavior.
+    response_serializers: A dictionary from service name-method name pair to
+      response serialization behavior.
+    thread_pool: A thread pool to use in stubs.
+    thread_pool_size: The size of thread pool to create for use in stubs;
+      ignored if thread_pool has been passed.
+    default_timeout: A duration in seconds to allow for RPC service when
+      servicing RPCs that did not include a timeout value when invoked.
+    maximum_timeout: A duration in seconds to allow for RPC service when
+      servicing RPCs no matter what timeout value was passed when the RPC was
+      invoked.
+
+  Returns:
+    A StubOptions value created from the passed parameters.
+  &#34;&#34;&#34;
+    return ServerOptions(multi_method_implementation, request_deserializers,
+                         response_serializers, thread_pool, thread_pool_size,
+                         default_timeout, maximum_timeout)
+
+
+def server(service_implementations, options=None):
+    &#34;&#34;&#34;Creates an interfaces.Server with which RPCs can be serviced.
+
+  Args:
+    service_implementations: A dictionary from service name-method name pair to
+      face.MethodImplementation.
+    options: An optional ServerOptions value further customizing the
+      functionality of the returned Server.
+
+  Returns:
+    An interfaces.Server with which RPCs can be serviced.
+  &#34;&#34;&#34;
+    effective_options = _EMPTY_SERVER_OPTIONS if options is None else options
+    return _server_adaptations.server(
+        service_implementations, effective_options.multi_method_implementation,
+        effective_options.request_deserializers,
+        effective_options.response_serializers, effective_options.thread_pool,
+        effective_options.thread_pool_size)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="grpc.beta.implementations.dynamic_stub"><code class="name flex">
+<span>def <span class="ident">dynamic_stub</span></span>(<span>channel, service, cardinalities, options=None)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Creates a face.DynamicStub with which RPCs can be invoked.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>channel</code></strong></dt>
+<dd>A Channel for the returned face.DynamicStub to use.</dd>
+<dt><strong><code>service</code></strong></dt>
+<dd>The package-qualified full name of the service.</dd>
+<dt><strong><code>cardinalities</code></strong></dt>
+<dd>A dictionary from RPC method name to cardinality.Cardinality
+value identifying the cardinality of the RPC method.</dd>
+<dt><strong><code>options</code></strong></dt>
+<dd>An optional StubOptions value further customizing the functionality
+of the returned face.DynamicStub.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A face.DynamicStub with which RPCs can be invoked.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def dynamic_stub(channel, service, cardinalities, options=None):
+    &#34;&#34;&#34;Creates a face.DynamicStub with which RPCs can be invoked.
+
+  Args:
+    channel: A Channel for the returned face.DynamicStub to use.
+    service: The package-qualified full name of the service.
+    cardinalities: A dictionary from RPC method name to cardinality.Cardinality
+      value identifying the cardinality of the RPC method.
+    options: An optional StubOptions value further customizing the functionality
+      of the returned face.DynamicStub.
+
+  Returns:
+    A face.DynamicStub with which RPCs can be invoked.
+  &#34;&#34;&#34;
+    effective_options = _EMPTY_STUB_OPTIONS if options is None else options
+    return _client_adaptations.dynamic_stub(
+        channel._channel,  # pylint: disable=protected-access
+        service,
+        cardinalities,
+        effective_options.host,
+        effective_options.metadata_transformer,
+        effective_options.request_serializers,
+        effective_options.response_deserializers)</code></pre>
+</details>
+</dd>
+<dt id="grpc.beta.implementations.generic_stub"><code class="name flex">
+<span>def <span class="ident">generic_stub</span></span>(<span>channel, options=None)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Creates a face.GenericStub on which RPCs can be made.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>channel</code></strong></dt>
+<dd>A Channel for use by the created stub.</dd>
+<dt><strong><code>options</code></strong></dt>
+<dd>A StubOptions customizing the created stub.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A face.GenericStub on which RPCs can be made.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def generic_stub(channel, options=None):
+    &#34;&#34;&#34;Creates a face.GenericStub on which RPCs can be made.
+
+  Args:
+    channel: A Channel for use by the created stub.
+    options: A StubOptions customizing the created stub.
+
+  Returns:
+    A face.GenericStub on which RPCs can be made.
+  &#34;&#34;&#34;
+    effective_options = _EMPTY_STUB_OPTIONS if options is None else options
+    return _client_adaptations.generic_stub(
+        channel._channel,  # pylint: disable=protected-access
+        effective_options.host,
+        effective_options.metadata_transformer,
+        effective_options.request_serializers,
+        effective_options.response_deserializers)</code></pre>
+</details>
+</dd>
+<dt id="grpc.beta.implementations.google_call_credentials"><code class="name flex">
+<span>def <span class="ident">google_call_credentials</span></span>(<span>credentials)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Construct CallCredentials from GoogleCredentials.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>credentials</code></strong></dt>
+<dd>A GoogleCredentials object from the oauth2client library.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A CallCredentials object for use in a GRPCCallOptions object.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def google_call_credentials(credentials):
+    &#34;&#34;&#34;Construct CallCredentials from GoogleCredentials.
+
+  Args:
+    credentials: A GoogleCredentials object from the oauth2client library.
+
+  Returns:
+    A CallCredentials object for use in a GRPCCallOptions object.
+  &#34;&#34;&#34;
+    return metadata_call_credentials(_auth.GoogleCallCredentials(credentials))</code></pre>
+</details>
+</dd>
+<dt id="grpc.beta.implementations.insecure_channel"><code class="name flex">
+<span>def <span class="ident">insecure_channel</span></span>(<span>host, port)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Creates an insecure Channel to a remote host.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>host</code></strong></dt>
+<dd>The name of the remote host to which to connect.</dd>
+<dt><strong><code>port</code></strong></dt>
+<dd>The port of the remote host to which to connect.
+If None only the 'host' part will be used.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A Channel to the remote host through which RPCs may be conducted.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def insecure_channel(host, port):
+    &#34;&#34;&#34;Creates an insecure Channel to a remote host.
+
+  Args:
+    host: The name of the remote host to which to connect.
+    port: The port of the remote host to which to connect.
+      If None only the &#39;host&#39; part will be used.
+
+  Returns:
+    A Channel to the remote host through which RPCs may be conducted.
+  &#34;&#34;&#34;
+    channel = grpc.insecure_channel(host if port is None else &#39;%s:%d&#39; % (host,
+                                                                         port))
+    return Channel(channel)</code></pre>
+</details>
+</dd>
+<dt id="grpc.beta.implementations.metadata_call_credentials"><code class="name flex">
+<span>def <span class="ident">metadata_call_credentials</span></span>(<span>metadata_plugin, name=None)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def metadata_call_credentials(metadata_plugin, name=None):
+
+    def plugin(context, callback):
+
+        def wrapped_callback(beta_metadata, error):
+            callback(_metadata.unbeta(beta_metadata), error)
+
+        metadata_plugin(context, wrapped_callback)
+
+    return grpc.metadata_call_credentials(plugin, name=name)</code></pre>
+</details>
+</dd>
+<dt id="grpc.beta.implementations.secure_channel"><code class="name flex">
+<span>def <span class="ident">secure_channel</span></span>(<span>host, port, channel_credentials)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Creates a secure Channel to a remote host.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>host</code></strong></dt>
+<dd>The name of the remote host to which to connect.</dd>
+<dt><strong><code>port</code></strong></dt>
+<dd>The port of the remote host to which to connect.
+If None only the 'host' part will be used.</dd>
+<dt><strong><code>channel_credentials</code></strong></dt>
+<dd>A ChannelCredentials.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A secure Channel to the remote host through which RPCs may be conducted.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def secure_channel(host, port, channel_credentials):
+    &#34;&#34;&#34;Creates a secure Channel to a remote host.
+
+  Args:
+    host: The name of the remote host to which to connect.
+    port: The port of the remote host to which to connect.
+      If None only the &#39;host&#39; part will be used.
+    channel_credentials: A ChannelCredentials.
+
+  Returns:
+    A secure Channel to the remote host through which RPCs may be conducted.
+  &#34;&#34;&#34;
+    channel = grpc.secure_channel(host if port is None else
+                                  &#39;%s:%d&#39; % (host, port), channel_credentials)
+    return Channel(channel)</code></pre>
+</details>
+</dd>
+<dt id="grpc.beta.implementations.server"><code class="name flex">
+<span>def <span class="ident">server</span></span>(<span>service_implementations, options=None)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Creates an interfaces.Server with which RPCs can be serviced.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>service_implementations</code></strong></dt>
+<dd>A dictionary from service name-method name pair to
+face.MethodImplementation.</dd>
+<dt><strong><code>options</code></strong></dt>
+<dd>An optional ServerOptions value further customizing the
+functionality of the returned Server.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>An interfaces.Server with which RPCs can be serviced.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def server(service_implementations, options=None):
+    &#34;&#34;&#34;Creates an interfaces.Server with which RPCs can be serviced.
+
+  Args:
+    service_implementations: A dictionary from service name-method name pair to
+      face.MethodImplementation.
+    options: An optional ServerOptions value further customizing the
+      functionality of the returned Server.
+
+  Returns:
+    An interfaces.Server with which RPCs can be serviced.
+  &#34;&#34;&#34;
+    effective_options = _EMPTY_SERVER_OPTIONS if options is None else options
+    return _server_adaptations.server(
+        service_implementations, effective_options.multi_method_implementation,
+        effective_options.request_deserializers,
+        effective_options.response_serializers, effective_options.thread_pool,
+        effective_options.thread_pool_size)</code></pre>
+</details>
+</dd>
+<dt id="grpc.beta.implementations.server_options"><code class="name flex">
+<span>def <span class="ident">server_options</span></span>(<span>multi_method_implementation=None, request_deserializers=None, response_serializers=None, thread_pool=None, thread_pool_size=None, default_timeout=None, maximum_timeout=None)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Creates a ServerOptions value to be passed at server creation.</p>
+<p>All parameters are optional and should always be passed by keyword.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>multi_method_implementation</code></strong></dt>
+<dd>A face.MultiMethodImplementation to be called
+to service an RPC if the server has no specific method implementation for
+the name of the RPC for which service was requested.</dd>
+<dt><strong><code>request_deserializers</code></strong></dt>
+<dd>A dictionary from service name-method name pair to
+request deserialization behavior.</dd>
+<dt><strong><code>response_serializers</code></strong></dt>
+<dd>A dictionary from service name-method name pair to
+response serialization behavior.</dd>
+<dt><strong><code>thread_pool</code></strong></dt>
+<dd>A thread pool to use in stubs.</dd>
+<dt><strong><code>thread_pool_size</code></strong></dt>
+<dd>The size of thread pool to create for use in stubs;
+ignored if thread_pool has been passed.</dd>
+<dt><strong><code>default_timeout</code></strong></dt>
+<dd>A duration in seconds to allow for RPC service when
+servicing RPCs that did not include a timeout value when invoked.</dd>
+<dt><strong><code>maximum_timeout</code></strong></dt>
+<dd>A duration in seconds to allow for RPC service when
+servicing RPCs no matter what timeout value was passed when the RPC was
+invoked.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A StubOptions value created from the passed parameters.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def server_options(multi_method_implementation=None,
+                   request_deserializers=None,
+                   response_serializers=None,
+                   thread_pool=None,
+                   thread_pool_size=None,
+                   default_timeout=None,
+                   maximum_timeout=None):
+    &#34;&#34;&#34;Creates a ServerOptions value to be passed at server creation.
+
+  All parameters are optional and should always be passed by keyword.
+
+  Args:
+    multi_method_implementation: A face.MultiMethodImplementation to be called
+      to service an RPC if the server has no specific method implementation for
+      the name of the RPC for which service was requested.
+    request_deserializers: A dictionary from service name-method name pair to
+      request deserialization behavior.
+    response_serializers: A dictionary from service name-method name pair to
+      response serialization behavior.
+    thread_pool: A thread pool to use in stubs.
+    thread_pool_size: The size of thread pool to create for use in stubs;
+      ignored if thread_pool has been passed.
+    default_timeout: A duration in seconds to allow for RPC service when
+      servicing RPCs that did not include a timeout value when invoked.
+    maximum_timeout: A duration in seconds to allow for RPC service when
+      servicing RPCs no matter what timeout value was passed when the RPC was
+      invoked.
+
+  Returns:
+    A StubOptions value created from the passed parameters.
+  &#34;&#34;&#34;
+    return ServerOptions(multi_method_implementation, request_deserializers,
+                         response_serializers, thread_pool, thread_pool_size,
+                         default_timeout, maximum_timeout)</code></pre>
+</details>
+</dd>
+<dt id="grpc.beta.implementations.stub_options"><code class="name flex">
+<span>def <span class="ident">stub_options</span></span>(<span>host=None, request_serializers=None, response_deserializers=None, metadata_transformer=None, thread_pool=None, thread_pool_size=None)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Creates a StubOptions value to be passed at stub creation.</p>
+<p>All parameters are optional and should always be passed by keyword.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>host</code></strong></dt>
+<dd>A host string to set on RPC calls.</dd>
+<dt><strong><code>request_serializers</code></strong></dt>
+<dd>A dictionary from service name-method name pair to
+request serialization behavior.</dd>
+<dt><strong><code>response_deserializers</code></strong></dt>
+<dd>A dictionary from service name-method name pair to
+response deserialization behavior.</dd>
+<dt><strong><code>metadata_transformer</code></strong></dt>
+<dd>A callable that given a metadata object produces
+another metadata object to be used in the underlying communication on the
+wire.</dd>
+<dt><strong><code>thread_pool</code></strong></dt>
+<dd>A thread pool to use in stubs.</dd>
+<dt><strong><code>thread_pool_size</code></strong></dt>
+<dd>The size of thread pool to create for use in stubs;
+ignored if thread_pool has been passed.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A StubOptions value created from the passed parameters.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def stub_options(host=None,
+                 request_serializers=None,
+                 response_deserializers=None,
+                 metadata_transformer=None,
+                 thread_pool=None,
+                 thread_pool_size=None):
+    &#34;&#34;&#34;Creates a StubOptions value to be passed at stub creation.
+
+  All parameters are optional and should always be passed by keyword.
+
+  Args:
+    host: A host string to set on RPC calls.
+    request_serializers: A dictionary from service name-method name pair to
+      request serialization behavior.
+    response_deserializers: A dictionary from service name-method name pair to
+      response deserialization behavior.
+    metadata_transformer: A callable that given a metadata object produces
+      another metadata object to be used in the underlying communication on the
+      wire.
+    thread_pool: A thread pool to use in stubs.
+    thread_pool_size: The size of thread pool to create for use in stubs;
+      ignored if thread_pool has been passed.
+
+  Returns:
+    A StubOptions value created from the passed parameters.
+  &#34;&#34;&#34;
+    return StubOptions(host, request_serializers, response_deserializers,
+                       metadata_transformer, thread_pool, thread_pool_size)</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="grpc.beta.implementations.Channel"><code class="flex name class">
+<span>class <span class="ident">Channel</span></span>
+<span>(</span><span>channel)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>A channel to a remote host through which RPCs may be conducted.</p>
+<p>Only the "subscribe" and "unsubscribe" methods are supported for application
+use. This class' instance constructor and all other attributes are
+unsupported.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Channel(object):
+    &#34;&#34;&#34;A channel to a remote host through which RPCs may be conducted.
+
+  Only the &#34;subscribe&#34; and &#34;unsubscribe&#34; methods are supported for application
+  use. This class&#39; instance constructor and all other attributes are
+  unsupported.
+  &#34;&#34;&#34;
+
+    def __init__(self, channel):
+        self._channel = channel
+
+    def subscribe(self, callback, try_to_connect=None):
+        &#34;&#34;&#34;Subscribes to this Channel&#39;s connectivity.
+
+    Args:
+      callback: A callable to be invoked and passed an
+        interfaces.ChannelConnectivity identifying this Channel&#39;s connectivity.
+        The callable will be invoked immediately upon subscription and again for
+        every change to this Channel&#39;s connectivity thereafter until it is
+        unsubscribed.
+      try_to_connect: A boolean indicating whether or not this Channel should
+        attempt to connect if it is not already connected and ready to conduct
+        RPCs.
+    &#34;&#34;&#34;
+        self._channel.subscribe(callback, try_to_connect=try_to_connect)
+
+    def unsubscribe(self, callback):
+        &#34;&#34;&#34;Unsubscribes a callback from this Channel&#39;s connectivity.
+
+    Args:
+      callback: A callable previously registered with this Channel from having
+        been passed to its &#34;subscribe&#34; method.
+    &#34;&#34;&#34;
+        self._channel.unsubscribe(callback)</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="grpc.beta.implementations.Channel.subscribe"><code class="name flex">
+<span>def <span class="ident">subscribe</span></span>(<span>self, callback, try_to_connect=None)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Subscribes to this Channel's connectivity.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>callback</code></strong></dt>
+<dd>A callable to be invoked and passed an
+interfaces.ChannelConnectivity identifying this Channel's connectivity.
+The callable will be invoked immediately upon subscription and again for
+every change to this Channel's connectivity thereafter until it is
+unsubscribed.</dd>
+<dt><strong><code>try_to_connect</code></strong></dt>
+<dd>A boolean indicating whether or not this Channel should
+attempt to connect if it is not already connected and ready to conduct
+RPCs.</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def subscribe(self, callback, try_to_connect=None):
+    &#34;&#34;&#34;Subscribes to this Channel&#39;s connectivity.
+
+Args:
+  callback: A callable to be invoked and passed an
+    interfaces.ChannelConnectivity identifying this Channel&#39;s connectivity.
+    The callable will be invoked immediately upon subscription and again for
+    every change to this Channel&#39;s connectivity thereafter until it is
+    unsubscribed.
+  try_to_connect: A boolean indicating whether or not this Channel should
+    attempt to connect if it is not already connected and ready to conduct
+    RPCs.
+&#34;&#34;&#34;
+    self._channel.subscribe(callback, try_to_connect=try_to_connect)</code></pre>
+</details>
+</dd>
+<dt id="grpc.beta.implementations.Channel.unsubscribe"><code class="name flex">
+<span>def <span class="ident">unsubscribe</span></span>(<span>self, callback)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Unsubscribes a callback from this Channel's connectivity.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>callback</code></strong></dt>
+<dd>A callable previously registered with this Channel from having
+been passed to its "subscribe" method.</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def unsubscribe(self, callback):
+    &#34;&#34;&#34;Unsubscribes a callback from this Channel&#39;s connectivity.
+
+Args:
+  callback: A callable previously registered with this Channel from having
+    been passed to its &#34;subscribe&#34; method.
+&#34;&#34;&#34;
+    self._channel.unsubscribe(callback)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="grpc.beta.implementations.ServerOptions"><code class="flex name class">
+<span>class <span class="ident">ServerOptions</span></span>
+<span>(</span><span>multi_method_implementation, request_deserializers, response_serializers, thread_pool, thread_pool_size, default_timeout, maximum_timeout)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>A value encapsulating the various options for creation of a Server.</p>
+<p>This class and its instances have no supported interface - it exists to define
+the type of its instances and its instances exist to be passed to other
+functions.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ServerOptions(object):
+    &#34;&#34;&#34;A value encapsulating the various options for creation of a Server.
+
+  This class and its instances have no supported interface - it exists to define
+  the type of its instances and its instances exist to be passed to other
+  functions.
+  &#34;&#34;&#34;
+
+    def __init__(self, multi_method_implementation, request_deserializers,
+                 response_serializers, thread_pool, thread_pool_size,
+                 default_timeout, maximum_timeout):
+        self.multi_method_implementation = multi_method_implementation
+        self.request_deserializers = request_deserializers
+        self.response_serializers = response_serializers
+        self.thread_pool = thread_pool
+        self.thread_pool_size = thread_pool_size
+        self.default_timeout = default_timeout
+        self.maximum_timeout = maximum_timeout</code></pre>
+</details>
+</dd>
+<dt id="grpc.beta.implementations.StubOptions"><code class="flex name class">
+<span>class <span class="ident">StubOptions</span></span>
+<span>(</span><span>host, request_serializers, response_deserializers, metadata_transformer, thread_pool, thread_pool_size)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>A value encapsulating the various options for creation of a Stub.</p>
+<p>This class and its instances have no supported interface - it exists to define
+the type of its instances and its instances exist to be passed to other
+functions.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class StubOptions(object):
+    &#34;&#34;&#34;A value encapsulating the various options for creation of a Stub.
+
+  This class and its instances have no supported interface - it exists to define
+  the type of its instances and its instances exist to be passed to other
+  functions.
+  &#34;&#34;&#34;
+
+    def __init__(self, host, request_serializers, response_deserializers,
+                 metadata_transformer, thread_pool, thread_pool_size):
+        self.host = host
+        self.request_serializers = request_serializers
+        self.response_deserializers = response_deserializers
+        self.metadata_transformer = metadata_transformer
+        self.thread_pool = thread_pool
+        self.thread_pool_size = thread_pool_size</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="grpc.beta" href="index.html">grpc.beta</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="grpc.beta.implementations.dynamic_stub" href="#grpc.beta.implementations.dynamic_stub">dynamic_stub</a></code></li>
+<li><code><a title="grpc.beta.implementations.generic_stub" href="#grpc.beta.implementations.generic_stub">generic_stub</a></code></li>
+<li><code><a title="grpc.beta.implementations.google_call_credentials" href="#grpc.beta.implementations.google_call_credentials">google_call_credentials</a></code></li>
+<li><code><a title="grpc.beta.implementations.insecure_channel" href="#grpc.beta.implementations.insecure_channel">insecure_channel</a></code></li>
+<li><code><a title="grpc.beta.implementations.metadata_call_credentials" href="#grpc.beta.implementations.metadata_call_credentials">metadata_call_credentials</a></code></li>
+<li><code><a title="grpc.beta.implementations.secure_channel" href="#grpc.beta.implementations.secure_channel">secure_channel</a></code></li>
+<li><code><a title="grpc.beta.implementations.server" href="#grpc.beta.implementations.server">server</a></code></li>
+<li><code><a title="grpc.beta.implementations.server_options" href="#grpc.beta.implementations.server_options">server_options</a></code></li>
+<li><code><a title="grpc.beta.implementations.stub_options" href="#grpc.beta.implementations.stub_options">stub_options</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="grpc.beta.implementations.Channel" href="#grpc.beta.implementations.Channel">Channel</a></code></h4>
+<ul class="">
+<li><code><a title="grpc.beta.implementations.Channel.subscribe" href="#grpc.beta.implementations.Channel.subscribe">subscribe</a></code></li>
+<li><code><a title="grpc.beta.implementations.Channel.unsubscribe" href="#grpc.beta.implementations.Channel.unsubscribe">unsubscribe</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="grpc.beta.implementations.ServerOptions" href="#grpc.beta.implementations.ServerOptions">ServerOptions</a></code></h4>
+</li>
+<li>
+<h4><code><a title="grpc.beta.implementations.StubOptions" href="#grpc.beta.implementations.StubOptions">StubOptions</a></code></h4>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.4</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

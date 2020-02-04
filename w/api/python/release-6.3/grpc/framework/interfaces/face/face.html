@@ -1,0 +1,4418 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.4" />
+<title>grpc.framework.interfaces.face.face API documentation</title>
+<meta name="description" content="Interfaces defining the Face layer of RPC Framework." />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>grpc.framework.interfaces.face.face</code></h1>
+</header>
+<section id="section-intro">
+<p>Interfaces defining the Face layer of RPC Framework.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Copyright 2015 gRPC authors.
+#
+# Licensed under the Apache License, Version 2.0 (the &#34;License&#34;);
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+&#34;&#34;&#34;Interfaces defining the Face layer of RPC Framework.&#34;&#34;&#34;
+
+import abc
+import collections
+import enum
+
+import six
+
+# cardinality, style, abandonment, future, and stream are
+# referenced from specification in this module.
+from grpc.framework.common import cardinality  # pylint: disable=unused-import
+from grpc.framework.common import style  # pylint: disable=unused-import
+from grpc.framework.foundation import abandonment  # pylint: disable=unused-import
+from grpc.framework.foundation import future  # pylint: disable=unused-import
+from grpc.framework.foundation import stream  # pylint: disable=unused-import
+
+# pylint: disable=too-many-arguments
+
+
+class NoSuchMethodError(Exception):
+    &#34;&#34;&#34;Raised by customer code to indicate an unrecognized method.
+
+  Attributes:
+    group: The group of the unrecognized method.
+    name: The name of the unrecognized method.
+  &#34;&#34;&#34;
+
+    def __init__(self, group, method):
+        &#34;&#34;&#34;Constructor.
+
+    Args:
+      group: The group identifier of the unrecognized RPC name.
+      method: The method identifier of the unrecognized RPC name.
+    &#34;&#34;&#34;
+        super(NoSuchMethodError, self).__init__()
+        self.group = group
+        self.method = method
+
+    def __repr__(self):
+        return &#39;face.NoSuchMethodError(%s, %s)&#39; % (
+            self.group,
+            self.method,
+        )
+
+
+class Abortion(
+        collections.namedtuple(&#39;Abortion&#39;, (
+            &#39;kind&#39;,
+            &#39;initial_metadata&#39;,
+            &#39;terminal_metadata&#39;,
+            &#39;code&#39;,
+            &#39;details&#39;,
+        ))):
+    &#34;&#34;&#34;A value describing RPC abortion.
+
+  Attributes:
+    kind: A Kind value identifying how the RPC failed.
+    initial_metadata: The initial metadata from the other side of the RPC or
+      None if no initial metadata value was received.
+    terminal_metadata: The terminal metadata from the other side of the RPC or
+      None if no terminal metadata value was received.
+    code: The code value from the other side of the RPC or None if no code value
+      was received.
+    details: The details value from the other side of the RPC or None if no
+      details value was received.
+  &#34;&#34;&#34;
+
+    @enum.unique
+    class Kind(enum.Enum):
+        &#34;&#34;&#34;Types of RPC abortion.&#34;&#34;&#34;
+
+        CANCELLED = &#39;cancelled&#39;
+        EXPIRED = &#39;expired&#39;
+        LOCAL_SHUTDOWN = &#39;local shutdown&#39;
+        REMOTE_SHUTDOWN = &#39;remote shutdown&#39;
+        NETWORK_FAILURE = &#39;network failure&#39;
+        LOCAL_FAILURE = &#39;local failure&#39;
+        REMOTE_FAILURE = &#39;remote failure&#39;
+
+
+class AbortionError(six.with_metaclass(abc.ABCMeta, Exception)):
+    &#34;&#34;&#34;Common super type for exceptions indicating RPC abortion.
+
+    initial_metadata: The initial metadata from the other side of the RPC or
+      None if no initial metadata value was received.
+    terminal_metadata: The terminal metadata from the other side of the RPC or
+      None if no terminal metadata value was received.
+    code: The code value from the other side of the RPC or None if no code value
+      was received.
+    details: The details value from the other side of the RPC or None if no
+      details value was received.
+  &#34;&#34;&#34;
+
+    def __init__(self, initial_metadata, terminal_metadata, code, details):
+        super(AbortionError, self).__init__()
+        self.initial_metadata = initial_metadata
+        self.terminal_metadata = terminal_metadata
+        self.code = code
+        self.details = details
+
+    def __str__(self):
+        return &#39;%s(code=%s, details=&#34;%s&#34;)&#39; % (self.__class__.__name__,
+                                              self.code, self.details)
+
+
+class CancellationError(AbortionError):
+    &#34;&#34;&#34;Indicates that an RPC has been cancelled.&#34;&#34;&#34;
+
+
+class ExpirationError(AbortionError):
+    &#34;&#34;&#34;Indicates that an RPC has expired (&#34;timed out&#34;).&#34;&#34;&#34;
+
+
+class LocalShutdownError(AbortionError):
+    &#34;&#34;&#34;Indicates that an RPC has terminated due to local shutdown of RPCs.&#34;&#34;&#34;
+
+
+class RemoteShutdownError(AbortionError):
+    &#34;&#34;&#34;Indicates that an RPC has terminated due to remote shutdown of RPCs.&#34;&#34;&#34;
+
+
+class NetworkError(AbortionError):
+    &#34;&#34;&#34;Indicates that some error occurred on the network.&#34;&#34;&#34;
+
+
+class LocalError(AbortionError):
+    &#34;&#34;&#34;Indicates that an RPC has terminated due to a local defect.&#34;&#34;&#34;
+
+
+class RemoteError(AbortionError):
+    &#34;&#34;&#34;Indicates that an RPC has terminated due to a remote defect.&#34;&#34;&#34;
+
+
+class RpcContext(six.with_metaclass(abc.ABCMeta)):
+    &#34;&#34;&#34;Provides RPC-related information and action.&#34;&#34;&#34;
+
+    @abc.abstractmethod
+    def is_active(self):
+        &#34;&#34;&#34;Describes whether the RPC is active or has terminated.&#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def time_remaining(self):
+        &#34;&#34;&#34;Describes the length of allowed time remaining for the RPC.
+
+    Returns:
+      A nonnegative float indicating the length of allowed time in seconds
+      remaining for the RPC to complete before it is considered to have timed
+      out.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def add_abortion_callback(self, abortion_callback):
+        &#34;&#34;&#34;Registers a callback to be called if the RPC is aborted.
+
+    Args:
+      abortion_callback: A callable to be called and passed an Abortion value
+        in the event of RPC abortion.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def cancel(self):
+        &#34;&#34;&#34;Cancels the RPC.
+
+    Idempotent and has no effect if the RPC has already terminated.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def protocol_context(self):
+        &#34;&#34;&#34;Accesses a custom object specified by an implementation provider.
+
+    Returns:
+      A value specified by the provider of a Face interface implementation
+        affording custom state and behavior.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+
+class Call(six.with_metaclass(abc.ABCMeta, RpcContext)):
+    &#34;&#34;&#34;Invocation-side utility object for an RPC.&#34;&#34;&#34;
+
+    @abc.abstractmethod
+    def initial_metadata(self):
+        &#34;&#34;&#34;Accesses the initial metadata from the service-side of the RPC.
+
+    This method blocks until the value is available or is known not to have been
+    emitted from the service-side of the RPC.
+
+    Returns:
+      The initial metadata object emitted by the service-side of the RPC, or
+        None if there was no such value.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def terminal_metadata(self):
+        &#34;&#34;&#34;Accesses the terminal metadata from the service-side of the RPC.
+
+    This method blocks until the value is available or is known not to have been
+    emitted from the service-side of the RPC.
+
+    Returns:
+      The terminal metadata object emitted by the service-side of the RPC, or
+        None if there was no such value.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def code(self):
+        &#34;&#34;&#34;Accesses the code emitted by the service-side of the RPC.
+
+    This method blocks until the value is available or is known not to have been
+    emitted from the service-side of the RPC.
+
+    Returns:
+      The code object emitted by the service-side of the RPC, or None if there
+        was no such value.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def details(self):
+        &#34;&#34;&#34;Accesses the details value emitted by the service-side of the RPC.
+
+    This method blocks until the value is available or is known not to have been
+    emitted from the service-side of the RPC.
+
+    Returns:
+      The details value emitted by the service-side of the RPC, or None if there
+        was no such value.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+
+class ServicerContext(six.with_metaclass(abc.ABCMeta, RpcContext)):
+    &#34;&#34;&#34;A context object passed to method implementations.&#34;&#34;&#34;
+
+    @abc.abstractmethod
+    def invocation_metadata(self):
+        &#34;&#34;&#34;Accesses the metadata from the invocation-side of the RPC.
+
+    This method blocks until the value is available or is known not to have been
+    emitted from the invocation-side of the RPC.
+
+    Returns:
+      The metadata object emitted by the invocation-side of the RPC, or None if
+        there was no such value.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def initial_metadata(self, initial_metadata):
+        &#34;&#34;&#34;Accepts the service-side initial metadata value of the RPC.
+
+    This method need not be called by method implementations if they have no
+    service-side initial metadata to transmit.
+
+    Args:
+      initial_metadata: The service-side initial metadata value of the RPC to
+        be transmitted to the invocation side of the RPC.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def terminal_metadata(self, terminal_metadata):
+        &#34;&#34;&#34;Accepts the service-side terminal metadata value of the RPC.
+
+    This method need not be called by method implementations if they have no
+    service-side terminal metadata to transmit.
+
+    Args:
+      terminal_metadata: The service-side terminal metadata value of the RPC to
+        be transmitted to the invocation side of the RPC.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def code(self, code):
+        &#34;&#34;&#34;Accepts the service-side code of the RPC.
+
+    This method need not be called by method implementations if they have no
+    code to transmit.
+
+    Args:
+      code: The code of the RPC to be transmitted to the invocation side of the
+        RPC.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def details(self, details):
+        &#34;&#34;&#34;Accepts the service-side details of the RPC.
+
+    This method need not be called by method implementations if they have no
+    service-side details to transmit.
+
+    Args:
+      details: The service-side details value of the RPC to be transmitted to
+        the invocation side of the RPC.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+
+class ResponseReceiver(six.with_metaclass(abc.ABCMeta)):
+    &#34;&#34;&#34;Invocation-side object used to accept the output of an RPC.&#34;&#34;&#34;
+
+    @abc.abstractmethod
+    def initial_metadata(self, initial_metadata):
+        &#34;&#34;&#34;Receives the initial metadata from the service-side of the RPC.
+
+    Args:
+      initial_metadata: The initial metadata object emitted from the
+        service-side of the RPC.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def response(self, response):
+        &#34;&#34;&#34;Receives a response from the service-side of the RPC.
+
+    Args:
+      response: A response object emitted from the service-side of the RPC.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def complete(self, terminal_metadata, code, details):
+        &#34;&#34;&#34;Receives the completion values emitted from the service-side of the RPC.
+
+    Args:
+      terminal_metadata: The terminal metadata object emitted from the
+        service-side of the RPC.
+      code: The code object emitted from the service-side of the RPC.
+      details: The details object emitted from the service-side of the RPC.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+
+class UnaryUnaryMultiCallable(six.with_metaclass(abc.ABCMeta)):
+    &#34;&#34;&#34;Affords invoking a unary-unary RPC in any call style.&#34;&#34;&#34;
+
+    @abc.abstractmethod
+    def __call__(self,
+                 request,
+                 timeout,
+                 metadata=None,
+                 with_call=False,
+                 protocol_options=None):
+        &#34;&#34;&#34;Synchronously invokes the underlying RPC.
+
+    Args:
+      request: The request value for the RPC.
+      timeout: A duration of time in seconds to allow for the RPC.
+      metadata: A metadata value to be passed to the service-side of
+        the RPC.
+      with_call: Whether or not to include return a Call for the RPC in addition
+        to the response.
+      protocol_options: A value specified by the provider of a Face interface
+        implementation affording custom state and behavior.
+
+    Returns:
+      The response value for the RPC, and a Call for the RPC if with_call was
+        set to True at invocation.
+
+    Raises:
+      AbortionError: Indicating that the RPC was aborted.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def future(self, request, timeout, metadata=None, protocol_options=None):
+        &#34;&#34;&#34;Asynchronously invokes the underlying RPC.
+
+    Args:
+      request: The request value for the RPC.
+      timeout: A duration of time in seconds to allow for the RPC.
+      metadata: A metadata value to be passed to the service-side of
+        the RPC.
+      protocol_options: A value specified by the provider of a Face interface
+        implementation affording custom state and behavior.
+
+    Returns:
+      An object that is both a Call for the RPC and a future.Future. In the
+        event of RPC completion, the return Future&#39;s result value will be the
+        response value of the RPC. In the event of RPC abortion, the returned
+        Future&#39;s exception value will be an AbortionError.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def event(self,
+              request,
+              receiver,
+              abortion_callback,
+              timeout,
+              metadata=None,
+              protocol_options=None):
+        &#34;&#34;&#34;Asynchronously invokes the underlying RPC.
+
+    Args:
+      request: The request value for the RPC.
+      receiver: A ResponseReceiver to be passed the response data of the RPC.
+      abortion_callback: A callback to be called and passed an Abortion value
+        in the event of RPC abortion.
+      timeout: A duration of time in seconds to allow for the RPC.
+      metadata: A metadata value to be passed to the service-side of
+        the RPC.
+      protocol_options: A value specified by the provider of a Face interface
+        implementation affording custom state and behavior.
+
+    Returns:
+      A Call for the RPC.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+
+class UnaryStreamMultiCallable(six.with_metaclass(abc.ABCMeta)):
+    &#34;&#34;&#34;Affords invoking a unary-stream RPC in any call style.&#34;&#34;&#34;
+
+    @abc.abstractmethod
+    def __call__(self, request, timeout, metadata=None, protocol_options=None):
+        &#34;&#34;&#34;Invokes the underlying RPC.
+
+    Args:
+      request: The request value for the RPC.
+      timeout: A duration of time in seconds to allow for the RPC.
+      metadata: A metadata value to be passed to the service-side of
+        the RPC.
+      protocol_options: A value specified by the provider of a Face interface
+        implementation affording custom state and behavior.
+
+    Returns:
+      An object that is both a Call for the RPC and an iterator of response
+        values. Drawing response values from the returned iterator may raise
+        AbortionError indicating abortion of the RPC.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def event(self,
+              request,
+              receiver,
+              abortion_callback,
+              timeout,
+              metadata=None,
+              protocol_options=None):
+        &#34;&#34;&#34;Asynchronously invokes the underlying RPC.
+
+    Args:
+      request: The request value for the RPC.
+      receiver: A ResponseReceiver to be passed the response data of the RPC.
+      abortion_callback: A callback to be called and passed an Abortion value
+        in the event of RPC abortion.
+      timeout: A duration of time in seconds to allow for the RPC.
+      metadata: A metadata value to be passed to the service-side of
+        the RPC.
+      protocol_options: A value specified by the provider of a Face interface
+        implementation affording custom state and behavior.
+
+    Returns:
+      A Call object for the RPC.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+
+class StreamUnaryMultiCallable(six.with_metaclass(abc.ABCMeta)):
+    &#34;&#34;&#34;Affords invoking a stream-unary RPC in any call style.&#34;&#34;&#34;
+
+    @abc.abstractmethod
+    def __call__(self,
+                 request_iterator,
+                 timeout,
+                 metadata=None,
+                 with_call=False,
+                 protocol_options=None):
+        &#34;&#34;&#34;Synchronously invokes the underlying RPC.
+
+    Args:
+      request_iterator: An iterator that yields request values for the RPC.
+      timeout: A duration of time in seconds to allow for the RPC.
+      metadata: A metadata value to be passed to the service-side of
+        the RPC.
+      with_call: Whether or not to include return a Call for the RPC in addition
+        to the response.
+      protocol_options: A value specified by the provider of a Face interface
+        implementation affording custom state and behavior.
+
+    Returns:
+      The response value for the RPC, and a Call for the RPC if with_call was
+        set to True at invocation.
+
+    Raises:
+      AbortionError: Indicating that the RPC was aborted.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def future(self,
+               request_iterator,
+               timeout,
+               metadata=None,
+               protocol_options=None):
+        &#34;&#34;&#34;Asynchronously invokes the underlying RPC.
+
+    Args:
+      request_iterator: An iterator that yields request values for the RPC.
+      timeout: A duration of time in seconds to allow for the RPC.
+      metadata: A metadata value to be passed to the service-side of
+        the RPC.
+      protocol_options: A value specified by the provider of a Face interface
+        implementation affording custom state and behavior.
+
+    Returns:
+      An object that is both a Call for the RPC and a future.Future. In the
+        event of RPC completion, the return Future&#39;s result value will be the
+        response value of the RPC. In the event of RPC abortion, the returned
+        Future&#39;s exception value will be an AbortionError.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def event(self,
+              receiver,
+              abortion_callback,
+              timeout,
+              metadata=None,
+              protocol_options=None):
+        &#34;&#34;&#34;Asynchronously invokes the underlying RPC.
+
+    Args:
+      receiver: A ResponseReceiver to be passed the response data of the RPC.
+      abortion_callback: A callback to be called and passed an Abortion value
+        in the event of RPC abortion.
+      timeout: A duration of time in seconds to allow for the RPC.
+      metadata: A metadata value to be passed to the service-side of
+        the RPC.
+      protocol_options: A value specified by the provider of a Face interface
+        implementation affording custom state and behavior.
+
+    Returns:
+      A single object that is both a Call object for the RPC and a
+        stream.Consumer to which the request values of the RPC should be passed.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+
+class StreamStreamMultiCallable(six.with_metaclass(abc.ABCMeta)):
+    &#34;&#34;&#34;Affords invoking a stream-stream RPC in any call style.&#34;&#34;&#34;
+
+    @abc.abstractmethod
+    def __call__(self,
+                 request_iterator,
+                 timeout,
+                 metadata=None,
+                 protocol_options=None):
+        &#34;&#34;&#34;Invokes the underlying RPC.
+
+    Args:
+      request_iterator: An iterator that yields request values for the RPC.
+      timeout: A duration of time in seconds to allow for the RPC.
+      metadata: A metadata value to be passed to the service-side of
+        the RPC.
+      protocol_options: A value specified by the provider of a Face interface
+        implementation affording custom state and behavior.
+
+    Returns:
+      An object that is both a Call for the RPC and an iterator of response
+        values. Drawing response values from the returned iterator may raise
+        AbortionError indicating abortion of the RPC.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def event(self,
+              receiver,
+              abortion_callback,
+              timeout,
+              metadata=None,
+              protocol_options=None):
+        &#34;&#34;&#34;Asynchronously invokes the underlying RPC.
+
+    Args:
+      receiver: A ResponseReceiver to be passed the response data of the RPC.
+      abortion_callback: A callback to be called and passed an Abortion value
+        in the event of RPC abortion.
+      timeout: A duration of time in seconds to allow for the RPC.
+      metadata: A metadata value to be passed to the service-side of
+        the RPC.
+      protocol_options: A value specified by the provider of a Face interface
+        implementation affording custom state and behavior.
+
+    Returns:
+      A single object that is both a Call object for the RPC and a
+        stream.Consumer to which the request values of the RPC should be passed.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+
+class MethodImplementation(six.with_metaclass(abc.ABCMeta)):
+    &#34;&#34;&#34;A sum type that describes a method implementation.
+
+  Attributes:
+    cardinality: A cardinality.Cardinality value.
+    style: A style.Service value.
+    unary_unary_inline: The implementation of the method as a callable value
+      that takes a request value and a ServicerContext object and returns a
+      response value. Only non-None if cardinality is
+      cardinality.Cardinality.UNARY_UNARY and style is style.Service.INLINE.
+    unary_stream_inline: The implementation of the method as a callable value
+      that takes a request value and a ServicerContext object and returns an
+      iterator of response values. Only non-None if cardinality is
+      cardinality.Cardinality.UNARY_STREAM and style is style.Service.INLINE.
+    stream_unary_inline: The implementation of the method as a callable value
+      that takes an iterator of request values and a ServicerContext object and
+      returns a response value. Only non-None if cardinality is
+      cardinality.Cardinality.STREAM_UNARY and style is style.Service.INLINE.
+    stream_stream_inline: The implementation of the method as a callable value
+      that takes an iterator of request values and a ServicerContext object and
+      returns an iterator of response values. Only non-None if cardinality is
+      cardinality.Cardinality.STREAM_STREAM and style is style.Service.INLINE.
+    unary_unary_event: The implementation of the method as a callable value that
+      takes a request value, a response callback to which to pass the response
+      value of the RPC, and a ServicerContext. Only non-None if cardinality is
+      cardinality.Cardinality.UNARY_UNARY and style is style.Service.EVENT.
+    unary_stream_event: The implementation of the method as a callable value
+      that takes a request value, a stream.Consumer to which to pass the
+      response values of the RPC, and a ServicerContext. Only non-None if
+      cardinality is cardinality.Cardinality.UNARY_STREAM and style is
+      style.Service.EVENT.
+    stream_unary_event: The implementation of the method as a callable value
+      that takes a response callback to which to pass the response value of the
+      RPC and a ServicerContext and returns a stream.Consumer to which the
+      request values of the RPC should be passed. Only non-None if cardinality
+      is cardinality.Cardinality.STREAM_UNARY and style is style.Service.EVENT.
+    stream_stream_event: The implementation of the method as a callable value
+      that takes a stream.Consumer to which to pass the response values of the
+      RPC and a ServicerContext and returns a stream.Consumer to which the
+      request values of the RPC should be passed. Only non-None if cardinality
+      is cardinality.Cardinality.STREAM_STREAM and style is
+      style.Service.EVENT.
+  &#34;&#34;&#34;
+
+
+class MultiMethodImplementation(six.with_metaclass(abc.ABCMeta)):
+    &#34;&#34;&#34;A general type able to service many methods.&#34;&#34;&#34;
+
+    @abc.abstractmethod
+    def service(self, group, method, response_consumer, context):
+        &#34;&#34;&#34;Services an RPC.
+
+    Args:
+      group: The group identifier of the RPC.
+      method: The method identifier of the RPC.
+      response_consumer: A stream.Consumer to be called to accept the response
+        values of the RPC.
+      context: a ServicerContext object.
+
+    Returns:
+      A stream.Consumer with which to accept the request values of the RPC. The
+        consumer returned from this method may or may not be invoked to
+        completion: in the case of RPC abortion, RPC Framework will simply stop
+        passing values to this object. Implementations must not assume that this
+        object will be called to completion of the request stream or even called
+        at all.
+
+    Raises:
+      abandonment.Abandoned: May or may not be raised when the RPC has been
+        aborted.
+      NoSuchMethodError: If this MultiMethod does not recognize the given group
+        and name for the RPC and is not able to service the RPC.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+
+class GenericStub(six.with_metaclass(abc.ABCMeta)):
+    &#34;&#34;&#34;Affords RPC invocation via generic methods.&#34;&#34;&#34;
+
+    @abc.abstractmethod
+    def blocking_unary_unary(self,
+                             group,
+                             method,
+                             request,
+                             timeout,
+                             metadata=None,
+                             with_call=False,
+                             protocol_options=None):
+        &#34;&#34;&#34;Invokes a unary-request-unary-response method.
+
+    This method blocks until either returning the response value of the RPC
+    (in the event of RPC completion) or raising an exception (in the event of
+    RPC abortion).
+
+    Args:
+      group: The group identifier of the RPC.
+      method: The method identifier of the RPC.
+      request: The request value for the RPC.
+      timeout: A duration of time in seconds to allow for the RPC.
+      metadata: A metadata value to be passed to the service-side of the RPC.
+      with_call: Whether or not to include return a Call for the RPC in addition
+        to the response.
+      protocol_options: A value specified by the provider of a Face interface
+        implementation affording custom state and behavior.
+
+    Returns:
+      The response value for the RPC, and a Call for the RPC if with_call was
+        set to True at invocation.
+
+    Raises:
+      AbortionError: Indicating that the RPC was aborted.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def future_unary_unary(self,
+                           group,
+                           method,
+                           request,
+                           timeout,
+                           metadata=None,
+                           protocol_options=None):
+        &#34;&#34;&#34;Invokes a unary-request-unary-response method.
+
+    Args:
+      group: The group identifier of the RPC.
+      method: The method identifier of the RPC.
+      request: The request value for the RPC.
+      timeout: A duration of time in seconds to allow for the RPC.
+      metadata: A metadata value to be passed to the service-side of the RPC.
+      protocol_options: A value specified by the provider of a Face interface
+        implementation affording custom state and behavior.
+
+    Returns:
+      An object that is both a Call for the RPC and a future.Future. In the
+        event of RPC completion, the return Future&#39;s result value will be the
+        response value of the RPC. In the event of RPC abortion, the returned
+        Future&#39;s exception value will be an AbortionError.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def inline_unary_stream(self,
+                            group,
+                            method,
+                            request,
+                            timeout,
+                            metadata=None,
+                            protocol_options=None):
+        &#34;&#34;&#34;Invokes a unary-request-stream-response method.
+
+    Args:
+      group: The group identifier of the RPC.
+      method: The method identifier of the RPC.
+      request: The request value for the RPC.
+      timeout: A duration of time in seconds to allow for the RPC.
+      metadata: A metadata value to be passed to the service-side of the RPC.
+      protocol_options: A value specified by the provider of a Face interface
+        implementation affording custom state and behavior.
+
+    Returns:
+      An object that is both a Call for the RPC and an iterator of response
+        values. Drawing response values from the returned iterator may raise
+        AbortionError indicating abortion of the RPC.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def blocking_stream_unary(self,
+                              group,
+                              method,
+                              request_iterator,
+                              timeout,
+                              metadata=None,
+                              with_call=False,
+                              protocol_options=None):
+        &#34;&#34;&#34;Invokes a stream-request-unary-response method.
+
+    This method blocks until either returning the response value of the RPC
+    (in the event of RPC completion) or raising an exception (in the event of
+    RPC abortion).
+
+    Args:
+      group: The group identifier of the RPC.
+      method: The method identifier of the RPC.
+      request_iterator: An iterator that yields request values for the RPC.
+      timeout: A duration of time in seconds to allow for the RPC.
+      metadata: A metadata value to be passed to the service-side of the RPC.
+      with_call: Whether or not to include return a Call for the RPC in addition
+        to the response.
+      protocol_options: A value specified by the provider of a Face interface
+        implementation affording custom state and behavior.
+
+    Returns:
+      The response value for the RPC, and a Call for the RPC if with_call was
+        set to True at invocation.
+
+    Raises:
+      AbortionError: Indicating that the RPC was aborted.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def future_stream_unary(self,
+                            group,
+                            method,
+                            request_iterator,
+                            timeout,
+                            metadata=None,
+                            protocol_options=None):
+        &#34;&#34;&#34;Invokes a stream-request-unary-response method.
+
+    Args:
+      group: The group identifier of the RPC.
+      method: The method identifier of the RPC.
+      request_iterator: An iterator that yields request values for the RPC.
+      timeout: A duration of time in seconds to allow for the RPC.
+      metadata: A metadata value to be passed to the service-side of the RPC.
+      protocol_options: A value specified by the provider of a Face interface
+        implementation affording custom state and behavior.
+
+    Returns:
+      An object that is both a Call for the RPC and a future.Future. In the
+        event of RPC completion, the return Future&#39;s result value will be the
+        response value of the RPC. In the event of RPC abortion, the returned
+        Future&#39;s exception value will be an AbortionError.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def inline_stream_stream(self,
+                             group,
+                             method,
+                             request_iterator,
+                             timeout,
+                             metadata=None,
+                             protocol_options=None):
+        &#34;&#34;&#34;Invokes a stream-request-stream-response method.
+
+    Args:
+      group: The group identifier of the RPC.
+      method: The method identifier of the RPC.
+      request_iterator: An iterator that yields request values for the RPC.
+      timeout: A duration of time in seconds to allow for the RPC.
+      metadata: A metadata value to be passed to the service-side of the RPC.
+      protocol_options: A value specified by the provider of a Face interface
+        implementation affording custom state and behavior.
+
+    Returns:
+      An object that is both a Call for the RPC and an iterator of response
+        values. Drawing response values from the returned iterator may raise
+        AbortionError indicating abortion of the RPC.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def event_unary_unary(self,
+                          group,
+                          method,
+                          request,
+                          receiver,
+                          abortion_callback,
+                          timeout,
+                          metadata=None,
+                          protocol_options=None):
+        &#34;&#34;&#34;Event-driven invocation of a unary-request-unary-response method.
+
+    Args:
+      group: The group identifier of the RPC.
+      method: The method identifier of the RPC.
+      request: The request value for the RPC.
+      receiver: A ResponseReceiver to be passed the response data of the RPC.
+      abortion_callback: A callback to be called and passed an Abortion value
+        in the event of RPC abortion.
+      timeout: A duration of time in seconds to allow for the RPC.
+      metadata: A metadata value to be passed to the service-side of the RPC.
+      protocol_options: A value specified by the provider of a Face interface
+        implementation affording custom state and behavior.
+
+    Returns:
+      A Call for the RPC.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def event_unary_stream(self,
+                           group,
+                           method,
+                           request,
+                           receiver,
+                           abortion_callback,
+                           timeout,
+                           metadata=None,
+                           protocol_options=None):
+        &#34;&#34;&#34;Event-driven invocation of a unary-request-stream-response method.
+
+    Args:
+      group: The group identifier of the RPC.
+      method: The method identifier of the RPC.
+      request: The request value for the RPC.
+      receiver: A ResponseReceiver to be passed the response data of the RPC.
+      abortion_callback: A callback to be called and passed an Abortion value
+        in the event of RPC abortion.
+      timeout: A duration of time in seconds to allow for the RPC.
+      metadata: A metadata value to be passed to the service-side of the RPC.
+      protocol_options: A value specified by the provider of a Face interface
+        implementation affording custom state and behavior.
+
+    Returns:
+      A Call for the RPC.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def event_stream_unary(self,
+                           group,
+                           method,
+                           receiver,
+                           abortion_callback,
+                           timeout,
+                           metadata=None,
+                           protocol_options=None):
+        &#34;&#34;&#34;Event-driven invocation of a unary-request-unary-response method.
+
+    Args:
+      group: The group identifier of the RPC.
+      method: The method identifier of the RPC.
+      receiver: A ResponseReceiver to be passed the response data of the RPC.
+      abortion_callback: A callback to be called and passed an Abortion value
+        in the event of RPC abortion.
+      timeout: A duration of time in seconds to allow for the RPC.
+      metadata: A metadata value to be passed to the service-side of the RPC.
+      protocol_options: A value specified by the provider of a Face interface
+        implementation affording custom state and behavior.
+
+    Returns:
+      A pair of a Call object for the RPC and a stream.Consumer to which the
+        request values of the RPC should be passed.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def event_stream_stream(self,
+                            group,
+                            method,
+                            receiver,
+                            abortion_callback,
+                            timeout,
+                            metadata=None,
+                            protocol_options=None):
+        &#34;&#34;&#34;Event-driven invocation of a unary-request-stream-response method.
+
+    Args:
+      group: The group identifier of the RPC.
+      method: The method identifier of the RPC.
+      receiver: A ResponseReceiver to be passed the response data of the RPC.
+      abortion_callback: A callback to be called and passed an Abortion value
+        in the event of RPC abortion.
+      timeout: A duration of time in seconds to allow for the RPC.
+      metadata: A metadata value to be passed to the service-side of the RPC.
+      protocol_options: A value specified by the provider of a Face interface
+        implementation affording custom state and behavior.
+
+    Returns:
+      A pair of a Call object for the RPC and a stream.Consumer to which the
+        request values of the RPC should be passed.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def unary_unary(self, group, method):
+        &#34;&#34;&#34;Creates a UnaryUnaryMultiCallable for a unary-unary method.
+
+    Args:
+      group: The group identifier of the RPC.
+      method: The method identifier of the RPC.
+
+    Returns:
+      A UnaryUnaryMultiCallable value for the named unary-unary method.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def unary_stream(self, group, method):
+        &#34;&#34;&#34;Creates a UnaryStreamMultiCallable for a unary-stream method.
+
+    Args:
+      group: The group identifier of the RPC.
+      method: The method identifier of the RPC.
+
+    Returns:
+      A UnaryStreamMultiCallable value for the name unary-stream method.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def stream_unary(self, group, method):
+        &#34;&#34;&#34;Creates a StreamUnaryMultiCallable for a stream-unary method.
+
+    Args:
+      group: The group identifier of the RPC.
+      method: The method identifier of the RPC.
+
+    Returns:
+      A StreamUnaryMultiCallable value for the named stream-unary method.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def stream_stream(self, group, method):
+        &#34;&#34;&#34;Creates a StreamStreamMultiCallable for a stream-stream method.
+
+    Args:
+      group: The group identifier of the RPC.
+      method: The method identifier of the RPC.
+
+    Returns:
+      A StreamStreamMultiCallable value for the named stream-stream method.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+
+class DynamicStub(six.with_metaclass(abc.ABCMeta)):
+    &#34;&#34;&#34;Affords RPC invocation via attributes corresponding to afforded methods.
+
+  Instances of this type may be scoped to a single group so that attribute
+  access is unambiguous.
+
+  Instances of this type respond to attribute access as follows: if the
+  requested attribute is the name of a unary-unary method, the value of the
+  attribute will be a UnaryUnaryMultiCallable with which to invoke an RPC; if
+  the requested attribute is the name of a unary-stream method, the value of the
+  attribute will be a UnaryStreamMultiCallable with which to invoke an RPC; if
+  the requested attribute is the name of a stream-unary method, the value of the
+  attribute will be a StreamUnaryMultiCallable with which to invoke an RPC; and
+  if the requested attribute is the name of a stream-stream method, the value of
+  the attribute will be a StreamStreamMultiCallable with which to invoke an RPC.
+  &#34;&#34;&#34;</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="grpc.framework.interfaces.face.face.Abortion"><code class="flex name class">
+<span>class <span class="ident">Abortion</span></span>
+<span>(</span><span>kind, initial_metadata, terminal_metadata, code, details)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>A value describing RPC abortion.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>kind</code></strong></dt>
+<dd>A Kind value identifying how the RPC failed.</dd>
+<dt><strong><code>initial_metadata</code></strong></dt>
+<dd>The initial metadata from the other side of the RPC or
+None if no initial metadata value was received.</dd>
+<dt><strong><code>terminal_metadata</code></strong></dt>
+<dd>The terminal metadata from the other side of the RPC or
+None if no terminal metadata value was received.</dd>
+<dt><strong><code>code</code></strong></dt>
+<dd>The code value from the other side of the RPC or None if no code value
+was received.</dd>
+<dt><strong><code>details</code></strong></dt>
+<dd>The details value from the other side of the RPC or None if no
+details value was received.</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Abortion(
+        collections.namedtuple(&#39;Abortion&#39;, (
+            &#39;kind&#39;,
+            &#39;initial_metadata&#39;,
+            &#39;terminal_metadata&#39;,
+            &#39;code&#39;,
+            &#39;details&#39;,
+        ))):
+    &#34;&#34;&#34;A value describing RPC abortion.
+
+  Attributes:
+    kind: A Kind value identifying how the RPC failed.
+    initial_metadata: The initial metadata from the other side of the RPC or
+      None if no initial metadata value was received.
+    terminal_metadata: The terminal metadata from the other side of the RPC or
+      None if no terminal metadata value was received.
+    code: The code value from the other side of the RPC or None if no code value
+      was received.
+    details: The details value from the other side of the RPC or None if no
+      details value was received.
+  &#34;&#34;&#34;
+
+    @enum.unique
+    class Kind(enum.Enum):
+        &#34;&#34;&#34;Types of RPC abortion.&#34;&#34;&#34;
+
+        CANCELLED = &#39;cancelled&#39;
+        EXPIRED = &#39;expired&#39;
+        LOCAL_SHUTDOWN = &#39;local shutdown&#39;
+        REMOTE_SHUTDOWN = &#39;remote shutdown&#39;
+        NETWORK_FAILURE = &#39;network failure&#39;
+        LOCAL_FAILURE = &#39;local failure&#39;
+        REMOTE_FAILURE = &#39;remote failure&#39;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.tuple</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="grpc.framework.interfaces.face.face.Abortion.Kind"><code class="name">var <span class="ident">Kind</span></code></dt>
+<dd>
+<section class="desc"><p>Types of RPC abortion.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Kind(enum.Enum):
+    &#34;&#34;&#34;Types of RPC abortion.&#34;&#34;&#34;
+
+    CANCELLED = &#39;cancelled&#39;
+    EXPIRED = &#39;expired&#39;
+    LOCAL_SHUTDOWN = &#39;local shutdown&#39;
+    REMOTE_SHUTDOWN = &#39;remote shutdown&#39;
+    NETWORK_FAILURE = &#39;network failure&#39;
+    LOCAL_FAILURE = &#39;local failure&#39;
+    REMOTE_FAILURE = &#39;remote failure&#39;</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.AbortionError"><code class="flex name class">
+<span>class <span class="ident">AbortionError</span></span>
+<span>(</span><span>initial_metadata, terminal_metadata, code, details)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Common super type for exceptions indicating RPC abortion.</p>
+<p>initial_metadata: The initial metadata from the other side of the RPC or
+None if no initial metadata value was received.
+terminal_metadata: The terminal metadata from the other side of the RPC or
+None if no terminal metadata value was received.
+code: The code value from the other side of the RPC or None if no code value
+was received.
+details: The details value from the other side of the RPC or None if no
+details value was received.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class AbortionError(six.with_metaclass(abc.ABCMeta, Exception)):
+    &#34;&#34;&#34;Common super type for exceptions indicating RPC abortion.
+
+    initial_metadata: The initial metadata from the other side of the RPC or
+      None if no initial metadata value was received.
+    terminal_metadata: The terminal metadata from the other side of the RPC or
+      None if no terminal metadata value was received.
+    code: The code value from the other side of the RPC or None if no code value
+      was received.
+    details: The details value from the other side of the RPC or None if no
+      details value was received.
+  &#34;&#34;&#34;
+
+    def __init__(self, initial_metadata, terminal_metadata, code, details):
+        super(AbortionError, self).__init__()
+        self.initial_metadata = initial_metadata
+        self.terminal_metadata = terminal_metadata
+        self.code = code
+        self.details = details
+
+    def __str__(self):
+        return &#39;%s(code=%s, details=&#34;%s&#34;)&#39; % (self.__class__.__name__,
+                                              self.code, self.details)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="grpc.framework.interfaces.face.face.CancellationError" href="#grpc.framework.interfaces.face.face.CancellationError">CancellationError</a></li>
+<li><a title="grpc.framework.interfaces.face.face.ExpirationError" href="#grpc.framework.interfaces.face.face.ExpirationError">ExpirationError</a></li>
+<li><a title="grpc.framework.interfaces.face.face.LocalError" href="#grpc.framework.interfaces.face.face.LocalError">LocalError</a></li>
+<li><a title="grpc.framework.interfaces.face.face.LocalShutdownError" href="#grpc.framework.interfaces.face.face.LocalShutdownError">LocalShutdownError</a></li>
+<li><a title="grpc.framework.interfaces.face.face.NetworkError" href="#grpc.framework.interfaces.face.face.NetworkError">NetworkError</a></li>
+<li><a title="grpc.framework.interfaces.face.face.RemoteError" href="#grpc.framework.interfaces.face.face.RemoteError">RemoteError</a></li>
+<li><a title="grpc.framework.interfaces.face.face.RemoteShutdownError" href="#grpc.framework.interfaces.face.face.RemoteShutdownError">RemoteShutdownError</a></li>
+</ul>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.Call"><code class="flex name class">
+<span>class <span class="ident">Call</span></span>
+</code></dt>
+<dd>
+<section class="desc"><p>Invocation-side utility object for an RPC.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Call(six.with_metaclass(abc.ABCMeta, RpcContext)):
+    &#34;&#34;&#34;Invocation-side utility object for an RPC.&#34;&#34;&#34;
+
+    @abc.abstractmethod
+    def initial_metadata(self):
+        &#34;&#34;&#34;Accesses the initial metadata from the service-side of the RPC.
+
+    This method blocks until the value is available or is known not to have been
+    emitted from the service-side of the RPC.
+
+    Returns:
+      The initial metadata object emitted by the service-side of the RPC, or
+        None if there was no such value.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def terminal_metadata(self):
+        &#34;&#34;&#34;Accesses the terminal metadata from the service-side of the RPC.
+
+    This method blocks until the value is available or is known not to have been
+    emitted from the service-side of the RPC.
+
+    Returns:
+      The terminal metadata object emitted by the service-side of the RPC, or
+        None if there was no such value.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def code(self):
+        &#34;&#34;&#34;Accesses the code emitted by the service-side of the RPC.
+
+    This method blocks until the value is available or is known not to have been
+    emitted from the service-side of the RPC.
+
+    Returns:
+      The code object emitted by the service-side of the RPC, or None if there
+        was no such value.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def details(self):
+        &#34;&#34;&#34;Accesses the details value emitted by the service-side of the RPC.
+
+    This method blocks until the value is available or is known not to have been
+    emitted from the service-side of the RPC.
+
+    Returns:
+      The details value emitted by the service-side of the RPC, or None if there
+        was no such value.
+    &#34;&#34;&#34;
+        raise NotImplementedError()</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="grpc.framework.interfaces.face.face.RpcContext" href="#grpc.framework.interfaces.face.face.RpcContext">RpcContext</a></li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li>grpc.beta._client_adaptations._Rendezvous</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="grpc.framework.interfaces.face.face.Call.code"><code class="name flex">
+<span>def <span class="ident">code</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Accesses the code emitted by the service-side of the RPC.</p>
+<p>This method blocks until the value is available or is known not to have been
+emitted from the service-side of the RPC.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>The</code> <code>code</code> <code>object</code> <code>emitted</code> <code>by</code> <code>the</code> <code>service</code>-<code>side</code> of <code>the</code> <code>RPC</code>, or <code>None</code> <code>if</code> <code>there</code></dt>
+<dd>&nbsp;</dd>
+</dl>
+<p>was no such value.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractmethod
+def code(self):
+    &#34;&#34;&#34;Accesses the code emitted by the service-side of the RPC.
+
+This method blocks until the value is available or is known not to have been
+emitted from the service-side of the RPC.
+
+Returns:
+  The code object emitted by the service-side of the RPC, or None if there
+    was no such value.
+&#34;&#34;&#34;
+    raise NotImplementedError()</code></pre>
+</details>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.Call.details"><code class="name flex">
+<span>def <span class="ident">details</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Accesses the details value emitted by the service-side of the RPC.</p>
+<p>This method blocks until the value is available or is known not to have been
+emitted from the service-side of the RPC.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>The</code> <code>details</code> <code>value</code> <code>emitted</code> <code>by</code> <code>the</code> <code>service</code>-<code>side</code> of <code>the</code> <code>RPC</code>, or <code>None</code> <code>if</code> <code>there</code></dt>
+<dd>&nbsp;</dd>
+</dl>
+<p>was no such value.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractmethod
+def details(self):
+    &#34;&#34;&#34;Accesses the details value emitted by the service-side of the RPC.
+
+This method blocks until the value is available or is known not to have been
+emitted from the service-side of the RPC.
+
+Returns:
+  The details value emitted by the service-side of the RPC, or None if there
+    was no such value.
+&#34;&#34;&#34;
+    raise NotImplementedError()</code></pre>
+</details>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.Call.initial_metadata"><code class="name flex">
+<span>def <span class="ident">initial_metadata</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Accesses the initial metadata from the service-side of the RPC.</p>
+<p>This method blocks until the value is available or is known not to have been
+emitted from the service-side of the RPC.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>The</code> <code>initial</code> <code>metadata</code> <code>object</code> <code>emitted</code> <code>by</code> <code>the</code> <code>service</code>-<code>side</code> of <code>the</code> <code>RPC</code>, or</dt>
+<dd>&nbsp;</dd>
+</dl>
+<p>None if there was no such value.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractmethod
+def initial_metadata(self):
+    &#34;&#34;&#34;Accesses the initial metadata from the service-side of the RPC.
+
+This method blocks until the value is available or is known not to have been
+emitted from the service-side of the RPC.
+
+Returns:
+  The initial metadata object emitted by the service-side of the RPC, or
+    None if there was no such value.
+&#34;&#34;&#34;
+    raise NotImplementedError()</code></pre>
+</details>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.Call.terminal_metadata"><code class="name flex">
+<span>def <span class="ident">terminal_metadata</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Accesses the terminal metadata from the service-side of the RPC.</p>
+<p>This method blocks until the value is available or is known not to have been
+emitted from the service-side of the RPC.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>The</code> <code>terminal</code> <code>metadata</code> <code>object</code> <code>emitted</code> <code>by</code> <code>the</code> <code>service</code>-<code>side</code> of <code>the</code> <code>RPC</code>, or</dt>
+<dd>&nbsp;</dd>
+</dl>
+<p>None if there was no such value.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractmethod
+def terminal_metadata(self):
+    &#34;&#34;&#34;Accesses the terminal metadata from the service-side of the RPC.
+
+This method blocks until the value is available or is known not to have been
+emitted from the service-side of the RPC.
+
+Returns:
+  The terminal metadata object emitted by the service-side of the RPC, or
+    None if there was no such value.
+&#34;&#34;&#34;
+    raise NotImplementedError()</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="grpc.framework.interfaces.face.face.RpcContext" href="#grpc.framework.interfaces.face.face.RpcContext">RpcContext</a></b></code>:
+<ul class="hlist">
+<li><code><a title="grpc.framework.interfaces.face.face.RpcContext.add_abortion_callback" href="#grpc.framework.interfaces.face.face.RpcContext.add_abortion_callback">add_abortion_callback</a></code></li>
+<li><code><a title="grpc.framework.interfaces.face.face.RpcContext.cancel" href="#grpc.framework.interfaces.face.face.RpcContext.cancel">cancel</a></code></li>
+<li><code><a title="grpc.framework.interfaces.face.face.RpcContext.is_active" href="#grpc.framework.interfaces.face.face.RpcContext.is_active">is_active</a></code></li>
+<li><code><a title="grpc.framework.interfaces.face.face.RpcContext.protocol_context" href="#grpc.framework.interfaces.face.face.RpcContext.protocol_context">protocol_context</a></code></li>
+<li><code><a title="grpc.framework.interfaces.face.face.RpcContext.time_remaining" href="#grpc.framework.interfaces.face.face.RpcContext.time_remaining">time_remaining</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.CancellationError"><code class="flex name class">
+<span>class <span class="ident">CancellationError</span></span>
+<span>(</span><span>initial_metadata, terminal_metadata, code, details)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Indicates that an RPC has been cancelled.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CancellationError(AbortionError):
+    &#34;&#34;&#34;Indicates that an RPC has been cancelled.&#34;&#34;&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="grpc.framework.interfaces.face.face.AbortionError" href="#grpc.framework.interfaces.face.face.AbortionError">AbortionError</a></li>
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.DynamicStub"><code class="flex name class">
+<span>class <span class="ident">DynamicStub</span></span>
+</code></dt>
+<dd>
+<section class="desc"><p>Affords RPC invocation via attributes corresponding to afforded methods.</p>
+<p>Instances of this type may be scoped to a single group so that attribute
+access is unambiguous.</p>
+<p>Instances of this type respond to attribute access as follows: if the
+requested attribute is the name of a unary-unary method, the value of the
+attribute will be a UnaryUnaryMultiCallable with which to invoke an RPC; if
+the requested attribute is the name of a unary-stream method, the value of the
+attribute will be a UnaryStreamMultiCallable with which to invoke an RPC; if
+the requested attribute is the name of a stream-unary method, the value of the
+attribute will be a StreamUnaryMultiCallable with which to invoke an RPC; and
+if the requested attribute is the name of a stream-stream method, the value of
+the attribute will be a StreamStreamMultiCallable with which to invoke an RPC.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class DynamicStub(six.with_metaclass(abc.ABCMeta)):
+    &#34;&#34;&#34;Affords RPC invocation via attributes corresponding to afforded methods.
+
+  Instances of this type may be scoped to a single group so that attribute
+  access is unambiguous.
+
+  Instances of this type respond to attribute access as follows: if the
+  requested attribute is the name of a unary-unary method, the value of the
+  attribute will be a UnaryUnaryMultiCallable with which to invoke an RPC; if
+  the requested attribute is the name of a unary-stream method, the value of the
+  attribute will be a UnaryStreamMultiCallable with which to invoke an RPC; if
+  the requested attribute is the name of a stream-unary method, the value of the
+  attribute will be a StreamUnaryMultiCallable with which to invoke an RPC; and
+  if the requested attribute is the name of a stream-stream method, the value of
+  the attribute will be a StreamStreamMultiCallable with which to invoke an RPC.
+  &#34;&#34;&#34;</code></pre>
+</details>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li>grpc.beta._client_adaptations._DynamicStub</li>
+</ul>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.ExpirationError"><code class="flex name class">
+<span>class <span class="ident">ExpirationError</span></span>
+<span>(</span><span>initial_metadata, terminal_metadata, code, details)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Indicates that an RPC has expired ("timed out").</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ExpirationError(AbortionError):
+    &#34;&#34;&#34;Indicates that an RPC has expired (&#34;timed out&#34;).&#34;&#34;&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="grpc.framework.interfaces.face.face.AbortionError" href="#grpc.framework.interfaces.face.face.AbortionError">AbortionError</a></li>
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.GenericStub"><code class="flex name class">
+<span>class <span class="ident">GenericStub</span></span>
+</code></dt>
+<dd>
+<section class="desc"><p>Affords RPC invocation via generic methods.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class GenericStub(six.with_metaclass(abc.ABCMeta)):
+    &#34;&#34;&#34;Affords RPC invocation via generic methods.&#34;&#34;&#34;
+
+    @abc.abstractmethod
+    def blocking_unary_unary(self,
+                             group,
+                             method,
+                             request,
+                             timeout,
+                             metadata=None,
+                             with_call=False,
+                             protocol_options=None):
+        &#34;&#34;&#34;Invokes a unary-request-unary-response method.
+
+    This method blocks until either returning the response value of the RPC
+    (in the event of RPC completion) or raising an exception (in the event of
+    RPC abortion).
+
+    Args:
+      group: The group identifier of the RPC.
+      method: The method identifier of the RPC.
+      request: The request value for the RPC.
+      timeout: A duration of time in seconds to allow for the RPC.
+      metadata: A metadata value to be passed to the service-side of the RPC.
+      with_call: Whether or not to include return a Call for the RPC in addition
+        to the response.
+      protocol_options: A value specified by the provider of a Face interface
+        implementation affording custom state and behavior.
+
+    Returns:
+      The response value for the RPC, and a Call for the RPC if with_call was
+        set to True at invocation.
+
+    Raises:
+      AbortionError: Indicating that the RPC was aborted.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def future_unary_unary(self,
+                           group,
+                           method,
+                           request,
+                           timeout,
+                           metadata=None,
+                           protocol_options=None):
+        &#34;&#34;&#34;Invokes a unary-request-unary-response method.
+
+    Args:
+      group: The group identifier of the RPC.
+      method: The method identifier of the RPC.
+      request: The request value for the RPC.
+      timeout: A duration of time in seconds to allow for the RPC.
+      metadata: A metadata value to be passed to the service-side of the RPC.
+      protocol_options: A value specified by the provider of a Face interface
+        implementation affording custom state and behavior.
+
+    Returns:
+      An object that is both a Call for the RPC and a future.Future. In the
+        event of RPC completion, the return Future&#39;s result value will be the
+        response value of the RPC. In the event of RPC abortion, the returned
+        Future&#39;s exception value will be an AbortionError.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def inline_unary_stream(self,
+                            group,
+                            method,
+                            request,
+                            timeout,
+                            metadata=None,
+                            protocol_options=None):
+        &#34;&#34;&#34;Invokes a unary-request-stream-response method.
+
+    Args:
+      group: The group identifier of the RPC.
+      method: The method identifier of the RPC.
+      request: The request value for the RPC.
+      timeout: A duration of time in seconds to allow for the RPC.
+      metadata: A metadata value to be passed to the service-side of the RPC.
+      protocol_options: A value specified by the provider of a Face interface
+        implementation affording custom state and behavior.
+
+    Returns:
+      An object that is both a Call for the RPC and an iterator of response
+        values. Drawing response values from the returned iterator may raise
+        AbortionError indicating abortion of the RPC.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def blocking_stream_unary(self,
+                              group,
+                              method,
+                              request_iterator,
+                              timeout,
+                              metadata=None,
+                              with_call=False,
+                              protocol_options=None):
+        &#34;&#34;&#34;Invokes a stream-request-unary-response method.
+
+    This method blocks until either returning the response value of the RPC
+    (in the event of RPC completion) or raising an exception (in the event of
+    RPC abortion).
+
+    Args:
+      group: The group identifier of the RPC.
+      method: The method identifier of the RPC.
+      request_iterator: An iterator that yields request values for the RPC.
+      timeout: A duration of time in seconds to allow for the RPC.
+      metadata: A metadata value to be passed to the service-side of the RPC.
+      with_call: Whether or not to include return a Call for the RPC in addition
+        to the response.
+      protocol_options: A value specified by the provider of a Face interface
+        implementation affording custom state and behavior.
+
+    Returns:
+      The response value for the RPC, and a Call for the RPC if with_call was
+        set to True at invocation.
+
+    Raises:
+      AbortionError: Indicating that the RPC was aborted.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def future_stream_unary(self,
+                            group,
+                            method,
+                            request_iterator,
+                            timeout,
+                            metadata=None,
+                            protocol_options=None):
+        &#34;&#34;&#34;Invokes a stream-request-unary-response method.
+
+    Args:
+      group: The group identifier of the RPC.
+      method: The method identifier of the RPC.
+      request_iterator: An iterator that yields request values for the RPC.
+      timeout: A duration of time in seconds to allow for the RPC.
+      metadata: A metadata value to be passed to the service-side of the RPC.
+      protocol_options: A value specified by the provider of a Face interface
+        implementation affording custom state and behavior.
+
+    Returns:
+      An object that is both a Call for the RPC and a future.Future. In the
+        event of RPC completion, the return Future&#39;s result value will be the
+        response value of the RPC. In the event of RPC abortion, the returned
+        Future&#39;s exception value will be an AbortionError.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def inline_stream_stream(self,
+                             group,
+                             method,
+                             request_iterator,
+                             timeout,
+                             metadata=None,
+                             protocol_options=None):
+        &#34;&#34;&#34;Invokes a stream-request-stream-response method.
+
+    Args:
+      group: The group identifier of the RPC.
+      method: The method identifier of the RPC.
+      request_iterator: An iterator that yields request values for the RPC.
+      timeout: A duration of time in seconds to allow for the RPC.
+      metadata: A metadata value to be passed to the service-side of the RPC.
+      protocol_options: A value specified by the provider of a Face interface
+        implementation affording custom state and behavior.
+
+    Returns:
+      An object that is both a Call for the RPC and an iterator of response
+        values. Drawing response values from the returned iterator may raise
+        AbortionError indicating abortion of the RPC.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def event_unary_unary(self,
+                          group,
+                          method,
+                          request,
+                          receiver,
+                          abortion_callback,
+                          timeout,
+                          metadata=None,
+                          protocol_options=None):
+        &#34;&#34;&#34;Event-driven invocation of a unary-request-unary-response method.
+
+    Args:
+      group: The group identifier of the RPC.
+      method: The method identifier of the RPC.
+      request: The request value for the RPC.
+      receiver: A ResponseReceiver to be passed the response data of the RPC.
+      abortion_callback: A callback to be called and passed an Abortion value
+        in the event of RPC abortion.
+      timeout: A duration of time in seconds to allow for the RPC.
+      metadata: A metadata value to be passed to the service-side of the RPC.
+      protocol_options: A value specified by the provider of a Face interface
+        implementation affording custom state and behavior.
+
+    Returns:
+      A Call for the RPC.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def event_unary_stream(self,
+                           group,
+                           method,
+                           request,
+                           receiver,
+                           abortion_callback,
+                           timeout,
+                           metadata=None,
+                           protocol_options=None):
+        &#34;&#34;&#34;Event-driven invocation of a unary-request-stream-response method.
+
+    Args:
+      group: The group identifier of the RPC.
+      method: The method identifier of the RPC.
+      request: The request value for the RPC.
+      receiver: A ResponseReceiver to be passed the response data of the RPC.
+      abortion_callback: A callback to be called and passed an Abortion value
+        in the event of RPC abortion.
+      timeout: A duration of time in seconds to allow for the RPC.
+      metadata: A metadata value to be passed to the service-side of the RPC.
+      protocol_options: A value specified by the provider of a Face interface
+        implementation affording custom state and behavior.
+
+    Returns:
+      A Call for the RPC.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def event_stream_unary(self,
+                           group,
+                           method,
+                           receiver,
+                           abortion_callback,
+                           timeout,
+                           metadata=None,
+                           protocol_options=None):
+        &#34;&#34;&#34;Event-driven invocation of a unary-request-unary-response method.
+
+    Args:
+      group: The group identifier of the RPC.
+      method: The method identifier of the RPC.
+      receiver: A ResponseReceiver to be passed the response data of the RPC.
+      abortion_callback: A callback to be called and passed an Abortion value
+        in the event of RPC abortion.
+      timeout: A duration of time in seconds to allow for the RPC.
+      metadata: A metadata value to be passed to the service-side of the RPC.
+      protocol_options: A value specified by the provider of a Face interface
+        implementation affording custom state and behavior.
+
+    Returns:
+      A pair of a Call object for the RPC and a stream.Consumer to which the
+        request values of the RPC should be passed.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def event_stream_stream(self,
+                            group,
+                            method,
+                            receiver,
+                            abortion_callback,
+                            timeout,
+                            metadata=None,
+                            protocol_options=None):
+        &#34;&#34;&#34;Event-driven invocation of a unary-request-stream-response method.
+
+    Args:
+      group: The group identifier of the RPC.
+      method: The method identifier of the RPC.
+      receiver: A ResponseReceiver to be passed the response data of the RPC.
+      abortion_callback: A callback to be called and passed an Abortion value
+        in the event of RPC abortion.
+      timeout: A duration of time in seconds to allow for the RPC.
+      metadata: A metadata value to be passed to the service-side of the RPC.
+      protocol_options: A value specified by the provider of a Face interface
+        implementation affording custom state and behavior.
+
+    Returns:
+      A pair of a Call object for the RPC and a stream.Consumer to which the
+        request values of the RPC should be passed.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def unary_unary(self, group, method):
+        &#34;&#34;&#34;Creates a UnaryUnaryMultiCallable for a unary-unary method.
+
+    Args:
+      group: The group identifier of the RPC.
+      method: The method identifier of the RPC.
+
+    Returns:
+      A UnaryUnaryMultiCallable value for the named unary-unary method.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def unary_stream(self, group, method):
+        &#34;&#34;&#34;Creates a UnaryStreamMultiCallable for a unary-stream method.
+
+    Args:
+      group: The group identifier of the RPC.
+      method: The method identifier of the RPC.
+
+    Returns:
+      A UnaryStreamMultiCallable value for the name unary-stream method.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def stream_unary(self, group, method):
+        &#34;&#34;&#34;Creates a StreamUnaryMultiCallable for a stream-unary method.
+
+    Args:
+      group: The group identifier of the RPC.
+      method: The method identifier of the RPC.
+
+    Returns:
+      A StreamUnaryMultiCallable value for the named stream-unary method.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def stream_stream(self, group, method):
+        &#34;&#34;&#34;Creates a StreamStreamMultiCallable for a stream-stream method.
+
+    Args:
+      group: The group identifier of the RPC.
+      method: The method identifier of the RPC.
+
+    Returns:
+      A StreamStreamMultiCallable value for the named stream-stream method.
+    &#34;&#34;&#34;
+        raise NotImplementedError()</code></pre>
+</details>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li>grpc.beta._client_adaptations._GenericStub</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="grpc.framework.interfaces.face.face.GenericStub.blocking_stream_unary"><code class="name flex">
+<span>def <span class="ident">blocking_stream_unary</span></span>(<span>self, group, method, request_iterator, timeout, metadata=None, with_call=False, protocol_options=None)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Invokes a stream-request-unary-response method.</p>
+<p>This method blocks until either returning the response value of the RPC
+(in the event of RPC completion) or raising an exception (in the event of
+RPC abortion).</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>group</code></strong></dt>
+<dd>The group identifier of the RPC.</dd>
+<dt><strong><code>method</code></strong></dt>
+<dd>The method identifier of the RPC.</dd>
+<dt><strong><code>request_iterator</code></strong></dt>
+<dd>An iterator that yields request values for the RPC.</dd>
+<dt><strong><code>timeout</code></strong></dt>
+<dd>A duration of time in seconds to allow for the RPC.</dd>
+<dt><strong><code>metadata</code></strong></dt>
+<dd>A metadata value to be passed to the service-side of the RPC.</dd>
+<dt><strong><code>with_call</code></strong></dt>
+<dd>Whether or not to include return a Call for the RPC in addition
+to the response.</dd>
+<dt><strong><code>protocol_options</code></strong></dt>
+<dd>A value specified by the provider of a Face interface
+implementation affording custom state and behavior.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>The</code> <code>response</code> <code>value</code> <code>for</code> <code>the</code> <code>RPC</code>, <code>and</code> <code>a</code> <a title="grpc.framework.interfaces.face.face.Call" href="#grpc.framework.interfaces.face.face.Call"><code>Call</code></a> <code>for</code> <code>the</code> <code>RPC</code> <code>if</code> <code>with_call</code> <code>was</code></dt>
+<dd>&nbsp;</dd>
+</dl>
+<p>set to True at invocation.</p>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><strong><a title="grpc.framework.interfaces.face.face.AbortionError" href="#grpc.framework.interfaces.face.face.AbortionError"><code>AbortionError</code></a></strong></dt>
+<dd>Indicating that the RPC was aborted.</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractmethod
+def blocking_stream_unary(self,
+                          group,
+                          method,
+                          request_iterator,
+                          timeout,
+                          metadata=None,
+                          with_call=False,
+                          protocol_options=None):
+    &#34;&#34;&#34;Invokes a stream-request-unary-response method.
+
+This method blocks until either returning the response value of the RPC
+(in the event of RPC completion) or raising an exception (in the event of
+RPC abortion).
+
+Args:
+  group: The group identifier of the RPC.
+  method: The method identifier of the RPC.
+  request_iterator: An iterator that yields request values for the RPC.
+  timeout: A duration of time in seconds to allow for the RPC.
+  metadata: A metadata value to be passed to the service-side of the RPC.
+  with_call: Whether or not to include return a Call for the RPC in addition
+    to the response.
+  protocol_options: A value specified by the provider of a Face interface
+    implementation affording custom state and behavior.
+
+Returns:
+  The response value for the RPC, and a Call for the RPC if with_call was
+    set to True at invocation.
+
+Raises:
+  AbortionError: Indicating that the RPC was aborted.
+&#34;&#34;&#34;
+    raise NotImplementedError()</code></pre>
+</details>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.GenericStub.blocking_unary_unary"><code class="name flex">
+<span>def <span class="ident">blocking_unary_unary</span></span>(<span>self, group, method, request, timeout, metadata=None, with_call=False, protocol_options=None)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Invokes a unary-request-unary-response method.</p>
+<p>This method blocks until either returning the response value of the RPC
+(in the event of RPC completion) or raising an exception (in the event of
+RPC abortion).</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>group</code></strong></dt>
+<dd>The group identifier of the RPC.</dd>
+<dt><strong><code>method</code></strong></dt>
+<dd>The method identifier of the RPC.</dd>
+<dt><strong><code>request</code></strong></dt>
+<dd>The request value for the RPC.</dd>
+<dt><strong><code>timeout</code></strong></dt>
+<dd>A duration of time in seconds to allow for the RPC.</dd>
+<dt><strong><code>metadata</code></strong></dt>
+<dd>A metadata value to be passed to the service-side of the RPC.</dd>
+<dt><strong><code>with_call</code></strong></dt>
+<dd>Whether or not to include return a Call for the RPC in addition
+to the response.</dd>
+<dt><strong><code>protocol_options</code></strong></dt>
+<dd>A value specified by the provider of a Face interface
+implementation affording custom state and behavior.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>The</code> <code>response</code> <code>value</code> <code>for</code> <code>the</code> <code>RPC</code>, <code>and</code> <code>a</code> <a title="grpc.framework.interfaces.face.face.Call" href="#grpc.framework.interfaces.face.face.Call"><code>Call</code></a> <code>for</code> <code>the</code> <code>RPC</code> <code>if</code> <code>with_call</code> <code>was</code></dt>
+<dd>&nbsp;</dd>
+</dl>
+<p>set to True at invocation.</p>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><strong><a title="grpc.framework.interfaces.face.face.AbortionError" href="#grpc.framework.interfaces.face.face.AbortionError"><code>AbortionError</code></a></strong></dt>
+<dd>Indicating that the RPC was aborted.</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractmethod
+def blocking_unary_unary(self,
+                         group,
+                         method,
+                         request,
+                         timeout,
+                         metadata=None,
+                         with_call=False,
+                         protocol_options=None):
+    &#34;&#34;&#34;Invokes a unary-request-unary-response method.
+
+This method blocks until either returning the response value of the RPC
+(in the event of RPC completion) or raising an exception (in the event of
+RPC abortion).
+
+Args:
+  group: The group identifier of the RPC.
+  method: The method identifier of the RPC.
+  request: The request value for the RPC.
+  timeout: A duration of time in seconds to allow for the RPC.
+  metadata: A metadata value to be passed to the service-side of the RPC.
+  with_call: Whether or not to include return a Call for the RPC in addition
+    to the response.
+  protocol_options: A value specified by the provider of a Face interface
+    implementation affording custom state and behavior.
+
+Returns:
+  The response value for the RPC, and a Call for the RPC if with_call was
+    set to True at invocation.
+
+Raises:
+  AbortionError: Indicating that the RPC was aborted.
+&#34;&#34;&#34;
+    raise NotImplementedError()</code></pre>
+</details>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.GenericStub.event_stream_stream"><code class="name flex">
+<span>def <span class="ident">event_stream_stream</span></span>(<span>self, group, method, receiver, abortion_callback, timeout, metadata=None, protocol_options=None)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Event-driven invocation of a unary-request-stream-response method.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>group</code></strong></dt>
+<dd>The group identifier of the RPC.</dd>
+<dt><strong><code>method</code></strong></dt>
+<dd>The method identifier of the RPC.</dd>
+<dt><strong><code>receiver</code></strong></dt>
+<dd>A ResponseReceiver to be passed the response data of the RPC.</dd>
+<dt><strong><code>abortion_callback</code></strong></dt>
+<dd>A callback to be called and passed an Abortion value
+in the event of RPC abortion.</dd>
+<dt><strong><code>timeout</code></strong></dt>
+<dd>A duration of time in seconds to allow for the RPC.</dd>
+<dt><strong><code>metadata</code></strong></dt>
+<dd>A metadata value to be passed to the service-side of the RPC.</dd>
+<dt><strong><code>protocol_options</code></strong></dt>
+<dd>A value specified by the provider of a Face interface
+implementation affording custom state and behavior.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>A</code> <code>pair</code> of <code>a</code> <a title="grpc.framework.interfaces.face.face.Call" href="#grpc.framework.interfaces.face.face.Call"><code>Call</code></a> <code>object</code> <code>for</code> <code>the</code> <code>RPC</code> <code>and</code> <code>a</code> <code>stream.Consumer</code> <code>to</code> <code>which</code> <code>the</code></dt>
+<dd>&nbsp;</dd>
+</dl>
+<p>request values of the RPC should be passed.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractmethod
+def event_stream_stream(self,
+                        group,
+                        method,
+                        receiver,
+                        abortion_callback,
+                        timeout,
+                        metadata=None,
+                        protocol_options=None):
+    &#34;&#34;&#34;Event-driven invocation of a unary-request-stream-response method.
+
+Args:
+  group: The group identifier of the RPC.
+  method: The method identifier of the RPC.
+  receiver: A ResponseReceiver to be passed the response data of the RPC.
+  abortion_callback: A callback to be called and passed an Abortion value
+    in the event of RPC abortion.
+  timeout: A duration of time in seconds to allow for the RPC.
+  metadata: A metadata value to be passed to the service-side of the RPC.
+  protocol_options: A value specified by the provider of a Face interface
+    implementation affording custom state and behavior.
+
+Returns:
+  A pair of a Call object for the RPC and a stream.Consumer to which the
+    request values of the RPC should be passed.
+&#34;&#34;&#34;
+    raise NotImplementedError()</code></pre>
+</details>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.GenericStub.event_stream_unary"><code class="name flex">
+<span>def <span class="ident">event_stream_unary</span></span>(<span>self, group, method, receiver, abortion_callback, timeout, metadata=None, protocol_options=None)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Event-driven invocation of a unary-request-unary-response method.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>group</code></strong></dt>
+<dd>The group identifier of the RPC.</dd>
+<dt><strong><code>method</code></strong></dt>
+<dd>The method identifier of the RPC.</dd>
+<dt><strong><code>receiver</code></strong></dt>
+<dd>A ResponseReceiver to be passed the response data of the RPC.</dd>
+<dt><strong><code>abortion_callback</code></strong></dt>
+<dd>A callback to be called and passed an Abortion value
+in the event of RPC abortion.</dd>
+<dt><strong><code>timeout</code></strong></dt>
+<dd>A duration of time in seconds to allow for the RPC.</dd>
+<dt><strong><code>metadata</code></strong></dt>
+<dd>A metadata value to be passed to the service-side of the RPC.</dd>
+<dt><strong><code>protocol_options</code></strong></dt>
+<dd>A value specified by the provider of a Face interface
+implementation affording custom state and behavior.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>A</code> <code>pair</code> of <code>a</code> <a title="grpc.framework.interfaces.face.face.Call" href="#grpc.framework.interfaces.face.face.Call"><code>Call</code></a> <code>object</code> <code>for</code> <code>the</code> <code>RPC</code> <code>and</code> <code>a</code> <code>stream.Consumer</code> <code>to</code> <code>which</code> <code>the</code></dt>
+<dd>&nbsp;</dd>
+</dl>
+<p>request values of the RPC should be passed.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractmethod
+def event_stream_unary(self,
+                       group,
+                       method,
+                       receiver,
+                       abortion_callback,
+                       timeout,
+                       metadata=None,
+                       protocol_options=None):
+    &#34;&#34;&#34;Event-driven invocation of a unary-request-unary-response method.
+
+Args:
+  group: The group identifier of the RPC.
+  method: The method identifier of the RPC.
+  receiver: A ResponseReceiver to be passed the response data of the RPC.
+  abortion_callback: A callback to be called and passed an Abortion value
+    in the event of RPC abortion.
+  timeout: A duration of time in seconds to allow for the RPC.
+  metadata: A metadata value to be passed to the service-side of the RPC.
+  protocol_options: A value specified by the provider of a Face interface
+    implementation affording custom state and behavior.
+
+Returns:
+  A pair of a Call object for the RPC and a stream.Consumer to which the
+    request values of the RPC should be passed.
+&#34;&#34;&#34;
+    raise NotImplementedError()</code></pre>
+</details>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.GenericStub.event_unary_stream"><code class="name flex">
+<span>def <span class="ident">event_unary_stream</span></span>(<span>self, group, method, request, receiver, abortion_callback, timeout, metadata=None, protocol_options=None)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Event-driven invocation of a unary-request-stream-response method.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>group</code></strong></dt>
+<dd>The group identifier of the RPC.</dd>
+<dt><strong><code>method</code></strong></dt>
+<dd>The method identifier of the RPC.</dd>
+<dt><strong><code>request</code></strong></dt>
+<dd>The request value for the RPC.</dd>
+<dt><strong><code>receiver</code></strong></dt>
+<dd>A ResponseReceiver to be passed the response data of the RPC.</dd>
+<dt><strong><code>abortion_callback</code></strong></dt>
+<dd>A callback to be called and passed an Abortion value
+in the event of RPC abortion.</dd>
+<dt><strong><code>timeout</code></strong></dt>
+<dd>A duration of time in seconds to allow for the RPC.</dd>
+<dt><strong><code>metadata</code></strong></dt>
+<dd>A metadata value to be passed to the service-side of the RPC.</dd>
+<dt><strong><code>protocol_options</code></strong></dt>
+<dd>A value specified by the provider of a Face interface
+implementation affording custom state and behavior.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A Call for the RPC.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractmethod
+def event_unary_stream(self,
+                       group,
+                       method,
+                       request,
+                       receiver,
+                       abortion_callback,
+                       timeout,
+                       metadata=None,
+                       protocol_options=None):
+    &#34;&#34;&#34;Event-driven invocation of a unary-request-stream-response method.
+
+Args:
+  group: The group identifier of the RPC.
+  method: The method identifier of the RPC.
+  request: The request value for the RPC.
+  receiver: A ResponseReceiver to be passed the response data of the RPC.
+  abortion_callback: A callback to be called and passed an Abortion value
+    in the event of RPC abortion.
+  timeout: A duration of time in seconds to allow for the RPC.
+  metadata: A metadata value to be passed to the service-side of the RPC.
+  protocol_options: A value specified by the provider of a Face interface
+    implementation affording custom state and behavior.
+
+Returns:
+  A Call for the RPC.
+&#34;&#34;&#34;
+    raise NotImplementedError()</code></pre>
+</details>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.GenericStub.event_unary_unary"><code class="name flex">
+<span>def <span class="ident">event_unary_unary</span></span>(<span>self, group, method, request, receiver, abortion_callback, timeout, metadata=None, protocol_options=None)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Event-driven invocation of a unary-request-unary-response method.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>group</code></strong></dt>
+<dd>The group identifier of the RPC.</dd>
+<dt><strong><code>method</code></strong></dt>
+<dd>The method identifier of the RPC.</dd>
+<dt><strong><code>request</code></strong></dt>
+<dd>The request value for the RPC.</dd>
+<dt><strong><code>receiver</code></strong></dt>
+<dd>A ResponseReceiver to be passed the response data of the RPC.</dd>
+<dt><strong><code>abortion_callback</code></strong></dt>
+<dd>A callback to be called and passed an Abortion value
+in the event of RPC abortion.</dd>
+<dt><strong><code>timeout</code></strong></dt>
+<dd>A duration of time in seconds to allow for the RPC.</dd>
+<dt><strong><code>metadata</code></strong></dt>
+<dd>A metadata value to be passed to the service-side of the RPC.</dd>
+<dt><strong><code>protocol_options</code></strong></dt>
+<dd>A value specified by the provider of a Face interface
+implementation affording custom state and behavior.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A Call for the RPC.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractmethod
+def event_unary_unary(self,
+                      group,
+                      method,
+                      request,
+                      receiver,
+                      abortion_callback,
+                      timeout,
+                      metadata=None,
+                      protocol_options=None):
+    &#34;&#34;&#34;Event-driven invocation of a unary-request-unary-response method.
+
+Args:
+  group: The group identifier of the RPC.
+  method: The method identifier of the RPC.
+  request: The request value for the RPC.
+  receiver: A ResponseReceiver to be passed the response data of the RPC.
+  abortion_callback: A callback to be called and passed an Abortion value
+    in the event of RPC abortion.
+  timeout: A duration of time in seconds to allow for the RPC.
+  metadata: A metadata value to be passed to the service-side of the RPC.
+  protocol_options: A value specified by the provider of a Face interface
+    implementation affording custom state and behavior.
+
+Returns:
+  A Call for the RPC.
+&#34;&#34;&#34;
+    raise NotImplementedError()</code></pre>
+</details>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.GenericStub.future_stream_unary"><code class="name flex">
+<span>def <span class="ident">future_stream_unary</span></span>(<span>self, group, method, request_iterator, timeout, metadata=None, protocol_options=None)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Invokes a stream-request-unary-response method.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>group</code></strong></dt>
+<dd>The group identifier of the RPC.</dd>
+<dt><strong><code>method</code></strong></dt>
+<dd>The method identifier of the RPC.</dd>
+<dt><strong><code>request_iterator</code></strong></dt>
+<dd>An iterator that yields request values for the RPC.</dd>
+<dt><strong><code>timeout</code></strong></dt>
+<dd>A duration of time in seconds to allow for the RPC.</dd>
+<dt><strong><code>metadata</code></strong></dt>
+<dd>A metadata value to be passed to the service-side of the RPC.</dd>
+<dt><strong><code>protocol_options</code></strong></dt>
+<dd>A value specified by the provider of a Face interface
+implementation affording custom state and behavior.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>An</code> <code>object</code> <code>that</code> <code>is</code> <code>both</code> <code>a</code> <a title="grpc.framework.interfaces.face.face.Call" href="#grpc.framework.interfaces.face.face.Call"><code>Call</code></a> <code>for</code> <code>the</code> <code>RPC</code> <code>and</code> <code>a</code> <code>future.Future.</code> <code>In</code> <code>the</code></dt>
+<dd>&nbsp;</dd>
+</dl>
+<p>event of RPC completion, the return Future's result value will be the
+response value of the RPC. In the event of RPC abortion, the returned
+Future's exception value will be an AbortionError.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractmethod
+def future_stream_unary(self,
+                        group,
+                        method,
+                        request_iterator,
+                        timeout,
+                        metadata=None,
+                        protocol_options=None):
+    &#34;&#34;&#34;Invokes a stream-request-unary-response method.
+
+Args:
+  group: The group identifier of the RPC.
+  method: The method identifier of the RPC.
+  request_iterator: An iterator that yields request values for the RPC.
+  timeout: A duration of time in seconds to allow for the RPC.
+  metadata: A metadata value to be passed to the service-side of the RPC.
+  protocol_options: A value specified by the provider of a Face interface
+    implementation affording custom state and behavior.
+
+Returns:
+  An object that is both a Call for the RPC and a future.Future. In the
+    event of RPC completion, the return Future&#39;s result value will be the
+    response value of the RPC. In the event of RPC abortion, the returned
+    Future&#39;s exception value will be an AbortionError.
+&#34;&#34;&#34;
+    raise NotImplementedError()</code></pre>
+</details>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.GenericStub.future_unary_unary"><code class="name flex">
+<span>def <span class="ident">future_unary_unary</span></span>(<span>self, group, method, request, timeout, metadata=None, protocol_options=None)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Invokes a unary-request-unary-response method.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>group</code></strong></dt>
+<dd>The group identifier of the RPC.</dd>
+<dt><strong><code>method</code></strong></dt>
+<dd>The method identifier of the RPC.</dd>
+<dt><strong><code>request</code></strong></dt>
+<dd>The request value for the RPC.</dd>
+<dt><strong><code>timeout</code></strong></dt>
+<dd>A duration of time in seconds to allow for the RPC.</dd>
+<dt><strong><code>metadata</code></strong></dt>
+<dd>A metadata value to be passed to the service-side of the RPC.</dd>
+<dt><strong><code>protocol_options</code></strong></dt>
+<dd>A value specified by the provider of a Face interface
+implementation affording custom state and behavior.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>An</code> <code>object</code> <code>that</code> <code>is</code> <code>both</code> <code>a</code> <a title="grpc.framework.interfaces.face.face.Call" href="#grpc.framework.interfaces.face.face.Call"><code>Call</code></a> <code>for</code> <code>the</code> <code>RPC</code> <code>and</code> <code>a</code> <code>future.Future.</code> <code>In</code> <code>the</code></dt>
+<dd>&nbsp;</dd>
+</dl>
+<p>event of RPC completion, the return Future's result value will be the
+response value of the RPC. In the event of RPC abortion, the returned
+Future's exception value will be an AbortionError.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractmethod
+def future_unary_unary(self,
+                       group,
+                       method,
+                       request,
+                       timeout,
+                       metadata=None,
+                       protocol_options=None):
+    &#34;&#34;&#34;Invokes a unary-request-unary-response method.
+
+Args:
+  group: The group identifier of the RPC.
+  method: The method identifier of the RPC.
+  request: The request value for the RPC.
+  timeout: A duration of time in seconds to allow for the RPC.
+  metadata: A metadata value to be passed to the service-side of the RPC.
+  protocol_options: A value specified by the provider of a Face interface
+    implementation affording custom state and behavior.
+
+Returns:
+  An object that is both a Call for the RPC and a future.Future. In the
+    event of RPC completion, the return Future&#39;s result value will be the
+    response value of the RPC. In the event of RPC abortion, the returned
+    Future&#39;s exception value will be an AbortionError.
+&#34;&#34;&#34;
+    raise NotImplementedError()</code></pre>
+</details>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.GenericStub.inline_stream_stream"><code class="name flex">
+<span>def <span class="ident">inline_stream_stream</span></span>(<span>self, group, method, request_iterator, timeout, metadata=None, protocol_options=None)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Invokes a stream-request-stream-response method.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>group</code></strong></dt>
+<dd>The group identifier of the RPC.</dd>
+<dt><strong><code>method</code></strong></dt>
+<dd>The method identifier of the RPC.</dd>
+<dt><strong><code>request_iterator</code></strong></dt>
+<dd>An iterator that yields request values for the RPC.</dd>
+<dt><strong><code>timeout</code></strong></dt>
+<dd>A duration of time in seconds to allow for the RPC.</dd>
+<dt><strong><code>metadata</code></strong></dt>
+<dd>A metadata value to be passed to the service-side of the RPC.</dd>
+<dt><strong><code>protocol_options</code></strong></dt>
+<dd>A value specified by the provider of a Face interface
+implementation affording custom state and behavior.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>An</code> <code>object</code> <code>that</code> <code>is</code> <code>both</code> <code>a</code> <a title="grpc.framework.interfaces.face.face.Call" href="#grpc.framework.interfaces.face.face.Call"><code>Call</code></a> <code>for</code> <code>the</code> <code>RPC</code> <code>and</code> <code>an</code> <code>iterator</code> of <code>response</code></dt>
+<dd>&nbsp;</dd>
+</dl>
+<p>values. Drawing response values from the returned iterator may raise
+AbortionError indicating abortion of the RPC.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractmethod
+def inline_stream_stream(self,
+                         group,
+                         method,
+                         request_iterator,
+                         timeout,
+                         metadata=None,
+                         protocol_options=None):
+    &#34;&#34;&#34;Invokes a stream-request-stream-response method.
+
+Args:
+  group: The group identifier of the RPC.
+  method: The method identifier of the RPC.
+  request_iterator: An iterator that yields request values for the RPC.
+  timeout: A duration of time in seconds to allow for the RPC.
+  metadata: A metadata value to be passed to the service-side of the RPC.
+  protocol_options: A value specified by the provider of a Face interface
+    implementation affording custom state and behavior.
+
+Returns:
+  An object that is both a Call for the RPC and an iterator of response
+    values. Drawing response values from the returned iterator may raise
+    AbortionError indicating abortion of the RPC.
+&#34;&#34;&#34;
+    raise NotImplementedError()</code></pre>
+</details>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.GenericStub.inline_unary_stream"><code class="name flex">
+<span>def <span class="ident">inline_unary_stream</span></span>(<span>self, group, method, request, timeout, metadata=None, protocol_options=None)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Invokes a unary-request-stream-response method.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>group</code></strong></dt>
+<dd>The group identifier of the RPC.</dd>
+<dt><strong><code>method</code></strong></dt>
+<dd>The method identifier of the RPC.</dd>
+<dt><strong><code>request</code></strong></dt>
+<dd>The request value for the RPC.</dd>
+<dt><strong><code>timeout</code></strong></dt>
+<dd>A duration of time in seconds to allow for the RPC.</dd>
+<dt><strong><code>metadata</code></strong></dt>
+<dd>A metadata value to be passed to the service-side of the RPC.</dd>
+<dt><strong><code>protocol_options</code></strong></dt>
+<dd>A value specified by the provider of a Face interface
+implementation affording custom state and behavior.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>An</code> <code>object</code> <code>that</code> <code>is</code> <code>both</code> <code>a</code> <a title="grpc.framework.interfaces.face.face.Call" href="#grpc.framework.interfaces.face.face.Call"><code>Call</code></a> <code>for</code> <code>the</code> <code>RPC</code> <code>and</code> <code>an</code> <code>iterator</code> of <code>response</code></dt>
+<dd>&nbsp;</dd>
+</dl>
+<p>values. Drawing response values from the returned iterator may raise
+AbortionError indicating abortion of the RPC.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractmethod
+def inline_unary_stream(self,
+                        group,
+                        method,
+                        request,
+                        timeout,
+                        metadata=None,
+                        protocol_options=None):
+    &#34;&#34;&#34;Invokes a unary-request-stream-response method.
+
+Args:
+  group: The group identifier of the RPC.
+  method: The method identifier of the RPC.
+  request: The request value for the RPC.
+  timeout: A duration of time in seconds to allow for the RPC.
+  metadata: A metadata value to be passed to the service-side of the RPC.
+  protocol_options: A value specified by the provider of a Face interface
+    implementation affording custom state and behavior.
+
+Returns:
+  An object that is both a Call for the RPC and an iterator of response
+    values. Drawing response values from the returned iterator may raise
+    AbortionError indicating abortion of the RPC.
+&#34;&#34;&#34;
+    raise NotImplementedError()</code></pre>
+</details>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.GenericStub.stream_stream"><code class="name flex">
+<span>def <span class="ident">stream_stream</span></span>(<span>self, group, method)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Creates a StreamStreamMultiCallable for a stream-stream method.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>group</code></strong></dt>
+<dd>The group identifier of the RPC.</dd>
+<dt><strong><code>method</code></strong></dt>
+<dd>The method identifier of the RPC.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A StreamStreamMultiCallable value for the named stream-stream method.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractmethod
+def stream_stream(self, group, method):
+    &#34;&#34;&#34;Creates a StreamStreamMultiCallable for a stream-stream method.
+
+Args:
+  group: The group identifier of the RPC.
+  method: The method identifier of the RPC.
+
+Returns:
+  A StreamStreamMultiCallable value for the named stream-stream method.
+&#34;&#34;&#34;
+    raise NotImplementedError()</code></pre>
+</details>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.GenericStub.stream_unary"><code class="name flex">
+<span>def <span class="ident">stream_unary</span></span>(<span>self, group, method)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Creates a StreamUnaryMultiCallable for a stream-unary method.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>group</code></strong></dt>
+<dd>The group identifier of the RPC.</dd>
+<dt><strong><code>method</code></strong></dt>
+<dd>The method identifier of the RPC.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A StreamUnaryMultiCallable value for the named stream-unary method.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractmethod
+def stream_unary(self, group, method):
+    &#34;&#34;&#34;Creates a StreamUnaryMultiCallable for a stream-unary method.
+
+Args:
+  group: The group identifier of the RPC.
+  method: The method identifier of the RPC.
+
+Returns:
+  A StreamUnaryMultiCallable value for the named stream-unary method.
+&#34;&#34;&#34;
+    raise NotImplementedError()</code></pre>
+</details>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.GenericStub.unary_stream"><code class="name flex">
+<span>def <span class="ident">unary_stream</span></span>(<span>self, group, method)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Creates a UnaryStreamMultiCallable for a unary-stream method.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>group</code></strong></dt>
+<dd>The group identifier of the RPC.</dd>
+<dt><strong><code>method</code></strong></dt>
+<dd>The method identifier of the RPC.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A UnaryStreamMultiCallable value for the name unary-stream method.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractmethod
+def unary_stream(self, group, method):
+    &#34;&#34;&#34;Creates a UnaryStreamMultiCallable for a unary-stream method.
+
+Args:
+  group: The group identifier of the RPC.
+  method: The method identifier of the RPC.
+
+Returns:
+  A UnaryStreamMultiCallable value for the name unary-stream method.
+&#34;&#34;&#34;
+    raise NotImplementedError()</code></pre>
+</details>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.GenericStub.unary_unary"><code class="name flex">
+<span>def <span class="ident">unary_unary</span></span>(<span>self, group, method)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Creates a UnaryUnaryMultiCallable for a unary-unary method.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>group</code></strong></dt>
+<dd>The group identifier of the RPC.</dd>
+<dt><strong><code>method</code></strong></dt>
+<dd>The method identifier of the RPC.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A UnaryUnaryMultiCallable value for the named unary-unary method.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractmethod
+def unary_unary(self, group, method):
+    &#34;&#34;&#34;Creates a UnaryUnaryMultiCallable for a unary-unary method.
+
+Args:
+  group: The group identifier of the RPC.
+  method: The method identifier of the RPC.
+
+Returns:
+  A UnaryUnaryMultiCallable value for the named unary-unary method.
+&#34;&#34;&#34;
+    raise NotImplementedError()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.LocalError"><code class="flex name class">
+<span>class <span class="ident">LocalError</span></span>
+<span>(</span><span>initial_metadata, terminal_metadata, code, details)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Indicates that an RPC has terminated due to a local defect.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class LocalError(AbortionError):
+    &#34;&#34;&#34;Indicates that an RPC has terminated due to a local defect.&#34;&#34;&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="grpc.framework.interfaces.face.face.AbortionError" href="#grpc.framework.interfaces.face.face.AbortionError">AbortionError</a></li>
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.LocalShutdownError"><code class="flex name class">
+<span>class <span class="ident">LocalShutdownError</span></span>
+<span>(</span><span>initial_metadata, terminal_metadata, code, details)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Indicates that an RPC has terminated due to local shutdown of RPCs.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class LocalShutdownError(AbortionError):
+    &#34;&#34;&#34;Indicates that an RPC has terminated due to local shutdown of RPCs.&#34;&#34;&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="grpc.framework.interfaces.face.face.AbortionError" href="#grpc.framework.interfaces.face.face.AbortionError">AbortionError</a></li>
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.MethodImplementation"><code class="flex name class">
+<span>class <span class="ident">MethodImplementation</span></span>
+</code></dt>
+<dd>
+<section class="desc"><p>A sum type that describes a method implementation.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>cardinality</code></strong></dt>
+<dd>A cardinality.Cardinality value.</dd>
+<dt><strong><code>style</code></strong></dt>
+<dd>A style.Service value.</dd>
+<dt><strong><code>unary_unary_inline</code></strong></dt>
+<dd>The implementation of the method as a callable value
+that takes a request value and a ServicerContext object and returns a
+response value. Only non-None if cardinality is
+cardinality.Cardinality.UNARY_UNARY and style is style.Service.INLINE.</dd>
+<dt><strong><code>unary_stream_inline</code></strong></dt>
+<dd>The implementation of the method as a callable value
+that takes a request value and a ServicerContext object and returns an
+iterator of response values. Only non-None if cardinality is
+cardinality.Cardinality.UNARY_STREAM and style is style.Service.INLINE.</dd>
+<dt><strong><code>stream_unary_inline</code></strong></dt>
+<dd>The implementation of the method as a callable value
+that takes an iterator of request values and a ServicerContext object and
+returns a response value. Only non-None if cardinality is
+cardinality.Cardinality.STREAM_UNARY and style is style.Service.INLINE.</dd>
+<dt><strong><code>stream_stream_inline</code></strong></dt>
+<dd>The implementation of the method as a callable value
+that takes an iterator of request values and a ServicerContext object and
+returns an iterator of response values. Only non-None if cardinality is
+cardinality.Cardinality.STREAM_STREAM and style is style.Service.INLINE.</dd>
+<dt><strong><code>unary_unary_event</code></strong></dt>
+<dd>The implementation of the method as a callable value that
+takes a request value, a response callback to which to pass the response
+value of the RPC, and a ServicerContext. Only non-None if cardinality is
+cardinality.Cardinality.UNARY_UNARY and style is style.Service.EVENT.</dd>
+<dt><strong><code>unary_stream_event</code></strong></dt>
+<dd>The implementation of the method as a callable value
+that takes a request value, a stream.Consumer to which to pass the
+response values of the RPC, and a ServicerContext. Only non-None if
+cardinality is cardinality.Cardinality.UNARY_STREAM and style is
+style.Service.EVENT.</dd>
+<dt><strong><code>stream_unary_event</code></strong></dt>
+<dd>The implementation of the method as a callable value
+that takes a response callback to which to pass the response value of the
+RPC and a ServicerContext and returns a stream.Consumer to which the
+request values of the RPC should be passed. Only non-None if cardinality
+is cardinality.Cardinality.STREAM_UNARY and style is style.Service.EVENT.</dd>
+<dt><strong><code>stream_stream_event</code></strong></dt>
+<dd>The implementation of the method as a callable value
+that takes a stream.Consumer to which to pass the response values of the
+RPC and a ServicerContext and returns a stream.Consumer to which the
+request values of the RPC should be passed. Only non-None if cardinality
+is cardinality.Cardinality.STREAM_STREAM and style is
+style.Service.EVENT.</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MethodImplementation(six.with_metaclass(abc.ABCMeta)):
+    &#34;&#34;&#34;A sum type that describes a method implementation.
+
+  Attributes:
+    cardinality: A cardinality.Cardinality value.
+    style: A style.Service value.
+    unary_unary_inline: The implementation of the method as a callable value
+      that takes a request value and a ServicerContext object and returns a
+      response value. Only non-None if cardinality is
+      cardinality.Cardinality.UNARY_UNARY and style is style.Service.INLINE.
+    unary_stream_inline: The implementation of the method as a callable value
+      that takes a request value and a ServicerContext object and returns an
+      iterator of response values. Only non-None if cardinality is
+      cardinality.Cardinality.UNARY_STREAM and style is style.Service.INLINE.
+    stream_unary_inline: The implementation of the method as a callable value
+      that takes an iterator of request values and a ServicerContext object and
+      returns a response value. Only non-None if cardinality is
+      cardinality.Cardinality.STREAM_UNARY and style is style.Service.INLINE.
+    stream_stream_inline: The implementation of the method as a callable value
+      that takes an iterator of request values and a ServicerContext object and
+      returns an iterator of response values. Only non-None if cardinality is
+      cardinality.Cardinality.STREAM_STREAM and style is style.Service.INLINE.
+    unary_unary_event: The implementation of the method as a callable value that
+      takes a request value, a response callback to which to pass the response
+      value of the RPC, and a ServicerContext. Only non-None if cardinality is
+      cardinality.Cardinality.UNARY_UNARY and style is style.Service.EVENT.
+    unary_stream_event: The implementation of the method as a callable value
+      that takes a request value, a stream.Consumer to which to pass the
+      response values of the RPC, and a ServicerContext. Only non-None if
+      cardinality is cardinality.Cardinality.UNARY_STREAM and style is
+      style.Service.EVENT.
+    stream_unary_event: The implementation of the method as a callable value
+      that takes a response callback to which to pass the response value of the
+      RPC and a ServicerContext and returns a stream.Consumer to which the
+      request values of the RPC should be passed. Only non-None if cardinality
+      is cardinality.Cardinality.STREAM_UNARY and style is style.Service.EVENT.
+    stream_stream_event: The implementation of the method as a callable value
+      that takes a stream.Consumer to which to pass the response values of the
+      RPC and a ServicerContext and returns a stream.Consumer to which the
+      request values of the RPC should be passed. Only non-None if cardinality
+      is cardinality.Cardinality.STREAM_STREAM and style is
+      style.Service.EVENT.
+  &#34;&#34;&#34;</code></pre>
+</details>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li>grpc.framework.interfaces.face.utilities._MethodImplementation</li>
+</ul>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.MultiMethodImplementation"><code class="flex name class">
+<span>class <span class="ident">MultiMethodImplementation</span></span>
+</code></dt>
+<dd>
+<section class="desc"><p>A general type able to service many methods.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MultiMethodImplementation(six.with_metaclass(abc.ABCMeta)):
+    &#34;&#34;&#34;A general type able to service many methods.&#34;&#34;&#34;
+
+    @abc.abstractmethod
+    def service(self, group, method, response_consumer, context):
+        &#34;&#34;&#34;Services an RPC.
+
+    Args:
+      group: The group identifier of the RPC.
+      method: The method identifier of the RPC.
+      response_consumer: A stream.Consumer to be called to accept the response
+        values of the RPC.
+      context: a ServicerContext object.
+
+    Returns:
+      A stream.Consumer with which to accept the request values of the RPC. The
+        consumer returned from this method may or may not be invoked to
+        completion: in the case of RPC abortion, RPC Framework will simply stop
+        passing values to this object. Implementations must not assume that this
+        object will be called to completion of the request stream or even called
+        at all.
+
+    Raises:
+      abandonment.Abandoned: May or may not be raised when the RPC has been
+        aborted.
+      NoSuchMethodError: If this MultiMethod does not recognize the given group
+        and name for the RPC and is not able to service the RPC.
+    &#34;&#34;&#34;
+        raise NotImplementedError()</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="grpc.framework.interfaces.face.face.MultiMethodImplementation.service"><code class="name flex">
+<span>def <span class="ident">service</span></span>(<span>self, group, method, response_consumer, context)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Services an RPC.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>group</code></strong></dt>
+<dd>The group identifier of the RPC.</dd>
+<dt><strong><code>method</code></strong></dt>
+<dd>The method identifier of the RPC.</dd>
+<dt><strong><code>response_consumer</code></strong></dt>
+<dd>A stream.Consumer to be called to accept the response
+values of the RPC.</dd>
+<dt><strong><code>context</code></strong></dt>
+<dd>a ServicerContext object.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>A</code> <code>stream.Consumer</code> <code>with</code> <code>which</code> <code>to</code> <code>accept</code> <code>the</code> <code>request</code> <code>values</code> of <code>the</code> <code>RPC.</code> <code>The</code></dt>
+<dd>&nbsp;</dd>
+</dl>
+<p>consumer returned from this method may or may not be invoked to
+completion: in the case of RPC abortion, RPC Framework will simply stop
+passing values to this object. Implementations must not assume that this
+object will be called to completion of the request stream or even called
+at all.</p>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>abandonment.Abandoned</code>: <code>May</code> or <code>may</code> <code>not</code> <code>be</code> <code>raised</code> <code>when</code> <code>the</code> <code>RPC</code> <code>has</code> <code>been</code></dt>
+<dd>&nbsp;</dd>
+<dt>aborted.</dt>
+<dt><strong><a title="grpc.framework.interfaces.face.face.NoSuchMethodError" href="#grpc.framework.interfaces.face.face.NoSuchMethodError"><code>NoSuchMethodError</code></a></strong></dt>
+<dd>If this MultiMethod does not recognize the given group
+and name for the RPC and is not able to service the RPC.</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractmethod
+def service(self, group, method, response_consumer, context):
+    &#34;&#34;&#34;Services an RPC.
+
+Args:
+  group: The group identifier of the RPC.
+  method: The method identifier of the RPC.
+  response_consumer: A stream.Consumer to be called to accept the response
+    values of the RPC.
+  context: a ServicerContext object.
+
+Returns:
+  A stream.Consumer with which to accept the request values of the RPC. The
+    consumer returned from this method may or may not be invoked to
+    completion: in the case of RPC abortion, RPC Framework will simply stop
+    passing values to this object. Implementations must not assume that this
+    object will be called to completion of the request stream or even called
+    at all.
+
+Raises:
+  abandonment.Abandoned: May or may not be raised when the RPC has been
+    aborted.
+  NoSuchMethodError: If this MultiMethod does not recognize the given group
+    and name for the RPC and is not able to service the RPC.
+&#34;&#34;&#34;
+    raise NotImplementedError()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.NetworkError"><code class="flex name class">
+<span>class <span class="ident">NetworkError</span></span>
+<span>(</span><span>initial_metadata, terminal_metadata, code, details)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Indicates that some error occurred on the network.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class NetworkError(AbortionError):
+    &#34;&#34;&#34;Indicates that some error occurred on the network.&#34;&#34;&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="grpc.framework.interfaces.face.face.AbortionError" href="#grpc.framework.interfaces.face.face.AbortionError">AbortionError</a></li>
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.NoSuchMethodError"><code class="flex name class">
+<span>class <span class="ident">NoSuchMethodError</span></span>
+<span>(</span><span>group, method)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Raised by customer code to indicate an unrecognized method.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>group</code></strong></dt>
+<dd>The group of the unrecognized method.</dd>
+<dt><strong><code>name</code></strong></dt>
+<dd>The name of the unrecognized method.</dd>
+</dl>
+<p>Constructor.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>group</code></strong></dt>
+<dd>The group identifier of the unrecognized RPC name.</dd>
+<dt><strong><code>method</code></strong></dt>
+<dd>The method identifier of the unrecognized RPC name.</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class NoSuchMethodError(Exception):
+    &#34;&#34;&#34;Raised by customer code to indicate an unrecognized method.
+
+  Attributes:
+    group: The group of the unrecognized method.
+    name: The name of the unrecognized method.
+  &#34;&#34;&#34;
+
+    def __init__(self, group, method):
+        &#34;&#34;&#34;Constructor.
+
+    Args:
+      group: The group identifier of the unrecognized RPC name.
+      method: The method identifier of the unrecognized RPC name.
+    &#34;&#34;&#34;
+        super(NoSuchMethodError, self).__init__()
+        self.group = group
+        self.method = method
+
+    def __repr__(self):
+        return &#39;face.NoSuchMethodError(%s, %s)&#39; % (
+            self.group,
+            self.method,
+        )</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.RemoteError"><code class="flex name class">
+<span>class <span class="ident">RemoteError</span></span>
+<span>(</span><span>initial_metadata, terminal_metadata, code, details)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Indicates that an RPC has terminated due to a remote defect.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class RemoteError(AbortionError):
+    &#34;&#34;&#34;Indicates that an RPC has terminated due to a remote defect.&#34;&#34;&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="grpc.framework.interfaces.face.face.AbortionError" href="#grpc.framework.interfaces.face.face.AbortionError">AbortionError</a></li>
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.RemoteShutdownError"><code class="flex name class">
+<span>class <span class="ident">RemoteShutdownError</span></span>
+<span>(</span><span>initial_metadata, terminal_metadata, code, details)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Indicates that an RPC has terminated due to remote shutdown of RPCs.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class RemoteShutdownError(AbortionError):
+    &#34;&#34;&#34;Indicates that an RPC has terminated due to remote shutdown of RPCs.&#34;&#34;&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="grpc.framework.interfaces.face.face.AbortionError" href="#grpc.framework.interfaces.face.face.AbortionError">AbortionError</a></li>
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.ResponseReceiver"><code class="flex name class">
+<span>class <span class="ident">ResponseReceiver</span></span>
+</code></dt>
+<dd>
+<section class="desc"><p>Invocation-side object used to accept the output of an RPC.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ResponseReceiver(six.with_metaclass(abc.ABCMeta)):
+    &#34;&#34;&#34;Invocation-side object used to accept the output of an RPC.&#34;&#34;&#34;
+
+    @abc.abstractmethod
+    def initial_metadata(self, initial_metadata):
+        &#34;&#34;&#34;Receives the initial metadata from the service-side of the RPC.
+
+    Args:
+      initial_metadata: The initial metadata object emitted from the
+        service-side of the RPC.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def response(self, response):
+        &#34;&#34;&#34;Receives a response from the service-side of the RPC.
+
+    Args:
+      response: A response object emitted from the service-side of the RPC.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def complete(self, terminal_metadata, code, details):
+        &#34;&#34;&#34;Receives the completion values emitted from the service-side of the RPC.
+
+    Args:
+      terminal_metadata: The terminal metadata object emitted from the
+        service-side of the RPC.
+      code: The code object emitted from the service-side of the RPC.
+      details: The details object emitted from the service-side of the RPC.
+    &#34;&#34;&#34;
+        raise NotImplementedError()</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="grpc.framework.interfaces.face.face.ResponseReceiver.complete"><code class="name flex">
+<span>def <span class="ident">complete</span></span>(<span>self, terminal_metadata, code, details)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Receives the completion values emitted from the service-side of the RPC.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>terminal_metadata</code></strong></dt>
+<dd>The terminal metadata object emitted from the
+service-side of the RPC.</dd>
+<dt><strong><code>code</code></strong></dt>
+<dd>The code object emitted from the service-side of the RPC.</dd>
+<dt><strong><code>details</code></strong></dt>
+<dd>The details object emitted from the service-side of the RPC.</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractmethod
+def complete(self, terminal_metadata, code, details):
+    &#34;&#34;&#34;Receives the completion values emitted from the service-side of the RPC.
+
+Args:
+  terminal_metadata: The terminal metadata object emitted from the
+    service-side of the RPC.
+  code: The code object emitted from the service-side of the RPC.
+  details: The details object emitted from the service-side of the RPC.
+&#34;&#34;&#34;
+    raise NotImplementedError()</code></pre>
+</details>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.ResponseReceiver.initial_metadata"><code class="name flex">
+<span>def <span class="ident">initial_metadata</span></span>(<span>self, initial_metadata)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Receives the initial metadata from the service-side of the RPC.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>initial_metadata</code></strong></dt>
+<dd>The initial metadata object emitted from the
+service-side of the RPC.</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractmethod
+def initial_metadata(self, initial_metadata):
+    &#34;&#34;&#34;Receives the initial metadata from the service-side of the RPC.
+
+Args:
+  initial_metadata: The initial metadata object emitted from the
+    service-side of the RPC.
+&#34;&#34;&#34;
+    raise NotImplementedError()</code></pre>
+</details>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.ResponseReceiver.response"><code class="name flex">
+<span>def <span class="ident">response</span></span>(<span>self, response)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Receives a response from the service-side of the RPC.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>response</code></strong></dt>
+<dd>A response object emitted from the service-side of the RPC.</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractmethod
+def response(self, response):
+    &#34;&#34;&#34;Receives a response from the service-side of the RPC.
+
+Args:
+  response: A response object emitted from the service-side of the RPC.
+&#34;&#34;&#34;
+    raise NotImplementedError()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.RpcContext"><code class="flex name class">
+<span>class <span class="ident">RpcContext</span></span>
+</code></dt>
+<dd>
+<section class="desc"><p>Provides RPC-related information and action.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class RpcContext(six.with_metaclass(abc.ABCMeta)):
+    &#34;&#34;&#34;Provides RPC-related information and action.&#34;&#34;&#34;
+
+    @abc.abstractmethod
+    def is_active(self):
+        &#34;&#34;&#34;Describes whether the RPC is active or has terminated.&#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def time_remaining(self):
+        &#34;&#34;&#34;Describes the length of allowed time remaining for the RPC.
+
+    Returns:
+      A nonnegative float indicating the length of allowed time in seconds
+      remaining for the RPC to complete before it is considered to have timed
+      out.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def add_abortion_callback(self, abortion_callback):
+        &#34;&#34;&#34;Registers a callback to be called if the RPC is aborted.
+
+    Args:
+      abortion_callback: A callable to be called and passed an Abortion value
+        in the event of RPC abortion.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def cancel(self):
+        &#34;&#34;&#34;Cancels the RPC.
+
+    Idempotent and has no effect if the RPC has already terminated.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def protocol_context(self):
+        &#34;&#34;&#34;Accesses a custom object specified by an implementation provider.
+
+    Returns:
+      A value specified by the provider of a Face interface implementation
+        affording custom state and behavior.
+    &#34;&#34;&#34;
+        raise NotImplementedError()</code></pre>
+</details>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="grpc.framework.interfaces.face.face.Call" href="#grpc.framework.interfaces.face.face.Call">Call</a></li>
+<li><a title="grpc.framework.interfaces.face.face.ServicerContext" href="#grpc.framework.interfaces.face.face.ServicerContext">ServicerContext</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="grpc.framework.interfaces.face.face.RpcContext.add_abortion_callback"><code class="name flex">
+<span>def <span class="ident">add_abortion_callback</span></span>(<span>self, abortion_callback)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Registers a callback to be called if the RPC is aborted.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>abortion_callback</code></strong></dt>
+<dd>A callable to be called and passed an Abortion value
+in the event of RPC abortion.</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractmethod
+def add_abortion_callback(self, abortion_callback):
+    &#34;&#34;&#34;Registers a callback to be called if the RPC is aborted.
+
+Args:
+  abortion_callback: A callable to be called and passed an Abortion value
+    in the event of RPC abortion.
+&#34;&#34;&#34;
+    raise NotImplementedError()</code></pre>
+</details>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.RpcContext.cancel"><code class="name flex">
+<span>def <span class="ident">cancel</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Cancels the RPC.</p>
+<p>Idempotent and has no effect if the RPC has already terminated.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractmethod
+def cancel(self):
+    &#34;&#34;&#34;Cancels the RPC.
+
+Idempotent and has no effect if the RPC has already terminated.
+&#34;&#34;&#34;
+    raise NotImplementedError()</code></pre>
+</details>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.RpcContext.is_active"><code class="name flex">
+<span>def <span class="ident">is_active</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Describes whether the RPC is active or has terminated.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractmethod
+def is_active(self):
+    &#34;&#34;&#34;Describes whether the RPC is active or has terminated.&#34;&#34;&#34;
+    raise NotImplementedError()</code></pre>
+</details>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.RpcContext.protocol_context"><code class="name flex">
+<span>def <span class="ident">protocol_context</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Accesses a custom object specified by an implementation provider.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>A</code> <code>value</code> <code>specified</code> <code>by</code> <code>the</code> <code>provider</code> of <code>a</code> <code>Face</code> <code>interface</code> <code>implementation</code></dt>
+<dd>&nbsp;</dd>
+</dl>
+<p>affording custom state and behavior.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractmethod
+def protocol_context(self):
+    &#34;&#34;&#34;Accesses a custom object specified by an implementation provider.
+
+Returns:
+  A value specified by the provider of a Face interface implementation
+    affording custom state and behavior.
+&#34;&#34;&#34;
+    raise NotImplementedError()</code></pre>
+</details>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.RpcContext.time_remaining"><code class="name flex">
+<span>def <span class="ident">time_remaining</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Describes the length of allowed time remaining for the RPC.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>A</code> <code>nonnegative</code> <code>float</code> <code>indicating</code> <code>the</code> <code>length</code> of <code>allowed</code> <code>time</code> <code>in</code> <code>seconds</code></dt>
+<dd>&nbsp;</dd>
+<dt><code>remaining</code> <code>for</code> <code>the</code> <code>RPC</code> <code>to</code> <code>complete</code> <code>before</code> <code>it</code> <code>is</code> <code>considered</code> <code>to</code> <code>have</code> <code>timed</code></dt>
+<dd>&nbsp;</dd>
+</dl>
+<p>out.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractmethod
+def time_remaining(self):
+    &#34;&#34;&#34;Describes the length of allowed time remaining for the RPC.
+
+Returns:
+  A nonnegative float indicating the length of allowed time in seconds
+  remaining for the RPC to complete before it is considered to have timed
+  out.
+&#34;&#34;&#34;
+    raise NotImplementedError()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.ServicerContext"><code class="flex name class">
+<span>class <span class="ident">ServicerContext</span></span>
+</code></dt>
+<dd>
+<section class="desc"><p>A context object passed to method implementations.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ServicerContext(six.with_metaclass(abc.ABCMeta, RpcContext)):
+    &#34;&#34;&#34;A context object passed to method implementations.&#34;&#34;&#34;
+
+    @abc.abstractmethod
+    def invocation_metadata(self):
+        &#34;&#34;&#34;Accesses the metadata from the invocation-side of the RPC.
+
+    This method blocks until the value is available or is known not to have been
+    emitted from the invocation-side of the RPC.
+
+    Returns:
+      The metadata object emitted by the invocation-side of the RPC, or None if
+        there was no such value.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def initial_metadata(self, initial_metadata):
+        &#34;&#34;&#34;Accepts the service-side initial metadata value of the RPC.
+
+    This method need not be called by method implementations if they have no
+    service-side initial metadata to transmit.
+
+    Args:
+      initial_metadata: The service-side initial metadata value of the RPC to
+        be transmitted to the invocation side of the RPC.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def terminal_metadata(self, terminal_metadata):
+        &#34;&#34;&#34;Accepts the service-side terminal metadata value of the RPC.
+
+    This method need not be called by method implementations if they have no
+    service-side terminal metadata to transmit.
+
+    Args:
+      terminal_metadata: The service-side terminal metadata value of the RPC to
+        be transmitted to the invocation side of the RPC.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def code(self, code):
+        &#34;&#34;&#34;Accepts the service-side code of the RPC.
+
+    This method need not be called by method implementations if they have no
+    code to transmit.
+
+    Args:
+      code: The code of the RPC to be transmitted to the invocation side of the
+        RPC.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def details(self, details):
+        &#34;&#34;&#34;Accepts the service-side details of the RPC.
+
+    This method need not be called by method implementations if they have no
+    service-side details to transmit.
+
+    Args:
+      details: The service-side details value of the RPC to be transmitted to
+        the invocation side of the RPC.
+    &#34;&#34;&#34;
+        raise NotImplementedError()</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="grpc.framework.interfaces.face.face.RpcContext" href="#grpc.framework.interfaces.face.face.RpcContext">RpcContext</a></li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li>grpc.beta._server_adaptations._FaceServicerContext</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="grpc.framework.interfaces.face.face.ServicerContext.code"><code class="name flex">
+<span>def <span class="ident">code</span></span>(<span>self, code)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Accepts the service-side code of the RPC.</p>
+<p>This method need not be called by method implementations if they have no
+code to transmit.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>code</code></strong></dt>
+<dd>The code of the RPC to be transmitted to the invocation side of the
+RPC.</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractmethod
+def code(self, code):
+    &#34;&#34;&#34;Accepts the service-side code of the RPC.
+
+This method need not be called by method implementations if they have no
+code to transmit.
+
+Args:
+  code: The code of the RPC to be transmitted to the invocation side of the
+    RPC.
+&#34;&#34;&#34;
+    raise NotImplementedError()</code></pre>
+</details>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.ServicerContext.details"><code class="name flex">
+<span>def <span class="ident">details</span></span>(<span>self, details)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Accepts the service-side details of the RPC.</p>
+<p>This method need not be called by method implementations if they have no
+service-side details to transmit.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>details</code></strong></dt>
+<dd>The service-side details value of the RPC to be transmitted to
+the invocation side of the RPC.</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractmethod
+def details(self, details):
+    &#34;&#34;&#34;Accepts the service-side details of the RPC.
+
+This method need not be called by method implementations if they have no
+service-side details to transmit.
+
+Args:
+  details: The service-side details value of the RPC to be transmitted to
+    the invocation side of the RPC.
+&#34;&#34;&#34;
+    raise NotImplementedError()</code></pre>
+</details>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.ServicerContext.initial_metadata"><code class="name flex">
+<span>def <span class="ident">initial_metadata</span></span>(<span>self, initial_metadata)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Accepts the service-side initial metadata value of the RPC.</p>
+<p>This method need not be called by method implementations if they have no
+service-side initial metadata to transmit.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>initial_metadata</code></strong></dt>
+<dd>The service-side initial metadata value of the RPC to
+be transmitted to the invocation side of the RPC.</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractmethod
+def initial_metadata(self, initial_metadata):
+    &#34;&#34;&#34;Accepts the service-side initial metadata value of the RPC.
+
+This method need not be called by method implementations if they have no
+service-side initial metadata to transmit.
+
+Args:
+  initial_metadata: The service-side initial metadata value of the RPC to
+    be transmitted to the invocation side of the RPC.
+&#34;&#34;&#34;
+    raise NotImplementedError()</code></pre>
+</details>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.ServicerContext.invocation_metadata"><code class="name flex">
+<span>def <span class="ident">invocation_metadata</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Accesses the metadata from the invocation-side of the RPC.</p>
+<p>This method blocks until the value is available or is known not to have been
+emitted from the invocation-side of the RPC.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>The</code> <code>metadata</code> <code>object</code> <code>emitted</code> <code>by</code> <code>the</code> <code>invocation</code>-<code>side</code> of <code>the</code> <code>RPC</code>, or <code>None</code> <code>if</code></dt>
+<dd>&nbsp;</dd>
+</dl>
+<p>there was no such value.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractmethod
+def invocation_metadata(self):
+    &#34;&#34;&#34;Accesses the metadata from the invocation-side of the RPC.
+
+This method blocks until the value is available or is known not to have been
+emitted from the invocation-side of the RPC.
+
+Returns:
+  The metadata object emitted by the invocation-side of the RPC, or None if
+    there was no such value.
+&#34;&#34;&#34;
+    raise NotImplementedError()</code></pre>
+</details>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.ServicerContext.terminal_metadata"><code class="name flex">
+<span>def <span class="ident">terminal_metadata</span></span>(<span>self, terminal_metadata)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Accepts the service-side terminal metadata value of the RPC.</p>
+<p>This method need not be called by method implementations if they have no
+service-side terminal metadata to transmit.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>terminal_metadata</code></strong></dt>
+<dd>The service-side terminal metadata value of the RPC to
+be transmitted to the invocation side of the RPC.</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractmethod
+def terminal_metadata(self, terminal_metadata):
+    &#34;&#34;&#34;Accepts the service-side terminal metadata value of the RPC.
+
+This method need not be called by method implementations if they have no
+service-side terminal metadata to transmit.
+
+Args:
+  terminal_metadata: The service-side terminal metadata value of the RPC to
+    be transmitted to the invocation side of the RPC.
+&#34;&#34;&#34;
+    raise NotImplementedError()</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="grpc.framework.interfaces.face.face.RpcContext" href="#grpc.framework.interfaces.face.face.RpcContext">RpcContext</a></b></code>:
+<ul class="hlist">
+<li><code><a title="grpc.framework.interfaces.face.face.RpcContext.add_abortion_callback" href="#grpc.framework.interfaces.face.face.RpcContext.add_abortion_callback">add_abortion_callback</a></code></li>
+<li><code><a title="grpc.framework.interfaces.face.face.RpcContext.cancel" href="#grpc.framework.interfaces.face.face.RpcContext.cancel">cancel</a></code></li>
+<li><code><a title="grpc.framework.interfaces.face.face.RpcContext.is_active" href="#grpc.framework.interfaces.face.face.RpcContext.is_active">is_active</a></code></li>
+<li><code><a title="grpc.framework.interfaces.face.face.RpcContext.protocol_context" href="#grpc.framework.interfaces.face.face.RpcContext.protocol_context">protocol_context</a></code></li>
+<li><code><a title="grpc.framework.interfaces.face.face.RpcContext.time_remaining" href="#grpc.framework.interfaces.face.face.RpcContext.time_remaining">time_remaining</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.StreamStreamMultiCallable"><code class="flex name class">
+<span>class <span class="ident">StreamStreamMultiCallable</span></span>
+</code></dt>
+<dd>
+<section class="desc"><p>Affords invoking a stream-stream RPC in any call style.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class StreamStreamMultiCallable(six.with_metaclass(abc.ABCMeta)):
+    &#34;&#34;&#34;Affords invoking a stream-stream RPC in any call style.&#34;&#34;&#34;
+
+    @abc.abstractmethod
+    def __call__(self,
+                 request_iterator,
+                 timeout,
+                 metadata=None,
+                 protocol_options=None):
+        &#34;&#34;&#34;Invokes the underlying RPC.
+
+    Args:
+      request_iterator: An iterator that yields request values for the RPC.
+      timeout: A duration of time in seconds to allow for the RPC.
+      metadata: A metadata value to be passed to the service-side of
+        the RPC.
+      protocol_options: A value specified by the provider of a Face interface
+        implementation affording custom state and behavior.
+
+    Returns:
+      An object that is both a Call for the RPC and an iterator of response
+        values. Drawing response values from the returned iterator may raise
+        AbortionError indicating abortion of the RPC.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def event(self,
+              receiver,
+              abortion_callback,
+              timeout,
+              metadata=None,
+              protocol_options=None):
+        &#34;&#34;&#34;Asynchronously invokes the underlying RPC.
+
+    Args:
+      receiver: A ResponseReceiver to be passed the response data of the RPC.
+      abortion_callback: A callback to be called and passed an Abortion value
+        in the event of RPC abortion.
+      timeout: A duration of time in seconds to allow for the RPC.
+      metadata: A metadata value to be passed to the service-side of
+        the RPC.
+      protocol_options: A value specified by the provider of a Face interface
+        implementation affording custom state and behavior.
+
+    Returns:
+      A single object that is both a Call object for the RPC and a
+        stream.Consumer to which the request values of the RPC should be passed.
+    &#34;&#34;&#34;
+        raise NotImplementedError()</code></pre>
+</details>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li>grpc.beta._client_adaptations._StreamStreamMultiCallable</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="grpc.framework.interfaces.face.face.StreamStreamMultiCallable.event"><code class="name flex">
+<span>def <span class="ident">event</span></span>(<span>self, receiver, abortion_callback, timeout, metadata=None, protocol_options=None)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Asynchronously invokes the underlying RPC.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>receiver</code></strong></dt>
+<dd>A ResponseReceiver to be passed the response data of the RPC.</dd>
+<dt><strong><code>abortion_callback</code></strong></dt>
+<dd>A callback to be called and passed an Abortion value
+in the event of RPC abortion.</dd>
+<dt><strong><code>timeout</code></strong></dt>
+<dd>A duration of time in seconds to allow for the RPC.</dd>
+<dt><strong><code>metadata</code></strong></dt>
+<dd>A metadata value to be passed to the service-side of
+the RPC.</dd>
+<dt><strong><code>protocol_options</code></strong></dt>
+<dd>A value specified by the provider of a Face interface
+implementation affording custom state and behavior.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>A</code> <code>single</code> <code>object</code> <code>that</code> <code>is</code> <code>both</code> <code>a</code> <a title="grpc.framework.interfaces.face.face.Call" href="#grpc.framework.interfaces.face.face.Call"><code>Call</code></a> <code>object</code> <code>for</code> <code>the</code> <code>RPC</code> <code>and</code> <code>a</code></dt>
+<dd>&nbsp;</dd>
+</dl>
+<p>stream.Consumer to which the request values of the RPC should be passed.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractmethod
+def event(self,
+          receiver,
+          abortion_callback,
+          timeout,
+          metadata=None,
+          protocol_options=None):
+    &#34;&#34;&#34;Asynchronously invokes the underlying RPC.
+
+Args:
+  receiver: A ResponseReceiver to be passed the response data of the RPC.
+  abortion_callback: A callback to be called and passed an Abortion value
+    in the event of RPC abortion.
+  timeout: A duration of time in seconds to allow for the RPC.
+  metadata: A metadata value to be passed to the service-side of
+    the RPC.
+  protocol_options: A value specified by the provider of a Face interface
+    implementation affording custom state and behavior.
+
+Returns:
+  A single object that is both a Call object for the RPC and a
+    stream.Consumer to which the request values of the RPC should be passed.
+&#34;&#34;&#34;
+    raise NotImplementedError()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.StreamUnaryMultiCallable"><code class="flex name class">
+<span>class <span class="ident">StreamUnaryMultiCallable</span></span>
+</code></dt>
+<dd>
+<section class="desc"><p>Affords invoking a stream-unary RPC in any call style.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class StreamUnaryMultiCallable(six.with_metaclass(abc.ABCMeta)):
+    &#34;&#34;&#34;Affords invoking a stream-unary RPC in any call style.&#34;&#34;&#34;
+
+    @abc.abstractmethod
+    def __call__(self,
+                 request_iterator,
+                 timeout,
+                 metadata=None,
+                 with_call=False,
+                 protocol_options=None):
+        &#34;&#34;&#34;Synchronously invokes the underlying RPC.
+
+    Args:
+      request_iterator: An iterator that yields request values for the RPC.
+      timeout: A duration of time in seconds to allow for the RPC.
+      metadata: A metadata value to be passed to the service-side of
+        the RPC.
+      with_call: Whether or not to include return a Call for the RPC in addition
+        to the response.
+      protocol_options: A value specified by the provider of a Face interface
+        implementation affording custom state and behavior.
+
+    Returns:
+      The response value for the RPC, and a Call for the RPC if with_call was
+        set to True at invocation.
+
+    Raises:
+      AbortionError: Indicating that the RPC was aborted.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def future(self,
+               request_iterator,
+               timeout,
+               metadata=None,
+               protocol_options=None):
+        &#34;&#34;&#34;Asynchronously invokes the underlying RPC.
+
+    Args:
+      request_iterator: An iterator that yields request values for the RPC.
+      timeout: A duration of time in seconds to allow for the RPC.
+      metadata: A metadata value to be passed to the service-side of
+        the RPC.
+      protocol_options: A value specified by the provider of a Face interface
+        implementation affording custom state and behavior.
+
+    Returns:
+      An object that is both a Call for the RPC and a future.Future. In the
+        event of RPC completion, the return Future&#39;s result value will be the
+        response value of the RPC. In the event of RPC abortion, the returned
+        Future&#39;s exception value will be an AbortionError.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def event(self,
+              receiver,
+              abortion_callback,
+              timeout,
+              metadata=None,
+              protocol_options=None):
+        &#34;&#34;&#34;Asynchronously invokes the underlying RPC.
+
+    Args:
+      receiver: A ResponseReceiver to be passed the response data of the RPC.
+      abortion_callback: A callback to be called and passed an Abortion value
+        in the event of RPC abortion.
+      timeout: A duration of time in seconds to allow for the RPC.
+      metadata: A metadata value to be passed to the service-side of
+        the RPC.
+      protocol_options: A value specified by the provider of a Face interface
+        implementation affording custom state and behavior.
+
+    Returns:
+      A single object that is both a Call object for the RPC and a
+        stream.Consumer to which the request values of the RPC should be passed.
+    &#34;&#34;&#34;
+        raise NotImplementedError()</code></pre>
+</details>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li>grpc.beta._client_adaptations._StreamUnaryMultiCallable</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="grpc.framework.interfaces.face.face.StreamUnaryMultiCallable.event"><code class="name flex">
+<span>def <span class="ident">event</span></span>(<span>self, receiver, abortion_callback, timeout, metadata=None, protocol_options=None)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Asynchronously invokes the underlying RPC.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>receiver</code></strong></dt>
+<dd>A ResponseReceiver to be passed the response data of the RPC.</dd>
+<dt><strong><code>abortion_callback</code></strong></dt>
+<dd>A callback to be called and passed an Abortion value
+in the event of RPC abortion.</dd>
+<dt><strong><code>timeout</code></strong></dt>
+<dd>A duration of time in seconds to allow for the RPC.</dd>
+<dt><strong><code>metadata</code></strong></dt>
+<dd>A metadata value to be passed to the service-side of
+the RPC.</dd>
+<dt><strong><code>protocol_options</code></strong></dt>
+<dd>A value specified by the provider of a Face interface
+implementation affording custom state and behavior.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>A</code> <code>single</code> <code>object</code> <code>that</code> <code>is</code> <code>both</code> <code>a</code> <a title="grpc.framework.interfaces.face.face.Call" href="#grpc.framework.interfaces.face.face.Call"><code>Call</code></a> <code>object</code> <code>for</code> <code>the</code> <code>RPC</code> <code>and</code> <code>a</code></dt>
+<dd>&nbsp;</dd>
+</dl>
+<p>stream.Consumer to which the request values of the RPC should be passed.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractmethod
+def event(self,
+          receiver,
+          abortion_callback,
+          timeout,
+          metadata=None,
+          protocol_options=None):
+    &#34;&#34;&#34;Asynchronously invokes the underlying RPC.
+
+Args:
+  receiver: A ResponseReceiver to be passed the response data of the RPC.
+  abortion_callback: A callback to be called and passed an Abortion value
+    in the event of RPC abortion.
+  timeout: A duration of time in seconds to allow for the RPC.
+  metadata: A metadata value to be passed to the service-side of
+    the RPC.
+  protocol_options: A value specified by the provider of a Face interface
+    implementation affording custom state and behavior.
+
+Returns:
+  A single object that is both a Call object for the RPC and a
+    stream.Consumer to which the request values of the RPC should be passed.
+&#34;&#34;&#34;
+    raise NotImplementedError()</code></pre>
+</details>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.StreamUnaryMultiCallable.future"><code class="name flex">
+<span>def <span class="ident">future</span></span>(<span>self, request_iterator, timeout, metadata=None, protocol_options=None)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Asynchronously invokes the underlying RPC.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>request_iterator</code></strong></dt>
+<dd>An iterator that yields request values for the RPC.</dd>
+<dt><strong><code>timeout</code></strong></dt>
+<dd>A duration of time in seconds to allow for the RPC.</dd>
+<dt><strong><code>metadata</code></strong></dt>
+<dd>A metadata value to be passed to the service-side of
+the RPC.</dd>
+<dt><strong><code>protocol_options</code></strong></dt>
+<dd>A value specified by the provider of a Face interface
+implementation affording custom state and behavior.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>An</code> <code>object</code> <code>that</code> <code>is</code> <code>both</code> <code>a</code> <a title="grpc.framework.interfaces.face.face.Call" href="#grpc.framework.interfaces.face.face.Call"><code>Call</code></a> <code>for</code> <code>the</code> <code>RPC</code> <code>and</code> <code>a</code> <code>future.Future.</code> <code>In</code> <code>the</code></dt>
+<dd>&nbsp;</dd>
+</dl>
+<p>event of RPC completion, the return Future's result value will be the
+response value of the RPC. In the event of RPC abortion, the returned
+Future's exception value will be an AbortionError.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractmethod
+def future(self,
+           request_iterator,
+           timeout,
+           metadata=None,
+           protocol_options=None):
+    &#34;&#34;&#34;Asynchronously invokes the underlying RPC.
+
+Args:
+  request_iterator: An iterator that yields request values for the RPC.
+  timeout: A duration of time in seconds to allow for the RPC.
+  metadata: A metadata value to be passed to the service-side of
+    the RPC.
+  protocol_options: A value specified by the provider of a Face interface
+    implementation affording custom state and behavior.
+
+Returns:
+  An object that is both a Call for the RPC and a future.Future. In the
+    event of RPC completion, the return Future&#39;s result value will be the
+    response value of the RPC. In the event of RPC abortion, the returned
+    Future&#39;s exception value will be an AbortionError.
+&#34;&#34;&#34;
+    raise NotImplementedError()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.UnaryStreamMultiCallable"><code class="flex name class">
+<span>class <span class="ident">UnaryStreamMultiCallable</span></span>
+</code></dt>
+<dd>
+<section class="desc"><p>Affords invoking a unary-stream RPC in any call style.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class UnaryStreamMultiCallable(six.with_metaclass(abc.ABCMeta)):
+    &#34;&#34;&#34;Affords invoking a unary-stream RPC in any call style.&#34;&#34;&#34;
+
+    @abc.abstractmethod
+    def __call__(self, request, timeout, metadata=None, protocol_options=None):
+        &#34;&#34;&#34;Invokes the underlying RPC.
+
+    Args:
+      request: The request value for the RPC.
+      timeout: A duration of time in seconds to allow for the RPC.
+      metadata: A metadata value to be passed to the service-side of
+        the RPC.
+      protocol_options: A value specified by the provider of a Face interface
+        implementation affording custom state and behavior.
+
+    Returns:
+      An object that is both a Call for the RPC and an iterator of response
+        values. Drawing response values from the returned iterator may raise
+        AbortionError indicating abortion of the RPC.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def event(self,
+              request,
+              receiver,
+              abortion_callback,
+              timeout,
+              metadata=None,
+              protocol_options=None):
+        &#34;&#34;&#34;Asynchronously invokes the underlying RPC.
+
+    Args:
+      request: The request value for the RPC.
+      receiver: A ResponseReceiver to be passed the response data of the RPC.
+      abortion_callback: A callback to be called and passed an Abortion value
+        in the event of RPC abortion.
+      timeout: A duration of time in seconds to allow for the RPC.
+      metadata: A metadata value to be passed to the service-side of
+        the RPC.
+      protocol_options: A value specified by the provider of a Face interface
+        implementation affording custom state and behavior.
+
+    Returns:
+      A Call object for the RPC.
+    &#34;&#34;&#34;
+        raise NotImplementedError()</code></pre>
+</details>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li>grpc.beta._client_adaptations._UnaryStreamMultiCallable</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="grpc.framework.interfaces.face.face.UnaryStreamMultiCallable.event"><code class="name flex">
+<span>def <span class="ident">event</span></span>(<span>self, request, receiver, abortion_callback, timeout, metadata=None, protocol_options=None)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Asynchronously invokes the underlying RPC.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>request</code></strong></dt>
+<dd>The request value for the RPC.</dd>
+<dt><strong><code>receiver</code></strong></dt>
+<dd>A ResponseReceiver to be passed the response data of the RPC.</dd>
+<dt><strong><code>abortion_callback</code></strong></dt>
+<dd>A callback to be called and passed an Abortion value
+in the event of RPC abortion.</dd>
+<dt><strong><code>timeout</code></strong></dt>
+<dd>A duration of time in seconds to allow for the RPC.</dd>
+<dt><strong><code>metadata</code></strong></dt>
+<dd>A metadata value to be passed to the service-side of
+the RPC.</dd>
+<dt><strong><code>protocol_options</code></strong></dt>
+<dd>A value specified by the provider of a Face interface
+implementation affording custom state and behavior.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A Call object for the RPC.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractmethod
+def event(self,
+          request,
+          receiver,
+          abortion_callback,
+          timeout,
+          metadata=None,
+          protocol_options=None):
+    &#34;&#34;&#34;Asynchronously invokes the underlying RPC.
+
+Args:
+  request: The request value for the RPC.
+  receiver: A ResponseReceiver to be passed the response data of the RPC.
+  abortion_callback: A callback to be called and passed an Abortion value
+    in the event of RPC abortion.
+  timeout: A duration of time in seconds to allow for the RPC.
+  metadata: A metadata value to be passed to the service-side of
+    the RPC.
+  protocol_options: A value specified by the provider of a Face interface
+    implementation affording custom state and behavior.
+
+Returns:
+  A Call object for the RPC.
+&#34;&#34;&#34;
+    raise NotImplementedError()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.UnaryUnaryMultiCallable"><code class="flex name class">
+<span>class <span class="ident">UnaryUnaryMultiCallable</span></span>
+</code></dt>
+<dd>
+<section class="desc"><p>Affords invoking a unary-unary RPC in any call style.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class UnaryUnaryMultiCallable(six.with_metaclass(abc.ABCMeta)):
+    &#34;&#34;&#34;Affords invoking a unary-unary RPC in any call style.&#34;&#34;&#34;
+
+    @abc.abstractmethod
+    def __call__(self,
+                 request,
+                 timeout,
+                 metadata=None,
+                 with_call=False,
+                 protocol_options=None):
+        &#34;&#34;&#34;Synchronously invokes the underlying RPC.
+
+    Args:
+      request: The request value for the RPC.
+      timeout: A duration of time in seconds to allow for the RPC.
+      metadata: A metadata value to be passed to the service-side of
+        the RPC.
+      with_call: Whether or not to include return a Call for the RPC in addition
+        to the response.
+      protocol_options: A value specified by the provider of a Face interface
+        implementation affording custom state and behavior.
+
+    Returns:
+      The response value for the RPC, and a Call for the RPC if with_call was
+        set to True at invocation.
+
+    Raises:
+      AbortionError: Indicating that the RPC was aborted.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def future(self, request, timeout, metadata=None, protocol_options=None):
+        &#34;&#34;&#34;Asynchronously invokes the underlying RPC.
+
+    Args:
+      request: The request value for the RPC.
+      timeout: A duration of time in seconds to allow for the RPC.
+      metadata: A metadata value to be passed to the service-side of
+        the RPC.
+      protocol_options: A value specified by the provider of a Face interface
+        implementation affording custom state and behavior.
+
+    Returns:
+      An object that is both a Call for the RPC and a future.Future. In the
+        event of RPC completion, the return Future&#39;s result value will be the
+        response value of the RPC. In the event of RPC abortion, the returned
+        Future&#39;s exception value will be an AbortionError.
+    &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    @abc.abstractmethod
+    def event(self,
+              request,
+              receiver,
+              abortion_callback,
+              timeout,
+              metadata=None,
+              protocol_options=None):
+        &#34;&#34;&#34;Asynchronously invokes the underlying RPC.
+
+    Args:
+      request: The request value for the RPC.
+      receiver: A ResponseReceiver to be passed the response data of the RPC.
+      abortion_callback: A callback to be called and passed an Abortion value
+        in the event of RPC abortion.
+      timeout: A duration of time in seconds to allow for the RPC.
+      metadata: A metadata value to be passed to the service-side of
+        the RPC.
+      protocol_options: A value specified by the provider of a Face interface
+        implementation affording custom state and behavior.
+
+    Returns:
+      A Call for the RPC.
+    &#34;&#34;&#34;
+        raise NotImplementedError()</code></pre>
+</details>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li>grpc.beta._client_adaptations._UnaryUnaryMultiCallable</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="grpc.framework.interfaces.face.face.UnaryUnaryMultiCallable.event"><code class="name flex">
+<span>def <span class="ident">event</span></span>(<span>self, request, receiver, abortion_callback, timeout, metadata=None, protocol_options=None)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Asynchronously invokes the underlying RPC.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>request</code></strong></dt>
+<dd>The request value for the RPC.</dd>
+<dt><strong><code>receiver</code></strong></dt>
+<dd>A ResponseReceiver to be passed the response data of the RPC.</dd>
+<dt><strong><code>abortion_callback</code></strong></dt>
+<dd>A callback to be called and passed an Abortion value
+in the event of RPC abortion.</dd>
+<dt><strong><code>timeout</code></strong></dt>
+<dd>A duration of time in seconds to allow for the RPC.</dd>
+<dt><strong><code>metadata</code></strong></dt>
+<dd>A metadata value to be passed to the service-side of
+the RPC.</dd>
+<dt><strong><code>protocol_options</code></strong></dt>
+<dd>A value specified by the provider of a Face interface
+implementation affording custom state and behavior.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A Call for the RPC.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractmethod
+def event(self,
+          request,
+          receiver,
+          abortion_callback,
+          timeout,
+          metadata=None,
+          protocol_options=None):
+    &#34;&#34;&#34;Asynchronously invokes the underlying RPC.
+
+Args:
+  request: The request value for the RPC.
+  receiver: A ResponseReceiver to be passed the response data of the RPC.
+  abortion_callback: A callback to be called and passed an Abortion value
+    in the event of RPC abortion.
+  timeout: A duration of time in seconds to allow for the RPC.
+  metadata: A metadata value to be passed to the service-side of
+    the RPC.
+  protocol_options: A value specified by the provider of a Face interface
+    implementation affording custom state and behavior.
+
+Returns:
+  A Call for the RPC.
+&#34;&#34;&#34;
+    raise NotImplementedError()</code></pre>
+</details>
+</dd>
+<dt id="grpc.framework.interfaces.face.face.UnaryUnaryMultiCallable.future"><code class="name flex">
+<span>def <span class="ident">future</span></span>(<span>self, request, timeout, metadata=None, protocol_options=None)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Asynchronously invokes the underlying RPC.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>request</code></strong></dt>
+<dd>The request value for the RPC.</dd>
+<dt><strong><code>timeout</code></strong></dt>
+<dd>A duration of time in seconds to allow for the RPC.</dd>
+<dt><strong><code>metadata</code></strong></dt>
+<dd>A metadata value to be passed to the service-side of
+the RPC.</dd>
+<dt><strong><code>protocol_options</code></strong></dt>
+<dd>A value specified by the provider of a Face interface
+implementation affording custom state and behavior.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>An</code> <code>object</code> <code>that</code> <code>is</code> <code>both</code> <code>a</code> <a title="grpc.framework.interfaces.face.face.Call" href="#grpc.framework.interfaces.face.face.Call"><code>Call</code></a> <code>for</code> <code>the</code> <code>RPC</code> <code>and</code> <code>a</code> <code>future.Future.</code> <code>In</code> <code>the</code></dt>
+<dd>&nbsp;</dd>
+</dl>
+<p>event of RPC completion, the return Future's result value will be the
+response value of the RPC. In the event of RPC abortion, the returned
+Future's exception value will be an AbortionError.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractmethod
+def future(self, request, timeout, metadata=None, protocol_options=None):
+    &#34;&#34;&#34;Asynchronously invokes the underlying RPC.
+
+Args:
+  request: The request value for the RPC.
+  timeout: A duration of time in seconds to allow for the RPC.
+  metadata: A metadata value to be passed to the service-side of
+    the RPC.
+  protocol_options: A value specified by the provider of a Face interface
+    implementation affording custom state and behavior.
+
+Returns:
+  An object that is both a Call for the RPC and a future.Future. In the
+    event of RPC completion, the return Future&#39;s result value will be the
+    response value of the RPC. In the event of RPC abortion, the returned
+    Future&#39;s exception value will be an AbortionError.
+&#34;&#34;&#34;
+    raise NotImplementedError()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="grpc.framework.interfaces.face" href="index.html">grpc.framework.interfaces.face</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="grpc.framework.interfaces.face.face.Abortion" href="#grpc.framework.interfaces.face.face.Abortion">Abortion</a></code></h4>
+<ul class="">
+<li><code><a title="grpc.framework.interfaces.face.face.Abortion.Kind" href="#grpc.framework.interfaces.face.face.Abortion.Kind">Kind</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="grpc.framework.interfaces.face.face.AbortionError" href="#grpc.framework.interfaces.face.face.AbortionError">AbortionError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="grpc.framework.interfaces.face.face.Call" href="#grpc.framework.interfaces.face.face.Call">Call</a></code></h4>
+<ul class="">
+<li><code><a title="grpc.framework.interfaces.face.face.Call.code" href="#grpc.framework.interfaces.face.face.Call.code">code</a></code></li>
+<li><code><a title="grpc.framework.interfaces.face.face.Call.details" href="#grpc.framework.interfaces.face.face.Call.details">details</a></code></li>
+<li><code><a title="grpc.framework.interfaces.face.face.Call.initial_metadata" href="#grpc.framework.interfaces.face.face.Call.initial_metadata">initial_metadata</a></code></li>
+<li><code><a title="grpc.framework.interfaces.face.face.Call.terminal_metadata" href="#grpc.framework.interfaces.face.face.Call.terminal_metadata">terminal_metadata</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="grpc.framework.interfaces.face.face.CancellationError" href="#grpc.framework.interfaces.face.face.CancellationError">CancellationError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="grpc.framework.interfaces.face.face.DynamicStub" href="#grpc.framework.interfaces.face.face.DynamicStub">DynamicStub</a></code></h4>
+</li>
+<li>
+<h4><code><a title="grpc.framework.interfaces.face.face.ExpirationError" href="#grpc.framework.interfaces.face.face.ExpirationError">ExpirationError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="grpc.framework.interfaces.face.face.GenericStub" href="#grpc.framework.interfaces.face.face.GenericStub">GenericStub</a></code></h4>
+<ul class="">
+<li><code><a title="grpc.framework.interfaces.face.face.GenericStub.blocking_stream_unary" href="#grpc.framework.interfaces.face.face.GenericStub.blocking_stream_unary">blocking_stream_unary</a></code></li>
+<li><code><a title="grpc.framework.interfaces.face.face.GenericStub.blocking_unary_unary" href="#grpc.framework.interfaces.face.face.GenericStub.blocking_unary_unary">blocking_unary_unary</a></code></li>
+<li><code><a title="grpc.framework.interfaces.face.face.GenericStub.event_stream_stream" href="#grpc.framework.interfaces.face.face.GenericStub.event_stream_stream">event_stream_stream</a></code></li>
+<li><code><a title="grpc.framework.interfaces.face.face.GenericStub.event_stream_unary" href="#grpc.framework.interfaces.face.face.GenericStub.event_stream_unary">event_stream_unary</a></code></li>
+<li><code><a title="grpc.framework.interfaces.face.face.GenericStub.event_unary_stream" href="#grpc.framework.interfaces.face.face.GenericStub.event_unary_stream">event_unary_stream</a></code></li>
+<li><code><a title="grpc.framework.interfaces.face.face.GenericStub.event_unary_unary" href="#grpc.framework.interfaces.face.face.GenericStub.event_unary_unary">event_unary_unary</a></code></li>
+<li><code><a title="grpc.framework.interfaces.face.face.GenericStub.future_stream_unary" href="#grpc.framework.interfaces.face.face.GenericStub.future_stream_unary">future_stream_unary</a></code></li>
+<li><code><a title="grpc.framework.interfaces.face.face.GenericStub.future_unary_unary" href="#grpc.framework.interfaces.face.face.GenericStub.future_unary_unary">future_unary_unary</a></code></li>
+<li><code><a title="grpc.framework.interfaces.face.face.GenericStub.inline_stream_stream" href="#grpc.framework.interfaces.face.face.GenericStub.inline_stream_stream">inline_stream_stream</a></code></li>
+<li><code><a title="grpc.framework.interfaces.face.face.GenericStub.inline_unary_stream" href="#grpc.framework.interfaces.face.face.GenericStub.inline_unary_stream">inline_unary_stream</a></code></li>
+<li><code><a title="grpc.framework.interfaces.face.face.GenericStub.stream_stream" href="#grpc.framework.interfaces.face.face.GenericStub.stream_stream">stream_stream</a></code></li>
+<li><code><a title="grpc.framework.interfaces.face.face.GenericStub.stream_unary" href="#grpc.framework.interfaces.face.face.GenericStub.stream_unary">stream_unary</a></code></li>
+<li><code><a title="grpc.framework.interfaces.face.face.GenericStub.unary_stream" href="#grpc.framework.interfaces.face.face.GenericStub.unary_stream">unary_stream</a></code></li>
+<li><code><a title="grpc.framework.interfaces.face.face.GenericStub.unary_unary" href="#grpc.framework.interfaces.face.face.GenericStub.unary_unary">unary_unary</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="grpc.framework.interfaces.face.face.LocalError" href="#grpc.framework.interfaces.face.face.LocalError">LocalError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="grpc.framework.interfaces.face.face.LocalShutdownError" href="#grpc.framework.interfaces.face.face.LocalShutdownError">LocalShutdownError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="grpc.framework.interfaces.face.face.MethodImplementation" href="#grpc.framework.interfaces.face.face.MethodImplementation">MethodImplementation</a></code></h4>
+</li>
+<li>
+<h4><code><a title="grpc.framework.interfaces.face.face.MultiMethodImplementation" href="#grpc.framework.interfaces.face.face.MultiMethodImplementation">MultiMethodImplementation</a></code></h4>
+<ul class="">
+<li><code><a title="grpc.framework.interfaces.face.face.MultiMethodImplementation.service" href="#grpc.framework.interfaces.face.face.MultiMethodImplementation.service">service</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="grpc.framework.interfaces.face.face.NetworkError" href="#grpc.framework.interfaces.face.face.NetworkError">NetworkError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="grpc.framework.interfaces.face.face.NoSuchMethodError" href="#grpc.framework.interfaces.face.face.NoSuchMethodError">NoSuchMethodError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="grpc.framework.interfaces.face.face.RemoteError" href="#grpc.framework.interfaces.face.face.RemoteError">RemoteError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="grpc.framework.interfaces.face.face.RemoteShutdownError" href="#grpc.framework.interfaces.face.face.RemoteShutdownError">RemoteShutdownError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="grpc.framework.interfaces.face.face.ResponseReceiver" href="#grpc.framework.interfaces.face.face.ResponseReceiver">ResponseReceiver</a></code></h4>
+<ul class="">
+<li><code><a title="grpc.framework.interfaces.face.face.ResponseReceiver.complete" href="#grpc.framework.interfaces.face.face.ResponseReceiver.complete">complete</a></code></li>
+<li><code><a title="grpc.framework.interfaces.face.face.ResponseReceiver.initial_metadata" href="#grpc.framework.interfaces.face.face.ResponseReceiver.initial_metadata">initial_metadata</a></code></li>
+<li><code><a title="grpc.framework.interfaces.face.face.ResponseReceiver.response" href="#grpc.framework.interfaces.face.face.ResponseReceiver.response">response</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="grpc.framework.interfaces.face.face.RpcContext" href="#grpc.framework.interfaces.face.face.RpcContext">RpcContext</a></code></h4>
+<ul class="">
+<li><code><a title="grpc.framework.interfaces.face.face.RpcContext.add_abortion_callback" href="#grpc.framework.interfaces.face.face.RpcContext.add_abortion_callback">add_abortion_callback</a></code></li>
+<li><code><a title="grpc.framework.interfaces.face.face.RpcContext.cancel" href="#grpc.framework.interfaces.face.face.RpcContext.cancel">cancel</a></code></li>
+<li><code><a title="grpc.framework.interfaces.face.face.RpcContext.is_active" href="#grpc.framework.interfaces.face.face.RpcContext.is_active">is_active</a></code></li>
+<li><code><a title="grpc.framework.interfaces.face.face.RpcContext.protocol_context" href="#grpc.framework.interfaces.face.face.RpcContext.protocol_context">protocol_context</a></code></li>
+<li><code><a title="grpc.framework.interfaces.face.face.RpcContext.time_remaining" href="#grpc.framework.interfaces.face.face.RpcContext.time_remaining">time_remaining</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="grpc.framework.interfaces.face.face.ServicerContext" href="#grpc.framework.interfaces.face.face.ServicerContext">ServicerContext</a></code></h4>
+<ul class="">
+<li><code><a title="grpc.framework.interfaces.face.face.ServicerContext.code" href="#grpc.framework.interfaces.face.face.ServicerContext.code">code</a></code></li>
+<li><code><a title="grpc.framework.interfaces.face.face.ServicerContext.details" href="#grpc.framework.interfaces.face.face.ServicerContext.details">details</a></code></li>
+<li><code><a title="grpc.framework.interfaces.face.face.ServicerContext.initial_metadata" href="#grpc.framework.interfaces.face.face.ServicerContext.initial_metadata">initial_metadata</a></code></li>
+<li><code><a title="grpc.framework.interfaces.face.face.ServicerContext.invocation_metadata" href="#grpc.framework.interfaces.face.face.ServicerContext.invocation_metadata">invocation_metadata</a></code></li>
+<li><code><a title="grpc.framework.interfaces.face.face.ServicerContext.terminal_metadata" href="#grpc.framework.interfaces.face.face.ServicerContext.terminal_metadata">terminal_metadata</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="grpc.framework.interfaces.face.face.StreamStreamMultiCallable" href="#grpc.framework.interfaces.face.face.StreamStreamMultiCallable">StreamStreamMultiCallable</a></code></h4>
+<ul class="">
+<li><code><a title="grpc.framework.interfaces.face.face.StreamStreamMultiCallable.event" href="#grpc.framework.interfaces.face.face.StreamStreamMultiCallable.event">event</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="grpc.framework.interfaces.face.face.StreamUnaryMultiCallable" href="#grpc.framework.interfaces.face.face.StreamUnaryMultiCallable">StreamUnaryMultiCallable</a></code></h4>
+<ul class="">
+<li><code><a title="grpc.framework.interfaces.face.face.StreamUnaryMultiCallable.event" href="#grpc.framework.interfaces.face.face.StreamUnaryMultiCallable.event">event</a></code></li>
+<li><code><a title="grpc.framework.interfaces.face.face.StreamUnaryMultiCallable.future" href="#grpc.framework.interfaces.face.face.StreamUnaryMultiCallable.future">future</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="grpc.framework.interfaces.face.face.UnaryStreamMultiCallable" href="#grpc.framework.interfaces.face.face.UnaryStreamMultiCallable">UnaryStreamMultiCallable</a></code></h4>
+<ul class="">
+<li><code><a title="grpc.framework.interfaces.face.face.UnaryStreamMultiCallable.event" href="#grpc.framework.interfaces.face.face.UnaryStreamMultiCallable.event">event</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="grpc.framework.interfaces.face.face.UnaryUnaryMultiCallable" href="#grpc.framework.interfaces.face.face.UnaryUnaryMultiCallable">UnaryUnaryMultiCallable</a></code></h4>
+<ul class="">
+<li><code><a title="grpc.framework.interfaces.face.face.UnaryUnaryMultiCallable.event" href="#grpc.framework.interfaces.face.face.UnaryUnaryMultiCallable.event">event</a></code></li>
+<li><code><a title="grpc.framework.interfaces.face.face.UnaryUnaryMultiCallable.future" href="#grpc.framework.interfaces.face.face.UnaryUnaryMultiCallable.future">future</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.4</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>
