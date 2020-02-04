@@ -1,0 +1,1375 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.4" />
+<title>google.protobuf.internal.generator_test API documentation</title>
+<meta name="description" content="Unittest that directly tests the output of the pure-Python protocol
+compiler.
+See //google/protobuf/internal/reflection_test.py for a test which
+…" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>google.protobuf.internal.generator_test</code></h1>
+</header>
+<section id="section-intro">
+<p>Unittest that directly tests the output of the pure-Python protocol
+compiler.
+See //google/protobuf/internal/reflection_test.py for a test which
+further ensures that we can use Python protocol message objects as we expect.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">#! /usr/bin/env python
+#
+# Protocol Buffers - Google&#39;s data interchange format
+# Copyright 2008 Google Inc.  All rights reserved.
+# https://developers.google.com/protocol-buffers/
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are
+# met:
+#
+#     * Redistributions of source code must retain the above copyright
+# notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above
+# copyright notice, this list of conditions and the following disclaimer
+# in the documentation and/or other materials provided with the
+# distribution.
+#     * Neither the name of Google Inc. nor the names of its
+# contributors may be used to endorse or promote products derived from
+# this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+# &#34;AS IS&#34; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+# LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+# A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+# OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+# SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+# LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+# DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+# THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+# TODO(robinson): Flesh this out considerably.  We focused on reflection_test.py
+# first, since it&#39;s testing the subtler code, and since it provides decent
+# indirect testing of the protocol compiler output.
+
+&#34;&#34;&#34;Unittest that directly tests the output of the pure-Python protocol
+compiler.  See //google/protobuf/internal/reflection_test.py for a test which
+further ensures that we can use Python protocol message objects as we expect.
+&#34;&#34;&#34;
+
+__author__ = &#39;robinson@google.com (Will Robinson)&#39;
+
+try:
+  import unittest2 as unittest  #PY26
+except ImportError:
+  import unittest
+
+from google.protobuf.internal import test_bad_identifiers_pb2
+from google.protobuf import unittest_custom_options_pb2
+from google.protobuf import unittest_import_pb2
+from google.protobuf import unittest_import_public_pb2
+from google.protobuf import unittest_mset_pb2
+from google.protobuf import unittest_mset_wire_format_pb2
+from google.protobuf import unittest_no_generic_services_pb2
+from google.protobuf import unittest_pb2
+from google.protobuf import service
+from google.protobuf import symbol_database
+
+MAX_EXTENSION = 536870912
+
+
+class GeneratorTest(unittest.TestCase):
+
+  def testNestedMessageDescriptor(self):
+    field_name = &#39;optional_nested_message&#39;
+    proto_type = unittest_pb2.TestAllTypes
+    self.assertEqual(
+        proto_type.NestedMessage.DESCRIPTOR,
+        proto_type.DESCRIPTOR.fields_by_name[field_name].message_type)
+
+  def testEnums(self):
+    # We test only module-level enums here.
+    # TODO(robinson): Examine descriptors directly to check
+    # enum descriptor output.
+    self.assertEqual(4, unittest_pb2.FOREIGN_FOO)
+    self.assertEqual(5, unittest_pb2.FOREIGN_BAR)
+    self.assertEqual(6, unittest_pb2.FOREIGN_BAZ)
+
+    proto = unittest_pb2.TestAllTypes()
+    self.assertEqual(1, proto.FOO)
+    self.assertEqual(1, unittest_pb2.TestAllTypes.FOO)
+    self.assertEqual(2, proto.BAR)
+    self.assertEqual(2, unittest_pb2.TestAllTypes.BAR)
+    self.assertEqual(3, proto.BAZ)
+    self.assertEqual(3, unittest_pb2.TestAllTypes.BAZ)
+
+  def testExtremeDefaultValues(self):
+    message = unittest_pb2.TestExtremeDefaultValues()
+
+    # Python pre-2.6 does not have isinf() or isnan() functions, so we have
+    # to provide our own.
+    def isnan(val):
+      # NaN is never equal to itself.
+      return val != val
+    def isinf(val):
+      # Infinity times zero equals NaN.
+      return not isnan(val) and isnan(val * 0)
+
+    self.assertTrue(isinf(message.inf_double))
+    self.assertTrue(message.inf_double &gt; 0)
+    self.assertTrue(isinf(message.neg_inf_double))
+    self.assertTrue(message.neg_inf_double &lt; 0)
+    self.assertTrue(isnan(message.nan_double))
+
+    self.assertTrue(isinf(message.inf_float))
+    self.assertTrue(message.inf_float &gt; 0)
+    self.assertTrue(isinf(message.neg_inf_float))
+    self.assertTrue(message.neg_inf_float &lt; 0)
+    self.assertTrue(isnan(message.nan_float))
+    self.assertEqual(&#34;? ? ?? ?? ??? ??/ ??-&#34;, message.cpp_trigraph)
+
+  def testHasDefaultValues(self):
+    desc = unittest_pb2.TestAllTypes.DESCRIPTOR
+
+    expected_has_default_by_name = {
+        &#39;optional_int32&#39;: False,
+        &#39;repeated_int32&#39;: False,
+        &#39;optional_nested_message&#39;: False,
+        &#39;default_int32&#39;: True,
+    }
+
+    has_default_by_name = dict(
+        [(f.name, f.has_default_value)
+         for f in desc.fields
+         if f.name in expected_has_default_by_name])
+    self.assertEqual(expected_has_default_by_name, has_default_by_name)
+
+  def testContainingTypeBehaviorForExtensions(self):
+    self.assertEqual(unittest_pb2.optional_int32_extension.containing_type,
+                     unittest_pb2.TestAllExtensions.DESCRIPTOR)
+    self.assertEqual(unittest_pb2.TestRequired.single.containing_type,
+                     unittest_pb2.TestAllExtensions.DESCRIPTOR)
+
+  def testExtensionScope(self):
+    self.assertEqual(unittest_pb2.optional_int32_extension.extension_scope,
+                     None)
+    self.assertEqual(unittest_pb2.TestRequired.single.extension_scope,
+                     unittest_pb2.TestRequired.DESCRIPTOR)
+
+  def testIsExtension(self):
+    self.assertTrue(unittest_pb2.optional_int32_extension.is_extension)
+    self.assertTrue(unittest_pb2.TestRequired.single.is_extension)
+
+    message_descriptor = unittest_pb2.TestRequired.DESCRIPTOR
+    non_extension_descriptor = message_descriptor.fields_by_name[&#39;a&#39;]
+    self.assertTrue(not non_extension_descriptor.is_extension)
+
+  def testOptions(self):
+    proto = unittest_mset_wire_format_pb2.TestMessageSet()
+    self.assertTrue(proto.DESCRIPTOR.GetOptions().message_set_wire_format)
+
+  def testMessageWithCustomOptions(self):
+    proto = unittest_custom_options_pb2.TestMessageWithCustomOptions()
+    enum_options = proto.DESCRIPTOR.enum_types_by_name[&#39;AnEnum&#39;].GetOptions()
+    self.assertTrue(enum_options is not None)
+    # TODO(gps): We really should test for the presence of the enum_opt1
+    # extension and for its value to be set to -789.
+
+  def testNestedTypes(self):
+    self.assertEqual(
+        set(unittest_pb2.TestAllTypes.DESCRIPTOR.nested_types),
+        set([
+            unittest_pb2.TestAllTypes.NestedMessage.DESCRIPTOR,
+            unittest_pb2.TestAllTypes.OptionalGroup.DESCRIPTOR,
+            unittest_pb2.TestAllTypes.RepeatedGroup.DESCRIPTOR,
+        ]))
+    self.assertEqual(unittest_pb2.TestEmptyMessage.DESCRIPTOR.nested_types, [])
+    self.assertEqual(
+        unittest_pb2.TestAllTypes.NestedMessage.DESCRIPTOR.nested_types, [])
+
+  def testContainingType(self):
+    self.assertTrue(
+        unittest_pb2.TestEmptyMessage.DESCRIPTOR.containing_type is None)
+    self.assertTrue(
+        unittest_pb2.TestAllTypes.DESCRIPTOR.containing_type is None)
+    self.assertEqual(
+        unittest_pb2.TestAllTypes.NestedMessage.DESCRIPTOR.containing_type,
+        unittest_pb2.TestAllTypes.DESCRIPTOR)
+    self.assertEqual(
+        unittest_pb2.TestAllTypes.NestedMessage.DESCRIPTOR.containing_type,
+        unittest_pb2.TestAllTypes.DESCRIPTOR)
+    self.assertEqual(
+        unittest_pb2.TestAllTypes.RepeatedGroup.DESCRIPTOR.containing_type,
+        unittest_pb2.TestAllTypes.DESCRIPTOR)
+
+  def testContainingTypeInEnumDescriptor(self):
+    self.assertTrue(unittest_pb2._FOREIGNENUM.containing_type is None)
+    self.assertEqual(unittest_pb2._TESTALLTYPES_NESTEDENUM.containing_type,
+                     unittest_pb2.TestAllTypes.DESCRIPTOR)
+
+  def testPackage(self):
+    self.assertEqual(
+        unittest_pb2.TestAllTypes.DESCRIPTOR.file.package,
+        &#39;protobuf_unittest&#39;)
+    desc = unittest_pb2.TestAllTypes.NestedMessage.DESCRIPTOR
+    self.assertEqual(desc.file.package, &#39;protobuf_unittest&#39;)
+    self.assertEqual(
+        unittest_import_pb2.ImportMessage.DESCRIPTOR.file.package,
+        &#39;protobuf_unittest_import&#39;)
+
+    self.assertEqual(
+        unittest_pb2._FOREIGNENUM.file.package, &#39;protobuf_unittest&#39;)
+    self.assertEqual(
+        unittest_pb2._TESTALLTYPES_NESTEDENUM.file.package,
+        &#39;protobuf_unittest&#39;)
+    self.assertEqual(
+        unittest_import_pb2._IMPORTENUM.file.package,
+        &#39;protobuf_unittest_import&#39;)
+
+  def testExtensionRange(self):
+    self.assertEqual(
+        unittest_pb2.TestAllTypes.DESCRIPTOR.extension_ranges, [])
+    self.assertEqual(
+        unittest_pb2.TestAllExtensions.DESCRIPTOR.extension_ranges,
+        [(1, MAX_EXTENSION)])
+    self.assertEqual(
+        unittest_pb2.TestMultipleExtensionRanges.DESCRIPTOR.extension_ranges,
+        [(42, 43), (4143, 4244), (65536, MAX_EXTENSION)])
+
+  def testFileDescriptor(self):
+    self.assertEqual(unittest_pb2.DESCRIPTOR.name,
+                     &#39;google/protobuf/unittest.proto&#39;)
+    self.assertEqual(unittest_pb2.DESCRIPTOR.package, &#39;protobuf_unittest&#39;)
+    self.assertFalse(unittest_pb2.DESCRIPTOR.serialized_pb is None)
+    self.assertEqual(unittest_pb2.DESCRIPTOR.dependencies,
+                     [unittest_import_pb2.DESCRIPTOR])
+    self.assertEqual(unittest_import_pb2.DESCRIPTOR.dependencies,
+                     [unittest_import_public_pb2.DESCRIPTOR])
+    self.assertEqual(unittest_import_pb2.DESCRIPTOR.public_dependencies,
+                     [unittest_import_public_pb2.DESCRIPTOR])
+  def testNoGenericServices(self):
+    self.assertTrue(hasattr(unittest_no_generic_services_pb2, &#34;TestMessage&#34;))
+    self.assertTrue(hasattr(unittest_no_generic_services_pb2, &#34;FOO&#34;))
+    self.assertTrue(hasattr(unittest_no_generic_services_pb2, &#34;test_extension&#34;))
+
+    # Make sure unittest_no_generic_services_pb2 has no services subclassing
+    # Proto2 Service class.
+    if hasattr(unittest_no_generic_services_pb2, &#34;TestService&#34;):
+      self.assertFalse(issubclass(unittest_no_generic_services_pb2.TestService,
+                                  service.Service))
+
+  def testMessageTypesByName(self):
+    file_type = unittest_pb2.DESCRIPTOR
+    self.assertEqual(
+        unittest_pb2._TESTALLTYPES,
+        file_type.message_types_by_name[unittest_pb2._TESTALLTYPES.name])
+
+    # Nested messages shouldn&#39;t be included in the message_types_by_name
+    # dictionary (like in the C++ API).
+    self.assertFalse(
+        unittest_pb2._TESTALLTYPES_NESTEDMESSAGE.name in
+        file_type.message_types_by_name)
+
+  def testEnumTypesByName(self):
+    file_type = unittest_pb2.DESCRIPTOR
+    self.assertEqual(
+        unittest_pb2._FOREIGNENUM,
+        file_type.enum_types_by_name[unittest_pb2._FOREIGNENUM.name])
+
+  def testExtensionsByName(self):
+    file_type = unittest_pb2.DESCRIPTOR
+    self.assertEqual(
+        unittest_pb2.my_extension_string,
+        file_type.extensions_by_name[unittest_pb2.my_extension_string.name])
+
+  def testPublicImports(self):
+    # Test public imports as embedded message.
+    all_type_proto = unittest_pb2.TestAllTypes()
+    self.assertEqual(0, all_type_proto.optional_public_import_message.e)
+
+    # PublicImportMessage is actually defined in unittest_import_public_pb2
+    # module, and is public imported by unittest_import_pb2 module.
+    public_import_proto = unittest_import_pb2.PublicImportMessage()
+    self.assertEqual(0, public_import_proto.e)
+    self.assertTrue(unittest_import_public_pb2.PublicImportMessage is
+                    unittest_import_pb2.PublicImportMessage)
+
+  def testBadIdentifiers(self):
+    # We&#39;re just testing that the code was imported without problems.
+    message = test_bad_identifiers_pb2.TestBadIdentifiers()
+    self.assertEqual(message.Extensions[test_bad_identifiers_pb2.message],
+                     &#34;foo&#34;)
+    self.assertEqual(message.Extensions[test_bad_identifiers_pb2.descriptor],
+                     &#34;bar&#34;)
+    self.assertEqual(message.Extensions[test_bad_identifiers_pb2.reflection],
+                     &#34;baz&#34;)
+    self.assertEqual(message.Extensions[test_bad_identifiers_pb2.service],
+                     &#34;qux&#34;)
+
+  def testOneof(self):
+    desc = unittest_pb2.TestAllTypes.DESCRIPTOR
+    self.assertEqual(1, len(desc.oneofs))
+    self.assertEqual(&#39;oneof_field&#39;, desc.oneofs[0].name)
+    self.assertEqual(0, desc.oneofs[0].index)
+    self.assertIs(desc, desc.oneofs[0].containing_type)
+    self.assertIs(desc.oneofs[0], desc.oneofs_by_name[&#39;oneof_field&#39;])
+    nested_names = set([&#39;oneof_uint32&#39;, &#39;oneof_nested_message&#39;,
+                        &#39;oneof_string&#39;, &#39;oneof_bytes&#39;])
+    self.assertEqual(
+        nested_names,
+        set([field.name for field in desc.oneofs[0].fields]))
+    for field_name, field_desc in desc.fields_by_name.items():
+      if field_name in nested_names:
+        self.assertIs(desc.oneofs[0], field_desc.containing_oneof)
+      else:
+        self.assertIsNone(field_desc.containing_oneof)
+
+  def testEnumWithDupValue(self):
+    self.assertEqual(&#39;FOO1&#39;,
+                     unittest_pb2.TestEnumWithDupValue.Name(unittest_pb2.FOO1))
+    self.assertEqual(&#39;FOO1&#39;,
+                     unittest_pb2.TestEnumWithDupValue.Name(unittest_pb2.FOO2))
+    self.assertEqual(&#39;BAR1&#39;,
+                     unittest_pb2.TestEnumWithDupValue.Name(unittest_pb2.BAR1))
+    self.assertEqual(&#39;BAR1&#39;,
+                     unittest_pb2.TestEnumWithDupValue.Name(unittest_pb2.BAR2))
+
+
+class SymbolDatabaseRegistrationTest(unittest.TestCase):
+  &#34;&#34;&#34;Checks that messages, enums and files are correctly registered.&#34;&#34;&#34;
+
+  def testGetSymbol(self):
+    self.assertEqual(
+        unittest_pb2.TestAllTypes, symbol_database.Default().GetSymbol(
+            &#39;protobuf_unittest.TestAllTypes&#39;))
+    self.assertEqual(
+        unittest_pb2.TestAllTypes.NestedMessage,
+        symbol_database.Default().GetSymbol(
+            &#39;protobuf_unittest.TestAllTypes.NestedMessage&#39;))
+    with self.assertRaises(KeyError):
+      symbol_database.Default().GetSymbol(&#39;protobuf_unittest.NestedMessage&#39;)
+    self.assertEqual(
+        unittest_pb2.TestAllTypes.OptionalGroup,
+        symbol_database.Default().GetSymbol(
+            &#39;protobuf_unittest.TestAllTypes.OptionalGroup&#39;))
+    self.assertEqual(
+        unittest_pb2.TestAllTypes.RepeatedGroup,
+        symbol_database.Default().GetSymbol(
+            &#39;protobuf_unittest.TestAllTypes.RepeatedGroup&#39;))
+
+  def testEnums(self):
+    self.assertEqual(
+        &#39;protobuf_unittest.ForeignEnum&#39;,
+        symbol_database.Default().pool.FindEnumTypeByName(
+            &#39;protobuf_unittest.ForeignEnum&#39;).full_name)
+    self.assertEqual(
+        &#39;protobuf_unittest.TestAllTypes.NestedEnum&#39;,
+        symbol_database.Default().pool.FindEnumTypeByName(
+            &#39;protobuf_unittest.TestAllTypes.NestedEnum&#39;).full_name)
+
+  def testFindFileByName(self):
+    self.assertEqual(
+        &#39;google/protobuf/unittest.proto&#39;,
+        symbol_database.Default().pool.FindFileByName(
+            &#39;google/protobuf/unittest.proto&#39;).name)
+
+if __name__ == &#39;__main__&#39;:
+  unittest.main()</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="google.protobuf.internal.generator_test.GeneratorTest"><code class="flex name class">
+<span>class <span class="ident">GeneratorTest</span></span>
+<span>(</span><span>methodName='runTest')</span>
+</code></dt>
+<dd>
+<section class="desc"><p>A class whose instances are single test cases.</p>
+<p>By default, the test code itself should be placed in a method named
+'runTest'.</p>
+<p>If the fixture may be used for many test cases, create as
+many test methods as are needed. When instantiating such a TestCase
+subclass, specify in the constructor arguments the name of the test method
+that the instance is to execute.</p>
+<p>Test authors should subclass TestCase for their own tests. Construction
+and deconstruction of the test's environment ('fixture') can be
+implemented by overriding the 'setUp' and 'tearDown' methods respectively.</p>
+<p>If it is necessary to override the <strong>init</strong> method, the base class
+<strong>init</strong> method must always be called. It is important that subclasses
+should not change the signature of their <strong>init</strong> method, since instances
+of the classes are instantiated automatically by parts of the framework
+in order to be run.</p>
+<p>When subclassing TestCase, you can set these attributes:
+* failureException: determines which exception will be raised when
+the instance's assertion methods fail; test methods raising this
+exception will be deemed to have 'failed' rather than 'errored'.
+* longMessage: determines whether long messages (including repr of
+objects used in assert methods) will be printed on failure in <em>addition</em>
+to any explicit message passed.
+* maxDiff: sets the maximum length of a diff in failure messages
+by assert methods using difflib. It is looked up as an instance
+attribute so can be configured by individual tests if required.</p>
+<p>Create an instance of the class that will use the named test
+method when executed. Raises a ValueError if the instance does
+not have a method with the specified name.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class GeneratorTest(unittest.TestCase):
+
+  def testNestedMessageDescriptor(self):
+    field_name = &#39;optional_nested_message&#39;
+    proto_type = unittest_pb2.TestAllTypes
+    self.assertEqual(
+        proto_type.NestedMessage.DESCRIPTOR,
+        proto_type.DESCRIPTOR.fields_by_name[field_name].message_type)
+
+  def testEnums(self):
+    # We test only module-level enums here.
+    # TODO(robinson): Examine descriptors directly to check
+    # enum descriptor output.
+    self.assertEqual(4, unittest_pb2.FOREIGN_FOO)
+    self.assertEqual(5, unittest_pb2.FOREIGN_BAR)
+    self.assertEqual(6, unittest_pb2.FOREIGN_BAZ)
+
+    proto = unittest_pb2.TestAllTypes()
+    self.assertEqual(1, proto.FOO)
+    self.assertEqual(1, unittest_pb2.TestAllTypes.FOO)
+    self.assertEqual(2, proto.BAR)
+    self.assertEqual(2, unittest_pb2.TestAllTypes.BAR)
+    self.assertEqual(3, proto.BAZ)
+    self.assertEqual(3, unittest_pb2.TestAllTypes.BAZ)
+
+  def testExtremeDefaultValues(self):
+    message = unittest_pb2.TestExtremeDefaultValues()
+
+    # Python pre-2.6 does not have isinf() or isnan() functions, so we have
+    # to provide our own.
+    def isnan(val):
+      # NaN is never equal to itself.
+      return val != val
+    def isinf(val):
+      # Infinity times zero equals NaN.
+      return not isnan(val) and isnan(val * 0)
+
+    self.assertTrue(isinf(message.inf_double))
+    self.assertTrue(message.inf_double &gt; 0)
+    self.assertTrue(isinf(message.neg_inf_double))
+    self.assertTrue(message.neg_inf_double &lt; 0)
+    self.assertTrue(isnan(message.nan_double))
+
+    self.assertTrue(isinf(message.inf_float))
+    self.assertTrue(message.inf_float &gt; 0)
+    self.assertTrue(isinf(message.neg_inf_float))
+    self.assertTrue(message.neg_inf_float &lt; 0)
+    self.assertTrue(isnan(message.nan_float))
+    self.assertEqual(&#34;? ? ?? ?? ??? ??/ ??-&#34;, message.cpp_trigraph)
+
+  def testHasDefaultValues(self):
+    desc = unittest_pb2.TestAllTypes.DESCRIPTOR
+
+    expected_has_default_by_name = {
+        &#39;optional_int32&#39;: False,
+        &#39;repeated_int32&#39;: False,
+        &#39;optional_nested_message&#39;: False,
+        &#39;default_int32&#39;: True,
+    }
+
+    has_default_by_name = dict(
+        [(f.name, f.has_default_value)
+         for f in desc.fields
+         if f.name in expected_has_default_by_name])
+    self.assertEqual(expected_has_default_by_name, has_default_by_name)
+
+  def testContainingTypeBehaviorForExtensions(self):
+    self.assertEqual(unittest_pb2.optional_int32_extension.containing_type,
+                     unittest_pb2.TestAllExtensions.DESCRIPTOR)
+    self.assertEqual(unittest_pb2.TestRequired.single.containing_type,
+                     unittest_pb2.TestAllExtensions.DESCRIPTOR)
+
+  def testExtensionScope(self):
+    self.assertEqual(unittest_pb2.optional_int32_extension.extension_scope,
+                     None)
+    self.assertEqual(unittest_pb2.TestRequired.single.extension_scope,
+                     unittest_pb2.TestRequired.DESCRIPTOR)
+
+  def testIsExtension(self):
+    self.assertTrue(unittest_pb2.optional_int32_extension.is_extension)
+    self.assertTrue(unittest_pb2.TestRequired.single.is_extension)
+
+    message_descriptor = unittest_pb2.TestRequired.DESCRIPTOR
+    non_extension_descriptor = message_descriptor.fields_by_name[&#39;a&#39;]
+    self.assertTrue(not non_extension_descriptor.is_extension)
+
+  def testOptions(self):
+    proto = unittest_mset_wire_format_pb2.TestMessageSet()
+    self.assertTrue(proto.DESCRIPTOR.GetOptions().message_set_wire_format)
+
+  def testMessageWithCustomOptions(self):
+    proto = unittest_custom_options_pb2.TestMessageWithCustomOptions()
+    enum_options = proto.DESCRIPTOR.enum_types_by_name[&#39;AnEnum&#39;].GetOptions()
+    self.assertTrue(enum_options is not None)
+    # TODO(gps): We really should test for the presence of the enum_opt1
+    # extension and for its value to be set to -789.
+
+  def testNestedTypes(self):
+    self.assertEqual(
+        set(unittest_pb2.TestAllTypes.DESCRIPTOR.nested_types),
+        set([
+            unittest_pb2.TestAllTypes.NestedMessage.DESCRIPTOR,
+            unittest_pb2.TestAllTypes.OptionalGroup.DESCRIPTOR,
+            unittest_pb2.TestAllTypes.RepeatedGroup.DESCRIPTOR,
+        ]))
+    self.assertEqual(unittest_pb2.TestEmptyMessage.DESCRIPTOR.nested_types, [])
+    self.assertEqual(
+        unittest_pb2.TestAllTypes.NestedMessage.DESCRIPTOR.nested_types, [])
+
+  def testContainingType(self):
+    self.assertTrue(
+        unittest_pb2.TestEmptyMessage.DESCRIPTOR.containing_type is None)
+    self.assertTrue(
+        unittest_pb2.TestAllTypes.DESCRIPTOR.containing_type is None)
+    self.assertEqual(
+        unittest_pb2.TestAllTypes.NestedMessage.DESCRIPTOR.containing_type,
+        unittest_pb2.TestAllTypes.DESCRIPTOR)
+    self.assertEqual(
+        unittest_pb2.TestAllTypes.NestedMessage.DESCRIPTOR.containing_type,
+        unittest_pb2.TestAllTypes.DESCRIPTOR)
+    self.assertEqual(
+        unittest_pb2.TestAllTypes.RepeatedGroup.DESCRIPTOR.containing_type,
+        unittest_pb2.TestAllTypes.DESCRIPTOR)
+
+  def testContainingTypeInEnumDescriptor(self):
+    self.assertTrue(unittest_pb2._FOREIGNENUM.containing_type is None)
+    self.assertEqual(unittest_pb2._TESTALLTYPES_NESTEDENUM.containing_type,
+                     unittest_pb2.TestAllTypes.DESCRIPTOR)
+
+  def testPackage(self):
+    self.assertEqual(
+        unittest_pb2.TestAllTypes.DESCRIPTOR.file.package,
+        &#39;protobuf_unittest&#39;)
+    desc = unittest_pb2.TestAllTypes.NestedMessage.DESCRIPTOR
+    self.assertEqual(desc.file.package, &#39;protobuf_unittest&#39;)
+    self.assertEqual(
+        unittest_import_pb2.ImportMessage.DESCRIPTOR.file.package,
+        &#39;protobuf_unittest_import&#39;)
+
+    self.assertEqual(
+        unittest_pb2._FOREIGNENUM.file.package, &#39;protobuf_unittest&#39;)
+    self.assertEqual(
+        unittest_pb2._TESTALLTYPES_NESTEDENUM.file.package,
+        &#39;protobuf_unittest&#39;)
+    self.assertEqual(
+        unittest_import_pb2._IMPORTENUM.file.package,
+        &#39;protobuf_unittest_import&#39;)
+
+  def testExtensionRange(self):
+    self.assertEqual(
+        unittest_pb2.TestAllTypes.DESCRIPTOR.extension_ranges, [])
+    self.assertEqual(
+        unittest_pb2.TestAllExtensions.DESCRIPTOR.extension_ranges,
+        [(1, MAX_EXTENSION)])
+    self.assertEqual(
+        unittest_pb2.TestMultipleExtensionRanges.DESCRIPTOR.extension_ranges,
+        [(42, 43), (4143, 4244), (65536, MAX_EXTENSION)])
+
+  def testFileDescriptor(self):
+    self.assertEqual(unittest_pb2.DESCRIPTOR.name,
+                     &#39;google/protobuf/unittest.proto&#39;)
+    self.assertEqual(unittest_pb2.DESCRIPTOR.package, &#39;protobuf_unittest&#39;)
+    self.assertFalse(unittest_pb2.DESCRIPTOR.serialized_pb is None)
+    self.assertEqual(unittest_pb2.DESCRIPTOR.dependencies,
+                     [unittest_import_pb2.DESCRIPTOR])
+    self.assertEqual(unittest_import_pb2.DESCRIPTOR.dependencies,
+                     [unittest_import_public_pb2.DESCRIPTOR])
+    self.assertEqual(unittest_import_pb2.DESCRIPTOR.public_dependencies,
+                     [unittest_import_public_pb2.DESCRIPTOR])
+  def testNoGenericServices(self):
+    self.assertTrue(hasattr(unittest_no_generic_services_pb2, &#34;TestMessage&#34;))
+    self.assertTrue(hasattr(unittest_no_generic_services_pb2, &#34;FOO&#34;))
+    self.assertTrue(hasattr(unittest_no_generic_services_pb2, &#34;test_extension&#34;))
+
+    # Make sure unittest_no_generic_services_pb2 has no services subclassing
+    # Proto2 Service class.
+    if hasattr(unittest_no_generic_services_pb2, &#34;TestService&#34;):
+      self.assertFalse(issubclass(unittest_no_generic_services_pb2.TestService,
+                                  service.Service))
+
+  def testMessageTypesByName(self):
+    file_type = unittest_pb2.DESCRIPTOR
+    self.assertEqual(
+        unittest_pb2._TESTALLTYPES,
+        file_type.message_types_by_name[unittest_pb2._TESTALLTYPES.name])
+
+    # Nested messages shouldn&#39;t be included in the message_types_by_name
+    # dictionary (like in the C++ API).
+    self.assertFalse(
+        unittest_pb2._TESTALLTYPES_NESTEDMESSAGE.name in
+        file_type.message_types_by_name)
+
+  def testEnumTypesByName(self):
+    file_type = unittest_pb2.DESCRIPTOR
+    self.assertEqual(
+        unittest_pb2._FOREIGNENUM,
+        file_type.enum_types_by_name[unittest_pb2._FOREIGNENUM.name])
+
+  def testExtensionsByName(self):
+    file_type = unittest_pb2.DESCRIPTOR
+    self.assertEqual(
+        unittest_pb2.my_extension_string,
+        file_type.extensions_by_name[unittest_pb2.my_extension_string.name])
+
+  def testPublicImports(self):
+    # Test public imports as embedded message.
+    all_type_proto = unittest_pb2.TestAllTypes()
+    self.assertEqual(0, all_type_proto.optional_public_import_message.e)
+
+    # PublicImportMessage is actually defined in unittest_import_public_pb2
+    # module, and is public imported by unittest_import_pb2 module.
+    public_import_proto = unittest_import_pb2.PublicImportMessage()
+    self.assertEqual(0, public_import_proto.e)
+    self.assertTrue(unittest_import_public_pb2.PublicImportMessage is
+                    unittest_import_pb2.PublicImportMessage)
+
+  def testBadIdentifiers(self):
+    # We&#39;re just testing that the code was imported without problems.
+    message = test_bad_identifiers_pb2.TestBadIdentifiers()
+    self.assertEqual(message.Extensions[test_bad_identifiers_pb2.message],
+                     &#34;foo&#34;)
+    self.assertEqual(message.Extensions[test_bad_identifiers_pb2.descriptor],
+                     &#34;bar&#34;)
+    self.assertEqual(message.Extensions[test_bad_identifiers_pb2.reflection],
+                     &#34;baz&#34;)
+    self.assertEqual(message.Extensions[test_bad_identifiers_pb2.service],
+                     &#34;qux&#34;)
+
+  def testOneof(self):
+    desc = unittest_pb2.TestAllTypes.DESCRIPTOR
+    self.assertEqual(1, len(desc.oneofs))
+    self.assertEqual(&#39;oneof_field&#39;, desc.oneofs[0].name)
+    self.assertEqual(0, desc.oneofs[0].index)
+    self.assertIs(desc, desc.oneofs[0].containing_type)
+    self.assertIs(desc.oneofs[0], desc.oneofs_by_name[&#39;oneof_field&#39;])
+    nested_names = set([&#39;oneof_uint32&#39;, &#39;oneof_nested_message&#39;,
+                        &#39;oneof_string&#39;, &#39;oneof_bytes&#39;])
+    self.assertEqual(
+        nested_names,
+        set([field.name for field in desc.oneofs[0].fields]))
+    for field_name, field_desc in desc.fields_by_name.items():
+      if field_name in nested_names:
+        self.assertIs(desc.oneofs[0], field_desc.containing_oneof)
+      else:
+        self.assertIsNone(field_desc.containing_oneof)
+
+  def testEnumWithDupValue(self):
+    self.assertEqual(&#39;FOO1&#39;,
+                     unittest_pb2.TestEnumWithDupValue.Name(unittest_pb2.FOO1))
+    self.assertEqual(&#39;FOO1&#39;,
+                     unittest_pb2.TestEnumWithDupValue.Name(unittest_pb2.FOO2))
+    self.assertEqual(&#39;BAR1&#39;,
+                     unittest_pb2.TestEnumWithDupValue.Name(unittest_pb2.BAR1))
+    self.assertEqual(&#39;BAR1&#39;,
+                     unittest_pb2.TestEnumWithDupValue.Name(unittest_pb2.BAR2))</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>unittest.case.TestCase</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="google.protobuf.internal.generator_test.GeneratorTest.testBadIdentifiers"><code class="name flex">
+<span>def <span class="ident">testBadIdentifiers</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testBadIdentifiers(self):
+  # We&#39;re just testing that the code was imported without problems.
+  message = test_bad_identifiers_pb2.TestBadIdentifiers()
+  self.assertEqual(message.Extensions[test_bad_identifiers_pb2.message],
+                   &#34;foo&#34;)
+  self.assertEqual(message.Extensions[test_bad_identifiers_pb2.descriptor],
+                   &#34;bar&#34;)
+  self.assertEqual(message.Extensions[test_bad_identifiers_pb2.reflection],
+                   &#34;baz&#34;)
+  self.assertEqual(message.Extensions[test_bad_identifiers_pb2.service],
+                   &#34;qux&#34;)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.generator_test.GeneratorTest.testContainingType"><code class="name flex">
+<span>def <span class="ident">testContainingType</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testContainingType(self):
+  self.assertTrue(
+      unittest_pb2.TestEmptyMessage.DESCRIPTOR.containing_type is None)
+  self.assertTrue(
+      unittest_pb2.TestAllTypes.DESCRIPTOR.containing_type is None)
+  self.assertEqual(
+      unittest_pb2.TestAllTypes.NestedMessage.DESCRIPTOR.containing_type,
+      unittest_pb2.TestAllTypes.DESCRIPTOR)
+  self.assertEqual(
+      unittest_pb2.TestAllTypes.NestedMessage.DESCRIPTOR.containing_type,
+      unittest_pb2.TestAllTypes.DESCRIPTOR)
+  self.assertEqual(
+      unittest_pb2.TestAllTypes.RepeatedGroup.DESCRIPTOR.containing_type,
+      unittest_pb2.TestAllTypes.DESCRIPTOR)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.generator_test.GeneratorTest.testContainingTypeBehaviorForExtensions"><code class="name flex">
+<span>def <span class="ident">testContainingTypeBehaviorForExtensions</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testContainingTypeBehaviorForExtensions(self):
+  self.assertEqual(unittest_pb2.optional_int32_extension.containing_type,
+                   unittest_pb2.TestAllExtensions.DESCRIPTOR)
+  self.assertEqual(unittest_pb2.TestRequired.single.containing_type,
+                   unittest_pb2.TestAllExtensions.DESCRIPTOR)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.generator_test.GeneratorTest.testContainingTypeInEnumDescriptor"><code class="name flex">
+<span>def <span class="ident">testContainingTypeInEnumDescriptor</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testContainingTypeInEnumDescriptor(self):
+  self.assertTrue(unittest_pb2._FOREIGNENUM.containing_type is None)
+  self.assertEqual(unittest_pb2._TESTALLTYPES_NESTEDENUM.containing_type,
+                   unittest_pb2.TestAllTypes.DESCRIPTOR)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.generator_test.GeneratorTest.testEnumTypesByName"><code class="name flex">
+<span>def <span class="ident">testEnumTypesByName</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testEnumTypesByName(self):
+  file_type = unittest_pb2.DESCRIPTOR
+  self.assertEqual(
+      unittest_pb2._FOREIGNENUM,
+      file_type.enum_types_by_name[unittest_pb2._FOREIGNENUM.name])</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.generator_test.GeneratorTest.testEnumWithDupValue"><code class="name flex">
+<span>def <span class="ident">testEnumWithDupValue</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testEnumWithDupValue(self):
+  self.assertEqual(&#39;FOO1&#39;,
+                   unittest_pb2.TestEnumWithDupValue.Name(unittest_pb2.FOO1))
+  self.assertEqual(&#39;FOO1&#39;,
+                   unittest_pb2.TestEnumWithDupValue.Name(unittest_pb2.FOO2))
+  self.assertEqual(&#39;BAR1&#39;,
+                   unittest_pb2.TestEnumWithDupValue.Name(unittest_pb2.BAR1))
+  self.assertEqual(&#39;BAR1&#39;,
+                   unittest_pb2.TestEnumWithDupValue.Name(unittest_pb2.BAR2))</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.generator_test.GeneratorTest.testEnums"><code class="name flex">
+<span>def <span class="ident">testEnums</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testEnums(self):
+  # We test only module-level enums here.
+  # TODO(robinson): Examine descriptors directly to check
+  # enum descriptor output.
+  self.assertEqual(4, unittest_pb2.FOREIGN_FOO)
+  self.assertEqual(5, unittest_pb2.FOREIGN_BAR)
+  self.assertEqual(6, unittest_pb2.FOREIGN_BAZ)
+
+  proto = unittest_pb2.TestAllTypes()
+  self.assertEqual(1, proto.FOO)
+  self.assertEqual(1, unittest_pb2.TestAllTypes.FOO)
+  self.assertEqual(2, proto.BAR)
+  self.assertEqual(2, unittest_pb2.TestAllTypes.BAR)
+  self.assertEqual(3, proto.BAZ)
+  self.assertEqual(3, unittest_pb2.TestAllTypes.BAZ)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.generator_test.GeneratorTest.testExtensionRange"><code class="name flex">
+<span>def <span class="ident">testExtensionRange</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testExtensionRange(self):
+  self.assertEqual(
+      unittest_pb2.TestAllTypes.DESCRIPTOR.extension_ranges, [])
+  self.assertEqual(
+      unittest_pb2.TestAllExtensions.DESCRIPTOR.extension_ranges,
+      [(1, MAX_EXTENSION)])
+  self.assertEqual(
+      unittest_pb2.TestMultipleExtensionRanges.DESCRIPTOR.extension_ranges,
+      [(42, 43), (4143, 4244), (65536, MAX_EXTENSION)])</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.generator_test.GeneratorTest.testExtensionScope"><code class="name flex">
+<span>def <span class="ident">testExtensionScope</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testExtensionScope(self):
+  self.assertEqual(unittest_pb2.optional_int32_extension.extension_scope,
+                   None)
+  self.assertEqual(unittest_pb2.TestRequired.single.extension_scope,
+                   unittest_pb2.TestRequired.DESCRIPTOR)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.generator_test.GeneratorTest.testExtensionsByName"><code class="name flex">
+<span>def <span class="ident">testExtensionsByName</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testExtensionsByName(self):
+  file_type = unittest_pb2.DESCRIPTOR
+  self.assertEqual(
+      unittest_pb2.my_extension_string,
+      file_type.extensions_by_name[unittest_pb2.my_extension_string.name])</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.generator_test.GeneratorTest.testExtremeDefaultValues"><code class="name flex">
+<span>def <span class="ident">testExtremeDefaultValues</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testExtremeDefaultValues(self):
+  message = unittest_pb2.TestExtremeDefaultValues()
+
+  # Python pre-2.6 does not have isinf() or isnan() functions, so we have
+  # to provide our own.
+  def isnan(val):
+    # NaN is never equal to itself.
+    return val != val
+  def isinf(val):
+    # Infinity times zero equals NaN.
+    return not isnan(val) and isnan(val * 0)
+
+  self.assertTrue(isinf(message.inf_double))
+  self.assertTrue(message.inf_double &gt; 0)
+  self.assertTrue(isinf(message.neg_inf_double))
+  self.assertTrue(message.neg_inf_double &lt; 0)
+  self.assertTrue(isnan(message.nan_double))
+
+  self.assertTrue(isinf(message.inf_float))
+  self.assertTrue(message.inf_float &gt; 0)
+  self.assertTrue(isinf(message.neg_inf_float))
+  self.assertTrue(message.neg_inf_float &lt; 0)
+  self.assertTrue(isnan(message.nan_float))
+  self.assertEqual(&#34;? ? ?? ?? ??? ??/ ??-&#34;, message.cpp_trigraph)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.generator_test.GeneratorTest.testFileDescriptor"><code class="name flex">
+<span>def <span class="ident">testFileDescriptor</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testFileDescriptor(self):
+  self.assertEqual(unittest_pb2.DESCRIPTOR.name,
+                   &#39;google/protobuf/unittest.proto&#39;)
+  self.assertEqual(unittest_pb2.DESCRIPTOR.package, &#39;protobuf_unittest&#39;)
+  self.assertFalse(unittest_pb2.DESCRIPTOR.serialized_pb is None)
+  self.assertEqual(unittest_pb2.DESCRIPTOR.dependencies,
+                   [unittest_import_pb2.DESCRIPTOR])
+  self.assertEqual(unittest_import_pb2.DESCRIPTOR.dependencies,
+                   [unittest_import_public_pb2.DESCRIPTOR])
+  self.assertEqual(unittest_import_pb2.DESCRIPTOR.public_dependencies,
+                   [unittest_import_public_pb2.DESCRIPTOR])</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.generator_test.GeneratorTest.testHasDefaultValues"><code class="name flex">
+<span>def <span class="ident">testHasDefaultValues</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testHasDefaultValues(self):
+  desc = unittest_pb2.TestAllTypes.DESCRIPTOR
+
+  expected_has_default_by_name = {
+      &#39;optional_int32&#39;: False,
+      &#39;repeated_int32&#39;: False,
+      &#39;optional_nested_message&#39;: False,
+      &#39;default_int32&#39;: True,
+  }
+
+  has_default_by_name = dict(
+      [(f.name, f.has_default_value)
+       for f in desc.fields
+       if f.name in expected_has_default_by_name])
+  self.assertEqual(expected_has_default_by_name, has_default_by_name)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.generator_test.GeneratorTest.testIsExtension"><code class="name flex">
+<span>def <span class="ident">testIsExtension</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testIsExtension(self):
+  self.assertTrue(unittest_pb2.optional_int32_extension.is_extension)
+  self.assertTrue(unittest_pb2.TestRequired.single.is_extension)
+
+  message_descriptor = unittest_pb2.TestRequired.DESCRIPTOR
+  non_extension_descriptor = message_descriptor.fields_by_name[&#39;a&#39;]
+  self.assertTrue(not non_extension_descriptor.is_extension)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.generator_test.GeneratorTest.testMessageTypesByName"><code class="name flex">
+<span>def <span class="ident">testMessageTypesByName</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testMessageTypesByName(self):
+  file_type = unittest_pb2.DESCRIPTOR
+  self.assertEqual(
+      unittest_pb2._TESTALLTYPES,
+      file_type.message_types_by_name[unittest_pb2._TESTALLTYPES.name])
+
+  # Nested messages shouldn&#39;t be included in the message_types_by_name
+  # dictionary (like in the C++ API).
+  self.assertFalse(
+      unittest_pb2._TESTALLTYPES_NESTEDMESSAGE.name in
+      file_type.message_types_by_name)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.generator_test.GeneratorTest.testMessageWithCustomOptions"><code class="name flex">
+<span>def <span class="ident">testMessageWithCustomOptions</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testMessageWithCustomOptions(self):
+  proto = unittest_custom_options_pb2.TestMessageWithCustomOptions()
+  enum_options = proto.DESCRIPTOR.enum_types_by_name[&#39;AnEnum&#39;].GetOptions()
+  self.assertTrue(enum_options is not None)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.generator_test.GeneratorTest.testNestedMessageDescriptor"><code class="name flex">
+<span>def <span class="ident">testNestedMessageDescriptor</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testNestedMessageDescriptor(self):
+  field_name = &#39;optional_nested_message&#39;
+  proto_type = unittest_pb2.TestAllTypes
+  self.assertEqual(
+      proto_type.NestedMessage.DESCRIPTOR,
+      proto_type.DESCRIPTOR.fields_by_name[field_name].message_type)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.generator_test.GeneratorTest.testNestedTypes"><code class="name flex">
+<span>def <span class="ident">testNestedTypes</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testNestedTypes(self):
+  self.assertEqual(
+      set(unittest_pb2.TestAllTypes.DESCRIPTOR.nested_types),
+      set([
+          unittest_pb2.TestAllTypes.NestedMessage.DESCRIPTOR,
+          unittest_pb2.TestAllTypes.OptionalGroup.DESCRIPTOR,
+          unittest_pb2.TestAllTypes.RepeatedGroup.DESCRIPTOR,
+      ]))
+  self.assertEqual(unittest_pb2.TestEmptyMessage.DESCRIPTOR.nested_types, [])
+  self.assertEqual(
+      unittest_pb2.TestAllTypes.NestedMessage.DESCRIPTOR.nested_types, [])</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.generator_test.GeneratorTest.testNoGenericServices"><code class="name flex">
+<span>def <span class="ident">testNoGenericServices</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testNoGenericServices(self):
+  self.assertTrue(hasattr(unittest_no_generic_services_pb2, &#34;TestMessage&#34;))
+  self.assertTrue(hasattr(unittest_no_generic_services_pb2, &#34;FOO&#34;))
+  self.assertTrue(hasattr(unittest_no_generic_services_pb2, &#34;test_extension&#34;))
+
+  # Make sure unittest_no_generic_services_pb2 has no services subclassing
+  # Proto2 Service class.
+  if hasattr(unittest_no_generic_services_pb2, &#34;TestService&#34;):
+    self.assertFalse(issubclass(unittest_no_generic_services_pb2.TestService,
+                                service.Service))</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.generator_test.GeneratorTest.testOneof"><code class="name flex">
+<span>def <span class="ident">testOneof</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testOneof(self):
+  desc = unittest_pb2.TestAllTypes.DESCRIPTOR
+  self.assertEqual(1, len(desc.oneofs))
+  self.assertEqual(&#39;oneof_field&#39;, desc.oneofs[0].name)
+  self.assertEqual(0, desc.oneofs[0].index)
+  self.assertIs(desc, desc.oneofs[0].containing_type)
+  self.assertIs(desc.oneofs[0], desc.oneofs_by_name[&#39;oneof_field&#39;])
+  nested_names = set([&#39;oneof_uint32&#39;, &#39;oneof_nested_message&#39;,
+                      &#39;oneof_string&#39;, &#39;oneof_bytes&#39;])
+  self.assertEqual(
+      nested_names,
+      set([field.name for field in desc.oneofs[0].fields]))
+  for field_name, field_desc in desc.fields_by_name.items():
+    if field_name in nested_names:
+      self.assertIs(desc.oneofs[0], field_desc.containing_oneof)
+    else:
+      self.assertIsNone(field_desc.containing_oneof)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.generator_test.GeneratorTest.testOptions"><code class="name flex">
+<span>def <span class="ident">testOptions</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testOptions(self):
+  proto = unittest_mset_wire_format_pb2.TestMessageSet()
+  self.assertTrue(proto.DESCRIPTOR.GetOptions().message_set_wire_format)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.generator_test.GeneratorTest.testPackage"><code class="name flex">
+<span>def <span class="ident">testPackage</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testPackage(self):
+  self.assertEqual(
+      unittest_pb2.TestAllTypes.DESCRIPTOR.file.package,
+      &#39;protobuf_unittest&#39;)
+  desc = unittest_pb2.TestAllTypes.NestedMessage.DESCRIPTOR
+  self.assertEqual(desc.file.package, &#39;protobuf_unittest&#39;)
+  self.assertEqual(
+      unittest_import_pb2.ImportMessage.DESCRIPTOR.file.package,
+      &#39;protobuf_unittest_import&#39;)
+
+  self.assertEqual(
+      unittest_pb2._FOREIGNENUM.file.package, &#39;protobuf_unittest&#39;)
+  self.assertEqual(
+      unittest_pb2._TESTALLTYPES_NESTEDENUM.file.package,
+      &#39;protobuf_unittest&#39;)
+  self.assertEqual(
+      unittest_import_pb2._IMPORTENUM.file.package,
+      &#39;protobuf_unittest_import&#39;)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.generator_test.GeneratorTest.testPublicImports"><code class="name flex">
+<span>def <span class="ident">testPublicImports</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testPublicImports(self):
+  # Test public imports as embedded message.
+  all_type_proto = unittest_pb2.TestAllTypes()
+  self.assertEqual(0, all_type_proto.optional_public_import_message.e)
+
+  # PublicImportMessage is actually defined in unittest_import_public_pb2
+  # module, and is public imported by unittest_import_pb2 module.
+  public_import_proto = unittest_import_pb2.PublicImportMessage()
+  self.assertEqual(0, public_import_proto.e)
+  self.assertTrue(unittest_import_public_pb2.PublicImportMessage is
+                  unittest_import_pb2.PublicImportMessage)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="google.protobuf.internal.generator_test.SymbolDatabaseRegistrationTest"><code class="flex name class">
+<span>class <span class="ident">SymbolDatabaseRegistrationTest</span></span>
+<span>(</span><span>methodName='runTest')</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Checks that messages, enums and files are correctly registered.</p>
+<p>Create an instance of the class that will use the named test
+method when executed. Raises a ValueError if the instance does
+not have a method with the specified name.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SymbolDatabaseRegistrationTest(unittest.TestCase):
+  &#34;&#34;&#34;Checks that messages, enums and files are correctly registered.&#34;&#34;&#34;
+
+  def testGetSymbol(self):
+    self.assertEqual(
+        unittest_pb2.TestAllTypes, symbol_database.Default().GetSymbol(
+            &#39;protobuf_unittest.TestAllTypes&#39;))
+    self.assertEqual(
+        unittest_pb2.TestAllTypes.NestedMessage,
+        symbol_database.Default().GetSymbol(
+            &#39;protobuf_unittest.TestAllTypes.NestedMessage&#39;))
+    with self.assertRaises(KeyError):
+      symbol_database.Default().GetSymbol(&#39;protobuf_unittest.NestedMessage&#39;)
+    self.assertEqual(
+        unittest_pb2.TestAllTypes.OptionalGroup,
+        symbol_database.Default().GetSymbol(
+            &#39;protobuf_unittest.TestAllTypes.OptionalGroup&#39;))
+    self.assertEqual(
+        unittest_pb2.TestAllTypes.RepeatedGroup,
+        symbol_database.Default().GetSymbol(
+            &#39;protobuf_unittest.TestAllTypes.RepeatedGroup&#39;))
+
+  def testEnums(self):
+    self.assertEqual(
+        &#39;protobuf_unittest.ForeignEnum&#39;,
+        symbol_database.Default().pool.FindEnumTypeByName(
+            &#39;protobuf_unittest.ForeignEnum&#39;).full_name)
+    self.assertEqual(
+        &#39;protobuf_unittest.TestAllTypes.NestedEnum&#39;,
+        symbol_database.Default().pool.FindEnumTypeByName(
+            &#39;protobuf_unittest.TestAllTypes.NestedEnum&#39;).full_name)
+
+  def testFindFileByName(self):
+    self.assertEqual(
+        &#39;google/protobuf/unittest.proto&#39;,
+        symbol_database.Default().pool.FindFileByName(
+            &#39;google/protobuf/unittest.proto&#39;).name)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>unittest.case.TestCase</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="google.protobuf.internal.generator_test.SymbolDatabaseRegistrationTest.testEnums"><code class="name flex">
+<span>def <span class="ident">testEnums</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testEnums(self):
+  self.assertEqual(
+      &#39;protobuf_unittest.ForeignEnum&#39;,
+      symbol_database.Default().pool.FindEnumTypeByName(
+          &#39;protobuf_unittest.ForeignEnum&#39;).full_name)
+  self.assertEqual(
+      &#39;protobuf_unittest.TestAllTypes.NestedEnum&#39;,
+      symbol_database.Default().pool.FindEnumTypeByName(
+          &#39;protobuf_unittest.TestAllTypes.NestedEnum&#39;).full_name)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.generator_test.SymbolDatabaseRegistrationTest.testFindFileByName"><code class="name flex">
+<span>def <span class="ident">testFindFileByName</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testFindFileByName(self):
+  self.assertEqual(
+      &#39;google/protobuf/unittest.proto&#39;,
+      symbol_database.Default().pool.FindFileByName(
+          &#39;google/protobuf/unittest.proto&#39;).name)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.generator_test.SymbolDatabaseRegistrationTest.testGetSymbol"><code class="name flex">
+<span>def <span class="ident">testGetSymbol</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testGetSymbol(self):
+  self.assertEqual(
+      unittest_pb2.TestAllTypes, symbol_database.Default().GetSymbol(
+          &#39;protobuf_unittest.TestAllTypes&#39;))
+  self.assertEqual(
+      unittest_pb2.TestAllTypes.NestedMessage,
+      symbol_database.Default().GetSymbol(
+          &#39;protobuf_unittest.TestAllTypes.NestedMessage&#39;))
+  with self.assertRaises(KeyError):
+    symbol_database.Default().GetSymbol(&#39;protobuf_unittest.NestedMessage&#39;)
+  self.assertEqual(
+      unittest_pb2.TestAllTypes.OptionalGroup,
+      symbol_database.Default().GetSymbol(
+          &#39;protobuf_unittest.TestAllTypes.OptionalGroup&#39;))
+  self.assertEqual(
+      unittest_pb2.TestAllTypes.RepeatedGroup,
+      symbol_database.Default().GetSymbol(
+          &#39;protobuf_unittest.TestAllTypes.RepeatedGroup&#39;))</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="google.protobuf.internal" href="index.html">google.protobuf.internal</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="google.protobuf.internal.generator_test.GeneratorTest" href="#google.protobuf.internal.generator_test.GeneratorTest">GeneratorTest</a></code></h4>
+<ul class="">
+<li><code><a title="google.protobuf.internal.generator_test.GeneratorTest.testBadIdentifiers" href="#google.protobuf.internal.generator_test.GeneratorTest.testBadIdentifiers">testBadIdentifiers</a></code></li>
+<li><code><a title="google.protobuf.internal.generator_test.GeneratorTest.testContainingType" href="#google.protobuf.internal.generator_test.GeneratorTest.testContainingType">testContainingType</a></code></li>
+<li><code><a title="google.protobuf.internal.generator_test.GeneratorTest.testContainingTypeBehaviorForExtensions" href="#google.protobuf.internal.generator_test.GeneratorTest.testContainingTypeBehaviorForExtensions">testContainingTypeBehaviorForExtensions</a></code></li>
+<li><code><a title="google.protobuf.internal.generator_test.GeneratorTest.testContainingTypeInEnumDescriptor" href="#google.protobuf.internal.generator_test.GeneratorTest.testContainingTypeInEnumDescriptor">testContainingTypeInEnumDescriptor</a></code></li>
+<li><code><a title="google.protobuf.internal.generator_test.GeneratorTest.testEnumTypesByName" href="#google.protobuf.internal.generator_test.GeneratorTest.testEnumTypesByName">testEnumTypesByName</a></code></li>
+<li><code><a title="google.protobuf.internal.generator_test.GeneratorTest.testEnumWithDupValue" href="#google.protobuf.internal.generator_test.GeneratorTest.testEnumWithDupValue">testEnumWithDupValue</a></code></li>
+<li><code><a title="google.protobuf.internal.generator_test.GeneratorTest.testEnums" href="#google.protobuf.internal.generator_test.GeneratorTest.testEnums">testEnums</a></code></li>
+<li><code><a title="google.protobuf.internal.generator_test.GeneratorTest.testExtensionRange" href="#google.protobuf.internal.generator_test.GeneratorTest.testExtensionRange">testExtensionRange</a></code></li>
+<li><code><a title="google.protobuf.internal.generator_test.GeneratorTest.testExtensionScope" href="#google.protobuf.internal.generator_test.GeneratorTest.testExtensionScope">testExtensionScope</a></code></li>
+<li><code><a title="google.protobuf.internal.generator_test.GeneratorTest.testExtensionsByName" href="#google.protobuf.internal.generator_test.GeneratorTest.testExtensionsByName">testExtensionsByName</a></code></li>
+<li><code><a title="google.protobuf.internal.generator_test.GeneratorTest.testExtremeDefaultValues" href="#google.protobuf.internal.generator_test.GeneratorTest.testExtremeDefaultValues">testExtremeDefaultValues</a></code></li>
+<li><code><a title="google.protobuf.internal.generator_test.GeneratorTest.testFileDescriptor" href="#google.protobuf.internal.generator_test.GeneratorTest.testFileDescriptor">testFileDescriptor</a></code></li>
+<li><code><a title="google.protobuf.internal.generator_test.GeneratorTest.testHasDefaultValues" href="#google.protobuf.internal.generator_test.GeneratorTest.testHasDefaultValues">testHasDefaultValues</a></code></li>
+<li><code><a title="google.protobuf.internal.generator_test.GeneratorTest.testIsExtension" href="#google.protobuf.internal.generator_test.GeneratorTest.testIsExtension">testIsExtension</a></code></li>
+<li><code><a title="google.protobuf.internal.generator_test.GeneratorTest.testMessageTypesByName" href="#google.protobuf.internal.generator_test.GeneratorTest.testMessageTypesByName">testMessageTypesByName</a></code></li>
+<li><code><a title="google.protobuf.internal.generator_test.GeneratorTest.testMessageWithCustomOptions" href="#google.protobuf.internal.generator_test.GeneratorTest.testMessageWithCustomOptions">testMessageWithCustomOptions</a></code></li>
+<li><code><a title="google.protobuf.internal.generator_test.GeneratorTest.testNestedMessageDescriptor" href="#google.protobuf.internal.generator_test.GeneratorTest.testNestedMessageDescriptor">testNestedMessageDescriptor</a></code></li>
+<li><code><a title="google.protobuf.internal.generator_test.GeneratorTest.testNestedTypes" href="#google.protobuf.internal.generator_test.GeneratorTest.testNestedTypes">testNestedTypes</a></code></li>
+<li><code><a title="google.protobuf.internal.generator_test.GeneratorTest.testNoGenericServices" href="#google.protobuf.internal.generator_test.GeneratorTest.testNoGenericServices">testNoGenericServices</a></code></li>
+<li><code><a title="google.protobuf.internal.generator_test.GeneratorTest.testOneof" href="#google.protobuf.internal.generator_test.GeneratorTest.testOneof">testOneof</a></code></li>
+<li><code><a title="google.protobuf.internal.generator_test.GeneratorTest.testOptions" href="#google.protobuf.internal.generator_test.GeneratorTest.testOptions">testOptions</a></code></li>
+<li><code><a title="google.protobuf.internal.generator_test.GeneratorTest.testPackage" href="#google.protobuf.internal.generator_test.GeneratorTest.testPackage">testPackage</a></code></li>
+<li><code><a title="google.protobuf.internal.generator_test.GeneratorTest.testPublicImports" href="#google.protobuf.internal.generator_test.GeneratorTest.testPublicImports">testPublicImports</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="google.protobuf.internal.generator_test.SymbolDatabaseRegistrationTest" href="#google.protobuf.internal.generator_test.SymbolDatabaseRegistrationTest">SymbolDatabaseRegistrationTest</a></code></h4>
+<ul class="">
+<li><code><a title="google.protobuf.internal.generator_test.SymbolDatabaseRegistrationTest.testEnums" href="#google.protobuf.internal.generator_test.SymbolDatabaseRegistrationTest.testEnums">testEnums</a></code></li>
+<li><code><a title="google.protobuf.internal.generator_test.SymbolDatabaseRegistrationTest.testFindFileByName" href="#google.protobuf.internal.generator_test.SymbolDatabaseRegistrationTest.testFindFileByName">testFindFileByName</a></code></li>
+<li><code><a title="google.protobuf.internal.generator_test.SymbolDatabaseRegistrationTest.testGetSymbol" href="#google.protobuf.internal.generator_test.SymbolDatabaseRegistrationTest.testGetSymbol">testGetSymbol</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.4</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

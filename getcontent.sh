@@ -1,6 +1,6 @@
 #!/bin/sh
 
-BRANCHES="master release-6.3 release-4.0 release-sdk-0.9"
+BRANCHES="master release-7.0 release-6.3 release-4.0 release-sdk-0.9"
 
 getBranch() {
 	local branch=$1
@@ -27,3 +27,9 @@ done
 
 echo ">>> Created docs/reference.md"
 sed $VERSIONS reference.md.tmpl > docs/reference.md
+
+# Make sure to update the output branch
+python3 -m venv pysdkdoc
+bash -c "source pysdkdoc/bin/activate && \
+	pip3 install --upgrade pdoc mock libopenstorage-openstorage && \
+	pdoc3 --html openstorage grpc google kubernetes -o docs/api/python/release-6.3"

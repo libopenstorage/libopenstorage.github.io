@@ -1,0 +1,1234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.4" />
+<title>google.protobuf.json_format API documentation</title>
+<meta name="description" content="Contains routines for printing protocol messages in JSON format …" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>google.protobuf.json_format</code></h1>
+</header>
+<section id="section-intro">
+<p>Contains routines for printing protocol messages in JSON format.</p>
+<p>Simple usage example:</p>
+<p># Create a proto object and serialize it to a json format string.
+message = my_proto_pb2.MyMessage(foo='bar')
+json_string = json_format.MessageToJson(message)</p>
+<p># Parse a json format string to proto object.
+message = json_format.Parse(json_string, my_proto_pb2.MyMessage())</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Protocol Buffers - Google&#39;s data interchange format
+# Copyright 2008 Google Inc.  All rights reserved.
+# https://developers.google.com/protocol-buffers/
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are
+# met:
+#
+#     * Redistributions of source code must retain the above copyright
+# notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above
+# copyright notice, this list of conditions and the following disclaimer
+# in the documentation and/or other materials provided with the
+# distribution.
+#     * Neither the name of Google Inc. nor the names of its
+# contributors may be used to endorse or promote products derived from
+# this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+# &#34;AS IS&#34; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+# LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+# A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+# OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+# SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+# LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+# DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+# THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+&#34;&#34;&#34;Contains routines for printing protocol messages in JSON format.
+
+Simple usage example:
+
+  # Create a proto object and serialize it to a json format string.
+  message = my_proto_pb2.MyMessage(foo=&#39;bar&#39;)
+  json_string = json_format.MessageToJson(message)
+
+  # Parse a json format string to proto object.
+  message = json_format.Parse(json_string, my_proto_pb2.MyMessage())
+&#34;&#34;&#34;
+
+__author__ = &#39;jieluo@google.com (Jie Luo)&#39;
+
+# pylint: disable=g-statement-before-imports,g-import-not-at-top
+try:
+  from collections import OrderedDict
+except ImportError:
+  from ordereddict import OrderedDict  # PY26
+# pylint: enable=g-statement-before-imports,g-import-not-at-top
+
+import base64
+import json
+import math
+
+from operator import methodcaller
+
+import re
+import sys
+
+import six
+
+from google.protobuf import descriptor
+from google.protobuf import symbol_database
+
+
+_TIMESTAMPFOMAT = &#39;%Y-%m-%dT%H:%M:%S&#39;
+_INT_TYPES = frozenset([descriptor.FieldDescriptor.CPPTYPE_INT32,
+                        descriptor.FieldDescriptor.CPPTYPE_UINT32,
+                        descriptor.FieldDescriptor.CPPTYPE_INT64,
+                        descriptor.FieldDescriptor.CPPTYPE_UINT64])
+_INT64_TYPES = frozenset([descriptor.FieldDescriptor.CPPTYPE_INT64,
+                          descriptor.FieldDescriptor.CPPTYPE_UINT64])
+_FLOAT_TYPES = frozenset([descriptor.FieldDescriptor.CPPTYPE_FLOAT,
+                          descriptor.FieldDescriptor.CPPTYPE_DOUBLE])
+_INFINITY = &#39;Infinity&#39;
+_NEG_INFINITY = &#39;-Infinity&#39;
+_NAN = &#39;NaN&#39;
+
+_UNPAIRED_SURROGATE_PATTERN = re.compile(six.u(
+    r&#39;[\ud800-\udbff](?![\udc00-\udfff])|(?&lt;![\ud800-\udbff])[\udc00-\udfff]&#39;
+))
+
+_VALID_EXTENSION_NAME = re.compile(r&#39;\[[a-zA-Z0-9\._]*\]$&#39;)
+
+
+class Error(Exception):
+  &#34;&#34;&#34;Top-level module error for json_format.&#34;&#34;&#34;
+
+
+class SerializeToJsonError(Error):
+  &#34;&#34;&#34;Thrown if serialization to JSON fails.&#34;&#34;&#34;
+
+
+class ParseError(Error):
+  &#34;&#34;&#34;Thrown in case of parsing error.&#34;&#34;&#34;
+
+
+def MessageToJson(
+    message,
+    including_default_value_fields=False,
+    preserving_proto_field_name=False,
+    indent=2,
+    sort_keys=False,
+    use_integers_for_enums=False,
+    descriptor_pool=None,
+    float_precision=None):
+  &#34;&#34;&#34;Converts protobuf message to JSON format.
+
+  Args:
+    message: The protocol buffers message instance to serialize.
+    including_default_value_fields: If True, singular primitive fields,
+        repeated fields, and map fields will always be serialized.  If
+        False, only serialize non-empty fields.  Singular message fields
+        and oneof fields are not affected by this option.
+    preserving_proto_field_name: If True, use the original proto field
+        names as defined in the .proto file. If False, convert the field
+        names to lowerCamelCase.
+    indent: The JSON object will be pretty-printed with this indent level.
+        An indent level of 0 or negative will only insert newlines.
+    sort_keys: If True, then the output will be sorted by field names.
+    use_integers_for_enums: If true, print integers instead of enum names.
+    descriptor_pool: A Descriptor Pool for resolving types. If None use the
+        default.
+    float_precision: If set, use this to specify float field valid digits.
+
+  Returns:
+    A string containing the JSON formatted protocol buffer message.
+  &#34;&#34;&#34;
+  printer = _Printer(
+      including_default_value_fields,
+      preserving_proto_field_name,
+      use_integers_for_enums,
+      descriptor_pool,
+      float_precision=float_precision)
+  return printer.ToJsonString(message, indent, sort_keys)
+
+
+def MessageToDict(
+    message,
+    including_default_value_fields=False,
+    preserving_proto_field_name=False,
+    use_integers_for_enums=False,
+    descriptor_pool=None,
+    float_precision=None):
+  &#34;&#34;&#34;Converts protobuf message to a dictionary.
+
+  When the dictionary is encoded to JSON, it conforms to proto3 JSON spec.
+
+  Args:
+    message: The protocol buffers message instance to serialize.
+    including_default_value_fields: If True, singular primitive fields,
+        repeated fields, and map fields will always be serialized.  If
+        False, only serialize non-empty fields.  Singular message fields
+        and oneof fields are not affected by this option.
+    preserving_proto_field_name: If True, use the original proto field
+        names as defined in the .proto file. If False, convert the field
+        names to lowerCamelCase.
+    use_integers_for_enums: If true, print integers instead of enum names.
+    descriptor_pool: A Descriptor Pool for resolving types. If None use the
+        default.
+    float_precision: If set, use this to specify float field valid digits.
+
+  Returns:
+    A dict representation of the protocol buffer message.
+  &#34;&#34;&#34;
+  printer = _Printer(
+      including_default_value_fields,
+      preserving_proto_field_name,
+      use_integers_for_enums,
+      descriptor_pool,
+      float_precision=float_precision)
+  # pylint: disable=protected-access
+  return printer._MessageToJsonObject(message)
+
+
+def _IsMapEntry(field):
+  return (field.type == descriptor.FieldDescriptor.TYPE_MESSAGE and
+          field.message_type.has_options and
+          field.message_type.GetOptions().map_entry)
+
+
+class _Printer(object):
+  &#34;&#34;&#34;JSON format printer for protocol message.&#34;&#34;&#34;
+
+  def __init__(
+      self,
+      including_default_value_fields=False,
+      preserving_proto_field_name=False,
+      use_integers_for_enums=False,
+      descriptor_pool=None,
+      float_precision=None):
+    self.including_default_value_fields = including_default_value_fields
+    self.preserving_proto_field_name = preserving_proto_field_name
+    self.use_integers_for_enums = use_integers_for_enums
+    self.descriptor_pool = descriptor_pool
+    # TODO(jieluo): change the float precision default to 8 valid digits.
+    if float_precision:
+      self.float_format = &#39;.{}g&#39;.format(float_precision)
+    else:
+      self.float_format = None
+
+  def ToJsonString(self, message, indent, sort_keys):
+    js = self._MessageToJsonObject(message)
+    return json.dumps(js, indent=indent, sort_keys=sort_keys)
+
+  def _MessageToJsonObject(self, message):
+    &#34;&#34;&#34;Converts message to an object according to Proto3 JSON Specification.&#34;&#34;&#34;
+    message_descriptor = message.DESCRIPTOR
+    full_name = message_descriptor.full_name
+    if _IsWrapperMessage(message_descriptor):
+      return self._WrapperMessageToJsonObject(message)
+    if full_name in _WKTJSONMETHODS:
+      return methodcaller(_WKTJSONMETHODS[full_name][0], message)(self)
+    js = {}
+    return self._RegularMessageToJsonObject(message, js)
+
+  def _RegularMessageToJsonObject(self, message, js):
+    &#34;&#34;&#34;Converts normal message according to Proto3 JSON Specification.&#34;&#34;&#34;
+    fields = message.ListFields()
+
+    try:
+      for field, value in fields:
+        if self.preserving_proto_field_name:
+          name = field.name
+        else:
+          name = field.json_name
+        if _IsMapEntry(field):
+          # Convert a map field.
+          v_field = field.message_type.fields_by_name[&#39;value&#39;]
+          js_map = {}
+          for key in value:
+            if isinstance(key, bool):
+              if key:
+                recorded_key = &#39;true&#39;
+              else:
+                recorded_key = &#39;false&#39;
+            else:
+              recorded_key = key
+            js_map[recorded_key] = self._FieldToJsonObject(
+                v_field, value[key])
+          js[name] = js_map
+        elif field.label == descriptor.FieldDescriptor.LABEL_REPEATED:
+          # Convert a repeated field.
+          js[name] = [self._FieldToJsonObject(field, k)
+                      for k in value]
+        elif field.is_extension:
+          full_qualifier = field.full_name[:-len(field.name)]
+          name = &#39;[%s%s]&#39; % (full_qualifier, name)
+          js[name] = self._FieldToJsonObject(field, value)
+        else:
+          js[name] = self._FieldToJsonObject(field, value)
+
+      # Serialize default value if including_default_value_fields is True.
+      if self.including_default_value_fields:
+        message_descriptor = message.DESCRIPTOR
+        for field in message_descriptor.fields:
+          # Singular message fields and oneof fields will not be affected.
+          if ((field.label != descriptor.FieldDescriptor.LABEL_REPEATED and
+               field.cpp_type == descriptor.FieldDescriptor.CPPTYPE_MESSAGE) or
+              field.containing_oneof):
+            continue
+          if self.preserving_proto_field_name:
+            name = field.name
+          else:
+            name = field.json_name
+          if name in js:
+            # Skip the field which has been serailized already.
+            continue
+          if _IsMapEntry(field):
+            js[name] = {}
+          elif field.label == descriptor.FieldDescriptor.LABEL_REPEATED:
+            js[name] = []
+          else:
+            js[name] = self._FieldToJsonObject(field, field.default_value)
+
+    except ValueError as e:
+      raise SerializeToJsonError(
+          &#39;Failed to serialize {0} field: {1}.&#39;.format(field.name, e))
+
+    return js
+
+  def _FieldToJsonObject(self, field, value):
+    &#34;&#34;&#34;Converts field value according to Proto3 JSON Specification.&#34;&#34;&#34;
+    if field.cpp_type == descriptor.FieldDescriptor.CPPTYPE_MESSAGE:
+      return self._MessageToJsonObject(value)
+    elif field.cpp_type == descriptor.FieldDescriptor.CPPTYPE_ENUM:
+      if self.use_integers_for_enums:
+        return value
+      enum_value = field.enum_type.values_by_number.get(value, None)
+      if enum_value is not None:
+        return enum_value.name
+      else:
+        if field.file.syntax == &#39;proto3&#39;:
+          return value
+        raise SerializeToJsonError(&#39;Enum field contains an integer value &#39;
+                                   &#39;which can not mapped to an enum value.&#39;)
+    elif field.cpp_type == descriptor.FieldDescriptor.CPPTYPE_STRING:
+      if field.type == descriptor.FieldDescriptor.TYPE_BYTES:
+        # Use base64 Data encoding for bytes
+        return base64.b64encode(value).decode(&#39;utf-8&#39;)
+      else:
+        return value
+    elif field.cpp_type == descriptor.FieldDescriptor.CPPTYPE_BOOL:
+      return bool(value)
+    elif field.cpp_type in _INT64_TYPES:
+      return str(value)
+    elif field.cpp_type in _FLOAT_TYPES:
+      if math.isinf(value):
+        if value &lt; 0.0:
+          return _NEG_INFINITY
+        else:
+          return _INFINITY
+      if math.isnan(value):
+        return _NAN
+      if (self.float_format and
+          field.cpp_type == descriptor.FieldDescriptor.CPPTYPE_FLOAT):
+        return float(format(value, self.float_format))
+    return value
+
+  def _AnyMessageToJsonObject(self, message):
+    &#34;&#34;&#34;Converts Any message according to Proto3 JSON Specification.&#34;&#34;&#34;
+    if not message.ListFields():
+      return {}
+    # Must print @type first, use OrderedDict instead of {}
+    js = OrderedDict()
+    type_url = message.type_url
+    js[&#39;@type&#39;] = type_url
+    sub_message = _CreateMessageFromTypeUrl(type_url, self.descriptor_pool)
+    sub_message.ParseFromString(message.value)
+    message_descriptor = sub_message.DESCRIPTOR
+    full_name = message_descriptor.full_name
+    if _IsWrapperMessage(message_descriptor):
+      js[&#39;value&#39;] = self._WrapperMessageToJsonObject(sub_message)
+      return js
+    if full_name in _WKTJSONMETHODS:
+      js[&#39;value&#39;] = methodcaller(_WKTJSONMETHODS[full_name][0],
+                                 sub_message)(self)
+      return js
+    return self._RegularMessageToJsonObject(sub_message, js)
+
+  def _GenericMessageToJsonObject(self, message):
+    &#34;&#34;&#34;Converts message according to Proto3 JSON Specification.&#34;&#34;&#34;
+    # Duration, Timestamp and FieldMask have ToJsonString method to do the
+    # convert. Users can also call the method directly.
+    return message.ToJsonString()
+
+  def _ValueMessageToJsonObject(self, message):
+    &#34;&#34;&#34;Converts Value message according to Proto3 JSON Specification.&#34;&#34;&#34;
+    which = message.WhichOneof(&#39;kind&#39;)
+    # If the Value message is not set treat as null_value when serialize
+    # to JSON. The parse back result will be different from original message.
+    if which is None or which == &#39;null_value&#39;:
+      return None
+    if which == &#39;list_value&#39;:
+      return self._ListValueMessageToJsonObject(message.list_value)
+    if which == &#39;struct_value&#39;:
+      value = message.struct_value
+    else:
+      value = getattr(message, which)
+    oneof_descriptor = message.DESCRIPTOR.fields_by_name[which]
+    return self._FieldToJsonObject(oneof_descriptor, value)
+
+  def _ListValueMessageToJsonObject(self, message):
+    &#34;&#34;&#34;Converts ListValue message according to Proto3 JSON Specification.&#34;&#34;&#34;
+    return [self._ValueMessageToJsonObject(value)
+            for value in message.values]
+
+  def _StructMessageToJsonObject(self, message):
+    &#34;&#34;&#34;Converts Struct message according to Proto3 JSON Specification.&#34;&#34;&#34;
+    fields = message.fields
+    ret = {}
+    for key in fields:
+      ret[key] = self._ValueMessageToJsonObject(fields[key])
+    return ret
+
+  def _WrapperMessageToJsonObject(self, message):
+    return self._FieldToJsonObject(
+        message.DESCRIPTOR.fields_by_name[&#39;value&#39;], message.value)
+
+
+def _IsWrapperMessage(message_descriptor):
+  return message_descriptor.file.name == &#39;google/protobuf/wrappers.proto&#39;
+
+
+def _DuplicateChecker(js):
+  result = {}
+  for name, value in js:
+    if name in result:
+      raise ParseError(&#39;Failed to load JSON: duplicate key {0}.&#39;.format(name))
+    result[name] = value
+  return result
+
+
+def _CreateMessageFromTypeUrl(type_url, descriptor_pool):
+  &#34;&#34;&#34;Creates a message from a type URL.&#34;&#34;&#34;
+  db = symbol_database.Default()
+  pool = db.pool if descriptor_pool is None else descriptor_pool
+  type_name = type_url.split(&#39;/&#39;)[-1]
+  try:
+    message_descriptor = pool.FindMessageTypeByName(type_name)
+  except KeyError:
+    raise TypeError(
+        &#39;Can not find message descriptor by type_url: {0}.&#39;.format(type_url))
+  message_class = db.GetPrototype(message_descriptor)
+  return message_class()
+
+
+def Parse(text, message, ignore_unknown_fields=False, descriptor_pool=None):
+  &#34;&#34;&#34;Parses a JSON representation of a protocol message into a message.
+
+  Args:
+    text: Message JSON representation.
+    message: A protocol buffer message to merge into.
+    ignore_unknown_fields: If True, do not raise errors for unknown fields.
+    descriptor_pool: A Descriptor Pool for resolving types. If None use the
+        default.
+
+  Returns:
+    The same message passed as argument.
+
+  Raises::
+    ParseError: On JSON parsing problems.
+  &#34;&#34;&#34;
+  if not isinstance(text, six.text_type): text = text.decode(&#39;utf-8&#39;)
+  try:
+    js = json.loads(text, object_pairs_hook=_DuplicateChecker)
+  except ValueError as e:
+    raise ParseError(&#39;Failed to load JSON: {0}.&#39;.format(str(e)))
+  return ParseDict(js, message, ignore_unknown_fields, descriptor_pool)
+
+
+def ParseDict(js_dict,
+              message,
+              ignore_unknown_fields=False,
+              descriptor_pool=None):
+  &#34;&#34;&#34;Parses a JSON dictionary representation into a message.
+
+  Args:
+    js_dict: Dict representation of a JSON message.
+    message: A protocol buffer message to merge into.
+    ignore_unknown_fields: If True, do not raise errors for unknown fields.
+    descriptor_pool: A Descriptor Pool for resolving types. If None use the
+      default.
+
+  Returns:
+    The same message passed as argument.
+  &#34;&#34;&#34;
+  parser = _Parser(ignore_unknown_fields, descriptor_pool)
+  parser.ConvertMessage(js_dict, message)
+  return message
+
+
+_INT_OR_FLOAT = six.integer_types + (float,)
+
+
+class _Parser(object):
+  &#34;&#34;&#34;JSON format parser for protocol message.&#34;&#34;&#34;
+
+  def __init__(self, ignore_unknown_fields, descriptor_pool):
+    self.ignore_unknown_fields = ignore_unknown_fields
+    self.descriptor_pool = descriptor_pool
+
+  def ConvertMessage(self, value, message):
+    &#34;&#34;&#34;Convert a JSON object into a message.
+
+    Args:
+      value: A JSON object.
+      message: A WKT or regular protocol message to record the data.
+
+    Raises:
+      ParseError: In case of convert problems.
+    &#34;&#34;&#34;
+    message_descriptor = message.DESCRIPTOR
+    full_name = message_descriptor.full_name
+    if _IsWrapperMessage(message_descriptor):
+      self._ConvertWrapperMessage(value, message)
+    elif full_name in _WKTJSONMETHODS:
+      methodcaller(_WKTJSONMETHODS[full_name][1], value, message)(self)
+    else:
+      self._ConvertFieldValuePair(value, message)
+
+  def _ConvertFieldValuePair(self, js, message):
+    &#34;&#34;&#34;Convert field value pairs into regular message.
+
+    Args:
+      js: A JSON object to convert the field value pairs.
+      message: A regular protocol message to record the data.
+
+    Raises:
+      ParseError: In case of problems converting.
+    &#34;&#34;&#34;
+    names = []
+    message_descriptor = message.DESCRIPTOR
+    fields_by_json_name = dict((f.json_name, f)
+                               for f in message_descriptor.fields)
+    for name in js:
+      try:
+        field = fields_by_json_name.get(name, None)
+        if not field:
+          field = message_descriptor.fields_by_name.get(name, None)
+        if not field and _VALID_EXTENSION_NAME.match(name):
+          if not message_descriptor.is_extendable:
+            raise ParseError(&#39;Message type {0} does not have extensions&#39;.format(
+                message_descriptor.full_name))
+          identifier = name[1:-1]  # strip [] brackets
+          # pylint: disable=protected-access
+          field = message.Extensions._FindExtensionByName(identifier)
+          # pylint: enable=protected-access
+          if not field:
+            # Try looking for extension by the message type name, dropping the
+            # field name following the final . separator in full_name.
+            identifier = &#39;.&#39;.join(identifier.split(&#39;.&#39;)[:-1])
+            # pylint: disable=protected-access
+            field = message.Extensions._FindExtensionByName(identifier)
+            # pylint: enable=protected-access
+        if not field:
+          if self.ignore_unknown_fields:
+            continue
+          raise ParseError(
+              (&#39;Message type &#34;{0}&#34; has no field named &#34;{1}&#34;.\n&#39;
+               &#39; Available Fields(except extensions): {2}&#39;).format(
+                   message_descriptor.full_name, name,
+                   [f.json_name for f in message_descriptor.fields]))
+        if name in names:
+          raise ParseError(&#39;Message type &#34;{0}&#34; should not have multiple &#39;
+                           &#39;&#34;{1}&#34; fields.&#39;.format(
+                               message.DESCRIPTOR.full_name, name))
+        names.append(name)
+        # Check no other oneof field is parsed.
+        if field.containing_oneof is not None:
+          oneof_name = field.containing_oneof.name
+          if oneof_name in names:
+            raise ParseError(&#39;Message type &#34;{0}&#34; should not have multiple &#39;
+                             &#39;&#34;{1}&#34; oneof fields.&#39;.format(
+                                 message.DESCRIPTOR.full_name, oneof_name))
+          names.append(oneof_name)
+
+        value = js[name]
+        if value is None:
+          if (field.cpp_type == descriptor.FieldDescriptor.CPPTYPE_MESSAGE
+              and field.message_type.full_name == &#39;google.protobuf.Value&#39;):
+            sub_message = getattr(message, field.name)
+            sub_message.null_value = 0
+          else:
+            message.ClearField(field.name)
+          continue
+
+        # Parse field value.
+        if _IsMapEntry(field):
+          message.ClearField(field.name)
+          self._ConvertMapFieldValue(value, message, field)
+        elif field.label == descriptor.FieldDescriptor.LABEL_REPEATED:
+          message.ClearField(field.name)
+          if not isinstance(value, list):
+            raise ParseError(&#39;repeated field {0} must be in [] which is &#39;
+                             &#39;{1}.&#39;.format(name, value))
+          if field.cpp_type == descriptor.FieldDescriptor.CPPTYPE_MESSAGE:
+            # Repeated message field.
+            for item in value:
+              sub_message = getattr(message, field.name).add()
+              # None is a null_value in Value.
+              if (item is None and
+                  sub_message.DESCRIPTOR.full_name != &#39;google.protobuf.Value&#39;):
+                raise ParseError(&#39;null is not allowed to be used as an element&#39;
+                                 &#39; in a repeated field.&#39;)
+              self.ConvertMessage(item, sub_message)
+          else:
+            # Repeated scalar field.
+            for item in value:
+              if item is None:
+                raise ParseError(&#39;null is not allowed to be used as an element&#39;
+                                 &#39; in a repeated field.&#39;)
+              getattr(message, field.name).append(
+                  _ConvertScalarFieldValue(item, field))
+        elif field.cpp_type == descriptor.FieldDescriptor.CPPTYPE_MESSAGE:
+          if field.is_extension:
+            sub_message = message.Extensions[field]
+          else:
+            sub_message = getattr(message, field.name)
+          sub_message.SetInParent()
+          self.ConvertMessage(value, sub_message)
+        else:
+          if field.is_extension:
+            message.Extensions[field] = _ConvertScalarFieldValue(value, field)
+          else:
+            setattr(message, field.name, _ConvertScalarFieldValue(value, field))
+      except ParseError as e:
+        if field and field.containing_oneof is None:
+          raise ParseError(&#39;Failed to parse {0} field: {1}.&#39;.format(name, e))
+        else:
+          raise ParseError(str(e))
+      except ValueError as e:
+        raise ParseError(&#39;Failed to parse {0} field: {1}.&#39;.format(name, e))
+      except TypeError as e:
+        raise ParseError(&#39;Failed to parse {0} field: {1}.&#39;.format(name, e))
+
+  def _ConvertAnyMessage(self, value, message):
+    &#34;&#34;&#34;Convert a JSON representation into Any message.&#34;&#34;&#34;
+    if isinstance(value, dict) and not value:
+      return
+    try:
+      type_url = value[&#39;@type&#39;]
+    except KeyError:
+      raise ParseError(&#39;@type is missing when parsing any message.&#39;)
+
+    sub_message = _CreateMessageFromTypeUrl(type_url, self.descriptor_pool)
+    message_descriptor = sub_message.DESCRIPTOR
+    full_name = message_descriptor.full_name
+    if _IsWrapperMessage(message_descriptor):
+      self._ConvertWrapperMessage(value[&#39;value&#39;], sub_message)
+    elif full_name in _WKTJSONMETHODS:
+      methodcaller(
+          _WKTJSONMETHODS[full_name][1], value[&#39;value&#39;], sub_message)(self)
+    else:
+      del value[&#39;@type&#39;]
+      self._ConvertFieldValuePair(value, sub_message)
+      value[&#39;@type&#39;] = type_url
+    # Sets Any message
+    message.value = sub_message.SerializeToString()
+    message.type_url = type_url
+
+  def _ConvertGenericMessage(self, value, message):
+    &#34;&#34;&#34;Convert a JSON representation into message with FromJsonString.&#34;&#34;&#34;
+    # Duration, Timestamp, FieldMask have a FromJsonString method to do the
+    # conversion. Users can also call the method directly.
+    try:
+      message.FromJsonString(value)
+    except ValueError as e:
+      raise ParseError(e)
+
+  def _ConvertValueMessage(self, value, message):
+    &#34;&#34;&#34;Convert a JSON representation into Value message.&#34;&#34;&#34;
+    if isinstance(value, dict):
+      self._ConvertStructMessage(value, message.struct_value)
+    elif isinstance(value, list):
+      self. _ConvertListValueMessage(value, message.list_value)
+    elif value is None:
+      message.null_value = 0
+    elif isinstance(value, bool):
+      message.bool_value = value
+    elif isinstance(value, six.string_types):
+      message.string_value = value
+    elif isinstance(value, _INT_OR_FLOAT):
+      message.number_value = value
+    else:
+      raise ParseError(&#39;Unexpected type for Value message.&#39;)
+
+  def _ConvertListValueMessage(self, value, message):
+    &#34;&#34;&#34;Convert a JSON representation into ListValue message.&#34;&#34;&#34;
+    if not isinstance(value, list):
+      raise ParseError(
+          &#39;ListValue must be in [] which is {0}.&#39;.format(value))
+    message.ClearField(&#39;values&#39;)
+    for item in value:
+      self._ConvertValueMessage(item, message.values.add())
+
+  def _ConvertStructMessage(self, value, message):
+    &#34;&#34;&#34;Convert a JSON representation into Struct message.&#34;&#34;&#34;
+    if not isinstance(value, dict):
+      raise ParseError(
+          &#39;Struct must be in a dict which is {0}.&#39;.format(value))
+    # Clear will mark the struct as modified so it will be created even if
+    # there are no values.
+    message.Clear()
+    for key in value:
+      self._ConvertValueMessage(value[key], message.fields[key])
+    return
+
+  def _ConvertWrapperMessage(self, value, message):
+    &#34;&#34;&#34;Convert a JSON representation into Wrapper message.&#34;&#34;&#34;
+    field = message.DESCRIPTOR.fields_by_name[&#39;value&#39;]
+    setattr(message, &#39;value&#39;, _ConvertScalarFieldValue(value, field))
+
+  def _ConvertMapFieldValue(self, value, message, field):
+    &#34;&#34;&#34;Convert map field value for a message map field.
+
+    Args:
+      value: A JSON object to convert the map field value.
+      message: A protocol message to record the converted data.
+      field: The descriptor of the map field to be converted.
+
+    Raises:
+      ParseError: In case of convert problems.
+    &#34;&#34;&#34;
+    if not isinstance(value, dict):
+      raise ParseError(
+          &#39;Map field {0} must be in a dict which is {1}.&#39;.format(
+              field.name, value))
+    key_field = field.message_type.fields_by_name[&#39;key&#39;]
+    value_field = field.message_type.fields_by_name[&#39;value&#39;]
+    for key in value:
+      key_value = _ConvertScalarFieldValue(key, key_field, True)
+      if value_field.cpp_type == descriptor.FieldDescriptor.CPPTYPE_MESSAGE:
+        self.ConvertMessage(value[key], getattr(
+            message, field.name)[key_value])
+      else:
+        getattr(message, field.name)[key_value] = _ConvertScalarFieldValue(
+            value[key], value_field)
+
+
+def _ConvertScalarFieldValue(value, field, require_str=False):
+  &#34;&#34;&#34;Convert a single scalar field value.
+
+  Args:
+    value: A scalar value to convert the scalar field value.
+    field: The descriptor of the field to convert.
+    require_str: If True, the field value must be a str.
+
+  Returns:
+    The converted scalar field value
+
+  Raises:
+    ParseError: In case of convert problems.
+  &#34;&#34;&#34;
+  if field.cpp_type in _INT_TYPES:
+    return _ConvertInteger(value)
+  elif field.cpp_type in _FLOAT_TYPES:
+    return _ConvertFloat(value)
+  elif field.cpp_type == descriptor.FieldDescriptor.CPPTYPE_BOOL:
+    return _ConvertBool(value, require_str)
+  elif field.cpp_type == descriptor.FieldDescriptor.CPPTYPE_STRING:
+    if field.type == descriptor.FieldDescriptor.TYPE_BYTES:
+      return base64.b64decode(value)
+    else:
+      # Checking for unpaired surrogates appears to be unreliable,
+      # depending on the specific Python version, so we check manually.
+      if _UNPAIRED_SURROGATE_PATTERN.search(value):
+        raise ParseError(&#39;Unpaired surrogate&#39;)
+      return value
+  elif field.cpp_type == descriptor.FieldDescriptor.CPPTYPE_ENUM:
+    # Convert an enum value.
+    enum_value = field.enum_type.values_by_name.get(value, None)
+    if enum_value is None:
+      try:
+        number = int(value)
+        enum_value = field.enum_type.values_by_number.get(number, None)
+      except ValueError:
+        raise ParseError(&#39;Invalid enum value {0} for enum type {1}.&#39;.format(
+            value, field.enum_type.full_name))
+      if enum_value is None:
+        if field.file.syntax == &#39;proto3&#39;:
+          # Proto3 accepts unknown enums.
+          return number
+        raise ParseError(&#39;Invalid enum value {0} for enum type {1}.&#39;.format(
+            value, field.enum_type.full_name))
+    return enum_value.number
+
+
+def _ConvertInteger(value):
+  &#34;&#34;&#34;Convert an integer.
+
+  Args:
+    value: A scalar value to convert.
+
+  Returns:
+    The integer value.
+
+  Raises:
+    ParseError: If an integer couldn&#39;t be consumed.
+  &#34;&#34;&#34;
+  if isinstance(value, float) and not value.is_integer():
+    raise ParseError(&#39;Couldn\&#39;t parse integer: {0}.&#39;.format(value))
+
+  if isinstance(value, six.text_type) and value.find(&#39; &#39;) != -1:
+    raise ParseError(&#39;Couldn\&#39;t parse integer: &#34;{0}&#34;.&#39;.format(value))
+
+  return int(value)
+
+
+def _ConvertFloat(value):
+  &#34;&#34;&#34;Convert an floating point number.&#34;&#34;&#34;
+  if value == &#39;nan&#39;:
+    raise ParseError(&#39;Couldn\&#39;t parse float &#34;nan&#34;, use &#34;NaN&#34; instead.&#39;)
+  try:
+    # Assume Python compatible syntax.
+    return float(value)
+  except ValueError:
+    # Check alternative spellings.
+    if value == _NEG_INFINITY:
+      return float(&#39;-inf&#39;)
+    elif value == _INFINITY:
+      return float(&#39;inf&#39;)
+    elif value == _NAN:
+      return float(&#39;nan&#39;)
+    else:
+      raise ParseError(&#39;Couldn\&#39;t parse float: {0}.&#39;.format(value))
+
+
+def _ConvertBool(value, require_str):
+  &#34;&#34;&#34;Convert a boolean value.
+
+  Args:
+    value: A scalar value to convert.
+    require_str: If True, value must be a str.
+
+  Returns:
+    The bool parsed.
+
+  Raises:
+    ParseError: If a boolean value couldn&#39;t be consumed.
+  &#34;&#34;&#34;
+  if require_str:
+    if value == &#39;true&#39;:
+      return True
+    elif value == &#39;false&#39;:
+      return False
+    else:
+      raise ParseError(&#39;Expected &#34;true&#34; or &#34;false&#34;, not {0}.&#39;.format(value))
+
+  if not isinstance(value, bool):
+    raise ParseError(&#39;Expected true or false without quotes.&#39;)
+  return value
+
+_WKTJSONMETHODS = {
+    &#39;google.protobuf.Any&#39;: [&#39;_AnyMessageToJsonObject&#39;,
+                            &#39;_ConvertAnyMessage&#39;],
+    &#39;google.protobuf.Duration&#39;: [&#39;_GenericMessageToJsonObject&#39;,
+                                 &#39;_ConvertGenericMessage&#39;],
+    &#39;google.protobuf.FieldMask&#39;: [&#39;_GenericMessageToJsonObject&#39;,
+                                  &#39;_ConvertGenericMessage&#39;],
+    &#39;google.protobuf.ListValue&#39;: [&#39;_ListValueMessageToJsonObject&#39;,
+                                  &#39;_ConvertListValueMessage&#39;],
+    &#39;google.protobuf.Struct&#39;: [&#39;_StructMessageToJsonObject&#39;,
+                               &#39;_ConvertStructMessage&#39;],
+    &#39;google.protobuf.Timestamp&#39;: [&#39;_GenericMessageToJsonObject&#39;,
+                                  &#39;_ConvertGenericMessage&#39;],
+    &#39;google.protobuf.Value&#39;: [&#39;_ValueMessageToJsonObject&#39;,
+                              &#39;_ConvertValueMessage&#39;]
+}</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="google.protobuf.json_format.MessageToDict"><code class="name flex">
+<span>def <span class="ident">MessageToDict</span></span>(<span>message, including_default_value_fields=False, preserving_proto_field_name=False, use_integers_for_enums=False, descriptor_pool=None, float_precision=None)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Converts protobuf message to a dictionary.</p>
+<p>When the dictionary is encoded to JSON, it conforms to proto3 JSON spec.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>message</code></strong></dt>
+<dd>The protocol buffers message instance to serialize.</dd>
+<dt><strong><code>including_default_value_fields</code></strong></dt>
+<dd>If True, singular primitive fields,
+repeated fields, and map fields will always be serialized.
+If
+False, only serialize non-empty fields.
+Singular message fields
+and oneof fields are not affected by this option.</dd>
+<dt><strong><code>preserving_proto_field_name</code></strong></dt>
+<dd>If True, use the original proto field
+names as defined in the .proto file. If False, convert the field
+names to lowerCamelCase.</dd>
+<dt><strong><code>use_integers_for_enums</code></strong></dt>
+<dd>If true, print integers instead of enum names.</dd>
+<dt><strong><code>descriptor_pool</code></strong></dt>
+<dd>A Descriptor Pool for resolving types. If None use the
+default.</dd>
+<dt><strong><code>float_precision</code></strong></dt>
+<dd>If set, use this to specify float field valid digits.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A dict representation of the protocol buffer message.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def MessageToDict(
+    message,
+    including_default_value_fields=False,
+    preserving_proto_field_name=False,
+    use_integers_for_enums=False,
+    descriptor_pool=None,
+    float_precision=None):
+  &#34;&#34;&#34;Converts protobuf message to a dictionary.
+
+  When the dictionary is encoded to JSON, it conforms to proto3 JSON spec.
+
+  Args:
+    message: The protocol buffers message instance to serialize.
+    including_default_value_fields: If True, singular primitive fields,
+        repeated fields, and map fields will always be serialized.  If
+        False, only serialize non-empty fields.  Singular message fields
+        and oneof fields are not affected by this option.
+    preserving_proto_field_name: If True, use the original proto field
+        names as defined in the .proto file. If False, convert the field
+        names to lowerCamelCase.
+    use_integers_for_enums: If true, print integers instead of enum names.
+    descriptor_pool: A Descriptor Pool for resolving types. If None use the
+        default.
+    float_precision: If set, use this to specify float field valid digits.
+
+  Returns:
+    A dict representation of the protocol buffer message.
+  &#34;&#34;&#34;
+  printer = _Printer(
+      including_default_value_fields,
+      preserving_proto_field_name,
+      use_integers_for_enums,
+      descriptor_pool,
+      float_precision=float_precision)
+  # pylint: disable=protected-access
+  return printer._MessageToJsonObject(message)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.json_format.MessageToJson"><code class="name flex">
+<span>def <span class="ident">MessageToJson</span></span>(<span>message, including_default_value_fields=False, preserving_proto_field_name=False, indent=2, sort_keys=False, use_integers_for_enums=False, descriptor_pool=None, float_precision=None)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Converts protobuf message to JSON format.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>message</code></strong></dt>
+<dd>The protocol buffers message instance to serialize.</dd>
+<dt><strong><code>including_default_value_fields</code></strong></dt>
+<dd>If True, singular primitive fields,
+repeated fields, and map fields will always be serialized.
+If
+False, only serialize non-empty fields.
+Singular message fields
+and oneof fields are not affected by this option.</dd>
+<dt><strong><code>preserving_proto_field_name</code></strong></dt>
+<dd>If True, use the original proto field
+names as defined in the .proto file. If False, convert the field
+names to lowerCamelCase.</dd>
+<dt><strong><code>indent</code></strong></dt>
+<dd>The JSON object will be pretty-printed with this indent level.
+An indent level of 0 or negative will only insert newlines.</dd>
+<dt><strong><code>sort_keys</code></strong></dt>
+<dd>If True, then the output will be sorted by field names.</dd>
+<dt><strong><code>use_integers_for_enums</code></strong></dt>
+<dd>If true, print integers instead of enum names.</dd>
+<dt><strong><code>descriptor_pool</code></strong></dt>
+<dd>A Descriptor Pool for resolving types. If None use the
+default.</dd>
+<dt><strong><code>float_precision</code></strong></dt>
+<dd>If set, use this to specify float field valid digits.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A string containing the JSON formatted protocol buffer message.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def MessageToJson(
+    message,
+    including_default_value_fields=False,
+    preserving_proto_field_name=False,
+    indent=2,
+    sort_keys=False,
+    use_integers_for_enums=False,
+    descriptor_pool=None,
+    float_precision=None):
+  &#34;&#34;&#34;Converts protobuf message to JSON format.
+
+  Args:
+    message: The protocol buffers message instance to serialize.
+    including_default_value_fields: If True, singular primitive fields,
+        repeated fields, and map fields will always be serialized.  If
+        False, only serialize non-empty fields.  Singular message fields
+        and oneof fields are not affected by this option.
+    preserving_proto_field_name: If True, use the original proto field
+        names as defined in the .proto file. If False, convert the field
+        names to lowerCamelCase.
+    indent: The JSON object will be pretty-printed with this indent level.
+        An indent level of 0 or negative will only insert newlines.
+    sort_keys: If True, then the output will be sorted by field names.
+    use_integers_for_enums: If true, print integers instead of enum names.
+    descriptor_pool: A Descriptor Pool for resolving types. If None use the
+        default.
+    float_precision: If set, use this to specify float field valid digits.
+
+  Returns:
+    A string containing the JSON formatted protocol buffer message.
+  &#34;&#34;&#34;
+  printer = _Printer(
+      including_default_value_fields,
+      preserving_proto_field_name,
+      use_integers_for_enums,
+      descriptor_pool,
+      float_precision=float_precision)
+  return printer.ToJsonString(message, indent, sort_keys)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.json_format.Parse"><code class="name flex">
+<span>def <span class="ident">Parse</span></span>(<span>text, message, ignore_unknown_fields=False, descriptor_pool=None)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Parses a JSON representation of a protocol message into a message.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>text</code></strong></dt>
+<dd>Message JSON representation.</dd>
+<dt><strong><code>message</code></strong></dt>
+<dd>A protocol buffer message to merge into.</dd>
+<dt><strong><code>ignore_unknown_fields</code></strong></dt>
+<dd>If True, do not raise errors for unknown fields.</dd>
+<dt><strong><code>descriptor_pool</code></strong></dt>
+<dd>A Descriptor Pool for resolving types. If None use the
+default.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt>The same message passed as argument.</dt>
+<dt><code>Raises</code>::</dt>
+<dd>&nbsp;</dd>
+</dl>
+<p>ParseError: On JSON parsing problems.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Parse(text, message, ignore_unknown_fields=False, descriptor_pool=None):
+  &#34;&#34;&#34;Parses a JSON representation of a protocol message into a message.
+
+  Args:
+    text: Message JSON representation.
+    message: A protocol buffer message to merge into.
+    ignore_unknown_fields: If True, do not raise errors for unknown fields.
+    descriptor_pool: A Descriptor Pool for resolving types. If None use the
+        default.
+
+  Returns:
+    The same message passed as argument.
+
+  Raises::
+    ParseError: On JSON parsing problems.
+  &#34;&#34;&#34;
+  if not isinstance(text, six.text_type): text = text.decode(&#39;utf-8&#39;)
+  try:
+    js = json.loads(text, object_pairs_hook=_DuplicateChecker)
+  except ValueError as e:
+    raise ParseError(&#39;Failed to load JSON: {0}.&#39;.format(str(e)))
+  return ParseDict(js, message, ignore_unknown_fields, descriptor_pool)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.json_format.ParseDict"><code class="name flex">
+<span>def <span class="ident">ParseDict</span></span>(<span>js_dict, message, ignore_unknown_fields=False, descriptor_pool=None)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Parses a JSON dictionary representation into a message.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>js_dict</code></strong></dt>
+<dd>Dict representation of a JSON message.</dd>
+<dt><strong><code>message</code></strong></dt>
+<dd>A protocol buffer message to merge into.</dd>
+<dt><strong><code>ignore_unknown_fields</code></strong></dt>
+<dd>If True, do not raise errors for unknown fields.</dd>
+<dt><strong><code>descriptor_pool</code></strong></dt>
+<dd>A Descriptor Pool for resolving types. If None use the
+default.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>The same message passed as argument.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def ParseDict(js_dict,
+              message,
+              ignore_unknown_fields=False,
+              descriptor_pool=None):
+  &#34;&#34;&#34;Parses a JSON dictionary representation into a message.
+
+  Args:
+    js_dict: Dict representation of a JSON message.
+    message: A protocol buffer message to merge into.
+    ignore_unknown_fields: If True, do not raise errors for unknown fields.
+    descriptor_pool: A Descriptor Pool for resolving types. If None use the
+      default.
+
+  Returns:
+    The same message passed as argument.
+  &#34;&#34;&#34;
+  parser = _Parser(ignore_unknown_fields, descriptor_pool)
+  parser.ConvertMessage(js_dict, message)
+  return message</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="google.protobuf.json_format.Error"><code class="flex name class">
+<span>class <span class="ident">Error</span></span>
+<span>(</span><span>...)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Top-level module error for json_format.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Error(Exception):
+  &#34;&#34;&#34;Top-level module error for json_format.&#34;&#34;&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="google.protobuf.json_format.ParseError" href="#google.protobuf.json_format.ParseError">ParseError</a></li>
+<li><a title="google.protobuf.json_format.SerializeToJsonError" href="#google.protobuf.json_format.SerializeToJsonError">SerializeToJsonError</a></li>
+</ul>
+</dd>
+<dt id="google.protobuf.json_format.ParseError"><code class="flex name class">
+<span>class <span class="ident">ParseError</span></span>
+<span>(</span><span>...)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Thrown in case of parsing error.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ParseError(Error):
+  &#34;&#34;&#34;Thrown in case of parsing error.&#34;&#34;&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="google.protobuf.json_format.Error" href="#google.protobuf.json_format.Error">Error</a></li>
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="google.protobuf.json_format.SerializeToJsonError"><code class="flex name class">
+<span>class <span class="ident">SerializeToJsonError</span></span>
+<span>(</span><span>...)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Thrown if serialization to JSON fails.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SerializeToJsonError(Error):
+  &#34;&#34;&#34;Thrown if serialization to JSON fails.&#34;&#34;&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="google.protobuf.json_format.Error" href="#google.protobuf.json_format.Error">Error</a></li>
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="google.protobuf" href="index.html">google.protobuf</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="google.protobuf.json_format.MessageToDict" href="#google.protobuf.json_format.MessageToDict">MessageToDict</a></code></li>
+<li><code><a title="google.protobuf.json_format.MessageToJson" href="#google.protobuf.json_format.MessageToJson">MessageToJson</a></code></li>
+<li><code><a title="google.protobuf.json_format.Parse" href="#google.protobuf.json_format.Parse">Parse</a></code></li>
+<li><code><a title="google.protobuf.json_format.ParseDict" href="#google.protobuf.json_format.ParseDict">ParseDict</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="google.protobuf.json_format.Error" href="#google.protobuf.json_format.Error">Error</a></code></h4>
+</li>
+<li>
+<h4><code><a title="google.protobuf.json_format.ParseError" href="#google.protobuf.json_format.ParseError">ParseError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="google.protobuf.json_format.SerializeToJsonError" href="#google.protobuf.json_format.SerializeToJsonError">SerializeToJsonError</a></code></h4>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.4</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

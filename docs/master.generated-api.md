@@ -75,9 +75,13 @@
     - [ObjectstoreInfo](#objectstoreinfo)
     - [Ownership](#ownership)
     - [Ownership.AccessControl](#ownershipaccesscontrol)
+    - [Ownership.PublicAccessControl](#ownershippublicaccesscontrol)
     - [ReplicaPlacementSpec](#replicaplacementspec)
     - [ReplicaSet](#replicaset)
     - [Report](#report)
+    - [RestoreVolSnashotSchedule](#restorevolsnashotschedule)
+    - [RestoreVolStoragePolicy](#restorevolstoragepolicy)
+    - [RestoreVolumeSpec](#restorevolumespec)
     - [RuntimeStateMap](#runtimestatemap)
     - [RuntimeStateMap.RuntimeStateEntry](#runtimestatemapruntimestateentry)
     - [SdkAlertsAlertTypeQuery](#sdkalertsalerttypequery)
@@ -385,6 +389,7 @@
     - [OperationFlags](#operationflags)
     - [Ownership.AccessType](#ownershipaccesstype)
     - [ResourceType](#resourcetype)
+    - [RestoreParamBoolType](#restoreparambooltype)
     - [SdkCloudBackupOpType](#sdkcloudbackupoptype)
     - [SdkCloudBackupRequestedState](#sdkcloudbackuprequestedstate)
     - [SdkCloudBackupStatusType](#sdkcloudbackupstatustype)
@@ -1948,6 +1953,18 @@ NOTE: To create an "admin" user which has access to any resource set the group v
 | ----- | ---- | ----------- |
 | groups | [map Ownership.AccessControl.GroupsEntry](#ownershipaccesscontrolgroupsentry) | Group access to resource which must match the group set in the authorization token. Can be set by the owner or the system administrator only. Possible values are: 1. no groups: Means no groups are given access. 2. `["*"]`: All groups are allowed. 3. `["group1", "group2"]`: Only certain groups are allowed. In this example only _group1_ and _group2_ are allowed. |
 | collaborators | [map Ownership.AccessControl.CollaboratorsEntry](#ownershipaccesscontrolcollaboratorsentry) | Collaborator access to resource gives access to other user. Must be the username (unique id) set in the authorization token. The owner or the administrator can set this value. Possible values are: 1. no collaborators: Means no users are given access. 2. `["*"]`: All users are allowed. 3. `["username1", "username2"]`: Only certain usernames are allowed. In this example only _username1_ and _username2_ are allowed. |
+| public | [ Ownership.PublicAccessControl](#ownershippublicaccesscontrol) | Public access to resource may be assigned for access by the public userd |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## Ownership.PublicAccessControl {#ownershippublicaccesscontrol}
+PublicAccessControl allows assigning public ownership
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| type | [ Ownership.AccessType](#ownershipaccesstype) | AccessType declares which level of public access is allowed |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -1988,6 +2005,61 @@ coded - for clustered storage arrays
 | ----- | ---- | ----------- |
 | directories | [ int64](#int64) | Directory count |
 | files | [ int64](#int64) | File count |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## RestoreVolSnashotSchedule {#restorevolsnashotschedule}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| schedule | [ string](#string) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## RestoreVolStoragePolicy {#restorevolstoragepolicy}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| policy | [ string](#string) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## RestoreVolumeSpec {#restorevolumespec}
+RestoreSpec allows some of the restore volume properties of to be modified
+while restoring the cloud baackup. All pointer fields with nil value will 
+inherit corresponding field value from backup's spec.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| ha_level | [ int64](#int64) | HaLevel specifies the number of copies of data. |
+| cos | [ CosType](#costype) | Cos specifies the relative class of service. |
+| io_profile | [ IoProfile](#ioprofile) | IoProfile provides a hint about application using this volume. |
+| snapshot_interval | [ uint32](#uint32) | SnapshotInterval in minutes, set to 0 to disable snapshots |
+| shared | [ RestoreParamBoolType](#restoreparambooltype) | Shared is true if this volume can be concurrently accessed by multiple users. |
+| replica_set | [ ReplicaSet](#replicaset) | ReplicaSet is the desired set of nodes for the volume data. |
+| aggregation_level | [ uint32](#uint32) | Aggregation level Specifies the number of parts the volume can be aggregated from. |
+| snapshot_schedule | [ RestoreVolSnashotSchedule](#restorevolsnashotschedule) | SnapshotSchedule a well known string that specifies when snapshots should be taken. |
+| sticky | [ RestoreParamBoolType](#restoreparambooltype) | Sticky volumes cannot be deleted until the flag is removed. |
+| group | [ Group](#group) | Group identifies a consistency group |
+| group_enforced | [ bool](#bool) | GroupEnforced is true if consistency group creation is enforced. |
+| journal | [ RestoreParamBoolType](#restoreparambooltype) | Journal is true if data for the volume goes into the journal. |
+| sharedv4 | [ RestoreParamBoolType](#restoreparambooltype) | Sharedv4 is true if this volume can be accessed via sharedv4. |
+| queue_depth | [ uint32](#uint32) | QueueDepth defines the desired block device queue depth |
+| nodiscard | [ RestoreParamBoolType](#restoreparambooltype) | Nodiscard specifies if the volume will be mounted with discard support disabled. i.e. FS will not release allocated blocks back to the backing storage pool. |
+| io_strategy | [ IoStrategy](#iostrategy) | IoStrategy preferred strategy for I/O. |
+| placement_strategy | [ VolumePlacementStrategy](#volumeplacementstrategy) | PlacementStrategy specifies a spec to indicate where to place the volume. |
+| storage_policy | [ RestoreVolStoragePolicy](#restorevolstoragepolicy) | StoragePolicy if applied/specified while creating volume |
+| ownership | [ Ownership](#ownership) | Ownership |
+| export_spec | [ ExportSpec](#exportspec) | ExportSpec defines how the volume should be exported. |
+| fp_preference | [ RestoreParamBoolType](#restoreparambooltype) | fastpath extensions |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -2473,6 +2545,8 @@ a cloud provider
 | credential_id | [ string](#string) | The credential to be used for restore operation |
 | node_id | [ string](#string) | Optional for provisioning restore volume (ResoreVolumeName should not be specified) |
 | task_id | [ string](#string) | TaskId of the task performing this restore |
+| spec | [ RestoreVolumeSpec](#restorevolumespec) | Modifiable Restore volume spec |
+| locator | [ VolumeLocator](#volumelocator) | RestoreVolume locator |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3758,6 +3832,9 @@ The following shows the supported format for SdkRule:
 
 Values can also be set to `*`, or start or end with `*` to allow multiple matches in services or apis.
 
+Services and APIs can also be denied by prefixing the value with a `!`. Note that on rule conflicts,
+denial will always be chosen.
+
 ### Examples
 
 * Allow any call:
@@ -3784,6 +3861,14 @@ SdkRule:
     Apis: ["*enumerate*"]
   - Services: ["*"]
     Apis: ["inspect*"]
+```
+
+* Allow all volume call except create
+
+```yaml
+SdkRule:
+  - Services: ["volumes"]
+    Apis: ["*", "!create"]
 ```
 
 
@@ -5576,6 +5661,8 @@ OpenStorageFilesystemTrim service APIs()
 | IO_PROFILE_DB_REMOTE | 3 | none |
 | IO_PROFILE_CMS | 4 | none |
 | IO_PROFILE_SYNC_SHARED | 5 | none |
+| IO_PROFILE_AUTO | 6 | none |
+| IO_PROFILE_BKUPSRC | 7 | IO_PROFILE_BKUPSRC inherits cloudbackup's IOprofile |
 
 
 
@@ -5634,6 +5721,18 @@ used for.
 | RESOURCE_TYPE_CLUSTER | 3 | none |
 | RESOURCE_TYPE_DRIVE | 4 | none |
 | RESOURCE_TYPE_POOL | 5 | none |
+
+
+
+
+## RestoreParamBoolType {#restoreparambooltype}
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| PARAM_BKUPSRC | 0 | Default: whateever was cloudbakup's option for the parameter |
+| PARAM_FALSE | 1 | none |
+| PARAM_TRUE | 2 | none |
 
 
 
@@ -5765,7 +5864,7 @@ client and server applications
 | ---- | ------ | ----------- |
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
-| Minor | 69 | SDK version minor value of this specification |
+| Minor | 73 | SDK version minor value of this specification |
 | Patch | 0 | SDK version patch value of this specification |
 
 

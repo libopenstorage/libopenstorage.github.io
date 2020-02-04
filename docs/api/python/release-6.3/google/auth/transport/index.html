@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.4" />
+<title>google.auth.transport API documentation</title>
+<meta name="description" content="Transport - HTTP client library support …" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>google.auth.transport</code></h1>
+</header>
+<section id="section-intro">
+<p>Transport - HTTP client library support.</p>
+<p>:mod:<a title="google.auth" href="../index.html"><code>google.auth</code></a> is designed to work with various HTTP client libraries such
+as urllib3 and requests. In order to work across these libraries with different
+interfaces some abstraction is needed.</p>
+<p>This module provides two interfaces that are implemented by transport adapters
+to support HTTP libraries. :class:<a title="google.auth.transport.Request" href="#google.auth.transport.Request"><code>Request</code></a> defines the interface expected by
+:mod:<a title="google.auth" href="../index.html"><code>google.auth</code></a> to make requests. :class:<a title="google.auth.transport.Response" href="#google.auth.transport.Response"><code>Response</code></a> defines the interface
+for the return value of :class:<a title="google.auth.transport.Request" href="#google.auth.transport.Request"><code>Request</code></a>.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Copyright 2016 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the &#34;License&#34;);
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+&#34;&#34;&#34;Transport - HTTP client library support.
+
+:mod:`google.auth` is designed to work with various HTTP client libraries such
+as urllib3 and requests. In order to work across these libraries with different
+interfaces some abstraction is needed.
+
+This module provides two interfaces that are implemented by transport adapters
+to support HTTP libraries. :class:`Request` defines the interface expected by
+:mod:`google.auth` to make requests. :class:`Response` defines the interface
+for the return value of :class:`Request`.
+&#34;&#34;&#34;
+
+import abc
+
+import six
+from six.moves import http_client
+
+DEFAULT_REFRESH_STATUS_CODES = (http_client.UNAUTHORIZED,)
+&#34;&#34;&#34;Sequence[int]:  Which HTTP status code indicate that credentials should be
+refreshed and a request should be retried.
+&#34;&#34;&#34;
+
+DEFAULT_MAX_REFRESH_ATTEMPTS = 2
+&#34;&#34;&#34;int: How many times to refresh the credentials and retry a request.&#34;&#34;&#34;
+
+
+@six.add_metaclass(abc.ABCMeta)
+class Response(object):
+    &#34;&#34;&#34;HTTP Response data.&#34;&#34;&#34;
+
+    @abc.abstractproperty
+    def status(self):
+        &#34;&#34;&#34;int: The HTTP status code.&#34;&#34;&#34;
+        raise NotImplementedError(&#34;status must be implemented.&#34;)
+
+    @abc.abstractproperty
+    def headers(self):
+        &#34;&#34;&#34;Mapping[str, str]: The HTTP response headers.&#34;&#34;&#34;
+        raise NotImplementedError(&#34;headers must be implemented.&#34;)
+
+    @abc.abstractproperty
+    def data(self):
+        &#34;&#34;&#34;bytes: The response body.&#34;&#34;&#34;
+        raise NotImplementedError(&#34;data must be implemented.&#34;)
+
+
+@six.add_metaclass(abc.ABCMeta)
+class Request(object):
+    &#34;&#34;&#34;Interface for a callable that makes HTTP requests.
+
+    Specific transport implementations should provide an implementation of
+    this that adapts their specific request / response API.
+
+    .. automethod:: __call__
+    &#34;&#34;&#34;
+
+    @abc.abstractmethod
+    def __call__(
+        self, url, method=&#34;GET&#34;, body=None, headers=None, timeout=None, **kwargs
+    ):
+        &#34;&#34;&#34;Make an HTTP request.
+
+        Args:
+            url (str): The URI to be requested.
+            method (str): The HTTP method to use for the request. Defaults
+                to &#39;GET&#39;.
+            body (bytes): The payload / body in HTTP request.
+            headers (Mapping[str, str]): Request headers.
+            timeout (Optional[int]): The number of seconds to wait for a
+                response from the server. If not specified or if None, the
+                transport-specific default timeout will be used.
+            kwargs: Additionally arguments passed on to the transport&#39;s
+                request method.
+
+        Returns:
+            Response: The HTTP response.
+
+        Raises:
+            google.auth.exceptions.TransportError: If any exception occurred.
+        &#34;&#34;&#34;
+        # pylint: disable=redundant-returns-doc, missing-raises-doc
+        # (pylint doesn&#39;t play well with abstract docstrings.)
+        raise NotImplementedError(&#34;__call__ must be implemented.&#34;)</code></pre>
+</details>
+</section>
+<section>
+<h2 class="section-title" id="header-submodules">Sub-modules</h2>
+<dl>
+<dt><code class="name"><a title="google.auth.transport.grpc" href="grpc.html">google.auth.transport.grpc</a></code></dt>
+<dd>
+<section class="desc"><p>Authorization support for gRPC.</p></section>
+</dd>
+<dt><code class="name"><a title="google.auth.transport.requests" href="requests.html">google.auth.transport.requests</a></code></dt>
+<dd>
+<section class="desc"><p>Transport adapter for Requests.</p></section>
+</dd>
+<dt><code class="name"><a title="google.auth.transport.urllib3" href="urllib3.html">google.auth.transport.urllib3</a></code></dt>
+<dd>
+<section class="desc"><p>Transport adapter for urllib3.</p></section>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-variables">Global variables</h2>
+<dl>
+<dt id="google.auth.transport.DEFAULT_MAX_REFRESH_ATTEMPTS"><code class="name">var <span class="ident">DEFAULT_MAX_REFRESH_ATTEMPTS</span></code></dt>
+<dd>
+<section class="desc"><p>int: How many times to refresh the credentials and retry a request.</p></section>
+</dd>
+<dt id="google.auth.transport.DEFAULT_REFRESH_STATUS_CODES"><code class="name">var <span class="ident">DEFAULT_REFRESH_STATUS_CODES</span></code></dt>
+<dd>
+<section class="desc"><p>Sequence[int]:
+Which HTTP status code indicate that credentials should be
+refreshed and a request should be retried.</p></section>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="google.auth.transport.Request"><code class="flex name class">
+<span>class <span class="ident">Request</span></span>
+</code></dt>
+<dd>
+<section class="desc"><p>Interface for a callable that makes HTTP requests.</p>
+<p>Specific transport implementations should provide an implementation of
+this that adapts their specific request / response API.</p>
+<div class="admonition automethod">
+<p class="admonition-title">Automethod:&ensp;<strong>call</strong></p>
+</div></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Request(object):
+    &#34;&#34;&#34;Interface for a callable that makes HTTP requests.
+
+    Specific transport implementations should provide an implementation of
+    this that adapts their specific request / response API.
+
+    .. automethod:: __call__
+    &#34;&#34;&#34;
+
+    @abc.abstractmethod
+    def __call__(
+        self, url, method=&#34;GET&#34;, body=None, headers=None, timeout=None, **kwargs
+    ):
+        &#34;&#34;&#34;Make an HTTP request.
+
+        Args:
+            url (str): The URI to be requested.
+            method (str): The HTTP method to use for the request. Defaults
+                to &#39;GET&#39;.
+            body (bytes): The payload / body in HTTP request.
+            headers (Mapping[str, str]): Request headers.
+            timeout (Optional[int]): The number of seconds to wait for a
+                response from the server. If not specified or if None, the
+                transport-specific default timeout will be used.
+            kwargs: Additionally arguments passed on to the transport&#39;s
+                request method.
+
+        Returns:
+            Response: The HTTP response.
+
+        Raises:
+            google.auth.exceptions.TransportError: If any exception occurred.
+        &#34;&#34;&#34;
+        # pylint: disable=redundant-returns-doc, missing-raises-doc
+        # (pylint doesn&#39;t play well with abstract docstrings.)
+        raise NotImplementedError(&#34;__call__ must be implemented.&#34;)</code></pre>
+</details>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li>google.auth.transport._http_client.Request</li>
+<li><a title="google.auth.transport.requests.Request" href="requests.html#google.auth.transport.requests.Request">Request</a></li>
+<li><a title="google.auth.transport.urllib3.Request" href="urllib3.html#google.auth.transport.urllib3.Request">Request</a></li>
+</ul>
+</dd>
+<dt id="google.auth.transport.Response"><code class="flex name class">
+<span>class <span class="ident">Response</span></span>
+</code></dt>
+<dd>
+<section class="desc"><p>HTTP Response data.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Response(object):
+    &#34;&#34;&#34;HTTP Response data.&#34;&#34;&#34;
+
+    @abc.abstractproperty
+    def status(self):
+        &#34;&#34;&#34;int: The HTTP status code.&#34;&#34;&#34;
+        raise NotImplementedError(&#34;status must be implemented.&#34;)
+
+    @abc.abstractproperty
+    def headers(self):
+        &#34;&#34;&#34;Mapping[str, str]: The HTTP response headers.&#34;&#34;&#34;
+        raise NotImplementedError(&#34;headers must be implemented.&#34;)
+
+    @abc.abstractproperty
+    def data(self):
+        &#34;&#34;&#34;bytes: The response body.&#34;&#34;&#34;
+        raise NotImplementedError(&#34;data must be implemented.&#34;)</code></pre>
+</details>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li>google.auth.transport._http_client.Response</li>
+<li>google.auth.transport.requests._Response</li>
+<li>google.auth.transport.urllib3._Response</li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="google.auth.transport.Response.data"><code class="name">var <span class="ident">data</span></code></dt>
+<dd>
+<section class="desc"><p>bytes: The response body.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractproperty
+def data(self):
+    &#34;&#34;&#34;bytes: The response body.&#34;&#34;&#34;
+    raise NotImplementedError(&#34;data must be implemented.&#34;)</code></pre>
+</details>
+</dd>
+<dt id="google.auth.transport.Response.headers"><code class="name">var <span class="ident">headers</span></code></dt>
+<dd>
+<section class="desc"><p>Mapping[str, str]: The HTTP response headers.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractproperty
+def headers(self):
+    &#34;&#34;&#34;Mapping[str, str]: The HTTP response headers.&#34;&#34;&#34;
+    raise NotImplementedError(&#34;headers must be implemented.&#34;)</code></pre>
+</details>
+</dd>
+<dt id="google.auth.transport.Response.status"><code class="name">var <span class="ident">status</span></code></dt>
+<dd>
+<section class="desc"><p>int: The HTTP status code.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractproperty
+def status(self):
+    &#34;&#34;&#34;int: The HTTP status code.&#34;&#34;&#34;
+    raise NotImplementedError(&#34;status must be implemented.&#34;)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="google.auth" href="../index.html">google.auth</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-submodules">Sub-modules</a></h3>
+<ul>
+<li><code><a title="google.auth.transport.grpc" href="grpc.html">google.auth.transport.grpc</a></code></li>
+<li><code><a title="google.auth.transport.requests" href="requests.html">google.auth.transport.requests</a></code></li>
+<li><code><a title="google.auth.transport.urllib3" href="urllib3.html">google.auth.transport.urllib3</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-variables">Global variables</a></h3>
+<ul class="">
+<li><code><a title="google.auth.transport.DEFAULT_MAX_REFRESH_ATTEMPTS" href="#google.auth.transport.DEFAULT_MAX_REFRESH_ATTEMPTS">DEFAULT_MAX_REFRESH_ATTEMPTS</a></code></li>
+<li><code><a title="google.auth.transport.DEFAULT_REFRESH_STATUS_CODES" href="#google.auth.transport.DEFAULT_REFRESH_STATUS_CODES">DEFAULT_REFRESH_STATUS_CODES</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="google.auth.transport.Request" href="#google.auth.transport.Request">Request</a></code></h4>
+</li>
+<li>
+<h4><code><a title="google.auth.transport.Response" href="#google.auth.transport.Response">Response</a></code></h4>
+<ul class="">
+<li><code><a title="google.auth.transport.Response.data" href="#google.auth.transport.Response.data">data</a></code></li>
+<li><code><a title="google.auth.transport.Response.headers" href="#google.auth.transport.Response.headers">headers</a></code></li>
+<li><code><a title="google.auth.transport.Response.status" href="#google.auth.transport.Response.status">status</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.4</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

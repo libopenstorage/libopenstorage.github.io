@@ -1,0 +1,683 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.4" />
+<title>google.protobuf.internal.message_factory_test API documentation</title>
+<meta name="description" content="Tests for google.protobuf.message_factory." />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>google.protobuf.internal.message_factory_test</code></h1>
+</header>
+<section id="section-intro">
+<p>Tests for google.protobuf.message_factory.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">#! /usr/bin/env python
+#
+# Protocol Buffers - Google&#39;s data interchange format
+# Copyright 2008 Google Inc.  All rights reserved.
+# https://developers.google.com/protocol-buffers/
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are
+# met:
+#
+#     * Redistributions of source code must retain the above copyright
+# notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above
+# copyright notice, this list of conditions and the following disclaimer
+# in the documentation and/or other materials provided with the
+# distribution.
+#     * Neither the name of Google Inc. nor the names of its
+# contributors may be used to endorse or promote products derived from
+# this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+# &#34;AS IS&#34; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+# LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+# A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+# OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+# SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+# LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+# DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+# THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+&#34;&#34;&#34;Tests for google.protobuf.message_factory.&#34;&#34;&#34;
+
+__author__ = &#39;matthewtoia@google.com (Matt Toia)&#39;
+
+try:
+  import unittest2 as unittest  #PY26
+except ImportError:
+  import unittest
+
+from google.protobuf import descriptor_pb2
+from google.protobuf.internal import api_implementation
+from google.protobuf.internal import factory_test1_pb2
+from google.protobuf.internal import factory_test2_pb2
+from google.protobuf.internal import testing_refleaks
+from google.protobuf import descriptor_database
+from google.protobuf import descriptor_pool
+from google.protobuf import message_factory
+
+
+@testing_refleaks.TestCase
+class MessageFactoryTest(unittest.TestCase):
+
+  def setUp(self):
+    self.factory_test1_fd = descriptor_pb2.FileDescriptorProto.FromString(
+        factory_test1_pb2.DESCRIPTOR.serialized_pb)
+    self.factory_test2_fd = descriptor_pb2.FileDescriptorProto.FromString(
+        factory_test2_pb2.DESCRIPTOR.serialized_pb)
+
+  def _ExerciseDynamicClass(self, cls):
+    msg = cls()
+    msg.mandatory = 42
+    msg.nested_factory_2_enum = 0
+    msg.nested_factory_2_message.value = &#39;nested message value&#39;
+    msg.factory_1_message.factory_1_enum = 1
+    msg.factory_1_message.nested_factory_1_enum = 0
+    msg.factory_1_message.nested_factory_1_message.value = (
+        &#39;nested message value&#39;)
+    msg.factory_1_message.scalar_value = 22
+    msg.factory_1_message.list_value.extend([u&#39;one&#39;, u&#39;two&#39;, u&#39;three&#39;])
+    msg.factory_1_message.list_value.append(u&#39;four&#39;)
+    msg.factory_1_enum = 1
+    msg.nested_factory_1_enum = 0
+    msg.nested_factory_1_message.value = &#39;nested message value&#39;
+    msg.circular_message.mandatory = 1
+    msg.circular_message.circular_message.mandatory = 2
+    msg.circular_message.scalar_value = &#39;one deep&#39;
+    msg.scalar_value = &#39;zero deep&#39;
+    msg.list_value.extend([u&#39;four&#39;, u&#39;three&#39;, u&#39;two&#39;])
+    msg.list_value.append(u&#39;one&#39;)
+    msg.grouped.add()
+    msg.grouped[0].part_1 = &#39;hello&#39;
+    msg.grouped[0].part_2 = &#39;world&#39;
+    msg.grouped.add(part_1=&#39;testing&#39;, part_2=&#39;123&#39;)
+    msg.loop.loop.mandatory = 2
+    msg.loop.loop.loop.loop.mandatory = 4
+    serialized = msg.SerializeToString()
+    converted = factory_test2_pb2.Factory2Message.FromString(serialized)
+    reserialized = converted.SerializeToString()
+    self.assertEqual(serialized, reserialized)
+    result = cls.FromString(reserialized)
+    self.assertEqual(msg, result)
+
+  def testGetPrototype(self):
+    db = descriptor_database.DescriptorDatabase()
+    pool = descriptor_pool.DescriptorPool(db)
+    db.Add(self.factory_test1_fd)
+    db.Add(self.factory_test2_fd)
+    factory = message_factory.MessageFactory()
+    cls = factory.GetPrototype(pool.FindMessageTypeByName(
+        &#39;google.protobuf.python.internal.Factory2Message&#39;))
+    self.assertFalse(cls is factory_test2_pb2.Factory2Message)
+    self._ExerciseDynamicClass(cls)
+    cls2 = factory.GetPrototype(pool.FindMessageTypeByName(
+        &#39;google.protobuf.python.internal.Factory2Message&#39;))
+    self.assertTrue(cls is cls2)
+
+  def testGetMessages(self):
+    # performed twice because multiple calls with the same input must be allowed
+    for _ in range(2):
+      # GetMessage should work regardless of the order the FileDescriptorProto
+      # are provided. In particular, the function should succeed when the files
+      # are not in the topological order of dependencies.
+
+      # Assuming factory_test2_fd depends on factory_test1_fd.
+      self.assertIn(self.factory_test1_fd.name,
+                    self.factory_test2_fd.dependency)
+      # Get messages should work when a file comes before its dependencies:
+      # factory_test2_fd comes before factory_test1_fd.
+      messages = message_factory.GetMessages([self.factory_test2_fd,
+                                              self.factory_test1_fd])
+      self.assertTrue(
+          set([&#39;google.protobuf.python.internal.Factory2Message&#39;,
+               &#39;google.protobuf.python.internal.Factory1Message&#39;],
+             ).issubset(set(messages.keys())))
+      self._ExerciseDynamicClass(
+          messages[&#39;google.protobuf.python.internal.Factory2Message&#39;])
+      factory_msg1 = messages[&#39;google.protobuf.python.internal.Factory1Message&#39;]
+      self.assertTrue(set(
+          [&#39;google.protobuf.python.internal.Factory2Message.one_more_field&#39;,
+           &#39;google.protobuf.python.internal.another_field&#39;],).issubset(set(
+               ext.full_name
+               for ext in factory_msg1.DESCRIPTOR.file.pool.FindAllExtensions(
+                   factory_msg1.DESCRIPTOR))))
+      msg1 = messages[&#39;google.protobuf.python.internal.Factory1Message&#39;]()
+      ext1 = msg1.Extensions._FindExtensionByName(
+          &#39;google.protobuf.python.internal.Factory2Message.one_more_field&#39;)
+      ext2 = msg1.Extensions._FindExtensionByName(
+          &#39;google.protobuf.python.internal.another_field&#39;)
+      self.assertEqual(0, len(msg1.Extensions))
+      msg1.Extensions[ext1] = &#39;test1&#39;
+      msg1.Extensions[ext2] = &#39;test2&#39;
+      self.assertEqual(&#39;test1&#39;, msg1.Extensions[ext1])
+      self.assertEqual(&#39;test2&#39;, msg1.Extensions[ext2])
+      self.assertEqual(None,
+                       msg1.Extensions._FindExtensionByNumber(12321))
+      self.assertEqual(2, len(msg1.Extensions))
+      if api_implementation.Type() == &#39;cpp&#39;:
+        self.assertRaises(TypeError,
+                          msg1.Extensions._FindExtensionByName, 0)
+        self.assertRaises(TypeError,
+                          msg1.Extensions._FindExtensionByNumber, &#39;&#39;)
+      else:
+        self.assertEqual(None,
+                         msg1.Extensions._FindExtensionByName(0))
+        self.assertEqual(None,
+                         msg1.Extensions._FindExtensionByNumber(&#39;&#39;))
+
+  def testDuplicateExtensionNumber(self):
+    pool = descriptor_pool.DescriptorPool()
+    factory = message_factory.MessageFactory(pool=pool)
+
+    # Add Container message.
+    f = descriptor_pb2.FileDescriptorProto()
+    f.name = &#39;google/protobuf/internal/container.proto&#39;
+    f.package = &#39;google.protobuf.python.internal&#39;
+    msg = f.message_type.add()
+    msg.name = &#39;Container&#39;
+    rng = msg.extension_range.add()
+    rng.start = 1
+    rng.end = 10
+    pool.Add(f)
+    msgs = factory.GetMessages([f.name])
+    self.assertIn(&#39;google.protobuf.python.internal.Container&#39;, msgs)
+
+    # Extend container.
+    f = descriptor_pb2.FileDescriptorProto()
+    f.name = &#39;google/protobuf/internal/extension.proto&#39;
+    f.package = &#39;google.protobuf.python.internal&#39;
+    f.dependency.append(&#39;google/protobuf/internal/container.proto&#39;)
+    msg = f.message_type.add()
+    msg.name = &#39;Extension&#39;
+    ext = msg.extension.add()
+    ext.name = &#39;extension_field&#39;
+    ext.number = 2
+    ext.label = descriptor_pb2.FieldDescriptorProto.LABEL_OPTIONAL
+    ext.type_name = &#39;Extension&#39;
+    ext.extendee = &#39;Container&#39;
+    pool.Add(f)
+    msgs = factory.GetMessages([f.name])
+    self.assertIn(&#39;google.protobuf.python.internal.Extension&#39;, msgs)
+
+    # Add Duplicate extending the same field number.
+    f = descriptor_pb2.FileDescriptorProto()
+    f.name = &#39;google/protobuf/internal/duplicate.proto&#39;
+    f.package = &#39;google.protobuf.python.internal&#39;
+    f.dependency.append(&#39;google/protobuf/internal/container.proto&#39;)
+    msg = f.message_type.add()
+    msg.name = &#39;Duplicate&#39;
+    ext = msg.extension.add()
+    ext.name = &#39;extension_field&#39;
+    ext.number = 2
+    ext.label = descriptor_pb2.FieldDescriptorProto.LABEL_OPTIONAL
+    ext.type_name = &#39;Duplicate&#39;
+    ext.extendee = &#39;Container&#39;
+    pool.Add(f)
+
+    with self.assertRaises(Exception) as cm:
+      factory.GetMessages([f.name])
+
+    self.assertIn(str(cm.exception),
+                  [&#39;Extensions &#39;
+                   &#39;&#34;google.protobuf.python.internal.Duplicate.extension_field&#34; and&#39;
+                   &#39; &#34;google.protobuf.python.internal.Extension.extension_field&#34;&#39;
+                   &#39; both try to extend message type&#39;
+                   &#39; &#34;google.protobuf.python.internal.Container&#34;&#39;
+                   &#39; with field number 2.&#39;,
+                   &#39;Double registration of Extensions&#39;])
+
+
+if __name__ == &#39;__main__&#39;:
+  unittest.main()</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="google.protobuf.internal.message_factory_test.MessageFactoryTest"><code class="flex name class">
+<span>class <span class="ident">MessageFactoryTest</span></span>
+<span>(</span><span>methodName='runTest')</span>
+</code></dt>
+<dd>
+<section class="desc"><p>A class whose instances are single test cases.</p>
+<p>By default, the test code itself should be placed in a method named
+'runTest'.</p>
+<p>If the fixture may be used for many test cases, create as
+many test methods as are needed. When instantiating such a TestCase
+subclass, specify in the constructor arguments the name of the test method
+that the instance is to execute.</p>
+<p>Test authors should subclass TestCase for their own tests. Construction
+and deconstruction of the test's environment ('fixture') can be
+implemented by overriding the 'setUp' and 'tearDown' methods respectively.</p>
+<p>If it is necessary to override the <strong>init</strong> method, the base class
+<strong>init</strong> method must always be called. It is important that subclasses
+should not change the signature of their <strong>init</strong> method, since instances
+of the classes are instantiated automatically by parts of the framework
+in order to be run.</p>
+<p>When subclassing TestCase, you can set these attributes:
+* failureException: determines which exception will be raised when
+the instance's assertion methods fail; test methods raising this
+exception will be deemed to have 'failed' rather than 'errored'.
+* longMessage: determines whether long messages (including repr of
+objects used in assert methods) will be printed on failure in <em>addition</em>
+to any explicit message passed.
+* maxDiff: sets the maximum length of a diff in failure messages
+by assert methods using difflib. It is looked up as an instance
+attribute so can be configured by individual tests if required.</p>
+<p>Create an instance of the class that will use the named test
+method when executed. Raises a ValueError if the instance does
+not have a method with the specified name.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MessageFactoryTest(unittest.TestCase):
+
+  def setUp(self):
+    self.factory_test1_fd = descriptor_pb2.FileDescriptorProto.FromString(
+        factory_test1_pb2.DESCRIPTOR.serialized_pb)
+    self.factory_test2_fd = descriptor_pb2.FileDescriptorProto.FromString(
+        factory_test2_pb2.DESCRIPTOR.serialized_pb)
+
+  def _ExerciseDynamicClass(self, cls):
+    msg = cls()
+    msg.mandatory = 42
+    msg.nested_factory_2_enum = 0
+    msg.nested_factory_2_message.value = &#39;nested message value&#39;
+    msg.factory_1_message.factory_1_enum = 1
+    msg.factory_1_message.nested_factory_1_enum = 0
+    msg.factory_1_message.nested_factory_1_message.value = (
+        &#39;nested message value&#39;)
+    msg.factory_1_message.scalar_value = 22
+    msg.factory_1_message.list_value.extend([u&#39;one&#39;, u&#39;two&#39;, u&#39;three&#39;])
+    msg.factory_1_message.list_value.append(u&#39;four&#39;)
+    msg.factory_1_enum = 1
+    msg.nested_factory_1_enum = 0
+    msg.nested_factory_1_message.value = &#39;nested message value&#39;
+    msg.circular_message.mandatory = 1
+    msg.circular_message.circular_message.mandatory = 2
+    msg.circular_message.scalar_value = &#39;one deep&#39;
+    msg.scalar_value = &#39;zero deep&#39;
+    msg.list_value.extend([u&#39;four&#39;, u&#39;three&#39;, u&#39;two&#39;])
+    msg.list_value.append(u&#39;one&#39;)
+    msg.grouped.add()
+    msg.grouped[0].part_1 = &#39;hello&#39;
+    msg.grouped[0].part_2 = &#39;world&#39;
+    msg.grouped.add(part_1=&#39;testing&#39;, part_2=&#39;123&#39;)
+    msg.loop.loop.mandatory = 2
+    msg.loop.loop.loop.loop.mandatory = 4
+    serialized = msg.SerializeToString()
+    converted = factory_test2_pb2.Factory2Message.FromString(serialized)
+    reserialized = converted.SerializeToString()
+    self.assertEqual(serialized, reserialized)
+    result = cls.FromString(reserialized)
+    self.assertEqual(msg, result)
+
+  def testGetPrototype(self):
+    db = descriptor_database.DescriptorDatabase()
+    pool = descriptor_pool.DescriptorPool(db)
+    db.Add(self.factory_test1_fd)
+    db.Add(self.factory_test2_fd)
+    factory = message_factory.MessageFactory()
+    cls = factory.GetPrototype(pool.FindMessageTypeByName(
+        &#39;google.protobuf.python.internal.Factory2Message&#39;))
+    self.assertFalse(cls is factory_test2_pb2.Factory2Message)
+    self._ExerciseDynamicClass(cls)
+    cls2 = factory.GetPrototype(pool.FindMessageTypeByName(
+        &#39;google.protobuf.python.internal.Factory2Message&#39;))
+    self.assertTrue(cls is cls2)
+
+  def testGetMessages(self):
+    # performed twice because multiple calls with the same input must be allowed
+    for _ in range(2):
+      # GetMessage should work regardless of the order the FileDescriptorProto
+      # are provided. In particular, the function should succeed when the files
+      # are not in the topological order of dependencies.
+
+      # Assuming factory_test2_fd depends on factory_test1_fd.
+      self.assertIn(self.factory_test1_fd.name,
+                    self.factory_test2_fd.dependency)
+      # Get messages should work when a file comes before its dependencies:
+      # factory_test2_fd comes before factory_test1_fd.
+      messages = message_factory.GetMessages([self.factory_test2_fd,
+                                              self.factory_test1_fd])
+      self.assertTrue(
+          set([&#39;google.protobuf.python.internal.Factory2Message&#39;,
+               &#39;google.protobuf.python.internal.Factory1Message&#39;],
+             ).issubset(set(messages.keys())))
+      self._ExerciseDynamicClass(
+          messages[&#39;google.protobuf.python.internal.Factory2Message&#39;])
+      factory_msg1 = messages[&#39;google.protobuf.python.internal.Factory1Message&#39;]
+      self.assertTrue(set(
+          [&#39;google.protobuf.python.internal.Factory2Message.one_more_field&#39;,
+           &#39;google.protobuf.python.internal.another_field&#39;],).issubset(set(
+               ext.full_name
+               for ext in factory_msg1.DESCRIPTOR.file.pool.FindAllExtensions(
+                   factory_msg1.DESCRIPTOR))))
+      msg1 = messages[&#39;google.protobuf.python.internal.Factory1Message&#39;]()
+      ext1 = msg1.Extensions._FindExtensionByName(
+          &#39;google.protobuf.python.internal.Factory2Message.one_more_field&#39;)
+      ext2 = msg1.Extensions._FindExtensionByName(
+          &#39;google.protobuf.python.internal.another_field&#39;)
+      self.assertEqual(0, len(msg1.Extensions))
+      msg1.Extensions[ext1] = &#39;test1&#39;
+      msg1.Extensions[ext2] = &#39;test2&#39;
+      self.assertEqual(&#39;test1&#39;, msg1.Extensions[ext1])
+      self.assertEqual(&#39;test2&#39;, msg1.Extensions[ext2])
+      self.assertEqual(None,
+                       msg1.Extensions._FindExtensionByNumber(12321))
+      self.assertEqual(2, len(msg1.Extensions))
+      if api_implementation.Type() == &#39;cpp&#39;:
+        self.assertRaises(TypeError,
+                          msg1.Extensions._FindExtensionByName, 0)
+        self.assertRaises(TypeError,
+                          msg1.Extensions._FindExtensionByNumber, &#39;&#39;)
+      else:
+        self.assertEqual(None,
+                         msg1.Extensions._FindExtensionByName(0))
+        self.assertEqual(None,
+                         msg1.Extensions._FindExtensionByNumber(&#39;&#39;))
+
+  def testDuplicateExtensionNumber(self):
+    pool = descriptor_pool.DescriptorPool()
+    factory = message_factory.MessageFactory(pool=pool)
+
+    # Add Container message.
+    f = descriptor_pb2.FileDescriptorProto()
+    f.name = &#39;google/protobuf/internal/container.proto&#39;
+    f.package = &#39;google.protobuf.python.internal&#39;
+    msg = f.message_type.add()
+    msg.name = &#39;Container&#39;
+    rng = msg.extension_range.add()
+    rng.start = 1
+    rng.end = 10
+    pool.Add(f)
+    msgs = factory.GetMessages([f.name])
+    self.assertIn(&#39;google.protobuf.python.internal.Container&#39;, msgs)
+
+    # Extend container.
+    f = descriptor_pb2.FileDescriptorProto()
+    f.name = &#39;google/protobuf/internal/extension.proto&#39;
+    f.package = &#39;google.protobuf.python.internal&#39;
+    f.dependency.append(&#39;google/protobuf/internal/container.proto&#39;)
+    msg = f.message_type.add()
+    msg.name = &#39;Extension&#39;
+    ext = msg.extension.add()
+    ext.name = &#39;extension_field&#39;
+    ext.number = 2
+    ext.label = descriptor_pb2.FieldDescriptorProto.LABEL_OPTIONAL
+    ext.type_name = &#39;Extension&#39;
+    ext.extendee = &#39;Container&#39;
+    pool.Add(f)
+    msgs = factory.GetMessages([f.name])
+    self.assertIn(&#39;google.protobuf.python.internal.Extension&#39;, msgs)
+
+    # Add Duplicate extending the same field number.
+    f = descriptor_pb2.FileDescriptorProto()
+    f.name = &#39;google/protobuf/internal/duplicate.proto&#39;
+    f.package = &#39;google.protobuf.python.internal&#39;
+    f.dependency.append(&#39;google/protobuf/internal/container.proto&#39;)
+    msg = f.message_type.add()
+    msg.name = &#39;Duplicate&#39;
+    ext = msg.extension.add()
+    ext.name = &#39;extension_field&#39;
+    ext.number = 2
+    ext.label = descriptor_pb2.FieldDescriptorProto.LABEL_OPTIONAL
+    ext.type_name = &#39;Duplicate&#39;
+    ext.extendee = &#39;Container&#39;
+    pool.Add(f)
+
+    with self.assertRaises(Exception) as cm:
+      factory.GetMessages([f.name])
+
+    self.assertIn(str(cm.exception),
+                  [&#39;Extensions &#39;
+                   &#39;&#34;google.protobuf.python.internal.Duplicate.extension_field&#34; and&#39;
+                   &#39; &#34;google.protobuf.python.internal.Extension.extension_field&#34;&#39;
+                   &#39; both try to extend message type&#39;
+                   &#39; &#34;google.protobuf.python.internal.Container&#34;&#39;
+                   &#39; with field number 2.&#39;,
+                   &#39;Double registration of Extensions&#39;])</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>unittest.case.TestCase</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="google.protobuf.internal.message_factory_test.MessageFactoryTest.setUp"><code class="name flex">
+<span>def <span class="ident">setUp</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Hook method for setting up the test fixture before exercising it.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def setUp(self):
+  self.factory_test1_fd = descriptor_pb2.FileDescriptorProto.FromString(
+      factory_test1_pb2.DESCRIPTOR.serialized_pb)
+  self.factory_test2_fd = descriptor_pb2.FileDescriptorProto.FromString(
+      factory_test2_pb2.DESCRIPTOR.serialized_pb)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.message_factory_test.MessageFactoryTest.testDuplicateExtensionNumber"><code class="name flex">
+<span>def <span class="ident">testDuplicateExtensionNumber</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testDuplicateExtensionNumber(self):
+  pool = descriptor_pool.DescriptorPool()
+  factory = message_factory.MessageFactory(pool=pool)
+
+  # Add Container message.
+  f = descriptor_pb2.FileDescriptorProto()
+  f.name = &#39;google/protobuf/internal/container.proto&#39;
+  f.package = &#39;google.protobuf.python.internal&#39;
+  msg = f.message_type.add()
+  msg.name = &#39;Container&#39;
+  rng = msg.extension_range.add()
+  rng.start = 1
+  rng.end = 10
+  pool.Add(f)
+  msgs = factory.GetMessages([f.name])
+  self.assertIn(&#39;google.protobuf.python.internal.Container&#39;, msgs)
+
+  # Extend container.
+  f = descriptor_pb2.FileDescriptorProto()
+  f.name = &#39;google/protobuf/internal/extension.proto&#39;
+  f.package = &#39;google.protobuf.python.internal&#39;
+  f.dependency.append(&#39;google/protobuf/internal/container.proto&#39;)
+  msg = f.message_type.add()
+  msg.name = &#39;Extension&#39;
+  ext = msg.extension.add()
+  ext.name = &#39;extension_field&#39;
+  ext.number = 2
+  ext.label = descriptor_pb2.FieldDescriptorProto.LABEL_OPTIONAL
+  ext.type_name = &#39;Extension&#39;
+  ext.extendee = &#39;Container&#39;
+  pool.Add(f)
+  msgs = factory.GetMessages([f.name])
+  self.assertIn(&#39;google.protobuf.python.internal.Extension&#39;, msgs)
+
+  # Add Duplicate extending the same field number.
+  f = descriptor_pb2.FileDescriptorProto()
+  f.name = &#39;google/protobuf/internal/duplicate.proto&#39;
+  f.package = &#39;google.protobuf.python.internal&#39;
+  f.dependency.append(&#39;google/protobuf/internal/container.proto&#39;)
+  msg = f.message_type.add()
+  msg.name = &#39;Duplicate&#39;
+  ext = msg.extension.add()
+  ext.name = &#39;extension_field&#39;
+  ext.number = 2
+  ext.label = descriptor_pb2.FieldDescriptorProto.LABEL_OPTIONAL
+  ext.type_name = &#39;Duplicate&#39;
+  ext.extendee = &#39;Container&#39;
+  pool.Add(f)
+
+  with self.assertRaises(Exception) as cm:
+    factory.GetMessages([f.name])
+
+  self.assertIn(str(cm.exception),
+                [&#39;Extensions &#39;
+                 &#39;&#34;google.protobuf.python.internal.Duplicate.extension_field&#34; and&#39;
+                 &#39; &#34;google.protobuf.python.internal.Extension.extension_field&#34;&#39;
+                 &#39; both try to extend message type&#39;
+                 &#39; &#34;google.protobuf.python.internal.Container&#34;&#39;
+                 &#39; with field number 2.&#39;,
+                 &#39;Double registration of Extensions&#39;])</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.message_factory_test.MessageFactoryTest.testGetMessages"><code class="name flex">
+<span>def <span class="ident">testGetMessages</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testGetMessages(self):
+  # performed twice because multiple calls with the same input must be allowed
+  for _ in range(2):
+    # GetMessage should work regardless of the order the FileDescriptorProto
+    # are provided. In particular, the function should succeed when the files
+    # are not in the topological order of dependencies.
+
+    # Assuming factory_test2_fd depends on factory_test1_fd.
+    self.assertIn(self.factory_test1_fd.name,
+                  self.factory_test2_fd.dependency)
+    # Get messages should work when a file comes before its dependencies:
+    # factory_test2_fd comes before factory_test1_fd.
+    messages = message_factory.GetMessages([self.factory_test2_fd,
+                                            self.factory_test1_fd])
+    self.assertTrue(
+        set([&#39;google.protobuf.python.internal.Factory2Message&#39;,
+             &#39;google.protobuf.python.internal.Factory1Message&#39;],
+           ).issubset(set(messages.keys())))
+    self._ExerciseDynamicClass(
+        messages[&#39;google.protobuf.python.internal.Factory2Message&#39;])
+    factory_msg1 = messages[&#39;google.protobuf.python.internal.Factory1Message&#39;]
+    self.assertTrue(set(
+        [&#39;google.protobuf.python.internal.Factory2Message.one_more_field&#39;,
+         &#39;google.protobuf.python.internal.another_field&#39;],).issubset(set(
+             ext.full_name
+             for ext in factory_msg1.DESCRIPTOR.file.pool.FindAllExtensions(
+                 factory_msg1.DESCRIPTOR))))
+    msg1 = messages[&#39;google.protobuf.python.internal.Factory1Message&#39;]()
+    ext1 = msg1.Extensions._FindExtensionByName(
+        &#39;google.protobuf.python.internal.Factory2Message.one_more_field&#39;)
+    ext2 = msg1.Extensions._FindExtensionByName(
+        &#39;google.protobuf.python.internal.another_field&#39;)
+    self.assertEqual(0, len(msg1.Extensions))
+    msg1.Extensions[ext1] = &#39;test1&#39;
+    msg1.Extensions[ext2] = &#39;test2&#39;
+    self.assertEqual(&#39;test1&#39;, msg1.Extensions[ext1])
+    self.assertEqual(&#39;test2&#39;, msg1.Extensions[ext2])
+    self.assertEqual(None,
+                     msg1.Extensions._FindExtensionByNumber(12321))
+    self.assertEqual(2, len(msg1.Extensions))
+    if api_implementation.Type() == &#39;cpp&#39;:
+      self.assertRaises(TypeError,
+                        msg1.Extensions._FindExtensionByName, 0)
+      self.assertRaises(TypeError,
+                        msg1.Extensions._FindExtensionByNumber, &#39;&#39;)
+    else:
+      self.assertEqual(None,
+                       msg1.Extensions._FindExtensionByName(0))
+      self.assertEqual(None,
+                       msg1.Extensions._FindExtensionByNumber(&#39;&#39;))</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.message_factory_test.MessageFactoryTest.testGetPrototype"><code class="name flex">
+<span>def <span class="ident">testGetPrototype</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testGetPrototype(self):
+  db = descriptor_database.DescriptorDatabase()
+  pool = descriptor_pool.DescriptorPool(db)
+  db.Add(self.factory_test1_fd)
+  db.Add(self.factory_test2_fd)
+  factory = message_factory.MessageFactory()
+  cls = factory.GetPrototype(pool.FindMessageTypeByName(
+      &#39;google.protobuf.python.internal.Factory2Message&#39;))
+  self.assertFalse(cls is factory_test2_pb2.Factory2Message)
+  self._ExerciseDynamicClass(cls)
+  cls2 = factory.GetPrototype(pool.FindMessageTypeByName(
+      &#39;google.protobuf.python.internal.Factory2Message&#39;))
+  self.assertTrue(cls is cls2)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="google.protobuf.internal" href="index.html">google.protobuf.internal</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="google.protobuf.internal.message_factory_test.MessageFactoryTest" href="#google.protobuf.internal.message_factory_test.MessageFactoryTest">MessageFactoryTest</a></code></h4>
+<ul class="">
+<li><code><a title="google.protobuf.internal.message_factory_test.MessageFactoryTest.setUp" href="#google.protobuf.internal.message_factory_test.MessageFactoryTest.setUp">setUp</a></code></li>
+<li><code><a title="google.protobuf.internal.message_factory_test.MessageFactoryTest.testDuplicateExtensionNumber" href="#google.protobuf.internal.message_factory_test.MessageFactoryTest.testDuplicateExtensionNumber">testDuplicateExtensionNumber</a></code></li>
+<li><code><a title="google.protobuf.internal.message_factory_test.MessageFactoryTest.testGetMessages" href="#google.protobuf.internal.message_factory_test.MessageFactoryTest.testGetMessages">testGetMessages</a></code></li>
+<li><code><a title="google.protobuf.internal.message_factory_test.MessageFactoryTest.testGetPrototype" href="#google.protobuf.internal.message_factory_test.MessageFactoryTest.testGetPrototype">testGetPrototype</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.4</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

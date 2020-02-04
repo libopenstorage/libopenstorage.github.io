@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.4" />
+<title>google.oauth2.id_token API documentation</title>
+<meta name="description" content="Google ID Token helpers …" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>google.oauth2.id_token</code></h1>
+</header>
+<section id="section-intro">
+<p>Google ID Token helpers.</p>
+<p>Provides support for verifying <code>OpenID Connect ID Tokens</code>_, especially ones
+generated by Google infrastructure.</p>
+<p>To parse and verify an ID Token issued by Google's OAuth 2.0 authorization
+server use :func:<a title="google.oauth2.id_token.verify_oauth2_token" href="#google.oauth2.id_token.verify_oauth2_token"><code>verify_oauth2_token()</code></a>. To verify an ID Token issued by
+Firebase, use :func:<a title="google.oauth2.id_token.verify_firebase_token" href="#google.oauth2.id_token.verify_firebase_token"><code>verify_firebase_token()</code></a>.</p>
+<p>A general purpose ID Token verifier is available as :func:<a title="google.oauth2.id_token.verify_token" href="#google.oauth2.id_token.verify_token"><code>verify_token()</code></a>.</p>
+<p>Example::</p>
+<pre><code>from google.oauth2 import id_token
+from google.auth.transport import requests
+
+request = requests.Request()
+
+id_info = id_token.verify_oauth2_token(
+    token, request, 'my-client-id.example.com')
+
+if id_info['iss'] != 'https://accounts.google.com':
+    raise ValueError('Wrong issuer.')
+
+userid = id_info['sub']
+</code></pre>
+<p>By default, this will re-fetch certificates for each verification. Because
+Google's public keys are only changed infrequently (on the order of once per
+day), you may wish to take advantage of caching to reduce latency and the
+potential for network errors. This can be accomplished using an external
+library like <code>CacheControl</code>_ to create a cache-aware
+:class:<a title="google.auth.transport.Request" href="../auth/transport/index.html#google.auth.transport.Request"><code>Request</code></a>::</p>
+<pre><code>import cachecontrol
+import google.auth.transport.requests
+import requests
+
+session = requests.session()
+cached_session = cachecontrol.CacheControl(session)
+request = google.auth.transport.requests.Request(session=cached_session)
+</code></pre>
+<p>.. _OpenID Connect ID Token:
+<a href="http://openid.net/specs/openid-connect-core-1_0.html#IDToken">http://openid.net/specs/openid-connect-core-1_0.html#IDToken</a>
+.. _CacheControl: <a href="https://cachecontrol.readthedocs.io">https://cachecontrol.readthedocs.io</a></p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Copyright 2016 Google Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the &#34;License&#34;);
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+&#34;&#34;&#34;Google ID Token helpers.
+
+Provides support for verifying `OpenID Connect ID Tokens`_, especially ones
+generated by Google infrastructure.
+
+To parse and verify an ID Token issued by Google&#39;s OAuth 2.0 authorization
+server use :func:`verify_oauth2_token`. To verify an ID Token issued by
+Firebase, use :func:`verify_firebase_token`.
+
+A general purpose ID Token verifier is available as :func:`verify_token`.
+
+Example::
+
+    from google.oauth2 import id_token
+    from google.auth.transport import requests
+
+    request = requests.Request()
+
+    id_info = id_token.verify_oauth2_token(
+        token, request, &#39;my-client-id.example.com&#39;)
+
+    if id_info[&#39;iss&#39;] != &#39;https://accounts.google.com&#39;:
+        raise ValueError(&#39;Wrong issuer.&#39;)
+
+    userid = id_info[&#39;sub&#39;]
+
+By default, this will re-fetch certificates for each verification. Because
+Google&#39;s public keys are only changed infrequently (on the order of once per
+day), you may wish to take advantage of caching to reduce latency and the
+potential for network errors. This can be accomplished using an external
+library like `CacheControl`_ to create a cache-aware
+:class:`google.auth.transport.Request`::
+
+    import cachecontrol
+    import google.auth.transport.requests
+    import requests
+
+    session = requests.session()
+    cached_session = cachecontrol.CacheControl(session)
+    request = google.auth.transport.requests.Request(session=cached_session)
+
+.. _OpenID Connect ID Token:
+    http://openid.net/specs/openid-connect-core-1_0.html#IDToken
+.. _CacheControl: https://cachecontrol.readthedocs.io
+&#34;&#34;&#34;
+
+import json
+
+from six.moves import http_client
+
+from google.auth import exceptions
+from google.auth import jwt
+
+# The URL that provides public certificates for verifying ID tokens issued
+# by Google&#39;s OAuth 2.0 authorization server.
+_GOOGLE_OAUTH2_CERTS_URL = &#34;https://www.googleapis.com/oauth2/v1/certs&#34;
+
+# The URL that provides public certificates for verifying ID tokens issued
+# by Firebase and the Google APIs infrastructure
+_GOOGLE_APIS_CERTS_URL = (
+    &#34;https://www.googleapis.com/robot/v1/metadata/x509&#34;
+    &#34;/securetoken@system.gserviceaccount.com&#34;
+)
+
+
+def _fetch_certs(request, certs_url):
+    &#34;&#34;&#34;Fetches certificates.
+
+    Google-style cerificate endpoints return JSON in the format of
+    ``{&#39;key id&#39;: &#39;x509 certificate&#39;}``.
+
+    Args:
+        request (google.auth.transport.Request): The object used to make
+            HTTP requests.
+        certs_url (str): The certificate endpoint URL.
+
+    Returns:
+        Mapping[str, str]: A mapping of public key ID to x.509 certificate
+            data.
+    &#34;&#34;&#34;
+    response = request(certs_url, method=&#34;GET&#34;)
+
+    if response.status != http_client.OK:
+        raise exceptions.TransportError(
+            &#34;Could not fetch certificates at {}&#34;.format(certs_url)
+        )
+
+    return json.loads(response.data.decode(&#34;utf-8&#34;))
+
+
+def verify_token(id_token, request, audience=None, certs_url=_GOOGLE_OAUTH2_CERTS_URL):
+    &#34;&#34;&#34;Verifies an ID token and returns the decoded token.
+
+    Args:
+        id_token (Union[str, bytes]): The encoded token.
+        request (google.auth.transport.Request): The object used to make
+            HTTP requests.
+        audience (str): The audience that this token is intended for. If None
+            then the audience is not verified.
+        certs_url (str): The URL that specifies the certificates to use to
+            verify the token. This URL should return JSON in the format of
+            ``{&#39;key id&#39;: &#39;x509 certificate&#39;}``.
+
+    Returns:
+        Mapping[str, Any]: The decoded token.
+    &#34;&#34;&#34;
+    certs = _fetch_certs(request, certs_url)
+
+    return jwt.decode(id_token, certs=certs, audience=audience)
+
+
+def verify_oauth2_token(id_token, request, audience=None):
+    &#34;&#34;&#34;Verifies an ID Token issued by Google&#39;s OAuth 2.0 authorization server.
+
+    Args:
+        id_token (Union[str, bytes]): The encoded token.
+        request (google.auth.transport.Request): The object used to make
+            HTTP requests.
+        audience (str): The audience that this token is intended for. This is
+            typically your application&#39;s OAuth 2.0 client ID. If None then the
+            audience is not verified.
+
+    Returns:
+        Mapping[str, Any]: The decoded token.
+    &#34;&#34;&#34;
+    return verify_token(
+        id_token, request, audience=audience, certs_url=_GOOGLE_OAUTH2_CERTS_URL
+    )
+
+
+def verify_firebase_token(id_token, request, audience=None):
+    &#34;&#34;&#34;Verifies an ID Token issued by Firebase Authentication.
+
+    Args:
+        id_token (Union[str, bytes]): The encoded token.
+        request (google.auth.transport.Request): The object used to make
+            HTTP requests.
+        audience (str): The audience that this token is intended for. This is
+            typically your Firebase application ID. If None then the audience
+            is not verified.
+
+    Returns:
+        Mapping[str, Any]: The decoded token.
+    &#34;&#34;&#34;
+    return verify_token(
+        id_token, request, audience=audience, certs_url=_GOOGLE_APIS_CERTS_URL
+    )</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="google.oauth2.id_token.verify_firebase_token"><code class="name flex">
+<span>def <span class="ident">verify_firebase_token</span></span>(<span>id_token, request, audience=None)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Verifies an ID Token issued by Firebase Authentication.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>id_token</code></strong> :&ensp;<code>Union</code>[<code>str</code>, <code>bytes</code>]</dt>
+<dd>The encoded token.</dd>
+<dt><strong><code>request</code></strong> :&ensp;<a title="google.auth.transport.Request" href="../auth/transport/index.html#google.auth.transport.Request"><code>Request</code></a></dt>
+<dd>The object used to make
+HTTP requests.</dd>
+<dt><strong><code>audience</code></strong> :&ensp;<code>str</code></dt>
+<dd>The audience that this token is intended for. This is
+typically your Firebase application ID. If None then the audience
+is not verified.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Mapping[str, Any]: The decoded token.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def verify_firebase_token(id_token, request, audience=None):
+    &#34;&#34;&#34;Verifies an ID Token issued by Firebase Authentication.
+
+    Args:
+        id_token (Union[str, bytes]): The encoded token.
+        request (google.auth.transport.Request): The object used to make
+            HTTP requests.
+        audience (str): The audience that this token is intended for. This is
+            typically your Firebase application ID. If None then the audience
+            is not verified.
+
+    Returns:
+        Mapping[str, Any]: The decoded token.
+    &#34;&#34;&#34;
+    return verify_token(
+        id_token, request, audience=audience, certs_url=_GOOGLE_APIS_CERTS_URL
+    )</code></pre>
+</details>
+</dd>
+<dt id="google.oauth2.id_token.verify_oauth2_token"><code class="name flex">
+<span>def <span class="ident">verify_oauth2_token</span></span>(<span>id_token, request, audience=None)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Verifies an ID Token issued by Google's OAuth 2.0 authorization server.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>id_token</code></strong> :&ensp;<code>Union</code>[<code>str</code>, <code>bytes</code>]</dt>
+<dd>The encoded token.</dd>
+<dt><strong><code>request</code></strong> :&ensp;<a title="google.auth.transport.Request" href="../auth/transport/index.html#google.auth.transport.Request"><code>Request</code></a></dt>
+<dd>The object used to make
+HTTP requests.</dd>
+<dt><strong><code>audience</code></strong> :&ensp;<code>str</code></dt>
+<dd>The audience that this token is intended for. This is
+typically your application's OAuth 2.0 client ID. If None then the
+audience is not verified.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Mapping[str, Any]: The decoded token.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def verify_oauth2_token(id_token, request, audience=None):
+    &#34;&#34;&#34;Verifies an ID Token issued by Google&#39;s OAuth 2.0 authorization server.
+
+    Args:
+        id_token (Union[str, bytes]): The encoded token.
+        request (google.auth.transport.Request): The object used to make
+            HTTP requests.
+        audience (str): The audience that this token is intended for. This is
+            typically your application&#39;s OAuth 2.0 client ID. If None then the
+            audience is not verified.
+
+    Returns:
+        Mapping[str, Any]: The decoded token.
+    &#34;&#34;&#34;
+    return verify_token(
+        id_token, request, audience=audience, certs_url=_GOOGLE_OAUTH2_CERTS_URL
+    )</code></pre>
+</details>
+</dd>
+<dt id="google.oauth2.id_token.verify_token"><code class="name flex">
+<span>def <span class="ident">verify_token</span></span>(<span>id_token, request, audience=None, certs_url='https://www.googleapis.com/oauth2/v1/certs')</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Verifies an ID token and returns the decoded token.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>id_token</code></strong> :&ensp;<code>Union</code>[<code>str</code>, <code>bytes</code>]</dt>
+<dd>The encoded token.</dd>
+<dt><strong><code>request</code></strong> :&ensp;<a title="google.auth.transport.Request" href="../auth/transport/index.html#google.auth.transport.Request"><code>Request</code></a></dt>
+<dd>The object used to make
+HTTP requests.</dd>
+<dt><strong><code>audience</code></strong> :&ensp;<code>str</code></dt>
+<dd>The audience that this token is intended for. If None
+then the audience is not verified.</dd>
+<dt><strong><code>certs_url</code></strong> :&ensp;<code>str</code></dt>
+<dd>The URL that specifies the certificates to use to
+verify the token. This URL should return JSON in the format of
+<code>{'key id': 'x509 certificate'}</code>.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Mapping[str, Any]: The decoded token.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def verify_token(id_token, request, audience=None, certs_url=_GOOGLE_OAUTH2_CERTS_URL):
+    &#34;&#34;&#34;Verifies an ID token and returns the decoded token.
+
+    Args:
+        id_token (Union[str, bytes]): The encoded token.
+        request (google.auth.transport.Request): The object used to make
+            HTTP requests.
+        audience (str): The audience that this token is intended for. If None
+            then the audience is not verified.
+        certs_url (str): The URL that specifies the certificates to use to
+            verify the token. This URL should return JSON in the format of
+            ``{&#39;key id&#39;: &#39;x509 certificate&#39;}``.
+
+    Returns:
+        Mapping[str, Any]: The decoded token.
+    &#34;&#34;&#34;
+    certs = _fetch_certs(request, certs_url)
+
+    return jwt.decode(id_token, certs=certs, audience=audience)</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="google.oauth2" href="index.html">google.oauth2</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="google.oauth2.id_token.verify_firebase_token" href="#google.oauth2.id_token.verify_firebase_token">verify_firebase_token</a></code></li>
+<li><code><a title="google.oauth2.id_token.verify_oauth2_token" href="#google.oauth2.id_token.verify_oauth2_token">verify_oauth2_token</a></code></li>
+<li><code><a title="google.oauth2.id_token.verify_token" href="#google.oauth2.id_token.verify_token">verify_token</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.4</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

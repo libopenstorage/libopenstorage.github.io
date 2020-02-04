@@ -3,4 +3,5 @@ examples/python/openstorage
 examples/python/sdk
 examples/python/google
 docs/reference.md
+pysdkdoc
 *.swp

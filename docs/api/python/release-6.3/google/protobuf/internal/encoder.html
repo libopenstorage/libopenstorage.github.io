@@ -1,0 +1,2353 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.4" />
+<title>google.protobuf.internal.encoder API documentation</title>
+<meta name="description" content="Code for encoding protocol message primitives …" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>google.protobuf.internal.encoder</code></h1>
+</header>
+<section id="section-intro">
+<p>Code for encoding protocol message primitives.</p>
+<p>Contains the logic for encoding every logical protocol field type
+into one of the 5 physical wire types.</p>
+<p>This code is designed to push the Python interpreter's performance to the
+limits.</p>
+<p>The basic idea is that at startup time, for every field (i.e. every
+FieldDescriptor) we construct two functions:
+a "sizer" and an "encoder".
+The
+sizer takes a value of this field's type and computes its byte size.
+The
+encoder takes a writer function and a value.
+It encodes the value into byte
+strings and invokes the writer function to write those strings.
+Typically the
+writer function is the write() method of a BytesIO.</p>
+<p>We try to do as much work as possible when constructing the writer and the
+sizer rather than when calling them.
+In particular:
+* We copy any needed global functions to local variables, so that we do not need
+to do costly global table lookups at runtime.
+* Similarly, we try to do any attribute lookups at startup time if possible.
+* Every field's tag is encoded to bytes at startup, since it can't change at
+runtime.
+* Whatever component of the field size we can compute at startup, we do.
+* We <em>avoid</em> sharing code if doing so would make the code slower and not sharing
+does not burden us too much.
+For example, encoders for repeated fields do
+not just call the encoders for singular fields in a loop because this would
+add an extra function call overhead for every loop iteration; instead, we
+manually inline the single-value encoder into the loop.
+* If a Python function lacks a return statement, Python actually generates
+instructions to pop the result of the last statement off the stack, push
+None onto the stack, and then return that.
+If we really don't care what
+value is returned, then we can save two instructions by returning the
+result of the last statement.
+It looks funny but it helps.
+* We assume that type and bounds checking has happened at a higher level.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Protocol Buffers - Google&#39;s data interchange format
+# Copyright 2008 Google Inc.  All rights reserved.
+# https://developers.google.com/protocol-buffers/
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are
+# met:
+#
+#     * Redistributions of source code must retain the above copyright
+# notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above
+# copyright notice, this list of conditions and the following disclaimer
+# in the documentation and/or other materials provided with the
+# distribution.
+#     * Neither the name of Google Inc. nor the names of its
+# contributors may be used to endorse or promote products derived from
+# this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+# &#34;AS IS&#34; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+# LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+# A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+# OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+# SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+# LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+# DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+# THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+&#34;&#34;&#34;Code for encoding protocol message primitives.
+
+Contains the logic for encoding every logical protocol field type
+into one of the 5 physical wire types.
+
+This code is designed to push the Python interpreter&#39;s performance to the
+limits.
+
+The basic idea is that at startup time, for every field (i.e. every
+FieldDescriptor) we construct two functions:  a &#34;sizer&#34; and an &#34;encoder&#34;.  The
+sizer takes a value of this field&#39;s type and computes its byte size.  The
+encoder takes a writer function and a value.  It encodes the value into byte
+strings and invokes the writer function to write those strings.  Typically the
+writer function is the write() method of a BytesIO.
+
+We try to do as much work as possible when constructing the writer and the
+sizer rather than when calling them.  In particular:
+* We copy any needed global functions to local variables, so that we do not need
+  to do costly global table lookups at runtime.
+* Similarly, we try to do any attribute lookups at startup time if possible.
+* Every field&#39;s tag is encoded to bytes at startup, since it can&#39;t change at
+  runtime.
+* Whatever component of the field size we can compute at startup, we do.
+* We *avoid* sharing code if doing so would make the code slower and not sharing
+  does not burden us too much.  For example, encoders for repeated fields do
+  not just call the encoders for singular fields in a loop because this would
+  add an extra function call overhead for every loop iteration; instead, we
+  manually inline the single-value encoder into the loop.
+* If a Python function lacks a return statement, Python actually generates
+  instructions to pop the result of the last statement off the stack, push
+  None onto the stack, and then return that.  If we really don&#39;t care what
+  value is returned, then we can save two instructions by returning the
+  result of the last statement.  It looks funny but it helps.
+* We assume that type and bounds checking has happened at a higher level.
+&#34;&#34;&#34;
+
+__author__ = &#39;kenton@google.com (Kenton Varda)&#39;
+
+import struct
+
+import six
+
+from google.protobuf.internal import wire_format
+
+
+# This will overflow and thus become IEEE-754 &#34;infinity&#34;.  We would use
+# &#34;float(&#39;inf&#39;)&#34; but it doesn&#39;t work on Windows pre-Python-2.6.
+_POS_INF = 1e10000
+_NEG_INF = -_POS_INF
+
+
+def _VarintSize(value):
+  &#34;&#34;&#34;Compute the size of a varint value.&#34;&#34;&#34;
+  if value &lt;= 0x7f: return 1
+  if value &lt;= 0x3fff: return 2
+  if value &lt;= 0x1fffff: return 3
+  if value &lt;= 0xfffffff: return 4
+  if value &lt;= 0x7ffffffff: return 5
+  if value &lt;= 0x3ffffffffff: return 6
+  if value &lt;= 0x1ffffffffffff: return 7
+  if value &lt;= 0xffffffffffffff: return 8
+  if value &lt;= 0x7fffffffffffffff: return 9
+  return 10
+
+
+def _SignedVarintSize(value):
+  &#34;&#34;&#34;Compute the size of a signed varint value.&#34;&#34;&#34;
+  if value &lt; 0: return 10
+  if value &lt;= 0x7f: return 1
+  if value &lt;= 0x3fff: return 2
+  if value &lt;= 0x1fffff: return 3
+  if value &lt;= 0xfffffff: return 4
+  if value &lt;= 0x7ffffffff: return 5
+  if value &lt;= 0x3ffffffffff: return 6
+  if value &lt;= 0x1ffffffffffff: return 7
+  if value &lt;= 0xffffffffffffff: return 8
+  if value &lt;= 0x7fffffffffffffff: return 9
+  return 10
+
+
+def _TagSize(field_number):
+  &#34;&#34;&#34;Returns the number of bytes required to serialize a tag with this field
+  number.&#34;&#34;&#34;
+  # Just pass in type 0, since the type won&#39;t affect the tag+type size.
+  return _VarintSize(wire_format.PackTag(field_number, 0))
+
+
+# --------------------------------------------------------------------
+# In this section we define some generic sizers.  Each of these functions
+# takes parameters specific to a particular field type, e.g. int32 or fixed64.
+# It returns another function which in turn takes parameters specific to a
+# particular field, e.g. the field number and whether it is repeated or packed.
+# Look at the next section to see how these are used.
+
+
+def _SimpleSizer(compute_value_size):
+  &#34;&#34;&#34;A sizer which uses the function compute_value_size to compute the size of
+  each value.  Typically compute_value_size is _VarintSize.&#34;&#34;&#34;
+
+  def SpecificSizer(field_number, is_repeated, is_packed):
+    tag_size = _TagSize(field_number)
+    if is_packed:
+      local_VarintSize = _VarintSize
+      def PackedFieldSize(value):
+        result = 0
+        for element in value:
+          result += compute_value_size(element)
+        return result + local_VarintSize(result) + tag_size
+      return PackedFieldSize
+    elif is_repeated:
+      def RepeatedFieldSize(value):
+        result = tag_size * len(value)
+        for element in value:
+          result += compute_value_size(element)
+        return result
+      return RepeatedFieldSize
+    else:
+      def FieldSize(value):
+        return tag_size + compute_value_size(value)
+      return FieldSize
+
+  return SpecificSizer
+
+
+def _ModifiedSizer(compute_value_size, modify_value):
+  &#34;&#34;&#34;Like SimpleSizer, but modify_value is invoked on each value before it is
+  passed to compute_value_size.  modify_value is typically ZigZagEncode.&#34;&#34;&#34;
+
+  def SpecificSizer(field_number, is_repeated, is_packed):
+    tag_size = _TagSize(field_number)
+    if is_packed:
+      local_VarintSize = _VarintSize
+      def PackedFieldSize(value):
+        result = 0
+        for element in value:
+          result += compute_value_size(modify_value(element))
+        return result + local_VarintSize(result) + tag_size
+      return PackedFieldSize
+    elif is_repeated:
+      def RepeatedFieldSize(value):
+        result = tag_size * len(value)
+        for element in value:
+          result += compute_value_size(modify_value(element))
+        return result
+      return RepeatedFieldSize
+    else:
+      def FieldSize(value):
+        return tag_size + compute_value_size(modify_value(value))
+      return FieldSize
+
+  return SpecificSizer
+
+
+def _FixedSizer(value_size):
+  &#34;&#34;&#34;Like _SimpleSizer except for a fixed-size field.  The input is the size
+  of one value.&#34;&#34;&#34;
+
+  def SpecificSizer(field_number, is_repeated, is_packed):
+    tag_size = _TagSize(field_number)
+    if is_packed:
+      local_VarintSize = _VarintSize
+      def PackedFieldSize(value):
+        result = len(value) * value_size
+        return result + local_VarintSize(result) + tag_size
+      return PackedFieldSize
+    elif is_repeated:
+      element_size = value_size + tag_size
+      def RepeatedFieldSize(value):
+        return len(value) * element_size
+      return RepeatedFieldSize
+    else:
+      field_size = value_size + tag_size
+      def FieldSize(value):
+        return field_size
+      return FieldSize
+
+  return SpecificSizer
+
+
+# ====================================================================
+# Here we declare a sizer constructor for each field type.  Each &#34;sizer
+# constructor&#34; is a function that takes (field_number, is_repeated, is_packed)
+# as parameters and returns a sizer, which in turn takes a field value as
+# a parameter and returns its encoded size.
+
+
+Int32Sizer = Int64Sizer = EnumSizer = _SimpleSizer(_SignedVarintSize)
+
+UInt32Sizer = UInt64Sizer = _SimpleSizer(_VarintSize)
+
+SInt32Sizer = SInt64Sizer = _ModifiedSizer(
+    _SignedVarintSize, wire_format.ZigZagEncode)
+
+Fixed32Sizer = SFixed32Sizer = FloatSizer  = _FixedSizer(4)
+Fixed64Sizer = SFixed64Sizer = DoubleSizer = _FixedSizer(8)
+
+BoolSizer = _FixedSizer(1)
+
+
+def StringSizer(field_number, is_repeated, is_packed):
+  &#34;&#34;&#34;Returns a sizer for a string field.&#34;&#34;&#34;
+
+  tag_size = _TagSize(field_number)
+  local_VarintSize = _VarintSize
+  local_len = len
+  assert not is_packed
+  if is_repeated:
+    def RepeatedFieldSize(value):
+      result = tag_size * len(value)
+      for element in value:
+        l = local_len(element.encode(&#39;utf-8&#39;))
+        result += local_VarintSize(l) + l
+      return result
+    return RepeatedFieldSize
+  else:
+    def FieldSize(value):
+      l = local_len(value.encode(&#39;utf-8&#39;))
+      return tag_size + local_VarintSize(l) + l
+    return FieldSize
+
+
+def BytesSizer(field_number, is_repeated, is_packed):
+  &#34;&#34;&#34;Returns a sizer for a bytes field.&#34;&#34;&#34;
+
+  tag_size = _TagSize(field_number)
+  local_VarintSize = _VarintSize
+  local_len = len
+  assert not is_packed
+  if is_repeated:
+    def RepeatedFieldSize(value):
+      result = tag_size * len(value)
+      for element in value:
+        l = local_len(element)
+        result += local_VarintSize(l) + l
+      return result
+    return RepeatedFieldSize
+  else:
+    def FieldSize(value):
+      l = local_len(value)
+      return tag_size + local_VarintSize(l) + l
+    return FieldSize
+
+
+def GroupSizer(field_number, is_repeated, is_packed):
+  &#34;&#34;&#34;Returns a sizer for a group field.&#34;&#34;&#34;
+
+  tag_size = _TagSize(field_number) * 2
+  assert not is_packed
+  if is_repeated:
+    def RepeatedFieldSize(value):
+      result = tag_size * len(value)
+      for element in value:
+        result += element.ByteSize()
+      return result
+    return RepeatedFieldSize
+  else:
+    def FieldSize(value):
+      return tag_size + value.ByteSize()
+    return FieldSize
+
+
+def MessageSizer(field_number, is_repeated, is_packed):
+  &#34;&#34;&#34;Returns a sizer for a message field.&#34;&#34;&#34;
+
+  tag_size = _TagSize(field_number)
+  local_VarintSize = _VarintSize
+  assert not is_packed
+  if is_repeated:
+    def RepeatedFieldSize(value):
+      result = tag_size * len(value)
+      for element in value:
+        l = element.ByteSize()
+        result += local_VarintSize(l) + l
+      return result
+    return RepeatedFieldSize
+  else:
+    def FieldSize(value):
+      l = value.ByteSize()
+      return tag_size + local_VarintSize(l) + l
+    return FieldSize
+
+
+# --------------------------------------------------------------------
+# MessageSet is special: it needs custom logic to compute its size properly.
+
+
+def MessageSetItemSizer(field_number):
+  &#34;&#34;&#34;Returns a sizer for extensions of MessageSet.
+
+  The message set message looks like this:
+    message MessageSet {
+      repeated group Item = 1 {
+        required int32 type_id = 2;
+        required string message = 3;
+      }
+    }
+  &#34;&#34;&#34;
+  static_size = (_TagSize(1) * 2 + _TagSize(2) + _VarintSize(field_number) +
+                 _TagSize(3))
+  local_VarintSize = _VarintSize
+
+  def FieldSize(value):
+    l = value.ByteSize()
+    return static_size + local_VarintSize(l) + l
+
+  return FieldSize
+
+
+# --------------------------------------------------------------------
+# Map is special: it needs custom logic to compute its size properly.
+
+
+def MapSizer(field_descriptor, is_message_map):
+  &#34;&#34;&#34;Returns a sizer for a map field.&#34;&#34;&#34;
+
+  # Can&#39;t look at field_descriptor.message_type._concrete_class because it may
+  # not have been initialized yet.
+  message_type = field_descriptor.message_type
+  message_sizer = MessageSizer(field_descriptor.number, False, False)
+
+  def FieldSize(map_value):
+    total = 0
+    for key in map_value:
+      value = map_value[key]
+      # It&#39;s wasteful to create the messages and throw them away one second
+      # later since we&#39;ll do the same for the actual encode.  But there&#39;s not an
+      # obvious way to avoid this within the current design without tons of code
+      # duplication. For message map, value.ByteSize() should be called to
+      # update the status.
+      entry_msg = message_type._concrete_class(key=key, value=value)
+      total += message_sizer(entry_msg)
+      if is_message_map:
+        value.ByteSize()
+    return total
+
+  return FieldSize
+
+# ====================================================================
+# Encoders!
+
+
+def _VarintEncoder():
+  &#34;&#34;&#34;Return an encoder for a basic varint value (does not include tag).&#34;&#34;&#34;
+
+  def EncodeVarint(write, value, unused_deterministic=None):
+    bits = value &amp; 0x7f
+    value &gt;&gt;= 7
+    while value:
+      write(six.int2byte(0x80|bits))
+      bits = value &amp; 0x7f
+      value &gt;&gt;= 7
+    return write(six.int2byte(bits))
+
+  return EncodeVarint
+
+
+def _SignedVarintEncoder():
+  &#34;&#34;&#34;Return an encoder for a basic signed varint value (does not include
+  tag).&#34;&#34;&#34;
+
+  def EncodeSignedVarint(write, value, unused_deterministic=None):
+    if value &lt; 0:
+      value += (1 &lt;&lt; 64)
+    bits = value &amp; 0x7f
+    value &gt;&gt;= 7
+    while value:
+      write(six.int2byte(0x80|bits))
+      bits = value &amp; 0x7f
+      value &gt;&gt;= 7
+    return write(six.int2byte(bits))
+
+  return EncodeSignedVarint
+
+
+_EncodeVarint = _VarintEncoder()
+_EncodeSignedVarint = _SignedVarintEncoder()
+
+
+def _VarintBytes(value):
+  &#34;&#34;&#34;Encode the given integer as a varint and return the bytes.  This is only
+  called at startup time so it doesn&#39;t need to be fast.&#34;&#34;&#34;
+
+  pieces = []
+  _EncodeVarint(pieces.append, value, True)
+  return b&#34;&#34;.join(pieces)
+
+
+def TagBytes(field_number, wire_type):
+  &#34;&#34;&#34;Encode the given tag and return the bytes.  Only called at startup.&#34;&#34;&#34;
+
+  return six.binary_type(
+      _VarintBytes(wire_format.PackTag(field_number, wire_type)))
+
+# --------------------------------------------------------------------
+# As with sizers (see above), we have a number of common encoder
+# implementations.
+
+
+def _SimpleEncoder(wire_type, encode_value, compute_value_size):
+  &#34;&#34;&#34;Return a constructor for an encoder for fields of a particular type.
+
+  Args:
+      wire_type:  The field&#39;s wire type, for encoding tags.
+      encode_value:  A function which encodes an individual value, e.g.
+        _EncodeVarint().
+      compute_value_size:  A function which computes the size of an individual
+        value, e.g. _VarintSize().
+  &#34;&#34;&#34;
+
+  def SpecificEncoder(field_number, is_repeated, is_packed):
+    if is_packed:
+      tag_bytes = TagBytes(field_number, wire_format.WIRETYPE_LENGTH_DELIMITED)
+      local_EncodeVarint = _EncodeVarint
+      def EncodePackedField(write, value, deterministic):
+        write(tag_bytes)
+        size = 0
+        for element in value:
+          size += compute_value_size(element)
+        local_EncodeVarint(write, size, deterministic)
+        for element in value:
+          encode_value(write, element, deterministic)
+      return EncodePackedField
+    elif is_repeated:
+      tag_bytes = TagBytes(field_number, wire_type)
+      def EncodeRepeatedField(write, value, deterministic):
+        for element in value:
+          write(tag_bytes)
+          encode_value(write, element, deterministic)
+      return EncodeRepeatedField
+    else:
+      tag_bytes = TagBytes(field_number, wire_type)
+      def EncodeField(write, value, deterministic):
+        write(tag_bytes)
+        return encode_value(write, value, deterministic)
+      return EncodeField
+
+  return SpecificEncoder
+
+
+def _ModifiedEncoder(wire_type, encode_value, compute_value_size, modify_value):
+  &#34;&#34;&#34;Like SimpleEncoder but additionally invokes modify_value on every value
+  before passing it to encode_value.  Usually modify_value is ZigZagEncode.&#34;&#34;&#34;
+
+  def SpecificEncoder(field_number, is_repeated, is_packed):
+    if is_packed:
+      tag_bytes = TagBytes(field_number, wire_format.WIRETYPE_LENGTH_DELIMITED)
+      local_EncodeVarint = _EncodeVarint
+      def EncodePackedField(write, value, deterministic):
+        write(tag_bytes)
+        size = 0
+        for element in value:
+          size += compute_value_size(modify_value(element))
+        local_EncodeVarint(write, size, deterministic)
+        for element in value:
+          encode_value(write, modify_value(element), deterministic)
+      return EncodePackedField
+    elif is_repeated:
+      tag_bytes = TagBytes(field_number, wire_type)
+      def EncodeRepeatedField(write, value, deterministic):
+        for element in value:
+          write(tag_bytes)
+          encode_value(write, modify_value(element), deterministic)
+      return EncodeRepeatedField
+    else:
+      tag_bytes = TagBytes(field_number, wire_type)
+      def EncodeField(write, value, deterministic):
+        write(tag_bytes)
+        return encode_value(write, modify_value(value), deterministic)
+      return EncodeField
+
+  return SpecificEncoder
+
+
+def _StructPackEncoder(wire_type, format):
+  &#34;&#34;&#34;Return a constructor for an encoder for a fixed-width field.
+
+  Args:
+      wire_type:  The field&#39;s wire type, for encoding tags.
+      format:  The format string to pass to struct.pack().
+  &#34;&#34;&#34;
+
+  value_size = struct.calcsize(format)
+
+  def SpecificEncoder(field_number, is_repeated, is_packed):
+    local_struct_pack = struct.pack
+    if is_packed:
+      tag_bytes = TagBytes(field_number, wire_format.WIRETYPE_LENGTH_DELIMITED)
+      local_EncodeVarint = _EncodeVarint
+      def EncodePackedField(write, value, deterministic):
+        write(tag_bytes)
+        local_EncodeVarint(write, len(value) * value_size, deterministic)
+        for element in value:
+          write(local_struct_pack(format, element))
+      return EncodePackedField
+    elif is_repeated:
+      tag_bytes = TagBytes(field_number, wire_type)
+      def EncodeRepeatedField(write, value, unused_deterministic=None):
+        for element in value:
+          write(tag_bytes)
+          write(local_struct_pack(format, element))
+      return EncodeRepeatedField
+    else:
+      tag_bytes = TagBytes(field_number, wire_type)
+      def EncodeField(write, value, unused_deterministic=None):
+        write(tag_bytes)
+        return write(local_struct_pack(format, value))
+      return EncodeField
+
+  return SpecificEncoder
+
+
+def _FloatingPointEncoder(wire_type, format):
+  &#34;&#34;&#34;Return a constructor for an encoder for float fields.
+
+  This is like StructPackEncoder, but catches errors that may be due to
+  passing non-finite floating-point values to struct.pack, and makes a
+  second attempt to encode those values.
+
+  Args:
+      wire_type:  The field&#39;s wire type, for encoding tags.
+      format:  The format string to pass to struct.pack().
+  &#34;&#34;&#34;
+
+  value_size = struct.calcsize(format)
+  if value_size == 4:
+    def EncodeNonFiniteOrRaise(write, value):
+      # Remember that the serialized form uses little-endian byte order.
+      if value == _POS_INF:
+        write(b&#39;\x00\x00\x80\x7F&#39;)
+      elif value == _NEG_INF:
+        write(b&#39;\x00\x00\x80\xFF&#39;)
+      elif value != value:           # NaN
+        write(b&#39;\x00\x00\xC0\x7F&#39;)
+      else:
+        raise
+  elif value_size == 8:
+    def EncodeNonFiniteOrRaise(write, value):
+      if value == _POS_INF:
+        write(b&#39;\x00\x00\x00\x00\x00\x00\xF0\x7F&#39;)
+      elif value == _NEG_INF:
+        write(b&#39;\x00\x00\x00\x00\x00\x00\xF0\xFF&#39;)
+      elif value != value:                         # NaN
+        write(b&#39;\x00\x00\x00\x00\x00\x00\xF8\x7F&#39;)
+      else:
+        raise
+  else:
+    raise ValueError(&#39;Can\&#39;t encode floating-point values that are &#39;
+                     &#39;%d bytes long (only 4 or 8)&#39; % value_size)
+
+  def SpecificEncoder(field_number, is_repeated, is_packed):
+    local_struct_pack = struct.pack
+    if is_packed:
+      tag_bytes = TagBytes(field_number, wire_format.WIRETYPE_LENGTH_DELIMITED)
+      local_EncodeVarint = _EncodeVarint
+      def EncodePackedField(write, value, deterministic):
+        write(tag_bytes)
+        local_EncodeVarint(write, len(value) * value_size, deterministic)
+        for element in value:
+          # This try/except block is going to be faster than any code that
+          # we could write to check whether element is finite.
+          try:
+            write(local_struct_pack(format, element))
+          except SystemError:
+            EncodeNonFiniteOrRaise(write, element)
+      return EncodePackedField
+    elif is_repeated:
+      tag_bytes = TagBytes(field_number, wire_type)
+      def EncodeRepeatedField(write, value, unused_deterministic=None):
+        for element in value:
+          write(tag_bytes)
+          try:
+            write(local_struct_pack(format, element))
+          except SystemError:
+            EncodeNonFiniteOrRaise(write, element)
+      return EncodeRepeatedField
+    else:
+      tag_bytes = TagBytes(field_number, wire_type)
+      def EncodeField(write, value, unused_deterministic=None):
+        write(tag_bytes)
+        try:
+          write(local_struct_pack(format, value))
+        except SystemError:
+          EncodeNonFiniteOrRaise(write, value)
+      return EncodeField
+
+  return SpecificEncoder
+
+
+# ====================================================================
+# Here we declare an encoder constructor for each field type.  These work
+# very similarly to sizer constructors, described earlier.
+
+
+Int32Encoder = Int64Encoder = EnumEncoder = _SimpleEncoder(
+    wire_format.WIRETYPE_VARINT, _EncodeSignedVarint, _SignedVarintSize)
+
+UInt32Encoder = UInt64Encoder = _SimpleEncoder(
+    wire_format.WIRETYPE_VARINT, _EncodeVarint, _VarintSize)
+
+SInt32Encoder = SInt64Encoder = _ModifiedEncoder(
+    wire_format.WIRETYPE_VARINT, _EncodeVarint, _VarintSize,
+    wire_format.ZigZagEncode)
+
+# Note that Python conveniently guarantees that when using the &#39;&lt;&#39; prefix on
+# formats, they will also have the same size across all platforms (as opposed
+# to without the prefix, where their sizes depend on the C compiler&#39;s basic
+# type sizes).
+Fixed32Encoder  = _StructPackEncoder(wire_format.WIRETYPE_FIXED32, &#39;&lt;I&#39;)
+Fixed64Encoder  = _StructPackEncoder(wire_format.WIRETYPE_FIXED64, &#39;&lt;Q&#39;)
+SFixed32Encoder = _StructPackEncoder(wire_format.WIRETYPE_FIXED32, &#39;&lt;i&#39;)
+SFixed64Encoder = _StructPackEncoder(wire_format.WIRETYPE_FIXED64, &#39;&lt;q&#39;)
+FloatEncoder    = _FloatingPointEncoder(wire_format.WIRETYPE_FIXED32, &#39;&lt;f&#39;)
+DoubleEncoder   = _FloatingPointEncoder(wire_format.WIRETYPE_FIXED64, &#39;&lt;d&#39;)
+
+
+def BoolEncoder(field_number, is_repeated, is_packed):
+  &#34;&#34;&#34;Returns an encoder for a boolean field.&#34;&#34;&#34;
+
+  false_byte = b&#39;\x00&#39;
+  true_byte = b&#39;\x01&#39;
+  if is_packed:
+    tag_bytes = TagBytes(field_number, wire_format.WIRETYPE_LENGTH_DELIMITED)
+    local_EncodeVarint = _EncodeVarint
+    def EncodePackedField(write, value, deterministic):
+      write(tag_bytes)
+      local_EncodeVarint(write, len(value), deterministic)
+      for element in value:
+        if element:
+          write(true_byte)
+        else:
+          write(false_byte)
+    return EncodePackedField
+  elif is_repeated:
+    tag_bytes = TagBytes(field_number, wire_format.WIRETYPE_VARINT)
+    def EncodeRepeatedField(write, value, unused_deterministic=None):
+      for element in value:
+        write(tag_bytes)
+        if element:
+          write(true_byte)
+        else:
+          write(false_byte)
+    return EncodeRepeatedField
+  else:
+    tag_bytes = TagBytes(field_number, wire_format.WIRETYPE_VARINT)
+    def EncodeField(write, value, unused_deterministic=None):
+      write(tag_bytes)
+      if value:
+        return write(true_byte)
+      return write(false_byte)
+    return EncodeField
+
+
+def StringEncoder(field_number, is_repeated, is_packed):
+  &#34;&#34;&#34;Returns an encoder for a string field.&#34;&#34;&#34;
+
+  tag = TagBytes(field_number, wire_format.WIRETYPE_LENGTH_DELIMITED)
+  local_EncodeVarint = _EncodeVarint
+  local_len = len
+  assert not is_packed
+  if is_repeated:
+    def EncodeRepeatedField(write, value, deterministic):
+      for element in value:
+        encoded = element.encode(&#39;utf-8&#39;)
+        write(tag)
+        local_EncodeVarint(write, local_len(encoded), deterministic)
+        write(encoded)
+    return EncodeRepeatedField
+  else:
+    def EncodeField(write, value, deterministic):
+      encoded = value.encode(&#39;utf-8&#39;)
+      write(tag)
+      local_EncodeVarint(write, local_len(encoded), deterministic)
+      return write(encoded)
+    return EncodeField
+
+
+def BytesEncoder(field_number, is_repeated, is_packed):
+  &#34;&#34;&#34;Returns an encoder for a bytes field.&#34;&#34;&#34;
+
+  tag = TagBytes(field_number, wire_format.WIRETYPE_LENGTH_DELIMITED)
+  local_EncodeVarint = _EncodeVarint
+  local_len = len
+  assert not is_packed
+  if is_repeated:
+    def EncodeRepeatedField(write, value, deterministic):
+      for element in value:
+        write(tag)
+        local_EncodeVarint(write, local_len(element), deterministic)
+        write(element)
+    return EncodeRepeatedField
+  else:
+    def EncodeField(write, value, deterministic):
+      write(tag)
+      local_EncodeVarint(write, local_len(value), deterministic)
+      return write(value)
+    return EncodeField
+
+
+def GroupEncoder(field_number, is_repeated, is_packed):
+  &#34;&#34;&#34;Returns an encoder for a group field.&#34;&#34;&#34;
+
+  start_tag = TagBytes(field_number, wire_format.WIRETYPE_START_GROUP)
+  end_tag = TagBytes(field_number, wire_format.WIRETYPE_END_GROUP)
+  assert not is_packed
+  if is_repeated:
+    def EncodeRepeatedField(write, value, deterministic):
+      for element in value:
+        write(start_tag)
+        element._InternalSerialize(write, deterministic)
+        write(end_tag)
+    return EncodeRepeatedField
+  else:
+    def EncodeField(write, value, deterministic):
+      write(start_tag)
+      value._InternalSerialize(write, deterministic)
+      return write(end_tag)
+    return EncodeField
+
+
+def MessageEncoder(field_number, is_repeated, is_packed):
+  &#34;&#34;&#34;Returns an encoder for a message field.&#34;&#34;&#34;
+
+  tag = TagBytes(field_number, wire_format.WIRETYPE_LENGTH_DELIMITED)
+  local_EncodeVarint = _EncodeVarint
+  assert not is_packed
+  if is_repeated:
+    def EncodeRepeatedField(write, value, deterministic):
+      for element in value:
+        write(tag)
+        local_EncodeVarint(write, element.ByteSize(), deterministic)
+        element._InternalSerialize(write, deterministic)
+    return EncodeRepeatedField
+  else:
+    def EncodeField(write, value, deterministic):
+      write(tag)
+      local_EncodeVarint(write, value.ByteSize(), deterministic)
+      return value._InternalSerialize(write, deterministic)
+    return EncodeField
+
+
+# --------------------------------------------------------------------
+# As before, MessageSet is special.
+
+
+def MessageSetItemEncoder(field_number):
+  &#34;&#34;&#34;Encoder for extensions of MessageSet.
+
+  The message set message looks like this:
+    message MessageSet {
+      repeated group Item = 1 {
+        required int32 type_id = 2;
+        required string message = 3;
+      }
+    }
+  &#34;&#34;&#34;
+  start_bytes = b&#34;&#34;.join([
+      TagBytes(1, wire_format.WIRETYPE_START_GROUP),
+      TagBytes(2, wire_format.WIRETYPE_VARINT),
+      _VarintBytes(field_number),
+      TagBytes(3, wire_format.WIRETYPE_LENGTH_DELIMITED)])
+  end_bytes = TagBytes(1, wire_format.WIRETYPE_END_GROUP)
+  local_EncodeVarint = _EncodeVarint
+
+  def EncodeField(write, value, deterministic):
+    write(start_bytes)
+    local_EncodeVarint(write, value.ByteSize(), deterministic)
+    value._InternalSerialize(write, deterministic)
+    return write(end_bytes)
+
+  return EncodeField
+
+
+# --------------------------------------------------------------------
+# As before, Map is special.
+
+
+def MapEncoder(field_descriptor):
+  &#34;&#34;&#34;Encoder for extensions of MessageSet.
+
+  Maps always have a wire format like this:
+    message MapEntry {
+      key_type key = 1;
+      value_type value = 2;
+    }
+    repeated MapEntry map = N;
+  &#34;&#34;&#34;
+  # Can&#39;t look at field_descriptor.message_type._concrete_class because it may
+  # not have been initialized yet.
+  message_type = field_descriptor.message_type
+  encode_message = MessageEncoder(field_descriptor.number, False, False)
+
+  def EncodeField(write, value, deterministic):
+    value_keys = sorted(value.keys()) if deterministic else value
+    for key in value_keys:
+      entry_msg = message_type._concrete_class(key=key, value=value[key])
+      encode_message(write, entry_msg, deterministic)
+
+  return EncodeField</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="google.protobuf.internal.encoder.BoolEncoder"><code class="name flex">
+<span>def <span class="ident">BoolEncoder</span></span>(<span>field_number, is_repeated, is_packed)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Returns an encoder for a boolean field.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def BoolEncoder(field_number, is_repeated, is_packed):
+  &#34;&#34;&#34;Returns an encoder for a boolean field.&#34;&#34;&#34;
+
+  false_byte = b&#39;\x00&#39;
+  true_byte = b&#39;\x01&#39;
+  if is_packed:
+    tag_bytes = TagBytes(field_number, wire_format.WIRETYPE_LENGTH_DELIMITED)
+    local_EncodeVarint = _EncodeVarint
+    def EncodePackedField(write, value, deterministic):
+      write(tag_bytes)
+      local_EncodeVarint(write, len(value), deterministic)
+      for element in value:
+        if element:
+          write(true_byte)
+        else:
+          write(false_byte)
+    return EncodePackedField
+  elif is_repeated:
+    tag_bytes = TagBytes(field_number, wire_format.WIRETYPE_VARINT)
+    def EncodeRepeatedField(write, value, unused_deterministic=None):
+      for element in value:
+        write(tag_bytes)
+        if element:
+          write(true_byte)
+        else:
+          write(false_byte)
+    return EncodeRepeatedField
+  else:
+    tag_bytes = TagBytes(field_number, wire_format.WIRETYPE_VARINT)
+    def EncodeField(write, value, unused_deterministic=None):
+      write(tag_bytes)
+      if value:
+        return write(true_byte)
+      return write(false_byte)
+    return EncodeField</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.encoder.BoolSizer"><code class="name flex">
+<span>def <span class="ident">BoolSizer</span></span>(<span>field_number, is_repeated, is_packed)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def SpecificSizer(field_number, is_repeated, is_packed):
+  tag_size = _TagSize(field_number)
+  if is_packed:
+    local_VarintSize = _VarintSize
+    def PackedFieldSize(value):
+      result = len(value) * value_size
+      return result + local_VarintSize(result) + tag_size
+    return PackedFieldSize
+  elif is_repeated:
+    element_size = value_size + tag_size
+    def RepeatedFieldSize(value):
+      return len(value) * element_size
+    return RepeatedFieldSize
+  else:
+    field_size = value_size + tag_size
+    def FieldSize(value):
+      return field_size
+    return FieldSize</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.encoder.BytesEncoder"><code class="name flex">
+<span>def <span class="ident">BytesEncoder</span></span>(<span>field_number, is_repeated, is_packed)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Returns an encoder for a bytes field.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def BytesEncoder(field_number, is_repeated, is_packed):
+  &#34;&#34;&#34;Returns an encoder for a bytes field.&#34;&#34;&#34;
+
+  tag = TagBytes(field_number, wire_format.WIRETYPE_LENGTH_DELIMITED)
+  local_EncodeVarint = _EncodeVarint
+  local_len = len
+  assert not is_packed
+  if is_repeated:
+    def EncodeRepeatedField(write, value, deterministic):
+      for element in value:
+        write(tag)
+        local_EncodeVarint(write, local_len(element), deterministic)
+        write(element)
+    return EncodeRepeatedField
+  else:
+    def EncodeField(write, value, deterministic):
+      write(tag)
+      local_EncodeVarint(write, local_len(value), deterministic)
+      return write(value)
+    return EncodeField</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.encoder.BytesSizer"><code class="name flex">
+<span>def <span class="ident">BytesSizer</span></span>(<span>field_number, is_repeated, is_packed)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Returns a sizer for a bytes field.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def BytesSizer(field_number, is_repeated, is_packed):
+  &#34;&#34;&#34;Returns a sizer for a bytes field.&#34;&#34;&#34;
+
+  tag_size = _TagSize(field_number)
+  local_VarintSize = _VarintSize
+  local_len = len
+  assert not is_packed
+  if is_repeated:
+    def RepeatedFieldSize(value):
+      result = tag_size * len(value)
+      for element in value:
+        l = local_len(element)
+        result += local_VarintSize(l) + l
+      return result
+    return RepeatedFieldSize
+  else:
+    def FieldSize(value):
+      l = local_len(value)
+      return tag_size + local_VarintSize(l) + l
+    return FieldSize</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.encoder.DoubleEncoder"><code class="name flex">
+<span>def <span class="ident">DoubleEncoder</span></span>(<span>field_number, is_repeated, is_packed)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def SpecificEncoder(field_number, is_repeated, is_packed):
+  local_struct_pack = struct.pack
+  if is_packed:
+    tag_bytes = TagBytes(field_number, wire_format.WIRETYPE_LENGTH_DELIMITED)
+    local_EncodeVarint = _EncodeVarint
+    def EncodePackedField(write, value, deterministic):
+      write(tag_bytes)
+      local_EncodeVarint(write, len(value) * value_size, deterministic)
+      for element in value:
+        # This try/except block is going to be faster than any code that
+        # we could write to check whether element is finite.
+        try:
+          write(local_struct_pack(format, element))
+        except SystemError:
+          EncodeNonFiniteOrRaise(write, element)
+    return EncodePackedField
+  elif is_repeated:
+    tag_bytes = TagBytes(field_number, wire_type)
+    def EncodeRepeatedField(write, value, unused_deterministic=None):
+      for element in value:
+        write(tag_bytes)
+        try:
+          write(local_struct_pack(format, element))
+        except SystemError:
+          EncodeNonFiniteOrRaise(write, element)
+    return EncodeRepeatedField
+  else:
+    tag_bytes = TagBytes(field_number, wire_type)
+    def EncodeField(write, value, unused_deterministic=None):
+      write(tag_bytes)
+      try:
+        write(local_struct_pack(format, value))
+      except SystemError:
+        EncodeNonFiniteOrRaise(write, value)
+    return EncodeField</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.encoder.DoubleSizer"><code class="name flex">
+<span>def <span class="ident">DoubleSizer</span></span>(<span>field_number, is_repeated, is_packed)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def SpecificSizer(field_number, is_repeated, is_packed):
+  tag_size = _TagSize(field_number)
+  if is_packed:
+    local_VarintSize = _VarintSize
+    def PackedFieldSize(value):
+      result = len(value) * value_size
+      return result + local_VarintSize(result) + tag_size
+    return PackedFieldSize
+  elif is_repeated:
+    element_size = value_size + tag_size
+    def RepeatedFieldSize(value):
+      return len(value) * element_size
+    return RepeatedFieldSize
+  else:
+    field_size = value_size + tag_size
+    def FieldSize(value):
+      return field_size
+    return FieldSize</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.encoder.EnumEncoder"><code class="name flex">
+<span>def <span class="ident">EnumEncoder</span></span>(<span>field_number, is_repeated, is_packed)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def SpecificEncoder(field_number, is_repeated, is_packed):
+  if is_packed:
+    tag_bytes = TagBytes(field_number, wire_format.WIRETYPE_LENGTH_DELIMITED)
+    local_EncodeVarint = _EncodeVarint
+    def EncodePackedField(write, value, deterministic):
+      write(tag_bytes)
+      size = 0
+      for element in value:
+        size += compute_value_size(element)
+      local_EncodeVarint(write, size, deterministic)
+      for element in value:
+        encode_value(write, element, deterministic)
+    return EncodePackedField
+  elif is_repeated:
+    tag_bytes = TagBytes(field_number, wire_type)
+    def EncodeRepeatedField(write, value, deterministic):
+      for element in value:
+        write(tag_bytes)
+        encode_value(write, element, deterministic)
+    return EncodeRepeatedField
+  else:
+    tag_bytes = TagBytes(field_number, wire_type)
+    def EncodeField(write, value, deterministic):
+      write(tag_bytes)
+      return encode_value(write, value, deterministic)
+    return EncodeField</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.encoder.EnumSizer"><code class="name flex">
+<span>def <span class="ident">EnumSizer</span></span>(<span>field_number, is_repeated, is_packed)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def SpecificSizer(field_number, is_repeated, is_packed):
+  tag_size = _TagSize(field_number)
+  if is_packed:
+    local_VarintSize = _VarintSize
+    def PackedFieldSize(value):
+      result = 0
+      for element in value:
+        result += compute_value_size(element)
+      return result + local_VarintSize(result) + tag_size
+    return PackedFieldSize
+  elif is_repeated:
+    def RepeatedFieldSize(value):
+      result = tag_size * len(value)
+      for element in value:
+        result += compute_value_size(element)
+      return result
+    return RepeatedFieldSize
+  else:
+    def FieldSize(value):
+      return tag_size + compute_value_size(value)
+    return FieldSize</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.encoder.Fixed32Encoder"><code class="name flex">
+<span>def <span class="ident">Fixed32Encoder</span></span>(<span>field_number, is_repeated, is_packed)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def SpecificEncoder(field_number, is_repeated, is_packed):
+  local_struct_pack = struct.pack
+  if is_packed:
+    tag_bytes = TagBytes(field_number, wire_format.WIRETYPE_LENGTH_DELIMITED)
+    local_EncodeVarint = _EncodeVarint
+    def EncodePackedField(write, value, deterministic):
+      write(tag_bytes)
+      local_EncodeVarint(write, len(value) * value_size, deterministic)
+      for element in value:
+        write(local_struct_pack(format, element))
+    return EncodePackedField
+  elif is_repeated:
+    tag_bytes = TagBytes(field_number, wire_type)
+    def EncodeRepeatedField(write, value, unused_deterministic=None):
+      for element in value:
+        write(tag_bytes)
+        write(local_struct_pack(format, element))
+    return EncodeRepeatedField
+  else:
+    tag_bytes = TagBytes(field_number, wire_type)
+    def EncodeField(write, value, unused_deterministic=None):
+      write(tag_bytes)
+      return write(local_struct_pack(format, value))
+    return EncodeField</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.encoder.Fixed32Sizer"><code class="name flex">
+<span>def <span class="ident">Fixed32Sizer</span></span>(<span>field_number, is_repeated, is_packed)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def SpecificSizer(field_number, is_repeated, is_packed):
+  tag_size = _TagSize(field_number)
+  if is_packed:
+    local_VarintSize = _VarintSize
+    def PackedFieldSize(value):
+      result = len(value) * value_size
+      return result + local_VarintSize(result) + tag_size
+    return PackedFieldSize
+  elif is_repeated:
+    element_size = value_size + tag_size
+    def RepeatedFieldSize(value):
+      return len(value) * element_size
+    return RepeatedFieldSize
+  else:
+    field_size = value_size + tag_size
+    def FieldSize(value):
+      return field_size
+    return FieldSize</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.encoder.Fixed64Encoder"><code class="name flex">
+<span>def <span class="ident">Fixed64Encoder</span></span>(<span>field_number, is_repeated, is_packed)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def SpecificEncoder(field_number, is_repeated, is_packed):
+  local_struct_pack = struct.pack
+  if is_packed:
+    tag_bytes = TagBytes(field_number, wire_format.WIRETYPE_LENGTH_DELIMITED)
+    local_EncodeVarint = _EncodeVarint
+    def EncodePackedField(write, value, deterministic):
+      write(tag_bytes)
+      local_EncodeVarint(write, len(value) * value_size, deterministic)
+      for element in value:
+        write(local_struct_pack(format, element))
+    return EncodePackedField
+  elif is_repeated:
+    tag_bytes = TagBytes(field_number, wire_type)
+    def EncodeRepeatedField(write, value, unused_deterministic=None):
+      for element in value:
+        write(tag_bytes)
+        write(local_struct_pack(format, element))
+    return EncodeRepeatedField
+  else:
+    tag_bytes = TagBytes(field_number, wire_type)
+    def EncodeField(write, value, unused_deterministic=None):
+      write(tag_bytes)
+      return write(local_struct_pack(format, value))
+    return EncodeField</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.encoder.Fixed64Sizer"><code class="name flex">
+<span>def <span class="ident">Fixed64Sizer</span></span>(<span>field_number, is_repeated, is_packed)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def SpecificSizer(field_number, is_repeated, is_packed):
+  tag_size = _TagSize(field_number)
+  if is_packed:
+    local_VarintSize = _VarintSize
+    def PackedFieldSize(value):
+      result = len(value) * value_size
+      return result + local_VarintSize(result) + tag_size
+    return PackedFieldSize
+  elif is_repeated:
+    element_size = value_size + tag_size
+    def RepeatedFieldSize(value):
+      return len(value) * element_size
+    return RepeatedFieldSize
+  else:
+    field_size = value_size + tag_size
+    def FieldSize(value):
+      return field_size
+    return FieldSize</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.encoder.FloatEncoder"><code class="name flex">
+<span>def <span class="ident">FloatEncoder</span></span>(<span>field_number, is_repeated, is_packed)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def SpecificEncoder(field_number, is_repeated, is_packed):
+  local_struct_pack = struct.pack
+  if is_packed:
+    tag_bytes = TagBytes(field_number, wire_format.WIRETYPE_LENGTH_DELIMITED)
+    local_EncodeVarint = _EncodeVarint
+    def EncodePackedField(write, value, deterministic):
+      write(tag_bytes)
+      local_EncodeVarint(write, len(value) * value_size, deterministic)
+      for element in value:
+        # This try/except block is going to be faster than any code that
+        # we could write to check whether element is finite.
+        try:
+          write(local_struct_pack(format, element))
+        except SystemError:
+          EncodeNonFiniteOrRaise(write, element)
+    return EncodePackedField
+  elif is_repeated:
+    tag_bytes = TagBytes(field_number, wire_type)
+    def EncodeRepeatedField(write, value, unused_deterministic=None):
+      for element in value:
+        write(tag_bytes)
+        try:
+          write(local_struct_pack(format, element))
+        except SystemError:
+          EncodeNonFiniteOrRaise(write, element)
+    return EncodeRepeatedField
+  else:
+    tag_bytes = TagBytes(field_number, wire_type)
+    def EncodeField(write, value, unused_deterministic=None):
+      write(tag_bytes)
+      try:
+        write(local_struct_pack(format, value))
+      except SystemError:
+        EncodeNonFiniteOrRaise(write, value)
+    return EncodeField</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.encoder.FloatSizer"><code class="name flex">
+<span>def <span class="ident">FloatSizer</span></span>(<span>field_number, is_repeated, is_packed)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def SpecificSizer(field_number, is_repeated, is_packed):
+  tag_size = _TagSize(field_number)
+  if is_packed:
+    local_VarintSize = _VarintSize
+    def PackedFieldSize(value):
+      result = len(value) * value_size
+      return result + local_VarintSize(result) + tag_size
+    return PackedFieldSize
+  elif is_repeated:
+    element_size = value_size + tag_size
+    def RepeatedFieldSize(value):
+      return len(value) * element_size
+    return RepeatedFieldSize
+  else:
+    field_size = value_size + tag_size
+    def FieldSize(value):
+      return field_size
+    return FieldSize</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.encoder.GroupEncoder"><code class="name flex">
+<span>def <span class="ident">GroupEncoder</span></span>(<span>field_number, is_repeated, is_packed)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Returns an encoder for a group field.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def GroupEncoder(field_number, is_repeated, is_packed):
+  &#34;&#34;&#34;Returns an encoder for a group field.&#34;&#34;&#34;
+
+  start_tag = TagBytes(field_number, wire_format.WIRETYPE_START_GROUP)
+  end_tag = TagBytes(field_number, wire_format.WIRETYPE_END_GROUP)
+  assert not is_packed
+  if is_repeated:
+    def EncodeRepeatedField(write, value, deterministic):
+      for element in value:
+        write(start_tag)
+        element._InternalSerialize(write, deterministic)
+        write(end_tag)
+    return EncodeRepeatedField
+  else:
+    def EncodeField(write, value, deterministic):
+      write(start_tag)
+      value._InternalSerialize(write, deterministic)
+      return write(end_tag)
+    return EncodeField</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.encoder.GroupSizer"><code class="name flex">
+<span>def <span class="ident">GroupSizer</span></span>(<span>field_number, is_repeated, is_packed)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Returns a sizer for a group field.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def GroupSizer(field_number, is_repeated, is_packed):
+  &#34;&#34;&#34;Returns a sizer for a group field.&#34;&#34;&#34;
+
+  tag_size = _TagSize(field_number) * 2
+  assert not is_packed
+  if is_repeated:
+    def RepeatedFieldSize(value):
+      result = tag_size * len(value)
+      for element in value:
+        result += element.ByteSize()
+      return result
+    return RepeatedFieldSize
+  else:
+    def FieldSize(value):
+      return tag_size + value.ByteSize()
+    return FieldSize</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.encoder.Int32Encoder"><code class="name flex">
+<span>def <span class="ident">Int32Encoder</span></span>(<span>field_number, is_repeated, is_packed)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def SpecificEncoder(field_number, is_repeated, is_packed):
+  if is_packed:
+    tag_bytes = TagBytes(field_number, wire_format.WIRETYPE_LENGTH_DELIMITED)
+    local_EncodeVarint = _EncodeVarint
+    def EncodePackedField(write, value, deterministic):
+      write(tag_bytes)
+      size = 0
+      for element in value:
+        size += compute_value_size(element)
+      local_EncodeVarint(write, size, deterministic)
+      for element in value:
+        encode_value(write, element, deterministic)
+    return EncodePackedField
+  elif is_repeated:
+    tag_bytes = TagBytes(field_number, wire_type)
+    def EncodeRepeatedField(write, value, deterministic):
+      for element in value:
+        write(tag_bytes)
+        encode_value(write, element, deterministic)
+    return EncodeRepeatedField
+  else:
+    tag_bytes = TagBytes(field_number, wire_type)
+    def EncodeField(write, value, deterministic):
+      write(tag_bytes)
+      return encode_value(write, value, deterministic)
+    return EncodeField</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.encoder.Int32Sizer"><code class="name flex">
+<span>def <span class="ident">Int32Sizer</span></span>(<span>field_number, is_repeated, is_packed)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def SpecificSizer(field_number, is_repeated, is_packed):
+  tag_size = _TagSize(field_number)
+  if is_packed:
+    local_VarintSize = _VarintSize
+    def PackedFieldSize(value):
+      result = 0
+      for element in value:
+        result += compute_value_size(element)
+      return result + local_VarintSize(result) + tag_size
+    return PackedFieldSize
+  elif is_repeated:
+    def RepeatedFieldSize(value):
+      result = tag_size * len(value)
+      for element in value:
+        result += compute_value_size(element)
+      return result
+    return RepeatedFieldSize
+  else:
+    def FieldSize(value):
+      return tag_size + compute_value_size(value)
+    return FieldSize</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.encoder.Int64Encoder"><code class="name flex">
+<span>def <span class="ident">Int64Encoder</span></span>(<span>field_number, is_repeated, is_packed)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def SpecificEncoder(field_number, is_repeated, is_packed):
+  if is_packed:
+    tag_bytes = TagBytes(field_number, wire_format.WIRETYPE_LENGTH_DELIMITED)
+    local_EncodeVarint = _EncodeVarint
+    def EncodePackedField(write, value, deterministic):
+      write(tag_bytes)
+      size = 0
+      for element in value:
+        size += compute_value_size(element)
+      local_EncodeVarint(write, size, deterministic)
+      for element in value:
+        encode_value(write, element, deterministic)
+    return EncodePackedField
+  elif is_repeated:
+    tag_bytes = TagBytes(field_number, wire_type)
+    def EncodeRepeatedField(write, value, deterministic):
+      for element in value:
+        write(tag_bytes)
+        encode_value(write, element, deterministic)
+    return EncodeRepeatedField
+  else:
+    tag_bytes = TagBytes(field_number, wire_type)
+    def EncodeField(write, value, deterministic):
+      write(tag_bytes)
+      return encode_value(write, value, deterministic)
+    return EncodeField</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.encoder.Int64Sizer"><code class="name flex">
+<span>def <span class="ident">Int64Sizer</span></span>(<span>field_number, is_repeated, is_packed)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def SpecificSizer(field_number, is_repeated, is_packed):
+  tag_size = _TagSize(field_number)
+  if is_packed:
+    local_VarintSize = _VarintSize
+    def PackedFieldSize(value):
+      result = 0
+      for element in value:
+        result += compute_value_size(element)
+      return result + local_VarintSize(result) + tag_size
+    return PackedFieldSize
+  elif is_repeated:
+    def RepeatedFieldSize(value):
+      result = tag_size * len(value)
+      for element in value:
+        result += compute_value_size(element)
+      return result
+    return RepeatedFieldSize
+  else:
+    def FieldSize(value):
+      return tag_size + compute_value_size(value)
+    return FieldSize</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.encoder.MapEncoder"><code class="name flex">
+<span>def <span class="ident">MapEncoder</span></span>(<span>field_descriptor)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Encoder for extensions of MessageSet.</p>
+<p>Maps always have a wire format like this:
+message MapEntry {
+key_type key = 1;
+value_type value = 2;
+}
+repeated MapEntry map = N;</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def MapEncoder(field_descriptor):
+  &#34;&#34;&#34;Encoder for extensions of MessageSet.
+
+  Maps always have a wire format like this:
+    message MapEntry {
+      key_type key = 1;
+      value_type value = 2;
+    }
+    repeated MapEntry map = N;
+  &#34;&#34;&#34;
+  # Can&#39;t look at field_descriptor.message_type._concrete_class because it may
+  # not have been initialized yet.
+  message_type = field_descriptor.message_type
+  encode_message = MessageEncoder(field_descriptor.number, False, False)
+
+  def EncodeField(write, value, deterministic):
+    value_keys = sorted(value.keys()) if deterministic else value
+    for key in value_keys:
+      entry_msg = message_type._concrete_class(key=key, value=value[key])
+      encode_message(write, entry_msg, deterministic)
+
+  return EncodeField</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.encoder.MapSizer"><code class="name flex">
+<span>def <span class="ident">MapSizer</span></span>(<span>field_descriptor, is_message_map)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Returns a sizer for a map field.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def MapSizer(field_descriptor, is_message_map):
+  &#34;&#34;&#34;Returns a sizer for a map field.&#34;&#34;&#34;
+
+  # Can&#39;t look at field_descriptor.message_type._concrete_class because it may
+  # not have been initialized yet.
+  message_type = field_descriptor.message_type
+  message_sizer = MessageSizer(field_descriptor.number, False, False)
+
+  def FieldSize(map_value):
+    total = 0
+    for key in map_value:
+      value = map_value[key]
+      # It&#39;s wasteful to create the messages and throw them away one second
+      # later since we&#39;ll do the same for the actual encode.  But there&#39;s not an
+      # obvious way to avoid this within the current design without tons of code
+      # duplication. For message map, value.ByteSize() should be called to
+      # update the status.
+      entry_msg = message_type._concrete_class(key=key, value=value)
+      total += message_sizer(entry_msg)
+      if is_message_map:
+        value.ByteSize()
+    return total
+
+  return FieldSize</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.encoder.MessageEncoder"><code class="name flex">
+<span>def <span class="ident">MessageEncoder</span></span>(<span>field_number, is_repeated, is_packed)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Returns an encoder for a message field.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def MessageEncoder(field_number, is_repeated, is_packed):
+  &#34;&#34;&#34;Returns an encoder for a message field.&#34;&#34;&#34;
+
+  tag = TagBytes(field_number, wire_format.WIRETYPE_LENGTH_DELIMITED)
+  local_EncodeVarint = _EncodeVarint
+  assert not is_packed
+  if is_repeated:
+    def EncodeRepeatedField(write, value, deterministic):
+      for element in value:
+        write(tag)
+        local_EncodeVarint(write, element.ByteSize(), deterministic)
+        element._InternalSerialize(write, deterministic)
+    return EncodeRepeatedField
+  else:
+    def EncodeField(write, value, deterministic):
+      write(tag)
+      local_EncodeVarint(write, value.ByteSize(), deterministic)
+      return value._InternalSerialize(write, deterministic)
+    return EncodeField</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.encoder.MessageSetItemEncoder"><code class="name flex">
+<span>def <span class="ident">MessageSetItemEncoder</span></span>(<span>field_number)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Encoder for extensions of MessageSet.</p>
+<p>The message set message looks like this:
+message MessageSet {
+repeated group Item = 1 {
+required int32 type_id = 2;
+required string message = 3;
+}
+}</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def MessageSetItemEncoder(field_number):
+  &#34;&#34;&#34;Encoder for extensions of MessageSet.
+
+  The message set message looks like this:
+    message MessageSet {
+      repeated group Item = 1 {
+        required int32 type_id = 2;
+        required string message = 3;
+      }
+    }
+  &#34;&#34;&#34;
+  start_bytes = b&#34;&#34;.join([
+      TagBytes(1, wire_format.WIRETYPE_START_GROUP),
+      TagBytes(2, wire_format.WIRETYPE_VARINT),
+      _VarintBytes(field_number),
+      TagBytes(3, wire_format.WIRETYPE_LENGTH_DELIMITED)])
+  end_bytes = TagBytes(1, wire_format.WIRETYPE_END_GROUP)
+  local_EncodeVarint = _EncodeVarint
+
+  def EncodeField(write, value, deterministic):
+    write(start_bytes)
+    local_EncodeVarint(write, value.ByteSize(), deterministic)
+    value._InternalSerialize(write, deterministic)
+    return write(end_bytes)
+
+  return EncodeField</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.encoder.MessageSetItemSizer"><code class="name flex">
+<span>def <span class="ident">MessageSetItemSizer</span></span>(<span>field_number)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Returns a sizer for extensions of MessageSet.</p>
+<p>The message set message looks like this:
+message MessageSet {
+repeated group Item = 1 {
+required int32 type_id = 2;
+required string message = 3;
+}
+}</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def MessageSetItemSizer(field_number):
+  &#34;&#34;&#34;Returns a sizer for extensions of MessageSet.
+
+  The message set message looks like this:
+    message MessageSet {
+      repeated group Item = 1 {
+        required int32 type_id = 2;
+        required string message = 3;
+      }
+    }
+  &#34;&#34;&#34;
+  static_size = (_TagSize(1) * 2 + _TagSize(2) + _VarintSize(field_number) +
+                 _TagSize(3))
+  local_VarintSize = _VarintSize
+
+  def FieldSize(value):
+    l = value.ByteSize()
+    return static_size + local_VarintSize(l) + l
+
+  return FieldSize</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.encoder.MessageSizer"><code class="name flex">
+<span>def <span class="ident">MessageSizer</span></span>(<span>field_number, is_repeated, is_packed)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Returns a sizer for a message field.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def MessageSizer(field_number, is_repeated, is_packed):
+  &#34;&#34;&#34;Returns a sizer for a message field.&#34;&#34;&#34;
+
+  tag_size = _TagSize(field_number)
+  local_VarintSize = _VarintSize
+  assert not is_packed
+  if is_repeated:
+    def RepeatedFieldSize(value):
+      result = tag_size * len(value)
+      for element in value:
+        l = element.ByteSize()
+        result += local_VarintSize(l) + l
+      return result
+    return RepeatedFieldSize
+  else:
+    def FieldSize(value):
+      l = value.ByteSize()
+      return tag_size + local_VarintSize(l) + l
+    return FieldSize</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.encoder.SFixed32Encoder"><code class="name flex">
+<span>def <span class="ident">SFixed32Encoder</span></span>(<span>field_number, is_repeated, is_packed)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def SpecificEncoder(field_number, is_repeated, is_packed):
+  local_struct_pack = struct.pack
+  if is_packed:
+    tag_bytes = TagBytes(field_number, wire_format.WIRETYPE_LENGTH_DELIMITED)
+    local_EncodeVarint = _EncodeVarint
+    def EncodePackedField(write, value, deterministic):
+      write(tag_bytes)
+      local_EncodeVarint(write, len(value) * value_size, deterministic)
+      for element in value:
+        write(local_struct_pack(format, element))
+    return EncodePackedField
+  elif is_repeated:
+    tag_bytes = TagBytes(field_number, wire_type)
+    def EncodeRepeatedField(write, value, unused_deterministic=None):
+      for element in value:
+        write(tag_bytes)
+        write(local_struct_pack(format, element))
+    return EncodeRepeatedField
+  else:
+    tag_bytes = TagBytes(field_number, wire_type)
+    def EncodeField(write, value, unused_deterministic=None):
+      write(tag_bytes)
+      return write(local_struct_pack(format, value))
+    return EncodeField</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.encoder.SFixed32Sizer"><code class="name flex">
+<span>def <span class="ident">SFixed32Sizer</span></span>(<span>field_number, is_repeated, is_packed)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def SpecificSizer(field_number, is_repeated, is_packed):
+  tag_size = _TagSize(field_number)
+  if is_packed:
+    local_VarintSize = _VarintSize
+    def PackedFieldSize(value):
+      result = len(value) * value_size
+      return result + local_VarintSize(result) + tag_size
+    return PackedFieldSize
+  elif is_repeated:
+    element_size = value_size + tag_size
+    def RepeatedFieldSize(value):
+      return len(value) * element_size
+    return RepeatedFieldSize
+  else:
+    field_size = value_size + tag_size
+    def FieldSize(value):
+      return field_size
+    return FieldSize</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.encoder.SFixed64Encoder"><code class="name flex">
+<span>def <span class="ident">SFixed64Encoder</span></span>(<span>field_number, is_repeated, is_packed)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def SpecificEncoder(field_number, is_repeated, is_packed):
+  local_struct_pack = struct.pack
+  if is_packed:
+    tag_bytes = TagBytes(field_number, wire_format.WIRETYPE_LENGTH_DELIMITED)
+    local_EncodeVarint = _EncodeVarint
+    def EncodePackedField(write, value, deterministic):
+      write(tag_bytes)
+      local_EncodeVarint(write, len(value) * value_size, deterministic)
+      for element in value:
+        write(local_struct_pack(format, element))
+    return EncodePackedField
+  elif is_repeated:
+    tag_bytes = TagBytes(field_number, wire_type)
+    def EncodeRepeatedField(write, value, unused_deterministic=None):
+      for element in value:
+        write(tag_bytes)
+        write(local_struct_pack(format, element))
+    return EncodeRepeatedField
+  else:
+    tag_bytes = TagBytes(field_number, wire_type)
+    def EncodeField(write, value, unused_deterministic=None):
+      write(tag_bytes)
+      return write(local_struct_pack(format, value))
+    return EncodeField</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.encoder.SFixed64Sizer"><code class="name flex">
+<span>def <span class="ident">SFixed64Sizer</span></span>(<span>field_number, is_repeated, is_packed)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def SpecificSizer(field_number, is_repeated, is_packed):
+  tag_size = _TagSize(field_number)
+  if is_packed:
+    local_VarintSize = _VarintSize
+    def PackedFieldSize(value):
+      result = len(value) * value_size
+      return result + local_VarintSize(result) + tag_size
+    return PackedFieldSize
+  elif is_repeated:
+    element_size = value_size + tag_size
+    def RepeatedFieldSize(value):
+      return len(value) * element_size
+    return RepeatedFieldSize
+  else:
+    field_size = value_size + tag_size
+    def FieldSize(value):
+      return field_size
+    return FieldSize</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.encoder.SInt32Encoder"><code class="name flex">
+<span>def <span class="ident">SInt32Encoder</span></span>(<span>field_number, is_repeated, is_packed)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def SpecificEncoder(field_number, is_repeated, is_packed):
+  if is_packed:
+    tag_bytes = TagBytes(field_number, wire_format.WIRETYPE_LENGTH_DELIMITED)
+    local_EncodeVarint = _EncodeVarint
+    def EncodePackedField(write, value, deterministic):
+      write(tag_bytes)
+      size = 0
+      for element in value:
+        size += compute_value_size(modify_value(element))
+      local_EncodeVarint(write, size, deterministic)
+      for element in value:
+        encode_value(write, modify_value(element), deterministic)
+    return EncodePackedField
+  elif is_repeated:
+    tag_bytes = TagBytes(field_number, wire_type)
+    def EncodeRepeatedField(write, value, deterministic):
+      for element in value:
+        write(tag_bytes)
+        encode_value(write, modify_value(element), deterministic)
+    return EncodeRepeatedField
+  else:
+    tag_bytes = TagBytes(field_number, wire_type)
+    def EncodeField(write, value, deterministic):
+      write(tag_bytes)
+      return encode_value(write, modify_value(value), deterministic)
+    return EncodeField</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.encoder.SInt32Sizer"><code class="name flex">
+<span>def <span class="ident">SInt32Sizer</span></span>(<span>field_number, is_repeated, is_packed)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def SpecificSizer(field_number, is_repeated, is_packed):
+  tag_size = _TagSize(field_number)
+  if is_packed:
+    local_VarintSize = _VarintSize
+    def PackedFieldSize(value):
+      result = 0
+      for element in value:
+        result += compute_value_size(modify_value(element))
+      return result + local_VarintSize(result) + tag_size
+    return PackedFieldSize
+  elif is_repeated:
+    def RepeatedFieldSize(value):
+      result = tag_size * len(value)
+      for element in value:
+        result += compute_value_size(modify_value(element))
+      return result
+    return RepeatedFieldSize
+  else:
+    def FieldSize(value):
+      return tag_size + compute_value_size(modify_value(value))
+    return FieldSize</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.encoder.SInt64Encoder"><code class="name flex">
+<span>def <span class="ident">SInt64Encoder</span></span>(<span>field_number, is_repeated, is_packed)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def SpecificEncoder(field_number, is_repeated, is_packed):
+  if is_packed:
+    tag_bytes = TagBytes(field_number, wire_format.WIRETYPE_LENGTH_DELIMITED)
+    local_EncodeVarint = _EncodeVarint
+    def EncodePackedField(write, value, deterministic):
+      write(tag_bytes)
+      size = 0
+      for element in value:
+        size += compute_value_size(modify_value(element))
+      local_EncodeVarint(write, size, deterministic)
+      for element in value:
+        encode_value(write, modify_value(element), deterministic)
+    return EncodePackedField
+  elif is_repeated:
+    tag_bytes = TagBytes(field_number, wire_type)
+    def EncodeRepeatedField(write, value, deterministic):
+      for element in value:
+        write(tag_bytes)
+        encode_value(write, modify_value(element), deterministic)
+    return EncodeRepeatedField
+  else:
+    tag_bytes = TagBytes(field_number, wire_type)
+    def EncodeField(write, value, deterministic):
+      write(tag_bytes)
+      return encode_value(write, modify_value(value), deterministic)
+    return EncodeField</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.encoder.SInt64Sizer"><code class="name flex">
+<span>def <span class="ident">SInt64Sizer</span></span>(<span>field_number, is_repeated, is_packed)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def SpecificSizer(field_number, is_repeated, is_packed):
+  tag_size = _TagSize(field_number)
+  if is_packed:
+    local_VarintSize = _VarintSize
+    def PackedFieldSize(value):
+      result = 0
+      for element in value:
+        result += compute_value_size(modify_value(element))
+      return result + local_VarintSize(result) + tag_size
+    return PackedFieldSize
+  elif is_repeated:
+    def RepeatedFieldSize(value):
+      result = tag_size * len(value)
+      for element in value:
+        result += compute_value_size(modify_value(element))
+      return result
+    return RepeatedFieldSize
+  else:
+    def FieldSize(value):
+      return tag_size + compute_value_size(modify_value(value))
+    return FieldSize</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.encoder.StringEncoder"><code class="name flex">
+<span>def <span class="ident">StringEncoder</span></span>(<span>field_number, is_repeated, is_packed)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Returns an encoder for a string field.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StringEncoder(field_number, is_repeated, is_packed):
+  &#34;&#34;&#34;Returns an encoder for a string field.&#34;&#34;&#34;
+
+  tag = TagBytes(field_number, wire_format.WIRETYPE_LENGTH_DELIMITED)
+  local_EncodeVarint = _EncodeVarint
+  local_len = len
+  assert not is_packed
+  if is_repeated:
+    def EncodeRepeatedField(write, value, deterministic):
+      for element in value:
+        encoded = element.encode(&#39;utf-8&#39;)
+        write(tag)
+        local_EncodeVarint(write, local_len(encoded), deterministic)
+        write(encoded)
+    return EncodeRepeatedField
+  else:
+    def EncodeField(write, value, deterministic):
+      encoded = value.encode(&#39;utf-8&#39;)
+      write(tag)
+      local_EncodeVarint(write, local_len(encoded), deterministic)
+      return write(encoded)
+    return EncodeField</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.encoder.StringSizer"><code class="name flex">
+<span>def <span class="ident">StringSizer</span></span>(<span>field_number, is_repeated, is_packed)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Returns a sizer for a string field.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StringSizer(field_number, is_repeated, is_packed):
+  &#34;&#34;&#34;Returns a sizer for a string field.&#34;&#34;&#34;
+
+  tag_size = _TagSize(field_number)
+  local_VarintSize = _VarintSize
+  local_len = len
+  assert not is_packed
+  if is_repeated:
+    def RepeatedFieldSize(value):
+      result = tag_size * len(value)
+      for element in value:
+        l = local_len(element.encode(&#39;utf-8&#39;))
+        result += local_VarintSize(l) + l
+      return result
+    return RepeatedFieldSize
+  else:
+    def FieldSize(value):
+      l = local_len(value.encode(&#39;utf-8&#39;))
+      return tag_size + local_VarintSize(l) + l
+    return FieldSize</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.encoder.TagBytes"><code class="name flex">
+<span>def <span class="ident">TagBytes</span></span>(<span>field_number, wire_type)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Encode the given tag and return the bytes.
+Only called at startup.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def TagBytes(field_number, wire_type):
+  &#34;&#34;&#34;Encode the given tag and return the bytes.  Only called at startup.&#34;&#34;&#34;
+
+  return six.binary_type(
+      _VarintBytes(wire_format.PackTag(field_number, wire_type)))</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.encoder.UInt32Encoder"><code class="name flex">
+<span>def <span class="ident">UInt32Encoder</span></span>(<span>field_number, is_repeated, is_packed)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def SpecificEncoder(field_number, is_repeated, is_packed):
+  if is_packed:
+    tag_bytes = TagBytes(field_number, wire_format.WIRETYPE_LENGTH_DELIMITED)
+    local_EncodeVarint = _EncodeVarint
+    def EncodePackedField(write, value, deterministic):
+      write(tag_bytes)
+      size = 0
+      for element in value:
+        size += compute_value_size(element)
+      local_EncodeVarint(write, size, deterministic)
+      for element in value:
+        encode_value(write, element, deterministic)
+    return EncodePackedField
+  elif is_repeated:
+    tag_bytes = TagBytes(field_number, wire_type)
+    def EncodeRepeatedField(write, value, deterministic):
+      for element in value:
+        write(tag_bytes)
+        encode_value(write, element, deterministic)
+    return EncodeRepeatedField
+  else:
+    tag_bytes = TagBytes(field_number, wire_type)
+    def EncodeField(write, value, deterministic):
+      write(tag_bytes)
+      return encode_value(write, value, deterministic)
+    return EncodeField</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.encoder.UInt32Sizer"><code class="name flex">
+<span>def <span class="ident">UInt32Sizer</span></span>(<span>field_number, is_repeated, is_packed)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def SpecificSizer(field_number, is_repeated, is_packed):
+  tag_size = _TagSize(field_number)
+  if is_packed:
+    local_VarintSize = _VarintSize
+    def PackedFieldSize(value):
+      result = 0
+      for element in value:
+        result += compute_value_size(element)
+      return result + local_VarintSize(result) + tag_size
+    return PackedFieldSize
+  elif is_repeated:
+    def RepeatedFieldSize(value):
+      result = tag_size * len(value)
+      for element in value:
+        result += compute_value_size(element)
+      return result
+    return RepeatedFieldSize
+  else:
+    def FieldSize(value):
+      return tag_size + compute_value_size(value)
+    return FieldSize</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.encoder.UInt64Encoder"><code class="name flex">
+<span>def <span class="ident">UInt64Encoder</span></span>(<span>field_number, is_repeated, is_packed)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def SpecificEncoder(field_number, is_repeated, is_packed):
+  if is_packed:
+    tag_bytes = TagBytes(field_number, wire_format.WIRETYPE_LENGTH_DELIMITED)
+    local_EncodeVarint = _EncodeVarint
+    def EncodePackedField(write, value, deterministic):
+      write(tag_bytes)
+      size = 0
+      for element in value:
+        size += compute_value_size(element)
+      local_EncodeVarint(write, size, deterministic)
+      for element in value:
+        encode_value(write, element, deterministic)
+    return EncodePackedField
+  elif is_repeated:
+    tag_bytes = TagBytes(field_number, wire_type)
+    def EncodeRepeatedField(write, value, deterministic):
+      for element in value:
+        write(tag_bytes)
+        encode_value(write, element, deterministic)
+    return EncodeRepeatedField
+  else:
+    tag_bytes = TagBytes(field_number, wire_type)
+    def EncodeField(write, value, deterministic):
+      write(tag_bytes)
+      return encode_value(write, value, deterministic)
+    return EncodeField</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.encoder.UInt64Sizer"><code class="name flex">
+<span>def <span class="ident">UInt64Sizer</span></span>(<span>field_number, is_repeated, is_packed)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def SpecificSizer(field_number, is_repeated, is_packed):
+  tag_size = _TagSize(field_number)
+  if is_packed:
+    local_VarintSize = _VarintSize
+    def PackedFieldSize(value):
+      result = 0
+      for element in value:
+        result += compute_value_size(element)
+      return result + local_VarintSize(result) + tag_size
+    return PackedFieldSize
+  elif is_repeated:
+    def RepeatedFieldSize(value):
+      result = tag_size * len(value)
+      for element in value:
+        result += compute_value_size(element)
+      return result
+    return RepeatedFieldSize
+  else:
+    def FieldSize(value):
+      return tag_size + compute_value_size(value)
+    return FieldSize</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="google.protobuf.internal" href="index.html">google.protobuf.internal</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="google.protobuf.internal.encoder.BoolEncoder" href="#google.protobuf.internal.encoder.BoolEncoder">BoolEncoder</a></code></li>
+<li><code><a title="google.protobuf.internal.encoder.BoolSizer" href="#google.protobuf.internal.encoder.BoolSizer">BoolSizer</a></code></li>
+<li><code><a title="google.protobuf.internal.encoder.BytesEncoder" href="#google.protobuf.internal.encoder.BytesEncoder">BytesEncoder</a></code></li>
+<li><code><a title="google.protobuf.internal.encoder.BytesSizer" href="#google.protobuf.internal.encoder.BytesSizer">BytesSizer</a></code></li>
+<li><code><a title="google.protobuf.internal.encoder.DoubleEncoder" href="#google.protobuf.internal.encoder.DoubleEncoder">DoubleEncoder</a></code></li>
+<li><code><a title="google.protobuf.internal.encoder.DoubleSizer" href="#google.protobuf.internal.encoder.DoubleSizer">DoubleSizer</a></code></li>
+<li><code><a title="google.protobuf.internal.encoder.EnumEncoder" href="#google.protobuf.internal.encoder.EnumEncoder">EnumEncoder</a></code></li>
+<li><code><a title="google.protobuf.internal.encoder.EnumSizer" href="#google.protobuf.internal.encoder.EnumSizer">EnumSizer</a></code></li>
+<li><code><a title="google.protobuf.internal.encoder.Fixed32Encoder" href="#google.protobuf.internal.encoder.Fixed32Encoder">Fixed32Encoder</a></code></li>
+<li><code><a title="google.protobuf.internal.encoder.Fixed32Sizer" href="#google.protobuf.internal.encoder.Fixed32Sizer">Fixed32Sizer</a></code></li>
+<li><code><a title="google.protobuf.internal.encoder.Fixed64Encoder" href="#google.protobuf.internal.encoder.Fixed64Encoder">Fixed64Encoder</a></code></li>
+<li><code><a title="google.protobuf.internal.encoder.Fixed64Sizer" href="#google.protobuf.internal.encoder.Fixed64Sizer">Fixed64Sizer</a></code></li>
+<li><code><a title="google.protobuf.internal.encoder.FloatEncoder" href="#google.protobuf.internal.encoder.FloatEncoder">FloatEncoder</a></code></li>
+<li><code><a title="google.protobuf.internal.encoder.FloatSizer" href="#google.protobuf.internal.encoder.FloatSizer">FloatSizer</a></code></li>
+<li><code><a title="google.protobuf.internal.encoder.GroupEncoder" href="#google.protobuf.internal.encoder.GroupEncoder">GroupEncoder</a></code></li>
+<li><code><a title="google.protobuf.internal.encoder.GroupSizer" href="#google.protobuf.internal.encoder.GroupSizer">GroupSizer</a></code></li>
+<li><code><a title="google.protobuf.internal.encoder.Int32Encoder" href="#google.protobuf.internal.encoder.Int32Encoder">Int32Encoder</a></code></li>
+<li><code><a title="google.protobuf.internal.encoder.Int32Sizer" href="#google.protobuf.internal.encoder.Int32Sizer">Int32Sizer</a></code></li>
+<li><code><a title="google.protobuf.internal.encoder.Int64Encoder" href="#google.protobuf.internal.encoder.Int64Encoder">Int64Encoder</a></code></li>
+<li><code><a title="google.protobuf.internal.encoder.Int64Sizer" href="#google.protobuf.internal.encoder.Int64Sizer">Int64Sizer</a></code></li>
+<li><code><a title="google.protobuf.internal.encoder.MapEncoder" href="#google.protobuf.internal.encoder.MapEncoder">MapEncoder</a></code></li>
+<li><code><a title="google.protobuf.internal.encoder.MapSizer" href="#google.protobuf.internal.encoder.MapSizer">MapSizer</a></code></li>
+<li><code><a title="google.protobuf.internal.encoder.MessageEncoder" href="#google.protobuf.internal.encoder.MessageEncoder">MessageEncoder</a></code></li>
+<li><code><a title="google.protobuf.internal.encoder.MessageSetItemEncoder" href="#google.protobuf.internal.encoder.MessageSetItemEncoder">MessageSetItemEncoder</a></code></li>
+<li><code><a title="google.protobuf.internal.encoder.MessageSetItemSizer" href="#google.protobuf.internal.encoder.MessageSetItemSizer">MessageSetItemSizer</a></code></li>
+<li><code><a title="google.protobuf.internal.encoder.MessageSizer" href="#google.protobuf.internal.encoder.MessageSizer">MessageSizer</a></code></li>
+<li><code><a title="google.protobuf.internal.encoder.SFixed32Encoder" href="#google.protobuf.internal.encoder.SFixed32Encoder">SFixed32Encoder</a></code></li>
+<li><code><a title="google.protobuf.internal.encoder.SFixed32Sizer" href="#google.protobuf.internal.encoder.SFixed32Sizer">SFixed32Sizer</a></code></li>
+<li><code><a title="google.protobuf.internal.encoder.SFixed64Encoder" href="#google.protobuf.internal.encoder.SFixed64Encoder">SFixed64Encoder</a></code></li>
+<li><code><a title="google.protobuf.internal.encoder.SFixed64Sizer" href="#google.protobuf.internal.encoder.SFixed64Sizer">SFixed64Sizer</a></code></li>
+<li><code><a title="google.protobuf.internal.encoder.SInt32Encoder" href="#google.protobuf.internal.encoder.SInt32Encoder">SInt32Encoder</a></code></li>
+<li><code><a title="google.protobuf.internal.encoder.SInt32Sizer" href="#google.protobuf.internal.encoder.SInt32Sizer">SInt32Sizer</a></code></li>
+<li><code><a title="google.protobuf.internal.encoder.SInt64Encoder" href="#google.protobuf.internal.encoder.SInt64Encoder">SInt64Encoder</a></code></li>
+<li><code><a title="google.protobuf.internal.encoder.SInt64Sizer" href="#google.protobuf.internal.encoder.SInt64Sizer">SInt64Sizer</a></code></li>
+<li><code><a title="google.protobuf.internal.encoder.StringEncoder" href="#google.protobuf.internal.encoder.StringEncoder">StringEncoder</a></code></li>
+<li><code><a title="google.protobuf.internal.encoder.StringSizer" href="#google.protobuf.internal.encoder.StringSizer">StringSizer</a></code></li>
+<li><code><a title="google.protobuf.internal.encoder.TagBytes" href="#google.protobuf.internal.encoder.TagBytes">TagBytes</a></code></li>
+<li><code><a title="google.protobuf.internal.encoder.UInt32Encoder" href="#google.protobuf.internal.encoder.UInt32Encoder">UInt32Encoder</a></code></li>
+<li><code><a title="google.protobuf.internal.encoder.UInt32Sizer" href="#google.protobuf.internal.encoder.UInt32Sizer">UInt32Sizer</a></code></li>
+<li><code><a title="google.protobuf.internal.encoder.UInt64Encoder" href="#google.protobuf.internal.encoder.UInt64Encoder">UInt64Encoder</a></code></li>
+<li><code><a title="google.protobuf.internal.encoder.UInt64Sizer" href="#google.protobuf.internal.encoder.UInt64Sizer">UInt64Sizer</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.4</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

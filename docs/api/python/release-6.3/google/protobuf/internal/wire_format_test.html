@@ -1,0 +1,855 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.4" />
+<title>google.protobuf.internal.wire_format_test API documentation</title>
+<meta name="description" content="Test for google.protobuf.internal.wire_format." />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>google.protobuf.internal.wire_format_test</code></h1>
+</header>
+<section id="section-intro">
+<p>Test for google.protobuf.internal.wire_format.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">#! /usr/bin/env python
+#
+# Protocol Buffers - Google&#39;s data interchange format
+# Copyright 2008 Google Inc.  All rights reserved.
+# https://developers.google.com/protocol-buffers/
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are
+# met:
+#
+#     * Redistributions of source code must retain the above copyright
+# notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above
+# copyright notice, this list of conditions and the following disclaimer
+# in the documentation and/or other materials provided with the
+# distribution.
+#     * Neither the name of Google Inc. nor the names of its
+# contributors may be used to endorse or promote products derived from
+# this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+# &#34;AS IS&#34; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+# LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+# A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+# OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+# SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+# LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+# DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+# THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+&#34;&#34;&#34;Test for google.protobuf.internal.wire_format.&#34;&#34;&#34;
+
+__author__ = &#39;robinson@google.com (Will Robinson)&#39;
+
+try:
+  import unittest2 as unittest  #PY26
+except ImportError:
+  import unittest
+
+from google.protobuf import message
+from google.protobuf.internal import wire_format
+
+
+class WireFormatTest(unittest.TestCase):
+
+  def testPackTag(self):
+    field_number = 0xabc
+    tag_type = 2
+    self.assertEqual((field_number &lt;&lt; 3) | tag_type,
+                     wire_format.PackTag(field_number, tag_type))
+    PackTag = wire_format.PackTag
+    # Number too high.
+    self.assertRaises(message.EncodeError, PackTag, field_number, 6)
+    # Number too low.
+    self.assertRaises(message.EncodeError, PackTag, field_number, -1)
+
+  def testUnpackTag(self):
+    # Test field numbers that will require various varint sizes.
+    for expected_field_number in (1, 15, 16, 2047, 2048):
+      for expected_wire_type in range(6):  # Highest-numbered wiretype is 5.
+        field_number, wire_type = wire_format.UnpackTag(
+            wire_format.PackTag(expected_field_number, expected_wire_type))
+        self.assertEqual(expected_field_number, field_number)
+        self.assertEqual(expected_wire_type, wire_type)
+
+    self.assertRaises(TypeError, wire_format.UnpackTag, None)
+    self.assertRaises(TypeError, wire_format.UnpackTag, &#39;abc&#39;)
+    self.assertRaises(TypeError, wire_format.UnpackTag, 0.0)
+    self.assertRaises(TypeError, wire_format.UnpackTag, object())
+
+  def testZigZagEncode(self):
+    Z = wire_format.ZigZagEncode
+    self.assertEqual(0, Z(0))
+    self.assertEqual(1, Z(-1))
+    self.assertEqual(2, Z(1))
+    self.assertEqual(3, Z(-2))
+    self.assertEqual(4, Z(2))
+    self.assertEqual(0xfffffffe, Z(0x7fffffff))
+    self.assertEqual(0xffffffff, Z(-0x80000000))
+    self.assertEqual(0xfffffffffffffffe, Z(0x7fffffffffffffff))
+    self.assertEqual(0xffffffffffffffff, Z(-0x8000000000000000))
+
+    self.assertRaises(TypeError, Z, None)
+    self.assertRaises(TypeError, Z, &#39;abcd&#39;)
+    self.assertRaises(TypeError, Z, 0.0)
+    self.assertRaises(TypeError, Z, object())
+
+  def testZigZagDecode(self):
+    Z = wire_format.ZigZagDecode
+    self.assertEqual(0, Z(0))
+    self.assertEqual(-1, Z(1))
+    self.assertEqual(1, Z(2))
+    self.assertEqual(-2, Z(3))
+    self.assertEqual(2, Z(4))
+    self.assertEqual(0x7fffffff, Z(0xfffffffe))
+    self.assertEqual(-0x80000000, Z(0xffffffff))
+    self.assertEqual(0x7fffffffffffffff, Z(0xfffffffffffffffe))
+    self.assertEqual(-0x8000000000000000, Z(0xffffffffffffffff))
+
+    self.assertRaises(TypeError, Z, None)
+    self.assertRaises(TypeError, Z, &#39;abcd&#39;)
+    self.assertRaises(TypeError, Z, 0.0)
+    self.assertRaises(TypeError, Z, object())
+
+  def NumericByteSizeTestHelper(self, byte_size_fn, value, expected_value_size):
+    # Use field numbers that cause various byte sizes for the tag information.
+    for field_number, tag_bytes in ((15, 1), (16, 2), (2047, 2), (2048, 3)):
+      expected_size = expected_value_size + tag_bytes
+      actual_size = byte_size_fn(field_number, value)
+      self.assertEqual(expected_size, actual_size,
+                       &#39;byte_size_fn: %s, field_number: %d, value: %r\n&#39;
+                       &#39;Expected: %d, Actual: %d&#39;% (
+          byte_size_fn, field_number, value, expected_size, actual_size))
+
+  def testByteSizeFunctions(self):
+    # Test all numeric *ByteSize() functions.
+    NUMERIC_ARGS = [
+        # Int32ByteSize().
+        [wire_format.Int32ByteSize, 0, 1],
+        [wire_format.Int32ByteSize, 127, 1],
+        [wire_format.Int32ByteSize, 128, 2],
+        [wire_format.Int32ByteSize, -1, 10],
+        # Int64ByteSize().
+        [wire_format.Int64ByteSize, 0, 1],
+        [wire_format.Int64ByteSize, 127, 1],
+        [wire_format.Int64ByteSize, 128, 2],
+        [wire_format.Int64ByteSize, -1, 10],
+        # UInt32ByteSize().
+        [wire_format.UInt32ByteSize, 0, 1],
+        [wire_format.UInt32ByteSize, 127, 1],
+        [wire_format.UInt32ByteSize, 128, 2],
+        [wire_format.UInt32ByteSize, wire_format.UINT32_MAX, 5],
+        # UInt64ByteSize().
+        [wire_format.UInt64ByteSize, 0, 1],
+        [wire_format.UInt64ByteSize, 127, 1],
+        [wire_format.UInt64ByteSize, 128, 2],
+        [wire_format.UInt64ByteSize, wire_format.UINT64_MAX, 10],
+        # SInt32ByteSize().
+        [wire_format.SInt32ByteSize, 0, 1],
+        [wire_format.SInt32ByteSize, -1, 1],
+        [wire_format.SInt32ByteSize, 1, 1],
+        [wire_format.SInt32ByteSize, -63, 1],
+        [wire_format.SInt32ByteSize, 63, 1],
+        [wire_format.SInt32ByteSize, -64, 1],
+        [wire_format.SInt32ByteSize, 64, 2],
+        # SInt64ByteSize().
+        [wire_format.SInt64ByteSize, 0, 1],
+        [wire_format.SInt64ByteSize, -1, 1],
+        [wire_format.SInt64ByteSize, 1, 1],
+        [wire_format.SInt64ByteSize, -63, 1],
+        [wire_format.SInt64ByteSize, 63, 1],
+        [wire_format.SInt64ByteSize, -64, 1],
+        [wire_format.SInt64ByteSize, 64, 2],
+        # Fixed32ByteSize().
+        [wire_format.Fixed32ByteSize, 0, 4],
+        [wire_format.Fixed32ByteSize, wire_format.UINT32_MAX, 4],
+        # Fixed64ByteSize().
+        [wire_format.Fixed64ByteSize, 0, 8],
+        [wire_format.Fixed64ByteSize, wire_format.UINT64_MAX, 8],
+        # SFixed32ByteSize().
+        [wire_format.SFixed32ByteSize, 0, 4],
+        [wire_format.SFixed32ByteSize, wire_format.INT32_MIN, 4],
+        [wire_format.SFixed32ByteSize, wire_format.INT32_MAX, 4],
+        # SFixed64ByteSize().
+        [wire_format.SFixed64ByteSize, 0, 8],
+        [wire_format.SFixed64ByteSize, wire_format.INT64_MIN, 8],
+        [wire_format.SFixed64ByteSize, wire_format.INT64_MAX, 8],
+        # FloatByteSize().
+        [wire_format.FloatByteSize, 0.0, 4],
+        [wire_format.FloatByteSize, 1000000000.0, 4],
+        [wire_format.FloatByteSize, -1000000000.0, 4],
+        # DoubleByteSize().
+        [wire_format.DoubleByteSize, 0.0, 8],
+        [wire_format.DoubleByteSize, 1000000000.0, 8],
+        [wire_format.DoubleByteSize, -1000000000.0, 8],
+        # BoolByteSize().
+        [wire_format.BoolByteSize, False, 1],
+        [wire_format.BoolByteSize, True, 1],
+        # EnumByteSize().
+        [wire_format.EnumByteSize, 0, 1],
+        [wire_format.EnumByteSize, 127, 1],
+        [wire_format.EnumByteSize, 128, 2],
+        [wire_format.EnumByteSize, wire_format.UINT32_MAX, 5],
+        ]
+    for args in NUMERIC_ARGS:
+      self.NumericByteSizeTestHelper(*args)
+
+    # Test strings and bytes.
+    for byte_size_fn in (wire_format.StringByteSize, wire_format.BytesByteSize):
+      # 1 byte for tag, 1 byte for length, 3 bytes for contents.
+      self.assertEqual(5, byte_size_fn(10, &#39;abc&#39;))
+      # 2 bytes for tag, 1 byte for length, 3 bytes for contents.
+      self.assertEqual(6, byte_size_fn(16, &#39;abc&#39;))
+      # 2 bytes for tag, 2 bytes for length, 128 bytes for contents.
+      self.assertEqual(132, byte_size_fn(16, &#39;a&#39; * 128))
+
+    # Test UTF-8 string byte size calculation.
+    # 1 byte for tag, 1 byte for length, 8 bytes for content.
+    self.assertEqual(10, wire_format.StringByteSize(
+        5, b&#39;\xd0\xa2\xd0\xb5\xd1\x81\xd1\x82&#39;.decode(&#39;utf-8&#39;)))
+
+    class MockMessage(object):
+      def __init__(self, byte_size):
+        self.byte_size = byte_size
+      def ByteSize(self):
+        return self.byte_size
+
+    message_byte_size = 10
+    mock_message = MockMessage(byte_size=message_byte_size)
+    # Test groups.
+    # (2 * 1) bytes for begin and end tags, plus message_byte_size.
+    self.assertEqual(2 + message_byte_size,
+                     wire_format.GroupByteSize(1, mock_message))
+    # (2 * 2) bytes for begin and end tags, plus message_byte_size.
+    self.assertEqual(4 + message_byte_size,
+                     wire_format.GroupByteSize(16, mock_message))
+
+    # Test messages.
+    # 1 byte for tag, plus 1 byte for length, plus contents.
+    self.assertEqual(2 + mock_message.byte_size,
+                     wire_format.MessageByteSize(1, mock_message))
+    # 2 bytes for tag, plus 1 byte for length, plus contents.
+    self.assertEqual(3 + mock_message.byte_size,
+                     wire_format.MessageByteSize(16, mock_message))
+    # 2 bytes for tag, plus 2 bytes for length, plus contents.
+    mock_message.byte_size = 128
+    self.assertEqual(4 + mock_message.byte_size,
+                     wire_format.MessageByteSize(16, mock_message))
+
+
+    # Test message set item byte size.
+    # 4 bytes for tags, plus 1 byte for length, plus 1 byte for type_id,
+    # plus contents.
+    mock_message.byte_size = 10
+    self.assertEqual(mock_message.byte_size + 6,
+                     wire_format.MessageSetItemByteSize(1, mock_message))
+
+    # 4 bytes for tags, plus 2 bytes for length, plus 1 byte for type_id,
+    # plus contents.
+    mock_message.byte_size = 128
+    self.assertEqual(mock_message.byte_size + 7,
+                     wire_format.MessageSetItemByteSize(1, mock_message))
+
+    # 4 bytes for tags, plus 2 bytes for length, plus 2 byte for type_id,
+    # plus contents.
+    self.assertEqual(mock_message.byte_size + 8,
+                     wire_format.MessageSetItemByteSize(128, mock_message))
+
+    # Too-long varint.
+    self.assertRaises(message.EncodeError,
+                      wire_format.UInt64ByteSize, 1, 1 &lt;&lt; 128)
+
+
+if __name__ == &#39;__main__&#39;:
+  unittest.main()</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="google.protobuf.internal.wire_format_test.WireFormatTest"><code class="flex name class">
+<span>class <span class="ident">WireFormatTest</span></span>
+<span>(</span><span>methodName='runTest')</span>
+</code></dt>
+<dd>
+<section class="desc"><p>A class whose instances are single test cases.</p>
+<p>By default, the test code itself should be placed in a method named
+'runTest'.</p>
+<p>If the fixture may be used for many test cases, create as
+many test methods as are needed. When instantiating such a TestCase
+subclass, specify in the constructor arguments the name of the test method
+that the instance is to execute.</p>
+<p>Test authors should subclass TestCase for their own tests. Construction
+and deconstruction of the test's environment ('fixture') can be
+implemented by overriding the 'setUp' and 'tearDown' methods respectively.</p>
+<p>If it is necessary to override the <strong>init</strong> method, the base class
+<strong>init</strong> method must always be called. It is important that subclasses
+should not change the signature of their <strong>init</strong> method, since instances
+of the classes are instantiated automatically by parts of the framework
+in order to be run.</p>
+<p>When subclassing TestCase, you can set these attributes:
+* failureException: determines which exception will be raised when
+the instance's assertion methods fail; test methods raising this
+exception will be deemed to have 'failed' rather than 'errored'.
+* longMessage: determines whether long messages (including repr of
+objects used in assert methods) will be printed on failure in <em>addition</em>
+to any explicit message passed.
+* maxDiff: sets the maximum length of a diff in failure messages
+by assert methods using difflib. It is looked up as an instance
+attribute so can be configured by individual tests if required.</p>
+<p>Create an instance of the class that will use the named test
+method when executed. Raises a ValueError if the instance does
+not have a method with the specified name.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class WireFormatTest(unittest.TestCase):
+
+  def testPackTag(self):
+    field_number = 0xabc
+    tag_type = 2
+    self.assertEqual((field_number &lt;&lt; 3) | tag_type,
+                     wire_format.PackTag(field_number, tag_type))
+    PackTag = wire_format.PackTag
+    # Number too high.
+    self.assertRaises(message.EncodeError, PackTag, field_number, 6)
+    # Number too low.
+    self.assertRaises(message.EncodeError, PackTag, field_number, -1)
+
+  def testUnpackTag(self):
+    # Test field numbers that will require various varint sizes.
+    for expected_field_number in (1, 15, 16, 2047, 2048):
+      for expected_wire_type in range(6):  # Highest-numbered wiretype is 5.
+        field_number, wire_type = wire_format.UnpackTag(
+            wire_format.PackTag(expected_field_number, expected_wire_type))
+        self.assertEqual(expected_field_number, field_number)
+        self.assertEqual(expected_wire_type, wire_type)
+
+    self.assertRaises(TypeError, wire_format.UnpackTag, None)
+    self.assertRaises(TypeError, wire_format.UnpackTag, &#39;abc&#39;)
+    self.assertRaises(TypeError, wire_format.UnpackTag, 0.0)
+    self.assertRaises(TypeError, wire_format.UnpackTag, object())
+
+  def testZigZagEncode(self):
+    Z = wire_format.ZigZagEncode
+    self.assertEqual(0, Z(0))
+    self.assertEqual(1, Z(-1))
+    self.assertEqual(2, Z(1))
+    self.assertEqual(3, Z(-2))
+    self.assertEqual(4, Z(2))
+    self.assertEqual(0xfffffffe, Z(0x7fffffff))
+    self.assertEqual(0xffffffff, Z(-0x80000000))
+    self.assertEqual(0xfffffffffffffffe, Z(0x7fffffffffffffff))
+    self.assertEqual(0xffffffffffffffff, Z(-0x8000000000000000))
+
+    self.assertRaises(TypeError, Z, None)
+    self.assertRaises(TypeError, Z, &#39;abcd&#39;)
+    self.assertRaises(TypeError, Z, 0.0)
+    self.assertRaises(TypeError, Z, object())
+
+  def testZigZagDecode(self):
+    Z = wire_format.ZigZagDecode
+    self.assertEqual(0, Z(0))
+    self.assertEqual(-1, Z(1))
+    self.assertEqual(1, Z(2))
+    self.assertEqual(-2, Z(3))
+    self.assertEqual(2, Z(4))
+    self.assertEqual(0x7fffffff, Z(0xfffffffe))
+    self.assertEqual(-0x80000000, Z(0xffffffff))
+    self.assertEqual(0x7fffffffffffffff, Z(0xfffffffffffffffe))
+    self.assertEqual(-0x8000000000000000, Z(0xffffffffffffffff))
+
+    self.assertRaises(TypeError, Z, None)
+    self.assertRaises(TypeError, Z, &#39;abcd&#39;)
+    self.assertRaises(TypeError, Z, 0.0)
+    self.assertRaises(TypeError, Z, object())
+
+  def NumericByteSizeTestHelper(self, byte_size_fn, value, expected_value_size):
+    # Use field numbers that cause various byte sizes for the tag information.
+    for field_number, tag_bytes in ((15, 1), (16, 2), (2047, 2), (2048, 3)):
+      expected_size = expected_value_size + tag_bytes
+      actual_size = byte_size_fn(field_number, value)
+      self.assertEqual(expected_size, actual_size,
+                       &#39;byte_size_fn: %s, field_number: %d, value: %r\n&#39;
+                       &#39;Expected: %d, Actual: %d&#39;% (
+          byte_size_fn, field_number, value, expected_size, actual_size))
+
+  def testByteSizeFunctions(self):
+    # Test all numeric *ByteSize() functions.
+    NUMERIC_ARGS = [
+        # Int32ByteSize().
+        [wire_format.Int32ByteSize, 0, 1],
+        [wire_format.Int32ByteSize, 127, 1],
+        [wire_format.Int32ByteSize, 128, 2],
+        [wire_format.Int32ByteSize, -1, 10],
+        # Int64ByteSize().
+        [wire_format.Int64ByteSize, 0, 1],
+        [wire_format.Int64ByteSize, 127, 1],
+        [wire_format.Int64ByteSize, 128, 2],
+        [wire_format.Int64ByteSize, -1, 10],
+        # UInt32ByteSize().
+        [wire_format.UInt32ByteSize, 0, 1],
+        [wire_format.UInt32ByteSize, 127, 1],
+        [wire_format.UInt32ByteSize, 128, 2],
+        [wire_format.UInt32ByteSize, wire_format.UINT32_MAX, 5],
+        # UInt64ByteSize().
+        [wire_format.UInt64ByteSize, 0, 1],
+        [wire_format.UInt64ByteSize, 127, 1],
+        [wire_format.UInt64ByteSize, 128, 2],
+        [wire_format.UInt64ByteSize, wire_format.UINT64_MAX, 10],
+        # SInt32ByteSize().
+        [wire_format.SInt32ByteSize, 0, 1],
+        [wire_format.SInt32ByteSize, -1, 1],
+        [wire_format.SInt32ByteSize, 1, 1],
+        [wire_format.SInt32ByteSize, -63, 1],
+        [wire_format.SInt32ByteSize, 63, 1],
+        [wire_format.SInt32ByteSize, -64, 1],
+        [wire_format.SInt32ByteSize, 64, 2],
+        # SInt64ByteSize().
+        [wire_format.SInt64ByteSize, 0, 1],
+        [wire_format.SInt64ByteSize, -1, 1],
+        [wire_format.SInt64ByteSize, 1, 1],
+        [wire_format.SInt64ByteSize, -63, 1],
+        [wire_format.SInt64ByteSize, 63, 1],
+        [wire_format.SInt64ByteSize, -64, 1],
+        [wire_format.SInt64ByteSize, 64, 2],
+        # Fixed32ByteSize().
+        [wire_format.Fixed32ByteSize, 0, 4],
+        [wire_format.Fixed32ByteSize, wire_format.UINT32_MAX, 4],
+        # Fixed64ByteSize().
+        [wire_format.Fixed64ByteSize, 0, 8],
+        [wire_format.Fixed64ByteSize, wire_format.UINT64_MAX, 8],
+        # SFixed32ByteSize().
+        [wire_format.SFixed32ByteSize, 0, 4],
+        [wire_format.SFixed32ByteSize, wire_format.INT32_MIN, 4],
+        [wire_format.SFixed32ByteSize, wire_format.INT32_MAX, 4],
+        # SFixed64ByteSize().
+        [wire_format.SFixed64ByteSize, 0, 8],
+        [wire_format.SFixed64ByteSize, wire_format.INT64_MIN, 8],
+        [wire_format.SFixed64ByteSize, wire_format.INT64_MAX, 8],
+        # FloatByteSize().
+        [wire_format.FloatByteSize, 0.0, 4],
+        [wire_format.FloatByteSize, 1000000000.0, 4],
+        [wire_format.FloatByteSize, -1000000000.0, 4],
+        # DoubleByteSize().
+        [wire_format.DoubleByteSize, 0.0, 8],
+        [wire_format.DoubleByteSize, 1000000000.0, 8],
+        [wire_format.DoubleByteSize, -1000000000.0, 8],
+        # BoolByteSize().
+        [wire_format.BoolByteSize, False, 1],
+        [wire_format.BoolByteSize, True, 1],
+        # EnumByteSize().
+        [wire_format.EnumByteSize, 0, 1],
+        [wire_format.EnumByteSize, 127, 1],
+        [wire_format.EnumByteSize, 128, 2],
+        [wire_format.EnumByteSize, wire_format.UINT32_MAX, 5],
+        ]
+    for args in NUMERIC_ARGS:
+      self.NumericByteSizeTestHelper(*args)
+
+    # Test strings and bytes.
+    for byte_size_fn in (wire_format.StringByteSize, wire_format.BytesByteSize):
+      # 1 byte for tag, 1 byte for length, 3 bytes for contents.
+      self.assertEqual(5, byte_size_fn(10, &#39;abc&#39;))
+      # 2 bytes for tag, 1 byte for length, 3 bytes for contents.
+      self.assertEqual(6, byte_size_fn(16, &#39;abc&#39;))
+      # 2 bytes for tag, 2 bytes for length, 128 bytes for contents.
+      self.assertEqual(132, byte_size_fn(16, &#39;a&#39; * 128))
+
+    # Test UTF-8 string byte size calculation.
+    # 1 byte for tag, 1 byte for length, 8 bytes for content.
+    self.assertEqual(10, wire_format.StringByteSize(
+        5, b&#39;\xd0\xa2\xd0\xb5\xd1\x81\xd1\x82&#39;.decode(&#39;utf-8&#39;)))
+
+    class MockMessage(object):
+      def __init__(self, byte_size):
+        self.byte_size = byte_size
+      def ByteSize(self):
+        return self.byte_size
+
+    message_byte_size = 10
+    mock_message = MockMessage(byte_size=message_byte_size)
+    # Test groups.
+    # (2 * 1) bytes for begin and end tags, plus message_byte_size.
+    self.assertEqual(2 + message_byte_size,
+                     wire_format.GroupByteSize(1, mock_message))
+    # (2 * 2) bytes for begin and end tags, plus message_byte_size.
+    self.assertEqual(4 + message_byte_size,
+                     wire_format.GroupByteSize(16, mock_message))
+
+    # Test messages.
+    # 1 byte for tag, plus 1 byte for length, plus contents.
+    self.assertEqual(2 + mock_message.byte_size,
+                     wire_format.MessageByteSize(1, mock_message))
+    # 2 bytes for tag, plus 1 byte for length, plus contents.
+    self.assertEqual(3 + mock_message.byte_size,
+                     wire_format.MessageByteSize(16, mock_message))
+    # 2 bytes for tag, plus 2 bytes for length, plus contents.
+    mock_message.byte_size = 128
+    self.assertEqual(4 + mock_message.byte_size,
+                     wire_format.MessageByteSize(16, mock_message))
+
+
+    # Test message set item byte size.
+    # 4 bytes for tags, plus 1 byte for length, plus 1 byte for type_id,
+    # plus contents.
+    mock_message.byte_size = 10
+    self.assertEqual(mock_message.byte_size + 6,
+                     wire_format.MessageSetItemByteSize(1, mock_message))
+
+    # 4 bytes for tags, plus 2 bytes for length, plus 1 byte for type_id,
+    # plus contents.
+    mock_message.byte_size = 128
+    self.assertEqual(mock_message.byte_size + 7,
+                     wire_format.MessageSetItemByteSize(1, mock_message))
+
+    # 4 bytes for tags, plus 2 bytes for length, plus 2 byte for type_id,
+    # plus contents.
+    self.assertEqual(mock_message.byte_size + 8,
+                     wire_format.MessageSetItemByteSize(128, mock_message))
+
+    # Too-long varint.
+    self.assertRaises(message.EncodeError,
+                      wire_format.UInt64ByteSize, 1, 1 &lt;&lt; 128)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>unittest.case.TestCase</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="google.protobuf.internal.wire_format_test.WireFormatTest.NumericByteSizeTestHelper"><code class="name flex">
+<span>def <span class="ident">NumericByteSizeTestHelper</span></span>(<span>self, byte_size_fn, value, expected_value_size)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def NumericByteSizeTestHelper(self, byte_size_fn, value, expected_value_size):
+  # Use field numbers that cause various byte sizes for the tag information.
+  for field_number, tag_bytes in ((15, 1), (16, 2), (2047, 2), (2048, 3)):
+    expected_size = expected_value_size + tag_bytes
+    actual_size = byte_size_fn(field_number, value)
+    self.assertEqual(expected_size, actual_size,
+                     &#39;byte_size_fn: %s, field_number: %d, value: %r\n&#39;
+                     &#39;Expected: %d, Actual: %d&#39;% (
+        byte_size_fn, field_number, value, expected_size, actual_size))</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.wire_format_test.WireFormatTest.testByteSizeFunctions"><code class="name flex">
+<span>def <span class="ident">testByteSizeFunctions</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testByteSizeFunctions(self):
+  # Test all numeric *ByteSize() functions.
+  NUMERIC_ARGS = [
+      # Int32ByteSize().
+      [wire_format.Int32ByteSize, 0, 1],
+      [wire_format.Int32ByteSize, 127, 1],
+      [wire_format.Int32ByteSize, 128, 2],
+      [wire_format.Int32ByteSize, -1, 10],
+      # Int64ByteSize().
+      [wire_format.Int64ByteSize, 0, 1],
+      [wire_format.Int64ByteSize, 127, 1],
+      [wire_format.Int64ByteSize, 128, 2],
+      [wire_format.Int64ByteSize, -1, 10],
+      # UInt32ByteSize().
+      [wire_format.UInt32ByteSize, 0, 1],
+      [wire_format.UInt32ByteSize, 127, 1],
+      [wire_format.UInt32ByteSize, 128, 2],
+      [wire_format.UInt32ByteSize, wire_format.UINT32_MAX, 5],
+      # UInt64ByteSize().
+      [wire_format.UInt64ByteSize, 0, 1],
+      [wire_format.UInt64ByteSize, 127, 1],
+      [wire_format.UInt64ByteSize, 128, 2],
+      [wire_format.UInt64ByteSize, wire_format.UINT64_MAX, 10],
+      # SInt32ByteSize().
+      [wire_format.SInt32ByteSize, 0, 1],
+      [wire_format.SInt32ByteSize, -1, 1],
+      [wire_format.SInt32ByteSize, 1, 1],
+      [wire_format.SInt32ByteSize, -63, 1],
+      [wire_format.SInt32ByteSize, 63, 1],
+      [wire_format.SInt32ByteSize, -64, 1],
+      [wire_format.SInt32ByteSize, 64, 2],
+      # SInt64ByteSize().
+      [wire_format.SInt64ByteSize, 0, 1],
+      [wire_format.SInt64ByteSize, -1, 1],
+      [wire_format.SInt64ByteSize, 1, 1],
+      [wire_format.SInt64ByteSize, -63, 1],
+      [wire_format.SInt64ByteSize, 63, 1],
+      [wire_format.SInt64ByteSize, -64, 1],
+      [wire_format.SInt64ByteSize, 64, 2],
+      # Fixed32ByteSize().
+      [wire_format.Fixed32ByteSize, 0, 4],
+      [wire_format.Fixed32ByteSize, wire_format.UINT32_MAX, 4],
+      # Fixed64ByteSize().
+      [wire_format.Fixed64ByteSize, 0, 8],
+      [wire_format.Fixed64ByteSize, wire_format.UINT64_MAX, 8],
+      # SFixed32ByteSize().
+      [wire_format.SFixed32ByteSize, 0, 4],
+      [wire_format.SFixed32ByteSize, wire_format.INT32_MIN, 4],
+      [wire_format.SFixed32ByteSize, wire_format.INT32_MAX, 4],
+      # SFixed64ByteSize().
+      [wire_format.SFixed64ByteSize, 0, 8],
+      [wire_format.SFixed64ByteSize, wire_format.INT64_MIN, 8],
+      [wire_format.SFixed64ByteSize, wire_format.INT64_MAX, 8],
+      # FloatByteSize().
+      [wire_format.FloatByteSize, 0.0, 4],
+      [wire_format.FloatByteSize, 1000000000.0, 4],
+      [wire_format.FloatByteSize, -1000000000.0, 4],
+      # DoubleByteSize().
+      [wire_format.DoubleByteSize, 0.0, 8],
+      [wire_format.DoubleByteSize, 1000000000.0, 8],
+      [wire_format.DoubleByteSize, -1000000000.0, 8],
+      # BoolByteSize().
+      [wire_format.BoolByteSize, False, 1],
+      [wire_format.BoolByteSize, True, 1],
+      # EnumByteSize().
+      [wire_format.EnumByteSize, 0, 1],
+      [wire_format.EnumByteSize, 127, 1],
+      [wire_format.EnumByteSize, 128, 2],
+      [wire_format.EnumByteSize, wire_format.UINT32_MAX, 5],
+      ]
+  for args in NUMERIC_ARGS:
+    self.NumericByteSizeTestHelper(*args)
+
+  # Test strings and bytes.
+  for byte_size_fn in (wire_format.StringByteSize, wire_format.BytesByteSize):
+    # 1 byte for tag, 1 byte for length, 3 bytes for contents.
+    self.assertEqual(5, byte_size_fn(10, &#39;abc&#39;))
+    # 2 bytes for tag, 1 byte for length, 3 bytes for contents.
+    self.assertEqual(6, byte_size_fn(16, &#39;abc&#39;))
+    # 2 bytes for tag, 2 bytes for length, 128 bytes for contents.
+    self.assertEqual(132, byte_size_fn(16, &#39;a&#39; * 128))
+
+  # Test UTF-8 string byte size calculation.
+  # 1 byte for tag, 1 byte for length, 8 bytes for content.
+  self.assertEqual(10, wire_format.StringByteSize(
+      5, b&#39;\xd0\xa2\xd0\xb5\xd1\x81\xd1\x82&#39;.decode(&#39;utf-8&#39;)))
+
+  class MockMessage(object):
+    def __init__(self, byte_size):
+      self.byte_size = byte_size
+    def ByteSize(self):
+      return self.byte_size
+
+  message_byte_size = 10
+  mock_message = MockMessage(byte_size=message_byte_size)
+  # Test groups.
+  # (2 * 1) bytes for begin and end tags, plus message_byte_size.
+  self.assertEqual(2 + message_byte_size,
+                   wire_format.GroupByteSize(1, mock_message))
+  # (2 * 2) bytes for begin and end tags, plus message_byte_size.
+  self.assertEqual(4 + message_byte_size,
+                   wire_format.GroupByteSize(16, mock_message))
+
+  # Test messages.
+  # 1 byte for tag, plus 1 byte for length, plus contents.
+  self.assertEqual(2 + mock_message.byte_size,
+                   wire_format.MessageByteSize(1, mock_message))
+  # 2 bytes for tag, plus 1 byte for length, plus contents.
+  self.assertEqual(3 + mock_message.byte_size,
+                   wire_format.MessageByteSize(16, mock_message))
+  # 2 bytes for tag, plus 2 bytes for length, plus contents.
+  mock_message.byte_size = 128
+  self.assertEqual(4 + mock_message.byte_size,
+                   wire_format.MessageByteSize(16, mock_message))
+
+
+  # Test message set item byte size.
+  # 4 bytes for tags, plus 1 byte for length, plus 1 byte for type_id,
+  # plus contents.
+  mock_message.byte_size = 10
+  self.assertEqual(mock_message.byte_size + 6,
+                   wire_format.MessageSetItemByteSize(1, mock_message))
+
+  # 4 bytes for tags, plus 2 bytes for length, plus 1 byte for type_id,
+  # plus contents.
+  mock_message.byte_size = 128
+  self.assertEqual(mock_message.byte_size + 7,
+                   wire_format.MessageSetItemByteSize(1, mock_message))
+
+  # 4 bytes for tags, plus 2 bytes for length, plus 2 byte for type_id,
+  # plus contents.
+  self.assertEqual(mock_message.byte_size + 8,
+                   wire_format.MessageSetItemByteSize(128, mock_message))
+
+  # Too-long varint.
+  self.assertRaises(message.EncodeError,
+                    wire_format.UInt64ByteSize, 1, 1 &lt;&lt; 128)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.wire_format_test.WireFormatTest.testPackTag"><code class="name flex">
+<span>def <span class="ident">testPackTag</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testPackTag(self):
+  field_number = 0xabc
+  tag_type = 2
+  self.assertEqual((field_number &lt;&lt; 3) | tag_type,
+                   wire_format.PackTag(field_number, tag_type))
+  PackTag = wire_format.PackTag
+  # Number too high.
+  self.assertRaises(message.EncodeError, PackTag, field_number, 6)
+  # Number too low.
+  self.assertRaises(message.EncodeError, PackTag, field_number, -1)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.wire_format_test.WireFormatTest.testUnpackTag"><code class="name flex">
+<span>def <span class="ident">testUnpackTag</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testUnpackTag(self):
+  # Test field numbers that will require various varint sizes.
+  for expected_field_number in (1, 15, 16, 2047, 2048):
+    for expected_wire_type in range(6):  # Highest-numbered wiretype is 5.
+      field_number, wire_type = wire_format.UnpackTag(
+          wire_format.PackTag(expected_field_number, expected_wire_type))
+      self.assertEqual(expected_field_number, field_number)
+      self.assertEqual(expected_wire_type, wire_type)
+
+  self.assertRaises(TypeError, wire_format.UnpackTag, None)
+  self.assertRaises(TypeError, wire_format.UnpackTag, &#39;abc&#39;)
+  self.assertRaises(TypeError, wire_format.UnpackTag, 0.0)
+  self.assertRaises(TypeError, wire_format.UnpackTag, object())</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.wire_format_test.WireFormatTest.testZigZagDecode"><code class="name flex">
+<span>def <span class="ident">testZigZagDecode</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testZigZagDecode(self):
+  Z = wire_format.ZigZagDecode
+  self.assertEqual(0, Z(0))
+  self.assertEqual(-1, Z(1))
+  self.assertEqual(1, Z(2))
+  self.assertEqual(-2, Z(3))
+  self.assertEqual(2, Z(4))
+  self.assertEqual(0x7fffffff, Z(0xfffffffe))
+  self.assertEqual(-0x80000000, Z(0xffffffff))
+  self.assertEqual(0x7fffffffffffffff, Z(0xfffffffffffffffe))
+  self.assertEqual(-0x8000000000000000, Z(0xffffffffffffffff))
+
+  self.assertRaises(TypeError, Z, None)
+  self.assertRaises(TypeError, Z, &#39;abcd&#39;)
+  self.assertRaises(TypeError, Z, 0.0)
+  self.assertRaises(TypeError, Z, object())</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.wire_format_test.WireFormatTest.testZigZagEncode"><code class="name flex">
+<span>def <span class="ident">testZigZagEncode</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testZigZagEncode(self):
+  Z = wire_format.ZigZagEncode
+  self.assertEqual(0, Z(0))
+  self.assertEqual(1, Z(-1))
+  self.assertEqual(2, Z(1))
+  self.assertEqual(3, Z(-2))
+  self.assertEqual(4, Z(2))
+  self.assertEqual(0xfffffffe, Z(0x7fffffff))
+  self.assertEqual(0xffffffff, Z(-0x80000000))
+  self.assertEqual(0xfffffffffffffffe, Z(0x7fffffffffffffff))
+  self.assertEqual(0xffffffffffffffff, Z(-0x8000000000000000))
+
+  self.assertRaises(TypeError, Z, None)
+  self.assertRaises(TypeError, Z, &#39;abcd&#39;)
+  self.assertRaises(TypeError, Z, 0.0)
+  self.assertRaises(TypeError, Z, object())</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="google.protobuf.internal" href="index.html">google.protobuf.internal</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="google.protobuf.internal.wire_format_test.WireFormatTest" href="#google.protobuf.internal.wire_format_test.WireFormatTest">WireFormatTest</a></code></h4>
+<ul class="">
+<li><code><a title="google.protobuf.internal.wire_format_test.WireFormatTest.NumericByteSizeTestHelper" href="#google.protobuf.internal.wire_format_test.WireFormatTest.NumericByteSizeTestHelper">NumericByteSizeTestHelper</a></code></li>
+<li><code><a title="google.protobuf.internal.wire_format_test.WireFormatTest.testByteSizeFunctions" href="#google.protobuf.internal.wire_format_test.WireFormatTest.testByteSizeFunctions">testByteSizeFunctions</a></code></li>
+<li><code><a title="google.protobuf.internal.wire_format_test.WireFormatTest.testPackTag" href="#google.protobuf.internal.wire_format_test.WireFormatTest.testPackTag">testPackTag</a></code></li>
+<li><code><a title="google.protobuf.internal.wire_format_test.WireFormatTest.testUnpackTag" href="#google.protobuf.internal.wire_format_test.WireFormatTest.testUnpackTag">testUnpackTag</a></code></li>
+<li><code><a title="google.protobuf.internal.wire_format_test.WireFormatTest.testZigZagDecode" href="#google.protobuf.internal.wire_format_test.WireFormatTest.testZigZagDecode">testZigZagDecode</a></code></li>
+<li><code><a title="google.protobuf.internal.wire_format_test.WireFormatTest.testZigZagEncode" href="#google.protobuf.internal.wire_format_test.WireFormatTest.testZigZagEncode">testZigZagEncode</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.4</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

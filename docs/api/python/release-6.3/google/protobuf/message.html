@@ -1,0 +1,2283 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.4" />
+<title>google.protobuf.message API documentation</title>
+<meta name="description" content="Contains an abstract base class for protocol messages." />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>google.protobuf.message</code></h1>
+</header>
+<section id="section-intro">
+<p>Contains an abstract base class for protocol messages.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Protocol Buffers - Google&#39;s data interchange format
+# Copyright 2008 Google Inc.  All rights reserved.
+# https://developers.google.com/protocol-buffers/
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are
+# met:
+#
+#     * Redistributions of source code must retain the above copyright
+# notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above
+# copyright notice, this list of conditions and the following disclaimer
+# in the documentation and/or other materials provided with the
+# distribution.
+#     * Neither the name of Google Inc. nor the names of its
+# contributors may be used to endorse or promote products derived from
+# this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+# &#34;AS IS&#34; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+# LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+# A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+# OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+# SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+# LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+# DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+# THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+# TODO(robinson): We should just make these methods all &#34;pure-virtual&#34; and move
+# all implementation out, into reflection.py for now.
+
+
+&#34;&#34;&#34;Contains an abstract base class for protocol messages.&#34;&#34;&#34;
+
+__author__ = &#39;robinson@google.com (Will Robinson)&#39;
+
+class Error(Exception): pass
+class DecodeError(Error): pass
+class EncodeError(Error): pass
+
+
+class Message(object):
+
+  &#34;&#34;&#34;Abstract base class for protocol messages.
+
+  Protocol message classes are almost always generated by the protocol
+  compiler.  These generated types subclass Message and implement the methods
+  shown below.
+
+  TODO(robinson): Link to an HTML document here.
+
+  TODO(robinson): Document that instances of this class will also
+  have an Extensions attribute with __getitem__ and __setitem__.
+  Again, not sure how to best convey this.
+
+  TODO(robinson): Document that the class must also have a static
+    RegisterExtension(extension_field) method.
+    Not sure how to best express at this point.
+  &#34;&#34;&#34;
+
+  # TODO(robinson): Document these fields and methods.
+
+  __slots__ = []
+
+  DESCRIPTOR = None
+
+  def __deepcopy__(self, memo=None):
+    clone = type(self)()
+    clone.MergeFrom(self)
+    return clone
+
+  def __eq__(self, other_msg):
+    &#34;&#34;&#34;Recursively compares two messages by value and structure.&#34;&#34;&#34;
+    raise NotImplementedError
+
+  def __ne__(self, other_msg):
+    # Can&#39;t just say self != other_msg, since that would infinitely recurse. :)
+    return not self == other_msg
+
+  def __hash__(self):
+    raise TypeError(&#39;unhashable object&#39;)
+
+  def __str__(self):
+    &#34;&#34;&#34;Outputs a human-readable representation of the message.&#34;&#34;&#34;
+    raise NotImplementedError
+
+  def __unicode__(self):
+    &#34;&#34;&#34;Outputs a human-readable representation of the message.&#34;&#34;&#34;
+    raise NotImplementedError
+
+  def MergeFrom(self, other_msg):
+    &#34;&#34;&#34;Merges the contents of the specified message into current message.
+
+    This method merges the contents of the specified message into the current
+    message. Singular fields that are set in the specified message overwrite
+    the corresponding fields in the current message. Repeated fields are
+    appended. Singular sub-messages and groups are recursively merged.
+
+    Args:
+      other_msg: Message to merge into the current message.
+    &#34;&#34;&#34;
+    raise NotImplementedError
+
+  def CopyFrom(self, other_msg):
+    &#34;&#34;&#34;Copies the content of the specified message into the current message.
+
+    The method clears the current message and then merges the specified
+    message using MergeFrom.
+
+    Args:
+      other_msg: Message to copy into the current one.
+    &#34;&#34;&#34;
+    if self is other_msg:
+      return
+    self.Clear()
+    self.MergeFrom(other_msg)
+
+  def Clear(self):
+    &#34;&#34;&#34;Clears all data that was set in the message.&#34;&#34;&#34;
+    raise NotImplementedError
+
+  def SetInParent(self):
+    &#34;&#34;&#34;Mark this as present in the parent.
+
+    This normally happens automatically when you assign a field of a
+    sub-message, but sometimes you want to make the sub-message
+    present while keeping it empty.  If you find yourself using this,
+    you may want to reconsider your design.&#34;&#34;&#34;
+    raise NotImplementedError
+
+  def IsInitialized(self):
+    &#34;&#34;&#34;Checks if the message is initialized.
+
+    Returns:
+      The method returns True if the message is initialized (i.e. all of its
+      required fields are set).
+    &#34;&#34;&#34;
+    raise NotImplementedError
+
+  # TODO(robinson): MergeFromString() should probably return None and be
+  # implemented in terms of a helper that returns the # of bytes read.  Our
+  # deserialization routines would use the helper when recursively
+  # deserializing, but the end user would almost always just want the no-return
+  # MergeFromString().
+
+  def MergeFromString(self, serialized):
+    &#34;&#34;&#34;Merges serialized protocol buffer data into this message.
+
+    When we find a field in |serialized| that is already present
+    in this message:
+      - If it&#39;s a &#34;repeated&#34; field, we append to the end of our list.
+      - Else, if it&#39;s a scalar, we overwrite our field.
+      - Else, (it&#39;s a nonrepeated composite), we recursively merge
+        into the existing composite.
+
+    TODO(robinson): Document handling of unknown fields.
+
+    Args:
+      serialized: Any object that allows us to call buffer(serialized)
+        to access a string of bytes using the buffer interface.
+
+    TODO(robinson): When we switch to a helper, this will return None.
+
+    Returns:
+      The number of bytes read from |serialized|.
+      For non-group messages, this will always be len(serialized),
+      but for messages which are actually groups, this will
+      generally be less than len(serialized), since we must
+      stop when we reach an END_GROUP tag.  Note that if
+      we *do* stop because of an END_GROUP tag, the number
+      of bytes returned does not include the bytes
+      for the END_GROUP tag information.
+
+    Raises:
+      message.DecodeError if the input cannot be parsed.
+    &#34;&#34;&#34;
+    raise NotImplementedError
+
+  def ParseFromString(self, serialized):
+    &#34;&#34;&#34;Parse serialized protocol buffer data into this message.
+
+    Like MergeFromString(), except we clear the object first.
+    &#34;&#34;&#34;
+    self.Clear()
+    return self.MergeFromString(serialized)
+
+  def SerializeToString(self, **kwargs):
+    &#34;&#34;&#34;Serializes the protocol message to a binary string.
+
+    Arguments:
+      **kwargs: Keyword arguments to the serialize method, accepts
+        the following keyword args:
+        deterministic: If true, requests deterministic serialization of the
+          protobuf, with predictable ordering of map keys.
+
+    Returns:
+      A binary string representation of the message if all of the required
+      fields in the message are set (i.e. the message is initialized).
+
+    Raises:
+      message.EncodeError if the message isn&#39;t initialized.
+    &#34;&#34;&#34;
+    raise NotImplementedError
+
+  def SerializePartialToString(self, **kwargs):
+    &#34;&#34;&#34;Serializes the protocol message to a binary string.
+
+    This method is similar to SerializeToString but doesn&#39;t check if the
+    message is initialized.
+
+    Arguments:
+      **kwargs: Keyword arguments to the serialize method, accepts
+        the following keyword args:
+        deterministic: If true, requests deterministic serialization of the
+          protobuf, with predictable ordering of map keys.
+
+    Returns:
+      A string representation of the partial message.
+    &#34;&#34;&#34;
+    raise NotImplementedError
+
+  # TODO(robinson): Decide whether we like these better
+  # than auto-generated has_foo() and clear_foo() methods
+  # on the instances themselves.  This way is less consistent
+  # with C++, but it makes reflection-type access easier and
+  # reduces the number of magically autogenerated things.
+  #
+  # TODO(robinson): Be sure to document (and test) exactly
+  # which field names are accepted here.  Are we case-sensitive?
+  # What do we do with fields that share names with Python keywords
+  # like &#39;lambda&#39; and &#39;yield&#39;?
+  #
+  # nnorwitz says:
+  # &#34;&#34;&#34;
+  # Typically (in python), an underscore is appended to names that are
+  # keywords. So they would become lambda_ or yield_.
+  # &#34;&#34;&#34;
+  def ListFields(self):
+    &#34;&#34;&#34;Returns a list of (FieldDescriptor, value) tuples for all
+    fields in the message which are not empty.  A message field is
+    non-empty if HasField() would return true. A singular primitive field
+    is non-empty if HasField() would return true in proto2 or it is non zero
+    in proto3. A repeated field is non-empty if it contains at least one
+    element.  The fields are ordered by field number&#34;&#34;&#34;
+    raise NotImplementedError
+
+  def HasField(self, field_name):
+    &#34;&#34;&#34;Checks if a certain field is set for the message, or if any field inside
+    a oneof group is set.  Note that if the field_name is not defined in the
+    message descriptor, ValueError will be raised.&#34;&#34;&#34;
+    raise NotImplementedError
+
+  def ClearField(self, field_name):
+    &#34;&#34;&#34;Clears the contents of a given field, or the field set inside a oneof
+    group.  If the name neither refers to a defined field or oneof group,
+    ValueError is raised.&#34;&#34;&#34;
+    raise NotImplementedError
+
+  def WhichOneof(self, oneof_group):
+    &#34;&#34;&#34;Returns the name of the field that is set inside a oneof group, or
+    None if no field is set.  If no group with the given name exists, ValueError
+    will be raised.&#34;&#34;&#34;
+    raise NotImplementedError
+
+  def HasExtension(self, extension_handle):
+    raise NotImplementedError
+
+  def ClearExtension(self, extension_handle):
+    raise NotImplementedError
+
+  def UnknownFields(self):
+    &#34;&#34;&#34;Returns the UnknownFieldSet.&#34;&#34;&#34;
+    raise NotImplementedError
+
+  def DiscardUnknownFields(self):
+    raise NotImplementedError
+
+  def ByteSize(self):
+    &#34;&#34;&#34;Returns the serialized size of this message.
+    Recursively calls ByteSize() on all contained messages.
+    &#34;&#34;&#34;
+    raise NotImplementedError
+
+  def _SetListener(self, message_listener):
+    &#34;&#34;&#34;Internal method used by the protocol message implementation.
+    Clients should not call this directly.
+
+    Sets a listener that this message will call on certain state transitions.
+
+    The purpose of this method is to register back-edges from children to
+    parents at runtime, for the purpose of setting &#34;has&#34; bits and
+    byte-size-dirty bits in the parent and ancestor objects whenever a child or
+    descendant object is modified.
+
+    If the client wants to disconnect this Message from the object tree, she
+    explicitly sets callback to None.
+
+    If message_listener is None, unregisters any existing listener.  Otherwise,
+    message_listener must implement the MessageListener interface in
+    internal/message_listener.py, and we discard any listener registered
+    via a previous _SetListener() call.
+    &#34;&#34;&#34;
+    raise NotImplementedError
+
+  def __getstate__(self):
+    &#34;&#34;&#34;Support the pickle protocol.&#34;&#34;&#34;
+    return dict(serialized=self.SerializePartialToString())
+
+  def __setstate__(self, state):
+    &#34;&#34;&#34;Support the pickle protocol.&#34;&#34;&#34;
+    self.__init__()
+    serialized = state[&#39;serialized&#39;]
+    # On Python 3, using encoding=&#39;latin1&#39; is required for unpickling
+    # protos pickled by Python 2.
+    if not isinstance(serialized, bytes):
+      serialized = serialized.encode(&#39;latin1&#39;)
+    self.ParseFromString(serialized)
+
+  def __reduce__(self):
+    message_descriptor = self.DESCRIPTOR
+    if message_descriptor.containing_type is None:
+      return type(self), (), self.__getstate__()
+    # the message type must be nested.
+    # Python does not pickle nested classes; use the symbol_database on the
+    # receiving end.
+    container = message_descriptor
+    return (_InternalConstructMessage, (container.full_name,),
+            self.__getstate__())
+
+
+def _InternalConstructMessage(full_name):
+  &#34;&#34;&#34;Constructs a nested message.&#34;&#34;&#34;
+  from google.protobuf import symbol_database  # pylint:disable=g-import-not-at-top
+
+  return symbol_database.Default().GetSymbol(full_name)()</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="google.protobuf.message.DecodeError"><code class="flex name class">
+<span>class <span class="ident">DecodeError</span></span>
+<span>(</span><span>...)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Common base class for all non-exit exceptions.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class DecodeError(Error): pass</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="google.protobuf.message.Error" href="#google.protobuf.message.Error">Error</a></li>
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="google.protobuf.message.EncodeError"><code class="flex name class">
+<span>class <span class="ident">EncodeError</span></span>
+<span>(</span><span>...)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Common base class for all non-exit exceptions.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class EncodeError(Error): pass</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="google.protobuf.message.Error" href="#google.protobuf.message.Error">Error</a></li>
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="google.protobuf.message.Error"><code class="flex name class">
+<span>class <span class="ident">Error</span></span>
+<span>(</span><span>...)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Common base class for all non-exit exceptions.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Error(Exception): pass</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="google.protobuf.message.DecodeError" href="#google.protobuf.message.DecodeError">DecodeError</a></li>
+<li><a title="google.protobuf.message.EncodeError" href="#google.protobuf.message.EncodeError">EncodeError</a></li>
+</ul>
+</dd>
+<dt id="google.protobuf.message.Message"><code class="flex name class">
+<span>class <span class="ident">Message</span></span>
+</code></dt>
+<dd>
+<section class="desc"><p>Abstract base class for protocol messages.</p>
+<p>Protocol message classes are almost always generated by the protocol
+compiler.
+These generated types subclass Message and implement the methods
+shown below.</p>
+<p>TODO(robinson): Link to an HTML document here.</p>
+<p>TODO(robinson): Document that instances of this class will also
+have an Extensions attribute with <strong>getitem</strong> and <strong>setitem</strong>.
+Again, not sure how to best convey this.</p>
+<p>TODO(robinson): Document that the class must also have a static
+RegisterExtension(extension_field) method.
+Not sure how to best express at this point.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Message(object):
+
+  &#34;&#34;&#34;Abstract base class for protocol messages.
+
+  Protocol message classes are almost always generated by the protocol
+  compiler.  These generated types subclass Message and implement the methods
+  shown below.
+
+  TODO(robinson): Link to an HTML document here.
+
+  TODO(robinson): Document that instances of this class will also
+  have an Extensions attribute with __getitem__ and __setitem__.
+  Again, not sure how to best convey this.
+
+  TODO(robinson): Document that the class must also have a static
+    RegisterExtension(extension_field) method.
+    Not sure how to best express at this point.
+  &#34;&#34;&#34;
+
+  # TODO(robinson): Document these fields and methods.
+
+  __slots__ = []
+
+  DESCRIPTOR = None
+
+  def __deepcopy__(self, memo=None):
+    clone = type(self)()
+    clone.MergeFrom(self)
+    return clone
+
+  def __eq__(self, other_msg):
+    &#34;&#34;&#34;Recursively compares two messages by value and structure.&#34;&#34;&#34;
+    raise NotImplementedError
+
+  def __ne__(self, other_msg):
+    # Can&#39;t just say self != other_msg, since that would infinitely recurse. :)
+    return not self == other_msg
+
+  def __hash__(self):
+    raise TypeError(&#39;unhashable object&#39;)
+
+  def __str__(self):
+    &#34;&#34;&#34;Outputs a human-readable representation of the message.&#34;&#34;&#34;
+    raise NotImplementedError
+
+  def __unicode__(self):
+    &#34;&#34;&#34;Outputs a human-readable representation of the message.&#34;&#34;&#34;
+    raise NotImplementedError
+
+  def MergeFrom(self, other_msg):
+    &#34;&#34;&#34;Merges the contents of the specified message into current message.
+
+    This method merges the contents of the specified message into the current
+    message. Singular fields that are set in the specified message overwrite
+    the corresponding fields in the current message. Repeated fields are
+    appended. Singular sub-messages and groups are recursively merged.
+
+    Args:
+      other_msg: Message to merge into the current message.
+    &#34;&#34;&#34;
+    raise NotImplementedError
+
+  def CopyFrom(self, other_msg):
+    &#34;&#34;&#34;Copies the content of the specified message into the current message.
+
+    The method clears the current message and then merges the specified
+    message using MergeFrom.
+
+    Args:
+      other_msg: Message to copy into the current one.
+    &#34;&#34;&#34;
+    if self is other_msg:
+      return
+    self.Clear()
+    self.MergeFrom(other_msg)
+
+  def Clear(self):
+    &#34;&#34;&#34;Clears all data that was set in the message.&#34;&#34;&#34;
+    raise NotImplementedError
+
+  def SetInParent(self):
+    &#34;&#34;&#34;Mark this as present in the parent.
+
+    This normally happens automatically when you assign a field of a
+    sub-message, but sometimes you want to make the sub-message
+    present while keeping it empty.  If you find yourself using this,
+    you may want to reconsider your design.&#34;&#34;&#34;
+    raise NotImplementedError
+
+  def IsInitialized(self):
+    &#34;&#34;&#34;Checks if the message is initialized.
+
+    Returns:
+      The method returns True if the message is initialized (i.e. all of its
+      required fields are set).
+    &#34;&#34;&#34;
+    raise NotImplementedError
+
+  # TODO(robinson): MergeFromString() should probably return None and be
+  # implemented in terms of a helper that returns the # of bytes read.  Our
+  # deserialization routines would use the helper when recursively
+  # deserializing, but the end user would almost always just want the no-return
+  # MergeFromString().
+
+  def MergeFromString(self, serialized):
+    &#34;&#34;&#34;Merges serialized protocol buffer data into this message.
+
+    When we find a field in |serialized| that is already present
+    in this message:
+      - If it&#39;s a &#34;repeated&#34; field, we append to the end of our list.
+      - Else, if it&#39;s a scalar, we overwrite our field.
+      - Else, (it&#39;s a nonrepeated composite), we recursively merge
+        into the existing composite.
+
+    TODO(robinson): Document handling of unknown fields.
+
+    Args:
+      serialized: Any object that allows us to call buffer(serialized)
+        to access a string of bytes using the buffer interface.
+
+    TODO(robinson): When we switch to a helper, this will return None.
+
+    Returns:
+      The number of bytes read from |serialized|.
+      For non-group messages, this will always be len(serialized),
+      but for messages which are actually groups, this will
+      generally be less than len(serialized), since we must
+      stop when we reach an END_GROUP tag.  Note that if
+      we *do* stop because of an END_GROUP tag, the number
+      of bytes returned does not include the bytes
+      for the END_GROUP tag information.
+
+    Raises:
+      message.DecodeError if the input cannot be parsed.
+    &#34;&#34;&#34;
+    raise NotImplementedError
+
+  def ParseFromString(self, serialized):
+    &#34;&#34;&#34;Parse serialized protocol buffer data into this message.
+
+    Like MergeFromString(), except we clear the object first.
+    &#34;&#34;&#34;
+    self.Clear()
+    return self.MergeFromString(serialized)
+
+  def SerializeToString(self, **kwargs):
+    &#34;&#34;&#34;Serializes the protocol message to a binary string.
+
+    Arguments:
+      **kwargs: Keyword arguments to the serialize method, accepts
+        the following keyword args:
+        deterministic: If true, requests deterministic serialization of the
+          protobuf, with predictable ordering of map keys.
+
+    Returns:
+      A binary string representation of the message if all of the required
+      fields in the message are set (i.e. the message is initialized).
+
+    Raises:
+      message.EncodeError if the message isn&#39;t initialized.
+    &#34;&#34;&#34;
+    raise NotImplementedError
+
+  def SerializePartialToString(self, **kwargs):
+    &#34;&#34;&#34;Serializes the protocol message to a binary string.
+
+    This method is similar to SerializeToString but doesn&#39;t check if the
+    message is initialized.
+
+    Arguments:
+      **kwargs: Keyword arguments to the serialize method, accepts
+        the following keyword args:
+        deterministic: If true, requests deterministic serialization of the
+          protobuf, with predictable ordering of map keys.
+
+    Returns:
+      A string representation of the partial message.
+    &#34;&#34;&#34;
+    raise NotImplementedError
+
+  # TODO(robinson): Decide whether we like these better
+  # than auto-generated has_foo() and clear_foo() methods
+  # on the instances themselves.  This way is less consistent
+  # with C++, but it makes reflection-type access easier and
+  # reduces the number of magically autogenerated things.
+  #
+  # TODO(robinson): Be sure to document (and test) exactly
+  # which field names are accepted here.  Are we case-sensitive?
+  # What do we do with fields that share names with Python keywords
+  # like &#39;lambda&#39; and &#39;yield&#39;?
+  #
+  # nnorwitz says:
+  # &#34;&#34;&#34;
+  # Typically (in python), an underscore is appended to names that are
+  # keywords. So they would become lambda_ or yield_.
+  # &#34;&#34;&#34;
+  def ListFields(self):
+    &#34;&#34;&#34;Returns a list of (FieldDescriptor, value) tuples for all
+    fields in the message which are not empty.  A message field is
+    non-empty if HasField() would return true. A singular primitive field
+    is non-empty if HasField() would return true in proto2 or it is non zero
+    in proto3. A repeated field is non-empty if it contains at least one
+    element.  The fields are ordered by field number&#34;&#34;&#34;
+    raise NotImplementedError
+
+  def HasField(self, field_name):
+    &#34;&#34;&#34;Checks if a certain field is set for the message, or if any field inside
+    a oneof group is set.  Note that if the field_name is not defined in the
+    message descriptor, ValueError will be raised.&#34;&#34;&#34;
+    raise NotImplementedError
+
+  def ClearField(self, field_name):
+    &#34;&#34;&#34;Clears the contents of a given field, or the field set inside a oneof
+    group.  If the name neither refers to a defined field or oneof group,
+    ValueError is raised.&#34;&#34;&#34;
+    raise NotImplementedError
+
+  def WhichOneof(self, oneof_group):
+    &#34;&#34;&#34;Returns the name of the field that is set inside a oneof group, or
+    None if no field is set.  If no group with the given name exists, ValueError
+    will be raised.&#34;&#34;&#34;
+    raise NotImplementedError
+
+  def HasExtension(self, extension_handle):
+    raise NotImplementedError
+
+  def ClearExtension(self, extension_handle):
+    raise NotImplementedError
+
+  def UnknownFields(self):
+    &#34;&#34;&#34;Returns the UnknownFieldSet.&#34;&#34;&#34;
+    raise NotImplementedError
+
+  def DiscardUnknownFields(self):
+    raise NotImplementedError
+
+  def ByteSize(self):
+    &#34;&#34;&#34;Returns the serialized size of this message.
+    Recursively calls ByteSize() on all contained messages.
+    &#34;&#34;&#34;
+    raise NotImplementedError
+
+  def _SetListener(self, message_listener):
+    &#34;&#34;&#34;Internal method used by the protocol message implementation.
+    Clients should not call this directly.
+
+    Sets a listener that this message will call on certain state transitions.
+
+    The purpose of this method is to register back-edges from children to
+    parents at runtime, for the purpose of setting &#34;has&#34; bits and
+    byte-size-dirty bits in the parent and ancestor objects whenever a child or
+    descendant object is modified.
+
+    If the client wants to disconnect this Message from the object tree, she
+    explicitly sets callback to None.
+
+    If message_listener is None, unregisters any existing listener.  Otherwise,
+    message_listener must implement the MessageListener interface in
+    internal/message_listener.py, and we discard any listener registered
+    via a previous _SetListener() call.
+    &#34;&#34;&#34;
+    raise NotImplementedError
+
+  def __getstate__(self):
+    &#34;&#34;&#34;Support the pickle protocol.&#34;&#34;&#34;
+    return dict(serialized=self.SerializePartialToString())
+
+  def __setstate__(self, state):
+    &#34;&#34;&#34;Support the pickle protocol.&#34;&#34;&#34;
+    self.__init__()
+    serialized = state[&#39;serialized&#39;]
+    # On Python 3, using encoding=&#39;latin1&#39; is required for unpickling
+    # protos pickled by Python 2.
+    if not isinstance(serialized, bytes):
+      serialized = serialized.encode(&#39;latin1&#39;)
+    self.ParseFromString(serialized)
+
+  def __reduce__(self):
+    message_descriptor = self.DESCRIPTOR
+    if message_descriptor.containing_type is None:
+      return type(self), (), self.__getstate__()
+    # the message type must be nested.
+    # Python does not pickle nested classes; use the symbol_database on the
+    # receiving end.
+    container = message_descriptor
+    return (_InternalConstructMessage, (container.full_name,),
+            self.__getstate__())</code></pre>
+</details>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li>api_pb2.AccessControl</li>
+<li>api_pb2.ActiveRequest</li>
+<li>api_pb2.ActiveRequests</li>
+<li>api_pb2.Alert</li>
+<li>api_pb2.Alerts</li>
+<li>api_pb2.AttachInfoEntry</li>
+<li>api_pb2.CapacityUsageInfo</li>
+<li>api_pb2.Catalog</li>
+<li>api_pb2.CatalogResponse</li>
+<li>api_pb2.CloudMigrate</li>
+<li>api_pb2.CloudMigrateCancelRequest</li>
+<li>api_pb2.CloudMigrateInfo</li>
+<li>api_pb2.CloudMigrateInfoList</li>
+<li>api_pb2.CloudMigrateStartRequest</li>
+<li>api_pb2.CloudMigrateStartResponse</li>
+<li>api_pb2.CloudMigrateStatusRequest</li>
+<li>api_pb2.CloudMigrateStatusResponse</li>
+<li>api_pb2.CloudSchedListEntry</li>
+<li>api_pb2.ClusterPairCreateRequest</li>
+<li>api_pb2.ClusterPairCreateResponse</li>
+<li>api_pb2.ClusterPairGetResponse</li>
+<li>api_pb2.ClusterPairInfo</li>
+<li>api_pb2.ClusterPairMode</li>
+<li>api_pb2.ClusterPairProcessRequest</li>
+<li>api_pb2.ClusterPairProcessResponse</li>
+<li>api_pb2.ClusterPairTokenGetResponse</li>
+<li>api_pb2.ClusterPairsEnumerateResponse</li>
+<li>api_pb2.ClusterResponse</li>
+<li>api_pb2.CollaboratorsEntry</li>
+<li>api_pb2.DetailsEntry</li>
+<li>api_pb2.DisksEntry</li>
+<li>api_pb2.DockeridsEntry</li>
+<li>api_pb2.DriverOptionsEntry</li>
+<li>api_pb2.DriverOptionsEntry</li>
+<li>api_pb2.DriverOptionsEntry</li>
+<li>api_pb2.DriverOptionsEntry</li>
+<li>api_pb2.ExportSpec</li>
+<li>api_pb2.GraphDriverChanges</li>
+<li>api_pb2.Group</li>
+<li>api_pb2.GroupSnapCreateRequest</li>
+<li>api_pb2.GroupSnapCreateResponse</li>
+<li>api_pb2.GroupsEntry</li>
+<li>api_pb2.InfoEntry</li>
+<li>api_pb2.IoStrategy</li>
+<li>api_pb2.LabelSelectorRequirement</li>
+<li>api_pb2.LabelsEntry</li>
+<li>api_pb2.LabelsEntry</li>
+<li>api_pb2.LabelsEntry</li>
+<li>api_pb2.LabelsEntry</li>
+<li>api_pb2.LabelsEntry</li>
+<li>api_pb2.LabelsEntry</li>
+<li>api_pb2.LabelsEntry</li>
+<li>api_pb2.LabelsEntry</li>
+<li>api_pb2.LabelsEntry</li>
+<li>api_pb2.LabelsEntry</li>
+<li>api_pb2.LabelsEntry</li>
+<li>api_pb2.LabelsEntry</li>
+<li>api_pb2.LocateResponse</li>
+<li>api_pb2.MetadataEntry</li>
+<li>api_pb2.MetadataFilterEntry</li>
+<li>api_pb2.MigrateAllVolumes</li>
+<li>api_pb2.MigrateVolume</li>
+<li>api_pb2.MigrateVolumeGroup</li>
+<li>api_pb2.MountsEntry</li>
+<li>api_pb2.NodeLabelsEntry</li>
+<li>api_pb2.ObjectstoreInfo</li>
+<li>api_pb2.OpenStorageService</li>
+<li>api_pb2.OptionsEntry</li>
+<li>api_pb2.OptionsEntry</li>
+<li>api_pb2.OptionsEntry</li>
+<li>api_pb2.Ownership</li>
+<li>api_pb2.PairsEntry</li>
+<li>api_pb2.ParamsEntry</li>
+<li>api_pb2.ReplicaPlacementSpec</li>
+<li>api_pb2.ReplicaSet</li>
+<li>api_pb2.Report</li>
+<li>api_pb2.ReqestKVEntry</li>
+<li>api_pb2.RuntimeStateEntry</li>
+<li>api_pb2.RuntimeStateMap</li>
+<li>api_pb2.SdkAlertsAlertTypeQuery</li>
+<li>api_pb2.SdkAlertsCountSpan</li>
+<li>api_pb2.SdkAlertsDeleteRequest</li>
+<li>api_pb2.SdkAlertsDeleteResponse</li>
+<li>api_pb2.SdkAlertsEnumerateWithFiltersRequest</li>
+<li>api_pb2.SdkAlertsEnumerateWithFiltersResponse</li>
+<li>api_pb2.SdkAlertsOption</li>
+<li>api_pb2.SdkAlertsQuery</li>
+<li>api_pb2.SdkAlertsResourceIdQuery</li>
+<li>api_pb2.SdkAlertsResourceTypeQuery</li>
+<li>api_pb2.SdkAlertsTimeSpan</li>
+<li>api_pb2.SdkAwsCredentialRequest</li>
+<li>api_pb2.SdkAwsCredentialResponse</li>
+<li>api_pb2.SdkAzureCredentialRequest</li>
+<li>api_pb2.SdkAzureCredentialResponse</li>
+<li>api_pb2.SdkCloudBackupCatalogRequest</li>
+<li>api_pb2.SdkCloudBackupCatalogResponse</li>
+<li>api_pb2.SdkCloudBackupCreateRequest</li>
+<li>api_pb2.SdkCloudBackupCreateResponse</li>
+<li>api_pb2.SdkCloudBackupDeleteAllRequest</li>
+<li>api_pb2.SdkCloudBackupDeleteAllResponse</li>
+<li>api_pb2.SdkCloudBackupDeleteRequest</li>
+<li>api_pb2.SdkCloudBackupDeleteResponse</li>
+<li>api_pb2.SdkCloudBackupEnumerateWithFiltersRequest</li>
+<li>api_pb2.SdkCloudBackupEnumerateWithFiltersResponse</li>
+<li>api_pb2.SdkCloudBackupGroupCreateRequest</li>
+<li>api_pb2.SdkCloudBackupGroupCreateResponse</li>
+<li>api_pb2.SdkCloudBackupHistoryItem</li>
+<li>api_pb2.SdkCloudBackupHistoryRequest</li>
+<li>api_pb2.SdkCloudBackupHistoryResponse</li>
+<li>api_pb2.SdkCloudBackupInfo</li>
+<li>api_pb2.SdkCloudBackupRestoreRequest</li>
+<li>api_pb2.SdkCloudBackupRestoreResponse</li>
+<li>api_pb2.SdkCloudBackupSchedCreateRequest</li>
+<li>api_pb2.SdkCloudBackupSchedCreateResponse</li>
+<li>api_pb2.SdkCloudBackupSchedDeleteRequest</li>
+<li>api_pb2.SdkCloudBackupSchedDeleteResponse</li>
+<li>api_pb2.SdkCloudBackupSchedEnumerateRequest</li>
+<li>api_pb2.SdkCloudBackupSchedEnumerateResponse</li>
+<li>api_pb2.SdkCloudBackupSchedUpdateRequest</li>
+<li>api_pb2.SdkCloudBackupSchedUpdateResponse</li>
+<li>api_pb2.SdkCloudBackupScheduleInfo</li>
+<li>api_pb2.SdkCloudBackupStateChangeRequest</li>
+<li>api_pb2.SdkCloudBackupStateChangeResponse</li>
+<li>api_pb2.SdkCloudBackupStatus</li>
+<li>api_pb2.SdkCloudBackupStatusRequest</li>
+<li>api_pb2.SdkCloudBackupStatusResponse</li>
+<li>api_pb2.SdkCloudMigrateCancelRequest</li>
+<li>api_pb2.SdkCloudMigrateCancelResponse</li>
+<li>api_pb2.SdkCloudMigrateStartRequest</li>
+<li>api_pb2.SdkCloudMigrateStartResponse</li>
+<li>api_pb2.SdkCloudMigrateStatusRequest</li>
+<li>api_pb2.SdkCloudMigrateStatusResponse</li>
+<li>api_pb2.SdkClusterDomainActivateRequest</li>
+<li>api_pb2.SdkClusterDomainActivateResponse</li>
+<li>api_pb2.SdkClusterDomainDeactivateRequest</li>
+<li>api_pb2.SdkClusterDomainDeactivateResponse</li>
+<li>api_pb2.SdkClusterDomainInspectRequest</li>
+<li>api_pb2.SdkClusterDomainInspectResponse</li>
+<li>api_pb2.SdkClusterDomainsEnumerateRequest</li>
+<li>api_pb2.SdkClusterDomainsEnumerateResponse</li>
+<li>api_pb2.SdkClusterInspectCurrentRequest</li>
+<li>api_pb2.SdkClusterInspectCurrentResponse</li>
+<li>api_pb2.SdkClusterPairCreateRequest</li>
+<li>api_pb2.SdkClusterPairCreateResponse</li>
+<li>api_pb2.SdkClusterPairDeleteRequest</li>
+<li>api_pb2.SdkClusterPairDeleteResponse</li>
+<li>api_pb2.SdkClusterPairEnumerateRequest</li>
+<li>api_pb2.SdkClusterPairEnumerateResponse</li>
+<li>api_pb2.SdkClusterPairGetTokenRequest</li>
+<li>api_pb2.SdkClusterPairGetTokenResponse</li>
+<li>api_pb2.SdkClusterPairInspectRequest</li>
+<li>api_pb2.SdkClusterPairInspectResponse</li>
+<li>api_pb2.SdkClusterPairResetTokenRequest</li>
+<li>api_pb2.SdkClusterPairResetTokenResponse</li>
+<li>api_pb2.SdkCredentialCreateRequest</li>
+<li>api_pb2.SdkCredentialCreateResponse</li>
+<li>api_pb2.SdkCredentialDeleteRequest</li>
+<li>api_pb2.SdkCredentialDeleteResponse</li>
+<li>api_pb2.SdkCredentialEnumerateRequest</li>
+<li>api_pb2.SdkCredentialEnumerateResponse</li>
+<li>api_pb2.SdkCredentialInspectRequest</li>
+<li>api_pb2.SdkCredentialInspectResponse</li>
+<li>api_pb2.SdkCredentialValidateRequest</li>
+<li>api_pb2.SdkCredentialValidateResponse</li>
+<li>api_pb2.SdkGoogleCredentialRequest</li>
+<li>api_pb2.SdkGoogleCredentialResponse</li>
+<li>api_pb2.SdkIdentityCapabilitiesRequest</li>
+<li>api_pb2.SdkIdentityCapabilitiesResponse</li>
+<li>api_pb2.SdkIdentityVersionRequest</li>
+<li>api_pb2.SdkIdentityVersionResponse</li>
+<li>api_pb2.SdkNodeEnumerateRequest</li>
+<li>api_pb2.SdkNodeEnumerateResponse</li>
+<li>api_pb2.SdkNodeEnumerateWithFiltersRequest</li>
+<li>api_pb2.SdkNodeEnumerateWithFiltersResponse</li>
+<li>api_pb2.SdkNodeInspectCurrentRequest</li>
+<li>api_pb2.SdkNodeInspectCurrentResponse</li>
+<li>api_pb2.SdkNodeInspectRequest</li>
+<li>api_pb2.SdkNodeInspectResponse</li>
+<li>api_pb2.SdkObjectstoreCreateRequest</li>
+<li>api_pb2.SdkObjectstoreCreateResponse</li>
+<li>api_pb2.SdkObjectstoreDeleteRequest</li>
+<li>api_pb2.SdkObjectstoreDeleteResponse</li>
+<li>api_pb2.SdkObjectstoreInspectRequest</li>
+<li>api_pb2.SdkObjectstoreInspectResponse</li>
+<li>api_pb2.SdkObjectstoreUpdateRequest</li>
+<li>api_pb2.SdkObjectstoreUpdateResponse</li>
+<li>api_pb2.SdkOpenStoragePolicyCreateRequest</li>
+<li>api_pb2.SdkOpenStoragePolicyCreateResponse</li>
+<li>api_pb2.SdkOpenStoragePolicyDefaultInspectRequest</li>
+<li>api_pb2.SdkOpenStoragePolicyDefaultInspectResponse</li>
+<li>api_pb2.SdkOpenStoragePolicyDeleteRequest</li>
+<li>api_pb2.SdkOpenStoragePolicyDeleteResponse</li>
+<li>api_pb2.SdkOpenStoragePolicyEnumerateRequest</li>
+<li>api_pb2.SdkOpenStoragePolicyEnumerateResponse</li>
+<li>api_pb2.SdkOpenStoragePolicyInspectRequest</li>
+<li>api_pb2.SdkOpenStoragePolicyInspectResponse</li>
+<li>api_pb2.SdkOpenStoragePolicyReleaseRequest</li>
+<li>api_pb2.SdkOpenStoragePolicyReleaseResponse</li>
+<li>api_pb2.SdkOpenStoragePolicySetDefaultRequest</li>
+<li>api_pb2.SdkOpenStoragePolicySetDefaultResponse</li>
+<li>api_pb2.SdkOpenStoragePolicyUpdateRequest</li>
+<li>api_pb2.SdkOpenStoragePolicyUpdateResponse</li>
+<li>api_pb2.SdkRole</li>
+<li>api_pb2.SdkRoleCreateRequest</li>
+<li>api_pb2.SdkRoleCreateResponse</li>
+<li>api_pb2.SdkRoleDeleteRequest</li>
+<li>api_pb2.SdkRoleDeleteResponse</li>
+<li>api_pb2.SdkRoleEnumerateRequest</li>
+<li>api_pb2.SdkRoleEnumerateResponse</li>
+<li>api_pb2.SdkRoleInspectRequest</li>
+<li>api_pb2.SdkRoleInspectResponse</li>
+<li>api_pb2.SdkRoleUpdateRequest</li>
+<li>api_pb2.SdkRoleUpdateResponse</li>
+<li>api_pb2.SdkRule</li>
+<li>api_pb2.SdkSchedulePolicy</li>
+<li>api_pb2.SdkSchedulePolicyCreateRequest</li>
+<li>api_pb2.SdkSchedulePolicyCreateResponse</li>
+<li>api_pb2.SdkSchedulePolicyDeleteRequest</li>
+<li>api_pb2.SdkSchedulePolicyDeleteResponse</li>
+<li>api_pb2.SdkSchedulePolicyEnumerateRequest</li>
+<li>api_pb2.SdkSchedulePolicyEnumerateResponse</li>
+<li>api_pb2.SdkSchedulePolicyInspectRequest</li>
+<li>api_pb2.SdkSchedulePolicyInspectResponse</li>
+<li>api_pb2.SdkSchedulePolicyInterval</li>
+<li>api_pb2.SdkSchedulePolicyIntervalDaily</li>
+<li>api_pb2.SdkSchedulePolicyIntervalMonthly</li>
+<li>api_pb2.SdkSchedulePolicyIntervalPeriodic</li>
+<li>api_pb2.SdkSchedulePolicyIntervalWeekly</li>
+<li>api_pb2.SdkSchedulePolicyUpdateRequest</li>
+<li>api_pb2.SdkSchedulePolicyUpdateResponse</li>
+<li>api_pb2.SdkServiceCapability</li>
+<li>api_pb2.SdkStoragePolicy</li>
+<li>api_pb2.SdkStoragePool</li>
+<li>api_pb2.SdkStoragePoolResizeRequest</li>
+<li>api_pb2.SdkStoragePoolResizeResponse</li>
+<li>api_pb2.SdkVersion</li>
+<li>api_pb2.SdkVolumeAttachOptions</li>
+<li>api_pb2.SdkVolumeAttachRequest</li>
+<li>api_pb2.SdkVolumeAttachResponse</li>
+<li>api_pb2.SdkVolumeCapacityUsageRequest</li>
+<li>api_pb2.SdkVolumeCapacityUsageResponse</li>
+<li>api_pb2.SdkVolumeCloneRequest</li>
+<li>api_pb2.SdkVolumeCloneResponse</li>
+<li>api_pb2.SdkVolumeCreateRequest</li>
+<li>api_pb2.SdkVolumeCreateResponse</li>
+<li>api_pb2.SdkVolumeDeleteRequest</li>
+<li>api_pb2.SdkVolumeDeleteResponse</li>
+<li>api_pb2.SdkVolumeDetachOptions</li>
+<li>api_pb2.SdkVolumeDetachRequest</li>
+<li>api_pb2.SdkVolumeDetachResponse</li>
+<li>api_pb2.SdkVolumeEnumerateRequest</li>
+<li>api_pb2.SdkVolumeEnumerateResponse</li>
+<li>api_pb2.SdkVolumeEnumerateWithFiltersRequest</li>
+<li>api_pb2.SdkVolumeEnumerateWithFiltersResponse</li>
+<li>api_pb2.SdkVolumeInspectRequest</li>
+<li>api_pb2.SdkVolumeInspectResponse</li>
+<li>api_pb2.SdkVolumeInspectWithFiltersRequest</li>
+<li>api_pb2.SdkVolumeInspectWithFiltersResponse</li>
+<li>api_pb2.SdkVolumeMountRequest</li>
+<li>api_pb2.SdkVolumeMountResponse</li>
+<li>api_pb2.SdkVolumeSnapshotCreateRequest</li>
+<li>api_pb2.SdkVolumeSnapshotCreateResponse</li>
+<li>api_pb2.SdkVolumeSnapshotEnumerateRequest</li>
+<li>api_pb2.SdkVolumeSnapshotEnumerateResponse</li>
+<li>api_pb2.SdkVolumeSnapshotEnumerateWithFiltersRequest</li>
+<li>api_pb2.SdkVolumeSnapshotEnumerateWithFiltersResponse</li>
+<li>api_pb2.SdkVolumeSnapshotRestoreRequest</li>
+<li>api_pb2.SdkVolumeSnapshotRestoreResponse</li>
+<li>api_pb2.SdkVolumeSnapshotScheduleUpdateRequest</li>
+<li>api_pb2.SdkVolumeSnapshotScheduleUpdateResponse</li>
+<li>api_pb2.SdkVolumeStatsRequest</li>
+<li>api_pb2.SdkVolumeStatsResponse</li>
+<li>api_pb2.SdkVolumeUnmountOptions</li>
+<li>api_pb2.SdkVolumeUnmountRequest</li>
+<li>api_pb2.SdkVolumeUnmountResponse</li>
+<li>api_pb2.SdkVolumeUpdateRequest</li>
+<li>api_pb2.SdkVolumeUpdateResponse</li>
+<li>api_pb2.SnapCreateRequest</li>
+<li>api_pb2.SnapCreateResponse</li>
+<li>api_pb2.SnapshotsEntry</li>
+<li>api_pb2.Source</li>
+<li>api_pb2.Stats</li>
+<li>api_pb2.StatusesEntry</li>
+<li>api_pb2.StorageCluster</li>
+<li>api_pb2.StorageNode</li>
+<li>api_pb2.StoragePool</li>
+<li>api_pb2.StoragePoolOperation</li>
+<li>api_pb2.StorageResource</li>
+<li>api_pb2.StorageVersion</li>
+<li>api_pb2.Volume</li>
+<li>api_pb2.VolumeConsumer</li>
+<li>api_pb2.VolumeCreateRequest</li>
+<li>api_pb2.VolumeCreateResponse</li>
+<li>api_pb2.VolumeInfo</li>
+<li>api_pb2.VolumeInspectOptions</li>
+<li>api_pb2.VolumeLabelsEntry</li>
+<li>api_pb2.VolumeLabelsEntry</li>
+<li>api_pb2.VolumeLabelsEntry</li>
+<li>api_pb2.VolumeLocator</li>
+<li>api_pb2.VolumePlacementSpec</li>
+<li>api_pb2.VolumePlacementStrategy</li>
+<li>api_pb2.VolumeResponse</li>
+<li>api_pb2.VolumeSetRequest</li>
+<li>api_pb2.VolumeSetResponse</li>
+<li>api_pb2.VolumeSpec</li>
+<li>api_pb2.VolumeSpecPolicy</li>
+<li>api_pb2.VolumeSpecUpdate</li>
+<li>api_pb2.VolumeStateAction</li>
+<li><a title="google.api.http_pb2.CustomHttpPattern" href="../api/http_pb2.html#google.api.http_pb2.CustomHttpPattern">CustomHttpPattern</a></li>
+<li><a title="google.api.http_pb2.Http" href="../api/http_pb2.html#google.api.http_pb2.Http">Http</a></li>
+<li><a title="google.api.http_pb2.HttpRule" href="../api/http_pb2.html#google.api.http_pb2.HttpRule">HttpRule</a></li>
+<li><a title="google.protobuf.any_pb2.Any" href="any_pb2.html#google.protobuf.any_pb2.Any">Any</a></li>
+<li><a title="google.protobuf.any_test_pb2.TestAny" href="any_test_pb2.html#google.protobuf.any_test_pb2.TestAny">TestAny</a></li>
+<li><a title="google.protobuf.api_pb2.Api" href="api_pb2.html#google.protobuf.api_pb2.Api">Api</a></li>
+<li><a title="google.protobuf.api_pb2.Method" href="api_pb2.html#google.protobuf.api_pb2.Method">Method</a></li>
+<li><a title="google.protobuf.api_pb2.Mixin" href="api_pb2.html#google.protobuf.api_pb2.Mixin">Mixin</a></li>
+<li><a title="google.protobuf.compiler.plugin_pb2.CodeGeneratorRequest" href="compiler/plugin_pb2.html#google.protobuf.compiler.plugin_pb2.CodeGeneratorRequest">CodeGeneratorRequest</a></li>
+<li><a title="google.protobuf.compiler.plugin_pb2.CodeGeneratorResponse" href="compiler/plugin_pb2.html#google.protobuf.compiler.plugin_pb2.CodeGeneratorResponse">CodeGeneratorResponse</a></li>
+<li>google.protobuf.compiler.plugin_pb2.File</li>
+<li><a title="google.protobuf.compiler.plugin_pb2.Version" href="compiler/plugin_pb2.html#google.protobuf.compiler.plugin_pb2.Version">Version</a></li>
+<li>google.protobuf.descriptor_pb2.Annotation</li>
+<li><a title="google.protobuf.descriptor_pb2.DescriptorProto" href="descriptor_pb2.html#google.protobuf.descriptor_pb2.DescriptorProto">DescriptorProto</a></li>
+<li><a title="google.protobuf.descriptor_pb2.EnumDescriptorProto" href="descriptor_pb2.html#google.protobuf.descriptor_pb2.EnumDescriptorProto">EnumDescriptorProto</a></li>
+<li><a title="google.protobuf.descriptor_pb2.EnumOptions" href="descriptor_pb2.html#google.protobuf.descriptor_pb2.EnumOptions">EnumOptions</a></li>
+<li>google.protobuf.descriptor_pb2.EnumReservedRange</li>
+<li><a title="google.protobuf.descriptor_pb2.EnumValueDescriptorProto" href="descriptor_pb2.html#google.protobuf.descriptor_pb2.EnumValueDescriptorProto">EnumValueDescriptorProto</a></li>
+<li><a title="google.protobuf.descriptor_pb2.EnumValueOptions" href="descriptor_pb2.html#google.protobuf.descriptor_pb2.EnumValueOptions">EnumValueOptions</a></li>
+<li>google.protobuf.descriptor_pb2.ExtensionRange</li>
+<li><a title="google.protobuf.descriptor_pb2.ExtensionRangeOptions" href="descriptor_pb2.html#google.protobuf.descriptor_pb2.ExtensionRangeOptions">ExtensionRangeOptions</a></li>
+<li><a title="google.protobuf.descriptor_pb2.FieldDescriptorProto" href="descriptor_pb2.html#google.protobuf.descriptor_pb2.FieldDescriptorProto">FieldDescriptorProto</a></li>
+<li><a title="google.protobuf.descriptor_pb2.FieldOptions" href="descriptor_pb2.html#google.protobuf.descriptor_pb2.FieldOptions">FieldOptions</a></li>
+<li><a title="google.protobuf.descriptor_pb2.FileDescriptorProto" href="descriptor_pb2.html#google.protobuf.descriptor_pb2.FileDescriptorProto">FileDescriptorProto</a></li>
+<li><a title="google.protobuf.descriptor_pb2.FileDescriptorSet" href="descriptor_pb2.html#google.protobuf.descriptor_pb2.FileDescriptorSet">FileDescriptorSet</a></li>
+<li><a title="google.protobuf.descriptor_pb2.FileOptions" href="descriptor_pb2.html#google.protobuf.descriptor_pb2.FileOptions">FileOptions</a></li>
+<li><a title="google.protobuf.descriptor_pb2.GeneratedCodeInfo" href="descriptor_pb2.html#google.protobuf.descriptor_pb2.GeneratedCodeInfo">GeneratedCodeInfo</a></li>
+<li>google.protobuf.descriptor_pb2.Location</li>
+<li><a title="google.protobuf.descriptor_pb2.MessageOptions" href="descriptor_pb2.html#google.protobuf.descriptor_pb2.MessageOptions">MessageOptions</a></li>
+<li><a title="google.protobuf.descriptor_pb2.MethodDescriptorProto" href="descriptor_pb2.html#google.protobuf.descriptor_pb2.MethodDescriptorProto">MethodDescriptorProto</a></li>
+<li><a title="google.protobuf.descriptor_pb2.MethodOptions" href="descriptor_pb2.html#google.protobuf.descriptor_pb2.MethodOptions">MethodOptions</a></li>
+<li>google.protobuf.descriptor_pb2.NamePart</li>
+<li><a title="google.protobuf.descriptor_pb2.OneofDescriptorProto" href="descriptor_pb2.html#google.protobuf.descriptor_pb2.OneofDescriptorProto">OneofDescriptorProto</a></li>
+<li><a title="google.protobuf.descriptor_pb2.OneofOptions" href="descriptor_pb2.html#google.protobuf.descriptor_pb2.OneofOptions">OneofOptions</a></li>
+<li>google.protobuf.descriptor_pb2.ReservedRange</li>
+<li><a title="google.protobuf.descriptor_pb2.ServiceDescriptorProto" href="descriptor_pb2.html#google.protobuf.descriptor_pb2.ServiceDescriptorProto">ServiceDescriptorProto</a></li>
+<li><a title="google.protobuf.descriptor_pb2.ServiceOptions" href="descriptor_pb2.html#google.protobuf.descriptor_pb2.ServiceOptions">ServiceOptions</a></li>
+<li><a title="google.protobuf.descriptor_pb2.SourceCodeInfo" href="descriptor_pb2.html#google.protobuf.descriptor_pb2.SourceCodeInfo">SourceCodeInfo</a></li>
+<li><a title="google.protobuf.descriptor_pb2.UninterpretedOption" href="descriptor_pb2.html#google.protobuf.descriptor_pb2.UninterpretedOption">UninterpretedOption</a></li>
+<li><a title="google.protobuf.duration_pb2.Duration" href="duration_pb2.html#google.protobuf.duration_pb2.Duration">Duration</a></li>
+<li><a title="google.protobuf.empty_pb2.Empty" href="empty_pb2.html#google.protobuf.empty_pb2.Empty">Empty</a></li>
+<li><a title="google.protobuf.field_mask_pb2.FieldMask" href="field_mask_pb2.html#google.protobuf.field_mask_pb2.FieldMask">FieldMask</a></li>
+<li>google.protobuf.internal.any_test_pb2.MapValueEntry</li>
+<li><a title="google.protobuf.internal.any_test_pb2.TestAny" href="internal/any_test_pb2.html#google.protobuf.internal.any_test_pb2.TestAny">TestAny</a></li>
+<li><a title="google.protobuf.internal.any_test_pb2.TestAnyExtension1" href="internal/any_test_pb2.html#google.protobuf.internal.any_test_pb2.TestAnyExtension1">TestAnyExtension1</a></li>
+<li>google.protobuf.internal.descriptor_pool_test1_pb2.DeepNestedMessage</li>
+<li>google.protobuf.internal.descriptor_pool_test1_pb2.DeepNestedMessage</li>
+<li><a title="google.protobuf.internal.descriptor_pool_test1_pb2.DescriptorPoolTest1" href="internal/descriptor_pool_test1_pb2.html#google.protobuf.internal.descriptor_pool_test1_pb2.DescriptorPoolTest1">DescriptorPoolTest1</a></li>
+<li><a title="google.protobuf.internal.descriptor_pool_test1_pb2.DescriptorPoolTest2" href="internal/descriptor_pool_test1_pb2.html#google.protobuf.internal.descriptor_pool_test1_pb2.DescriptorPoolTest2">DescriptorPoolTest2</a></li>
+<li>google.protobuf.internal.descriptor_pool_test1_pb2.NestedMessage</li>
+<li>google.protobuf.internal.descriptor_pool_test1_pb2.NestedMessage</li>
+<li>google.protobuf.internal.descriptor_pool_test2_pb2.DeepNestedMessage</li>
+<li><a title="google.protobuf.internal.descriptor_pool_test2_pb2.DescriptorPoolTest3" href="internal/descriptor_pool_test2_pb2.html#google.protobuf.internal.descriptor_pool_test2_pb2.DescriptorPoolTest3">DescriptorPoolTest3</a></li>
+<li>google.protobuf.internal.descriptor_pool_test2_pb2.NestedMessage</li>
+<li><a title="google.protobuf.internal.factory_test1_pb2.Factory1Message" href="internal/factory_test1_pb2.html#google.protobuf.internal.factory_test1_pb2.Factory1Message">Factory1Message</a></li>
+<li><a title="google.protobuf.internal.factory_test1_pb2.Factory1MethodRequest" href="internal/factory_test1_pb2.html#google.protobuf.internal.factory_test1_pb2.Factory1MethodRequest">Factory1MethodRequest</a></li>
+<li><a title="google.protobuf.internal.factory_test1_pb2.Factory1MethodResponse" href="internal/factory_test1_pb2.html#google.protobuf.internal.factory_test1_pb2.Factory1MethodResponse">Factory1MethodResponse</a></li>
+<li>google.protobuf.internal.factory_test1_pb2.NestedFactory1Message</li>
+<li><a title="google.protobuf.internal.factory_test2_pb2.Factory2Message" href="internal/factory_test2_pb2.html#google.protobuf.internal.factory_test2_pb2.Factory2Message">Factory2Message</a></li>
+<li>google.protobuf.internal.factory_test2_pb2.Grouped</li>
+<li><a title="google.protobuf.internal.factory_test2_pb2.LoopMessage" href="internal/factory_test2_pb2.html#google.protobuf.internal.factory_test2_pb2.LoopMessage">LoopMessage</a></li>
+<li><a title="google.protobuf.internal.factory_test2_pb2.MessageWithNestedEnumOnly" href="internal/factory_test2_pb2.html#google.protobuf.internal.factory_test2_pb2.MessageWithNestedEnumOnly">MessageWithNestedEnumOnly</a></li>
+<li><a title="google.protobuf.internal.factory_test2_pb2.MessageWithOption" href="internal/factory_test2_pb2.html#google.protobuf.internal.factory_test2_pb2.MessageWithOption">MessageWithOption</a></li>
+<li>google.protobuf.internal.factory_test2_pb2.NestedFactory2Message</li>
+<li><a title="google.protobuf.internal.file_options_test_pb2.FooOptions" href="internal/file_options_test_pb2.html#google.protobuf.internal.file_options_test_pb2.FooOptions">FooOptions</a></li>
+<li><a title="google.protobuf.internal.import_test_package.inner_pb2.Inner" href="internal/import_test_package/inner_pb2.html#google.protobuf.internal.import_test_package.inner_pb2.Inner">Inner</a></li>
+<li><a title="google.protobuf.internal.import_test_package.outer_pb2.Outer" href="internal/import_test_package/outer_pb2.html#google.protobuf.internal.import_test_package.outer_pb2.Outer">Outer</a></li>
+<li><a title="google.protobuf.internal.message_set_extensions_pb2.TestMessageSet" href="internal/message_set_extensions_pb2.html#google.protobuf.internal.message_set_extensions_pb2.TestMessageSet">TestMessageSet</a></li>
+<li><a title="google.protobuf.internal.message_set_extensions_pb2.TestMessageSetExtension1" href="internal/message_set_extensions_pb2.html#google.protobuf.internal.message_set_extensions_pb2.TestMessageSetExtension1">TestMessageSetExtension1</a></li>
+<li><a title="google.protobuf.internal.message_set_extensions_pb2.TestMessageSetExtension2" href="internal/message_set_extensions_pb2.html#google.protobuf.internal.message_set_extensions_pb2.TestMessageSetExtension2">TestMessageSetExtension2</a></li>
+<li><a title="google.protobuf.internal.message_set_extensions_pb2.TestMessageSetExtension3" href="internal/message_set_extensions_pb2.html#google.protobuf.internal.message_set_extensions_pb2.TestMessageSetExtension3">TestMessageSetExtension3</a></li>
+<li><a title="google.protobuf.internal.missing_enum_values_pb2.JustString" href="internal/missing_enum_values_pb2.html#google.protobuf.internal.missing_enum_values_pb2.JustString">JustString</a></li>
+<li><a title="google.protobuf.internal.missing_enum_values_pb2.TestEnumValues" href="internal/missing_enum_values_pb2.html#google.protobuf.internal.missing_enum_values_pb2.TestEnumValues">TestEnumValues</a></li>
+<li><a title="google.protobuf.internal.missing_enum_values_pb2.TestMissingEnumValues" href="internal/missing_enum_values_pb2.html#google.protobuf.internal.missing_enum_values_pb2.TestMissingEnumValues">TestMissingEnumValues</a></li>
+<li><a title="google.protobuf.internal.more_extensions_dynamic_pb2.DynamicMessageType" href="internal/more_extensions_dynamic_pb2.html#google.protobuf.internal.more_extensions_dynamic_pb2.DynamicMessageType">DynamicMessageType</a></li>
+<li><a title="google.protobuf.internal.more_extensions_pb2.ExtendedMessage" href="internal/more_extensions_pb2.html#google.protobuf.internal.more_extensions_pb2.ExtendedMessage">ExtendedMessage</a></li>
+<li><a title="google.protobuf.internal.more_extensions_pb2.ForeignMessage" href="internal/more_extensions_pb2.html#google.protobuf.internal.more_extensions_pb2.ForeignMessage">ForeignMessage</a></li>
+<li><a title="google.protobuf.internal.more_extensions_pb2.TopLevelMessage" href="internal/more_extensions_pb2.html#google.protobuf.internal.more_extensions_pb2.TopLevelMessage">TopLevelMessage</a></li>
+<li>google.protobuf.internal.more_messages_pb2.B0</li>
+<li>google.protobuf.internal.more_messages_pb2.B1</li>
+<li>google.protobuf.internal.more_messages_pb2.B10</li>
+<li>google.protobuf.internal.more_messages_pb2.B100</li>
+<li>google.protobuf.internal.more_messages_pb2.B101</li>
+<li>google.protobuf.internal.more_messages_pb2.B102</li>
+<li>google.protobuf.internal.more_messages_pb2.B103</li>
+<li>google.protobuf.internal.more_messages_pb2.B104</li>
+<li>google.protobuf.internal.more_messages_pb2.B105</li>
+<li>google.protobuf.internal.more_messages_pb2.B106</li>
+<li>google.protobuf.internal.more_messages_pb2.B107</li>
+<li>google.protobuf.internal.more_messages_pb2.B108</li>
+<li>google.protobuf.internal.more_messages_pb2.B109</li>
+<li>google.protobuf.internal.more_messages_pb2.B11</li>
+<li>google.protobuf.internal.more_messages_pb2.B110</li>
+<li>google.protobuf.internal.more_messages_pb2.B111</li>
+<li>google.protobuf.internal.more_messages_pb2.B112</li>
+<li>google.protobuf.internal.more_messages_pb2.B113</li>
+<li>google.protobuf.internal.more_messages_pb2.B114</li>
+<li>google.protobuf.internal.more_messages_pb2.B115</li>
+<li>google.protobuf.internal.more_messages_pb2.B116</li>
+<li>google.protobuf.internal.more_messages_pb2.B117</li>
+<li>google.protobuf.internal.more_messages_pb2.B118</li>
+<li>google.protobuf.internal.more_messages_pb2.B119</li>
+<li>google.protobuf.internal.more_messages_pb2.B12</li>
+<li>google.protobuf.internal.more_messages_pb2.B120</li>
+<li>google.protobuf.internal.more_messages_pb2.B121</li>
+<li>google.protobuf.internal.more_messages_pb2.B122</li>
+<li>google.protobuf.internal.more_messages_pb2.B123</li>
+<li>google.protobuf.internal.more_messages_pb2.B124</li>
+<li>google.protobuf.internal.more_messages_pb2.B125</li>
+<li>google.protobuf.internal.more_messages_pb2.B126</li>
+<li>google.protobuf.internal.more_messages_pb2.B127</li>
+<li>google.protobuf.internal.more_messages_pb2.B128</li>
+<li>google.protobuf.internal.more_messages_pb2.B129</li>
+<li>google.protobuf.internal.more_messages_pb2.B13</li>
+<li>google.protobuf.internal.more_messages_pb2.B130</li>
+<li>google.protobuf.internal.more_messages_pb2.B131</li>
+<li>google.protobuf.internal.more_messages_pb2.B132</li>
+<li>google.protobuf.internal.more_messages_pb2.B133</li>
+<li>google.protobuf.internal.more_messages_pb2.B134</li>
+<li>google.protobuf.internal.more_messages_pb2.B135</li>
+<li>google.protobuf.internal.more_messages_pb2.B136</li>
+<li>google.protobuf.internal.more_messages_pb2.B137</li>
+<li>google.protobuf.internal.more_messages_pb2.B138</li>
+<li>google.protobuf.internal.more_messages_pb2.B139</li>
+<li>google.protobuf.internal.more_messages_pb2.B14</li>
+<li>google.protobuf.internal.more_messages_pb2.B140</li>
+<li>google.protobuf.internal.more_messages_pb2.B141</li>
+<li>google.protobuf.internal.more_messages_pb2.B142</li>
+<li>google.protobuf.internal.more_messages_pb2.B143</li>
+<li>google.protobuf.internal.more_messages_pb2.B144</li>
+<li>google.protobuf.internal.more_messages_pb2.B145</li>
+<li>google.protobuf.internal.more_messages_pb2.B146</li>
+<li>google.protobuf.internal.more_messages_pb2.B147</li>
+<li>google.protobuf.internal.more_messages_pb2.B148</li>
+<li>google.protobuf.internal.more_messages_pb2.B149</li>
+<li>google.protobuf.internal.more_messages_pb2.B15</li>
+<li>google.protobuf.internal.more_messages_pb2.B150</li>
+<li>google.protobuf.internal.more_messages_pb2.B151</li>
+<li>google.protobuf.internal.more_messages_pb2.B152</li>
+<li>google.protobuf.internal.more_messages_pb2.B153</li>
+<li>google.protobuf.internal.more_messages_pb2.B154</li>
+<li>google.protobuf.internal.more_messages_pb2.B155</li>
+<li>google.protobuf.internal.more_messages_pb2.B156</li>
+<li>google.protobuf.internal.more_messages_pb2.B157</li>
+<li>google.protobuf.internal.more_messages_pb2.B158</li>
+<li>google.protobuf.internal.more_messages_pb2.B159</li>
+<li>google.protobuf.internal.more_messages_pb2.B16</li>
+<li>google.protobuf.internal.more_messages_pb2.B160</li>
+<li>google.protobuf.internal.more_messages_pb2.B161</li>
+<li>google.protobuf.internal.more_messages_pb2.B162</li>
+<li>google.protobuf.internal.more_messages_pb2.B163</li>
+<li>google.protobuf.internal.more_messages_pb2.B164</li>
+<li>google.protobuf.internal.more_messages_pb2.B165</li>
+<li>google.protobuf.internal.more_messages_pb2.B166</li>
+<li>google.protobuf.internal.more_messages_pb2.B167</li>
+<li>google.protobuf.internal.more_messages_pb2.B168</li>
+<li>google.protobuf.internal.more_messages_pb2.B169</li>
+<li>google.protobuf.internal.more_messages_pb2.B17</li>
+<li>google.protobuf.internal.more_messages_pb2.B170</li>
+<li>google.protobuf.internal.more_messages_pb2.B171</li>
+<li>google.protobuf.internal.more_messages_pb2.B172</li>
+<li>google.protobuf.internal.more_messages_pb2.B173</li>
+<li>google.protobuf.internal.more_messages_pb2.B174</li>
+<li>google.protobuf.internal.more_messages_pb2.B175</li>
+<li>google.protobuf.internal.more_messages_pb2.B176</li>
+<li>google.protobuf.internal.more_messages_pb2.B177</li>
+<li>google.protobuf.internal.more_messages_pb2.B178</li>
+<li>google.protobuf.internal.more_messages_pb2.B179</li>
+<li>google.protobuf.internal.more_messages_pb2.B18</li>
+<li>google.protobuf.internal.more_messages_pb2.B180</li>
+<li>google.protobuf.internal.more_messages_pb2.B181</li>
+<li>google.protobuf.internal.more_messages_pb2.B182</li>
+<li>google.protobuf.internal.more_messages_pb2.B183</li>
+<li>google.protobuf.internal.more_messages_pb2.B184</li>
+<li>google.protobuf.internal.more_messages_pb2.B185</li>
+<li>google.protobuf.internal.more_messages_pb2.B186</li>
+<li>google.protobuf.internal.more_messages_pb2.B187</li>
+<li>google.protobuf.internal.more_messages_pb2.B188</li>
+<li>google.protobuf.internal.more_messages_pb2.B189</li>
+<li>google.protobuf.internal.more_messages_pb2.B19</li>
+<li>google.protobuf.internal.more_messages_pb2.B190</li>
+<li>google.protobuf.internal.more_messages_pb2.B191</li>
+<li>google.protobuf.internal.more_messages_pb2.B192</li>
+<li>google.protobuf.internal.more_messages_pb2.B193</li>
+<li>google.protobuf.internal.more_messages_pb2.B194</li>
+<li>google.protobuf.internal.more_messages_pb2.B195</li>
+<li>google.protobuf.internal.more_messages_pb2.B196</li>
+<li>google.protobuf.internal.more_messages_pb2.B197</li>
+<li>google.protobuf.internal.more_messages_pb2.B198</li>
+<li>google.protobuf.internal.more_messages_pb2.B199</li>
+<li>google.protobuf.internal.more_messages_pb2.B2</li>
+<li>google.protobuf.internal.more_messages_pb2.B20</li>
+<li>google.protobuf.internal.more_messages_pb2.B200</li>
+<li>google.protobuf.internal.more_messages_pb2.B201</li>
+<li>google.protobuf.internal.more_messages_pb2.B202</li>
+<li>google.protobuf.internal.more_messages_pb2.B203</li>
+<li>google.protobuf.internal.more_messages_pb2.B204</li>
+<li>google.protobuf.internal.more_messages_pb2.B205</li>
+<li>google.protobuf.internal.more_messages_pb2.B206</li>
+<li>google.protobuf.internal.more_messages_pb2.B207</li>
+<li>google.protobuf.internal.more_messages_pb2.B208</li>
+<li>google.protobuf.internal.more_messages_pb2.B209</li>
+<li>google.protobuf.internal.more_messages_pb2.B21</li>
+<li>google.protobuf.internal.more_messages_pb2.B210</li>
+<li>google.protobuf.internal.more_messages_pb2.B211</li>
+<li>google.protobuf.internal.more_messages_pb2.B212</li>
+<li>google.protobuf.internal.more_messages_pb2.B213</li>
+<li>google.protobuf.internal.more_messages_pb2.B214</li>
+<li>google.protobuf.internal.more_messages_pb2.B215</li>
+<li>google.protobuf.internal.more_messages_pb2.B216</li>
+<li>google.protobuf.internal.more_messages_pb2.B217</li>
+<li>google.protobuf.internal.more_messages_pb2.B218</li>
+<li>google.protobuf.internal.more_messages_pb2.B219</li>
+<li>google.protobuf.internal.more_messages_pb2.B22</li>
+<li>google.protobuf.internal.more_messages_pb2.B220</li>
+<li>google.protobuf.internal.more_messages_pb2.B221</li>
+<li>google.protobuf.internal.more_messages_pb2.B222</li>
+<li>google.protobuf.internal.more_messages_pb2.B223</li>
+<li>google.protobuf.internal.more_messages_pb2.B224</li>
+<li>google.protobuf.internal.more_messages_pb2.B225</li>
+<li>google.protobuf.internal.more_messages_pb2.B226</li>
+<li>google.protobuf.internal.more_messages_pb2.B227</li>
+<li>google.protobuf.internal.more_messages_pb2.B228</li>
+<li>google.protobuf.internal.more_messages_pb2.B229</li>
+<li>google.protobuf.internal.more_messages_pb2.B23</li>
+<li>google.protobuf.internal.more_messages_pb2.B230</li>
+<li>google.protobuf.internal.more_messages_pb2.B231</li>
+<li>google.protobuf.internal.more_messages_pb2.B232</li>
+<li>google.protobuf.internal.more_messages_pb2.B233</li>
+<li>google.protobuf.internal.more_messages_pb2.B234</li>
+<li>google.protobuf.internal.more_messages_pb2.B235</li>
+<li>google.protobuf.internal.more_messages_pb2.B236</li>
+<li>google.protobuf.internal.more_messages_pb2.B237</li>
+<li>google.protobuf.internal.more_messages_pb2.B238</li>
+<li>google.protobuf.internal.more_messages_pb2.B239</li>
+<li>google.protobuf.internal.more_messages_pb2.B24</li>
+<li>google.protobuf.internal.more_messages_pb2.B240</li>
+<li>google.protobuf.internal.more_messages_pb2.B241</li>
+<li>google.protobuf.internal.more_messages_pb2.B242</li>
+<li>google.protobuf.internal.more_messages_pb2.B243</li>
+<li>google.protobuf.internal.more_messages_pb2.B244</li>
+<li>google.protobuf.internal.more_messages_pb2.B245</li>
+<li>google.protobuf.internal.more_messages_pb2.B246</li>
+<li>google.protobuf.internal.more_messages_pb2.B247</li>
+<li>google.protobuf.internal.more_messages_pb2.B248</li>
+<li>google.protobuf.internal.more_messages_pb2.B249</li>
+<li>google.protobuf.internal.more_messages_pb2.B25</li>
+<li>google.protobuf.internal.more_messages_pb2.B250</li>
+<li>google.protobuf.internal.more_messages_pb2.B251</li>
+<li>google.protobuf.internal.more_messages_pb2.B252</li>
+<li>google.protobuf.internal.more_messages_pb2.B253</li>
+<li>google.protobuf.internal.more_messages_pb2.B254</li>
+<li>google.protobuf.internal.more_messages_pb2.B255</li>
+<li>google.protobuf.internal.more_messages_pb2.B26</li>
+<li>google.protobuf.internal.more_messages_pb2.B27</li>
+<li>google.protobuf.internal.more_messages_pb2.B28</li>
+<li>google.protobuf.internal.more_messages_pb2.B29</li>
+<li>google.protobuf.internal.more_messages_pb2.B3</li>
+<li>google.protobuf.internal.more_messages_pb2.B30</li>
+<li>google.protobuf.internal.more_messages_pb2.B31</li>
+<li>google.protobuf.internal.more_messages_pb2.B32</li>
+<li>google.protobuf.internal.more_messages_pb2.B33</li>
+<li>google.protobuf.internal.more_messages_pb2.B34</li>
+<li>google.protobuf.internal.more_messages_pb2.B35</li>
+<li>google.protobuf.internal.more_messages_pb2.B36</li>
+<li>google.protobuf.internal.more_messages_pb2.B37</li>
+<li>google.protobuf.internal.more_messages_pb2.B38</li>
+<li>google.protobuf.internal.more_messages_pb2.B39</li>
+<li>google.protobuf.internal.more_messages_pb2.B4</li>
+<li>google.protobuf.internal.more_messages_pb2.B40</li>
+<li>google.protobuf.internal.more_messages_pb2.B41</li>
+<li>google.protobuf.internal.more_messages_pb2.B42</li>
+<li>google.protobuf.internal.more_messages_pb2.B43</li>
+<li>google.protobuf.internal.more_messages_pb2.B44</li>
+<li>google.protobuf.internal.more_messages_pb2.B45</li>
+<li>google.protobuf.internal.more_messages_pb2.B46</li>
+<li>google.protobuf.internal.more_messages_pb2.B47</li>
+<li>google.protobuf.internal.more_messages_pb2.B48</li>
+<li>google.protobuf.internal.more_messages_pb2.B49</li>
+<li>google.protobuf.internal.more_messages_pb2.B5</li>
+<li>google.protobuf.internal.more_messages_pb2.B50</li>
+<li>google.protobuf.internal.more_messages_pb2.B51</li>
+<li>google.protobuf.internal.more_messages_pb2.B52</li>
+<li>google.protobuf.internal.more_messages_pb2.B53</li>
+<li>google.protobuf.internal.more_messages_pb2.B54</li>
+<li>google.protobuf.internal.more_messages_pb2.B55</li>
+<li>google.protobuf.internal.more_messages_pb2.B56</li>
+<li>google.protobuf.internal.more_messages_pb2.B57</li>
+<li>google.protobuf.internal.more_messages_pb2.B58</li>
+<li>google.protobuf.internal.more_messages_pb2.B59</li>
+<li>google.protobuf.internal.more_messages_pb2.B6</li>
+<li>google.protobuf.internal.more_messages_pb2.B60</li>
+<li>google.protobuf.internal.more_messages_pb2.B61</li>
+<li>google.protobuf.internal.more_messages_pb2.B62</li>
+<li>google.protobuf.internal.more_messages_pb2.B63</li>
+<li>google.protobuf.internal.more_messages_pb2.B64</li>
+<li>google.protobuf.internal.more_messages_pb2.B65</li>
+<li>google.protobuf.internal.more_messages_pb2.B66</li>
+<li>google.protobuf.internal.more_messages_pb2.B67</li>
+<li>google.protobuf.internal.more_messages_pb2.B68</li>
+<li>google.protobuf.internal.more_messages_pb2.B69</li>
+<li>google.protobuf.internal.more_messages_pb2.B7</li>
+<li>google.protobuf.internal.more_messages_pb2.B70</li>
+<li>google.protobuf.internal.more_messages_pb2.B71</li>
+<li>google.protobuf.internal.more_messages_pb2.B72</li>
+<li>google.protobuf.internal.more_messages_pb2.B73</li>
+<li>google.protobuf.internal.more_messages_pb2.B74</li>
+<li>google.protobuf.internal.more_messages_pb2.B75</li>
+<li>google.protobuf.internal.more_messages_pb2.B76</li>
+<li>google.protobuf.internal.more_messages_pb2.B77</li>
+<li>google.protobuf.internal.more_messages_pb2.B78</li>
+<li>google.protobuf.internal.more_messages_pb2.B79</li>
+<li>google.protobuf.internal.more_messages_pb2.B8</li>
+<li>google.protobuf.internal.more_messages_pb2.B80</li>
+<li>google.protobuf.internal.more_messages_pb2.B81</li>
+<li>google.protobuf.internal.more_messages_pb2.B82</li>
+<li>google.protobuf.internal.more_messages_pb2.B83</li>
+<li>google.protobuf.internal.more_messages_pb2.B84</li>
+<li>google.protobuf.internal.more_messages_pb2.B85</li>
+<li>google.protobuf.internal.more_messages_pb2.B86</li>
+<li>google.protobuf.internal.more_messages_pb2.B87</li>
+<li>google.protobuf.internal.more_messages_pb2.B88</li>
+<li>google.protobuf.internal.more_messages_pb2.B89</li>
+<li>google.protobuf.internal.more_messages_pb2.B9</li>
+<li>google.protobuf.internal.more_messages_pb2.B90</li>
+<li>google.protobuf.internal.more_messages_pb2.B91</li>
+<li>google.protobuf.internal.more_messages_pb2.B92</li>
+<li>google.protobuf.internal.more_messages_pb2.B93</li>
+<li>google.protobuf.internal.more_messages_pb2.B94</li>
+<li>google.protobuf.internal.more_messages_pb2.B95</li>
+<li>google.protobuf.internal.more_messages_pb2.B96</li>
+<li>google.protobuf.internal.more_messages_pb2.B97</li>
+<li>google.protobuf.internal.more_messages_pb2.B98</li>
+<li>google.protobuf.internal.more_messages_pb2.B99</li>
+<li><a title="google.protobuf.internal.more_messages_pb2.ExtendClass" href="internal/more_messages_pb2.html#google.protobuf.internal.more_messages_pb2.ExtendClass">ExtendClass</a></li>
+<li><a title="google.protobuf.internal.more_messages_pb2.LotsNestedMessage" href="internal/more_messages_pb2.html#google.protobuf.internal.more_messages_pb2.LotsNestedMessage">LotsNestedMessage</a></li>
+<li><a title="google.protobuf.internal.more_messages_pb2.OutOfOrderFields" href="internal/more_messages_pb2.html#google.protobuf.internal.more_messages_pb2.OutOfOrderFields">OutOfOrderFields</a></li>
+<li><a title="google.protobuf.internal.more_messages_pb2.TestFullKeyword" href="internal/more_messages_pb2.html#google.protobuf.internal.more_messages_pb2.TestFullKeyword">TestFullKeyword</a></li>
+<li><a title="google.protobuf.internal.more_messages_pb2.class" href="internal/more_messages_pb2.html#google.protobuf.internal.more_messages_pb2.class">class</a></li>
+<li>google.protobuf.internal.more_messages_pb2.try</li>
+<li><a title="google.protobuf.internal.no_package_pb2.NoPackageMessage" href="internal/no_package_pb2.html#google.protobuf.internal.no_package_pb2.NoPackageMessage">NoPackageMessage</a></li>
+<li><a title="google.protobuf.internal.packed_field_test_pb2.TestPackedTypes" href="internal/packed_field_test_pb2.html#google.protobuf.internal.packed_field_test_pb2.TestPackedTypes">TestPackedTypes</a></li>
+<li><a title="google.protobuf.internal.packed_field_test_pb2.TestUnpackedTypes" href="internal/packed_field_test_pb2.html#google.protobuf.internal.packed_field_test_pb2.TestUnpackedTypes">TestUnpackedTypes</a></li>
+<li><a title="google.protobuf.internal.test_bad_identifiers_pb2.AnotherMessage" href="internal/test_bad_identifiers_pb2.html#google.protobuf.internal.test_bad_identifiers_pb2.AnotherMessage">AnotherMessage</a></li>
+<li><a title="google.protobuf.internal.test_bad_identifiers_pb2.TestBadIdentifiers" href="internal/test_bad_identifiers_pb2.html#google.protobuf.internal.test_bad_identifiers_pb2.TestBadIdentifiers">TestBadIdentifiers</a></li>
+<li>google.protobuf.map_proto2_unittest_pb2.ImportEnumAmpEntry</li>
+<li>google.protobuf.map_proto2_unittest_pb2.KnownMapFieldEntry</li>
+<li>google.protobuf.map_proto2_unittest_pb2.KnownMapFieldEntry</li>
+<li>google.protobuf.map_proto2_unittest_pb2.MBoolEntry</li>
+<li>google.protobuf.map_proto2_unittest_pb2.MEntry</li>
+<li>google.protobuf.map_proto2_unittest_pb2.MFixed32Entry</li>
+<li>google.protobuf.map_proto2_unittest_pb2.MFixed64Entry</li>
+<li>google.protobuf.map_proto2_unittest_pb2.MInt32Entry</li>
+<li>google.protobuf.map_proto2_unittest_pb2.MInt64Entry</li>
+<li>google.protobuf.map_proto2_unittest_pb2.MSfixed32Entry</li>
+<li>google.protobuf.map_proto2_unittest_pb2.MSfixed64Entry</li>
+<li>google.protobuf.map_proto2_unittest_pb2.MSint32Entry</li>
+<li>google.protobuf.map_proto2_unittest_pb2.MSint64Entry</li>
+<li>google.protobuf.map_proto2_unittest_pb2.MStringEntry</li>
+<li>google.protobuf.map_proto2_unittest_pb2.MUint32Entry</li>
+<li>google.protobuf.map_proto2_unittest_pb2.MUint64Entry</li>
+<li><a title="google.protobuf.map_proto2_unittest_pb2.TestEnumMap" href="map_proto2_unittest_pb2.html#google.protobuf.map_proto2_unittest_pb2.TestEnumMap">TestEnumMap</a></li>
+<li><a title="google.protobuf.map_proto2_unittest_pb2.TestEnumMapPlusExtra" href="map_proto2_unittest_pb2.html#google.protobuf.map_proto2_unittest_pb2.TestEnumMapPlusExtra">TestEnumMapPlusExtra</a></li>
+<li><a title="google.protobuf.map_proto2_unittest_pb2.TestImportEnumMap" href="map_proto2_unittest_pb2.html#google.protobuf.map_proto2_unittest_pb2.TestImportEnumMap">TestImportEnumMap</a></li>
+<li><a title="google.protobuf.map_proto2_unittest_pb2.TestIntIntMap" href="map_proto2_unittest_pb2.html#google.protobuf.map_proto2_unittest_pb2.TestIntIntMap">TestIntIntMap</a></li>
+<li><a title="google.protobuf.map_proto2_unittest_pb2.TestMaps" href="map_proto2_unittest_pb2.html#google.protobuf.map_proto2_unittest_pb2.TestMaps">TestMaps</a></li>
+<li><a title="google.protobuf.map_proto2_unittest_pb2.TestSubmessageMaps" href="map_proto2_unittest_pb2.html#google.protobuf.map_proto2_unittest_pb2.TestSubmessageMaps">TestSubmessageMaps</a></li>
+<li>google.protobuf.map_proto2_unittest_pb2.UnknownMapFieldEntry</li>
+<li>google.protobuf.map_proto2_unittest_pb2.UnknownMapFieldEntry</li>
+<li>google.protobuf.map_unittest_pb2.AEntry</li>
+<li>google.protobuf.map_unittest_pb2.EntryEntry</li>
+<li>google.protobuf.map_unittest_pb2.Map1Entry</li>
+<li>google.protobuf.map_unittest_pb2.Map2Entry</li>
+<li>google.protobuf.map_unittest_pb2.MapBoolBoolEntry</li>
+<li>google.protobuf.map_unittest_pb2.MapBoolBoolEntry</li>
+<li>google.protobuf.map_unittest_pb2.MapFieldEntry</li>
+<li>google.protobuf.map_unittest_pb2.MapFixed32Fixed32Entry</li>
+<li>google.protobuf.map_unittest_pb2.MapFixed32Fixed32Entry</li>
+<li>google.protobuf.map_unittest_pb2.MapFixed64Fixed64Entry</li>
+<li>google.protobuf.map_unittest_pb2.MapFixed64Fixed64Entry</li>
+<li>google.protobuf.map_unittest_pb2.MapInt32AllTypesEntry</li>
+<li>google.protobuf.map_unittest_pb2.MapInt32BytesEntry</li>
+<li>google.protobuf.map_unittest_pb2.MapInt32BytesEntry</li>
+<li>google.protobuf.map_unittest_pb2.MapInt32DoubleEntry</li>
+<li>google.protobuf.map_unittest_pb2.MapInt32DoubleEntry</li>
+<li>google.protobuf.map_unittest_pb2.MapInt32EnumEntry</li>
+<li>google.protobuf.map_unittest_pb2.MapInt32EnumEntry</li>
+<li>google.protobuf.map_unittest_pb2.MapInt32FloatEntry</li>
+<li>google.protobuf.map_unittest_pb2.MapInt32FloatEntry</li>
+<li>google.protobuf.map_unittest_pb2.MapInt32ForeignMessageEntry</li>
+<li>google.protobuf.map_unittest_pb2.MapInt32ForeignMessageEntry</li>
+<li>google.protobuf.map_unittest_pb2.MapInt32ForeignMessageNoArenaEntry</li>
+<li>google.protobuf.map_unittest_pb2.MapInt32Int32Entry</li>
+<li>google.protobuf.map_unittest_pb2.MapInt32Int32Entry</li>
+<li>google.protobuf.map_unittest_pb2.MapInt32MessageEntry</li>
+<li>google.protobuf.map_unittest_pb2.MapInt64Int64Entry</li>
+<li>google.protobuf.map_unittest_pb2.MapInt64Int64Entry</li>
+<li>google.protobuf.map_unittest_pb2.MapSfixed32Sfixed32Entry</li>
+<li>google.protobuf.map_unittest_pb2.MapSfixed32Sfixed32Entry</li>
+<li>google.protobuf.map_unittest_pb2.MapSfixed64Sfixed64Entry</li>
+<li>google.protobuf.map_unittest_pb2.MapSfixed64Sfixed64Entry</li>
+<li>google.protobuf.map_unittest_pb2.MapSint32Sint32Entry</li>
+<li>google.protobuf.map_unittest_pb2.MapSint32Sint32Entry</li>
+<li>google.protobuf.map_unittest_pb2.MapSint64Sint64Entry</li>
+<li>google.protobuf.map_unittest_pb2.MapSint64Sint64Entry</li>
+<li>google.protobuf.map_unittest_pb2.MapStringForeignMessageEntry</li>
+<li>google.protobuf.map_unittest_pb2.MapStringStringEntry</li>
+<li>google.protobuf.map_unittest_pb2.MapStringStringEntry</li>
+<li>google.protobuf.map_unittest_pb2.MapUint32Uint32Entry</li>
+<li>google.protobuf.map_unittest_pb2.MapUint32Uint32Entry</li>
+<li>google.protobuf.map_unittest_pb2.MapUint64Uint64Entry</li>
+<li>google.protobuf.map_unittest_pb2.MapUint64Uint64Entry</li>
+<li><a title="google.protobuf.map_unittest_pb2.MessageContainingEnumCalledType" href="map_unittest_pb2.html#google.protobuf.map_unittest_pb2.MessageContainingEnumCalledType">MessageContainingEnumCalledType</a></li>
+<li><a title="google.protobuf.map_unittest_pb2.MessageContainingMapCalledEntry" href="map_unittest_pb2.html#google.protobuf.map_unittest_pb2.MessageContainingMapCalledEntry">MessageContainingMapCalledEntry</a></li>
+<li><a title="google.protobuf.map_unittest_pb2.TestArenaMap" href="map_unittest_pb2.html#google.protobuf.map_unittest_pb2.TestArenaMap">TestArenaMap</a></li>
+<li><a title="google.protobuf.map_unittest_pb2.TestMap" href="map_unittest_pb2.html#google.protobuf.map_unittest_pb2.TestMap">TestMap</a></li>
+<li><a title="google.protobuf.map_unittest_pb2.TestMapSubmessage" href="map_unittest_pb2.html#google.protobuf.map_unittest_pb2.TestMapSubmessage">TestMapSubmessage</a></li>
+<li><a title="google.protobuf.map_unittest_pb2.TestMessageMap" href="map_unittest_pb2.html#google.protobuf.map_unittest_pb2.TestMessageMap">TestMessageMap</a></li>
+<li><a title="google.protobuf.map_unittest_pb2.TestRecursiveMapMessage" href="map_unittest_pb2.html#google.protobuf.map_unittest_pb2.TestRecursiveMapMessage">TestRecursiveMapMessage</a></li>
+<li><a title="google.protobuf.map_unittest_pb2.TestRequiredMessageMap" href="map_unittest_pb2.html#google.protobuf.map_unittest_pb2.TestRequiredMessageMap">TestRequiredMessageMap</a></li>
+<li><a title="google.protobuf.map_unittest_pb2.TestSameTypeMap" href="map_unittest_pb2.html#google.protobuf.map_unittest_pb2.TestSameTypeMap">TestSameTypeMap</a></li>
+<li>google.protobuf.map_unittest_pb2.TypeEntry</li>
+<li><a title="google.protobuf.pyext.python_pb2.ForeignMessage" href="pyext/python_pb2.html#google.protobuf.pyext.python_pb2.ForeignMessage">ForeignMessage</a></li>
+<li>google.protobuf.pyext.python_pb2.NestedMessage</li>
+<li><a title="google.protobuf.pyext.python_pb2.TestAllExtensions" href="pyext/python_pb2.html#google.protobuf.pyext.python_pb2.TestAllExtensions">TestAllExtensions</a></li>
+<li><a title="google.protobuf.pyext.python_pb2.TestAllTypes" href="pyext/python_pb2.html#google.protobuf.pyext.python_pb2.TestAllTypes">TestAllTypes</a></li>
+<li><a title="google.protobuf.source_context_pb2.SourceContext" href="source_context_pb2.html#google.protobuf.source_context_pb2.SourceContext">SourceContext</a></li>
+<li>google.protobuf.struct_pb2.FieldsEntry</li>
+<li><a title="google.protobuf.struct_pb2.ListValue" href="struct_pb2.html#google.protobuf.struct_pb2.ListValue">ListValue</a></li>
+<li><a title="google.protobuf.struct_pb2.Struct" href="struct_pb2.html#google.protobuf.struct_pb2.Struct">Struct</a></li>
+<li><a title="google.protobuf.struct_pb2.Value" href="struct_pb2.html#google.protobuf.struct_pb2.Value">Value</a></li>
+<li>google.protobuf.test_messages_proto2_pb2.Data</li>
+<li><a title="google.protobuf.test_messages_proto2_pb2.ForeignMessageProto2" href="test_messages_proto2_pb2.html#google.protobuf.test_messages_proto2_pb2.ForeignMessageProto2">ForeignMessageProto2</a></li>
+<li>google.protobuf.test_messages_proto2_pb2.MapBoolBoolEntry</li>
+<li>google.protobuf.test_messages_proto2_pb2.MapFixed32Fixed32Entry</li>
+<li>google.protobuf.test_messages_proto2_pb2.MapFixed64Fixed64Entry</li>
+<li>google.protobuf.test_messages_proto2_pb2.MapInt32DoubleEntry</li>
+<li>google.protobuf.test_messages_proto2_pb2.MapInt32FloatEntry</li>
+<li>google.protobuf.test_messages_proto2_pb2.MapInt32Int32Entry</li>
+<li>google.protobuf.test_messages_proto2_pb2.MapInt64Int64Entry</li>
+<li>google.protobuf.test_messages_proto2_pb2.MapSfixed32Sfixed32Entry</li>
+<li>google.protobuf.test_messages_proto2_pb2.MapSfixed64Sfixed64Entry</li>
+<li>google.protobuf.test_messages_proto2_pb2.MapSint32Sint32Entry</li>
+<li>google.protobuf.test_messages_proto2_pb2.MapSint64Sint64Entry</li>
+<li>google.protobuf.test_messages_proto2_pb2.MapStringBytesEntry</li>
+<li>google.protobuf.test_messages_proto2_pb2.MapStringForeignEnumEntry</li>
+<li>google.protobuf.test_messages_proto2_pb2.MapStringForeignMessageEntry</li>
+<li>google.protobuf.test_messages_proto2_pb2.MapStringNestedEnumEntry</li>
+<li>google.protobuf.test_messages_proto2_pb2.MapStringNestedMessageEntry</li>
+<li>google.protobuf.test_messages_proto2_pb2.MapStringStringEntry</li>
+<li>google.protobuf.test_messages_proto2_pb2.MapUint32Uint32Entry</li>
+<li>google.protobuf.test_messages_proto2_pb2.MapUint64Uint64Entry</li>
+<li>google.protobuf.test_messages_proto2_pb2.MessageSetCorrect</li>
+<li>google.protobuf.test_messages_proto2_pb2.MessageSetCorrectExtension1</li>
+<li>google.protobuf.test_messages_proto2_pb2.MessageSetCorrectExtension2</li>
+<li>google.protobuf.test_messages_proto2_pb2.NestedMessage</li>
+<li>google.protobuf.test_messages_proto2_pb2.OptionalGroup</li>
+<li><a title="google.protobuf.test_messages_proto2_pb2.TestAllTypesProto2" href="test_messages_proto2_pb2.html#google.protobuf.test_messages_proto2_pb2.TestAllTypesProto2">TestAllTypesProto2</a></li>
+<li><a title="google.protobuf.test_messages_proto2_pb2.UnknownToTestAllTypes" href="test_messages_proto2_pb2.html#google.protobuf.test_messages_proto2_pb2.UnknownToTestAllTypes">UnknownToTestAllTypes</a></li>
+<li><a title="google.protobuf.test_messages_proto3_pb2.ForeignMessage" href="test_messages_proto3_pb2.html#google.protobuf.test_messages_proto3_pb2.ForeignMessage">ForeignMessage</a></li>
+<li>google.protobuf.test_messages_proto3_pb2.MapBoolBoolEntry</li>
+<li>google.protobuf.test_messages_proto3_pb2.MapFixed32Fixed32Entry</li>
+<li>google.protobuf.test_messages_proto3_pb2.MapFixed64Fixed64Entry</li>
+<li>google.protobuf.test_messages_proto3_pb2.MapInt32DoubleEntry</li>
+<li>google.protobuf.test_messages_proto3_pb2.MapInt32FloatEntry</li>
+<li>google.protobuf.test_messages_proto3_pb2.MapInt32Int32Entry</li>
+<li>google.protobuf.test_messages_proto3_pb2.MapInt64Int64Entry</li>
+<li>google.protobuf.test_messages_proto3_pb2.MapSfixed32Sfixed32Entry</li>
+<li>google.protobuf.test_messages_proto3_pb2.MapSfixed64Sfixed64Entry</li>
+<li>google.protobuf.test_messages_proto3_pb2.MapSint32Sint32Entry</li>
+<li>google.protobuf.test_messages_proto3_pb2.MapSint64Sint64Entry</li>
+<li>google.protobuf.test_messages_proto3_pb2.MapStringBytesEntry</li>
+<li>google.protobuf.test_messages_proto3_pb2.MapStringForeignEnumEntry</li>
+<li>google.protobuf.test_messages_proto3_pb2.MapStringForeignMessageEntry</li>
+<li>google.protobuf.test_messages_proto3_pb2.MapStringNestedEnumEntry</li>
+<li>google.protobuf.test_messages_proto3_pb2.MapStringNestedMessageEntry</li>
+<li>google.protobuf.test_messages_proto3_pb2.MapStringStringEntry</li>
+<li>google.protobuf.test_messages_proto3_pb2.MapUint32Uint32Entry</li>
+<li>google.protobuf.test_messages_proto3_pb2.MapUint64Uint64Entry</li>
+<li>google.protobuf.test_messages_proto3_pb2.NestedMessage</li>
+<li><a title="google.protobuf.test_messages_proto3_pb2.TestAllTypesProto3" href="test_messages_proto3_pb2.html#google.protobuf.test_messages_proto3_pb2.TestAllTypesProto3">TestAllTypesProto3</a></li>
+<li><a title="google.protobuf.timestamp_pb2.Timestamp" href="timestamp_pb2.html#google.protobuf.timestamp_pb2.Timestamp">Timestamp</a></li>
+<li><a title="google.protobuf.type_pb2.Enum" href="type_pb2.html#google.protobuf.type_pb2.Enum">Enum</a></li>
+<li><a title="google.protobuf.type_pb2.EnumValue" href="type_pb2.html#google.protobuf.type_pb2.EnumValue">EnumValue</a></li>
+<li><a title="google.protobuf.type_pb2.Field" href="type_pb2.html#google.protobuf.type_pb2.Field">Field</a></li>
+<li><a title="google.protobuf.type_pb2.Option" href="type_pb2.html#google.protobuf.type_pb2.Option">Option</a></li>
+<li><a title="google.protobuf.type_pb2.Type" href="type_pb2.html#google.protobuf.type_pb2.Type">Type</a></li>
+<li><a title="google.protobuf.unittest_arena_pb2.ArenaMessage" href="unittest_arena_pb2.html#google.protobuf.unittest_arena_pb2.ArenaMessage">ArenaMessage</a></li>
+<li><a title="google.protobuf.unittest_arena_pb2.NestedMessage" href="unittest_arena_pb2.html#google.protobuf.unittest_arena_pb2.NestedMessage">NestedMessage</a></li>
+<li><a title="google.protobuf.unittest_custom_options_pb2.Aggregate" href="unittest_custom_options_pb2.html#google.protobuf.unittest_custom_options_pb2.Aggregate">Aggregate</a></li>
+<li><a title="google.protobuf.unittest_custom_options_pb2.AggregateMessage" href="unittest_custom_options_pb2.html#google.protobuf.unittest_custom_options_pb2.AggregateMessage">AggregateMessage</a></li>
+<li><a title="google.protobuf.unittest_custom_options_pb2.AggregateMessageSet" href="unittest_custom_options_pb2.html#google.protobuf.unittest_custom_options_pb2.AggregateMessageSet">AggregateMessageSet</a></li>
+<li><a title="google.protobuf.unittest_custom_options_pb2.AggregateMessageSetElement" href="unittest_custom_options_pb2.html#google.protobuf.unittest_custom_options_pb2.AggregateMessageSetElement">AggregateMessageSetElement</a></li>
+<li><a title="google.protobuf.unittest_custom_options_pb2.ComplexOpt6" href="unittest_custom_options_pb2.html#google.protobuf.unittest_custom_options_pb2.ComplexOpt6">ComplexOpt6</a></li>
+<li><a title="google.protobuf.unittest_custom_options_pb2.ComplexOptionType1" href="unittest_custom_options_pb2.html#google.protobuf.unittest_custom_options_pb2.ComplexOptionType1">ComplexOptionType1</a></li>
+<li><a title="google.protobuf.unittest_custom_options_pb2.ComplexOptionType2" href="unittest_custom_options_pb2.html#google.protobuf.unittest_custom_options_pb2.ComplexOptionType2">ComplexOptionType2</a></li>
+<li><a title="google.protobuf.unittest_custom_options_pb2.ComplexOptionType3" href="unittest_custom_options_pb2.html#google.protobuf.unittest_custom_options_pb2.ComplexOptionType3">ComplexOptionType3</a></li>
+<li>google.protobuf.unittest_custom_options_pb2.ComplexOptionType4</li>
+<li>google.protobuf.unittest_custom_options_pb2.ComplexOptionType5</li>
+<li><a title="google.protobuf.unittest_custom_options_pb2.CustomOptionFooClientMessage" href="unittest_custom_options_pb2.html#google.protobuf.unittest_custom_options_pb2.CustomOptionFooClientMessage">CustomOptionFooClientMessage</a></li>
+<li><a title="google.protobuf.unittest_custom_options_pb2.CustomOptionFooRequest" href="unittest_custom_options_pb2.html#google.protobuf.unittest_custom_options_pb2.CustomOptionFooRequest">CustomOptionFooRequest</a></li>
+<li><a title="google.protobuf.unittest_custom_options_pb2.CustomOptionFooResponse" href="unittest_custom_options_pb2.html#google.protobuf.unittest_custom_options_pb2.CustomOptionFooResponse">CustomOptionFooResponse</a></li>
+<li><a title="google.protobuf.unittest_custom_options_pb2.CustomOptionFooServerMessage" href="unittest_custom_options_pb2.html#google.protobuf.unittest_custom_options_pb2.CustomOptionFooServerMessage">CustomOptionFooServerMessage</a></li>
+<li><a title="google.protobuf.unittest_custom_options_pb2.CustomOptionMaxIntegerValues" href="unittest_custom_options_pb2.html#google.protobuf.unittest_custom_options_pb2.CustomOptionMaxIntegerValues">CustomOptionMaxIntegerValues</a></li>
+<li><a title="google.protobuf.unittest_custom_options_pb2.CustomOptionMinIntegerValues" href="unittest_custom_options_pb2.html#google.protobuf.unittest_custom_options_pb2.CustomOptionMinIntegerValues">CustomOptionMinIntegerValues</a></li>
+<li><a title="google.protobuf.unittest_custom_options_pb2.CustomOptionOtherValues" href="unittest_custom_options_pb2.html#google.protobuf.unittest_custom_options_pb2.CustomOptionOtherValues">CustomOptionOtherValues</a></li>
+<li><a title="google.protobuf.unittest_custom_options_pb2.DummyMessageContainingEnum" href="unittest_custom_options_pb2.html#google.protobuf.unittest_custom_options_pb2.DummyMessageContainingEnum">DummyMessageContainingEnum</a></li>
+<li><a title="google.protobuf.unittest_custom_options_pb2.DummyMessageInvalidAsOptionType" href="unittest_custom_options_pb2.html#google.protobuf.unittest_custom_options_pb2.DummyMessageInvalidAsOptionType">DummyMessageInvalidAsOptionType</a></li>
+<li>google.protobuf.unittest_custom_options_pb2.NestedMessage</li>
+<li><a title="google.protobuf.unittest_custom_options_pb2.NestedOptionType" href="unittest_custom_options_pb2.html#google.protobuf.unittest_custom_options_pb2.NestedOptionType">NestedOptionType</a></li>
+<li><a title="google.protobuf.unittest_custom_options_pb2.NewOptionType" href="unittest_custom_options_pb2.html#google.protobuf.unittest_custom_options_pb2.NewOptionType">NewOptionType</a></li>
+<li><a title="google.protobuf.unittest_custom_options_pb2.OldOptionType" href="unittest_custom_options_pb2.html#google.protobuf.unittest_custom_options_pb2.OldOptionType">OldOptionType</a></li>
+<li><a title="google.protobuf.unittest_custom_options_pb2.SettingRealsFromNegativeInts" href="unittest_custom_options_pb2.html#google.protobuf.unittest_custom_options_pb2.SettingRealsFromNegativeInts">SettingRealsFromNegativeInts</a></li>
+<li><a title="google.protobuf.unittest_custom_options_pb2.SettingRealsFromPositiveInts" href="unittest_custom_options_pb2.html#google.protobuf.unittest_custom_options_pb2.SettingRealsFromPositiveInts">SettingRealsFromPositiveInts</a></li>
+<li><a title="google.protobuf.unittest_custom_options_pb2.TestMessageWithCustomOptions" href="unittest_custom_options_pb2.html#google.protobuf.unittest_custom_options_pb2.TestMessageWithCustomOptions">TestMessageWithCustomOptions</a></li>
+<li><a title="google.protobuf.unittest_custom_options_pb2.TestMessageWithRequiredEnumOption" href="unittest_custom_options_pb2.html#google.protobuf.unittest_custom_options_pb2.TestMessageWithRequiredEnumOption">TestMessageWithRequiredEnumOption</a></li>
+<li><a title="google.protobuf.unittest_custom_options_pb2.VariousComplexOptions" href="unittest_custom_options_pb2.html#google.protobuf.unittest_custom_options_pb2.VariousComplexOptions">VariousComplexOptions</a></li>
+<li><a title="google.protobuf.unittest_import_pb2.ImportMessage" href="unittest_import_pb2.html#google.protobuf.unittest_import_pb2.ImportMessage">ImportMessage</a></li>
+<li><a title="google.protobuf.unittest_import_public_pb2.PublicImportMessage" href="unittest_import_public_pb2.html#google.protobuf.unittest_import_public_pb2.PublicImportMessage">PublicImportMessage</a></li>
+<li>google.protobuf.unittest_mset_pb2.Item</li>
+<li><a title="google.protobuf.unittest_mset_pb2.RawMessageSet" href="unittest_mset_pb2.html#google.protobuf.unittest_mset_pb2.RawMessageSet">RawMessageSet</a></li>
+<li><a title="google.protobuf.unittest_mset_pb2.TestMessageSetContainer" href="unittest_mset_pb2.html#google.protobuf.unittest_mset_pb2.TestMessageSetContainer">TestMessageSetContainer</a></li>
+<li><a title="google.protobuf.unittest_mset_pb2.TestMessageSetExtension1" href="unittest_mset_pb2.html#google.protobuf.unittest_mset_pb2.TestMessageSetExtension1">TestMessageSetExtension1</a></li>
+<li><a title="google.protobuf.unittest_mset_pb2.TestMessageSetExtension2" href="unittest_mset_pb2.html#google.protobuf.unittest_mset_pb2.TestMessageSetExtension2">TestMessageSetExtension2</a></li>
+<li><a title="google.protobuf.unittest_mset_wire_format_pb2.TestMessageSet" href="unittest_mset_wire_format_pb2.html#google.protobuf.unittest_mset_wire_format_pb2.TestMessageSet">TestMessageSet</a></li>
+<li><a title="google.protobuf.unittest_mset_wire_format_pb2.TestMessageSetWireFormatContainer" href="unittest_mset_wire_format_pb2.html#google.protobuf.unittest_mset_wire_format_pb2.TestMessageSetWireFormatContainer">TestMessageSetWireFormatContainer</a></li>
+<li><a title="google.protobuf.unittest_no_arena_import_pb2.ImportNoArenaNestedMessage" href="unittest_no_arena_import_pb2.html#google.protobuf.unittest_no_arena_import_pb2.ImportNoArenaNestedMessage">ImportNoArenaNestedMessage</a></li>
+<li><a title="google.protobuf.unittest_no_arena_pb2.ForeignMessage" href="unittest_no_arena_pb2.html#google.protobuf.unittest_no_arena_pb2.ForeignMessage">ForeignMessage</a></li>
+<li>google.protobuf.unittest_no_arena_pb2.NestedMessage</li>
+<li><a title="google.protobuf.unittest_no_arena_pb2.OneString" href="unittest_no_arena_pb2.html#google.protobuf.unittest_no_arena_pb2.OneString">OneString</a></li>
+<li>google.protobuf.unittest_no_arena_pb2.OptionalGroup</li>
+<li>google.protobuf.unittest_no_arena_pb2.RepeatedGroup</li>
+<li><a title="google.protobuf.unittest_no_arena_pb2.TestAllTypes" href="unittest_no_arena_pb2.html#google.protobuf.unittest_no_arena_pb2.TestAllTypes">TestAllTypes</a></li>
+<li><a title="google.protobuf.unittest_no_arena_pb2.TestNoArenaMessage" href="unittest_no_arena_pb2.html#google.protobuf.unittest_no_arena_pb2.TestNoArenaMessage">TestNoArenaMessage</a></li>
+<li><a title="google.protobuf.unittest_no_generic_services_pb2.TestMessage" href="unittest_no_generic_services_pb2.html#google.protobuf.unittest_no_generic_services_pb2.TestMessage">TestMessage</a></li>
+<li>google.protobuf.unittest_pb2.Bar</li>
+<li><a title="google.protobuf.unittest_pb2.BarRequest" href="unittest_pb2.html#google.protobuf.unittest_pb2.BarRequest">BarRequest</a></li>
+<li><a title="google.protobuf.unittest_pb2.BarResponse" href="unittest_pb2.html#google.protobuf.unittest_pb2.BarResponse">BarResponse</a></li>
+<li><a title="google.protobuf.unittest_pb2.BoolMessage" href="unittest_pb2.html#google.protobuf.unittest_pb2.BoolMessage">BoolMessage</a></li>
+<li>google.protobuf.unittest_pb2.DynamicMessageType</li>
+<li>google.protobuf.unittest_pb2.Foo</li>
+<li><a title="google.protobuf.unittest_pb2.FooClientMessage" href="unittest_pb2.html#google.protobuf.unittest_pb2.FooClientMessage">FooClientMessage</a></li>
+<li>google.protobuf.unittest_pb2.FooGroup</li>
+<li>google.protobuf.unittest_pb2.FooGroup</li>
+<li>google.protobuf.unittest_pb2.FooGroup</li>
+<li><a title="google.protobuf.unittest_pb2.FooRequest" href="unittest_pb2.html#google.protobuf.unittest_pb2.FooRequest">FooRequest</a></li>
+<li><a title="google.protobuf.unittest_pb2.FooResponse" href="unittest_pb2.html#google.protobuf.unittest_pb2.FooResponse">FooResponse</a></li>
+<li><a title="google.protobuf.unittest_pb2.FooServerMessage" href="unittest_pb2.html#google.protobuf.unittest_pb2.FooServerMessage">FooServerMessage</a></li>
+<li><a title="google.protobuf.unittest_pb2.ForeignMessage" href="unittest_pb2.html#google.protobuf.unittest_pb2.ForeignMessage">ForeignMessage</a></li>
+<li>google.protobuf.unittest_pb2.Group1</li>
+<li>google.protobuf.unittest_pb2.Group2</li>
+<li><a title="google.protobuf.unittest_pb2.Int32Message" href="unittest_pb2.html#google.protobuf.unittest_pb2.Int32Message">Int32Message</a></li>
+<li><a title="google.protobuf.unittest_pb2.Int64Message" href="unittest_pb2.html#google.protobuf.unittest_pb2.Int64Message">Int64Message</a></li>
+<li><a title="google.protobuf.unittest_pb2.MoreBytes" href="unittest_pb2.html#google.protobuf.unittest_pb2.MoreBytes">MoreBytes</a></li>
+<li><a title="google.protobuf.unittest_pb2.MoreString" href="unittest_pb2.html#google.protobuf.unittest_pb2.MoreString">MoreString</a></li>
+<li>google.protobuf.unittest_pb2.NestedMessage</li>
+<li>google.protobuf.unittest_pb2.NestedMessage</li>
+<li>google.protobuf.unittest_pb2.NestedMessage</li>
+<li>google.protobuf.unittest_pb2.NestedMessage</li>
+<li>google.protobuf.unittest_pb2.NestedMessage</li>
+<li>google.protobuf.unittest_pb2.NestedMessage</li>
+<li>google.protobuf.unittest_pb2.NestedNestedMessage</li>
+<li><a title="google.protobuf.unittest_pb2.NestedTestAllTypes" href="unittest_pb2.html#google.protobuf.unittest_pb2.NestedTestAllTypes">NestedTestAllTypes</a></li>
+<li><a title="google.protobuf.unittest_pb2.OneBytes" href="unittest_pb2.html#google.protobuf.unittest_pb2.OneBytes">OneBytes</a></li>
+<li><a title="google.protobuf.unittest_pb2.OneString" href="unittest_pb2.html#google.protobuf.unittest_pb2.OneString">OneString</a></li>
+<li>google.protobuf.unittest_pb2.OptionalGroup</li>
+<li>google.protobuf.unittest_pb2.OptionalGroup</li>
+<li>google.protobuf.unittest_pb2.OptionalGroup</li>
+<li>google.protobuf.unittest_pb2.OptionalGroup</li>
+<li><a title="google.protobuf.unittest_pb2.OptionalGroup_extension" href="unittest_pb2.html#google.protobuf.unittest_pb2.OptionalGroup_extension">OptionalGroup_extension</a></li>
+<li><a title="google.protobuf.unittest_pb2.OptionalGroup_extension" href="unittest_pb2.html#google.protobuf.unittest_pb2.OptionalGroup_extension">OptionalGroup_extension</a></li>
+<li>google.protobuf.unittest_pb2.RepeatedFieldsGenerator</li>
+<li>google.protobuf.unittest_pb2.RepeatedGroup</li>
+<li>google.protobuf.unittest_pb2.RepeatedGroup</li>
+<li><a title="google.protobuf.unittest_pb2.RepeatedGroup_extension" href="unittest_pb2.html#google.protobuf.unittest_pb2.RepeatedGroup_extension">RepeatedGroup_extension</a></li>
+<li><a title="google.protobuf.unittest_pb2.SparseEnumMessage" href="unittest_pb2.html#google.protobuf.unittest_pb2.SparseEnumMessage">SparseEnumMessage</a></li>
+<li>google.protobuf.unittest_pb2.StringStringMapEntry</li>
+<li>google.protobuf.unittest_pb2.SubGroup</li>
+<li>google.protobuf.unittest_pb2.SubGroup</li>
+<li>google.protobuf.unittest_pb2.SubMessage</li>
+<li>google.protobuf.unittest_pb2.SubMessage</li>
+<li><a title="google.protobuf.unittest_pb2.TestAllExtensions" href="unittest_pb2.html#google.protobuf.unittest_pb2.TestAllExtensions">TestAllExtensions</a></li>
+<li><a title="google.protobuf.unittest_pb2.TestAllTypes" href="unittest_pb2.html#google.protobuf.unittest_pb2.TestAllTypes">TestAllTypes</a></li>
+<li><a title="google.protobuf.unittest_pb2.TestCamelCaseFieldNames" href="unittest_pb2.html#google.protobuf.unittest_pb2.TestCamelCaseFieldNames">TestCamelCaseFieldNames</a></li>
+<li><a title="google.protobuf.unittest_pb2.TestCommentInjectionMessage" href="unittest_pb2.html#google.protobuf.unittest_pb2.TestCommentInjectionMessage">TestCommentInjectionMessage</a></li>
+<li><a title="google.protobuf.unittest_pb2.TestDeprecatedFields" href="unittest_pb2.html#google.protobuf.unittest_pb2.TestDeprecatedFields">TestDeprecatedFields</a></li>
+<li><a title="google.protobuf.unittest_pb2.TestDeprecatedMessage" href="unittest_pb2.html#google.protobuf.unittest_pb2.TestDeprecatedMessage">TestDeprecatedMessage</a></li>
+<li><a title="google.protobuf.unittest_pb2.TestDupFieldNumber" href="unittest_pb2.html#google.protobuf.unittest_pb2.TestDupFieldNumber">TestDupFieldNumber</a></li>
+<li><a title="google.protobuf.unittest_pb2.TestDynamicExtensions" href="unittest_pb2.html#google.protobuf.unittest_pb2.TestDynamicExtensions">TestDynamicExtensions</a></li>
+<li><a title="google.protobuf.unittest_pb2.TestEagerMessage" href="unittest_pb2.html#google.protobuf.unittest_pb2.TestEagerMessage">TestEagerMessage</a></li>
+<li><a title="google.protobuf.unittest_pb2.TestEmptyMessage" href="unittest_pb2.html#google.protobuf.unittest_pb2.TestEmptyMessage">TestEmptyMessage</a></li>
+<li><a title="google.protobuf.unittest_pb2.TestEmptyMessageWithExtensions" href="unittest_pb2.html#google.protobuf.unittest_pb2.TestEmptyMessageWithExtensions">TestEmptyMessageWithExtensions</a></li>
+<li><a title="google.protobuf.unittest_pb2.TestExtensionInsideTable" href="unittest_pb2.html#google.protobuf.unittest_pb2.TestExtensionInsideTable">TestExtensionInsideTable</a></li>
+<li><a title="google.protobuf.unittest_pb2.TestExtensionOrderings1" href="unittest_pb2.html#google.protobuf.unittest_pb2.TestExtensionOrderings1">TestExtensionOrderings1</a></li>
+<li><a title="google.protobuf.unittest_pb2.TestExtensionOrderings2" href="unittest_pb2.html#google.protobuf.unittest_pb2.TestExtensionOrderings2">TestExtensionOrderings2</a></li>
+<li>google.protobuf.unittest_pb2.TestExtensionOrderings3</li>
+<li><a title="google.protobuf.unittest_pb2.TestExtremeDefaultValues" href="unittest_pb2.html#google.protobuf.unittest_pb2.TestExtremeDefaultValues">TestExtremeDefaultValues</a></li>
+<li><a title="google.protobuf.unittest_pb2.TestFieldOrderings" href="unittest_pb2.html#google.protobuf.unittest_pb2.TestFieldOrderings">TestFieldOrderings</a></li>
+<li><a title="google.protobuf.unittest_pb2.TestForeignNested" href="unittest_pb2.html#google.protobuf.unittest_pb2.TestForeignNested">TestForeignNested</a></li>
+<li><a title="google.protobuf.unittest_pb2.TestGroup" href="unittest_pb2.html#google.protobuf.unittest_pb2.TestGroup">TestGroup</a></li>
+<li><a title="google.protobuf.unittest_pb2.TestGroupExtension" href="unittest_pb2.html#google.protobuf.unittest_pb2.TestGroupExtension">TestGroupExtension</a></li>
+<li><a title="google.protobuf.unittest_pb2.TestHugeFieldNumbers" href="unittest_pb2.html#google.protobuf.unittest_pb2.TestHugeFieldNumbers">TestHugeFieldNumbers</a></li>
+<li><a title="google.protobuf.unittest_pb2.TestIsInitialized" href="unittest_pb2.html#google.protobuf.unittest_pb2.TestIsInitialized">TestIsInitialized</a></li>
+<li><a title="google.protobuf.unittest_pb2.TestJsonName" href="unittest_pb2.html#google.protobuf.unittest_pb2.TestJsonName">TestJsonName</a></li>
+<li><a title="google.protobuf.unittest_pb2.TestLazyMessage" href="unittest_pb2.html#google.protobuf.unittest_pb2.TestLazyMessage">TestLazyMessage</a></li>
+<li><a title="google.protobuf.unittest_pb2.TestMultipleExtensionRanges" href="unittest_pb2.html#google.protobuf.unittest_pb2.TestMultipleExtensionRanges">TestMultipleExtensionRanges</a></li>
+<li><a title="google.protobuf.unittest_pb2.TestMutualRecursionA" href="unittest_pb2.html#google.protobuf.unittest_pb2.TestMutualRecursionA">TestMutualRecursionA</a></li>
+<li><a title="google.protobuf.unittest_pb2.TestMutualRecursionB" href="unittest_pb2.html#google.protobuf.unittest_pb2.TestMutualRecursionB">TestMutualRecursionB</a></li>
+<li><a title="google.protobuf.unittest_pb2.TestNestedExtension" href="unittest_pb2.html#google.protobuf.unittest_pb2.TestNestedExtension">TestNestedExtension</a></li>
+<li><a title="google.protobuf.unittest_pb2.TestNestedMessageHasBits" href="unittest_pb2.html#google.protobuf.unittest_pb2.TestNestedMessageHasBits">TestNestedMessageHasBits</a></li>
+<li><a title="google.protobuf.unittest_pb2.TestOneof" href="unittest_pb2.html#google.protobuf.unittest_pb2.TestOneof">TestOneof</a></li>
+<li><a title="google.protobuf.unittest_pb2.TestOneof2" href="unittest_pb2.html#google.protobuf.unittest_pb2.TestOneof2">TestOneof2</a></li>
+<li><a title="google.protobuf.unittest_pb2.TestOneofBackwardsCompatible" href="unittest_pb2.html#google.protobuf.unittest_pb2.TestOneofBackwardsCompatible">TestOneofBackwardsCompatible</a></li>
+<li><a title="google.protobuf.unittest_pb2.TestPackedExtensions" href="unittest_pb2.html#google.protobuf.unittest_pb2.TestPackedExtensions">TestPackedExtensions</a></li>
+<li><a title="google.protobuf.unittest_pb2.TestPackedTypes" href="unittest_pb2.html#google.protobuf.unittest_pb2.TestPackedTypes">TestPackedTypes</a></li>
+<li><a title="google.protobuf.unittest_pb2.TestParsingMerge" href="unittest_pb2.html#google.protobuf.unittest_pb2.TestParsingMerge">TestParsingMerge</a></li>
+<li><a title="google.protobuf.unittest_pb2.TestPickleNestedMessage" href="unittest_pb2.html#google.protobuf.unittest_pb2.TestPickleNestedMessage">TestPickleNestedMessage</a></li>
+<li><a title="google.protobuf.unittest_pb2.TestReallyLargeTagNumber" href="unittest_pb2.html#google.protobuf.unittest_pb2.TestReallyLargeTagNumber">TestReallyLargeTagNumber</a></li>
+<li><a title="google.protobuf.unittest_pb2.TestRecursiveMessage" href="unittest_pb2.html#google.protobuf.unittest_pb2.TestRecursiveMessage">TestRecursiveMessage</a></li>
+<li><a title="google.protobuf.unittest_pb2.TestRepeatedScalarDifferentTagSizes" href="unittest_pb2.html#google.protobuf.unittest_pb2.TestRepeatedScalarDifferentTagSizes">TestRepeatedScalarDifferentTagSizes</a></li>
+<li><a title="google.protobuf.unittest_pb2.TestRequired" href="unittest_pb2.html#google.protobuf.unittest_pb2.TestRequired">TestRequired</a></li>
+<li><a title="google.protobuf.unittest_pb2.TestRequiredForeign" href="unittest_pb2.html#google.protobuf.unittest_pb2.TestRequiredForeign">TestRequiredForeign</a></li>
+<li><a title="google.protobuf.unittest_pb2.TestRequiredMessage" href="unittest_pb2.html#google.protobuf.unittest_pb2.TestRequiredMessage">TestRequiredMessage</a></li>
+<li><a title="google.protobuf.unittest_pb2.TestRequiredOneof" href="unittest_pb2.html#google.protobuf.unittest_pb2.TestRequiredOneof">TestRequiredOneof</a></li>
+<li><a title="google.protobuf.unittest_pb2.TestReservedFields" href="unittest_pb2.html#google.protobuf.unittest_pb2.TestReservedFields">TestReservedFields</a></li>
+<li><a title="google.protobuf.unittest_pb2.TestUnpackedExtensions" href="unittest_pb2.html#google.protobuf.unittest_pb2.TestUnpackedExtensions">TestUnpackedExtensions</a></li>
+<li><a title="google.protobuf.unittest_pb2.TestUnpackedTypes" href="unittest_pb2.html#google.protobuf.unittest_pb2.TestUnpackedTypes">TestUnpackedTypes</a></li>
+<li><a title="google.protobuf.unittest_pb2.Uint32Message" href="unittest_pb2.html#google.protobuf.unittest_pb2.Uint32Message">Uint32Message</a></li>
+<li><a title="google.protobuf.unittest_pb2.Uint64Message" href="unittest_pb2.html#google.protobuf.unittest_pb2.Uint64Message">Uint64Message</a></li>
+<li><a title="google.protobuf.unittest_proto3_arena_pb2.ForeignMessage" href="unittest_proto3_arena_pb2.html#google.protobuf.unittest_proto3_arena_pb2.ForeignMessage">ForeignMessage</a></li>
+<li>google.protobuf.unittest_proto3_arena_pb2.NestedMessage</li>
+<li>google.protobuf.unittest_proto3_arena_pb2.NestedMessage</li>
+<li>google.protobuf.unittest_proto3_arena_pb2.NestedNestedMessage</li>
+<li><a title="google.protobuf.unittest_proto3_arena_pb2.NestedTestAllTypes" href="unittest_proto3_arena_pb2.html#google.protobuf.unittest_proto3_arena_pb2.NestedTestAllTypes">NestedTestAllTypes</a></li>
+<li><a title="google.protobuf.unittest_proto3_arena_pb2.TestAllTypes" href="unittest_proto3_arena_pb2.html#google.protobuf.unittest_proto3_arena_pb2.TestAllTypes">TestAllTypes</a></li>
+<li><a title="google.protobuf.unittest_proto3_arena_pb2.TestEmptyMessage" href="unittest_proto3_arena_pb2.html#google.protobuf.unittest_proto3_arena_pb2.TestEmptyMessage">TestEmptyMessage</a></li>
+<li><a title="google.protobuf.unittest_proto3_arena_pb2.TestPackedTypes" href="unittest_proto3_arena_pb2.html#google.protobuf.unittest_proto3_arena_pb2.TestPackedTypes">TestPackedTypes</a></li>
+<li><a title="google.protobuf.unittest_proto3_arena_pb2.TestPickleNestedMessage" href="unittest_proto3_arena_pb2.html#google.protobuf.unittest_proto3_arena_pb2.TestPickleNestedMessage">TestPickleNestedMessage</a></li>
+<li><a title="google.protobuf.unittest_proto3_arena_pb2.TestUnpackedTypes" href="unittest_proto3_arena_pb2.html#google.protobuf.unittest_proto3_arena_pb2.TestUnpackedTypes">TestUnpackedTypes</a></li>
+<li>google.protobuf.util.json_format_pb2.BoolMapEntry</li>
+<li>google.protobuf.util.json_format_pb2.RepeatedGroup</li>
+<li>google.protobuf.util.json_format_pb2.StringMapEntry</li>
+<li>google.protobuf.util.json_format_pb2.StringMapEntry</li>
+<li><a title="google.protobuf.util.json_format_pb2.TestBase64ByteArrays" href="util/json_format_pb2.html#google.protobuf.util.json_format_pb2.TestBase64ByteArrays">TestBase64ByteArrays</a></li>
+<li><a title="google.protobuf.util.json_format_pb2.TestBoolMap" href="util/json_format_pb2.html#google.protobuf.util.json_format_pb2.TestBoolMap">TestBoolMap</a></li>
+<li><a title="google.protobuf.util.json_format_pb2.TestCamelCase" href="util/json_format_pb2.html#google.protobuf.util.json_format_pb2.TestCamelCase">TestCamelCase</a></li>
+<li><a title="google.protobuf.util.json_format_pb2.TestExtension" href="util/json_format_pb2.html#google.protobuf.util.json_format_pb2.TestExtension">TestExtension</a></li>
+<li><a title="google.protobuf.util.json_format_pb2.TestFlagsAndStrings" href="util/json_format_pb2.html#google.protobuf.util.json_format_pb2.TestFlagsAndStrings">TestFlagsAndStrings</a></li>
+<li><a title="google.protobuf.util.json_format_pb2.TestJavaScriptJSON" href="util/json_format_pb2.html#google.protobuf.util.json_format_pb2.TestJavaScriptJSON">TestJavaScriptJSON</a></li>
+<li><a title="google.protobuf.util.json_format_pb2.TestJavaScriptOrderJSON1" href="util/json_format_pb2.html#google.protobuf.util.json_format_pb2.TestJavaScriptOrderJSON1">TestJavaScriptOrderJSON1</a></li>
+<li><a title="google.protobuf.util.json_format_pb2.TestJavaScriptOrderJSON2" href="util/json_format_pb2.html#google.protobuf.util.json_format_pb2.TestJavaScriptOrderJSON2">TestJavaScriptOrderJSON2</a></li>
+<li><a title="google.protobuf.util.json_format_pb2.TestLargeInt" href="util/json_format_pb2.html#google.protobuf.util.json_format_pb2.TestLargeInt">TestLargeInt</a></li>
+<li><a title="google.protobuf.util.json_format_pb2.TestMessageWithExtension" href="util/json_format_pb2.html#google.protobuf.util.json_format_pb2.TestMessageWithExtension">TestMessageWithExtension</a></li>
+<li><a title="google.protobuf.util.json_format_pb2.TestNumbers" href="util/json_format_pb2.html#google.protobuf.util.json_format_pb2.TestNumbers">TestNumbers</a></li>
+<li><a title="google.protobuf.util.json_format_pb2.TestRecursion" href="util/json_format_pb2.html#google.protobuf.util.json_format_pb2.TestRecursion">TestRecursion</a></li>
+<li><a title="google.protobuf.util.json_format_pb2.TestStringMap" href="util/json_format_pb2.html#google.protobuf.util.json_format_pb2.TestStringMap">TestStringMap</a></li>
+<li><a title="google.protobuf.util.json_format_pb2.TestStringSerializer" href="util/json_format_pb2.html#google.protobuf.util.json_format_pb2.TestStringSerializer">TestStringSerializer</a></li>
+<li>google.protobuf.util.json_format_proto3_pb2.BoolMapEntry</li>
+<li>google.protobuf.util.json_format_proto3_pb2.BoolMapEntry</li>
+<li>google.protobuf.util.json_format_proto3_pb2.BoolMapEntry</li>
+<li>google.protobuf.util.json_format_proto3_pb2.Int32MapEntry</li>
+<li>google.protobuf.util.json_format_proto3_pb2.Int32MapEntry</li>
+<li>google.protobuf.util.json_format_proto3_pb2.Int64MapEntry</li>
+<li>google.protobuf.util.json_format_proto3_pb2.Int64MapEntry</li>
+<li>google.protobuf.util.json_format_proto3_pb2.MapMapEntry</li>
+<li><a title="google.protobuf.util.json_format_proto3_pb2.MessageType" href="util/json_format_proto3_pb2.html#google.protobuf.util.json_format_proto3_pb2.MessageType">MessageType</a></li>
+<li>google.protobuf.util.json_format_proto3_pb2.StringMapEntry</li>
+<li>google.protobuf.util.json_format_proto3_pb2.StringMapEntry</li>
+<li>google.protobuf.util.json_format_proto3_pb2.StringMapEntry</li>
+<li><a title="google.protobuf.util.json_format_proto3_pb2.TestAny" href="util/json_format_proto3_pb2.html#google.protobuf.util.json_format_proto3_pb2.TestAny">TestAny</a></li>
+<li><a title="google.protobuf.util.json_format_proto3_pb2.TestBoolValue" href="util/json_format_proto3_pb2.html#google.protobuf.util.json_format_proto3_pb2.TestBoolValue">TestBoolValue</a></li>
+<li><a title="google.protobuf.util.json_format_proto3_pb2.TestCustomJsonName" href="util/json_format_proto3_pb2.html#google.protobuf.util.json_format_proto3_pb2.TestCustomJsonName">TestCustomJsonName</a></li>
+<li><a title="google.protobuf.util.json_format_proto3_pb2.TestDuration" href="util/json_format_proto3_pb2.html#google.protobuf.util.json_format_proto3_pb2.TestDuration">TestDuration</a></li>
+<li><a title="google.protobuf.util.json_format_proto3_pb2.TestEnumValue" href="util/json_format_proto3_pb2.html#google.protobuf.util.json_format_proto3_pb2.TestEnumValue">TestEnumValue</a></li>
+<li><a title="google.protobuf.util.json_format_proto3_pb2.TestExtensions" href="util/json_format_proto3_pb2.html#google.protobuf.util.json_format_proto3_pb2.TestExtensions">TestExtensions</a></li>
+<li><a title="google.protobuf.util.json_format_proto3_pb2.TestFieldMask" href="util/json_format_proto3_pb2.html#google.protobuf.util.json_format_proto3_pb2.TestFieldMask">TestFieldMask</a></li>
+<li><a title="google.protobuf.util.json_format_proto3_pb2.TestListValue" href="util/json_format_proto3_pb2.html#google.protobuf.util.json_format_proto3_pb2.TestListValue">TestListValue</a></li>
+<li><a title="google.protobuf.util.json_format_proto3_pb2.TestMap" href="util/json_format_proto3_pb2.html#google.protobuf.util.json_format_proto3_pb2.TestMap">TestMap</a></li>
+<li><a title="google.protobuf.util.json_format_proto3_pb2.TestMessage" href="util/json_format_proto3_pb2.html#google.protobuf.util.json_format_proto3_pb2.TestMessage">TestMessage</a></li>
+<li><a title="google.protobuf.util.json_format_proto3_pb2.TestNestedMap" href="util/json_format_proto3_pb2.html#google.protobuf.util.json_format_proto3_pb2.TestNestedMap">TestNestedMap</a></li>
+<li><a title="google.protobuf.util.json_format_proto3_pb2.TestOneof" href="util/json_format_proto3_pb2.html#google.protobuf.util.json_format_proto3_pb2.TestOneof">TestOneof</a></li>
+<li><a title="google.protobuf.util.json_format_proto3_pb2.TestStringMap" href="util/json_format_proto3_pb2.html#google.protobuf.util.json_format_proto3_pb2.TestStringMap">TestStringMap</a></li>
+<li><a title="google.protobuf.util.json_format_proto3_pb2.TestStruct" href="util/json_format_proto3_pb2.html#google.protobuf.util.json_format_proto3_pb2.TestStruct">TestStruct</a></li>
+<li><a title="google.protobuf.util.json_format_proto3_pb2.TestTimestamp" href="util/json_format_proto3_pb2.html#google.protobuf.util.json_format_proto3_pb2.TestTimestamp">TestTimestamp</a></li>
+<li><a title="google.protobuf.util.json_format_proto3_pb2.TestValue" href="util/json_format_proto3_pb2.html#google.protobuf.util.json_format_proto3_pb2.TestValue">TestValue</a></li>
+<li><a title="google.protobuf.util.json_format_proto3_pb2.TestWrapper" href="util/json_format_proto3_pb2.html#google.protobuf.util.json_format_proto3_pb2.TestWrapper">TestWrapper</a></li>
+<li>google.protobuf.util.json_format_proto3_pb2.Uint32MapEntry</li>
+<li>google.protobuf.util.json_format_proto3_pb2.Uint32MapEntry</li>
+<li>google.protobuf.util.json_format_proto3_pb2.Uint64MapEntry</li>
+<li>google.protobuf.util.json_format_proto3_pb2.Uint64MapEntry</li>
+<li><a title="google.protobuf.wrappers_pb2.BoolValue" href="wrappers_pb2.html#google.protobuf.wrappers_pb2.BoolValue">BoolValue</a></li>
+<li><a title="google.protobuf.wrappers_pb2.BytesValue" href="wrappers_pb2.html#google.protobuf.wrappers_pb2.BytesValue">BytesValue</a></li>
+<li><a title="google.protobuf.wrappers_pb2.DoubleValue" href="wrappers_pb2.html#google.protobuf.wrappers_pb2.DoubleValue">DoubleValue</a></li>
+<li><a title="google.protobuf.wrappers_pb2.FloatValue" href="wrappers_pb2.html#google.protobuf.wrappers_pb2.FloatValue">FloatValue</a></li>
+<li><a title="google.protobuf.wrappers_pb2.Int32Value" href="wrappers_pb2.html#google.protobuf.wrappers_pb2.Int32Value">Int32Value</a></li>
+<li><a title="google.protobuf.wrappers_pb2.Int64Value" href="wrappers_pb2.html#google.protobuf.wrappers_pb2.Int64Value">Int64Value</a></li>
+<li><a title="google.protobuf.wrappers_pb2.StringValue" href="wrappers_pb2.html#google.protobuf.wrappers_pb2.StringValue">StringValue</a></li>
+<li><a title="google.protobuf.wrappers_pb2.UInt32Value" href="wrappers_pb2.html#google.protobuf.wrappers_pb2.UInt32Value">UInt32Value</a></li>
+<li><a title="google.protobuf.wrappers_pb2.UInt64Value" href="wrappers_pb2.html#google.protobuf.wrappers_pb2.UInt64Value">UInt64Value</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="google.protobuf.message.Message.DESCRIPTOR"><code class="name">var <span class="ident">DESCRIPTOR</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="google.protobuf.message.Message.ByteSize"><code class="name flex">
+<span>def <span class="ident">ByteSize</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Returns the serialized size of this message.
+Recursively calls ByteSize() on all contained messages.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def ByteSize(self):
+  &#34;&#34;&#34;Returns the serialized size of this message.
+  Recursively calls ByteSize() on all contained messages.
+  &#34;&#34;&#34;
+  raise NotImplementedError</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.message.Message.Clear"><code class="name flex">
+<span>def <span class="ident">Clear</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Clears all data that was set in the message.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Clear(self):
+  &#34;&#34;&#34;Clears all data that was set in the message.&#34;&#34;&#34;
+  raise NotImplementedError</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.message.Message.ClearExtension"><code class="name flex">
+<span>def <span class="ident">ClearExtension</span></span>(<span>self, extension_handle)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def ClearExtension(self, extension_handle):
+  raise NotImplementedError</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.message.Message.ClearField"><code class="name flex">
+<span>def <span class="ident">ClearField</span></span>(<span>self, field_name)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Clears the contents of a given field, or the field set inside a oneof
+group.
+If the name neither refers to a defined field or oneof group,
+ValueError is raised.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def ClearField(self, field_name):
+  &#34;&#34;&#34;Clears the contents of a given field, or the field set inside a oneof
+  group.  If the name neither refers to a defined field or oneof group,
+  ValueError is raised.&#34;&#34;&#34;
+  raise NotImplementedError</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.message.Message.CopyFrom"><code class="name flex">
+<span>def <span class="ident">CopyFrom</span></span>(<span>self, other_msg)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Copies the content of the specified message into the current message.</p>
+<p>The method clears the current message and then merges the specified
+message using MergeFrom.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>other_msg</code></strong></dt>
+<dd>Message to copy into the current one.</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def CopyFrom(self, other_msg):
+  &#34;&#34;&#34;Copies the content of the specified message into the current message.
+
+  The method clears the current message and then merges the specified
+  message using MergeFrom.
+
+  Args:
+    other_msg: Message to copy into the current one.
+  &#34;&#34;&#34;
+  if self is other_msg:
+    return
+  self.Clear()
+  self.MergeFrom(other_msg)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.message.Message.DiscardUnknownFields"><code class="name flex">
+<span>def <span class="ident">DiscardUnknownFields</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def DiscardUnknownFields(self):
+  raise NotImplementedError</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.message.Message.HasExtension"><code class="name flex">
+<span>def <span class="ident">HasExtension</span></span>(<span>self, extension_handle)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def HasExtension(self, extension_handle):
+  raise NotImplementedError</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.message.Message.HasField"><code class="name flex">
+<span>def <span class="ident">HasField</span></span>(<span>self, field_name)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Checks if a certain field is set for the message, or if any field inside
+a oneof group is set.
+Note that if the field_name is not defined in the
+message descriptor, ValueError will be raised.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def HasField(self, field_name):
+  &#34;&#34;&#34;Checks if a certain field is set for the message, or if any field inside
+  a oneof group is set.  Note that if the field_name is not defined in the
+  message descriptor, ValueError will be raised.&#34;&#34;&#34;
+  raise NotImplementedError</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.message.Message.IsInitialized"><code class="name flex">
+<span>def <span class="ident">IsInitialized</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Checks if the message is initialized.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>The</code> <code>method</code> <code>returns</code> <code>True</code> <code>if</code> <code>the</code> <code>message</code> <code>is</code> <code>initialized</code> (<code>i.e.</code> <code>all</code> of <code>its</code></dt>
+<dd>&nbsp;</dd>
+</dl>
+<p>required fields are set).</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def IsInitialized(self):
+  &#34;&#34;&#34;Checks if the message is initialized.
+
+  Returns:
+    The method returns True if the message is initialized (i.e. all of its
+    required fields are set).
+  &#34;&#34;&#34;
+  raise NotImplementedError</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.message.Message.ListFields"><code class="name flex">
+<span>def <span class="ident">ListFields</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Returns a list of (FieldDescriptor, value) tuples for all
+fields in the message which are not empty.
+A message field is
+non-empty if HasField() would return true. A singular primitive field
+is non-empty if HasField() would return true in proto2 or it is non zero
+in proto3. A repeated field is non-empty if it contains at least one
+element.
+The fields are ordered by field number</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def ListFields(self):
+  &#34;&#34;&#34;Returns a list of (FieldDescriptor, value) tuples for all
+  fields in the message which are not empty.  A message field is
+  non-empty if HasField() would return true. A singular primitive field
+  is non-empty if HasField() would return true in proto2 or it is non zero
+  in proto3. A repeated field is non-empty if it contains at least one
+  element.  The fields are ordered by field number&#34;&#34;&#34;
+  raise NotImplementedError</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.message.Message.MergeFrom"><code class="name flex">
+<span>def <span class="ident">MergeFrom</span></span>(<span>self, other_msg)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Merges the contents of the specified message into current message.</p>
+<p>This method merges the contents of the specified message into the current
+message. Singular fields that are set in the specified message overwrite
+the corresponding fields in the current message. Repeated fields are
+appended. Singular sub-messages and groups are recursively merged.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>other_msg</code></strong></dt>
+<dd>Message to merge into the current message.</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def MergeFrom(self, other_msg):
+  &#34;&#34;&#34;Merges the contents of the specified message into current message.
+
+  This method merges the contents of the specified message into the current
+  message. Singular fields that are set in the specified message overwrite
+  the corresponding fields in the current message. Repeated fields are
+  appended. Singular sub-messages and groups are recursively merged.
+
+  Args:
+    other_msg: Message to merge into the current message.
+  &#34;&#34;&#34;
+  raise NotImplementedError</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.message.Message.MergeFromString"><code class="name flex">
+<span>def <span class="ident">MergeFromString</span></span>(<span>self, serialized)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Merges serialized protocol buffer data into this message.</p>
+<p>When we find a field in |serialized| that is already present
+in this message:
+- If it's a "repeated" field, we append to the end of our list.
+- Else, if it's a scalar, we overwrite our field.
+- Else, (it's a nonrepeated composite), we recursively merge
+into the existing composite.</p>
+<p>TODO(robinson): Document handling of unknown fields.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>serialized</code></strong></dt>
+<dd>Any object that allows us to call buffer(serialized)
+to access a string of bytes using the buffer interface.</dd>
+</dl>
+<p>TODO(robinson): When we switch to a helper, this will return None.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt>The number of bytes read from |serialized|.</dt>
+<dt><code>For</code> <code>non</code>-<code>group</code> <code>messages</code>, <code>this</code> <code>will</code> <code>always</code> <code>be</code> <code>len</code>(<code>serialized</code>),</dt>
+<dd>&nbsp;</dd>
+<dt><code>but</code> <code>for</code> <code>messages</code> <code>which</code> <code>are</code> <code>actually</code> <code>groups</code>, <code>this</code> <code>will</code></dt>
+<dd>&nbsp;</dd>
+<dt><code>generally</code> <code>be</code> <code>less</code> <code>than</code> <code>len</code>(<code>serialized</code>), <code>since</code> <code>we</code> <code>must</code></dt>
+<dd>&nbsp;</dd>
+<dt><code>stop</code> <code>when</code> <code>we</code> <code>reach</code> <code>an</code> <code>END_GROUP</code> <code>tag.</code>
+<code>Note</code> <code>that</code> <code>if</code></dt>
+<dd>&nbsp;</dd>
+<dt>we <em>do</em> stop because of an END_GROUP tag, the number</dt>
+<dt>of <code>bytes</code> <code>returned</code> <code>does</code> <code>not</code> <code>include</code> <code>the</code> <code>bytes</code></dt>
+<dd>&nbsp;</dd>
+</dl>
+<p>for the END_GROUP tag information.</p>
+<h2 id="raises">Raises</h2>
+<p>message.DecodeError if the input cannot be parsed.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def MergeFromString(self, serialized):
+  &#34;&#34;&#34;Merges serialized protocol buffer data into this message.
+
+  When we find a field in |serialized| that is already present
+  in this message:
+    - If it&#39;s a &#34;repeated&#34; field, we append to the end of our list.
+    - Else, if it&#39;s a scalar, we overwrite our field.
+    - Else, (it&#39;s a nonrepeated composite), we recursively merge
+      into the existing composite.
+
+  TODO(robinson): Document handling of unknown fields.
+
+  Args:
+    serialized: Any object that allows us to call buffer(serialized)
+      to access a string of bytes using the buffer interface.
+
+  TODO(robinson): When we switch to a helper, this will return None.
+
+  Returns:
+    The number of bytes read from |serialized|.
+    For non-group messages, this will always be len(serialized),
+    but for messages which are actually groups, this will
+    generally be less than len(serialized), since we must
+    stop when we reach an END_GROUP tag.  Note that if
+    we *do* stop because of an END_GROUP tag, the number
+    of bytes returned does not include the bytes
+    for the END_GROUP tag information.
+
+  Raises:
+    message.DecodeError if the input cannot be parsed.
+  &#34;&#34;&#34;
+  raise NotImplementedError</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.message.Message.ParseFromString"><code class="name flex">
+<span>def <span class="ident">ParseFromString</span></span>(<span>self, serialized)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Parse serialized protocol buffer data into this message.</p>
+<p>Like MergeFromString(), except we clear the object first.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def ParseFromString(self, serialized):
+  &#34;&#34;&#34;Parse serialized protocol buffer data into this message.
+
+  Like MergeFromString(), except we clear the object first.
+  &#34;&#34;&#34;
+  self.Clear()
+  return self.MergeFromString(serialized)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.message.Message.SerializePartialToString"><code class="name flex">
+<span>def <span class="ident">SerializePartialToString</span></span>(<span>self, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Serializes the protocol message to a binary string.</p>
+<p>This method is similar to SerializeToString but doesn't check if the
+message is initialized.</p>
+<h2 id="arguments">Arguments</h2>
+<dl>
+<dt><strong><code>**kwargs</code></strong></dt>
+<dd>Keyword arguments to the serialize method, accepts
+the following keyword args:
+deterministic: If true, requests deterministic serialization of the
+protobuf, with predictable ordering of map keys.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A string representation of the partial message.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def SerializePartialToString(self, **kwargs):
+  &#34;&#34;&#34;Serializes the protocol message to a binary string.
+
+  This method is similar to SerializeToString but doesn&#39;t check if the
+  message is initialized.
+
+  Arguments:
+    **kwargs: Keyword arguments to the serialize method, accepts
+      the following keyword args:
+      deterministic: If true, requests deterministic serialization of the
+        protobuf, with predictable ordering of map keys.
+
+  Returns:
+    A string representation of the partial message.
+  &#34;&#34;&#34;
+  raise NotImplementedError</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.message.Message.SerializeToString"><code class="name flex">
+<span>def <span class="ident">SerializeToString</span></span>(<span>self, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Serializes the protocol message to a binary string.</p>
+<h2 id="arguments">Arguments</h2>
+<dl>
+<dt><strong><code>**kwargs</code></strong></dt>
+<dd>Keyword arguments to the serialize method, accepts
+the following keyword args:
+deterministic: If true, requests deterministic serialization of the
+protobuf, with predictable ordering of map keys.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>A</code> <code>binary</code> <code>string</code> <code>representation</code> of <code>the</code> <code>message</code> <code>if</code> <code>all</code> of <code>the</code> <code>required</code></dt>
+<dd>&nbsp;</dd>
+</dl>
+<p>fields in the message are set (i.e. the message is initialized).</p>
+<h2 id="raises">Raises</h2>
+<p>message.EncodeError if the message isn't initialized.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def SerializeToString(self, **kwargs):
+  &#34;&#34;&#34;Serializes the protocol message to a binary string.
+
+  Arguments:
+    **kwargs: Keyword arguments to the serialize method, accepts
+      the following keyword args:
+      deterministic: If true, requests deterministic serialization of the
+        protobuf, with predictable ordering of map keys.
+
+  Returns:
+    A binary string representation of the message if all of the required
+    fields in the message are set (i.e. the message is initialized).
+
+  Raises:
+    message.EncodeError if the message isn&#39;t initialized.
+  &#34;&#34;&#34;
+  raise NotImplementedError</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.message.Message.SetInParent"><code class="name flex">
+<span>def <span class="ident">SetInParent</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Mark this as present in the parent.</p>
+<p>This normally happens automatically when you assign a field of a
+sub-message, but sometimes you want to make the sub-message
+present while keeping it empty.
+If you find yourself using this,
+you may want to reconsider your design.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def SetInParent(self):
+  &#34;&#34;&#34;Mark this as present in the parent.
+
+  This normally happens automatically when you assign a field of a
+  sub-message, but sometimes you want to make the sub-message
+  present while keeping it empty.  If you find yourself using this,
+  you may want to reconsider your design.&#34;&#34;&#34;
+  raise NotImplementedError</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.message.Message.UnknownFields"><code class="name flex">
+<span>def <span class="ident">UnknownFields</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Returns the UnknownFieldSet.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def UnknownFields(self):
+  &#34;&#34;&#34;Returns the UnknownFieldSet.&#34;&#34;&#34;
+  raise NotImplementedError</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.message.Message.WhichOneof"><code class="name flex">
+<span>def <span class="ident">WhichOneof</span></span>(<span>self, oneof_group)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Returns the name of the field that is set inside a oneof group, or
+None if no field is set.
+If no group with the given name exists, ValueError
+will be raised.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def WhichOneof(self, oneof_group):
+  &#34;&#34;&#34;Returns the name of the field that is set inside a oneof group, or
+  None if no field is set.  If no group with the given name exists, ValueError
+  will be raised.&#34;&#34;&#34;
+  raise NotImplementedError</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="google.protobuf" href="index.html">google.protobuf</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="google.protobuf.message.DecodeError" href="#google.protobuf.message.DecodeError">DecodeError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="google.protobuf.message.EncodeError" href="#google.protobuf.message.EncodeError">EncodeError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="google.protobuf.message.Error" href="#google.protobuf.message.Error">Error</a></code></h4>
+</li>
+<li>
+<h4><code><a title="google.protobuf.message.Message" href="#google.protobuf.message.Message">Message</a></code></h4>
+<ul class="">
+<li><code><a title="google.protobuf.message.Message.ByteSize" href="#google.protobuf.message.Message.ByteSize">ByteSize</a></code></li>
+<li><code><a title="google.protobuf.message.Message.Clear" href="#google.protobuf.message.Message.Clear">Clear</a></code></li>
+<li><code><a title="google.protobuf.message.Message.ClearExtension" href="#google.protobuf.message.Message.ClearExtension">ClearExtension</a></code></li>
+<li><code><a title="google.protobuf.message.Message.ClearField" href="#google.protobuf.message.Message.ClearField">ClearField</a></code></li>
+<li><code><a title="google.protobuf.message.Message.CopyFrom" href="#google.protobuf.message.Message.CopyFrom">CopyFrom</a></code></li>
+<li><code><a title="google.protobuf.message.Message.DESCRIPTOR" href="#google.protobuf.message.Message.DESCRIPTOR">DESCRIPTOR</a></code></li>
+<li><code><a title="google.protobuf.message.Message.DiscardUnknownFields" href="#google.protobuf.message.Message.DiscardUnknownFields">DiscardUnknownFields</a></code></li>
+<li><code><a title="google.protobuf.message.Message.HasExtension" href="#google.protobuf.message.Message.HasExtension">HasExtension</a></code></li>
+<li><code><a title="google.protobuf.message.Message.HasField" href="#google.protobuf.message.Message.HasField">HasField</a></code></li>
+<li><code><a title="google.protobuf.message.Message.IsInitialized" href="#google.protobuf.message.Message.IsInitialized">IsInitialized</a></code></li>
+<li><code><a title="google.protobuf.message.Message.ListFields" href="#google.protobuf.message.Message.ListFields">ListFields</a></code></li>
+<li><code><a title="google.protobuf.message.Message.MergeFrom" href="#google.protobuf.message.Message.MergeFrom">MergeFrom</a></code></li>
+<li><code><a title="google.protobuf.message.Message.MergeFromString" href="#google.protobuf.message.Message.MergeFromString">MergeFromString</a></code></li>
+<li><code><a title="google.protobuf.message.Message.ParseFromString" href="#google.protobuf.message.Message.ParseFromString">ParseFromString</a></code></li>
+<li><code><a title="google.protobuf.message.Message.SerializePartialToString" href="#google.protobuf.message.Message.SerializePartialToString">SerializePartialToString</a></code></li>
+<li><code><a title="google.protobuf.message.Message.SerializeToString" href="#google.protobuf.message.Message.SerializeToString">SerializeToString</a></code></li>
+<li><code><a title="google.protobuf.message.Message.SetInParent" href="#google.protobuf.message.Message.SetInParent">SetInParent</a></code></li>
+<li><code><a title="google.protobuf.message.Message.UnknownFields" href="#google.protobuf.message.Message.UnknownFields">UnknownFields</a></code></li>
+<li><code><a title="google.protobuf.message.Message.WhichOneof" href="#google.protobuf.message.Message.WhichOneof">WhichOneof</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.4</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

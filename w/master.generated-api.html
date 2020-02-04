@@ -72,7 +72,7 @@
     <link rel="next" href="master.changelog.html" />
     
     
-    <link rel="prev" href="release-6.3.changelog.html" />
+    <link rel="prev" href="release-7.0.changelog.html" />
     
 
     </head>
@@ -323,12 +323,48 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.5.4" data-path="master.generated-api.html">
+        <li class="chapter " data-level="1.5.4" data-path="release-7.0.generated-api.html">
+            
+                <a href="release-7.0.generated-api.html">
+            
+                    
+                        <b>1.5.4.</b>
+                    
+                    v0.69.x
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.4.1" data-path="release-7.0.changelog.html">
+            
+                <a href="release-7.0.changelog.html">
+            
+                    
+                        <b>1.5.4.1.</b>
+                    
+                    Changelog
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5.5" data-path="master.generated-api.html">
             
                 <a href="master.generated-api.html">
             
                     
-                        <b>1.5.4.</b>
+                        <b>1.5.5.</b>
                     
                     Nightly
             
@@ -339,12 +375,12 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.5.4.1" data-path="master.changelog.html">
+        <li class="chapter " data-level="1.5.5.1" data-path="master.changelog.html">
             
                 <a href="master.changelog.html">
             
                     
-                        <b>1.5.4.1.</b>
+                        <b>1.5.5.1.</b>
                     
                     Changelog
             
@@ -485,9 +521,13 @@
 <li><a href="#objectstoreinfo">ObjectstoreInfo</a></li>
 <li><a href="#ownership">Ownership</a></li>
 <li><a href="#ownershipaccesscontrol">Ownership.AccessControl</a></li>
+<li><a href="#ownershippublicaccesscontrol">Ownership.PublicAccessControl</a></li>
 <li><a href="#replicaplacementspec">ReplicaPlacementSpec</a></li>
 <li><a href="#replicaset">ReplicaSet</a></li>
 <li><a href="#report">Report</a></li>
+<li><a href="#restorevolsnashotschedule">RestoreVolSnashotSchedule</a></li>
+<li><a href="#restorevolstoragepolicy">RestoreVolStoragePolicy</a></li>
+<li><a href="#restorevolumespec">RestoreVolumeSpec</a></li>
 <li><a href="#runtimestatemap">RuntimeStateMap</a></li>
 <li><a href="#runtimestatemapruntimestateentry">RuntimeStateMap.RuntimeStateEntry</a></li>
 <li><a href="#sdkalertsalerttypequery">SdkAlertsAlertTypeQuery</a></li>
@@ -796,6 +836,7 @@
 <li><a href="#operationflags">OperationFlags</a></li>
 <li><a href="#ownershipaccesstype">Ownership.AccessType</a></li>
 <li><a href="#resourcetype">ResourceType</a></li>
+<li><a href="#restoreparambooltype">RestoreParamBoolType</a></li>
 <li><a href="#sdkcloudbackupoptype">SdkCloudBackupOpType</a></li>
 <li><a href="#sdkcloudbackuprequestedstate">SdkCloudBackupRequestedState</a></li>
 <li><a href="#sdkcloudbackupstatustype">SdkCloudBackupStatusType</a></li>
@@ -3031,6 +3072,31 @@ Administrators are users who belong to the group <code>*</code>, meaning, every 
 <td><a href="#ownershipaccesscontrolcollaboratorsentry">map Ownership.AccessControl.CollaboratorsEntry</a></td>
 <td>Collaborator access to resource gives access to other user. Must be the username (unique id) set in the authorization token. The owner or the administrator can set this value. Possible values are: 1. no collaborators: Means no users are given access. 2. <code>[&quot;*&quot;]</code>: All users are allowed. 3. <code>[&quot;username1&quot;, &quot;username2&quot;]</code>: Only certain usernames are allowed. In this example only <em>username1</em> and <em>username2</em> are allowed.</td>
 </tr>
+<tr>
+<td>public</td>
+<td><a href="#ownershippublicaccesscontrol"> Ownership.PublicAccessControl</a></td>
+<td>Public access to resource may be assigned for access by the public userd</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="ownershippublicaccesscontrol">Ownership.PublicAccessControl </h2>
+<p>PublicAccessControl allows assigning public ownership</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="#ownershipaccesstype"> Ownership.AccessType</a></td>
+<td>AccessType declares which level of public access is allowed</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -3119,6 +3185,166 @@ coded - for clustered storage arrays</p>
 <td>files</td>
 <td><a href="#int64"> int64</a></td>
 <td>File count</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="restorevolsnashotschedule">RestoreVolSnashotSchedule </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>schedule</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="restorevolstoragepolicy">RestoreVolStoragePolicy </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>policy</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="restorevolumespec">RestoreVolumeSpec </h2>
+<p>RestoreSpec allows some of the restore volume properties of to be modified
+while restoring the cloud baackup. All pointer fields with nil value will 
+inherit corresponding field value from backup&apos;s spec.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ha_level</td>
+<td><a href="#int64"> int64</a></td>
+<td>HaLevel specifies the number of copies of data.</td>
+</tr>
+<tr>
+<td>cos</td>
+<td><a href="#costype"> CosType</a></td>
+<td>Cos specifies the relative class of service.</td>
+</tr>
+<tr>
+<td>io_profile</td>
+<td><a href="#ioprofile"> IoProfile</a></td>
+<td>IoProfile provides a hint about application using this volume.</td>
+</tr>
+<tr>
+<td>snapshot_interval</td>
+<td><a href="#uint32"> uint32</a></td>
+<td>SnapshotInterval in minutes, set to 0 to disable snapshots</td>
+</tr>
+<tr>
+<td>shared</td>
+<td><a href="#restoreparambooltype"> RestoreParamBoolType</a></td>
+<td>Shared is true if this volume can be concurrently accessed by multiple users.</td>
+</tr>
+<tr>
+<td>replica_set</td>
+<td><a href="#replicaset"> ReplicaSet</a></td>
+<td>ReplicaSet is the desired set of nodes for the volume data.</td>
+</tr>
+<tr>
+<td>aggregation_level</td>
+<td><a href="#uint32"> uint32</a></td>
+<td>Aggregation level Specifies the number of parts the volume can be aggregated from.</td>
+</tr>
+<tr>
+<td>snapshot_schedule</td>
+<td><a href="#restorevolsnashotschedule"> RestoreVolSnashotSchedule</a></td>
+<td>SnapshotSchedule a well known string that specifies when snapshots should be taken.</td>
+</tr>
+<tr>
+<td>sticky</td>
+<td><a href="#restoreparambooltype"> RestoreParamBoolType</a></td>
+<td>Sticky volumes cannot be deleted until the flag is removed.</td>
+</tr>
+<tr>
+<td>group</td>
+<td><a href="#group"> Group</a></td>
+<td>Group identifies a consistency group</td>
+</tr>
+<tr>
+<td>group_enforced</td>
+<td><a href="#bool"> bool</a></td>
+<td>GroupEnforced is true if consistency group creation is enforced.</td>
+</tr>
+<tr>
+<td>journal</td>
+<td><a href="#restoreparambooltype"> RestoreParamBoolType</a></td>
+<td>Journal is true if data for the volume goes into the journal.</td>
+</tr>
+<tr>
+<td>sharedv4</td>
+<td><a href="#restoreparambooltype"> RestoreParamBoolType</a></td>
+<td>Sharedv4 is true if this volume can be accessed via sharedv4.</td>
+</tr>
+<tr>
+<td>queue_depth</td>
+<td><a href="#uint32"> uint32</a></td>
+<td>QueueDepth defines the desired block device queue depth</td>
+</tr>
+<tr>
+<td>nodiscard</td>
+<td><a href="#restoreparambooltype"> RestoreParamBoolType</a></td>
+<td>Nodiscard specifies if the volume will be mounted with discard support disabled. i.e. FS will not release allocated blocks back to the backing storage pool.</td>
+</tr>
+<tr>
+<td>io_strategy</td>
+<td><a href="#iostrategy"> IoStrategy</a></td>
+<td>IoStrategy preferred strategy for I/O.</td>
+</tr>
+<tr>
+<td>placement_strategy</td>
+<td><a href="#volumeplacementstrategy"> VolumePlacementStrategy</a></td>
+<td>PlacementStrategy specifies a spec to indicate where to place the volume.</td>
+</tr>
+<tr>
+<td>storage_policy</td>
+<td><a href="#restorevolstoragepolicy"> RestoreVolStoragePolicy</a></td>
+<td>StoragePolicy if applied/specified while creating volume</td>
+</tr>
+<tr>
+<td>ownership</td>
+<td><a href="#ownership"> Ownership</a></td>
+<td>Ownership</td>
+</tr>
+<tr>
+<td>export_spec</td>
+<td><a href="#exportspec"> ExportSpec</a></td>
+<td>ExportSpec defines how the volume should be exported.</td>
+</tr>
+<tr>
+<td>fp_preference</td>
+<td><a href="#restoreparambooltype"> RestoreParamBoolType</a></td>
+<td>fastpath extensions</td>
 </tr>
 </tbody>
 </table>
@@ -4146,6 +4372,16 @@ a cloud provider</p>
 <td>task_id</td>
 <td><a href="#string"> string</a></td>
 <td>TaskId of the task performing this restore</td>
+</tr>
+<tr>
+<td>spec</td>
+<td><a href="#restorevolumespec"> RestoreVolumeSpec</a></td>
+<td>Modifiable Restore volume spec</td>
+</tr>
+<tr>
+<td>locator</td>
+<td><a href="#volumelocator"> VolumeLocator</a></td>
+<td>RestoreVolume locator</td>
 </tr>
 </tbody>
 </table>
@@ -6354,6 +6590,8 @@ specified volume</p>
 <li>Apis: Is the API name in the service in lowercase</li>
 </ul>
 <p>Values can also be set to <code>*</code>, or start or end with <code>*</code> to allow multiple matches in services or apis.</p>
+<p>Services and APIs can also be denied by prefixing the value with a <code>!</code>. Note that on rule conflicts,
+denial will always be chosen.</p>
 <h3 id="examples">Examples</h3>
 <ul>
 <li>Allow any call:</li>
@@ -6377,6 +6615,13 @@ specified volume</p>
     <span class="token key atrule">Apis</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&quot;*enumerate*&quot;</span><span class="token punctuation">]</span>
   <span class="token punctuation">-</span> <span class="token key atrule">Services</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&quot;*&quot;</span><span class="token punctuation">]</span>
     <span class="token key atrule">Apis</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&quot;inspect*&quot;</span><span class="token punctuation">]</span>
+</code></pre>
+<ul>
+<li>Allow all volume call except create</li>
+</ul>
+<pre class="language-"><code class="lang-yaml"><span class="token key atrule">SdkRule</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">Services</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&quot;volumes&quot;</span><span class="token punctuation">]</span>
+    <span class="token key atrule">Apis</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&quot;*&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;!create&quot;</span><span class="token punctuation">]</span>
 </code></pre>
 <table>
 <thead>
@@ -10548,6 +10793,16 @@ OpenStorageFilesystemTrim service APIs()</p>
 <td>5</td>
 <td>none</td>
 </tr>
+<tr>
+<td>IO_PROFILE_AUTO</td>
+<td>6</td>
+<td>none</td>
+</tr>
+<tr>
+<td>IO_PROFILE_BKUPSRC</td>
+<td>7</td>
+<td>IO_PROFILE_BKUPSRC inherits cloudbackup&apos;s IOprofile</td>
+</tr>
 </tbody>
 </table>
 <h2 id="labelselectorrequirementoperator">LabelSelectorRequirement.Operator </h2>
@@ -10689,6 +10944,33 @@ used for.</p>
 <tr>
 <td>RESOURCE_TYPE_POOL</td>
 <td>5</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<h2 id="restoreparambooltype">RestoreParamBoolType </h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PARAM_BKUPSRC</td>
+<td>0</td>
+<td>Default: whateever was cloudbakup&apos;s option for the parameter</td>
+</tr>
+<tr>
+<td>PARAM_FALSE</td>
+<td>1</td>
+<td>none</td>
+</tr>
+<tr>
+<td>PARAM_TRUE</td>
+<td>2</td>
 <td>none</td>
 </tr>
 </tbody>
@@ -11051,7 +11333,7 @@ client and server applications</p>
 </tr>
 <tr>
 <td>Minor</td>
-<td>69</td>
+<td>73</td>
 <td>SDK version minor value of this specification</td>
 </tr>
 <tr>
@@ -11511,7 +11793,7 @@ client and server applications</p>
 
             
                 
-                <a href="release-6.3.changelog.html" class="navigation navigation-prev " aria-label="Previous page: Changelog">
+                <a href="release-7.0.changelog.html" class="navigation navigation-prev " aria-label="Previous page: Changelog">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -11527,7 +11809,7 @@ client and server applications</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Nightly","level":"1.5.4","depth":2,"next":{"title":"Changelog","level":"1.5.4.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.3.1","depth":3,"path":"release-6.3.changelog.md","ref":"release-6.3.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"master.generated-api.md","mtime":"2020-01-09T16:57:42.656Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-09T16:57:46.792Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Nightly","level":"1.5.5","depth":2,"next":{"title":"Changelog","level":"1.5.5.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.4.1","depth":3,"path":"release-7.0.changelog.md","ref":"release-7.0.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"master.generated-api.md","mtime":"2020-02-04T20:34:47.593Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-04T20:34:53.018Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

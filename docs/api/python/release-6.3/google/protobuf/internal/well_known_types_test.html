@@ -1,0 +1,3550 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.4" />
+<title>google.protobuf.internal.well_known_types_test API documentation</title>
+<meta name="description" content="Test for google.protobuf.internal.well_known_types." />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>google.protobuf.internal.well_known_types_test</code></h1>
+</header>
+<section id="section-intro">
+<p>Test for google.protobuf.internal.well_known_types.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">#! /usr/bin/env python
+#
+# Protocol Buffers - Google&#39;s data interchange format
+# Copyright 2008 Google Inc.  All rights reserved.
+# https://developers.google.com/protocol-buffers/
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are
+# met:
+#
+#     * Redistributions of source code must retain the above copyright
+# notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above
+# copyright notice, this list of conditions and the following disclaimer
+# in the documentation and/or other materials provided with the
+# distribution.
+#     * Neither the name of Google Inc. nor the names of its
+# contributors may be used to endorse or promote products derived from
+# this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+# &#34;AS IS&#34; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+# LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+# A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+# OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+# SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+# LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+# DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+# THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+&#34;&#34;&#34;Test for google.protobuf.internal.well_known_types.&#34;&#34;&#34;
+
+__author__ = &#39;jieluo@google.com (Jie Luo)&#39;
+
+import datetime
+
+try:
+  # Since python 3
+  import collections.abc as collections_abc
+except ImportError:
+  # Won&#39;t work after python 3.8
+  import collections as collections_abc
+
+try:
+  import unittest2 as unittest  #PY26
+except ImportError:
+  import unittest
+
+from google.protobuf import any_pb2
+from google.protobuf import duration_pb2
+from google.protobuf import field_mask_pb2
+from google.protobuf import struct_pb2
+from google.protobuf import timestamp_pb2
+from google.protobuf import map_unittest_pb2
+from google.protobuf import unittest_pb2
+from google.protobuf.internal import any_test_pb2
+from google.protobuf.internal import test_util
+from google.protobuf.internal import well_known_types
+from google.protobuf import descriptor
+from google.protobuf import text_format
+
+
+class TimeUtilTestBase(unittest.TestCase):
+
+  def CheckTimestampConversion(self, message, text):
+    self.assertEqual(text, message.ToJsonString())
+    parsed_message = timestamp_pb2.Timestamp()
+    parsed_message.FromJsonString(text)
+    self.assertEqual(message, parsed_message)
+
+  def CheckDurationConversion(self, message, text):
+    self.assertEqual(text, message.ToJsonString())
+    parsed_message = duration_pb2.Duration()
+    parsed_message.FromJsonString(text)
+    self.assertEqual(message, parsed_message)
+
+
+class TimeUtilTest(TimeUtilTestBase):
+
+  def testTimestampSerializeAndParse(self):
+    message = timestamp_pb2.Timestamp()
+    # Generated output should contain 3, 6, or 9 fractional digits.
+    message.seconds = 0
+    message.nanos = 0
+    self.CheckTimestampConversion(message, &#39;1970-01-01T00:00:00Z&#39;)
+    message.nanos = 10000000
+    self.CheckTimestampConversion(message, &#39;1970-01-01T00:00:00.010Z&#39;)
+    message.nanos = 10000
+    self.CheckTimestampConversion(message, &#39;1970-01-01T00:00:00.000010Z&#39;)
+    message.nanos = 10
+    self.CheckTimestampConversion(message, &#39;1970-01-01T00:00:00.000000010Z&#39;)
+    # Test min timestamps.
+    message.seconds = -62135596800
+    message.nanos = 0
+    self.CheckTimestampConversion(message, &#39;0001-01-01T00:00:00Z&#39;)
+    # Test max timestamps.
+    message.seconds = 253402300799
+    message.nanos = 999999999
+    self.CheckTimestampConversion(message, &#39;9999-12-31T23:59:59.999999999Z&#39;)
+    # Test negative timestamps.
+    message.seconds = -1
+    self.CheckTimestampConversion(message, &#39;1969-12-31T23:59:59.999999999Z&#39;)
+
+    # Parsing accepts an fractional digits as long as they fit into nano
+    # precision.
+    message.FromJsonString(&#39;1970-01-01T00:00:00.1Z&#39;)
+    self.assertEqual(0, message.seconds)
+    self.assertEqual(100000000, message.nanos)
+    # Parsing accepts offsets.
+    message.FromJsonString(&#39;1970-01-01T00:00:00-08:00&#39;)
+    self.assertEqual(8 * 3600, message.seconds)
+    self.assertEqual(0, message.nanos)
+
+    # It is not easy to check with current time. For test coverage only.
+    message.GetCurrentTime()
+    self.assertNotEqual(8 * 3600, message.seconds)
+
+  def testDurationSerializeAndParse(self):
+    message = duration_pb2.Duration()
+    # Generated output should contain 3, 6, or 9 fractional digits.
+    message.seconds = 0
+    message.nanos = 0
+    self.CheckDurationConversion(message, &#39;0s&#39;)
+    message.nanos = 10000000
+    self.CheckDurationConversion(message, &#39;0.010s&#39;)
+    message.nanos = 10000
+    self.CheckDurationConversion(message, &#39;0.000010s&#39;)
+    message.nanos = 10
+    self.CheckDurationConversion(message, &#39;0.000000010s&#39;)
+
+    # Test min and max
+    message.seconds = 315576000000
+    message.nanos = 999999999
+    self.CheckDurationConversion(message, &#39;315576000000.999999999s&#39;)
+    message.seconds = -315576000000
+    message.nanos = -999999999
+    self.CheckDurationConversion(message, &#39;-315576000000.999999999s&#39;)
+
+    # Parsing accepts an fractional digits as long as they fit into nano
+    # precision.
+    message.FromJsonString(&#39;0.1s&#39;)
+    self.assertEqual(100000000, message.nanos)
+    message.FromJsonString(&#39;0.0000001s&#39;)
+    self.assertEqual(100, message.nanos)
+
+  def testTimestampIntegerConversion(self):
+    message = timestamp_pb2.Timestamp()
+    message.FromNanoseconds(1)
+    self.assertEqual(&#39;1970-01-01T00:00:00.000000001Z&#39;,
+                     message.ToJsonString())
+    self.assertEqual(1, message.ToNanoseconds())
+
+    message.FromNanoseconds(-1)
+    self.assertEqual(&#39;1969-12-31T23:59:59.999999999Z&#39;,
+                     message.ToJsonString())
+    self.assertEqual(-1, message.ToNanoseconds())
+
+    message.FromMicroseconds(1)
+    self.assertEqual(&#39;1970-01-01T00:00:00.000001Z&#39;,
+                     message.ToJsonString())
+    self.assertEqual(1, message.ToMicroseconds())
+
+    message.FromMicroseconds(-1)
+    self.assertEqual(&#39;1969-12-31T23:59:59.999999Z&#39;,
+                     message.ToJsonString())
+    self.assertEqual(-1, message.ToMicroseconds())
+
+    message.FromMilliseconds(1)
+    self.assertEqual(&#39;1970-01-01T00:00:00.001Z&#39;,
+                     message.ToJsonString())
+    self.assertEqual(1, message.ToMilliseconds())
+
+    message.FromMilliseconds(-1)
+    self.assertEqual(&#39;1969-12-31T23:59:59.999Z&#39;,
+                     message.ToJsonString())
+    self.assertEqual(-1, message.ToMilliseconds())
+
+    message.FromSeconds(1)
+    self.assertEqual(&#39;1970-01-01T00:00:01Z&#39;,
+                     message.ToJsonString())
+    self.assertEqual(1, message.ToSeconds())
+
+    message.FromSeconds(-1)
+    self.assertEqual(&#39;1969-12-31T23:59:59Z&#39;,
+                     message.ToJsonString())
+    self.assertEqual(-1, message.ToSeconds())
+
+    message.FromNanoseconds(1999)
+    self.assertEqual(1, message.ToMicroseconds())
+    # For negative values, Timestamp will be rounded down.
+    # For example, &#34;1969-12-31T23:59:59.5Z&#34; (i.e., -0.5s) rounded to seconds
+    # will be &#34;1969-12-31T23:59:59Z&#34; (i.e., -1s) rather than
+    # &#34;1970-01-01T00:00:00Z&#34; (i.e., 0s).
+    message.FromNanoseconds(-1999)
+    self.assertEqual(-2, message.ToMicroseconds())
+
+  def testDurationIntegerConversion(self):
+    message = duration_pb2.Duration()
+    message.FromNanoseconds(1)
+    self.assertEqual(&#39;0.000000001s&#39;,
+                     message.ToJsonString())
+    self.assertEqual(1, message.ToNanoseconds())
+
+    message.FromNanoseconds(-1)
+    self.assertEqual(&#39;-0.000000001s&#39;,
+                     message.ToJsonString())
+    self.assertEqual(-1, message.ToNanoseconds())
+
+    message.FromMicroseconds(1)
+    self.assertEqual(&#39;0.000001s&#39;,
+                     message.ToJsonString())
+    self.assertEqual(1, message.ToMicroseconds())
+
+    message.FromMicroseconds(-1)
+    self.assertEqual(&#39;-0.000001s&#39;,
+                     message.ToJsonString())
+    self.assertEqual(-1, message.ToMicroseconds())
+
+    message.FromMilliseconds(1)
+    self.assertEqual(&#39;0.001s&#39;,
+                     message.ToJsonString())
+    self.assertEqual(1, message.ToMilliseconds())
+
+    message.FromMilliseconds(-1)
+    self.assertEqual(&#39;-0.001s&#39;,
+                     message.ToJsonString())
+    self.assertEqual(-1, message.ToMilliseconds())
+
+    message.FromSeconds(1)
+    self.assertEqual(&#39;1s&#39;, message.ToJsonString())
+    self.assertEqual(1, message.ToSeconds())
+
+    message.FromSeconds(-1)
+    self.assertEqual(&#39;-1s&#39;,
+                     message.ToJsonString())
+    self.assertEqual(-1, message.ToSeconds())
+
+    # Test truncation behavior.
+    message.FromNanoseconds(1999)
+    self.assertEqual(1, message.ToMicroseconds())
+
+    # For negative values, Duration will be rounded towards 0.
+    message.FromNanoseconds(-1999)
+    self.assertEqual(-1, message.ToMicroseconds())
+
+  def testDatetimeConverison(self):
+    message = timestamp_pb2.Timestamp()
+    dt = datetime.datetime(1970, 1, 1)
+    message.FromDatetime(dt)
+    self.assertEqual(dt, message.ToDatetime())
+
+    message.FromMilliseconds(1999)
+    self.assertEqual(datetime.datetime(1970, 1, 1, 0, 0, 1, 999000),
+                     message.ToDatetime())
+
+    dt = datetime.datetime(2555, 2, 22, 1, 2, 3, 456789)
+    message.FromDatetime(dt)
+    self.assertEqual(dt, message.ToDatetime())
+
+    dt = datetime.datetime.max
+    message.FromDatetime(dt)
+    self.assertEqual(dt, message.ToDatetime())
+
+  def testDatetimeConversionWithTimezone(self):
+    class TZ(datetime.tzinfo):
+
+      def utcoffset(self, _):
+        return datetime.timedelta(hours=1)
+
+      def dst(self, _):
+        return datetime.timedelta(0)
+
+      def tzname(self, _):
+        return &#39;UTC+1&#39;
+
+    message1 = timestamp_pb2.Timestamp()
+    dt = datetime.datetime(1970, 1, 1, 1, tzinfo=TZ())
+    message1.FromDatetime(dt)
+    message2 = timestamp_pb2.Timestamp()
+    dt = datetime.datetime(1970, 1, 1, 0)
+    message2.FromDatetime(dt)
+    self.assertEqual(message1, message2)
+
+  def testTimedeltaConversion(self):
+    message = duration_pb2.Duration()
+    message.FromNanoseconds(1999999999)
+    td = message.ToTimedelta()
+    self.assertEqual(1, td.seconds)
+    self.assertEqual(999999, td.microseconds)
+
+    message.FromNanoseconds(-1999999999)
+    td = message.ToTimedelta()
+    self.assertEqual(-1, td.days)
+    self.assertEqual(86398, td.seconds)
+    self.assertEqual(1, td.microseconds)
+
+    message.FromMicroseconds(-1)
+    td = message.ToTimedelta()
+    self.assertEqual(-1, td.days)
+    self.assertEqual(86399, td.seconds)
+    self.assertEqual(999999, td.microseconds)
+    converted_message = duration_pb2.Duration()
+    converted_message.FromTimedelta(td)
+    self.assertEqual(message, converted_message)
+
+  def testInvalidTimestamp(self):
+    message = timestamp_pb2.Timestamp()
+    self.assertRaisesRegexp(
+        ValueError,
+        &#39;Failed to parse timestamp: missing valid timezone offset.&#39;,
+        message.FromJsonString,
+        &#39;&#39;)
+    self.assertRaisesRegexp(
+        ValueError,
+        &#39;Failed to parse timestamp: invalid trailing data &#39;
+        &#39;1970-01-01T00:00:01Ztrail.&#39;,
+        message.FromJsonString,
+        &#39;1970-01-01T00:00:01Ztrail&#39;)
+    self.assertRaisesRegexp(
+        ValueError,
+        &#39;time data \&#39;10000-01-01T00:00:00\&#39; does not match&#39;
+        &#39; format \&#39;%Y-%m-%dT%H:%M:%S\&#39;&#39;,
+        message.FromJsonString, &#39;10000-01-01T00:00:00.00Z&#39;)
+    self.assertRaisesRegexp(
+        ValueError,
+        &#39;nanos 0123456789012 more than 9 fractional digits.&#39;,
+        message.FromJsonString,
+        &#39;1970-01-01T00:00:00.0123456789012Z&#39;)
+    self.assertRaisesRegexp(
+        ValueError,
+        (r&#39;Invalid timezone offset value: \+08.&#39;),
+        message.FromJsonString,
+        &#39;1972-01-01T01:00:00.01+08&#39;,)
+    self.assertRaisesRegexp(
+        ValueError,
+        &#39;year (0 )?is out of range&#39;,
+        message.FromJsonString,
+        &#39;0000-01-01T00:00:00Z&#39;)
+    message.seconds = 253402300800
+    self.assertRaisesRegexp(
+        OverflowError,
+        &#39;date value out of range&#39;,
+        message.ToJsonString)
+
+  def testInvalidDuration(self):
+    message = duration_pb2.Duration()
+    self.assertRaisesRegexp(
+        ValueError,
+        &#39;Duration must end with letter &#34;s&#34;: 1.&#39;,
+        message.FromJsonString, &#39;1&#39;)
+    self.assertRaisesRegexp(
+        ValueError,
+        &#39;Couldn\&#39;t parse duration: 1...2s.&#39;,
+        message.FromJsonString, &#39;1...2s&#39;)
+    text = &#39;-315576000001.000000000s&#39;
+    self.assertRaisesRegexp(
+        ValueError,
+        r&#39;Duration is not valid\: Seconds -315576000001 must be in range&#39;
+        r&#39; \[-315576000000\, 315576000000\].&#39;,
+        message.FromJsonString, text)
+    text = &#39;315576000001.000000000s&#39;
+    self.assertRaisesRegexp(
+        ValueError,
+        r&#39;Duration is not valid\: Seconds 315576000001 must be in range&#39;
+        r&#39; \[-315576000000\, 315576000000\].&#39;,
+        message.FromJsonString, text)
+    message.seconds = -315576000001
+    message.nanos = 0
+    self.assertRaisesRegexp(
+        ValueError,
+        r&#39;Duration is not valid\: Seconds -315576000001 must be in range&#39;
+        r&#39; \[-315576000000\, 315576000000\].&#39;,
+        message.ToJsonString)
+    message.seconds = 0
+    message.nanos = 999999999 + 1
+    self.assertRaisesRegexp(
+        ValueError,
+        r&#39;Duration is not valid\: Nanos 1000000000 must be in range&#39;
+        r&#39; \[-999999999\, 999999999\].&#39;,
+        message.ToJsonString)
+    message.seconds = -1
+    message.nanos = 1
+    self.assertRaisesRegexp(
+        ValueError,
+        r&#39;Duration is not valid\: Sign mismatch.&#39;,
+        message.ToJsonString)
+
+
+class FieldMaskTest(unittest.TestCase):
+
+  def testStringFormat(self):
+    mask = field_mask_pb2.FieldMask()
+    self.assertEqual(&#39;&#39;, mask.ToJsonString())
+    mask.paths.append(&#39;foo&#39;)
+    self.assertEqual(&#39;foo&#39;, mask.ToJsonString())
+    mask.paths.append(&#39;bar&#39;)
+    self.assertEqual(&#39;foo,bar&#39;, mask.ToJsonString())
+
+    mask.FromJsonString(&#39;&#39;)
+    self.assertEqual(&#39;&#39;, mask.ToJsonString())
+    mask.FromJsonString(&#39;foo&#39;)
+    self.assertEqual([&#39;foo&#39;], mask.paths)
+    mask.FromJsonString(&#39;foo,bar&#39;)
+    self.assertEqual([&#39;foo&#39;, &#39;bar&#39;], mask.paths)
+
+    # Test camel case
+    mask.Clear()
+    mask.paths.append(&#39;foo_bar&#39;)
+    self.assertEqual(&#39;fooBar&#39;, mask.ToJsonString())
+    mask.paths.append(&#39;bar_quz&#39;)
+    self.assertEqual(&#39;fooBar,barQuz&#39;, mask.ToJsonString())
+
+    mask.FromJsonString(&#39;&#39;)
+    self.assertEqual(&#39;&#39;, mask.ToJsonString())
+    self.assertEqual([], mask.paths)
+    mask.FromJsonString(&#39;fooBar&#39;)
+    self.assertEqual([&#39;foo_bar&#39;], mask.paths)
+    mask.FromJsonString(&#39;fooBar,barQuz&#39;)
+    self.assertEqual([&#39;foo_bar&#39;, &#39;bar_quz&#39;], mask.paths)
+
+  def testDescriptorToFieldMask(self):
+    mask = field_mask_pb2.FieldMask()
+    msg_descriptor = unittest_pb2.TestAllTypes.DESCRIPTOR
+    mask.AllFieldsFromDescriptor(msg_descriptor)
+    self.assertEqual(75, len(mask.paths))
+    self.assertTrue(mask.IsValidForDescriptor(msg_descriptor))
+    for field in msg_descriptor.fields:
+      self.assertTrue(field.name in mask.paths)
+
+  def testIsValidForDescriptor(self):
+    msg_descriptor = unittest_pb2.TestAllTypes.DESCRIPTOR
+    # Empty mask
+    mask = field_mask_pb2.FieldMask()
+    self.assertTrue(mask.IsValidForDescriptor(msg_descriptor))
+    # All fields from descriptor
+    mask.AllFieldsFromDescriptor(msg_descriptor)
+    self.assertTrue(mask.IsValidForDescriptor(msg_descriptor))
+    # Child under optional message
+    mask.paths.append(&#39;optional_nested_message.bb&#39;)
+    self.assertTrue(mask.IsValidForDescriptor(msg_descriptor))
+    # Repeated field is only allowed in the last position of path
+    mask.paths.append(&#39;repeated_nested_message.bb&#39;)
+    self.assertFalse(mask.IsValidForDescriptor(msg_descriptor))
+    # Invalid top level field
+    mask = field_mask_pb2.FieldMask()
+    mask.paths.append(&#39;xxx&#39;)
+    self.assertFalse(mask.IsValidForDescriptor(msg_descriptor))
+    # Invalid field in root
+    mask = field_mask_pb2.FieldMask()
+    mask.paths.append(&#39;xxx.zzz&#39;)
+    self.assertFalse(mask.IsValidForDescriptor(msg_descriptor))
+    # Invalid field in internal node
+    mask = field_mask_pb2.FieldMask()
+    mask.paths.append(&#39;optional_nested_message.xxx.zzz&#39;)
+    self.assertFalse(mask.IsValidForDescriptor(msg_descriptor))
+    # Invalid field in leaf
+    mask = field_mask_pb2.FieldMask()
+    mask.paths.append(&#39;optional_nested_message.xxx&#39;)
+    self.assertFalse(mask.IsValidForDescriptor(msg_descriptor))
+
+  def testCanonicalFrom(self):
+    mask = field_mask_pb2.FieldMask()
+    out_mask = field_mask_pb2.FieldMask()
+    # Paths will be sorted.
+    mask.FromJsonString(&#39;baz.quz,bar,foo&#39;)
+    out_mask.CanonicalFormFromMask(mask)
+    self.assertEqual(&#39;bar,baz.quz,foo&#39;, out_mask.ToJsonString())
+    # Duplicated paths will be removed.
+    mask.FromJsonString(&#39;foo,bar,foo&#39;)
+    out_mask.CanonicalFormFromMask(mask)
+    self.assertEqual(&#39;bar,foo&#39;, out_mask.ToJsonString())
+    # Sub-paths of other paths will be removed.
+    mask.FromJsonString(&#39;foo.b1,bar.b1,foo.b2,bar&#39;)
+    out_mask.CanonicalFormFromMask(mask)
+    self.assertEqual(&#39;bar,foo.b1,foo.b2&#39;, out_mask.ToJsonString())
+
+    # Test more deeply nested cases.
+    mask.FromJsonString(
+        &#39;foo.bar.baz1,foo.bar.baz2.quz,foo.bar.baz2&#39;)
+    out_mask.CanonicalFormFromMask(mask)
+    self.assertEqual(&#39;foo.bar.baz1,foo.bar.baz2&#39;,
+                     out_mask.ToJsonString())
+    mask.FromJsonString(
+        &#39;foo.bar.baz1,foo.bar.baz2,foo.bar.baz2.quz&#39;)
+    out_mask.CanonicalFormFromMask(mask)
+    self.assertEqual(&#39;foo.bar.baz1,foo.bar.baz2&#39;,
+                     out_mask.ToJsonString())
+    mask.FromJsonString(
+        &#39;foo.bar.baz1,foo.bar.baz2,foo.bar.baz2.quz,foo.bar&#39;)
+    out_mask.CanonicalFormFromMask(mask)
+    self.assertEqual(&#39;foo.bar&#39;, out_mask.ToJsonString())
+    mask.FromJsonString(
+        &#39;foo.bar.baz1,foo.bar.baz2,foo.bar.baz2.quz,foo&#39;)
+    out_mask.CanonicalFormFromMask(mask)
+    self.assertEqual(&#39;foo&#39;, out_mask.ToJsonString())
+
+  def testUnion(self):
+    mask1 = field_mask_pb2.FieldMask()
+    mask2 = field_mask_pb2.FieldMask()
+    out_mask = field_mask_pb2.FieldMask()
+    mask1.FromJsonString(&#39;foo,baz&#39;)
+    mask2.FromJsonString(&#39;bar,quz&#39;)
+    out_mask.Union(mask1, mask2)
+    self.assertEqual(&#39;bar,baz,foo,quz&#39;, out_mask.ToJsonString())
+    # Overlap with duplicated paths.
+    mask1.FromJsonString(&#39;foo,baz.bb&#39;)
+    mask2.FromJsonString(&#39;baz.bb,quz&#39;)
+    out_mask.Union(mask1, mask2)
+    self.assertEqual(&#39;baz.bb,foo,quz&#39;, out_mask.ToJsonString())
+    # Overlap with paths covering some other paths.
+    mask1.FromJsonString(&#39;foo.bar.baz,quz&#39;)
+    mask2.FromJsonString(&#39;foo.bar,bar&#39;)
+    out_mask.Union(mask1, mask2)
+    self.assertEqual(&#39;bar,foo.bar,quz&#39;, out_mask.ToJsonString())
+    src = unittest_pb2.TestAllTypes()
+    with self.assertRaises(ValueError):
+      out_mask.Union(src, mask2)
+
+  def testIntersect(self):
+    mask1 = field_mask_pb2.FieldMask()
+    mask2 = field_mask_pb2.FieldMask()
+    out_mask = field_mask_pb2.FieldMask()
+    # Test cases without overlapping.
+    mask1.FromJsonString(&#39;foo,baz&#39;)
+    mask2.FromJsonString(&#39;bar,quz&#39;)
+    out_mask.Intersect(mask1, mask2)
+    self.assertEqual(&#39;&#39;, out_mask.ToJsonString())
+    self.assertEqual(len(out_mask.paths), 0)
+    self.assertEqual(out_mask.paths, [])
+    # Overlap with duplicated paths.
+    mask1.FromJsonString(&#39;foo,baz.bb&#39;)
+    mask2.FromJsonString(&#39;baz.bb,quz&#39;)
+    out_mask.Intersect(mask1, mask2)
+    self.assertEqual(&#39;baz.bb&#39;, out_mask.ToJsonString())
+    # Overlap with paths covering some other paths.
+    mask1.FromJsonString(&#39;foo.bar.baz,quz&#39;)
+    mask2.FromJsonString(&#39;foo.bar,bar&#39;)
+    out_mask.Intersect(mask1, mask2)
+    self.assertEqual(&#39;foo.bar.baz&#39;, out_mask.ToJsonString())
+    mask1.FromJsonString(&#39;foo.bar,bar&#39;)
+    mask2.FromJsonString(&#39;foo.bar.baz,quz&#39;)
+    out_mask.Intersect(mask1, mask2)
+    self.assertEqual(&#39;foo.bar.baz&#39;, out_mask.ToJsonString())
+    # Intersect &#39;&#39; with &#39;&#39;
+    mask1.Clear()
+    mask2.Clear()
+    mask1.paths.append(&#39;&#39;)
+    mask2.paths.append(&#39;&#39;)
+    self.assertEqual(mask1.paths, [&#39;&#39;])
+    self.assertEqual(&#39;&#39;, mask1.ToJsonString())
+    out_mask.Intersect(mask1, mask2)
+    self.assertEqual(out_mask.paths, [])
+
+  def testMergeMessageWithoutMapFields(self):
+    # Test merge one field.
+    src = unittest_pb2.TestAllTypes()
+    test_util.SetAllFields(src)
+    for field in src.DESCRIPTOR.fields:
+      if field.containing_oneof:
+        continue
+      field_name = field.name
+      dst = unittest_pb2.TestAllTypes()
+      # Only set one path to mask.
+      mask = field_mask_pb2.FieldMask()
+      mask.paths.append(field_name)
+      mask.MergeMessage(src, dst)
+      # The expected result message.
+      msg = unittest_pb2.TestAllTypes()
+      if field.label == descriptor.FieldDescriptor.LABEL_REPEATED:
+        repeated_src = getattr(src, field_name)
+        repeated_msg = getattr(msg, field_name)
+        if field.cpp_type == descriptor.FieldDescriptor.CPPTYPE_MESSAGE:
+          for item in repeated_src:
+            repeated_msg.add().CopyFrom(item)
+        else:
+          repeated_msg.extend(repeated_src)
+      elif field.cpp_type == descriptor.FieldDescriptor.CPPTYPE_MESSAGE:
+        getattr(msg, field_name).CopyFrom(getattr(src, field_name))
+      else:
+        setattr(msg, field_name, getattr(src, field_name))
+      # Only field specified in mask is merged.
+      self.assertEqual(msg, dst)
+
+    # Test merge nested fields.
+    nested_src = unittest_pb2.NestedTestAllTypes()
+    nested_dst = unittest_pb2.NestedTestAllTypes()
+    nested_src.child.payload.optional_int32 = 1234
+    nested_src.child.child.payload.optional_int32 = 5678
+    mask = field_mask_pb2.FieldMask()
+    mask.FromJsonString(&#39;child.payload&#39;)
+    mask.MergeMessage(nested_src, nested_dst)
+    self.assertEqual(1234, nested_dst.child.payload.optional_int32)
+    self.assertEqual(0, nested_dst.child.child.payload.optional_int32)
+
+    mask.FromJsonString(&#39;child.child.payload&#39;)
+    mask.MergeMessage(nested_src, nested_dst)
+    self.assertEqual(1234, nested_dst.child.payload.optional_int32)
+    self.assertEqual(5678, nested_dst.child.child.payload.optional_int32)
+
+    nested_dst.Clear()
+    mask.FromJsonString(&#39;child.child.payload&#39;)
+    mask.MergeMessage(nested_src, nested_dst)
+    self.assertEqual(0, nested_dst.child.payload.optional_int32)
+    self.assertEqual(5678, nested_dst.child.child.payload.optional_int32)
+
+    nested_dst.Clear()
+    mask.FromJsonString(&#39;child&#39;)
+    mask.MergeMessage(nested_src, nested_dst)
+    self.assertEqual(1234, nested_dst.child.payload.optional_int32)
+    self.assertEqual(5678, nested_dst.child.child.payload.optional_int32)
+
+    # Test MergeOptions.
+    nested_dst.Clear()
+    nested_dst.child.payload.optional_int64 = 4321
+    # Message fields will be merged by default.
+    mask.FromJsonString(&#39;child.payload&#39;)
+    mask.MergeMessage(nested_src, nested_dst)
+    self.assertEqual(1234, nested_dst.child.payload.optional_int32)
+    self.assertEqual(4321, nested_dst.child.payload.optional_int64)
+    # Change the behavior to replace message fields.
+    mask.FromJsonString(&#39;child.payload&#39;)
+    mask.MergeMessage(nested_src, nested_dst, True, False)
+    self.assertEqual(1234, nested_dst.child.payload.optional_int32)
+    self.assertEqual(0, nested_dst.child.payload.optional_int64)
+
+    # By default, fields missing in source are not cleared in destination.
+    nested_dst.payload.optional_int32 = 1234
+    self.assertTrue(nested_dst.HasField(&#39;payload&#39;))
+    mask.FromJsonString(&#39;payload&#39;)
+    mask.MergeMessage(nested_src, nested_dst)
+    self.assertTrue(nested_dst.HasField(&#39;payload&#39;))
+    # But they are cleared when replacing message fields.
+    nested_dst.Clear()
+    nested_dst.payload.optional_int32 = 1234
+    mask.FromJsonString(&#39;payload&#39;)
+    mask.MergeMessage(nested_src, nested_dst, True, False)
+    self.assertFalse(nested_dst.HasField(&#39;payload&#39;))
+
+    nested_src.payload.repeated_int32.append(1234)
+    nested_dst.payload.repeated_int32.append(5678)
+    # Repeated fields will be appended by default.
+    mask.FromJsonString(&#39;payload.repeatedInt32&#39;)
+    mask.MergeMessage(nested_src, nested_dst)
+    self.assertEqual(2, len(nested_dst.payload.repeated_int32))
+    self.assertEqual(5678, nested_dst.payload.repeated_int32[0])
+    self.assertEqual(1234, nested_dst.payload.repeated_int32[1])
+    # Change the behavior to replace repeated fields.
+    mask.FromJsonString(&#39;payload.repeatedInt32&#39;)
+    mask.MergeMessage(nested_src, nested_dst, False, True)
+    self.assertEqual(1, len(nested_dst.payload.repeated_int32))
+    self.assertEqual(1234, nested_dst.payload.repeated_int32[0])
+
+    # Test Merge oneof field.
+    new_msg = unittest_pb2.TestOneof2()
+    dst = unittest_pb2.TestOneof2()
+    dst.foo_message.qux_int = 1
+    mask = field_mask_pb2.FieldMask()
+    mask.FromJsonString(&#39;fooMessage,fooLazyMessage.quxInt&#39;)
+    mask.MergeMessage(new_msg, dst)
+    self.assertTrue(dst.HasField(&#39;foo_message&#39;))
+    self.assertFalse(dst.HasField(&#39;foo_lazy_message&#39;))
+
+  def testMergeMessageWithMapField(self):
+    empty_map = map_unittest_pb2.TestRecursiveMapMessage()
+    src_level_2 = map_unittest_pb2.TestRecursiveMapMessage()
+    src_level_2.a[&#39;src level 2&#39;].CopyFrom(empty_map)
+    src = map_unittest_pb2.TestRecursiveMapMessage()
+    src.a[&#39;common key&#39;].CopyFrom(src_level_2)
+    src.a[&#39;src level 1&#39;].CopyFrom(src_level_2)
+
+    dst_level_2 = map_unittest_pb2.TestRecursiveMapMessage()
+    dst_level_2.a[&#39;dst level 2&#39;].CopyFrom(empty_map)
+    dst = map_unittest_pb2.TestRecursiveMapMessage()
+    dst.a[&#39;common key&#39;].CopyFrom(dst_level_2)
+    dst.a[&#39;dst level 1&#39;].CopyFrom(empty_map)
+
+    mask = field_mask_pb2.FieldMask()
+    mask.FromJsonString(&#39;a&#39;)
+    mask.MergeMessage(src, dst)
+
+    # map from dst is replaced with map from src.
+    self.assertEqual(dst.a[&#39;common key&#39;], src_level_2)
+    self.assertEqual(dst.a[&#39;src level 1&#39;], src_level_2)
+    self.assertEqual(dst.a[&#39;dst level 1&#39;], empty_map)
+
+  def testMergeErrors(self):
+    src = unittest_pb2.TestAllTypes()
+    dst = unittest_pb2.TestAllTypes()
+    mask = field_mask_pb2.FieldMask()
+    test_util.SetAllFields(src)
+    mask.FromJsonString(&#39;optionalInt32.field&#39;)
+    with self.assertRaises(ValueError) as e:
+      mask.MergeMessage(src, dst)
+    self.assertEqual(&#39;Error: Field optional_int32 in message &#39;
+                     &#39;protobuf_unittest.TestAllTypes is not a singular &#39;
+                     &#39;message field and cannot have sub-fields.&#39;,
+                     str(e.exception))
+
+  def testSnakeCaseToCamelCase(self):
+    self.assertEqual(&#39;fooBar&#39;,
+                     well_known_types._SnakeCaseToCamelCase(&#39;foo_bar&#39;))
+    self.assertEqual(&#39;FooBar&#39;,
+                     well_known_types._SnakeCaseToCamelCase(&#39;_foo_bar&#39;))
+    self.assertEqual(&#39;foo3Bar&#39;,
+                     well_known_types._SnakeCaseToCamelCase(&#39;foo3_bar&#39;))
+
+    # No uppercase letter is allowed.
+    self.assertRaisesRegexp(
+        ValueError,
+        &#39;Fail to print FieldMask to Json string: Path name Foo must &#39;
+        &#39;not contain uppercase letters.&#39;,
+        well_known_types._SnakeCaseToCamelCase,
+        &#39;Foo&#39;)
+    # Any character after a &#34;_&#34; must be a lowercase letter.
+    #   1. &#34;_&#34; cannot be followed by another &#34;_&#34;.
+    #   2. &#34;_&#34; cannot be followed by a digit.
+    #   3. &#34;_&#34; cannot appear as the last character.
+    self.assertRaisesRegexp(
+        ValueError,
+        &#39;Fail to print FieldMask to Json string: The character after a &#39;
+        &#39;&#34;_&#34; must be a lowercase letter in path name foo__bar.&#39;,
+        well_known_types._SnakeCaseToCamelCase,
+        &#39;foo__bar&#39;)
+    self.assertRaisesRegexp(
+        ValueError,
+        &#39;Fail to print FieldMask to Json string: The character after a &#39;
+        &#39;&#34;_&#34; must be a lowercase letter in path name foo_3bar.&#39;,
+        well_known_types._SnakeCaseToCamelCase,
+        &#39;foo_3bar&#39;)
+    self.assertRaisesRegexp(
+        ValueError,
+        &#39;Fail to print FieldMask to Json string: Trailing &#34;_&#34; in path &#39;
+        &#39;name foo_bar_.&#39;,
+        well_known_types._SnakeCaseToCamelCase,
+        &#39;foo_bar_&#39;)
+
+  def testCamelCaseToSnakeCase(self):
+    self.assertEqual(&#39;foo_bar&#39;,
+                     well_known_types._CamelCaseToSnakeCase(&#39;fooBar&#39;))
+    self.assertEqual(&#39;_foo_bar&#39;,
+                     well_known_types._CamelCaseToSnakeCase(&#39;FooBar&#39;))
+    self.assertEqual(&#39;foo3_bar&#39;,
+                     well_known_types._CamelCaseToSnakeCase(&#39;foo3Bar&#39;))
+    self.assertRaisesRegexp(
+        ValueError,
+        &#39;Fail to parse FieldMask: Path name foo_bar must not contain &#34;_&#34;s.&#39;,
+        well_known_types._CamelCaseToSnakeCase,
+        &#39;foo_bar&#39;)
+
+
+class StructTest(unittest.TestCase):
+
+  def testStruct(self):
+    struct = struct_pb2.Struct()
+    self.assertIsInstance(struct, collections_abc.Mapping)
+    self.assertEqual(0, len(struct))
+    struct_class = struct.__class__
+
+    struct[&#39;key1&#39;] = 5
+    struct[&#39;key2&#39;] = &#39;abc&#39;
+    struct[&#39;key3&#39;] = True
+    struct.get_or_create_struct(&#39;key4&#39;)[&#39;subkey&#39;] = 11.0
+    struct_list = struct.get_or_create_list(&#39;key5&#39;)
+    self.assertIsInstance(struct_list, collections_abc.Sequence)
+    struct_list.extend([6, &#39;seven&#39;, True, False, None])
+    struct_list.add_struct()[&#39;subkey2&#39;] = 9
+    struct[&#39;key6&#39;] = {&#39;subkey&#39;: {}}
+    struct[&#39;key7&#39;] = [2, False]
+
+    self.assertEqual(7, len(struct))
+    self.assertTrue(isinstance(struct, well_known_types.Struct))
+    self.assertEqual(5, struct[&#39;key1&#39;])
+    self.assertEqual(&#39;abc&#39;, struct[&#39;key2&#39;])
+    self.assertIs(True, struct[&#39;key3&#39;])
+    self.assertEqual(11, struct[&#39;key4&#39;][&#39;subkey&#39;])
+    inner_struct = struct_class()
+    inner_struct[&#39;subkey2&#39;] = 9
+    self.assertEqual([6, &#39;seven&#39;, True, False, None, inner_struct],
+                     list(struct[&#39;key5&#39;].items()))
+    self.assertEqual({}, dict(struct[&#39;key6&#39;][&#39;subkey&#39;].fields))
+    self.assertEqual([2, False], list(struct[&#39;key7&#39;].items()))
+
+    serialized = struct.SerializeToString()
+    struct2 = struct_pb2.Struct()
+    struct2.ParseFromString(serialized)
+
+    self.assertEqual(struct, struct2)
+    for key, value in struct.items():
+      self.assertIn(key, struct)
+      self.assertIn(key, struct2)
+      self.assertEqual(value, struct2[key])
+
+    self.assertEqual(7, len(struct.keys()))
+    self.assertEqual(7, len(struct.values()))
+    for key in struct.keys():
+      self.assertIn(key, struct)
+      self.assertIn(key, struct2)
+      self.assertEqual(struct[key], struct2[key])
+
+    item = (next(iter(struct.keys())), next(iter(struct.values())))
+    self.assertEqual(item, next(iter(struct.items())))
+
+    self.assertTrue(isinstance(struct2, well_known_types.Struct))
+    self.assertEqual(5, struct2[&#39;key1&#39;])
+    self.assertEqual(&#39;abc&#39;, struct2[&#39;key2&#39;])
+    self.assertIs(True, struct2[&#39;key3&#39;])
+    self.assertEqual(11, struct2[&#39;key4&#39;][&#39;subkey&#39;])
+    self.assertEqual([6, &#39;seven&#39;, True, False, None, inner_struct],
+                     list(struct2[&#39;key5&#39;].items()))
+
+    struct_list = struct2[&#39;key5&#39;]
+    self.assertEqual(6, struct_list[0])
+    self.assertEqual(&#39;seven&#39;, struct_list[1])
+    self.assertEqual(True, struct_list[2])
+    self.assertEqual(False, struct_list[3])
+    self.assertEqual(None, struct_list[4])
+    self.assertEqual(inner_struct, struct_list[5])
+
+    struct_list[1] = 7
+    self.assertEqual(7, struct_list[1])
+
+    struct_list.add_list().extend([1, &#39;two&#39;, True, False, None])
+    self.assertEqual([1, &#39;two&#39;, True, False, None],
+                     list(struct_list[6].items()))
+    struct_list.extend([{&#39;nested_struct&#39;: 30}, [&#39;nested_list&#39;, 99], {}, []])
+    self.assertEqual(11, len(struct_list.values))
+    self.assertEqual(30, struct_list[7][&#39;nested_struct&#39;])
+    self.assertEqual(&#39;nested_list&#39;, struct_list[8][0])
+    self.assertEqual(99, struct_list[8][1])
+    self.assertEqual({}, dict(struct_list[9].fields))
+    self.assertEqual([], list(struct_list[10].items()))
+    struct_list[0] = {&#39;replace&#39;: &#39;set&#39;}
+    struct_list[1] = [&#39;replace&#39;, &#39;set&#39;]
+    self.assertEqual(&#39;set&#39;, struct_list[0][&#39;replace&#39;])
+    self.assertEqual([&#39;replace&#39;, &#39;set&#39;], list(struct_list[1].items()))
+
+    text_serialized = str(struct)
+    struct3 = struct_pb2.Struct()
+    text_format.Merge(text_serialized, struct3)
+    self.assertEqual(struct, struct3)
+
+    struct.get_or_create_struct(&#39;key3&#39;)[&#39;replace&#39;] = 12
+    self.assertEqual(12, struct[&#39;key3&#39;][&#39;replace&#39;])
+
+    # Tests empty list.
+    struct.get_or_create_list(&#39;empty_list&#39;)
+    empty_list = struct[&#39;empty_list&#39;]
+    self.assertEqual([], list(empty_list.items()))
+    list2 = struct_pb2.ListValue()
+    list2.add_list()
+    empty_list = list2[0]
+    self.assertEqual([], list(empty_list.items()))
+
+    # Tests empty struct.
+    struct.get_or_create_struct(&#39;empty_struct&#39;)
+    empty_struct = struct[&#39;empty_struct&#39;]
+    self.assertEqual({}, dict(empty_struct.fields))
+    list2.add_struct()
+    empty_struct = list2[1]
+    self.assertEqual({}, dict(empty_struct.fields))
+
+    self.assertEqual(9, len(struct))
+    del struct[&#39;key3&#39;]
+    del struct[&#39;key4&#39;]
+    self.assertEqual(7, len(struct))
+    self.assertEqual(6, len(struct[&#39;key5&#39;]))
+    del struct[&#39;key5&#39;][1]
+    self.assertEqual(5, len(struct[&#39;key5&#39;]))
+    self.assertEqual([6, True, False, None, inner_struct],
+                     list(struct[&#39;key5&#39;].items()))
+
+  def testStructAssignment(self):
+    # Tests struct assignment from another struct
+    s1 = struct_pb2.Struct()
+    s2 = struct_pb2.Struct()
+    for value in [1, &#39;a&#39;, [1], [&#39;a&#39;], {&#39;a&#39;: &#39;b&#39;}]:
+      s1[&#39;x&#39;] = value
+      s2[&#39;x&#39;] = s1[&#39;x&#39;]
+      self.assertEqual(s1[&#39;x&#39;], s2[&#39;x&#39;])
+
+  def testMergeFrom(self):
+    struct = struct_pb2.Struct()
+    struct_class = struct.__class__
+
+    dictionary = {
+        &#39;key1&#39;: 5,
+        &#39;key2&#39;: &#39;abc&#39;,
+        &#39;key3&#39;: True,
+        &#39;key4&#39;: {&#39;subkey&#39;: 11.0},
+        &#39;key5&#39;: [6, &#39;seven&#39;, True, False, None, {&#39;subkey2&#39;: 9}],
+        &#39;key6&#39;: [[&#39;nested_list&#39;, True]],
+        &#39;empty_struct&#39;: {},
+        &#39;empty_list&#39;: []
+    }
+    struct.update(dictionary)
+    self.assertEqual(5, struct[&#39;key1&#39;])
+    self.assertEqual(&#39;abc&#39;, struct[&#39;key2&#39;])
+    self.assertIs(True, struct[&#39;key3&#39;])
+    self.assertEqual(11, struct[&#39;key4&#39;][&#39;subkey&#39;])
+    inner_struct = struct_class()
+    inner_struct[&#39;subkey2&#39;] = 9
+    self.assertEqual([6, &#39;seven&#39;, True, False, None, inner_struct],
+                     list(struct[&#39;key5&#39;].items()))
+    self.assertEqual(2, len(struct[&#39;key6&#39;][0].values))
+    self.assertEqual(&#39;nested_list&#39;, struct[&#39;key6&#39;][0][0])
+    self.assertEqual(True, struct[&#39;key6&#39;][0][1])
+    empty_list = struct[&#39;empty_list&#39;]
+    self.assertEqual([], list(empty_list.items()))
+    empty_struct = struct[&#39;empty_struct&#39;]
+    self.assertEqual({}, dict(empty_struct.fields))
+
+    # According to documentation: &#34;When parsing from the wire or when merging,
+    # if there are duplicate map keys the last key seen is used&#34;.
+    duplicate = {
+        &#39;key4&#39;: {&#39;replace&#39;: 20},
+        &#39;key5&#39;: [[False, 5]]
+    }
+    struct.update(duplicate)
+    self.assertEqual(1, len(struct[&#39;key4&#39;].fields))
+    self.assertEqual(20, struct[&#39;key4&#39;][&#39;replace&#39;])
+    self.assertEqual(1, len(struct[&#39;key5&#39;].values))
+    self.assertEqual(False, struct[&#39;key5&#39;][0][0])
+    self.assertEqual(5, struct[&#39;key5&#39;][0][1])
+
+
+class AnyTest(unittest.TestCase):
+
+  def testAnyMessage(self):
+    # Creates and sets message.
+    msg = any_test_pb2.TestAny()
+    msg_descriptor = msg.DESCRIPTOR
+    all_types = unittest_pb2.TestAllTypes()
+    all_descriptor = all_types.DESCRIPTOR
+    all_types.repeated_string.append(u&#39;\u00fc\ua71f&#39;)
+    # Packs to Any.
+    msg.value.Pack(all_types)
+    self.assertEqual(msg.value.type_url,
+                     &#39;type.googleapis.com/%s&#39; % all_descriptor.full_name)
+    self.assertEqual(msg.value.value,
+                     all_types.SerializeToString())
+    # Tests Is() method.
+    self.assertTrue(msg.value.Is(all_descriptor))
+    self.assertFalse(msg.value.Is(msg_descriptor))
+    # Unpacks Any.
+    unpacked_message = unittest_pb2.TestAllTypes()
+    self.assertTrue(msg.value.Unpack(unpacked_message))
+    self.assertEqual(all_types, unpacked_message)
+    # Unpacks to different type.
+    self.assertFalse(msg.value.Unpack(msg))
+    # Only Any messages have Pack method.
+    try:
+      msg.Pack(all_types)
+    except AttributeError:
+      pass
+    else:
+      raise AttributeError(&#39;%s should not have Pack method.&#39; %
+                           msg_descriptor.full_name)
+
+  def testUnpackWithNoSlashInTypeUrl(self):
+    msg = any_test_pb2.TestAny()
+    all_types = unittest_pb2.TestAllTypes()
+    all_descriptor = all_types.DESCRIPTOR
+    msg.value.Pack(all_types)
+    # Reset type_url to part of type_url after &#39;/&#39;
+    msg.value.type_url = msg.value.TypeName()
+    self.assertFalse(msg.value.Is(all_descriptor))
+    unpacked_message = unittest_pb2.TestAllTypes()
+    self.assertFalse(msg.value.Unpack(unpacked_message))
+
+  def testMessageName(self):
+    # Creates and sets message.
+    submessage = any_test_pb2.TestAny()
+    submessage.int_value = 12345
+    msg = any_pb2.Any()
+    msg.Pack(submessage)
+    self.assertEqual(msg.TypeName(), &#39;google.protobuf.internal.TestAny&#39;)
+
+  def testPackWithCustomTypeUrl(self):
+    submessage = any_test_pb2.TestAny()
+    submessage.int_value = 12345
+    msg = any_pb2.Any()
+    # Pack with a custom type URL prefix.
+    msg.Pack(submessage, &#39;type.myservice.com&#39;)
+    self.assertEqual(msg.type_url,
+                     &#39;type.myservice.com/%s&#39; % submessage.DESCRIPTOR.full_name)
+    # Pack with a custom type URL prefix ending with &#39;/&#39;.
+    msg.Pack(submessage, &#39;type.myservice.com/&#39;)
+    self.assertEqual(msg.type_url,
+                     &#39;type.myservice.com/%s&#39; % submessage.DESCRIPTOR.full_name)
+    # Pack with an empty type URL prefix.
+    msg.Pack(submessage, &#39;&#39;)
+    self.assertEqual(msg.type_url,
+                     &#39;/%s&#39; % submessage.DESCRIPTOR.full_name)
+    # Test unpacking the type.
+    unpacked_message = any_test_pb2.TestAny()
+    self.assertTrue(msg.Unpack(unpacked_message))
+    self.assertEqual(submessage, unpacked_message)
+
+  def testPackDeterministic(self):
+    submessage = any_test_pb2.TestAny()
+    for i in range(10):
+      submessage.map_value[str(i)] = i * 2
+    msg = any_pb2.Any()
+    msg.Pack(submessage, deterministic=True)
+    serialized = msg.SerializeToString(deterministic=True)
+    golden = (b&#39;\n4type.googleapis.com/google.protobuf.internal.TestAny\x12F&#39;
+              b&#39;\x1a\x05\n\x010\x10\x00\x1a\x05\n\x011\x10\x02\x1a\x05\n\x01&#39;
+              b&#39;2\x10\x04\x1a\x05\n\x013\x10\x06\x1a\x05\n\x014\x10\x08\x1a&#39;
+              b&#39;\x05\n\x015\x10\n\x1a\x05\n\x016\x10\x0c\x1a\x05\n\x017\x10&#39;
+              b&#39;\x0e\x1a\x05\n\x018\x10\x10\x1a\x05\n\x019\x10\x12&#39;)
+    self.assertEqual(golden, serialized)
+
+
+if __name__ == &#39;__main__&#39;:
+  unittest.main()</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="google.protobuf.internal.well_known_types_test.AnyTest"><code class="flex name class">
+<span>class <span class="ident">AnyTest</span></span>
+<span>(</span><span>methodName='runTest')</span>
+</code></dt>
+<dd>
+<section class="desc"><p>A class whose instances are single test cases.</p>
+<p>By default, the test code itself should be placed in a method named
+'runTest'.</p>
+<p>If the fixture may be used for many test cases, create as
+many test methods as are needed. When instantiating such a TestCase
+subclass, specify in the constructor arguments the name of the test method
+that the instance is to execute.</p>
+<p>Test authors should subclass TestCase for their own tests. Construction
+and deconstruction of the test's environment ('fixture') can be
+implemented by overriding the 'setUp' and 'tearDown' methods respectively.</p>
+<p>If it is necessary to override the <strong>init</strong> method, the base class
+<strong>init</strong> method must always be called. It is important that subclasses
+should not change the signature of their <strong>init</strong> method, since instances
+of the classes are instantiated automatically by parts of the framework
+in order to be run.</p>
+<p>When subclassing TestCase, you can set these attributes:
+* failureException: determines which exception will be raised when
+the instance's assertion methods fail; test methods raising this
+exception will be deemed to have 'failed' rather than 'errored'.
+* longMessage: determines whether long messages (including repr of
+objects used in assert methods) will be printed on failure in <em>addition</em>
+to any explicit message passed.
+* maxDiff: sets the maximum length of a diff in failure messages
+by assert methods using difflib. It is looked up as an instance
+attribute so can be configured by individual tests if required.</p>
+<p>Create an instance of the class that will use the named test
+method when executed. Raises a ValueError if the instance does
+not have a method with the specified name.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class AnyTest(unittest.TestCase):
+
+  def testAnyMessage(self):
+    # Creates and sets message.
+    msg = any_test_pb2.TestAny()
+    msg_descriptor = msg.DESCRIPTOR
+    all_types = unittest_pb2.TestAllTypes()
+    all_descriptor = all_types.DESCRIPTOR
+    all_types.repeated_string.append(u&#39;\u00fc\ua71f&#39;)
+    # Packs to Any.
+    msg.value.Pack(all_types)
+    self.assertEqual(msg.value.type_url,
+                     &#39;type.googleapis.com/%s&#39; % all_descriptor.full_name)
+    self.assertEqual(msg.value.value,
+                     all_types.SerializeToString())
+    # Tests Is() method.
+    self.assertTrue(msg.value.Is(all_descriptor))
+    self.assertFalse(msg.value.Is(msg_descriptor))
+    # Unpacks Any.
+    unpacked_message = unittest_pb2.TestAllTypes()
+    self.assertTrue(msg.value.Unpack(unpacked_message))
+    self.assertEqual(all_types, unpacked_message)
+    # Unpacks to different type.
+    self.assertFalse(msg.value.Unpack(msg))
+    # Only Any messages have Pack method.
+    try:
+      msg.Pack(all_types)
+    except AttributeError:
+      pass
+    else:
+      raise AttributeError(&#39;%s should not have Pack method.&#39; %
+                           msg_descriptor.full_name)
+
+  def testUnpackWithNoSlashInTypeUrl(self):
+    msg = any_test_pb2.TestAny()
+    all_types = unittest_pb2.TestAllTypes()
+    all_descriptor = all_types.DESCRIPTOR
+    msg.value.Pack(all_types)
+    # Reset type_url to part of type_url after &#39;/&#39;
+    msg.value.type_url = msg.value.TypeName()
+    self.assertFalse(msg.value.Is(all_descriptor))
+    unpacked_message = unittest_pb2.TestAllTypes()
+    self.assertFalse(msg.value.Unpack(unpacked_message))
+
+  def testMessageName(self):
+    # Creates and sets message.
+    submessage = any_test_pb2.TestAny()
+    submessage.int_value = 12345
+    msg = any_pb2.Any()
+    msg.Pack(submessage)
+    self.assertEqual(msg.TypeName(), &#39;google.protobuf.internal.TestAny&#39;)
+
+  def testPackWithCustomTypeUrl(self):
+    submessage = any_test_pb2.TestAny()
+    submessage.int_value = 12345
+    msg = any_pb2.Any()
+    # Pack with a custom type URL prefix.
+    msg.Pack(submessage, &#39;type.myservice.com&#39;)
+    self.assertEqual(msg.type_url,
+                     &#39;type.myservice.com/%s&#39; % submessage.DESCRIPTOR.full_name)
+    # Pack with a custom type URL prefix ending with &#39;/&#39;.
+    msg.Pack(submessage, &#39;type.myservice.com/&#39;)
+    self.assertEqual(msg.type_url,
+                     &#39;type.myservice.com/%s&#39; % submessage.DESCRIPTOR.full_name)
+    # Pack with an empty type URL prefix.
+    msg.Pack(submessage, &#39;&#39;)
+    self.assertEqual(msg.type_url,
+                     &#39;/%s&#39; % submessage.DESCRIPTOR.full_name)
+    # Test unpacking the type.
+    unpacked_message = any_test_pb2.TestAny()
+    self.assertTrue(msg.Unpack(unpacked_message))
+    self.assertEqual(submessage, unpacked_message)
+
+  def testPackDeterministic(self):
+    submessage = any_test_pb2.TestAny()
+    for i in range(10):
+      submessage.map_value[str(i)] = i * 2
+    msg = any_pb2.Any()
+    msg.Pack(submessage, deterministic=True)
+    serialized = msg.SerializeToString(deterministic=True)
+    golden = (b&#39;\n4type.googleapis.com/google.protobuf.internal.TestAny\x12F&#39;
+              b&#39;\x1a\x05\n\x010\x10\x00\x1a\x05\n\x011\x10\x02\x1a\x05\n\x01&#39;
+              b&#39;2\x10\x04\x1a\x05\n\x013\x10\x06\x1a\x05\n\x014\x10\x08\x1a&#39;
+              b&#39;\x05\n\x015\x10\n\x1a\x05\n\x016\x10\x0c\x1a\x05\n\x017\x10&#39;
+              b&#39;\x0e\x1a\x05\n\x018\x10\x10\x1a\x05\n\x019\x10\x12&#39;)
+    self.assertEqual(golden, serialized)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>unittest.case.TestCase</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="google.protobuf.internal.well_known_types_test.AnyTest.testAnyMessage"><code class="name flex">
+<span>def <span class="ident">testAnyMessage</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testAnyMessage(self):
+  # Creates and sets message.
+  msg = any_test_pb2.TestAny()
+  msg_descriptor = msg.DESCRIPTOR
+  all_types = unittest_pb2.TestAllTypes()
+  all_descriptor = all_types.DESCRIPTOR
+  all_types.repeated_string.append(u&#39;\u00fc\ua71f&#39;)
+  # Packs to Any.
+  msg.value.Pack(all_types)
+  self.assertEqual(msg.value.type_url,
+                   &#39;type.googleapis.com/%s&#39; % all_descriptor.full_name)
+  self.assertEqual(msg.value.value,
+                   all_types.SerializeToString())
+  # Tests Is() method.
+  self.assertTrue(msg.value.Is(all_descriptor))
+  self.assertFalse(msg.value.Is(msg_descriptor))
+  # Unpacks Any.
+  unpacked_message = unittest_pb2.TestAllTypes()
+  self.assertTrue(msg.value.Unpack(unpacked_message))
+  self.assertEqual(all_types, unpacked_message)
+  # Unpacks to different type.
+  self.assertFalse(msg.value.Unpack(msg))
+  # Only Any messages have Pack method.
+  try:
+    msg.Pack(all_types)
+  except AttributeError:
+    pass
+  else:
+    raise AttributeError(&#39;%s should not have Pack method.&#39; %
+                         msg_descriptor.full_name)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.well_known_types_test.AnyTest.testMessageName"><code class="name flex">
+<span>def <span class="ident">testMessageName</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testMessageName(self):
+  # Creates and sets message.
+  submessage = any_test_pb2.TestAny()
+  submessage.int_value = 12345
+  msg = any_pb2.Any()
+  msg.Pack(submessage)
+  self.assertEqual(msg.TypeName(), &#39;google.protobuf.internal.TestAny&#39;)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.well_known_types_test.AnyTest.testPackDeterministic"><code class="name flex">
+<span>def <span class="ident">testPackDeterministic</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testPackDeterministic(self):
+  submessage = any_test_pb2.TestAny()
+  for i in range(10):
+    submessage.map_value[str(i)] = i * 2
+  msg = any_pb2.Any()
+  msg.Pack(submessage, deterministic=True)
+  serialized = msg.SerializeToString(deterministic=True)
+  golden = (b&#39;\n4type.googleapis.com/google.protobuf.internal.TestAny\x12F&#39;
+            b&#39;\x1a\x05\n\x010\x10\x00\x1a\x05\n\x011\x10\x02\x1a\x05\n\x01&#39;
+            b&#39;2\x10\x04\x1a\x05\n\x013\x10\x06\x1a\x05\n\x014\x10\x08\x1a&#39;
+            b&#39;\x05\n\x015\x10\n\x1a\x05\n\x016\x10\x0c\x1a\x05\n\x017\x10&#39;
+            b&#39;\x0e\x1a\x05\n\x018\x10\x10\x1a\x05\n\x019\x10\x12&#39;)
+  self.assertEqual(golden, serialized)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.well_known_types_test.AnyTest.testPackWithCustomTypeUrl"><code class="name flex">
+<span>def <span class="ident">testPackWithCustomTypeUrl</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testPackWithCustomTypeUrl(self):
+  submessage = any_test_pb2.TestAny()
+  submessage.int_value = 12345
+  msg = any_pb2.Any()
+  # Pack with a custom type URL prefix.
+  msg.Pack(submessage, &#39;type.myservice.com&#39;)
+  self.assertEqual(msg.type_url,
+                   &#39;type.myservice.com/%s&#39; % submessage.DESCRIPTOR.full_name)
+  # Pack with a custom type URL prefix ending with &#39;/&#39;.
+  msg.Pack(submessage, &#39;type.myservice.com/&#39;)
+  self.assertEqual(msg.type_url,
+                   &#39;type.myservice.com/%s&#39; % submessage.DESCRIPTOR.full_name)
+  # Pack with an empty type URL prefix.
+  msg.Pack(submessage, &#39;&#39;)
+  self.assertEqual(msg.type_url,
+                   &#39;/%s&#39; % submessage.DESCRIPTOR.full_name)
+  # Test unpacking the type.
+  unpacked_message = any_test_pb2.TestAny()
+  self.assertTrue(msg.Unpack(unpacked_message))
+  self.assertEqual(submessage, unpacked_message)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.well_known_types_test.AnyTest.testUnpackWithNoSlashInTypeUrl"><code class="name flex">
+<span>def <span class="ident">testUnpackWithNoSlashInTypeUrl</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testUnpackWithNoSlashInTypeUrl(self):
+  msg = any_test_pb2.TestAny()
+  all_types = unittest_pb2.TestAllTypes()
+  all_descriptor = all_types.DESCRIPTOR
+  msg.value.Pack(all_types)
+  # Reset type_url to part of type_url after &#39;/&#39;
+  msg.value.type_url = msg.value.TypeName()
+  self.assertFalse(msg.value.Is(all_descriptor))
+  unpacked_message = unittest_pb2.TestAllTypes()
+  self.assertFalse(msg.value.Unpack(unpacked_message))</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="google.protobuf.internal.well_known_types_test.FieldMaskTest"><code class="flex name class">
+<span>class <span class="ident">FieldMaskTest</span></span>
+<span>(</span><span>methodName='runTest')</span>
+</code></dt>
+<dd>
+<section class="desc"><p>A class whose instances are single test cases.</p>
+<p>By default, the test code itself should be placed in a method named
+'runTest'.</p>
+<p>If the fixture may be used for many test cases, create as
+many test methods as are needed. When instantiating such a TestCase
+subclass, specify in the constructor arguments the name of the test method
+that the instance is to execute.</p>
+<p>Test authors should subclass TestCase for their own tests. Construction
+and deconstruction of the test's environment ('fixture') can be
+implemented by overriding the 'setUp' and 'tearDown' methods respectively.</p>
+<p>If it is necessary to override the <strong>init</strong> method, the base class
+<strong>init</strong> method must always be called. It is important that subclasses
+should not change the signature of their <strong>init</strong> method, since instances
+of the classes are instantiated automatically by parts of the framework
+in order to be run.</p>
+<p>When subclassing TestCase, you can set these attributes:
+* failureException: determines which exception will be raised when
+the instance's assertion methods fail; test methods raising this
+exception will be deemed to have 'failed' rather than 'errored'.
+* longMessage: determines whether long messages (including repr of
+objects used in assert methods) will be printed on failure in <em>addition</em>
+to any explicit message passed.
+* maxDiff: sets the maximum length of a diff in failure messages
+by assert methods using difflib. It is looked up as an instance
+attribute so can be configured by individual tests if required.</p>
+<p>Create an instance of the class that will use the named test
+method when executed. Raises a ValueError if the instance does
+not have a method with the specified name.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class FieldMaskTest(unittest.TestCase):
+
+  def testStringFormat(self):
+    mask = field_mask_pb2.FieldMask()
+    self.assertEqual(&#39;&#39;, mask.ToJsonString())
+    mask.paths.append(&#39;foo&#39;)
+    self.assertEqual(&#39;foo&#39;, mask.ToJsonString())
+    mask.paths.append(&#39;bar&#39;)
+    self.assertEqual(&#39;foo,bar&#39;, mask.ToJsonString())
+
+    mask.FromJsonString(&#39;&#39;)
+    self.assertEqual(&#39;&#39;, mask.ToJsonString())
+    mask.FromJsonString(&#39;foo&#39;)
+    self.assertEqual([&#39;foo&#39;], mask.paths)
+    mask.FromJsonString(&#39;foo,bar&#39;)
+    self.assertEqual([&#39;foo&#39;, &#39;bar&#39;], mask.paths)
+
+    # Test camel case
+    mask.Clear()
+    mask.paths.append(&#39;foo_bar&#39;)
+    self.assertEqual(&#39;fooBar&#39;, mask.ToJsonString())
+    mask.paths.append(&#39;bar_quz&#39;)
+    self.assertEqual(&#39;fooBar,barQuz&#39;, mask.ToJsonString())
+
+    mask.FromJsonString(&#39;&#39;)
+    self.assertEqual(&#39;&#39;, mask.ToJsonString())
+    self.assertEqual([], mask.paths)
+    mask.FromJsonString(&#39;fooBar&#39;)
+    self.assertEqual([&#39;foo_bar&#39;], mask.paths)
+    mask.FromJsonString(&#39;fooBar,barQuz&#39;)
+    self.assertEqual([&#39;foo_bar&#39;, &#39;bar_quz&#39;], mask.paths)
+
+  def testDescriptorToFieldMask(self):
+    mask = field_mask_pb2.FieldMask()
+    msg_descriptor = unittest_pb2.TestAllTypes.DESCRIPTOR
+    mask.AllFieldsFromDescriptor(msg_descriptor)
+    self.assertEqual(75, len(mask.paths))
+    self.assertTrue(mask.IsValidForDescriptor(msg_descriptor))
+    for field in msg_descriptor.fields:
+      self.assertTrue(field.name in mask.paths)
+
+  def testIsValidForDescriptor(self):
+    msg_descriptor = unittest_pb2.TestAllTypes.DESCRIPTOR
+    # Empty mask
+    mask = field_mask_pb2.FieldMask()
+    self.assertTrue(mask.IsValidForDescriptor(msg_descriptor))
+    # All fields from descriptor
+    mask.AllFieldsFromDescriptor(msg_descriptor)
+    self.assertTrue(mask.IsValidForDescriptor(msg_descriptor))
+    # Child under optional message
+    mask.paths.append(&#39;optional_nested_message.bb&#39;)
+    self.assertTrue(mask.IsValidForDescriptor(msg_descriptor))
+    # Repeated field is only allowed in the last position of path
+    mask.paths.append(&#39;repeated_nested_message.bb&#39;)
+    self.assertFalse(mask.IsValidForDescriptor(msg_descriptor))
+    # Invalid top level field
+    mask = field_mask_pb2.FieldMask()
+    mask.paths.append(&#39;xxx&#39;)
+    self.assertFalse(mask.IsValidForDescriptor(msg_descriptor))
+    # Invalid field in root
+    mask = field_mask_pb2.FieldMask()
+    mask.paths.append(&#39;xxx.zzz&#39;)
+    self.assertFalse(mask.IsValidForDescriptor(msg_descriptor))
+    # Invalid field in internal node
+    mask = field_mask_pb2.FieldMask()
+    mask.paths.append(&#39;optional_nested_message.xxx.zzz&#39;)
+    self.assertFalse(mask.IsValidForDescriptor(msg_descriptor))
+    # Invalid field in leaf
+    mask = field_mask_pb2.FieldMask()
+    mask.paths.append(&#39;optional_nested_message.xxx&#39;)
+    self.assertFalse(mask.IsValidForDescriptor(msg_descriptor))
+
+  def testCanonicalFrom(self):
+    mask = field_mask_pb2.FieldMask()
+    out_mask = field_mask_pb2.FieldMask()
+    # Paths will be sorted.
+    mask.FromJsonString(&#39;baz.quz,bar,foo&#39;)
+    out_mask.CanonicalFormFromMask(mask)
+    self.assertEqual(&#39;bar,baz.quz,foo&#39;, out_mask.ToJsonString())
+    # Duplicated paths will be removed.
+    mask.FromJsonString(&#39;foo,bar,foo&#39;)
+    out_mask.CanonicalFormFromMask(mask)
+    self.assertEqual(&#39;bar,foo&#39;, out_mask.ToJsonString())
+    # Sub-paths of other paths will be removed.
+    mask.FromJsonString(&#39;foo.b1,bar.b1,foo.b2,bar&#39;)
+    out_mask.CanonicalFormFromMask(mask)
+    self.assertEqual(&#39;bar,foo.b1,foo.b2&#39;, out_mask.ToJsonString())
+
+    # Test more deeply nested cases.
+    mask.FromJsonString(
+        &#39;foo.bar.baz1,foo.bar.baz2.quz,foo.bar.baz2&#39;)
+    out_mask.CanonicalFormFromMask(mask)
+    self.assertEqual(&#39;foo.bar.baz1,foo.bar.baz2&#39;,
+                     out_mask.ToJsonString())
+    mask.FromJsonString(
+        &#39;foo.bar.baz1,foo.bar.baz2,foo.bar.baz2.quz&#39;)
+    out_mask.CanonicalFormFromMask(mask)
+    self.assertEqual(&#39;foo.bar.baz1,foo.bar.baz2&#39;,
+                     out_mask.ToJsonString())
+    mask.FromJsonString(
+        &#39;foo.bar.baz1,foo.bar.baz2,foo.bar.baz2.quz,foo.bar&#39;)
+    out_mask.CanonicalFormFromMask(mask)
+    self.assertEqual(&#39;foo.bar&#39;, out_mask.ToJsonString())
+    mask.FromJsonString(
+        &#39;foo.bar.baz1,foo.bar.baz2,foo.bar.baz2.quz,foo&#39;)
+    out_mask.CanonicalFormFromMask(mask)
+    self.assertEqual(&#39;foo&#39;, out_mask.ToJsonString())
+
+  def testUnion(self):
+    mask1 = field_mask_pb2.FieldMask()
+    mask2 = field_mask_pb2.FieldMask()
+    out_mask = field_mask_pb2.FieldMask()
+    mask1.FromJsonString(&#39;foo,baz&#39;)
+    mask2.FromJsonString(&#39;bar,quz&#39;)
+    out_mask.Union(mask1, mask2)
+    self.assertEqual(&#39;bar,baz,foo,quz&#39;, out_mask.ToJsonString())
+    # Overlap with duplicated paths.
+    mask1.FromJsonString(&#39;foo,baz.bb&#39;)
+    mask2.FromJsonString(&#39;baz.bb,quz&#39;)
+    out_mask.Union(mask1, mask2)
+    self.assertEqual(&#39;baz.bb,foo,quz&#39;, out_mask.ToJsonString())
+    # Overlap with paths covering some other paths.
+    mask1.FromJsonString(&#39;foo.bar.baz,quz&#39;)
+    mask2.FromJsonString(&#39;foo.bar,bar&#39;)
+    out_mask.Union(mask1, mask2)
+    self.assertEqual(&#39;bar,foo.bar,quz&#39;, out_mask.ToJsonString())
+    src = unittest_pb2.TestAllTypes()
+    with self.assertRaises(ValueError):
+      out_mask.Union(src, mask2)
+
+  def testIntersect(self):
+    mask1 = field_mask_pb2.FieldMask()
+    mask2 = field_mask_pb2.FieldMask()
+    out_mask = field_mask_pb2.FieldMask()
+    # Test cases without overlapping.
+    mask1.FromJsonString(&#39;foo,baz&#39;)
+    mask2.FromJsonString(&#39;bar,quz&#39;)
+    out_mask.Intersect(mask1, mask2)
+    self.assertEqual(&#39;&#39;, out_mask.ToJsonString())
+    self.assertEqual(len(out_mask.paths), 0)
+    self.assertEqual(out_mask.paths, [])
+    # Overlap with duplicated paths.
+    mask1.FromJsonString(&#39;foo,baz.bb&#39;)
+    mask2.FromJsonString(&#39;baz.bb,quz&#39;)
+    out_mask.Intersect(mask1, mask2)
+    self.assertEqual(&#39;baz.bb&#39;, out_mask.ToJsonString())
+    # Overlap with paths covering some other paths.
+    mask1.FromJsonString(&#39;foo.bar.baz,quz&#39;)
+    mask2.FromJsonString(&#39;foo.bar,bar&#39;)
+    out_mask.Intersect(mask1, mask2)
+    self.assertEqual(&#39;foo.bar.baz&#39;, out_mask.ToJsonString())
+    mask1.FromJsonString(&#39;foo.bar,bar&#39;)
+    mask2.FromJsonString(&#39;foo.bar.baz,quz&#39;)
+    out_mask.Intersect(mask1, mask2)
+    self.assertEqual(&#39;foo.bar.baz&#39;, out_mask.ToJsonString())
+    # Intersect &#39;&#39; with &#39;&#39;
+    mask1.Clear()
+    mask2.Clear()
+    mask1.paths.append(&#39;&#39;)
+    mask2.paths.append(&#39;&#39;)
+    self.assertEqual(mask1.paths, [&#39;&#39;])
+    self.assertEqual(&#39;&#39;, mask1.ToJsonString())
+    out_mask.Intersect(mask1, mask2)
+    self.assertEqual(out_mask.paths, [])
+
+  def testMergeMessageWithoutMapFields(self):
+    # Test merge one field.
+    src = unittest_pb2.TestAllTypes()
+    test_util.SetAllFields(src)
+    for field in src.DESCRIPTOR.fields:
+      if field.containing_oneof:
+        continue
+      field_name = field.name
+      dst = unittest_pb2.TestAllTypes()
+      # Only set one path to mask.
+      mask = field_mask_pb2.FieldMask()
+      mask.paths.append(field_name)
+      mask.MergeMessage(src, dst)
+      # The expected result message.
+      msg = unittest_pb2.TestAllTypes()
+      if field.label == descriptor.FieldDescriptor.LABEL_REPEATED:
+        repeated_src = getattr(src, field_name)
+        repeated_msg = getattr(msg, field_name)
+        if field.cpp_type == descriptor.FieldDescriptor.CPPTYPE_MESSAGE:
+          for item in repeated_src:
+            repeated_msg.add().CopyFrom(item)
+        else:
+          repeated_msg.extend(repeated_src)
+      elif field.cpp_type == descriptor.FieldDescriptor.CPPTYPE_MESSAGE:
+        getattr(msg, field_name).CopyFrom(getattr(src, field_name))
+      else:
+        setattr(msg, field_name, getattr(src, field_name))
+      # Only field specified in mask is merged.
+      self.assertEqual(msg, dst)
+
+    # Test merge nested fields.
+    nested_src = unittest_pb2.NestedTestAllTypes()
+    nested_dst = unittest_pb2.NestedTestAllTypes()
+    nested_src.child.payload.optional_int32 = 1234
+    nested_src.child.child.payload.optional_int32 = 5678
+    mask = field_mask_pb2.FieldMask()
+    mask.FromJsonString(&#39;child.payload&#39;)
+    mask.MergeMessage(nested_src, nested_dst)
+    self.assertEqual(1234, nested_dst.child.payload.optional_int32)
+    self.assertEqual(0, nested_dst.child.child.payload.optional_int32)
+
+    mask.FromJsonString(&#39;child.child.payload&#39;)
+    mask.MergeMessage(nested_src, nested_dst)
+    self.assertEqual(1234, nested_dst.child.payload.optional_int32)
+    self.assertEqual(5678, nested_dst.child.child.payload.optional_int32)
+
+    nested_dst.Clear()
+    mask.FromJsonString(&#39;child.child.payload&#39;)
+    mask.MergeMessage(nested_src, nested_dst)
+    self.assertEqual(0, nested_dst.child.payload.optional_int32)
+    self.assertEqual(5678, nested_dst.child.child.payload.optional_int32)
+
+    nested_dst.Clear()
+    mask.FromJsonString(&#39;child&#39;)
+    mask.MergeMessage(nested_src, nested_dst)
+    self.assertEqual(1234, nested_dst.child.payload.optional_int32)
+    self.assertEqual(5678, nested_dst.child.child.payload.optional_int32)
+
+    # Test MergeOptions.
+    nested_dst.Clear()
+    nested_dst.child.payload.optional_int64 = 4321
+    # Message fields will be merged by default.
+    mask.FromJsonString(&#39;child.payload&#39;)
+    mask.MergeMessage(nested_src, nested_dst)
+    self.assertEqual(1234, nested_dst.child.payload.optional_int32)
+    self.assertEqual(4321, nested_dst.child.payload.optional_int64)
+    # Change the behavior to replace message fields.
+    mask.FromJsonString(&#39;child.payload&#39;)
+    mask.MergeMessage(nested_src, nested_dst, True, False)
+    self.assertEqual(1234, nested_dst.child.payload.optional_int32)
+    self.assertEqual(0, nested_dst.child.payload.optional_int64)
+
+    # By default, fields missing in source are not cleared in destination.
+    nested_dst.payload.optional_int32 = 1234
+    self.assertTrue(nested_dst.HasField(&#39;payload&#39;))
+    mask.FromJsonString(&#39;payload&#39;)
+    mask.MergeMessage(nested_src, nested_dst)
+    self.assertTrue(nested_dst.HasField(&#39;payload&#39;))
+    # But they are cleared when replacing message fields.
+    nested_dst.Clear()
+    nested_dst.payload.optional_int32 = 1234
+    mask.FromJsonString(&#39;payload&#39;)
+    mask.MergeMessage(nested_src, nested_dst, True, False)
+    self.assertFalse(nested_dst.HasField(&#39;payload&#39;))
+
+    nested_src.payload.repeated_int32.append(1234)
+    nested_dst.payload.repeated_int32.append(5678)
+    # Repeated fields will be appended by default.
+    mask.FromJsonString(&#39;payload.repeatedInt32&#39;)
+    mask.MergeMessage(nested_src, nested_dst)
+    self.assertEqual(2, len(nested_dst.payload.repeated_int32))
+    self.assertEqual(5678, nested_dst.payload.repeated_int32[0])
+    self.assertEqual(1234, nested_dst.payload.repeated_int32[1])
+    # Change the behavior to replace repeated fields.
+    mask.FromJsonString(&#39;payload.repeatedInt32&#39;)
+    mask.MergeMessage(nested_src, nested_dst, False, True)
+    self.assertEqual(1, len(nested_dst.payload.repeated_int32))
+    self.assertEqual(1234, nested_dst.payload.repeated_int32[0])
+
+    # Test Merge oneof field.
+    new_msg = unittest_pb2.TestOneof2()
+    dst = unittest_pb2.TestOneof2()
+    dst.foo_message.qux_int = 1
+    mask = field_mask_pb2.FieldMask()
+    mask.FromJsonString(&#39;fooMessage,fooLazyMessage.quxInt&#39;)
+    mask.MergeMessage(new_msg, dst)
+    self.assertTrue(dst.HasField(&#39;foo_message&#39;))
+    self.assertFalse(dst.HasField(&#39;foo_lazy_message&#39;))
+
+  def testMergeMessageWithMapField(self):
+    empty_map = map_unittest_pb2.TestRecursiveMapMessage()
+    src_level_2 = map_unittest_pb2.TestRecursiveMapMessage()
+    src_level_2.a[&#39;src level 2&#39;].CopyFrom(empty_map)
+    src = map_unittest_pb2.TestRecursiveMapMessage()
+    src.a[&#39;common key&#39;].CopyFrom(src_level_2)
+    src.a[&#39;src level 1&#39;].CopyFrom(src_level_2)
+
+    dst_level_2 = map_unittest_pb2.TestRecursiveMapMessage()
+    dst_level_2.a[&#39;dst level 2&#39;].CopyFrom(empty_map)
+    dst = map_unittest_pb2.TestRecursiveMapMessage()
+    dst.a[&#39;common key&#39;].CopyFrom(dst_level_2)
+    dst.a[&#39;dst level 1&#39;].CopyFrom(empty_map)
+
+    mask = field_mask_pb2.FieldMask()
+    mask.FromJsonString(&#39;a&#39;)
+    mask.MergeMessage(src, dst)
+
+    # map from dst is replaced with map from src.
+    self.assertEqual(dst.a[&#39;common key&#39;], src_level_2)
+    self.assertEqual(dst.a[&#39;src level 1&#39;], src_level_2)
+    self.assertEqual(dst.a[&#39;dst level 1&#39;], empty_map)
+
+  def testMergeErrors(self):
+    src = unittest_pb2.TestAllTypes()
+    dst = unittest_pb2.TestAllTypes()
+    mask = field_mask_pb2.FieldMask()
+    test_util.SetAllFields(src)
+    mask.FromJsonString(&#39;optionalInt32.field&#39;)
+    with self.assertRaises(ValueError) as e:
+      mask.MergeMessage(src, dst)
+    self.assertEqual(&#39;Error: Field optional_int32 in message &#39;
+                     &#39;protobuf_unittest.TestAllTypes is not a singular &#39;
+                     &#39;message field and cannot have sub-fields.&#39;,
+                     str(e.exception))
+
+  def testSnakeCaseToCamelCase(self):
+    self.assertEqual(&#39;fooBar&#39;,
+                     well_known_types._SnakeCaseToCamelCase(&#39;foo_bar&#39;))
+    self.assertEqual(&#39;FooBar&#39;,
+                     well_known_types._SnakeCaseToCamelCase(&#39;_foo_bar&#39;))
+    self.assertEqual(&#39;foo3Bar&#39;,
+                     well_known_types._SnakeCaseToCamelCase(&#39;foo3_bar&#39;))
+
+    # No uppercase letter is allowed.
+    self.assertRaisesRegexp(
+        ValueError,
+        &#39;Fail to print FieldMask to Json string: Path name Foo must &#39;
+        &#39;not contain uppercase letters.&#39;,
+        well_known_types._SnakeCaseToCamelCase,
+        &#39;Foo&#39;)
+    # Any character after a &#34;_&#34; must be a lowercase letter.
+    #   1. &#34;_&#34; cannot be followed by another &#34;_&#34;.
+    #   2. &#34;_&#34; cannot be followed by a digit.
+    #   3. &#34;_&#34; cannot appear as the last character.
+    self.assertRaisesRegexp(
+        ValueError,
+        &#39;Fail to print FieldMask to Json string: The character after a &#39;
+        &#39;&#34;_&#34; must be a lowercase letter in path name foo__bar.&#39;,
+        well_known_types._SnakeCaseToCamelCase,
+        &#39;foo__bar&#39;)
+    self.assertRaisesRegexp(
+        ValueError,
+        &#39;Fail to print FieldMask to Json string: The character after a &#39;
+        &#39;&#34;_&#34; must be a lowercase letter in path name foo_3bar.&#39;,
+        well_known_types._SnakeCaseToCamelCase,
+        &#39;foo_3bar&#39;)
+    self.assertRaisesRegexp(
+        ValueError,
+        &#39;Fail to print FieldMask to Json string: Trailing &#34;_&#34; in path &#39;
+        &#39;name foo_bar_.&#39;,
+        well_known_types._SnakeCaseToCamelCase,
+        &#39;foo_bar_&#39;)
+
+  def testCamelCaseToSnakeCase(self):
+    self.assertEqual(&#39;foo_bar&#39;,
+                     well_known_types._CamelCaseToSnakeCase(&#39;fooBar&#39;))
+    self.assertEqual(&#39;_foo_bar&#39;,
+                     well_known_types._CamelCaseToSnakeCase(&#39;FooBar&#39;))
+    self.assertEqual(&#39;foo3_bar&#39;,
+                     well_known_types._CamelCaseToSnakeCase(&#39;foo3Bar&#39;))
+    self.assertRaisesRegexp(
+        ValueError,
+        &#39;Fail to parse FieldMask: Path name foo_bar must not contain &#34;_&#34;s.&#39;,
+        well_known_types._CamelCaseToSnakeCase,
+        &#39;foo_bar&#39;)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>unittest.case.TestCase</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="google.protobuf.internal.well_known_types_test.FieldMaskTest.testCamelCaseToSnakeCase"><code class="name flex">
+<span>def <span class="ident">testCamelCaseToSnakeCase</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testCamelCaseToSnakeCase(self):
+  self.assertEqual(&#39;foo_bar&#39;,
+                   well_known_types._CamelCaseToSnakeCase(&#39;fooBar&#39;))
+  self.assertEqual(&#39;_foo_bar&#39;,
+                   well_known_types._CamelCaseToSnakeCase(&#39;FooBar&#39;))
+  self.assertEqual(&#39;foo3_bar&#39;,
+                   well_known_types._CamelCaseToSnakeCase(&#39;foo3Bar&#39;))
+  self.assertRaisesRegexp(
+      ValueError,
+      &#39;Fail to parse FieldMask: Path name foo_bar must not contain &#34;_&#34;s.&#39;,
+      well_known_types._CamelCaseToSnakeCase,
+      &#39;foo_bar&#39;)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.well_known_types_test.FieldMaskTest.testCanonicalFrom"><code class="name flex">
+<span>def <span class="ident">testCanonicalFrom</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testCanonicalFrom(self):
+  mask = field_mask_pb2.FieldMask()
+  out_mask = field_mask_pb2.FieldMask()
+  # Paths will be sorted.
+  mask.FromJsonString(&#39;baz.quz,bar,foo&#39;)
+  out_mask.CanonicalFormFromMask(mask)
+  self.assertEqual(&#39;bar,baz.quz,foo&#39;, out_mask.ToJsonString())
+  # Duplicated paths will be removed.
+  mask.FromJsonString(&#39;foo,bar,foo&#39;)
+  out_mask.CanonicalFormFromMask(mask)
+  self.assertEqual(&#39;bar,foo&#39;, out_mask.ToJsonString())
+  # Sub-paths of other paths will be removed.
+  mask.FromJsonString(&#39;foo.b1,bar.b1,foo.b2,bar&#39;)
+  out_mask.CanonicalFormFromMask(mask)
+  self.assertEqual(&#39;bar,foo.b1,foo.b2&#39;, out_mask.ToJsonString())
+
+  # Test more deeply nested cases.
+  mask.FromJsonString(
+      &#39;foo.bar.baz1,foo.bar.baz2.quz,foo.bar.baz2&#39;)
+  out_mask.CanonicalFormFromMask(mask)
+  self.assertEqual(&#39;foo.bar.baz1,foo.bar.baz2&#39;,
+                   out_mask.ToJsonString())
+  mask.FromJsonString(
+      &#39;foo.bar.baz1,foo.bar.baz2,foo.bar.baz2.quz&#39;)
+  out_mask.CanonicalFormFromMask(mask)
+  self.assertEqual(&#39;foo.bar.baz1,foo.bar.baz2&#39;,
+                   out_mask.ToJsonString())
+  mask.FromJsonString(
+      &#39;foo.bar.baz1,foo.bar.baz2,foo.bar.baz2.quz,foo.bar&#39;)
+  out_mask.CanonicalFormFromMask(mask)
+  self.assertEqual(&#39;foo.bar&#39;, out_mask.ToJsonString())
+  mask.FromJsonString(
+      &#39;foo.bar.baz1,foo.bar.baz2,foo.bar.baz2.quz,foo&#39;)
+  out_mask.CanonicalFormFromMask(mask)
+  self.assertEqual(&#39;foo&#39;, out_mask.ToJsonString())</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.well_known_types_test.FieldMaskTest.testDescriptorToFieldMask"><code class="name flex">
+<span>def <span class="ident">testDescriptorToFieldMask</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testDescriptorToFieldMask(self):
+  mask = field_mask_pb2.FieldMask()
+  msg_descriptor = unittest_pb2.TestAllTypes.DESCRIPTOR
+  mask.AllFieldsFromDescriptor(msg_descriptor)
+  self.assertEqual(75, len(mask.paths))
+  self.assertTrue(mask.IsValidForDescriptor(msg_descriptor))
+  for field in msg_descriptor.fields:
+    self.assertTrue(field.name in mask.paths)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.well_known_types_test.FieldMaskTest.testIntersect"><code class="name flex">
+<span>def <span class="ident">testIntersect</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testIntersect(self):
+  mask1 = field_mask_pb2.FieldMask()
+  mask2 = field_mask_pb2.FieldMask()
+  out_mask = field_mask_pb2.FieldMask()
+  # Test cases without overlapping.
+  mask1.FromJsonString(&#39;foo,baz&#39;)
+  mask2.FromJsonString(&#39;bar,quz&#39;)
+  out_mask.Intersect(mask1, mask2)
+  self.assertEqual(&#39;&#39;, out_mask.ToJsonString())
+  self.assertEqual(len(out_mask.paths), 0)
+  self.assertEqual(out_mask.paths, [])
+  # Overlap with duplicated paths.
+  mask1.FromJsonString(&#39;foo,baz.bb&#39;)
+  mask2.FromJsonString(&#39;baz.bb,quz&#39;)
+  out_mask.Intersect(mask1, mask2)
+  self.assertEqual(&#39;baz.bb&#39;, out_mask.ToJsonString())
+  # Overlap with paths covering some other paths.
+  mask1.FromJsonString(&#39;foo.bar.baz,quz&#39;)
+  mask2.FromJsonString(&#39;foo.bar,bar&#39;)
+  out_mask.Intersect(mask1, mask2)
+  self.assertEqual(&#39;foo.bar.baz&#39;, out_mask.ToJsonString())
+  mask1.FromJsonString(&#39;foo.bar,bar&#39;)
+  mask2.FromJsonString(&#39;foo.bar.baz,quz&#39;)
+  out_mask.Intersect(mask1, mask2)
+  self.assertEqual(&#39;foo.bar.baz&#39;, out_mask.ToJsonString())
+  # Intersect &#39;&#39; with &#39;&#39;
+  mask1.Clear()
+  mask2.Clear()
+  mask1.paths.append(&#39;&#39;)
+  mask2.paths.append(&#39;&#39;)
+  self.assertEqual(mask1.paths, [&#39;&#39;])
+  self.assertEqual(&#39;&#39;, mask1.ToJsonString())
+  out_mask.Intersect(mask1, mask2)
+  self.assertEqual(out_mask.paths, [])</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.well_known_types_test.FieldMaskTest.testIsValidForDescriptor"><code class="name flex">
+<span>def <span class="ident">testIsValidForDescriptor</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testIsValidForDescriptor(self):
+  msg_descriptor = unittest_pb2.TestAllTypes.DESCRIPTOR
+  # Empty mask
+  mask = field_mask_pb2.FieldMask()
+  self.assertTrue(mask.IsValidForDescriptor(msg_descriptor))
+  # All fields from descriptor
+  mask.AllFieldsFromDescriptor(msg_descriptor)
+  self.assertTrue(mask.IsValidForDescriptor(msg_descriptor))
+  # Child under optional message
+  mask.paths.append(&#39;optional_nested_message.bb&#39;)
+  self.assertTrue(mask.IsValidForDescriptor(msg_descriptor))
+  # Repeated field is only allowed in the last position of path
+  mask.paths.append(&#39;repeated_nested_message.bb&#39;)
+  self.assertFalse(mask.IsValidForDescriptor(msg_descriptor))
+  # Invalid top level field
+  mask = field_mask_pb2.FieldMask()
+  mask.paths.append(&#39;xxx&#39;)
+  self.assertFalse(mask.IsValidForDescriptor(msg_descriptor))
+  # Invalid field in root
+  mask = field_mask_pb2.FieldMask()
+  mask.paths.append(&#39;xxx.zzz&#39;)
+  self.assertFalse(mask.IsValidForDescriptor(msg_descriptor))
+  # Invalid field in internal node
+  mask = field_mask_pb2.FieldMask()
+  mask.paths.append(&#39;optional_nested_message.xxx.zzz&#39;)
+  self.assertFalse(mask.IsValidForDescriptor(msg_descriptor))
+  # Invalid field in leaf
+  mask = field_mask_pb2.FieldMask()
+  mask.paths.append(&#39;optional_nested_message.xxx&#39;)
+  self.assertFalse(mask.IsValidForDescriptor(msg_descriptor))</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.well_known_types_test.FieldMaskTest.testMergeErrors"><code class="name flex">
+<span>def <span class="ident">testMergeErrors</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testMergeErrors(self):
+  src = unittest_pb2.TestAllTypes()
+  dst = unittest_pb2.TestAllTypes()
+  mask = field_mask_pb2.FieldMask()
+  test_util.SetAllFields(src)
+  mask.FromJsonString(&#39;optionalInt32.field&#39;)
+  with self.assertRaises(ValueError) as e:
+    mask.MergeMessage(src, dst)
+  self.assertEqual(&#39;Error: Field optional_int32 in message &#39;
+                   &#39;protobuf_unittest.TestAllTypes is not a singular &#39;
+                   &#39;message field and cannot have sub-fields.&#39;,
+                   str(e.exception))</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.well_known_types_test.FieldMaskTest.testMergeMessageWithMapField"><code class="name flex">
+<span>def <span class="ident">testMergeMessageWithMapField</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testMergeMessageWithMapField(self):
+  empty_map = map_unittest_pb2.TestRecursiveMapMessage()
+  src_level_2 = map_unittest_pb2.TestRecursiveMapMessage()
+  src_level_2.a[&#39;src level 2&#39;].CopyFrom(empty_map)
+  src = map_unittest_pb2.TestRecursiveMapMessage()
+  src.a[&#39;common key&#39;].CopyFrom(src_level_2)
+  src.a[&#39;src level 1&#39;].CopyFrom(src_level_2)
+
+  dst_level_2 = map_unittest_pb2.TestRecursiveMapMessage()
+  dst_level_2.a[&#39;dst level 2&#39;].CopyFrom(empty_map)
+  dst = map_unittest_pb2.TestRecursiveMapMessage()
+  dst.a[&#39;common key&#39;].CopyFrom(dst_level_2)
+  dst.a[&#39;dst level 1&#39;].CopyFrom(empty_map)
+
+  mask = field_mask_pb2.FieldMask()
+  mask.FromJsonString(&#39;a&#39;)
+  mask.MergeMessage(src, dst)
+
+  # map from dst is replaced with map from src.
+  self.assertEqual(dst.a[&#39;common key&#39;], src_level_2)
+  self.assertEqual(dst.a[&#39;src level 1&#39;], src_level_2)
+  self.assertEqual(dst.a[&#39;dst level 1&#39;], empty_map)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.well_known_types_test.FieldMaskTest.testMergeMessageWithoutMapFields"><code class="name flex">
+<span>def <span class="ident">testMergeMessageWithoutMapFields</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testMergeMessageWithoutMapFields(self):
+  # Test merge one field.
+  src = unittest_pb2.TestAllTypes()
+  test_util.SetAllFields(src)
+  for field in src.DESCRIPTOR.fields:
+    if field.containing_oneof:
+      continue
+    field_name = field.name
+    dst = unittest_pb2.TestAllTypes()
+    # Only set one path to mask.
+    mask = field_mask_pb2.FieldMask()
+    mask.paths.append(field_name)
+    mask.MergeMessage(src, dst)
+    # The expected result message.
+    msg = unittest_pb2.TestAllTypes()
+    if field.label == descriptor.FieldDescriptor.LABEL_REPEATED:
+      repeated_src = getattr(src, field_name)
+      repeated_msg = getattr(msg, field_name)
+      if field.cpp_type == descriptor.FieldDescriptor.CPPTYPE_MESSAGE:
+        for item in repeated_src:
+          repeated_msg.add().CopyFrom(item)
+      else:
+        repeated_msg.extend(repeated_src)
+    elif field.cpp_type == descriptor.FieldDescriptor.CPPTYPE_MESSAGE:
+      getattr(msg, field_name).CopyFrom(getattr(src, field_name))
+    else:
+      setattr(msg, field_name, getattr(src, field_name))
+    # Only field specified in mask is merged.
+    self.assertEqual(msg, dst)
+
+  # Test merge nested fields.
+  nested_src = unittest_pb2.NestedTestAllTypes()
+  nested_dst = unittest_pb2.NestedTestAllTypes()
+  nested_src.child.payload.optional_int32 = 1234
+  nested_src.child.child.payload.optional_int32 = 5678
+  mask = field_mask_pb2.FieldMask()
+  mask.FromJsonString(&#39;child.payload&#39;)
+  mask.MergeMessage(nested_src, nested_dst)
+  self.assertEqual(1234, nested_dst.child.payload.optional_int32)
+  self.assertEqual(0, nested_dst.child.child.payload.optional_int32)
+
+  mask.FromJsonString(&#39;child.child.payload&#39;)
+  mask.MergeMessage(nested_src, nested_dst)
+  self.assertEqual(1234, nested_dst.child.payload.optional_int32)
+  self.assertEqual(5678, nested_dst.child.child.payload.optional_int32)
+
+  nested_dst.Clear()
+  mask.FromJsonString(&#39;child.child.payload&#39;)
+  mask.MergeMessage(nested_src, nested_dst)
+  self.assertEqual(0, nested_dst.child.payload.optional_int32)
+  self.assertEqual(5678, nested_dst.child.child.payload.optional_int32)
+
+  nested_dst.Clear()
+  mask.FromJsonString(&#39;child&#39;)
+  mask.MergeMessage(nested_src, nested_dst)
+  self.assertEqual(1234, nested_dst.child.payload.optional_int32)
+  self.assertEqual(5678, nested_dst.child.child.payload.optional_int32)
+
+  # Test MergeOptions.
+  nested_dst.Clear()
+  nested_dst.child.payload.optional_int64 = 4321
+  # Message fields will be merged by default.
+  mask.FromJsonString(&#39;child.payload&#39;)
+  mask.MergeMessage(nested_src, nested_dst)
+  self.assertEqual(1234, nested_dst.child.payload.optional_int32)
+  self.assertEqual(4321, nested_dst.child.payload.optional_int64)
+  # Change the behavior to replace message fields.
+  mask.FromJsonString(&#39;child.payload&#39;)
+  mask.MergeMessage(nested_src, nested_dst, True, False)
+  self.assertEqual(1234, nested_dst.child.payload.optional_int32)
+  self.assertEqual(0, nested_dst.child.payload.optional_int64)
+
+  # By default, fields missing in source are not cleared in destination.
+  nested_dst.payload.optional_int32 = 1234
+  self.assertTrue(nested_dst.HasField(&#39;payload&#39;))
+  mask.FromJsonString(&#39;payload&#39;)
+  mask.MergeMessage(nested_src, nested_dst)
+  self.assertTrue(nested_dst.HasField(&#39;payload&#39;))
+  # But they are cleared when replacing message fields.
+  nested_dst.Clear()
+  nested_dst.payload.optional_int32 = 1234
+  mask.FromJsonString(&#39;payload&#39;)
+  mask.MergeMessage(nested_src, nested_dst, True, False)
+  self.assertFalse(nested_dst.HasField(&#39;payload&#39;))
+
+  nested_src.payload.repeated_int32.append(1234)
+  nested_dst.payload.repeated_int32.append(5678)
+  # Repeated fields will be appended by default.
+  mask.FromJsonString(&#39;payload.repeatedInt32&#39;)
+  mask.MergeMessage(nested_src, nested_dst)
+  self.assertEqual(2, len(nested_dst.payload.repeated_int32))
+  self.assertEqual(5678, nested_dst.payload.repeated_int32[0])
+  self.assertEqual(1234, nested_dst.payload.repeated_int32[1])
+  # Change the behavior to replace repeated fields.
+  mask.FromJsonString(&#39;payload.repeatedInt32&#39;)
+  mask.MergeMessage(nested_src, nested_dst, False, True)
+  self.assertEqual(1, len(nested_dst.payload.repeated_int32))
+  self.assertEqual(1234, nested_dst.payload.repeated_int32[0])
+
+  # Test Merge oneof field.
+  new_msg = unittest_pb2.TestOneof2()
+  dst = unittest_pb2.TestOneof2()
+  dst.foo_message.qux_int = 1
+  mask = field_mask_pb2.FieldMask()
+  mask.FromJsonString(&#39;fooMessage,fooLazyMessage.quxInt&#39;)
+  mask.MergeMessage(new_msg, dst)
+  self.assertTrue(dst.HasField(&#39;foo_message&#39;))
+  self.assertFalse(dst.HasField(&#39;foo_lazy_message&#39;))</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.well_known_types_test.FieldMaskTest.testSnakeCaseToCamelCase"><code class="name flex">
+<span>def <span class="ident">testSnakeCaseToCamelCase</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testSnakeCaseToCamelCase(self):
+  self.assertEqual(&#39;fooBar&#39;,
+                   well_known_types._SnakeCaseToCamelCase(&#39;foo_bar&#39;))
+  self.assertEqual(&#39;FooBar&#39;,
+                   well_known_types._SnakeCaseToCamelCase(&#39;_foo_bar&#39;))
+  self.assertEqual(&#39;foo3Bar&#39;,
+                   well_known_types._SnakeCaseToCamelCase(&#39;foo3_bar&#39;))
+
+  # No uppercase letter is allowed.
+  self.assertRaisesRegexp(
+      ValueError,
+      &#39;Fail to print FieldMask to Json string: Path name Foo must &#39;
+      &#39;not contain uppercase letters.&#39;,
+      well_known_types._SnakeCaseToCamelCase,
+      &#39;Foo&#39;)
+  # Any character after a &#34;_&#34; must be a lowercase letter.
+  #   1. &#34;_&#34; cannot be followed by another &#34;_&#34;.
+  #   2. &#34;_&#34; cannot be followed by a digit.
+  #   3. &#34;_&#34; cannot appear as the last character.
+  self.assertRaisesRegexp(
+      ValueError,
+      &#39;Fail to print FieldMask to Json string: The character after a &#39;
+      &#39;&#34;_&#34; must be a lowercase letter in path name foo__bar.&#39;,
+      well_known_types._SnakeCaseToCamelCase,
+      &#39;foo__bar&#39;)
+  self.assertRaisesRegexp(
+      ValueError,
+      &#39;Fail to print FieldMask to Json string: The character after a &#39;
+      &#39;&#34;_&#34; must be a lowercase letter in path name foo_3bar.&#39;,
+      well_known_types._SnakeCaseToCamelCase,
+      &#39;foo_3bar&#39;)
+  self.assertRaisesRegexp(
+      ValueError,
+      &#39;Fail to print FieldMask to Json string: Trailing &#34;_&#34; in path &#39;
+      &#39;name foo_bar_.&#39;,
+      well_known_types._SnakeCaseToCamelCase,
+      &#39;foo_bar_&#39;)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.well_known_types_test.FieldMaskTest.testStringFormat"><code class="name flex">
+<span>def <span class="ident">testStringFormat</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testStringFormat(self):
+  mask = field_mask_pb2.FieldMask()
+  self.assertEqual(&#39;&#39;, mask.ToJsonString())
+  mask.paths.append(&#39;foo&#39;)
+  self.assertEqual(&#39;foo&#39;, mask.ToJsonString())
+  mask.paths.append(&#39;bar&#39;)
+  self.assertEqual(&#39;foo,bar&#39;, mask.ToJsonString())
+
+  mask.FromJsonString(&#39;&#39;)
+  self.assertEqual(&#39;&#39;, mask.ToJsonString())
+  mask.FromJsonString(&#39;foo&#39;)
+  self.assertEqual([&#39;foo&#39;], mask.paths)
+  mask.FromJsonString(&#39;foo,bar&#39;)
+  self.assertEqual([&#39;foo&#39;, &#39;bar&#39;], mask.paths)
+
+  # Test camel case
+  mask.Clear()
+  mask.paths.append(&#39;foo_bar&#39;)
+  self.assertEqual(&#39;fooBar&#39;, mask.ToJsonString())
+  mask.paths.append(&#39;bar_quz&#39;)
+  self.assertEqual(&#39;fooBar,barQuz&#39;, mask.ToJsonString())
+
+  mask.FromJsonString(&#39;&#39;)
+  self.assertEqual(&#39;&#39;, mask.ToJsonString())
+  self.assertEqual([], mask.paths)
+  mask.FromJsonString(&#39;fooBar&#39;)
+  self.assertEqual([&#39;foo_bar&#39;], mask.paths)
+  mask.FromJsonString(&#39;fooBar,barQuz&#39;)
+  self.assertEqual([&#39;foo_bar&#39;, &#39;bar_quz&#39;], mask.paths)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.well_known_types_test.FieldMaskTest.testUnion"><code class="name flex">
+<span>def <span class="ident">testUnion</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testUnion(self):
+  mask1 = field_mask_pb2.FieldMask()
+  mask2 = field_mask_pb2.FieldMask()
+  out_mask = field_mask_pb2.FieldMask()
+  mask1.FromJsonString(&#39;foo,baz&#39;)
+  mask2.FromJsonString(&#39;bar,quz&#39;)
+  out_mask.Union(mask1, mask2)
+  self.assertEqual(&#39;bar,baz,foo,quz&#39;, out_mask.ToJsonString())
+  # Overlap with duplicated paths.
+  mask1.FromJsonString(&#39;foo,baz.bb&#39;)
+  mask2.FromJsonString(&#39;baz.bb,quz&#39;)
+  out_mask.Union(mask1, mask2)
+  self.assertEqual(&#39;baz.bb,foo,quz&#39;, out_mask.ToJsonString())
+  # Overlap with paths covering some other paths.
+  mask1.FromJsonString(&#39;foo.bar.baz,quz&#39;)
+  mask2.FromJsonString(&#39;foo.bar,bar&#39;)
+  out_mask.Union(mask1, mask2)
+  self.assertEqual(&#39;bar,foo.bar,quz&#39;, out_mask.ToJsonString())
+  src = unittest_pb2.TestAllTypes()
+  with self.assertRaises(ValueError):
+    out_mask.Union(src, mask2)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="google.protobuf.internal.well_known_types_test.StructTest"><code class="flex name class">
+<span>class <span class="ident">StructTest</span></span>
+<span>(</span><span>methodName='runTest')</span>
+</code></dt>
+<dd>
+<section class="desc"><p>A class whose instances are single test cases.</p>
+<p>By default, the test code itself should be placed in a method named
+'runTest'.</p>
+<p>If the fixture may be used for many test cases, create as
+many test methods as are needed. When instantiating such a TestCase
+subclass, specify in the constructor arguments the name of the test method
+that the instance is to execute.</p>
+<p>Test authors should subclass TestCase for their own tests. Construction
+and deconstruction of the test's environment ('fixture') can be
+implemented by overriding the 'setUp' and 'tearDown' methods respectively.</p>
+<p>If it is necessary to override the <strong>init</strong> method, the base class
+<strong>init</strong> method must always be called. It is important that subclasses
+should not change the signature of their <strong>init</strong> method, since instances
+of the classes are instantiated automatically by parts of the framework
+in order to be run.</p>
+<p>When subclassing TestCase, you can set these attributes:
+* failureException: determines which exception will be raised when
+the instance's assertion methods fail; test methods raising this
+exception will be deemed to have 'failed' rather than 'errored'.
+* longMessage: determines whether long messages (including repr of
+objects used in assert methods) will be printed on failure in <em>addition</em>
+to any explicit message passed.
+* maxDiff: sets the maximum length of a diff in failure messages
+by assert methods using difflib. It is looked up as an instance
+attribute so can be configured by individual tests if required.</p>
+<p>Create an instance of the class that will use the named test
+method when executed. Raises a ValueError if the instance does
+not have a method with the specified name.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class StructTest(unittest.TestCase):
+
+  def testStruct(self):
+    struct = struct_pb2.Struct()
+    self.assertIsInstance(struct, collections_abc.Mapping)
+    self.assertEqual(0, len(struct))
+    struct_class = struct.__class__
+
+    struct[&#39;key1&#39;] = 5
+    struct[&#39;key2&#39;] = &#39;abc&#39;
+    struct[&#39;key3&#39;] = True
+    struct.get_or_create_struct(&#39;key4&#39;)[&#39;subkey&#39;] = 11.0
+    struct_list = struct.get_or_create_list(&#39;key5&#39;)
+    self.assertIsInstance(struct_list, collections_abc.Sequence)
+    struct_list.extend([6, &#39;seven&#39;, True, False, None])
+    struct_list.add_struct()[&#39;subkey2&#39;] = 9
+    struct[&#39;key6&#39;] = {&#39;subkey&#39;: {}}
+    struct[&#39;key7&#39;] = [2, False]
+
+    self.assertEqual(7, len(struct))
+    self.assertTrue(isinstance(struct, well_known_types.Struct))
+    self.assertEqual(5, struct[&#39;key1&#39;])
+    self.assertEqual(&#39;abc&#39;, struct[&#39;key2&#39;])
+    self.assertIs(True, struct[&#39;key3&#39;])
+    self.assertEqual(11, struct[&#39;key4&#39;][&#39;subkey&#39;])
+    inner_struct = struct_class()
+    inner_struct[&#39;subkey2&#39;] = 9
+    self.assertEqual([6, &#39;seven&#39;, True, False, None, inner_struct],
+                     list(struct[&#39;key5&#39;].items()))
+    self.assertEqual({}, dict(struct[&#39;key6&#39;][&#39;subkey&#39;].fields))
+    self.assertEqual([2, False], list(struct[&#39;key7&#39;].items()))
+
+    serialized = struct.SerializeToString()
+    struct2 = struct_pb2.Struct()
+    struct2.ParseFromString(serialized)
+
+    self.assertEqual(struct, struct2)
+    for key, value in struct.items():
+      self.assertIn(key, struct)
+      self.assertIn(key, struct2)
+      self.assertEqual(value, struct2[key])
+
+    self.assertEqual(7, len(struct.keys()))
+    self.assertEqual(7, len(struct.values()))
+    for key in struct.keys():
+      self.assertIn(key, struct)
+      self.assertIn(key, struct2)
+      self.assertEqual(struct[key], struct2[key])
+
+    item = (next(iter(struct.keys())), next(iter(struct.values())))
+    self.assertEqual(item, next(iter(struct.items())))
+
+    self.assertTrue(isinstance(struct2, well_known_types.Struct))
+    self.assertEqual(5, struct2[&#39;key1&#39;])
+    self.assertEqual(&#39;abc&#39;, struct2[&#39;key2&#39;])
+    self.assertIs(True, struct2[&#39;key3&#39;])
+    self.assertEqual(11, struct2[&#39;key4&#39;][&#39;subkey&#39;])
+    self.assertEqual([6, &#39;seven&#39;, True, False, None, inner_struct],
+                     list(struct2[&#39;key5&#39;].items()))
+
+    struct_list = struct2[&#39;key5&#39;]
+    self.assertEqual(6, struct_list[0])
+    self.assertEqual(&#39;seven&#39;, struct_list[1])
+    self.assertEqual(True, struct_list[2])
+    self.assertEqual(False, struct_list[3])
+    self.assertEqual(None, struct_list[4])
+    self.assertEqual(inner_struct, struct_list[5])
+
+    struct_list[1] = 7
+    self.assertEqual(7, struct_list[1])
+
+    struct_list.add_list().extend([1, &#39;two&#39;, True, False, None])
+    self.assertEqual([1, &#39;two&#39;, True, False, None],
+                     list(struct_list[6].items()))
+    struct_list.extend([{&#39;nested_struct&#39;: 30}, [&#39;nested_list&#39;, 99], {}, []])
+    self.assertEqual(11, len(struct_list.values))
+    self.assertEqual(30, struct_list[7][&#39;nested_struct&#39;])
+    self.assertEqual(&#39;nested_list&#39;, struct_list[8][0])
+    self.assertEqual(99, struct_list[8][1])
+    self.assertEqual({}, dict(struct_list[9].fields))
+    self.assertEqual([], list(struct_list[10].items()))
+    struct_list[0] = {&#39;replace&#39;: &#39;set&#39;}
+    struct_list[1] = [&#39;replace&#39;, &#39;set&#39;]
+    self.assertEqual(&#39;set&#39;, struct_list[0][&#39;replace&#39;])
+    self.assertEqual([&#39;replace&#39;, &#39;set&#39;], list(struct_list[1].items()))
+
+    text_serialized = str(struct)
+    struct3 = struct_pb2.Struct()
+    text_format.Merge(text_serialized, struct3)
+    self.assertEqual(struct, struct3)
+
+    struct.get_or_create_struct(&#39;key3&#39;)[&#39;replace&#39;] = 12
+    self.assertEqual(12, struct[&#39;key3&#39;][&#39;replace&#39;])
+
+    # Tests empty list.
+    struct.get_or_create_list(&#39;empty_list&#39;)
+    empty_list = struct[&#39;empty_list&#39;]
+    self.assertEqual([], list(empty_list.items()))
+    list2 = struct_pb2.ListValue()
+    list2.add_list()
+    empty_list = list2[0]
+    self.assertEqual([], list(empty_list.items()))
+
+    # Tests empty struct.
+    struct.get_or_create_struct(&#39;empty_struct&#39;)
+    empty_struct = struct[&#39;empty_struct&#39;]
+    self.assertEqual({}, dict(empty_struct.fields))
+    list2.add_struct()
+    empty_struct = list2[1]
+    self.assertEqual({}, dict(empty_struct.fields))
+
+    self.assertEqual(9, len(struct))
+    del struct[&#39;key3&#39;]
+    del struct[&#39;key4&#39;]
+    self.assertEqual(7, len(struct))
+    self.assertEqual(6, len(struct[&#39;key5&#39;]))
+    del struct[&#39;key5&#39;][1]
+    self.assertEqual(5, len(struct[&#39;key5&#39;]))
+    self.assertEqual([6, True, False, None, inner_struct],
+                     list(struct[&#39;key5&#39;].items()))
+
+  def testStructAssignment(self):
+    # Tests struct assignment from another struct
+    s1 = struct_pb2.Struct()
+    s2 = struct_pb2.Struct()
+    for value in [1, &#39;a&#39;, [1], [&#39;a&#39;], {&#39;a&#39;: &#39;b&#39;}]:
+      s1[&#39;x&#39;] = value
+      s2[&#39;x&#39;] = s1[&#39;x&#39;]
+      self.assertEqual(s1[&#39;x&#39;], s2[&#39;x&#39;])
+
+  def testMergeFrom(self):
+    struct = struct_pb2.Struct()
+    struct_class = struct.__class__
+
+    dictionary = {
+        &#39;key1&#39;: 5,
+        &#39;key2&#39;: &#39;abc&#39;,
+        &#39;key3&#39;: True,
+        &#39;key4&#39;: {&#39;subkey&#39;: 11.0},
+        &#39;key5&#39;: [6, &#39;seven&#39;, True, False, None, {&#39;subkey2&#39;: 9}],
+        &#39;key6&#39;: [[&#39;nested_list&#39;, True]],
+        &#39;empty_struct&#39;: {},
+        &#39;empty_list&#39;: []
+    }
+    struct.update(dictionary)
+    self.assertEqual(5, struct[&#39;key1&#39;])
+    self.assertEqual(&#39;abc&#39;, struct[&#39;key2&#39;])
+    self.assertIs(True, struct[&#39;key3&#39;])
+    self.assertEqual(11, struct[&#39;key4&#39;][&#39;subkey&#39;])
+    inner_struct = struct_class()
+    inner_struct[&#39;subkey2&#39;] = 9
+    self.assertEqual([6, &#39;seven&#39;, True, False, None, inner_struct],
+                     list(struct[&#39;key5&#39;].items()))
+    self.assertEqual(2, len(struct[&#39;key6&#39;][0].values))
+    self.assertEqual(&#39;nested_list&#39;, struct[&#39;key6&#39;][0][0])
+    self.assertEqual(True, struct[&#39;key6&#39;][0][1])
+    empty_list = struct[&#39;empty_list&#39;]
+    self.assertEqual([], list(empty_list.items()))
+    empty_struct = struct[&#39;empty_struct&#39;]
+    self.assertEqual({}, dict(empty_struct.fields))
+
+    # According to documentation: &#34;When parsing from the wire or when merging,
+    # if there are duplicate map keys the last key seen is used&#34;.
+    duplicate = {
+        &#39;key4&#39;: {&#39;replace&#39;: 20},
+        &#39;key5&#39;: [[False, 5]]
+    }
+    struct.update(duplicate)
+    self.assertEqual(1, len(struct[&#39;key4&#39;].fields))
+    self.assertEqual(20, struct[&#39;key4&#39;][&#39;replace&#39;])
+    self.assertEqual(1, len(struct[&#39;key5&#39;].values))
+    self.assertEqual(False, struct[&#39;key5&#39;][0][0])
+    self.assertEqual(5, struct[&#39;key5&#39;][0][1])</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>unittest.case.TestCase</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="google.protobuf.internal.well_known_types_test.StructTest.testMergeFrom"><code class="name flex">
+<span>def <span class="ident">testMergeFrom</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testMergeFrom(self):
+  struct = struct_pb2.Struct()
+  struct_class = struct.__class__
+
+  dictionary = {
+      &#39;key1&#39;: 5,
+      &#39;key2&#39;: &#39;abc&#39;,
+      &#39;key3&#39;: True,
+      &#39;key4&#39;: {&#39;subkey&#39;: 11.0},
+      &#39;key5&#39;: [6, &#39;seven&#39;, True, False, None, {&#39;subkey2&#39;: 9}],
+      &#39;key6&#39;: [[&#39;nested_list&#39;, True]],
+      &#39;empty_struct&#39;: {},
+      &#39;empty_list&#39;: []
+  }
+  struct.update(dictionary)
+  self.assertEqual(5, struct[&#39;key1&#39;])
+  self.assertEqual(&#39;abc&#39;, struct[&#39;key2&#39;])
+  self.assertIs(True, struct[&#39;key3&#39;])
+  self.assertEqual(11, struct[&#39;key4&#39;][&#39;subkey&#39;])
+  inner_struct = struct_class()
+  inner_struct[&#39;subkey2&#39;] = 9
+  self.assertEqual([6, &#39;seven&#39;, True, False, None, inner_struct],
+                   list(struct[&#39;key5&#39;].items()))
+  self.assertEqual(2, len(struct[&#39;key6&#39;][0].values))
+  self.assertEqual(&#39;nested_list&#39;, struct[&#39;key6&#39;][0][0])
+  self.assertEqual(True, struct[&#39;key6&#39;][0][1])
+  empty_list = struct[&#39;empty_list&#39;]
+  self.assertEqual([], list(empty_list.items()))
+  empty_struct = struct[&#39;empty_struct&#39;]
+  self.assertEqual({}, dict(empty_struct.fields))
+
+  # According to documentation: &#34;When parsing from the wire or when merging,
+  # if there are duplicate map keys the last key seen is used&#34;.
+  duplicate = {
+      &#39;key4&#39;: {&#39;replace&#39;: 20},
+      &#39;key5&#39;: [[False, 5]]
+  }
+  struct.update(duplicate)
+  self.assertEqual(1, len(struct[&#39;key4&#39;].fields))
+  self.assertEqual(20, struct[&#39;key4&#39;][&#39;replace&#39;])
+  self.assertEqual(1, len(struct[&#39;key5&#39;].values))
+  self.assertEqual(False, struct[&#39;key5&#39;][0][0])
+  self.assertEqual(5, struct[&#39;key5&#39;][0][1])</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.well_known_types_test.StructTest.testStruct"><code class="name flex">
+<span>def <span class="ident">testStruct</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testStruct(self):
+  struct = struct_pb2.Struct()
+  self.assertIsInstance(struct, collections_abc.Mapping)
+  self.assertEqual(0, len(struct))
+  struct_class = struct.__class__
+
+  struct[&#39;key1&#39;] = 5
+  struct[&#39;key2&#39;] = &#39;abc&#39;
+  struct[&#39;key3&#39;] = True
+  struct.get_or_create_struct(&#39;key4&#39;)[&#39;subkey&#39;] = 11.0
+  struct_list = struct.get_or_create_list(&#39;key5&#39;)
+  self.assertIsInstance(struct_list, collections_abc.Sequence)
+  struct_list.extend([6, &#39;seven&#39;, True, False, None])
+  struct_list.add_struct()[&#39;subkey2&#39;] = 9
+  struct[&#39;key6&#39;] = {&#39;subkey&#39;: {}}
+  struct[&#39;key7&#39;] = [2, False]
+
+  self.assertEqual(7, len(struct))
+  self.assertTrue(isinstance(struct, well_known_types.Struct))
+  self.assertEqual(5, struct[&#39;key1&#39;])
+  self.assertEqual(&#39;abc&#39;, struct[&#39;key2&#39;])
+  self.assertIs(True, struct[&#39;key3&#39;])
+  self.assertEqual(11, struct[&#39;key4&#39;][&#39;subkey&#39;])
+  inner_struct = struct_class()
+  inner_struct[&#39;subkey2&#39;] = 9
+  self.assertEqual([6, &#39;seven&#39;, True, False, None, inner_struct],
+                   list(struct[&#39;key5&#39;].items()))
+  self.assertEqual({}, dict(struct[&#39;key6&#39;][&#39;subkey&#39;].fields))
+  self.assertEqual([2, False], list(struct[&#39;key7&#39;].items()))
+
+  serialized = struct.SerializeToString()
+  struct2 = struct_pb2.Struct()
+  struct2.ParseFromString(serialized)
+
+  self.assertEqual(struct, struct2)
+  for key, value in struct.items():
+    self.assertIn(key, struct)
+    self.assertIn(key, struct2)
+    self.assertEqual(value, struct2[key])
+
+  self.assertEqual(7, len(struct.keys()))
+  self.assertEqual(7, len(struct.values()))
+  for key in struct.keys():
+    self.assertIn(key, struct)
+    self.assertIn(key, struct2)
+    self.assertEqual(struct[key], struct2[key])
+
+  item = (next(iter(struct.keys())), next(iter(struct.values())))
+  self.assertEqual(item, next(iter(struct.items())))
+
+  self.assertTrue(isinstance(struct2, well_known_types.Struct))
+  self.assertEqual(5, struct2[&#39;key1&#39;])
+  self.assertEqual(&#39;abc&#39;, struct2[&#39;key2&#39;])
+  self.assertIs(True, struct2[&#39;key3&#39;])
+  self.assertEqual(11, struct2[&#39;key4&#39;][&#39;subkey&#39;])
+  self.assertEqual([6, &#39;seven&#39;, True, False, None, inner_struct],
+                   list(struct2[&#39;key5&#39;].items()))
+
+  struct_list = struct2[&#39;key5&#39;]
+  self.assertEqual(6, struct_list[0])
+  self.assertEqual(&#39;seven&#39;, struct_list[1])
+  self.assertEqual(True, struct_list[2])
+  self.assertEqual(False, struct_list[3])
+  self.assertEqual(None, struct_list[4])
+  self.assertEqual(inner_struct, struct_list[5])
+
+  struct_list[1] = 7
+  self.assertEqual(7, struct_list[1])
+
+  struct_list.add_list().extend([1, &#39;two&#39;, True, False, None])
+  self.assertEqual([1, &#39;two&#39;, True, False, None],
+                   list(struct_list[6].items()))
+  struct_list.extend([{&#39;nested_struct&#39;: 30}, [&#39;nested_list&#39;, 99], {}, []])
+  self.assertEqual(11, len(struct_list.values))
+  self.assertEqual(30, struct_list[7][&#39;nested_struct&#39;])
+  self.assertEqual(&#39;nested_list&#39;, struct_list[8][0])
+  self.assertEqual(99, struct_list[8][1])
+  self.assertEqual({}, dict(struct_list[9].fields))
+  self.assertEqual([], list(struct_list[10].items()))
+  struct_list[0] = {&#39;replace&#39;: &#39;set&#39;}
+  struct_list[1] = [&#39;replace&#39;, &#39;set&#39;]
+  self.assertEqual(&#39;set&#39;, struct_list[0][&#39;replace&#39;])
+  self.assertEqual([&#39;replace&#39;, &#39;set&#39;], list(struct_list[1].items()))
+
+  text_serialized = str(struct)
+  struct3 = struct_pb2.Struct()
+  text_format.Merge(text_serialized, struct3)
+  self.assertEqual(struct, struct3)
+
+  struct.get_or_create_struct(&#39;key3&#39;)[&#39;replace&#39;] = 12
+  self.assertEqual(12, struct[&#39;key3&#39;][&#39;replace&#39;])
+
+  # Tests empty list.
+  struct.get_or_create_list(&#39;empty_list&#39;)
+  empty_list = struct[&#39;empty_list&#39;]
+  self.assertEqual([], list(empty_list.items()))
+  list2 = struct_pb2.ListValue()
+  list2.add_list()
+  empty_list = list2[0]
+  self.assertEqual([], list(empty_list.items()))
+
+  # Tests empty struct.
+  struct.get_or_create_struct(&#39;empty_struct&#39;)
+  empty_struct = struct[&#39;empty_struct&#39;]
+  self.assertEqual({}, dict(empty_struct.fields))
+  list2.add_struct()
+  empty_struct = list2[1]
+  self.assertEqual({}, dict(empty_struct.fields))
+
+  self.assertEqual(9, len(struct))
+  del struct[&#39;key3&#39;]
+  del struct[&#39;key4&#39;]
+  self.assertEqual(7, len(struct))
+  self.assertEqual(6, len(struct[&#39;key5&#39;]))
+  del struct[&#39;key5&#39;][1]
+  self.assertEqual(5, len(struct[&#39;key5&#39;]))
+  self.assertEqual([6, True, False, None, inner_struct],
+                   list(struct[&#39;key5&#39;].items()))</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.well_known_types_test.StructTest.testStructAssignment"><code class="name flex">
+<span>def <span class="ident">testStructAssignment</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testStructAssignment(self):
+  # Tests struct assignment from another struct
+  s1 = struct_pb2.Struct()
+  s2 = struct_pb2.Struct()
+  for value in [1, &#39;a&#39;, [1], [&#39;a&#39;], {&#39;a&#39;: &#39;b&#39;}]:
+    s1[&#39;x&#39;] = value
+    s2[&#39;x&#39;] = s1[&#39;x&#39;]
+    self.assertEqual(s1[&#39;x&#39;], s2[&#39;x&#39;])</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="google.protobuf.internal.well_known_types_test.TimeUtilTest"><code class="flex name class">
+<span>class <span class="ident">TimeUtilTest</span></span>
+<span>(</span><span>methodName='runTest')</span>
+</code></dt>
+<dd>
+<section class="desc"><p>A class whose instances are single test cases.</p>
+<p>By default, the test code itself should be placed in a method named
+'runTest'.</p>
+<p>If the fixture may be used for many test cases, create as
+many test methods as are needed. When instantiating such a TestCase
+subclass, specify in the constructor arguments the name of the test method
+that the instance is to execute.</p>
+<p>Test authors should subclass TestCase for their own tests. Construction
+and deconstruction of the test's environment ('fixture') can be
+implemented by overriding the 'setUp' and 'tearDown' methods respectively.</p>
+<p>If it is necessary to override the <strong>init</strong> method, the base class
+<strong>init</strong> method must always be called. It is important that subclasses
+should not change the signature of their <strong>init</strong> method, since instances
+of the classes are instantiated automatically by parts of the framework
+in order to be run.</p>
+<p>When subclassing TestCase, you can set these attributes:
+* failureException: determines which exception will be raised when
+the instance's assertion methods fail; test methods raising this
+exception will be deemed to have 'failed' rather than 'errored'.
+* longMessage: determines whether long messages (including repr of
+objects used in assert methods) will be printed on failure in <em>addition</em>
+to any explicit message passed.
+* maxDiff: sets the maximum length of a diff in failure messages
+by assert methods using difflib. It is looked up as an instance
+attribute so can be configured by individual tests if required.</p>
+<p>Create an instance of the class that will use the named test
+method when executed. Raises a ValueError if the instance does
+not have a method with the specified name.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class TimeUtilTest(TimeUtilTestBase):
+
+  def testTimestampSerializeAndParse(self):
+    message = timestamp_pb2.Timestamp()
+    # Generated output should contain 3, 6, or 9 fractional digits.
+    message.seconds = 0
+    message.nanos = 0
+    self.CheckTimestampConversion(message, &#39;1970-01-01T00:00:00Z&#39;)
+    message.nanos = 10000000
+    self.CheckTimestampConversion(message, &#39;1970-01-01T00:00:00.010Z&#39;)
+    message.nanos = 10000
+    self.CheckTimestampConversion(message, &#39;1970-01-01T00:00:00.000010Z&#39;)
+    message.nanos = 10
+    self.CheckTimestampConversion(message, &#39;1970-01-01T00:00:00.000000010Z&#39;)
+    # Test min timestamps.
+    message.seconds = -62135596800
+    message.nanos = 0
+    self.CheckTimestampConversion(message, &#39;0001-01-01T00:00:00Z&#39;)
+    # Test max timestamps.
+    message.seconds = 253402300799
+    message.nanos = 999999999
+    self.CheckTimestampConversion(message, &#39;9999-12-31T23:59:59.999999999Z&#39;)
+    # Test negative timestamps.
+    message.seconds = -1
+    self.CheckTimestampConversion(message, &#39;1969-12-31T23:59:59.999999999Z&#39;)
+
+    # Parsing accepts an fractional digits as long as they fit into nano
+    # precision.
+    message.FromJsonString(&#39;1970-01-01T00:00:00.1Z&#39;)
+    self.assertEqual(0, message.seconds)
+    self.assertEqual(100000000, message.nanos)
+    # Parsing accepts offsets.
+    message.FromJsonString(&#39;1970-01-01T00:00:00-08:00&#39;)
+    self.assertEqual(8 * 3600, message.seconds)
+    self.assertEqual(0, message.nanos)
+
+    # It is not easy to check with current time. For test coverage only.
+    message.GetCurrentTime()
+    self.assertNotEqual(8 * 3600, message.seconds)
+
+  def testDurationSerializeAndParse(self):
+    message = duration_pb2.Duration()
+    # Generated output should contain 3, 6, or 9 fractional digits.
+    message.seconds = 0
+    message.nanos = 0
+    self.CheckDurationConversion(message, &#39;0s&#39;)
+    message.nanos = 10000000
+    self.CheckDurationConversion(message, &#39;0.010s&#39;)
+    message.nanos = 10000
+    self.CheckDurationConversion(message, &#39;0.000010s&#39;)
+    message.nanos = 10
+    self.CheckDurationConversion(message, &#39;0.000000010s&#39;)
+
+    # Test min and max
+    message.seconds = 315576000000
+    message.nanos = 999999999
+    self.CheckDurationConversion(message, &#39;315576000000.999999999s&#39;)
+    message.seconds = -315576000000
+    message.nanos = -999999999
+    self.CheckDurationConversion(message, &#39;-315576000000.999999999s&#39;)
+
+    # Parsing accepts an fractional digits as long as they fit into nano
+    # precision.
+    message.FromJsonString(&#39;0.1s&#39;)
+    self.assertEqual(100000000, message.nanos)
+    message.FromJsonString(&#39;0.0000001s&#39;)
+    self.assertEqual(100, message.nanos)
+
+  def testTimestampIntegerConversion(self):
+    message = timestamp_pb2.Timestamp()
+    message.FromNanoseconds(1)
+    self.assertEqual(&#39;1970-01-01T00:00:00.000000001Z&#39;,
+                     message.ToJsonString())
+    self.assertEqual(1, message.ToNanoseconds())
+
+    message.FromNanoseconds(-1)
+    self.assertEqual(&#39;1969-12-31T23:59:59.999999999Z&#39;,
+                     message.ToJsonString())
+    self.assertEqual(-1, message.ToNanoseconds())
+
+    message.FromMicroseconds(1)
+    self.assertEqual(&#39;1970-01-01T00:00:00.000001Z&#39;,
+                     message.ToJsonString())
+    self.assertEqual(1, message.ToMicroseconds())
+
+    message.FromMicroseconds(-1)
+    self.assertEqual(&#39;1969-12-31T23:59:59.999999Z&#39;,
+                     message.ToJsonString())
+    self.assertEqual(-1, message.ToMicroseconds())
+
+    message.FromMilliseconds(1)
+    self.assertEqual(&#39;1970-01-01T00:00:00.001Z&#39;,
+                     message.ToJsonString())
+    self.assertEqual(1, message.ToMilliseconds())
+
+    message.FromMilliseconds(-1)
+    self.assertEqual(&#39;1969-12-31T23:59:59.999Z&#39;,
+                     message.ToJsonString())
+    self.assertEqual(-1, message.ToMilliseconds())
+
+    message.FromSeconds(1)
+    self.assertEqual(&#39;1970-01-01T00:00:01Z&#39;,
+                     message.ToJsonString())
+    self.assertEqual(1, message.ToSeconds())
+
+    message.FromSeconds(-1)
+    self.assertEqual(&#39;1969-12-31T23:59:59Z&#39;,
+                     message.ToJsonString())
+    self.assertEqual(-1, message.ToSeconds())
+
+    message.FromNanoseconds(1999)
+    self.assertEqual(1, message.ToMicroseconds())
+    # For negative values, Timestamp will be rounded down.
+    # For example, &#34;1969-12-31T23:59:59.5Z&#34; (i.e., -0.5s) rounded to seconds
+    # will be &#34;1969-12-31T23:59:59Z&#34; (i.e., -1s) rather than
+    # &#34;1970-01-01T00:00:00Z&#34; (i.e., 0s).
+    message.FromNanoseconds(-1999)
+    self.assertEqual(-2, message.ToMicroseconds())
+
+  def testDurationIntegerConversion(self):
+    message = duration_pb2.Duration()
+    message.FromNanoseconds(1)
+    self.assertEqual(&#39;0.000000001s&#39;,
+                     message.ToJsonString())
+    self.assertEqual(1, message.ToNanoseconds())
+
+    message.FromNanoseconds(-1)
+    self.assertEqual(&#39;-0.000000001s&#39;,
+                     message.ToJsonString())
+    self.assertEqual(-1, message.ToNanoseconds())
+
+    message.FromMicroseconds(1)
+    self.assertEqual(&#39;0.000001s&#39;,
+                     message.ToJsonString())
+    self.assertEqual(1, message.ToMicroseconds())
+
+    message.FromMicroseconds(-1)
+    self.assertEqual(&#39;-0.000001s&#39;,
+                     message.ToJsonString())
+    self.assertEqual(-1, message.ToMicroseconds())
+
+    message.FromMilliseconds(1)
+    self.assertEqual(&#39;0.001s&#39;,
+                     message.ToJsonString())
+    self.assertEqual(1, message.ToMilliseconds())
+
+    message.FromMilliseconds(-1)
+    self.assertEqual(&#39;-0.001s&#39;,
+                     message.ToJsonString())
+    self.assertEqual(-1, message.ToMilliseconds())
+
+    message.FromSeconds(1)
+    self.assertEqual(&#39;1s&#39;, message.ToJsonString())
+    self.assertEqual(1, message.ToSeconds())
+
+    message.FromSeconds(-1)
+    self.assertEqual(&#39;-1s&#39;,
+                     message.ToJsonString())
+    self.assertEqual(-1, message.ToSeconds())
+
+    # Test truncation behavior.
+    message.FromNanoseconds(1999)
+    self.assertEqual(1, message.ToMicroseconds())
+
+    # For negative values, Duration will be rounded towards 0.
+    message.FromNanoseconds(-1999)
+    self.assertEqual(-1, message.ToMicroseconds())
+
+  def testDatetimeConverison(self):
+    message = timestamp_pb2.Timestamp()
+    dt = datetime.datetime(1970, 1, 1)
+    message.FromDatetime(dt)
+    self.assertEqual(dt, message.ToDatetime())
+
+    message.FromMilliseconds(1999)
+    self.assertEqual(datetime.datetime(1970, 1, 1, 0, 0, 1, 999000),
+                     message.ToDatetime())
+
+    dt = datetime.datetime(2555, 2, 22, 1, 2, 3, 456789)
+    message.FromDatetime(dt)
+    self.assertEqual(dt, message.ToDatetime())
+
+    dt = datetime.datetime.max
+    message.FromDatetime(dt)
+    self.assertEqual(dt, message.ToDatetime())
+
+  def testDatetimeConversionWithTimezone(self):
+    class TZ(datetime.tzinfo):
+
+      def utcoffset(self, _):
+        return datetime.timedelta(hours=1)
+
+      def dst(self, _):
+        return datetime.timedelta(0)
+
+      def tzname(self, _):
+        return &#39;UTC+1&#39;
+
+    message1 = timestamp_pb2.Timestamp()
+    dt = datetime.datetime(1970, 1, 1, 1, tzinfo=TZ())
+    message1.FromDatetime(dt)
+    message2 = timestamp_pb2.Timestamp()
+    dt = datetime.datetime(1970, 1, 1, 0)
+    message2.FromDatetime(dt)
+    self.assertEqual(message1, message2)
+
+  def testTimedeltaConversion(self):
+    message = duration_pb2.Duration()
+    message.FromNanoseconds(1999999999)
+    td = message.ToTimedelta()
+    self.assertEqual(1, td.seconds)
+    self.assertEqual(999999, td.microseconds)
+
+    message.FromNanoseconds(-1999999999)
+    td = message.ToTimedelta()
+    self.assertEqual(-1, td.days)
+    self.assertEqual(86398, td.seconds)
+    self.assertEqual(1, td.microseconds)
+
+    message.FromMicroseconds(-1)
+    td = message.ToTimedelta()
+    self.assertEqual(-1, td.days)
+    self.assertEqual(86399, td.seconds)
+    self.assertEqual(999999, td.microseconds)
+    converted_message = duration_pb2.Duration()
+    converted_message.FromTimedelta(td)
+    self.assertEqual(message, converted_message)
+
+  def testInvalidTimestamp(self):
+    message = timestamp_pb2.Timestamp()
+    self.assertRaisesRegexp(
+        ValueError,
+        &#39;Failed to parse timestamp: missing valid timezone offset.&#39;,
+        message.FromJsonString,
+        &#39;&#39;)
+    self.assertRaisesRegexp(
+        ValueError,
+        &#39;Failed to parse timestamp: invalid trailing data &#39;
+        &#39;1970-01-01T00:00:01Ztrail.&#39;,
+        message.FromJsonString,
+        &#39;1970-01-01T00:00:01Ztrail&#39;)
+    self.assertRaisesRegexp(
+        ValueError,
+        &#39;time data \&#39;10000-01-01T00:00:00\&#39; does not match&#39;
+        &#39; format \&#39;%Y-%m-%dT%H:%M:%S\&#39;&#39;,
+        message.FromJsonString, &#39;10000-01-01T00:00:00.00Z&#39;)
+    self.assertRaisesRegexp(
+        ValueError,
+        &#39;nanos 0123456789012 more than 9 fractional digits.&#39;,
+        message.FromJsonString,
+        &#39;1970-01-01T00:00:00.0123456789012Z&#39;)
+    self.assertRaisesRegexp(
+        ValueError,
+        (r&#39;Invalid timezone offset value: \+08.&#39;),
+        message.FromJsonString,
+        &#39;1972-01-01T01:00:00.01+08&#39;,)
+    self.assertRaisesRegexp(
+        ValueError,
+        &#39;year (0 )?is out of range&#39;,
+        message.FromJsonString,
+        &#39;0000-01-01T00:00:00Z&#39;)
+    message.seconds = 253402300800
+    self.assertRaisesRegexp(
+        OverflowError,
+        &#39;date value out of range&#39;,
+        message.ToJsonString)
+
+  def testInvalidDuration(self):
+    message = duration_pb2.Duration()
+    self.assertRaisesRegexp(
+        ValueError,
+        &#39;Duration must end with letter &#34;s&#34;: 1.&#39;,
+        message.FromJsonString, &#39;1&#39;)
+    self.assertRaisesRegexp(
+        ValueError,
+        &#39;Couldn\&#39;t parse duration: 1...2s.&#39;,
+        message.FromJsonString, &#39;1...2s&#39;)
+    text = &#39;-315576000001.000000000s&#39;
+    self.assertRaisesRegexp(
+        ValueError,
+        r&#39;Duration is not valid\: Seconds -315576000001 must be in range&#39;
+        r&#39; \[-315576000000\, 315576000000\].&#39;,
+        message.FromJsonString, text)
+    text = &#39;315576000001.000000000s&#39;
+    self.assertRaisesRegexp(
+        ValueError,
+        r&#39;Duration is not valid\: Seconds 315576000001 must be in range&#39;
+        r&#39; \[-315576000000\, 315576000000\].&#39;,
+        message.FromJsonString, text)
+    message.seconds = -315576000001
+    message.nanos = 0
+    self.assertRaisesRegexp(
+        ValueError,
+        r&#39;Duration is not valid\: Seconds -315576000001 must be in range&#39;
+        r&#39; \[-315576000000\, 315576000000\].&#39;,
+        message.ToJsonString)
+    message.seconds = 0
+    message.nanos = 999999999 + 1
+    self.assertRaisesRegexp(
+        ValueError,
+        r&#39;Duration is not valid\: Nanos 1000000000 must be in range&#39;
+        r&#39; \[-999999999\, 999999999\].&#39;,
+        message.ToJsonString)
+    message.seconds = -1
+    message.nanos = 1
+    self.assertRaisesRegexp(
+        ValueError,
+        r&#39;Duration is not valid\: Sign mismatch.&#39;,
+        message.ToJsonString)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="google.protobuf.internal.well_known_types_test.TimeUtilTestBase" href="#google.protobuf.internal.well_known_types_test.TimeUtilTestBase">TimeUtilTestBase</a></li>
+<li>unittest.case.TestCase</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="google.protobuf.internal.well_known_types_test.TimeUtilTest.testDatetimeConverison"><code class="name flex">
+<span>def <span class="ident">testDatetimeConverison</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testDatetimeConverison(self):
+  message = timestamp_pb2.Timestamp()
+  dt = datetime.datetime(1970, 1, 1)
+  message.FromDatetime(dt)
+  self.assertEqual(dt, message.ToDatetime())
+
+  message.FromMilliseconds(1999)
+  self.assertEqual(datetime.datetime(1970, 1, 1, 0, 0, 1, 999000),
+                   message.ToDatetime())
+
+  dt = datetime.datetime(2555, 2, 22, 1, 2, 3, 456789)
+  message.FromDatetime(dt)
+  self.assertEqual(dt, message.ToDatetime())
+
+  dt = datetime.datetime.max
+  message.FromDatetime(dt)
+  self.assertEqual(dt, message.ToDatetime())</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.well_known_types_test.TimeUtilTest.testDatetimeConversionWithTimezone"><code class="name flex">
+<span>def <span class="ident">testDatetimeConversionWithTimezone</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testDatetimeConversionWithTimezone(self):
+  class TZ(datetime.tzinfo):
+
+    def utcoffset(self, _):
+      return datetime.timedelta(hours=1)
+
+    def dst(self, _):
+      return datetime.timedelta(0)
+
+    def tzname(self, _):
+      return &#39;UTC+1&#39;
+
+  message1 = timestamp_pb2.Timestamp()
+  dt = datetime.datetime(1970, 1, 1, 1, tzinfo=TZ())
+  message1.FromDatetime(dt)
+  message2 = timestamp_pb2.Timestamp()
+  dt = datetime.datetime(1970, 1, 1, 0)
+  message2.FromDatetime(dt)
+  self.assertEqual(message1, message2)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.well_known_types_test.TimeUtilTest.testDurationIntegerConversion"><code class="name flex">
+<span>def <span class="ident">testDurationIntegerConversion</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testDurationIntegerConversion(self):
+  message = duration_pb2.Duration()
+  message.FromNanoseconds(1)
+  self.assertEqual(&#39;0.000000001s&#39;,
+                   message.ToJsonString())
+  self.assertEqual(1, message.ToNanoseconds())
+
+  message.FromNanoseconds(-1)
+  self.assertEqual(&#39;-0.000000001s&#39;,
+                   message.ToJsonString())
+  self.assertEqual(-1, message.ToNanoseconds())
+
+  message.FromMicroseconds(1)
+  self.assertEqual(&#39;0.000001s&#39;,
+                   message.ToJsonString())
+  self.assertEqual(1, message.ToMicroseconds())
+
+  message.FromMicroseconds(-1)
+  self.assertEqual(&#39;-0.000001s&#39;,
+                   message.ToJsonString())
+  self.assertEqual(-1, message.ToMicroseconds())
+
+  message.FromMilliseconds(1)
+  self.assertEqual(&#39;0.001s&#39;,
+                   message.ToJsonString())
+  self.assertEqual(1, message.ToMilliseconds())
+
+  message.FromMilliseconds(-1)
+  self.assertEqual(&#39;-0.001s&#39;,
+                   message.ToJsonString())
+  self.assertEqual(-1, message.ToMilliseconds())
+
+  message.FromSeconds(1)
+  self.assertEqual(&#39;1s&#39;, message.ToJsonString())
+  self.assertEqual(1, message.ToSeconds())
+
+  message.FromSeconds(-1)
+  self.assertEqual(&#39;-1s&#39;,
+                   message.ToJsonString())
+  self.assertEqual(-1, message.ToSeconds())
+
+  # Test truncation behavior.
+  message.FromNanoseconds(1999)
+  self.assertEqual(1, message.ToMicroseconds())
+
+  # For negative values, Duration will be rounded towards 0.
+  message.FromNanoseconds(-1999)
+  self.assertEqual(-1, message.ToMicroseconds())</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.well_known_types_test.TimeUtilTest.testDurationSerializeAndParse"><code class="name flex">
+<span>def <span class="ident">testDurationSerializeAndParse</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testDurationSerializeAndParse(self):
+  message = duration_pb2.Duration()
+  # Generated output should contain 3, 6, or 9 fractional digits.
+  message.seconds = 0
+  message.nanos = 0
+  self.CheckDurationConversion(message, &#39;0s&#39;)
+  message.nanos = 10000000
+  self.CheckDurationConversion(message, &#39;0.010s&#39;)
+  message.nanos = 10000
+  self.CheckDurationConversion(message, &#39;0.000010s&#39;)
+  message.nanos = 10
+  self.CheckDurationConversion(message, &#39;0.000000010s&#39;)
+
+  # Test min and max
+  message.seconds = 315576000000
+  message.nanos = 999999999
+  self.CheckDurationConversion(message, &#39;315576000000.999999999s&#39;)
+  message.seconds = -315576000000
+  message.nanos = -999999999
+  self.CheckDurationConversion(message, &#39;-315576000000.999999999s&#39;)
+
+  # Parsing accepts an fractional digits as long as they fit into nano
+  # precision.
+  message.FromJsonString(&#39;0.1s&#39;)
+  self.assertEqual(100000000, message.nanos)
+  message.FromJsonString(&#39;0.0000001s&#39;)
+  self.assertEqual(100, message.nanos)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.well_known_types_test.TimeUtilTest.testInvalidDuration"><code class="name flex">
+<span>def <span class="ident">testInvalidDuration</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testInvalidDuration(self):
+  message = duration_pb2.Duration()
+  self.assertRaisesRegexp(
+      ValueError,
+      &#39;Duration must end with letter &#34;s&#34;: 1.&#39;,
+      message.FromJsonString, &#39;1&#39;)
+  self.assertRaisesRegexp(
+      ValueError,
+      &#39;Couldn\&#39;t parse duration: 1...2s.&#39;,
+      message.FromJsonString, &#39;1...2s&#39;)
+  text = &#39;-315576000001.000000000s&#39;
+  self.assertRaisesRegexp(
+      ValueError,
+      r&#39;Duration is not valid\: Seconds -315576000001 must be in range&#39;
+      r&#39; \[-315576000000\, 315576000000\].&#39;,
+      message.FromJsonString, text)
+  text = &#39;315576000001.000000000s&#39;
+  self.assertRaisesRegexp(
+      ValueError,
+      r&#39;Duration is not valid\: Seconds 315576000001 must be in range&#39;
+      r&#39; \[-315576000000\, 315576000000\].&#39;,
+      message.FromJsonString, text)
+  message.seconds = -315576000001
+  message.nanos = 0
+  self.assertRaisesRegexp(
+      ValueError,
+      r&#39;Duration is not valid\: Seconds -315576000001 must be in range&#39;
+      r&#39; \[-315576000000\, 315576000000\].&#39;,
+      message.ToJsonString)
+  message.seconds = 0
+  message.nanos = 999999999 + 1
+  self.assertRaisesRegexp(
+      ValueError,
+      r&#39;Duration is not valid\: Nanos 1000000000 must be in range&#39;
+      r&#39; \[-999999999\, 999999999\].&#39;,
+      message.ToJsonString)
+  message.seconds = -1
+  message.nanos = 1
+  self.assertRaisesRegexp(
+      ValueError,
+      r&#39;Duration is not valid\: Sign mismatch.&#39;,
+      message.ToJsonString)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.well_known_types_test.TimeUtilTest.testInvalidTimestamp"><code class="name flex">
+<span>def <span class="ident">testInvalidTimestamp</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testInvalidTimestamp(self):
+  message = timestamp_pb2.Timestamp()
+  self.assertRaisesRegexp(
+      ValueError,
+      &#39;Failed to parse timestamp: missing valid timezone offset.&#39;,
+      message.FromJsonString,
+      &#39;&#39;)
+  self.assertRaisesRegexp(
+      ValueError,
+      &#39;Failed to parse timestamp: invalid trailing data &#39;
+      &#39;1970-01-01T00:00:01Ztrail.&#39;,
+      message.FromJsonString,
+      &#39;1970-01-01T00:00:01Ztrail&#39;)
+  self.assertRaisesRegexp(
+      ValueError,
+      &#39;time data \&#39;10000-01-01T00:00:00\&#39; does not match&#39;
+      &#39; format \&#39;%Y-%m-%dT%H:%M:%S\&#39;&#39;,
+      message.FromJsonString, &#39;10000-01-01T00:00:00.00Z&#39;)
+  self.assertRaisesRegexp(
+      ValueError,
+      &#39;nanos 0123456789012 more than 9 fractional digits.&#39;,
+      message.FromJsonString,
+      &#39;1970-01-01T00:00:00.0123456789012Z&#39;)
+  self.assertRaisesRegexp(
+      ValueError,
+      (r&#39;Invalid timezone offset value: \+08.&#39;),
+      message.FromJsonString,
+      &#39;1972-01-01T01:00:00.01+08&#39;,)
+  self.assertRaisesRegexp(
+      ValueError,
+      &#39;year (0 )?is out of range&#39;,
+      message.FromJsonString,
+      &#39;0000-01-01T00:00:00Z&#39;)
+  message.seconds = 253402300800
+  self.assertRaisesRegexp(
+      OverflowError,
+      &#39;date value out of range&#39;,
+      message.ToJsonString)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.well_known_types_test.TimeUtilTest.testTimedeltaConversion"><code class="name flex">
+<span>def <span class="ident">testTimedeltaConversion</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testTimedeltaConversion(self):
+  message = duration_pb2.Duration()
+  message.FromNanoseconds(1999999999)
+  td = message.ToTimedelta()
+  self.assertEqual(1, td.seconds)
+  self.assertEqual(999999, td.microseconds)
+
+  message.FromNanoseconds(-1999999999)
+  td = message.ToTimedelta()
+  self.assertEqual(-1, td.days)
+  self.assertEqual(86398, td.seconds)
+  self.assertEqual(1, td.microseconds)
+
+  message.FromMicroseconds(-1)
+  td = message.ToTimedelta()
+  self.assertEqual(-1, td.days)
+  self.assertEqual(86399, td.seconds)
+  self.assertEqual(999999, td.microseconds)
+  converted_message = duration_pb2.Duration()
+  converted_message.FromTimedelta(td)
+  self.assertEqual(message, converted_message)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.well_known_types_test.TimeUtilTest.testTimestampIntegerConversion"><code class="name flex">
+<span>def <span class="ident">testTimestampIntegerConversion</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testTimestampIntegerConversion(self):
+  message = timestamp_pb2.Timestamp()
+  message.FromNanoseconds(1)
+  self.assertEqual(&#39;1970-01-01T00:00:00.000000001Z&#39;,
+                   message.ToJsonString())
+  self.assertEqual(1, message.ToNanoseconds())
+
+  message.FromNanoseconds(-1)
+  self.assertEqual(&#39;1969-12-31T23:59:59.999999999Z&#39;,
+                   message.ToJsonString())
+  self.assertEqual(-1, message.ToNanoseconds())
+
+  message.FromMicroseconds(1)
+  self.assertEqual(&#39;1970-01-01T00:00:00.000001Z&#39;,
+                   message.ToJsonString())
+  self.assertEqual(1, message.ToMicroseconds())
+
+  message.FromMicroseconds(-1)
+  self.assertEqual(&#39;1969-12-31T23:59:59.999999Z&#39;,
+                   message.ToJsonString())
+  self.assertEqual(-1, message.ToMicroseconds())
+
+  message.FromMilliseconds(1)
+  self.assertEqual(&#39;1970-01-01T00:00:00.001Z&#39;,
+                   message.ToJsonString())
+  self.assertEqual(1, message.ToMilliseconds())
+
+  message.FromMilliseconds(-1)
+  self.assertEqual(&#39;1969-12-31T23:59:59.999Z&#39;,
+                   message.ToJsonString())
+  self.assertEqual(-1, message.ToMilliseconds())
+
+  message.FromSeconds(1)
+  self.assertEqual(&#39;1970-01-01T00:00:01Z&#39;,
+                   message.ToJsonString())
+  self.assertEqual(1, message.ToSeconds())
+
+  message.FromSeconds(-1)
+  self.assertEqual(&#39;1969-12-31T23:59:59Z&#39;,
+                   message.ToJsonString())
+  self.assertEqual(-1, message.ToSeconds())
+
+  message.FromNanoseconds(1999)
+  self.assertEqual(1, message.ToMicroseconds())
+  # For negative values, Timestamp will be rounded down.
+  # For example, &#34;1969-12-31T23:59:59.5Z&#34; (i.e., -0.5s) rounded to seconds
+  # will be &#34;1969-12-31T23:59:59Z&#34; (i.e., -1s) rather than
+  # &#34;1970-01-01T00:00:00Z&#34; (i.e., 0s).
+  message.FromNanoseconds(-1999)
+  self.assertEqual(-2, message.ToMicroseconds())</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.well_known_types_test.TimeUtilTest.testTimestampSerializeAndParse"><code class="name flex">
+<span>def <span class="ident">testTimestampSerializeAndParse</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testTimestampSerializeAndParse(self):
+  message = timestamp_pb2.Timestamp()
+  # Generated output should contain 3, 6, or 9 fractional digits.
+  message.seconds = 0
+  message.nanos = 0
+  self.CheckTimestampConversion(message, &#39;1970-01-01T00:00:00Z&#39;)
+  message.nanos = 10000000
+  self.CheckTimestampConversion(message, &#39;1970-01-01T00:00:00.010Z&#39;)
+  message.nanos = 10000
+  self.CheckTimestampConversion(message, &#39;1970-01-01T00:00:00.000010Z&#39;)
+  message.nanos = 10
+  self.CheckTimestampConversion(message, &#39;1970-01-01T00:00:00.000000010Z&#39;)
+  # Test min timestamps.
+  message.seconds = -62135596800
+  message.nanos = 0
+  self.CheckTimestampConversion(message, &#39;0001-01-01T00:00:00Z&#39;)
+  # Test max timestamps.
+  message.seconds = 253402300799
+  message.nanos = 999999999
+  self.CheckTimestampConversion(message, &#39;9999-12-31T23:59:59.999999999Z&#39;)
+  # Test negative timestamps.
+  message.seconds = -1
+  self.CheckTimestampConversion(message, &#39;1969-12-31T23:59:59.999999999Z&#39;)
+
+  # Parsing accepts an fractional digits as long as they fit into nano
+  # precision.
+  message.FromJsonString(&#39;1970-01-01T00:00:00.1Z&#39;)
+  self.assertEqual(0, message.seconds)
+  self.assertEqual(100000000, message.nanos)
+  # Parsing accepts offsets.
+  message.FromJsonString(&#39;1970-01-01T00:00:00-08:00&#39;)
+  self.assertEqual(8 * 3600, message.seconds)
+  self.assertEqual(0, message.nanos)
+
+  # It is not easy to check with current time. For test coverage only.
+  message.GetCurrentTime()
+  self.assertNotEqual(8 * 3600, message.seconds)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="google.protobuf.internal.well_known_types_test.TimeUtilTestBase"><code class="flex name class">
+<span>class <span class="ident">TimeUtilTestBase</span></span>
+<span>(</span><span>methodName='runTest')</span>
+</code></dt>
+<dd>
+<section class="desc"><p>A class whose instances are single test cases.</p>
+<p>By default, the test code itself should be placed in a method named
+'runTest'.</p>
+<p>If the fixture may be used for many test cases, create as
+many test methods as are needed. When instantiating such a TestCase
+subclass, specify in the constructor arguments the name of the test method
+that the instance is to execute.</p>
+<p>Test authors should subclass TestCase for their own tests. Construction
+and deconstruction of the test's environment ('fixture') can be
+implemented by overriding the 'setUp' and 'tearDown' methods respectively.</p>
+<p>If it is necessary to override the <strong>init</strong> method, the base class
+<strong>init</strong> method must always be called. It is important that subclasses
+should not change the signature of their <strong>init</strong> method, since instances
+of the classes are instantiated automatically by parts of the framework
+in order to be run.</p>
+<p>When subclassing TestCase, you can set these attributes:
+* failureException: determines which exception will be raised when
+the instance's assertion methods fail; test methods raising this
+exception will be deemed to have 'failed' rather than 'errored'.
+* longMessage: determines whether long messages (including repr of
+objects used in assert methods) will be printed on failure in <em>addition</em>
+to any explicit message passed.
+* maxDiff: sets the maximum length of a diff in failure messages
+by assert methods using difflib. It is looked up as an instance
+attribute so can be configured by individual tests if required.</p>
+<p>Create an instance of the class that will use the named test
+method when executed. Raises a ValueError if the instance does
+not have a method with the specified name.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class TimeUtilTestBase(unittest.TestCase):
+
+  def CheckTimestampConversion(self, message, text):
+    self.assertEqual(text, message.ToJsonString())
+    parsed_message = timestamp_pb2.Timestamp()
+    parsed_message.FromJsonString(text)
+    self.assertEqual(message, parsed_message)
+
+  def CheckDurationConversion(self, message, text):
+    self.assertEqual(text, message.ToJsonString())
+    parsed_message = duration_pb2.Duration()
+    parsed_message.FromJsonString(text)
+    self.assertEqual(message, parsed_message)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>unittest.case.TestCase</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="google.protobuf.internal.well_known_types_test.TimeUtilTest" href="#google.protobuf.internal.well_known_types_test.TimeUtilTest">TimeUtilTest</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="google.protobuf.internal.well_known_types_test.TimeUtilTestBase.CheckDurationConversion"><code class="name flex">
+<span>def <span class="ident">CheckDurationConversion</span></span>(<span>self, message, text)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def CheckDurationConversion(self, message, text):
+  self.assertEqual(text, message.ToJsonString())
+  parsed_message = duration_pb2.Duration()
+  parsed_message.FromJsonString(text)
+  self.assertEqual(message, parsed_message)</code></pre>
+</details>
+</dd>
+<dt id="google.protobuf.internal.well_known_types_test.TimeUtilTestBase.CheckTimestampConversion"><code class="name flex">
+<span>def <span class="ident">CheckTimestampConversion</span></span>(<span>self, message, text)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def CheckTimestampConversion(self, message, text):
+  self.assertEqual(text, message.ToJsonString())
+  parsed_message = timestamp_pb2.Timestamp()
+  parsed_message.FromJsonString(text)
+  self.assertEqual(message, parsed_message)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="google.protobuf.internal" href="index.html">google.protobuf.internal</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="google.protobuf.internal.well_known_types_test.AnyTest" href="#google.protobuf.internal.well_known_types_test.AnyTest">AnyTest</a></code></h4>
+<ul class="">
+<li><code><a title="google.protobuf.internal.well_known_types_test.AnyTest.testAnyMessage" href="#google.protobuf.internal.well_known_types_test.AnyTest.testAnyMessage">testAnyMessage</a></code></li>
+<li><code><a title="google.protobuf.internal.well_known_types_test.AnyTest.testMessageName" href="#google.protobuf.internal.well_known_types_test.AnyTest.testMessageName">testMessageName</a></code></li>
+<li><code><a title="google.protobuf.internal.well_known_types_test.AnyTest.testPackDeterministic" href="#google.protobuf.internal.well_known_types_test.AnyTest.testPackDeterministic">testPackDeterministic</a></code></li>
+<li><code><a title="google.protobuf.internal.well_known_types_test.AnyTest.testPackWithCustomTypeUrl" href="#google.protobuf.internal.well_known_types_test.AnyTest.testPackWithCustomTypeUrl">testPackWithCustomTypeUrl</a></code></li>
+<li><code><a title="google.protobuf.internal.well_known_types_test.AnyTest.testUnpackWithNoSlashInTypeUrl" href="#google.protobuf.internal.well_known_types_test.AnyTest.testUnpackWithNoSlashInTypeUrl">testUnpackWithNoSlashInTypeUrl</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="google.protobuf.internal.well_known_types_test.FieldMaskTest" href="#google.protobuf.internal.well_known_types_test.FieldMaskTest">FieldMaskTest</a></code></h4>
+<ul class="">
+<li><code><a title="google.protobuf.internal.well_known_types_test.FieldMaskTest.testCamelCaseToSnakeCase" href="#google.protobuf.internal.well_known_types_test.FieldMaskTest.testCamelCaseToSnakeCase">testCamelCaseToSnakeCase</a></code></li>
+<li><code><a title="google.protobuf.internal.well_known_types_test.FieldMaskTest.testCanonicalFrom" href="#google.protobuf.internal.well_known_types_test.FieldMaskTest.testCanonicalFrom">testCanonicalFrom</a></code></li>
+<li><code><a title="google.protobuf.internal.well_known_types_test.FieldMaskTest.testDescriptorToFieldMask" href="#google.protobuf.internal.well_known_types_test.FieldMaskTest.testDescriptorToFieldMask">testDescriptorToFieldMask</a></code></li>
+<li><code><a title="google.protobuf.internal.well_known_types_test.FieldMaskTest.testIntersect" href="#google.protobuf.internal.well_known_types_test.FieldMaskTest.testIntersect">testIntersect</a></code></li>
+<li><code><a title="google.protobuf.internal.well_known_types_test.FieldMaskTest.testIsValidForDescriptor" href="#google.protobuf.internal.well_known_types_test.FieldMaskTest.testIsValidForDescriptor">testIsValidForDescriptor</a></code></li>
+<li><code><a title="google.protobuf.internal.well_known_types_test.FieldMaskTest.testMergeErrors" href="#google.protobuf.internal.well_known_types_test.FieldMaskTest.testMergeErrors">testMergeErrors</a></code></li>
+<li><code><a title="google.protobuf.internal.well_known_types_test.FieldMaskTest.testMergeMessageWithMapField" href="#google.protobuf.internal.well_known_types_test.FieldMaskTest.testMergeMessageWithMapField">testMergeMessageWithMapField</a></code></li>
+<li><code><a title="google.protobuf.internal.well_known_types_test.FieldMaskTest.testMergeMessageWithoutMapFields" href="#google.protobuf.internal.well_known_types_test.FieldMaskTest.testMergeMessageWithoutMapFields">testMergeMessageWithoutMapFields</a></code></li>
+<li><code><a title="google.protobuf.internal.well_known_types_test.FieldMaskTest.testSnakeCaseToCamelCase" href="#google.protobuf.internal.well_known_types_test.FieldMaskTest.testSnakeCaseToCamelCase">testSnakeCaseToCamelCase</a></code></li>
+<li><code><a title="google.protobuf.internal.well_known_types_test.FieldMaskTest.testStringFormat" href="#google.protobuf.internal.well_known_types_test.FieldMaskTest.testStringFormat">testStringFormat</a></code></li>
+<li><code><a title="google.protobuf.internal.well_known_types_test.FieldMaskTest.testUnion" href="#google.protobuf.internal.well_known_types_test.FieldMaskTest.testUnion">testUnion</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="google.protobuf.internal.well_known_types_test.StructTest" href="#google.protobuf.internal.well_known_types_test.StructTest">StructTest</a></code></h4>
+<ul class="">
+<li><code><a title="google.protobuf.internal.well_known_types_test.StructTest.testMergeFrom" href="#google.protobuf.internal.well_known_types_test.StructTest.testMergeFrom">testMergeFrom</a></code></li>
+<li><code><a title="google.protobuf.internal.well_known_types_test.StructTest.testStruct" href="#google.protobuf.internal.well_known_types_test.StructTest.testStruct">testStruct</a></code></li>
+<li><code><a title="google.protobuf.internal.well_known_types_test.StructTest.testStructAssignment" href="#google.protobuf.internal.well_known_types_test.StructTest.testStructAssignment">testStructAssignment</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="google.protobuf.internal.well_known_types_test.TimeUtilTest" href="#google.protobuf.internal.well_known_types_test.TimeUtilTest">TimeUtilTest</a></code></h4>
+<ul class="">
+<li><code><a title="google.protobuf.internal.well_known_types_test.TimeUtilTest.testDatetimeConverison" href="#google.protobuf.internal.well_known_types_test.TimeUtilTest.testDatetimeConverison">testDatetimeConverison</a></code></li>
+<li><code><a title="google.protobuf.internal.well_known_types_test.TimeUtilTest.testDatetimeConversionWithTimezone" href="#google.protobuf.internal.well_known_types_test.TimeUtilTest.testDatetimeConversionWithTimezone">testDatetimeConversionWithTimezone</a></code></li>
+<li><code><a title="google.protobuf.internal.well_known_types_test.TimeUtilTest.testDurationIntegerConversion" href="#google.protobuf.internal.well_known_types_test.TimeUtilTest.testDurationIntegerConversion">testDurationIntegerConversion</a></code></li>
+<li><code><a title="google.protobuf.internal.well_known_types_test.TimeUtilTest.testDurationSerializeAndParse" href="#google.protobuf.internal.well_known_types_test.TimeUtilTest.testDurationSerializeAndParse">testDurationSerializeAndParse</a></code></li>
+<li><code><a title="google.protobuf.internal.well_known_types_test.TimeUtilTest.testInvalidDuration" href="#google.protobuf.internal.well_known_types_test.TimeUtilTest.testInvalidDuration">testInvalidDuration</a></code></li>
+<li><code><a title="google.protobuf.internal.well_known_types_test.TimeUtilTest.testInvalidTimestamp" href="#google.protobuf.internal.well_known_types_test.TimeUtilTest.testInvalidTimestamp">testInvalidTimestamp</a></code></li>
+<li><code><a title="google.protobuf.internal.well_known_types_test.TimeUtilTest.testTimedeltaConversion" href="#google.protobuf.internal.well_known_types_test.TimeUtilTest.testTimedeltaConversion">testTimedeltaConversion</a></code></li>
+<li><code><a title="google.protobuf.internal.well_known_types_test.TimeUtilTest.testTimestampIntegerConversion" href="#google.protobuf.internal.well_known_types_test.TimeUtilTest.testTimestampIntegerConversion">testTimestampIntegerConversion</a></code></li>
+<li><code><a title="google.protobuf.internal.well_known_types_test.TimeUtilTest.testTimestampSerializeAndParse" href="#google.protobuf.internal.well_known_types_test.TimeUtilTest.testTimestampSerializeAndParse">testTimestampSerializeAndParse</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="google.protobuf.internal.well_known_types_test.TimeUtilTestBase" href="#google.protobuf.internal.well_known_types_test.TimeUtilTestBase">TimeUtilTestBase</a></code></h4>
+<ul class="">
+<li><code><a title="google.protobuf.internal.well_known_types_test.TimeUtilTestBase.CheckDurationConversion" href="#google.protobuf.internal.well_known_types_test.TimeUtilTestBase.CheckDurationConversion">CheckDurationConversion</a></code></li>
+<li><code><a title="google.protobuf.internal.well_known_types_test.TimeUtilTestBase.CheckTimestampConversion" href="#google.protobuf.internal.well_known_types_test.TimeUtilTestBase.CheckTimestampConversion">CheckTimestampConversion</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.4</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

@@ -1,0 +1,1705 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.4" />
+<title>kubernetes.config.kube_config API documentation</title>
+<meta name="description" content="" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>kubernetes.config.kube_config</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">#!/usr/bin/env python
+
+# Copyright 2018 The Kubernetes Authors.
+#
+# Licensed under the Apache License, Version 2.0 (the &#34;License&#34;);
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+import atexit
+import base64
+import copy
+import datetime
+import json
+import logging
+import os
+import platform
+import tempfile
+import time
+
+import google.auth
+import google.auth.transport.requests
+import oauthlib.oauth2
+import urllib3
+import yaml
+from requests_oauthlib import OAuth2Session
+from six import PY3
+
+from kubernetes.client import ApiClient, Configuration
+from kubernetes.config.exec_provider import ExecProvider
+
+from .config_exception import ConfigException
+from .dateutil import UTC, format_rfc3339, parse_rfc3339
+
+try:
+    import adal
+except ImportError:
+    pass
+
+EXPIRY_SKEW_PREVENTION_DELAY = datetime.timedelta(minutes=5)
+KUBE_CONFIG_DEFAULT_LOCATION = os.environ.get(&#39;KUBECONFIG&#39;, &#39;~/.kube/config&#39;)
+ENV_KUBECONFIG_PATH_SEPARATOR = &#39;;&#39; if platform.system() == &#39;Windows&#39; else &#39;:&#39;
+_temp_files = {}
+
+
+def _cleanup_temp_files():
+    global _temp_files
+    for temp_file in _temp_files.values():
+        try:
+            os.remove(temp_file)
+        except OSError:
+            pass
+    _temp_files = {}
+
+
+def _create_temp_file_with_content(content):
+    if len(_temp_files) == 0:
+        atexit.register(_cleanup_temp_files)
+    # Because we may change context several times, try to remember files we
+    # created and reuse them at a small memory cost.
+    content_key = str(content)
+    if content_key in _temp_files:
+        return _temp_files[content_key]
+    _, name = tempfile.mkstemp()
+    _temp_files[content_key] = name
+    with open(name, &#39;wb&#39;) as fd:
+        fd.write(content.encode() if isinstance(content, str) else content)
+    return name
+
+
+def _is_expired(expiry):
+    return ((parse_rfc3339(expiry) - EXPIRY_SKEW_PREVENTION_DELAY) &lt;=
+            datetime.datetime.utcnow().replace(tzinfo=UTC))
+
+
+class FileOrData(object):
+    &#34;&#34;&#34;Utility class to read content of obj[%data_key_name] or file&#39;s
+     content of obj[%file_key_name] and represent it as file or data.
+     Note that the data is preferred. The obj[%file_key_name] will be used iff
+     obj[&#39;%data_key_name&#39;] is not set or empty. Assumption is file content is
+     raw data and data field is base64 string. The assumption can be changed
+     with base64_file_content flag. If set to False, the content of the file
+     will assumed to be base64 and read as is. The default True value will
+     result in base64 encode of the file content after read.&#34;&#34;&#34;
+
+    def __init__(self, obj, file_key_name, data_key_name=None,
+                 file_base_path=&#34;&#34;, base64_file_content=True):
+        if not data_key_name:
+            data_key_name = file_key_name + &#34;-data&#34;
+        self._file = None
+        self._data = None
+        self._base64_file_content = base64_file_content
+        if data_key_name in obj:
+            self._data = obj[data_key_name]
+        elif file_key_name in obj:
+            self._file = os.path.normpath(
+                os.path.join(file_base_path, obj[file_key_name]))
+
+    def as_file(self):
+        &#34;&#34;&#34;If obj[%data_key_name] exists, return name of a file with base64
+        decoded obj[%data_key_name] content otherwise obj[%file_key_name].&#34;&#34;&#34;
+        use_data_if_no_file = not self._file and self._data
+        if use_data_if_no_file:
+            if self._base64_file_content:
+                if isinstance(self._data, str):
+                    content = self._data.encode()
+                else:
+                    content = self._data
+                self._file = _create_temp_file_with_content(
+                    base64.standard_b64decode(content))
+            else:
+                self._file = _create_temp_file_with_content(self._data)
+        if self._file and not os.path.isfile(self._file):
+            raise ConfigException(&#34;File does not exists: %s&#34; % self._file)
+        return self._file
+
+    def as_data(self):
+        &#34;&#34;&#34;If obj[%data_key_name] exists, Return obj[%data_key_name] otherwise
+        base64 encoded string of obj[%file_key_name] file content.&#34;&#34;&#34;
+        use_file_if_no_data = not self._data and self._file
+        if use_file_if_no_data:
+            with open(self._file) as f:
+                if self._base64_file_content:
+                    self._data = bytes.decode(
+                        base64.standard_b64encode(str.encode(f.read())))
+                else:
+                    self._data = f.read()
+        return self._data
+
+
+class KubeConfigLoader(object):
+
+    def __init__(self, config_dict, active_context=None,
+                 get_google_credentials=None,
+                 config_base_path=&#34;&#34;,
+                 config_persister=None):
+
+        if isinstance(config_dict, ConfigNode):
+            self._config = config_dict
+        else:
+            self._config = ConfigNode(&#39;kube-config&#39;, config_dict)
+
+        self._current_context = None
+        self._user = None
+        self._cluster = None
+        self.set_active_context(active_context)
+        self._config_base_path = config_base_path
+        self._config_persister = config_persister
+
+        def _refresh_credentials():
+            credentials, project_id = google.auth.default(scopes=[
+                &#39;https://www.googleapis.com/auth/cloud-platform&#39;,
+                &#39;https://www.googleapis.com/auth/userinfo.email&#39;
+            ])
+            request = google.auth.transport.requests.Request()
+            credentials.refresh(request)
+            return credentials
+
+        if get_google_credentials:
+            self._get_google_credentials = get_google_credentials
+        else:
+            self._get_google_credentials = _refresh_credentials
+
+    def set_active_context(self, context_name=None):
+        if context_name is None:
+            context_name = self._config[&#39;current-context&#39;]
+        self._current_context = self._config[&#39;contexts&#39;].get_with_name(
+            context_name)
+        if (self._current_context[&#39;context&#39;].safe_get(&#39;user&#39;) and
+                self._config.safe_get(&#39;users&#39;)):
+            user = self._config[&#39;users&#39;].get_with_name(
+                self._current_context[&#39;context&#39;][&#39;user&#39;], safe=True)
+            if user:
+                self._user = user[&#39;user&#39;]
+            else:
+                self._user = None
+        else:
+            self._user = None
+        self._cluster = self._config[&#39;clusters&#39;].get_with_name(
+            self._current_context[&#39;context&#39;][&#39;cluster&#39;])[&#39;cluster&#39;]
+
+    def _load_authentication(self):
+        &#34;&#34;&#34;Read authentication from kube-config user section if exists.
+
+        This function goes through various authentication methods in user
+        section of kube-config and stops if it finds a valid authentication
+        method. The order of authentication methods is:
+
+            1. auth-provider (gcp, azure, oidc)
+            2. token field (point to a token file)
+            3. exec provided plugin
+            4. username/password
+        &#34;&#34;&#34;
+        if not self._user:
+            return
+        if self._load_auth_provider_token():
+            return
+        if self._load_user_token():
+            return
+        if self._load_from_exec_plugin():
+            return
+        self._load_user_pass_token()
+
+    def _load_auth_provider_token(self):
+        if &#39;auth-provider&#39; not in self._user:
+            return
+        provider = self._user[&#39;auth-provider&#39;]
+        if &#39;name&#39; not in provider:
+            return
+        if provider[&#39;name&#39;] == &#39;gcp&#39;:
+            return self._load_gcp_token(provider)
+        if provider[&#39;name&#39;] == &#39;azure&#39;:
+            return self._load_azure_token(provider)
+        if provider[&#39;name&#39;] == &#39;oidc&#39;:
+            return self._load_oid_token(provider)
+
+    def _load_azure_token(self, provider):
+        if &#39;config&#39; not in provider:
+            return
+        if &#39;access-token&#39; not in provider[&#39;config&#39;]:
+            return
+        if &#39;expires-on&#39; in provider[&#39;config&#39;]:
+            if int(provider[&#39;config&#39;][&#39;expires-on&#39;]) &lt; time.gmtime():
+                self._refresh_azure_token(provider[&#39;config&#39;])
+        self.token = &#39;Bearer %s&#39; % provider[&#39;config&#39;][&#39;access-token&#39;]
+        return self.token
+
+    def _refresh_azure_token(self, config):
+        if &#39;adal&#39; not in globals():
+            raise ImportError(&#39;refresh token error, adal library not imported&#39;)
+
+        tenant = config[&#39;tenant-id&#39;]
+        authority = &#39;https://login.microsoftonline.com/{}&#39;.format(tenant)
+        context = adal.AuthenticationContext(
+            authority, validate_authority=True,
+        )
+        refresh_token = config[&#39;refresh-token&#39;]
+        client_id = config[&#39;client-id&#39;]
+        token_response = context.acquire_token_with_refresh_token(
+            refresh_token, client_id, &#39;00000002-0000-0000-c000-000000000000&#39;)
+
+        provider = self._user[&#39;auth-provider&#39;][&#39;config&#39;]
+        provider.value[&#39;access-token&#39;] = token_response[&#39;accessToken&#39;]
+        provider.value[&#39;expires-on&#39;] = token_response[&#39;expiresOn&#39;]
+        if self._config_persister:
+            self._config_persister(self._config.value)
+
+    def _load_gcp_token(self, provider):
+        if ((&#39;config&#39; not in provider) or
+                (&#39;access-token&#39; not in provider[&#39;config&#39;]) or
+                (&#39;expiry&#39; in provider[&#39;config&#39;] and
+                 _is_expired(provider[&#39;config&#39;][&#39;expiry&#39;]))):
+            # token is not available or expired, refresh it
+            self._refresh_gcp_token()
+
+        self.token = &#34;Bearer %s&#34; % provider[&#39;config&#39;][&#39;access-token&#39;]
+        return self.token
+
+    def _refresh_gcp_token(self):
+        if &#39;config&#39; not in self._user[&#39;auth-provider&#39;]:
+            self._user[&#39;auth-provider&#39;].value[&#39;config&#39;] = {}
+        provider = self._user[&#39;auth-provider&#39;][&#39;config&#39;]
+        credentials = self._get_google_credentials()
+        provider.value[&#39;access-token&#39;] = credentials.token
+        provider.value[&#39;expiry&#39;] = format_rfc3339(credentials.expiry)
+        if self._config_persister:
+            self._config_persister(self._config.value)
+
+    def _load_oid_token(self, provider):
+        if &#39;config&#39; not in provider:
+            return
+
+        reserved_characters = frozenset([&#34;=&#34;, &#34;+&#34;, &#34;/&#34;])
+        token = provider[&#39;config&#39;][&#39;id-token&#39;]
+
+        if any(char in token for char in reserved_characters):
+            # Invalid jwt, as it contains url-unsafe chars
+            return
+
+        parts = token.split(&#39;.&#39;)
+        if len(parts) != 3:  # Not a valid JWT
+            return
+
+        padding = (4 - len(parts[1]) % 4) * &#39;=&#39;
+        if len(padding) == 3:
+            # According to spec, 3 padding characters cannot occur
+            # in a valid jwt
+            # https://tools.ietf.org/html/rfc7515#appendix-C
+            return
+
+        if PY3:
+            jwt_attributes = json.loads(
+                base64.b64decode(parts[1] + padding).decode(&#39;utf-8&#39;)
+            )
+        else:
+            jwt_attributes = json.loads(
+                base64.b64decode(parts[1] + padding)
+            )
+
+        expire = jwt_attributes.get(&#39;exp&#39;)
+
+        if ((expire is not None) and
+            (_is_expired(datetime.datetime.fromtimestamp(expire,
+                                                         tz=UTC)))):
+            self._refresh_oidc(provider)
+
+            if self._config_persister:
+                self._config_persister(self._config.value)
+
+        self.token = &#34;Bearer %s&#34; % provider[&#39;config&#39;][&#39;id-token&#39;]
+
+        return self.token
+
+    def _refresh_oidc(self, provider):
+        config = Configuration()
+
+        if &#39;idp-certificate-authority-data&#39; in provider[&#39;config&#39;]:
+            ca_cert = tempfile.NamedTemporaryFile(delete=True)
+
+            if PY3:
+                cert = base64.b64decode(
+                    provider[&#39;config&#39;][&#39;idp-certificate-authority-data&#39;]
+                ).decode(&#39;utf-8&#39;)
+            else:
+                cert = base64.b64decode(
+                    provider[&#39;config&#39;][&#39;idp-certificate-authority-data&#39;] + &#34;==&#34;
+                )
+
+            with open(ca_cert.name, &#39;w&#39;) as fh:
+                fh.write(cert)
+
+            config.ssl_ca_cert = ca_cert.name
+
+        else:
+            config.verify_ssl = False
+
+        client = ApiClient(configuration=config)
+
+        response = client.request(
+            method=&#34;GET&#34;,
+            url=&#34;%s/.well-known/openid-configuration&#34;
+            % provider[&#39;config&#39;][&#39;idp-issuer-url&#39;]
+        )
+
+        if response.status != 200:
+            return
+
+        response = json.loads(response.data)
+
+        request = OAuth2Session(
+            client_id=provider[&#39;config&#39;][&#39;client-id&#39;],
+            token=provider[&#39;config&#39;][&#39;refresh-token&#39;],
+            auto_refresh_kwargs={
+                &#39;client_id&#39;: provider[&#39;config&#39;][&#39;client-id&#39;],
+                &#39;client_secret&#39;: provider[&#39;config&#39;][&#39;client-secret&#39;]
+            },
+            auto_refresh_url=response[&#39;token_endpoint&#39;]
+        )
+
+        try:
+            refresh = request.refresh_token(
+                token_url=response[&#39;token_endpoint&#39;],
+                refresh_token=provider[&#39;config&#39;][&#39;refresh-token&#39;],
+                auth=(provider[&#39;config&#39;][&#39;client-id&#39;],
+                      provider[&#39;config&#39;][&#39;client-secret&#39;]),
+                verify=config.ssl_ca_cert if config.verify_ssl else None
+            )
+        except oauthlib.oauth2.rfc6749.errors.InvalidClientIdError:
+            return
+
+        provider[&#39;config&#39;].value[&#39;id-token&#39;] = refresh[&#39;id_token&#39;]
+        provider[&#39;config&#39;].value[&#39;refresh-token&#39;] = refresh[&#39;refresh_token&#39;]
+
+    def _load_from_exec_plugin(self):
+        if &#39;exec&#39; not in self._user:
+            return
+        try:
+            status = ExecProvider(self._user[&#39;exec&#39;]).run()
+            if &#39;token&#39; not in status:
+                logging.error(&#39;exec: missing token field in plugin output&#39;)
+                return None
+            self.token = &#34;Bearer %s&#34; % status[&#39;token&#39;]
+            return True
+        except Exception as e:
+            logging.error(str(e))
+
+    def _load_user_token(self):
+        base_path = self._get_base_path(self._user.path)
+        token = FileOrData(
+            self._user, &#39;tokenFile&#39;, &#39;token&#39;,
+            file_base_path=base_path,
+            base64_file_content=False).as_data()
+        if token:
+            self.token = &#34;Bearer %s&#34; % token
+            return True
+
+    def _load_user_pass_token(self):
+        if &#39;username&#39; in self._user and &#39;password&#39; in self._user:
+            self.token = urllib3.util.make_headers(
+                basic_auth=(self._user[&#39;username&#39;] + &#39;:&#39; +
+                            self._user[&#39;password&#39;])).get(&#39;authorization&#39;)
+            return True
+
+    def _get_base_path(self, config_path):
+        if self._config_base_path is not None:
+            return self._config_base_path
+        if config_path is not None:
+            return os.path.abspath(os.path.dirname(config_path))
+        return &#34;&#34;
+
+    def _load_cluster_info(self):
+        if &#39;server&#39; in self._cluster:
+            self.host = self._cluster[&#39;server&#39;].rstrip(&#39;/&#39;)
+            if self.host.startswith(&#34;https&#34;):
+                base_path = self._get_base_path(self._cluster.path)
+                self.ssl_ca_cert = FileOrData(
+                    self._cluster, &#39;certificate-authority&#39;,
+                    file_base_path=base_path).as_file()
+                self.cert_file = FileOrData(
+                    self._user, &#39;client-certificate&#39;,
+                    file_base_path=base_path).as_file()
+                self.key_file = FileOrData(
+                    self._user, &#39;client-key&#39;,
+                    file_base_path=base_path).as_file()
+        if &#39;insecure-skip-tls-verify&#39; in self._cluster:
+            self.verify_ssl = not self._cluster[&#39;insecure-skip-tls-verify&#39;]
+
+    def _using_gcp_auth_provider(self):
+        return self._user and \
+            &#39;auth-provider&#39; in self._user and \
+            &#39;name&#39; in self._user[&#39;auth-provider&#39;] and \
+            self._user[&#39;auth-provider&#39;][&#39;name&#39;] == &#39;gcp&#39;
+
+    def _set_config(self, client_configuration):
+        if self._using_gcp_auth_provider():
+            # GCP auth tokens must be refreshed regularly, but swagger expects
+            # a constant token. Replace the swagger-generated client config&#39;s
+            # get_api_key_with_prefix method with our own to allow automatic
+            # token refresh.
+            def _gcp_get_api_key(*args):
+                return self._load_gcp_token(self._user[&#39;auth-provider&#39;])
+            client_configuration.get_api_key_with_prefix = _gcp_get_api_key
+        if &#39;token&#39; in self.__dict__:
+            # Note: this line runs for GCP auth tokens as well, but this entry
+            # will not be updated upon GCP token refresh.
+            client_configuration.api_key[&#39;authorization&#39;] = self.token
+        # copy these keys directly from self to configuration object
+        keys = [&#39;host&#39;, &#39;ssl_ca_cert&#39;, &#39;cert_file&#39;, &#39;key_file&#39;, &#39;verify_ssl&#39;]
+        for key in keys:
+            if key in self.__dict__:
+                setattr(client_configuration, key, getattr(self, key))
+
+    def load_and_set(self, client_configuration):
+        self._load_authentication()
+        self._load_cluster_info()
+        self._set_config(client_configuration)
+
+    def list_contexts(self):
+        return [context.value for context in self._config[&#39;contexts&#39;]]
+
+    @property
+    def current_context(self):
+        return self._current_context.value
+
+
+class ConfigNode(object):
+    &#34;&#34;&#34;Remembers each config key&#39;s path and construct a relevant exception
+    message in case of missing keys. The assumption is all access keys are
+    present in a well-formed kube-config.&#34;&#34;&#34;
+
+    def __init__(self, name, value, path=None):
+        self.name = name
+        self.value = value
+        self.path = path
+
+    def __contains__(self, key):
+        return key in self.value
+
+    def __len__(self):
+        return len(self.value)
+
+    def safe_get(self, key):
+        if (isinstance(self.value, list) and isinstance(key, int) or
+                key in self.value):
+            return self.value[key]
+
+    def __getitem__(self, key):
+        v = self.safe_get(key)
+        if not v:
+            raise ConfigException(
+                &#39;Invalid kube-config file. Expected key %s in %s&#39;
+                % (key, self.name))
+        if isinstance(v, dict) or isinstance(v, list):
+            return ConfigNode(&#39;%s/%s&#39; % (self.name, key), v, self.path)
+        else:
+            return v
+
+    def get_with_name(self, name, safe=False):
+        if not isinstance(self.value, list):
+            raise ConfigException(
+                &#39;Invalid kube-config file. Expected %s to be a list&#39;
+                % self.name)
+        result = None
+        for v in self.value:
+            if &#39;name&#39; not in v:
+                raise ConfigException(
+                    &#39;Invalid kube-config file. &#39;
+                    &#39;Expected all values in %s list to have \&#39;name\&#39; key&#39;
+                    % self.name)
+            if v[&#39;name&#39;] == name:
+                if result is None:
+                    result = v
+                else:
+                    raise ConfigException(
+                        &#39;Invalid kube-config file. &#39;
+                        &#39;Expected only one object with name %s in %s list&#39;
+                        % (name, self.name))
+        if result is not None:
+            if isinstance(result, ConfigNode):
+                return result
+            else:
+                return ConfigNode(
+                    &#39;%s[name=%s]&#39; %
+                    (self.name, name), result, self.path)
+        if safe:
+            return None
+        raise ConfigException(
+            &#39;Invalid kube-config file. &#39;
+            &#39;Expected object with name %s in %s list&#39; % (name, self.name))
+
+
+class KubeConfigMerger:
+
+    &#34;&#34;&#34;Reads and merges configuration from one or more kube-config&#39;s.
+    The propery `config` can be passed to the KubeConfigLoader as config_dict.
+
+    It uses a path attribute from ConfigNode to store the path to kubeconfig.
+    This path is required to load certs from relative paths.
+
+    A method `save_changes` updates changed kubeconfig&#39;s (it compares current
+    state of dicts with).
+    &#34;&#34;&#34;
+
+    def __init__(self, paths):
+        self.paths = []
+        self.config_files = {}
+        self.config_merged = None
+
+        for path in paths.split(ENV_KUBECONFIG_PATH_SEPARATOR):
+            if path:
+                path = os.path.expanduser(path)
+                if os.path.exists(path):
+                    self.paths.append(path)
+                    self.load_config(path)
+        self.config_saved = copy.deepcopy(self.config_files)
+
+    @property
+    def config(self):
+        return self.config_merged
+
+    def load_config(self, path):
+        with open(path) as f:
+            config = yaml.safe_load(f)
+
+        if self.config_merged is None:
+            config_merged = copy.deepcopy(config)
+            for item in (&#39;clusters&#39;, &#39;contexts&#39;, &#39;users&#39;):
+                config_merged[item] = []
+            self.config_merged = ConfigNode(path, config_merged, path)
+
+        for item in (&#39;clusters&#39;, &#39;contexts&#39;, &#39;users&#39;):
+            self._merge(item, config[item], path)
+        self.config_files[path] = config
+
+    def _merge(self, item, add_cfg, path):
+        for new_item in add_cfg:
+            for exists in self.config_merged.value[item]:
+                if exists[&#39;name&#39;] == new_item[&#39;name&#39;]:
+                    break
+            else:
+                self.config_merged.value[item].append(ConfigNode(
+                    &#39;{}/{}&#39;.format(path, new_item), new_item, path))
+
+    def save_changes(self):
+        for path in self.paths:
+            if self.config_saved[path] != self.config_files[path]:
+                self.save_config(path)
+        self.config_saved = copy.deepcopy(self.config_files)
+
+    def save_config(self, path):
+        with open(path, &#39;w&#39;) as f:
+            yaml.safe_dump(self.config_files[path], f,
+                           default_flow_style=False)
+
+
+def _get_kube_config_loader_for_yaml_file(
+        filename, persist_config=False, **kwargs):
+
+    kcfg = KubeConfigMerger(filename)
+    if persist_config and &#39;config_persister&#39; not in kwargs:
+        kwargs[&#39;config_persister&#39;] = kcfg.save_changes()
+
+    return KubeConfigLoader(
+        config_dict=kcfg.config,
+        config_base_path=None,
+        **kwargs)
+
+
+def list_kube_config_contexts(config_file=None):
+
+    if config_file is None:
+        config_file = KUBE_CONFIG_DEFAULT_LOCATION
+
+    loader = _get_kube_config_loader_for_yaml_file(config_file)
+    return loader.list_contexts(), loader.current_context
+
+
+def load_kube_config(config_file=None, context=None,
+                     client_configuration=None,
+                     persist_config=True):
+    &#34;&#34;&#34;Loads authentication and cluster information from kube-config file
+    and stores them in kubernetes.client.configuration.
+
+    :param config_file: Name of the kube-config file.
+    :param context: set the active context. If is set to None, current_context
+        from config file will be used.
+    :param client_configuration: The kubernetes.client.Configuration to
+        set configs to.
+    :param persist_config: If True, config file will be updated when changed
+        (e.g GCP token refresh).
+    &#34;&#34;&#34;
+
+    if config_file is None:
+        config_file = KUBE_CONFIG_DEFAULT_LOCATION
+
+    loader = _get_kube_config_loader_for_yaml_file(
+        config_file, active_context=context,
+        persist_config=persist_config)
+
+    if client_configuration is None:
+        config = type.__call__(Configuration)
+        loader.load_and_set(config)
+        Configuration.set_default(config)
+    else:
+        loader.load_and_set(client_configuration)
+
+
+def new_client_from_config(
+        config_file=None,
+        context=None,
+        persist_config=True):
+    &#34;&#34;&#34;
+    Loads configuration the same as load_kube_config but returns an ApiClient
+    to be used with any API object. This will allow the caller to concurrently
+    talk with multiple clusters.
+    &#34;&#34;&#34;
+    client_config = type.__call__(Configuration)
+    load_kube_config(config_file=config_file, context=context,
+                     client_configuration=client_config,
+                     persist_config=persist_config)
+    return ApiClient(configuration=client_config)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="kubernetes.config.kube_config.list_kube_config_contexts"><code class="name flex">
+<span>def <span class="ident">list_kube_config_contexts</span></span>(<span>config_file=None)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def list_kube_config_contexts(config_file=None):
+
+    if config_file is None:
+        config_file = KUBE_CONFIG_DEFAULT_LOCATION
+
+    loader = _get_kube_config_loader_for_yaml_file(config_file)
+    return loader.list_contexts(), loader.current_context</code></pre>
+</details>
+</dd>
+<dt id="kubernetes.config.kube_config.load_kube_config"><code class="name flex">
+<span>def <span class="ident">load_kube_config</span></span>(<span>config_file=None, context=None, client_configuration=None, persist_config=True)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Loads authentication and cluster information from kube-config file
+and stores them in kubernetes.client.configuration.</p>
+<p>:param config_file: Name of the kube-config file.
+:param context: set the active context. If is set to None, current_context
+from config file will be used.
+:param client_configuration: The kubernetes.client.Configuration to
+set configs to.
+:param persist_config: If True, config file will be updated when changed
+(e.g GCP token refresh).</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def load_kube_config(config_file=None, context=None,
+                     client_configuration=None,
+                     persist_config=True):
+    &#34;&#34;&#34;Loads authentication and cluster information from kube-config file
+    and stores them in kubernetes.client.configuration.
+
+    :param config_file: Name of the kube-config file.
+    :param context: set the active context. If is set to None, current_context
+        from config file will be used.
+    :param client_configuration: The kubernetes.client.Configuration to
+        set configs to.
+    :param persist_config: If True, config file will be updated when changed
+        (e.g GCP token refresh).
+    &#34;&#34;&#34;
+
+    if config_file is None:
+        config_file = KUBE_CONFIG_DEFAULT_LOCATION
+
+    loader = _get_kube_config_loader_for_yaml_file(
+        config_file, active_context=context,
+        persist_config=persist_config)
+
+    if client_configuration is None:
+        config = type.__call__(Configuration)
+        loader.load_and_set(config)
+        Configuration.set_default(config)
+    else:
+        loader.load_and_set(client_configuration)</code></pre>
+</details>
+</dd>
+<dt id="kubernetes.config.kube_config.new_client_from_config"><code class="name flex">
+<span>def <span class="ident">new_client_from_config</span></span>(<span>config_file=None, context=None, persist_config=True)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Loads configuration the same as load_kube_config but returns an ApiClient
+to be used with any API object. This will allow the caller to concurrently
+talk with multiple clusters.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def new_client_from_config(
+        config_file=None,
+        context=None,
+        persist_config=True):
+    &#34;&#34;&#34;
+    Loads configuration the same as load_kube_config but returns an ApiClient
+    to be used with any API object. This will allow the caller to concurrently
+    talk with multiple clusters.
+    &#34;&#34;&#34;
+    client_config = type.__call__(Configuration)
+    load_kube_config(config_file=config_file, context=context,
+                     client_configuration=client_config,
+                     persist_config=persist_config)
+    return ApiClient(configuration=client_config)</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="kubernetes.config.kube_config.ConfigNode"><code class="flex name class">
+<span>class <span class="ident">ConfigNode</span></span>
+<span>(</span><span>name, value, path=None)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Remembers each config key's path and construct a relevant exception
+message in case of missing keys. The assumption is all access keys are
+present in a well-formed kube-config.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ConfigNode(object):
+    &#34;&#34;&#34;Remembers each config key&#39;s path and construct a relevant exception
+    message in case of missing keys. The assumption is all access keys are
+    present in a well-formed kube-config.&#34;&#34;&#34;
+
+    def __init__(self, name, value, path=None):
+        self.name = name
+        self.value = value
+        self.path = path
+
+    def __contains__(self, key):
+        return key in self.value
+
+    def __len__(self):
+        return len(self.value)
+
+    def safe_get(self, key):
+        if (isinstance(self.value, list) and isinstance(key, int) or
+                key in self.value):
+            return self.value[key]
+
+    def __getitem__(self, key):
+        v = self.safe_get(key)
+        if not v:
+            raise ConfigException(
+                &#39;Invalid kube-config file. Expected key %s in %s&#39;
+                % (key, self.name))
+        if isinstance(v, dict) or isinstance(v, list):
+            return ConfigNode(&#39;%s/%s&#39; % (self.name, key), v, self.path)
+        else:
+            return v
+
+    def get_with_name(self, name, safe=False):
+        if not isinstance(self.value, list):
+            raise ConfigException(
+                &#39;Invalid kube-config file. Expected %s to be a list&#39;
+                % self.name)
+        result = None
+        for v in self.value:
+            if &#39;name&#39; not in v:
+                raise ConfigException(
+                    &#39;Invalid kube-config file. &#39;
+                    &#39;Expected all values in %s list to have \&#39;name\&#39; key&#39;
+                    % self.name)
+            if v[&#39;name&#39;] == name:
+                if result is None:
+                    result = v
+                else:
+                    raise ConfigException(
+                        &#39;Invalid kube-config file. &#39;
+                        &#39;Expected only one object with name %s in %s list&#39;
+                        % (name, self.name))
+        if result is not None:
+            if isinstance(result, ConfigNode):
+                return result
+            else:
+                return ConfigNode(
+                    &#39;%s[name=%s]&#39; %
+                    (self.name, name), result, self.path)
+        if safe:
+            return None
+        raise ConfigException(
+            &#39;Invalid kube-config file. &#39;
+            &#39;Expected object with name %s in %s list&#39; % (name, self.name))</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="kubernetes.config.kube_config.ConfigNode.get_with_name"><code class="name flex">
+<span>def <span class="ident">get_with_name</span></span>(<span>self, name, safe=False)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_with_name(self, name, safe=False):
+    if not isinstance(self.value, list):
+        raise ConfigException(
+            &#39;Invalid kube-config file. Expected %s to be a list&#39;
+            % self.name)
+    result = None
+    for v in self.value:
+        if &#39;name&#39; not in v:
+            raise ConfigException(
+                &#39;Invalid kube-config file. &#39;
+                &#39;Expected all values in %s list to have \&#39;name\&#39; key&#39;
+                % self.name)
+        if v[&#39;name&#39;] == name:
+            if result is None:
+                result = v
+            else:
+                raise ConfigException(
+                    &#39;Invalid kube-config file. &#39;
+                    &#39;Expected only one object with name %s in %s list&#39;
+                    % (name, self.name))
+    if result is not None:
+        if isinstance(result, ConfigNode):
+            return result
+        else:
+            return ConfigNode(
+                &#39;%s[name=%s]&#39; %
+                (self.name, name), result, self.path)
+    if safe:
+        return None
+    raise ConfigException(
+        &#39;Invalid kube-config file. &#39;
+        &#39;Expected object with name %s in %s list&#39; % (name, self.name))</code></pre>
+</details>
+</dd>
+<dt id="kubernetes.config.kube_config.ConfigNode.safe_get"><code class="name flex">
+<span>def <span class="ident">safe_get</span></span>(<span>self, key)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def safe_get(self, key):
+    if (isinstance(self.value, list) and isinstance(key, int) or
+            key in self.value):
+        return self.value[key]</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="kubernetes.config.kube_config.FileOrData"><code class="flex name class">
+<span>class <span class="ident">FileOrData</span></span>
+<span>(</span><span>obj, file_key_name, data_key_name=None, file_base_path='', base64_file_content=True)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Utility class to read content of obj[%data_key_name] or file's
+content of obj[%file_key_name] and represent it as file or data.
+Note that the data is preferred. The obj[%file_key_name] will be used iff
+obj['%data_key_name'] is not set or empty. Assumption is file content is
+raw data and data field is base64 string. The assumption can be changed
+with base64_file_content flag. If set to False, the content of the file
+will assumed to be base64 and read as is. The default True value will
+result in base64 encode of the file content after read.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class FileOrData(object):
+    &#34;&#34;&#34;Utility class to read content of obj[%data_key_name] or file&#39;s
+     content of obj[%file_key_name] and represent it as file or data.
+     Note that the data is preferred. The obj[%file_key_name] will be used iff
+     obj[&#39;%data_key_name&#39;] is not set or empty. Assumption is file content is
+     raw data and data field is base64 string. The assumption can be changed
+     with base64_file_content flag. If set to False, the content of the file
+     will assumed to be base64 and read as is. The default True value will
+     result in base64 encode of the file content after read.&#34;&#34;&#34;
+
+    def __init__(self, obj, file_key_name, data_key_name=None,
+                 file_base_path=&#34;&#34;, base64_file_content=True):
+        if not data_key_name:
+            data_key_name = file_key_name + &#34;-data&#34;
+        self._file = None
+        self._data = None
+        self._base64_file_content = base64_file_content
+        if data_key_name in obj:
+            self._data = obj[data_key_name]
+        elif file_key_name in obj:
+            self._file = os.path.normpath(
+                os.path.join(file_base_path, obj[file_key_name]))
+
+    def as_file(self):
+        &#34;&#34;&#34;If obj[%data_key_name] exists, return name of a file with base64
+        decoded obj[%data_key_name] content otherwise obj[%file_key_name].&#34;&#34;&#34;
+        use_data_if_no_file = not self._file and self._data
+        if use_data_if_no_file:
+            if self._base64_file_content:
+                if isinstance(self._data, str):
+                    content = self._data.encode()
+                else:
+                    content = self._data
+                self._file = _create_temp_file_with_content(
+                    base64.standard_b64decode(content))
+            else:
+                self._file = _create_temp_file_with_content(self._data)
+        if self._file and not os.path.isfile(self._file):
+            raise ConfigException(&#34;File does not exists: %s&#34; % self._file)
+        return self._file
+
+    def as_data(self):
+        &#34;&#34;&#34;If obj[%data_key_name] exists, Return obj[%data_key_name] otherwise
+        base64 encoded string of obj[%file_key_name] file content.&#34;&#34;&#34;
+        use_file_if_no_data = not self._data and self._file
+        if use_file_if_no_data:
+            with open(self._file) as f:
+                if self._base64_file_content:
+                    self._data = bytes.decode(
+                        base64.standard_b64encode(str.encode(f.read())))
+                else:
+                    self._data = f.read()
+        return self._data</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="kubernetes.config.kube_config.FileOrData.as_data"><code class="name flex">
+<span>def <span class="ident">as_data</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>If obj[%data_key_name] exists, Return obj[%data_key_name] otherwise
+base64 encoded string of obj[%file_key_name] file content.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def as_data(self):
+    &#34;&#34;&#34;If obj[%data_key_name] exists, Return obj[%data_key_name] otherwise
+    base64 encoded string of obj[%file_key_name] file content.&#34;&#34;&#34;
+    use_file_if_no_data = not self._data and self._file
+    if use_file_if_no_data:
+        with open(self._file) as f:
+            if self._base64_file_content:
+                self._data = bytes.decode(
+                    base64.standard_b64encode(str.encode(f.read())))
+            else:
+                self._data = f.read()
+    return self._data</code></pre>
+</details>
+</dd>
+<dt id="kubernetes.config.kube_config.FileOrData.as_file"><code class="name flex">
+<span>def <span class="ident">as_file</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>If obj[%data_key_name] exists, return name of a file with base64
+decoded obj[%data_key_name] content otherwise obj[%file_key_name].</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def as_file(self):
+    &#34;&#34;&#34;If obj[%data_key_name] exists, return name of a file with base64
+    decoded obj[%data_key_name] content otherwise obj[%file_key_name].&#34;&#34;&#34;
+    use_data_if_no_file = not self._file and self._data
+    if use_data_if_no_file:
+        if self._base64_file_content:
+            if isinstance(self._data, str):
+                content = self._data.encode()
+            else:
+                content = self._data
+            self._file = _create_temp_file_with_content(
+                base64.standard_b64decode(content))
+        else:
+            self._file = _create_temp_file_with_content(self._data)
+    if self._file and not os.path.isfile(self._file):
+        raise ConfigException(&#34;File does not exists: %s&#34; % self._file)
+    return self._file</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="kubernetes.config.kube_config.KubeConfigLoader"><code class="flex name class">
+<span>class <span class="ident">KubeConfigLoader</span></span>
+<span>(</span><span>config_dict, active_context=None, get_google_credentials=None, config_base_path='', config_persister=None)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class KubeConfigLoader(object):
+
+    def __init__(self, config_dict, active_context=None,
+                 get_google_credentials=None,
+                 config_base_path=&#34;&#34;,
+                 config_persister=None):
+
+        if isinstance(config_dict, ConfigNode):
+            self._config = config_dict
+        else:
+            self._config = ConfigNode(&#39;kube-config&#39;, config_dict)
+
+        self._current_context = None
+        self._user = None
+        self._cluster = None
+        self.set_active_context(active_context)
+        self._config_base_path = config_base_path
+        self._config_persister = config_persister
+
+        def _refresh_credentials():
+            credentials, project_id = google.auth.default(scopes=[
+                &#39;https://www.googleapis.com/auth/cloud-platform&#39;,
+                &#39;https://www.googleapis.com/auth/userinfo.email&#39;
+            ])
+            request = google.auth.transport.requests.Request()
+            credentials.refresh(request)
+            return credentials
+
+        if get_google_credentials:
+            self._get_google_credentials = get_google_credentials
+        else:
+            self._get_google_credentials = _refresh_credentials
+
+    def set_active_context(self, context_name=None):
+        if context_name is None:
+            context_name = self._config[&#39;current-context&#39;]
+        self._current_context = self._config[&#39;contexts&#39;].get_with_name(
+            context_name)
+        if (self._current_context[&#39;context&#39;].safe_get(&#39;user&#39;) and
+                self._config.safe_get(&#39;users&#39;)):
+            user = self._config[&#39;users&#39;].get_with_name(
+                self._current_context[&#39;context&#39;][&#39;user&#39;], safe=True)
+            if user:
+                self._user = user[&#39;user&#39;]
+            else:
+                self._user = None
+        else:
+            self._user = None
+        self._cluster = self._config[&#39;clusters&#39;].get_with_name(
+            self._current_context[&#39;context&#39;][&#39;cluster&#39;])[&#39;cluster&#39;]
+
+    def _load_authentication(self):
+        &#34;&#34;&#34;Read authentication from kube-config user section if exists.
+
+        This function goes through various authentication methods in user
+        section of kube-config and stops if it finds a valid authentication
+        method. The order of authentication methods is:
+
+            1. auth-provider (gcp, azure, oidc)
+            2. token field (point to a token file)
+            3. exec provided plugin
+            4. username/password
+        &#34;&#34;&#34;
+        if not self._user:
+            return
+        if self._load_auth_provider_token():
+            return
+        if self._load_user_token():
+            return
+        if self._load_from_exec_plugin():
+            return
+        self._load_user_pass_token()
+
+    def _load_auth_provider_token(self):
+        if &#39;auth-provider&#39; not in self._user:
+            return
+        provider = self._user[&#39;auth-provider&#39;]
+        if &#39;name&#39; not in provider:
+            return
+        if provider[&#39;name&#39;] == &#39;gcp&#39;:
+            return self._load_gcp_token(provider)
+        if provider[&#39;name&#39;] == &#39;azure&#39;:
+            return self._load_azure_token(provider)
+        if provider[&#39;name&#39;] == &#39;oidc&#39;:
+            return self._load_oid_token(provider)
+
+    def _load_azure_token(self, provider):
+        if &#39;config&#39; not in provider:
+            return
+        if &#39;access-token&#39; not in provider[&#39;config&#39;]:
+            return
+        if &#39;expires-on&#39; in provider[&#39;config&#39;]:
+            if int(provider[&#39;config&#39;][&#39;expires-on&#39;]) &lt; time.gmtime():
+                self._refresh_azure_token(provider[&#39;config&#39;])
+        self.token = &#39;Bearer %s&#39; % provider[&#39;config&#39;][&#39;access-token&#39;]
+        return self.token
+
+    def _refresh_azure_token(self, config):
+        if &#39;adal&#39; not in globals():
+            raise ImportError(&#39;refresh token error, adal library not imported&#39;)
+
+        tenant = config[&#39;tenant-id&#39;]
+        authority = &#39;https://login.microsoftonline.com/{}&#39;.format(tenant)
+        context = adal.AuthenticationContext(
+            authority, validate_authority=True,
+        )
+        refresh_token = config[&#39;refresh-token&#39;]
+        client_id = config[&#39;client-id&#39;]
+        token_response = context.acquire_token_with_refresh_token(
+            refresh_token, client_id, &#39;00000002-0000-0000-c000-000000000000&#39;)
+
+        provider = self._user[&#39;auth-provider&#39;][&#39;config&#39;]
+        provider.value[&#39;access-token&#39;] = token_response[&#39;accessToken&#39;]
+        provider.value[&#39;expires-on&#39;] = token_response[&#39;expiresOn&#39;]
+        if self._config_persister:
+            self._config_persister(self._config.value)
+
+    def _load_gcp_token(self, provider):
+        if ((&#39;config&#39; not in provider) or
+                (&#39;access-token&#39; not in provider[&#39;config&#39;]) or
+                (&#39;expiry&#39; in provider[&#39;config&#39;] and
+                 _is_expired(provider[&#39;config&#39;][&#39;expiry&#39;]))):
+            # token is not available or expired, refresh it
+            self._refresh_gcp_token()
+
+        self.token = &#34;Bearer %s&#34; % provider[&#39;config&#39;][&#39;access-token&#39;]
+        return self.token
+
+    def _refresh_gcp_token(self):
+        if &#39;config&#39; not in self._user[&#39;auth-provider&#39;]:
+            self._user[&#39;auth-provider&#39;].value[&#39;config&#39;] = {}
+        provider = self._user[&#39;auth-provider&#39;][&#39;config&#39;]
+        credentials = self._get_google_credentials()
+        provider.value[&#39;access-token&#39;] = credentials.token
+        provider.value[&#39;expiry&#39;] = format_rfc3339(credentials.expiry)
+        if self._config_persister:
+            self._config_persister(self._config.value)
+
+    def _load_oid_token(self, provider):
+        if &#39;config&#39; not in provider:
+            return
+
+        reserved_characters = frozenset([&#34;=&#34;, &#34;+&#34;, &#34;/&#34;])
+        token = provider[&#39;config&#39;][&#39;id-token&#39;]
+
+        if any(char in token for char in reserved_characters):
+            # Invalid jwt, as it contains url-unsafe chars
+            return
+
+        parts = token.split(&#39;.&#39;)
+        if len(parts) != 3:  # Not a valid JWT
+            return
+
+        padding = (4 - len(parts[1]) % 4) * &#39;=&#39;
+        if len(padding) == 3:
+            # According to spec, 3 padding characters cannot occur
+            # in a valid jwt
+            # https://tools.ietf.org/html/rfc7515#appendix-C
+            return
+
+        if PY3:
+            jwt_attributes = json.loads(
+                base64.b64decode(parts[1] + padding).decode(&#39;utf-8&#39;)
+            )
+        else:
+            jwt_attributes = json.loads(
+                base64.b64decode(parts[1] + padding)
+            )
+
+        expire = jwt_attributes.get(&#39;exp&#39;)
+
+        if ((expire is not None) and
+            (_is_expired(datetime.datetime.fromtimestamp(expire,
+                                                         tz=UTC)))):
+            self._refresh_oidc(provider)
+
+            if self._config_persister:
+                self._config_persister(self._config.value)
+
+        self.token = &#34;Bearer %s&#34; % provider[&#39;config&#39;][&#39;id-token&#39;]
+
+        return self.token
+
+    def _refresh_oidc(self, provider):
+        config = Configuration()
+
+        if &#39;idp-certificate-authority-data&#39; in provider[&#39;config&#39;]:
+            ca_cert = tempfile.NamedTemporaryFile(delete=True)
+
+            if PY3:
+                cert = base64.b64decode(
+                    provider[&#39;config&#39;][&#39;idp-certificate-authority-data&#39;]
+                ).decode(&#39;utf-8&#39;)
+            else:
+                cert = base64.b64decode(
+                    provider[&#39;config&#39;][&#39;idp-certificate-authority-data&#39;] + &#34;==&#34;
+                )
+
+            with open(ca_cert.name, &#39;w&#39;) as fh:
+                fh.write(cert)
+
+            config.ssl_ca_cert = ca_cert.name
+
+        else:
+            config.verify_ssl = False
+
+        client = ApiClient(configuration=config)
+
+        response = client.request(
+            method=&#34;GET&#34;,
+            url=&#34;%s/.well-known/openid-configuration&#34;
+            % provider[&#39;config&#39;][&#39;idp-issuer-url&#39;]
+        )
+
+        if response.status != 200:
+            return
+
+        response = json.loads(response.data)
+
+        request = OAuth2Session(
+            client_id=provider[&#39;config&#39;][&#39;client-id&#39;],
+            token=provider[&#39;config&#39;][&#39;refresh-token&#39;],
+            auto_refresh_kwargs={
+                &#39;client_id&#39;: provider[&#39;config&#39;][&#39;client-id&#39;],
+                &#39;client_secret&#39;: provider[&#39;config&#39;][&#39;client-secret&#39;]
+            },
+            auto_refresh_url=response[&#39;token_endpoint&#39;]
+        )
+
+        try:
+            refresh = request.refresh_token(
+                token_url=response[&#39;token_endpoint&#39;],
+                refresh_token=provider[&#39;config&#39;][&#39;refresh-token&#39;],
+                auth=(provider[&#39;config&#39;][&#39;client-id&#39;],
+                      provider[&#39;config&#39;][&#39;client-secret&#39;]),
+                verify=config.ssl_ca_cert if config.verify_ssl else None
+            )
+        except oauthlib.oauth2.rfc6749.errors.InvalidClientIdError:
+            return
+
+        provider[&#39;config&#39;].value[&#39;id-token&#39;] = refresh[&#39;id_token&#39;]
+        provider[&#39;config&#39;].value[&#39;refresh-token&#39;] = refresh[&#39;refresh_token&#39;]
+
+    def _load_from_exec_plugin(self):
+        if &#39;exec&#39; not in self._user:
+            return
+        try:
+            status = ExecProvider(self._user[&#39;exec&#39;]).run()
+            if &#39;token&#39; not in status:
+                logging.error(&#39;exec: missing token field in plugin output&#39;)
+                return None
+            self.token = &#34;Bearer %s&#34; % status[&#39;token&#39;]
+            return True
+        except Exception as e:
+            logging.error(str(e))
+
+    def _load_user_token(self):
+        base_path = self._get_base_path(self._user.path)
+        token = FileOrData(
+            self._user, &#39;tokenFile&#39;, &#39;token&#39;,
+            file_base_path=base_path,
+            base64_file_content=False).as_data()
+        if token:
+            self.token = &#34;Bearer %s&#34; % token
+            return True
+
+    def _load_user_pass_token(self):
+        if &#39;username&#39; in self._user and &#39;password&#39; in self._user:
+            self.token = urllib3.util.make_headers(
+                basic_auth=(self._user[&#39;username&#39;] + &#39;:&#39; +
+                            self._user[&#39;password&#39;])).get(&#39;authorization&#39;)
+            return True
+
+    def _get_base_path(self, config_path):
+        if self._config_base_path is not None:
+            return self._config_base_path
+        if config_path is not None:
+            return os.path.abspath(os.path.dirname(config_path))
+        return &#34;&#34;
+
+    def _load_cluster_info(self):
+        if &#39;server&#39; in self._cluster:
+            self.host = self._cluster[&#39;server&#39;].rstrip(&#39;/&#39;)
+            if self.host.startswith(&#34;https&#34;):
+                base_path = self._get_base_path(self._cluster.path)
+                self.ssl_ca_cert = FileOrData(
+                    self._cluster, &#39;certificate-authority&#39;,
+                    file_base_path=base_path).as_file()
+                self.cert_file = FileOrData(
+                    self._user, &#39;client-certificate&#39;,
+                    file_base_path=base_path).as_file()
+                self.key_file = FileOrData(
+                    self._user, &#39;client-key&#39;,
+                    file_base_path=base_path).as_file()
+        if &#39;insecure-skip-tls-verify&#39; in self._cluster:
+            self.verify_ssl = not self._cluster[&#39;insecure-skip-tls-verify&#39;]
+
+    def _using_gcp_auth_provider(self):
+        return self._user and \
+            &#39;auth-provider&#39; in self._user and \
+            &#39;name&#39; in self._user[&#39;auth-provider&#39;] and \
+            self._user[&#39;auth-provider&#39;][&#39;name&#39;] == &#39;gcp&#39;
+
+    def _set_config(self, client_configuration):
+        if self._using_gcp_auth_provider():
+            # GCP auth tokens must be refreshed regularly, but swagger expects
+            # a constant token. Replace the swagger-generated client config&#39;s
+            # get_api_key_with_prefix method with our own to allow automatic
+            # token refresh.
+            def _gcp_get_api_key(*args):
+                return self._load_gcp_token(self._user[&#39;auth-provider&#39;])
+            client_configuration.get_api_key_with_prefix = _gcp_get_api_key
+        if &#39;token&#39; in self.__dict__:
+            # Note: this line runs for GCP auth tokens as well, but this entry
+            # will not be updated upon GCP token refresh.
+            client_configuration.api_key[&#39;authorization&#39;] = self.token
+        # copy these keys directly from self to configuration object
+        keys = [&#39;host&#39;, &#39;ssl_ca_cert&#39;, &#39;cert_file&#39;, &#39;key_file&#39;, &#39;verify_ssl&#39;]
+        for key in keys:
+            if key in self.__dict__:
+                setattr(client_configuration, key, getattr(self, key))
+
+    def load_and_set(self, client_configuration):
+        self._load_authentication()
+        self._load_cluster_info()
+        self._set_config(client_configuration)
+
+    def list_contexts(self):
+        return [context.value for context in self._config[&#39;contexts&#39;]]
+
+    @property
+    def current_context(self):
+        return self._current_context.value</code></pre>
+</details>
+<h3>Instance variables</h3>
+<dl>
+<dt id="kubernetes.config.kube_config.KubeConfigLoader.current_context"><code class="name">var <span class="ident">current_context</span></code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def current_context(self):
+    return self._current_context.value</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="kubernetes.config.kube_config.KubeConfigLoader.list_contexts"><code class="name flex">
+<span>def <span class="ident">list_contexts</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def list_contexts(self):
+    return [context.value for context in self._config[&#39;contexts&#39;]]</code></pre>
+</details>
+</dd>
+<dt id="kubernetes.config.kube_config.KubeConfigLoader.load_and_set"><code class="name flex">
+<span>def <span class="ident">load_and_set</span></span>(<span>self, client_configuration)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def load_and_set(self, client_configuration):
+    self._load_authentication()
+    self._load_cluster_info()
+    self._set_config(client_configuration)</code></pre>
+</details>
+</dd>
+<dt id="kubernetes.config.kube_config.KubeConfigLoader.set_active_context"><code class="name flex">
+<span>def <span class="ident">set_active_context</span></span>(<span>self, context_name=None)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_active_context(self, context_name=None):
+    if context_name is None:
+        context_name = self._config[&#39;current-context&#39;]
+    self._current_context = self._config[&#39;contexts&#39;].get_with_name(
+        context_name)
+    if (self._current_context[&#39;context&#39;].safe_get(&#39;user&#39;) and
+            self._config.safe_get(&#39;users&#39;)):
+        user = self._config[&#39;users&#39;].get_with_name(
+            self._current_context[&#39;context&#39;][&#39;user&#39;], safe=True)
+        if user:
+            self._user = user[&#39;user&#39;]
+        else:
+            self._user = None
+    else:
+        self._user = None
+    self._cluster = self._config[&#39;clusters&#39;].get_with_name(
+        self._current_context[&#39;context&#39;][&#39;cluster&#39;])[&#39;cluster&#39;]</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="kubernetes.config.kube_config.KubeConfigMerger"><code class="flex name class">
+<span>class <span class="ident">KubeConfigMerger</span></span>
+<span>(</span><span>paths)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Reads and merges configuration from one or more kube-config's.
+The propery <code>config</code> can be passed to the KubeConfigLoader as config_dict.</p>
+<p>It uses a path attribute from ConfigNode to store the path to kubeconfig.
+This path is required to load certs from relative paths.</p>
+<p>A method <code>save_changes</code> updates changed kubeconfig's (it compares current
+state of dicts with).</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class KubeConfigMerger:
+
+    &#34;&#34;&#34;Reads and merges configuration from one or more kube-config&#39;s.
+    The propery `config` can be passed to the KubeConfigLoader as config_dict.
+
+    It uses a path attribute from ConfigNode to store the path to kubeconfig.
+    This path is required to load certs from relative paths.
+
+    A method `save_changes` updates changed kubeconfig&#39;s (it compares current
+    state of dicts with).
+    &#34;&#34;&#34;
+
+    def __init__(self, paths):
+        self.paths = []
+        self.config_files = {}
+        self.config_merged = None
+
+        for path in paths.split(ENV_KUBECONFIG_PATH_SEPARATOR):
+            if path:
+                path = os.path.expanduser(path)
+                if os.path.exists(path):
+                    self.paths.append(path)
+                    self.load_config(path)
+        self.config_saved = copy.deepcopy(self.config_files)
+
+    @property
+    def config(self):
+        return self.config_merged
+
+    def load_config(self, path):
+        with open(path) as f:
+            config = yaml.safe_load(f)
+
+        if self.config_merged is None:
+            config_merged = copy.deepcopy(config)
+            for item in (&#39;clusters&#39;, &#39;contexts&#39;, &#39;users&#39;):
+                config_merged[item] = []
+            self.config_merged = ConfigNode(path, config_merged, path)
+
+        for item in (&#39;clusters&#39;, &#39;contexts&#39;, &#39;users&#39;):
+            self._merge(item, config[item], path)
+        self.config_files[path] = config
+
+    def _merge(self, item, add_cfg, path):
+        for new_item in add_cfg:
+            for exists in self.config_merged.value[item]:
+                if exists[&#39;name&#39;] == new_item[&#39;name&#39;]:
+                    break
+            else:
+                self.config_merged.value[item].append(ConfigNode(
+                    &#39;{}/{}&#39;.format(path, new_item), new_item, path))
+
+    def save_changes(self):
+        for path in self.paths:
+            if self.config_saved[path] != self.config_files[path]:
+                self.save_config(path)
+        self.config_saved = copy.deepcopy(self.config_files)
+
+    def save_config(self, path):
+        with open(path, &#39;w&#39;) as f:
+            yaml.safe_dump(self.config_files[path], f,
+                           default_flow_style=False)</code></pre>
+</details>
+<h3>Instance variables</h3>
+<dl>
+<dt id="kubernetes.config.kube_config.KubeConfigMerger.config"><code class="name">var <span class="ident">config</span></code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def config(self):
+    return self.config_merged</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="kubernetes.config.kube_config.KubeConfigMerger.load_config"><code class="name flex">
+<span>def <span class="ident">load_config</span></span>(<span>self, path)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def load_config(self, path):
+    with open(path) as f:
+        config = yaml.safe_load(f)
+
+    if self.config_merged is None:
+        config_merged = copy.deepcopy(config)
+        for item in (&#39;clusters&#39;, &#39;contexts&#39;, &#39;users&#39;):
+            config_merged[item] = []
+        self.config_merged = ConfigNode(path, config_merged, path)
+
+    for item in (&#39;clusters&#39;, &#39;contexts&#39;, &#39;users&#39;):
+        self._merge(item, config[item], path)
+    self.config_files[path] = config</code></pre>
+</details>
+</dd>
+<dt id="kubernetes.config.kube_config.KubeConfigMerger.save_changes"><code class="name flex">
+<span>def <span class="ident">save_changes</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def save_changes(self):
+    for path in self.paths:
+        if self.config_saved[path] != self.config_files[path]:
+            self.save_config(path)
+    self.config_saved = copy.deepcopy(self.config_files)</code></pre>
+</details>
+</dd>
+<dt id="kubernetes.config.kube_config.KubeConfigMerger.save_config"><code class="name flex">
+<span>def <span class="ident">save_config</span></span>(<span>self, path)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def save_config(self, path):
+    with open(path, &#39;w&#39;) as f:
+        yaml.safe_dump(self.config_files[path], f,
+                       default_flow_style=False)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="kubernetes.config" href="index.html">kubernetes.config</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="kubernetes.config.kube_config.list_kube_config_contexts" href="#kubernetes.config.kube_config.list_kube_config_contexts">list_kube_config_contexts</a></code></li>
+<li><code><a title="kubernetes.config.kube_config.load_kube_config" href="#kubernetes.config.kube_config.load_kube_config">load_kube_config</a></code></li>
+<li><code><a title="kubernetes.config.kube_config.new_client_from_config" href="#kubernetes.config.kube_config.new_client_from_config">new_client_from_config</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="kubernetes.config.kube_config.ConfigNode" href="#kubernetes.config.kube_config.ConfigNode">ConfigNode</a></code></h4>
+<ul class="">
+<li><code><a title="kubernetes.config.kube_config.ConfigNode.get_with_name" href="#kubernetes.config.kube_config.ConfigNode.get_with_name">get_with_name</a></code></li>
+<li><code><a title="kubernetes.config.kube_config.ConfigNode.safe_get" href="#kubernetes.config.kube_config.ConfigNode.safe_get">safe_get</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="kubernetes.config.kube_config.FileOrData" href="#kubernetes.config.kube_config.FileOrData">FileOrData</a></code></h4>
+<ul class="">
+<li><code><a title="kubernetes.config.kube_config.FileOrData.as_data" href="#kubernetes.config.kube_config.FileOrData.as_data">as_data</a></code></li>
+<li><code><a title="kubernetes.config.kube_config.FileOrData.as_file" href="#kubernetes.config.kube_config.FileOrData.as_file">as_file</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="kubernetes.config.kube_config.KubeConfigLoader" href="#kubernetes.config.kube_config.KubeConfigLoader">KubeConfigLoader</a></code></h4>
+<ul class="">
+<li><code><a title="kubernetes.config.kube_config.KubeConfigLoader.current_context" href="#kubernetes.config.kube_config.KubeConfigLoader.current_context">current_context</a></code></li>
+<li><code><a title="kubernetes.config.kube_config.KubeConfigLoader.list_contexts" href="#kubernetes.config.kube_config.KubeConfigLoader.list_contexts">list_contexts</a></code></li>
+<li><code><a title="kubernetes.config.kube_config.KubeConfigLoader.load_and_set" href="#kubernetes.config.kube_config.KubeConfigLoader.load_and_set">load_and_set</a></code></li>
+<li><code><a title="kubernetes.config.kube_config.KubeConfigLoader.set_active_context" href="#kubernetes.config.kube_config.KubeConfigLoader.set_active_context">set_active_context</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="kubernetes.config.kube_config.KubeConfigMerger" href="#kubernetes.config.kube_config.KubeConfigMerger">KubeConfigMerger</a></code></h4>
+<ul class="">
+<li><code><a title="kubernetes.config.kube_config.KubeConfigMerger.config" href="#kubernetes.config.kube_config.KubeConfigMerger.config">config</a></code></li>
+<li><code><a title="kubernetes.config.kube_config.KubeConfigMerger.load_config" href="#kubernetes.config.kube_config.KubeConfigMerger.load_config">load_config</a></code></li>
+<li><code><a title="kubernetes.config.kube_config.KubeConfigMerger.save_changes" href="#kubernetes.config.kube_config.KubeConfigMerger.save_changes">save_changes</a></code></li>
+<li><code><a title="kubernetes.config.kube_config.KubeConfigMerger.save_config" href="#kubernetes.config.kube_config.KubeConfigMerger.save_config">save_config</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.4</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>
