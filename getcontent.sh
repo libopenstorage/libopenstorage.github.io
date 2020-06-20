@@ -27,11 +27,3 @@ done
 
 echo ">>> Created docs/reference.md"
 sed $VERSIONS reference.md.tmpl > docs/reference.md
-
-# Make sure to update the output branch
-PYDOCDIR=docs/api/python/release-6.4
-python3 -m venv pysdkdoc
-rm -rf ${PYDOCDIR}
-#bash -c "source pysdkdoc/bin/activate && \
-#	pip3 install --upgrade pdoc mock libopenstorage-openstorage && \
-#	pdoc3 --html openstorage grpc google kubernetes -o ${PYDOCDIR}"
