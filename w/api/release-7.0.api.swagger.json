@@ -204,6 +204,26 @@
         "title": "Defines the operation types available to resize a storage pool",
         "type": "string"
       },
+      "StorageRebalanceAuditStorageRebalanceAction": {
+        "default": "ADD_REPLICA",
+        "description": "- ADD_REPLICA: Indicates new replica was added\n - REMOVE_REPLICA: Indicates existing replica was removed",
+        "enum": [
+          "ADD_REPLICA",
+          "REMOVE_REPLICA"
+        ],
+        "title": "StorageRebalanceAction describes type of rebalance action",
+        "type": "string"
+      },
+      "StorageRebalanceTriggerThresholdMetric": {
+        "default": "PROVISION_SPACE",
+        "description": "- PROVISION_SPACE: ProvisionSpace indicates rebalance for provisioned space\n - USED_SPACE: UsedSpace indicates rebalance for used space",
+        "enum": [
+          "PROVISION_SPACE",
+          "USED_SPACE"
+        ],
+        "title": "Metric is an enum that defines the metric to use for rebalance",
+        "type": "string"
+      },
       "VolumeSpecPolicyPolicyOp": {
         "default": "Equal",
         "description": "- Equal: Policy will make sure the value must be equal\n - Minimum: Policy will make sure the requested value must be greater than or equal\n - Maximum: Policy will make sure the requested value must be less than or equal",
@@ -213,6 +233,15 @@
           "Maximum"
         ],
         "title": "This defines an operator for the policy comparisons",
+        "type": "string"
+      },
+      "XattrValue": {
+        "default": "UNSPECIFIED",
+        "enum": [
+          "UNSPECIFIED",
+          "COW_ON_DEMAND"
+        ],
+        "title": "- UNSPECIFIED: Value is uninitialized or unknown\n - COW_ON_DEMAND: Enable on-demand copy-on-write on the volume",
         "type": "string"
       },
       "apiAlert": {
@@ -301,6 +330,51 @@
             "format": "int64",
             "title": "TotalBytes used by this volume",
             "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "apiCatalog": {
+        "properties": {
+          "LastModified": {
+            "format": "date-time",
+            "title": "Last Modified",
+            "type": "string"
+          },
+          "children": {
+            "items": {
+              "$ref": "#/components/schemas/apiCatalog"
+            },
+            "title": "Children",
+            "type": "array"
+          },
+          "name": {
+            "title": "Name of the Directory/File",
+            "type": "string"
+          },
+          "path": {
+            "title": "Full Path of the Directory/File",
+            "type": "string"
+          },
+          "size": {
+            "format": "uint64",
+            "title": "File or Directory Size",
+            "type": "string"
+          },
+          "type": {
+            "title": "Type Directory or File",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "apiCatalogResponse": {
+        "properties": {
+          "report": {
+            "$ref": "#/components/schemas/apiReport"
+          },
+          "root": {
+            "$ref": "#/components/schemas/apiCatalog"
           }
         },
         "type": "object"
@@ -746,8 +820,10 @@
           "IO_PROFILE_DB",
           "IO_PROFILE_DB_REMOTE",
           "IO_PROFILE_CMS",
-          "IO_PROFILE_SYNC_SHARED"
+          "IO_PROFILE_SYNC_SHARED",
+          "IO_PROFILE_BKUPSRC"
         ],
+        "title": "- IO_PROFILE_BKUPSRC: IO_PROFILE_BKUPSRC inherits cloudbackup's IOprofile",
         "type": "string"
       },
       "apiIoStrategy": {
@@ -903,6 +979,21 @@
         "title": "ReplicaSet set of machine IDs (nodes) to which part of this volume is erasure\ncoded - for clustered storage arrays",
         "type": "object"
       },
+      "apiReport": {
+        "properties": {
+          "directories": {
+            "format": "int64",
+            "title": "Directory count",
+            "type": "string"
+          },
+          "files": {
+            "format": "int64",
+            "title": "File count",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
       "apiResourceType": {
         "default": "RESOURCE_TYPE_NONE",
         "enum": [
@@ -914,6 +1005,110 @@
           "RESOURCE_TYPE_POOL"
         ],
         "type": "string"
+      },
+      "apiRestoreParamBoolType": {
+        "default": "PARAM_BKUPSRC",
+        "enum": [
+          "PARAM_BKUPSRC",
+          "PARAM_FALSE",
+          "PARAM_TRUE"
+        ],
+        "type": "string"
+      },
+      "apiRestoreVolSnashotSchedule": {
+        "properties": {
+          "schedule": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "apiRestoreVolStoragePolicy": {
+        "properties": {
+          "policy": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "apiRestoreVolumeSpec": {
+        "description": "RestoreSpec allows some of the restore volume properties of to be modified\nwhile restoring the cloud baackup. All pointer fields with nil value will\ninherit corresponding field value from backup's spec.",
+        "properties": {
+          "aggregation_level": {
+            "description": "Aggregation level Specifies the number of parts the volume can be aggregated from.",
+            "format": "int64",
+            "type": "integer"
+          },
+          "cos": {
+            "$ref": "#/components/schemas/apiCosType"
+          },
+          "export_spec": {
+            "$ref": "#/components/schemas/apiExportSpec"
+          },
+          "fp_preference": {
+            "$ref": "#/components/schemas/apiRestoreParamBoolType"
+          },
+          "group": {
+            "$ref": "#/components/schemas/apiGroup"
+          },
+          "group_enforced": {
+            "description": "GroupEnforced is true if consistency group creation is enforced.",
+            "format": "boolean",
+            "type": "boolean"
+          },
+          "ha_level": {
+            "description": "HaLevel specifies the number of copies of data.",
+            "format": "int64",
+            "type": "string"
+          },
+          "io_profile": {
+            "$ref": "#/components/schemas/apiIoProfile"
+          },
+          "io_strategy": {
+            "$ref": "#/components/schemas/apiIoStrategy"
+          },
+          "journal": {
+            "$ref": "#/components/schemas/apiRestoreParamBoolType"
+          },
+          "nodiscard": {
+            "$ref": "#/components/schemas/apiRestoreParamBoolType"
+          },
+          "ownership": {
+            "$ref": "#/components/schemas/apiOwnership"
+          },
+          "placement_strategy": {
+            "$ref": "#/components/schemas/apiVolumePlacementStrategy"
+          },
+          "queue_depth": {
+            "format": "int64",
+            "title": "QueueDepth defines the desired block device queue depth",
+            "type": "integer"
+          },
+          "replica_set": {
+            "$ref": "#/components/schemas/apiReplicaSet"
+          },
+          "shared": {
+            "$ref": "#/components/schemas/apiRestoreParamBoolType"
+          },
+          "sharedv4": {
+            "$ref": "#/components/schemas/apiRestoreParamBoolType"
+          },
+          "snapshot_interval": {
+            "format": "int64",
+            "title": "SnapshotInterval in minutes, set to 0 to disable snapshots",
+            "type": "integer"
+          },
+          "snapshot_schedule": {
+            "$ref": "#/components/schemas/apiRestoreVolSnashotSchedule"
+          },
+          "sticky": {
+            "$ref": "#/components/schemas/apiRestoreParamBoolType"
+          },
+          "storage_policy": {
+            "$ref": "#/components/schemas/apiRestoreVolStoragePolicy"
+          }
+        },
+        "type": "object"
       },
       "apiRuntimeStateMap": {
         "description": "RuntimeStateMap is a list of name value mapping of driver specific runtime\ninformation.",
@@ -1139,6 +1334,10 @@
           },
           "region": {
             "title": "Region",
+            "type": "string"
+          },
+          "s3_storage_class": {
+            "title": "(optional) Storage class for s3 puts",
             "type": "string"
           }
         },
@@ -1473,6 +1672,9 @@
             "title": "The credential to be used for restore operation",
             "type": "string"
           },
+          "locator": {
+            "$ref": "#/components/schemas/apiVolumeLocator"
+          },
           "node_id": {
             "title": "Optional for provisioning restore\nvolume (ResoreVolumeName should not be specified)",
             "type": "string"
@@ -1480,6 +1682,9 @@
           "restore_volume_name": {
             "title": "Optional volume Name of the new volume to be created\nin the cluster for restoring the cloudbackup",
             "type": "string"
+          },
+          "spec": {
+            "$ref": "#/components/schemas/apiRestoreVolumeSpec"
           },
           "task_id": {
             "title": "TaskId of the task performing this restore",
@@ -1600,6 +1805,17 @@
           }
         },
         "title": "SdkCloudBackupScheduleInfo describes a schedule for volume backups to\na cloud provider",
+        "type": "object"
+      },
+      "apiSdkCloudBackupSizeResponse": {
+        "properties": {
+          "size": {
+            "format": "uint64",
+            "title": "Size is the size of the volume in bytes",
+            "type": "string"
+          }
+        },
+        "title": "Defines a response containing the size of the volume",
         "type": "object"
       },
       "apiSdkCloudBackupStateChangeRequest": {
@@ -1913,12 +2129,21 @@
           "google_credential": {
             "$ref": "#/components/schemas/apiSdkGoogleCredentialRequest"
           },
+          "iam_policy": {
+            "format": "boolean",
+            "title": "iamPolicy indicates if IAM creds must be used for access",
+            "type": "boolean"
+          },
           "name": {
             "title": "Name of the credential",
             "type": "string"
           },
           "ownership": {
             "$ref": "#/components/schemas/apiOwnership"
+          },
+          "s3_storage_class": {
+            "title": "s3StorageClass for object puts, empty indicates default STANDARD",
+            "type": "string"
           },
           "use_proxy": {
             "format": "boolean",
@@ -1976,6 +2201,11 @@
           "google_credential": {
             "$ref": "#/components/schemas/apiSdkGoogleCredentialResponse"
           },
+          "iam_policy": {
+            "format": "boolean",
+            "title": "iamPolicy indicates if IAM creds must be used for access",
+            "type": "boolean"
+          },
           "name": {
             "title": "Name of the credential",
             "type": "string"
@@ -1993,6 +2223,18 @@
       },
       "apiSdkCredentialValidateResponse": {
         "title": "Empty response",
+        "type": "object"
+      },
+      "apiSdkEnumerateRebalanceJobsResponse": {
+        "properties": {
+          "jobs": {
+            "items": {
+              "$ref": "#/components/schemas/apiStorageRebalanceJob"
+            },
+            "title": "Jobs is the list of rebalance jobs in the response",
+            "type": "array"
+          }
+        },
         "type": "object"
       },
       "apiSdkFilesystemCheckCheckHealthGetStatusResponse": {
@@ -2115,7 +2357,7 @@
         "type": "object"
       },
       "apiSdkFilesystemTrimStartResponse": {
-        "description": "SdkFilesystemTrimStartResponse defines the response for a \nSdkFilesystemTrimStartRequest.",
+        "description": "SdkFilesystemTrimStartResponse defines the response for a\nSdkFilesystemTrimStartRequest.",
         "properties": {
           "message": {
             "title": "Text blob containing ASCII text providing details of the operation",
@@ -2143,6 +2385,24 @@
       },
       "apiSdkFilesystemTrimStopResponse": {
         "title": "Empty response",
+        "type": "object"
+      },
+      "apiSdkGetRebalanceJobStatusResponse": {
+        "properties": {
+          "actions": {
+            "items": {
+              "$ref": "#/components/schemas/apiStorageRebalanceAudit"
+            },
+            "title": "Actions describe all the actions taken during this rebalance",
+            "type": "array"
+          },
+          "job": {
+            "$ref": "#/components/schemas/apiStorageRebalanceJob"
+          },
+          "summary": {
+            "$ref": "#/components/schemas/apiStorageRebalanceSummary"
+          }
+        },
         "type": "object"
       },
       "apiSdkGoogleCredentialRequest": {
@@ -2675,6 +2935,54 @@
         "title": "Defines a response when resizing a storage pool",
         "type": "object"
       },
+      "apiSdkStorageRebalanceRequest": {
+        "properties": {
+          "max_duration_minutes": {
+            "format": "uint64",
+            "title": "MaxDurationMinutes defines how long operation should run when started at schedule.\n0 values means no limit on duration",
+            "type": "string"
+          },
+          "pool_selector_labels": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "PoolSelectorLabels allows selecting pools to which trigger thresholds will apply",
+            "type": "object"
+          },
+          "trial_run": {
+            "format": "boolean",
+            "title": "TrialRun if true the job only produces steps that would be taken without making any changes",
+            "type": "boolean"
+          },
+          "trigger_thresholds": {
+            "description": "TriggerThresholds defines thresholds that would trigger rebalance.\nFor example, TriggerThreshold{ThresholdTypeAbsolutePercent, MetricTypeUsedSpace, 75, 10}\nwould trigger rebalance on pools where used space is more than 75% or less than 10%. Similarly,\nTriggerThreshold{ThresholdTypeDeltaMeanPercent, MetricTypeUsedSpace, 15, 25} will\ntrigger rebalance for pools where used space is more than 15% from the mean\npercent for used space for the entire cluster or less than 25% from the mean\npercent for used space for the entire cluster.",
+            "items": {
+              "$ref": "#/components/schemas/apiStorageRebalanceTriggerThreshold"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "apiSdkStorageRebalanceResponse": {
+        "properties": {
+          "actions": {
+            "items": {
+              "$ref": "#/components/schemas/apiStorageRebalanceAudit"
+            },
+            "title": "Actions describe all the actions taken during this rebalance",
+            "type": "array"
+          },
+          "job": {
+            "$ref": "#/components/schemas/apiStorageRebalanceJob"
+          },
+          "summary": {
+            "$ref": "#/components/schemas/apiStorageRebalanceSummary"
+          }
+        },
+        "title": "SdkStorageRebalanceResponse is the response to a storage rebalance request",
+        "type": "object"
+      },
       "apiSdkTimeWeekday": {
         "default": "SdkTimeWeekdaySunday",
         "description": "- SdkTimeWeekdaySunday: Sunday\n - SdkTimeWeekdayMonday: Monday\n - SdkTimeWeekdayTuesday: Tuesday\n - SdkTimeWeekdayWednesday: Wednesday\n - SdkTimeWeekdayThursday: Thursday\n - SdkTimeWeekdayFriday: Friday\n - SdkTimeWeekdaySaturday: Saturday",
@@ -2689,6 +2997,9 @@
         ],
         "title": "Defines times of day",
         "type": "string"
+      },
+      "apiSdkUpdateRebalanceJobResponse": {
+        "type": "object"
       },
       "apiSdkVersion": {
         "description": "SDK version in Major.Minor.Patch format. The goal of this\nmessage is to provide clients a method to determine the SDK\nversion run by an SDK server.",
@@ -2774,6 +3085,33 @@
           }
         },
         "title": "Defines response containing volume/snapshot capacity usage details",
+        "type": "object"
+      },
+      "apiSdkVolumeCatalogRequest": {
+        "properties": {
+          "depth": {
+            "title": "Depth of folders/files retrieved (default is all of it, 1 would only return 1 layer)",
+            "type": "string"
+          },
+          "path": {
+            "title": "Path which will be used as root (default is the actual root)",
+            "type": "string"
+          },
+          "volume_id": {
+            "description": "VolumeId of the volume that is getting it's catalog retrieved.",
+            "type": "string"
+          }
+        },
+        "title": "Request message to get the volume catalog",
+        "type": "object"
+      },
+      "apiSdkVolumeCatalogResponse": {
+        "properties": {
+          "catalog": {
+            "$ref": "#/components/schemas/apiCatalogResponse"
+          }
+        },
+        "title": "Response message to get volume catalog",
         "type": "object"
       },
       "apiSdkVolumeCloneRequest": {
@@ -3457,6 +3795,178 @@
         "title": "StoragePoolOperation defines an operation being performed on a storage pool",
         "type": "object"
       },
+      "apiStorageRebalanceAudit": {
+        "properties": {
+          "action": {
+            "$ref": "#/components/schemas/StorageRebalanceAuditStorageRebalanceAction"
+          },
+          "end_time": {
+            "format": "date-time",
+            "title": "EndTime is time time at which action ended",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name is the name of the volumes which was rebalanced",
+            "type": "string"
+          },
+          "node": {
+            "title": "Node on which this action happened",
+            "type": "string"
+          },
+          "pool": {
+            "title": "Pool on which this action happened",
+            "type": "string"
+          },
+          "replication_set_id": {
+            "format": "uint64",
+            "title": "ReplicationSetId is the ID of the replication set",
+            "type": "string"
+          },
+          "start_time": {
+            "format": "date-time",
+            "title": "StartTime is the time at which action was started",
+            "type": "string"
+          },
+          "state": {
+            "$ref": "#/components/schemas/apiStorageRebalanceJobState"
+          },
+          "volume_id": {
+            "title": "VolumeID is the id of the volume which was rebalanced",
+            "type": "string"
+          },
+          "work_summary": {
+            "items": {
+              "$ref": "#/components/schemas/apiStorageRebalanceWorkSummary"
+            },
+            "title": "WorkSummary summarizes the work done",
+            "type": "array"
+          }
+        },
+        "title": "StorageRebalanceAudit describes the action taken during rebalance",
+        "type": "object"
+      },
+      "apiStorageRebalanceJob": {
+        "properties": {
+          "create_time": {
+            "format": "date-time",
+            "title": "CreateTime is the time the job was created",
+            "type": "string"
+          },
+          "error": {
+            "title": "Error describes errors occurred during rebalance",
+            "type": "string"
+          },
+          "id": {
+            "title": "ID of the rebalance job",
+            "type": "string"
+          },
+          "parameters": {
+            "$ref": "#/components/schemas/apiSdkStorageRebalanceRequest"
+          },
+          "state": {
+            "$ref": "#/components/schemas/apiStorageRebalanceJobState"
+          }
+        },
+        "title": "StorageRebalanceJob describes job input and current status",
+        "type": "object"
+      },
+      "apiStorageRebalanceJobState": {
+        "default": "PENDING",
+        "description": "- PENDING: Pending indicates job is still pending and has not started work\n - RUNNING: Running indicates job is actively running\n - DONE: Done indicates job has finished processing\n - PAUSED: Paused indicates job is paused\n - CANCELLED: Cancelled indicates job is cancelled",
+        "enum": [
+          "PENDING",
+          "RUNNING",
+          "DONE",
+          "PAUSED",
+          "CANCELLED"
+        ],
+        "title": "StorageRebalanceJobState is an enum for state of the current rebalance operation",
+        "type": "string"
+      },
+      "apiStorageRebalanceSummary": {
+        "properties": {
+          "last_update_time": {
+            "format": "date-time",
+            "title": "LastUpdateTime is the time the job was last updated",
+            "type": "string"
+          },
+          "total_run_time_seconds": {
+            "format": "uint64",
+            "title": "TotalRunTimeSeconds is the total time rebalance is running",
+            "type": "string"
+          },
+          "work_summary": {
+            "items": {
+              "$ref": "#/components/schemas/apiStorageRebalanceWorkSummary"
+            },
+            "title": "WorkSummary summarizes the work done",
+            "type": "array"
+          }
+        },
+        "title": "StorageRebalanceSummary describes summary for the job",
+        "type": "object"
+      },
+      "apiStorageRebalanceTriggerThreshold": {
+        "properties": {
+          "metric": {
+            "$ref": "#/components/schemas/StorageRebalanceTriggerThresholdMetric"
+          },
+          "over_load_trigger_threshold": {
+            "description": "OverLoadTriggerThreshold will select entity which is over this\nthreshold. OverLoadTriggerThreshold threshold selects pools\nwhich act as source for reduction of load defined by the metric.",
+            "format": "uint64",
+            "type": "string"
+          },
+          "type": {
+            "$ref": "#/components/schemas/apiStorageRebalanceTriggerThresholdType"
+          },
+          "under_load_trigger_threshold": {
+            "description": "UnderLoadTriggerThreshold will select entity which is under this\nthreshold. UnderLoadTriggerThreshold selects pools which act as\ntargets for increasing load defined by metric.",
+            "format": "uint64",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "apiStorageRebalanceTriggerThresholdType": {
+        "default": "ABSOLUTE_PERCENT",
+        "description": "- ABSOLUTE_PERCENT: AbsolutePercent indicates absolute percent comparison.\nExample, 75 % used of capacity, or 50 % provisioned of capacity.\n - DELTA_MEAN_PERCENT: DeltaMeanPercent indicates mean percent comparision threshold.\nExample, 10 % more than mean for cluster.",
+        "enum": [
+          "ABSOLUTE_PERCENT",
+          "DELTA_MEAN_PERCENT"
+        ],
+        "title": "Type is an enum that defines the type fo the trigger threshold",
+        "type": "string"
+      },
+      "apiStorageRebalanceWorkSummary": {
+        "properties": {
+          "done": {
+            "format": "uint64",
+            "title": "Done is the amount of bytes/work done",
+            "type": "string"
+          },
+          "pending": {
+            "format": "uint64",
+            "title": "Pending is the amount of bytes/work pending. Done + Pending == Total",
+            "type": "string"
+          },
+          "type": {
+            "$ref": "#/components/schemas/apiStorageRebalanceWorkSummaryType"
+          }
+        },
+        "type": "object"
+      },
+      "apiStorageRebalanceWorkSummaryType": {
+        "default": "UnbalancedPools",
+        "description": "- UnbalancedPools: summary for unbalanced pools\n - UnbalancedVolumes: summary for unbalanced volumes\n - UnbalancedProvisionedSpaceBytes: summary for unbalanced provisioned space\n - UnbalancedUsedSpaceBytes: summary for unbalanced used space",
+        "enum": [
+          "UnbalancedPools",
+          "UnbalancedVolumes",
+          "UnbalancedProvisionedSpaceBytes",
+          "UnbalancedUsedSpaceBytes"
+        ],
+        "title": "Type is an enum to indicate the type of work summary",
+        "type": "string"
+      },
       "apiStorageResource": {
         "description": "StorageResource groups properties of a storage device.",
         "properties": {
@@ -3949,6 +4459,9 @@
             },
             "title": "(deprecated, do not use) VolumeLabels configuration labels",
             "type": "object"
+          },
+          "xattr": {
+            "$ref": "#/components/schemas/XattrValue"
           }
         },
         "type": "object"
@@ -4197,7 +4710,7 @@
   },
   "info": {
     "title": "OpenStorage SDK",
-    "version": "0.69.3"
+    "version": "0.69.11"
   },
   "openapi": "3.0.0",
   "paths": {
@@ -4639,6 +5152,47 @@
           }
         },
         "summary": "Delete cloud backup schedule",
+        "tags": [
+          "OpenStorageCloudBackup"
+        ]
+      }
+    },
+    "/v1/cloudbackups/size": {
+      "get": {
+        "operationId": "Size",
+        "parameters": [
+          {
+            "description": "BackupId is a value which is used to get information on the\nsize of the specified backup.",
+            "in": "query",
+            "name": "backup_id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Credential id describe the credentials for the cloud.",
+            "in": "query",
+            "name": "credential_id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/apiSdkCloudBackupSizeResponse"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "summary": "Size returns the size of any cloud backups of a volume",
         "tags": [
           "OpenStorageCloudBackup"
         ]
@@ -6320,6 +6874,108 @@
         ]
       }
     },
+    "/v1/storagepools/rebalance": {
+      "put": {
+        "operationId": "Rebalance",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/apiSdkStorageRebalanceResponse"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "summary": "Rebalance creates a new rebalance task",
+        "tags": [
+          "OpenStoragePool"
+        ]
+      }
+    },
+    "/v1/storagepools/rebalance/job": {
+      "get": {
+        "operationId": "EnumerateRebalanceJobs",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/apiSdkEnumerateRebalanceJobsResponse"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "summary": "EnumerateRebalanceJobs returns all rebalance jobs currently known to the system",
+        "tags": [
+          "OpenStoragePool"
+        ]
+      }
+    },
+    "/v1/storagepools/rebalance/job/{id}": {
+      "get": {
+        "operationId": "GetRebalanceJobStatus",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/apiSdkGetRebalanceJobStatusResponse"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "summary": "GetRebalanceJobStatus returns rebalance status for specified job",
+        "tags": [
+          "OpenStoragePool"
+        ]
+      },
+      "put": {
+        "operationId": "UpdateRebalanceJobState",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/apiSdkUpdateRebalanceJobResponse"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "summary": "UpdateRebalanceJobState updates existing rebalance task state.\nOnly acceptable values are\nStorageRebalanceJobState_PAUSED - acceptable only from running state\nStorageRebalanceJobState_CANCELLED - acceptable only from running/pause state\nStorageRebalanceJobState_RUNNING - acceptable only from pause state",
+        "tags": [
+          "OpenStoragePool"
+        ]
+      }
+    },
     "/v1/storagepools/resize/{uuid}": {
       "put": {
         "operationId": "Resize",
@@ -6345,9 +7001,40 @@
             "description": ""
           }
         },
-        "summary": "Resize resizes the specified storage pool based on the request parameters",
+        "summary": "Resize expands the specified storage pool based on the request parameters",
         "tags": [
           "OpenStoragePool"
+        ]
+      }
+    },
+    "/v1/volume/catalog": {
+      "post": {
+        "operationId": "VolumeCatalog",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/apiSdkVolumeCatalogRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/apiSdkVolumeCatalogResponse"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "summary": "Gets the volume catalog of an attached and mounted volume.\nReturns the entire tree up to \"n\"  depth (default is all of it)\nTakes a path that can be used as the new root for the catalog request.",
+        "tags": [
+          "OpenStorageVolume"
         ]
       }
     },

@@ -10,8 +10,6 @@
     - [OpenStorageClusterDomains](#serviceopenstorageapiopenstorageclusterdomains)
     - [OpenStorageClusterPair](#serviceopenstorageapiopenstorageclusterpair)
     - [OpenStorageCredentials](#serviceopenstorageapiopenstoragecredentials)
-    - [OpenStorageFilesystemCheck](#serviceopenstorageapiopenstoragefilesystemcheck)
-    - [OpenStorageFilesystemTrim](#serviceopenstorageapiopenstoragefilesystemtrim)
     - [OpenStorageIdentity](#serviceopenstorageapiopenstorageidentity)
     - [OpenStorageMigrate](#serviceopenstorageapiopenstoragemigrate)
     - [OpenStorageMountAttach](#serviceopenstorageapiopenstoragemountattach)
@@ -57,10 +55,6 @@
     - [ClusterPairsEnumerateResponse.PairsEntry](#clusterpairsenumerateresponsepairsentry)
     - [ClusterResponse](#clusterresponse)
     - [ExportSpec](#exportspec)
-    - [FastpathConfig](#fastpathconfig)
-    - [FastpathReplState](#fastpathreplstate)
-    - [FilesystemCheck](#filesystemcheck)
-    - [FilesystemTrim](#filesystemtrim)
     - [GraphDriverChanges](#graphdriverchanges)
     - [Group](#group)
     - [GroupSnapCreateRequest](#groupsnapcreaterequest)
@@ -75,13 +69,9 @@
     - [ObjectstoreInfo](#objectstoreinfo)
     - [Ownership](#ownership)
     - [Ownership.AccessControl](#ownershipaccesscontrol)
-    - [Ownership.PublicAccessControl](#ownershippublicaccesscontrol)
     - [ReplicaPlacementSpec](#replicaplacementspec)
     - [ReplicaSet](#replicaset)
     - [Report](#report)
-    - [RestoreVolSnashotSchedule](#restorevolsnashotschedule)
-    - [RestoreVolStoragePolicy](#restorevolstoragepolicy)
-    - [RestoreVolumeSpec](#restorevolumespec)
     - [RuntimeStateMap](#runtimestatemap)
     - [RuntimeStateMap.RuntimeStateEntry](#runtimestatemapruntimestateentry)
     - [SdkAlertsAlertTypeQuery](#sdkalertsalerttypequery)
@@ -132,8 +122,6 @@
     - [SdkCloudBackupSchedUpdateResponse](#sdkcloudbackupschedupdateresponse)
     - [SdkCloudBackupScheduleInfo](#sdkcloudbackupscheduleinfo)
     - [SdkCloudBackupScheduleInfo.LabelsEntry](#sdkcloudbackupscheduleinfolabelsentry)
-    - [SdkCloudBackupSizeRequest](#sdkcloudbackupsizerequest)
-    - [SdkCloudBackupSizeResponse](#sdkcloudbackupsizeresponse)
     - [SdkCloudBackupStateChangeRequest](#sdkcloudbackupstatechangerequest)
     - [SdkCloudBackupStateChangeResponse](#sdkcloudbackupstatechangeresponse)
     - [SdkCloudBackupStatus](#sdkcloudbackupstatus)
@@ -181,22 +169,6 @@
     - [SdkCredentialInspectResponse](#sdkcredentialinspectresponse)
     - [SdkCredentialValidateRequest](#sdkcredentialvalidaterequest)
     - [SdkCredentialValidateResponse](#sdkcredentialvalidateresponse)
-    - [SdkEnumerateRebalanceJobsRequest](#sdkenumeraterebalancejobsrequest)
-    - [SdkEnumerateRebalanceJobsResponse](#sdkenumeraterebalancejobsresponse)
-    - [SdkFilesystemCheckGetStatusRequest](#sdkfilesystemcheckgetstatusrequest)
-    - [SdkFilesystemCheckGetStatusResponse](#sdkfilesystemcheckgetstatusresponse)
-    - [SdkFilesystemCheckStartRequest](#sdkfilesystemcheckstartrequest)
-    - [SdkFilesystemCheckStartResponse](#sdkfilesystemcheckstartresponse)
-    - [SdkFilesystemCheckStopRequest](#sdkfilesystemcheckstoprequest)
-    - [SdkFilesystemCheckStopResponse](#sdkfilesystemcheckstopresponse)
-    - [SdkFilesystemTrimGetStatusRequest](#sdkfilesystemtrimgetstatusrequest)
-    - [SdkFilesystemTrimGetStatusResponse](#sdkfilesystemtrimgetstatusresponse)
-    - [SdkFilesystemTrimStartRequest](#sdkfilesystemtrimstartrequest)
-    - [SdkFilesystemTrimStartResponse](#sdkfilesystemtrimstartresponse)
-    - [SdkFilesystemTrimStopRequest](#sdkfilesystemtrimstoprequest)
-    - [SdkFilesystemTrimStopResponse](#sdkfilesystemtrimstopresponse)
-    - [SdkGetRebalanceJobStatusRequest](#sdkgetrebalancejobstatusrequest)
-    - [SdkGetRebalanceJobStatusResponse](#sdkgetrebalancejobstatusresponse)
     - [SdkGoogleCredentialRequest](#sdkgooglecredentialrequest)
     - [SdkGoogleCredentialResponse](#sdkgooglecredentialresponse)
     - [SdkIdentityCapabilitiesRequest](#sdkidentitycapabilitiesrequest)
@@ -269,11 +241,6 @@
     - [SdkStoragePool](#sdkstoragepool)
     - [SdkStoragePoolResizeRequest](#sdkstoragepoolresizerequest)
     - [SdkStoragePoolResizeResponse](#sdkstoragepoolresizeresponse)
-    - [SdkStorageRebalanceRequest](#sdkstoragerebalancerequest)
-    - [SdkStorageRebalanceRequest.PoolSelectorLabelsEntry](#sdkstoragerebalancerequestpoolselectorlabelsentry)
-    - [SdkStorageRebalanceResponse](#sdkstoragerebalanceresponse)
-    - [SdkUpdateRebalanceJobRequest](#sdkupdaterebalancejobrequest)
-    - [SdkUpdateRebalanceJobResponse](#sdkupdaterebalancejobresponse)
     - [SdkVersion](#sdkversion)
     - [SdkVolumeAttachOptions](#sdkvolumeattachoptions)
     - [SdkVolumeAttachRequest](#sdkvolumeattachrequest)
@@ -341,11 +308,6 @@
     - [StoragePool.LabelsEntry](#storagepoollabelsentry)
     - [StoragePoolOperation](#storagepooloperation)
     - [StoragePoolOperation.ParamsEntry](#storagepooloperationparamsentry)
-    - [StorageRebalanceAudit](#storagerebalanceaudit)
-    - [StorageRebalanceJob](#storagerebalancejob)
-    - [StorageRebalanceSummary](#storagerebalancesummary)
-    - [StorageRebalanceTriggerThreshold](#storagerebalancetriggerthreshold)
-    - [StorageRebalanceWorkSummary](#storagerebalanceworksummary)
     - [StorageResource](#storageresource)
     - [StorageVersion](#storageversion)
     - [StorageVersion.DetailsEntry](#storageversiondetailsentry)
@@ -361,11 +323,6 @@
     - [VolumePlacementSpec](#volumeplacementspec)
     - [VolumePlacementStrategy](#volumeplacementstrategy)
     - [VolumeResponse](#volumeresponse)
-    - [VolumeServiceInstanceResponse](#volumeserviceinstanceresponse)
-    - [VolumeServiceInstanceResponse.StatusEntry](#volumeserviceinstanceresponsestatusentry)
-    - [VolumeServiceRequest](#volumeservicerequest)
-    - [VolumeServiceRequest.SrvCmdParamsEntry](#volumeservicerequestsrvcmdparamsentry)
-    - [VolumeServiceResponse](#volumeserviceresponse)
     - [VolumeSetRequest](#volumesetrequest)
     - [VolumeSetRequest.OptionsEntry](#volumesetrequestoptionsentry)
     - [VolumeSetResponse](#volumesetresponse)
@@ -391,11 +348,6 @@
     - [EnforcementType](#enforcementtype)
     - [ExportProtocol](#exportprotocol)
     - [FSType](#fstype)
-    - [FastpathProtocol](#fastpathprotocol)
-    - [FastpathStatus](#fastpathstatus)
-    - [FilesystemCheck.FilesystemCheckStatus](#filesystemcheckfilesystemcheckstatus)
-    - [FilesystemCheck.FilesystemHealthStatus](#filesystemcheckfilesystemhealthstatus)
-    - [FilesystemTrim.FilesystemTrimStatus](#filesystemtrimfilesystemtrimstatus)
     - [GraphDriverChangeType](#graphdriverchangetype)
     - [HardwareType](#hardwaretype)
     - [IoProfile](#ioprofile)
@@ -403,7 +355,6 @@
     - [OperationFlags](#operationflags)
     - [Ownership.AccessType](#ownershipaccesstype)
     - [ResourceType](#resourcetype)
-    - [RestoreParamBoolType](#restoreparambooltype)
     - [SdkCloudBackupOpType](#sdkcloudbackupoptype)
     - [SdkCloudBackupRequestedState](#sdkcloudbackuprequestedstate)
     - [SdkCloudBackupStatusType](#sdkcloudbackupstatustype)
@@ -416,11 +367,6 @@
     - [SeverityType](#severitytype)
     - [Status](#status)
     - [StorageMedium](#storagemedium)
-    - [StorageRebalanceAudit.StorageRebalanceAction](#storagerebalanceauditstoragerebalanceaction)
-    - [StorageRebalanceJobState](#storagerebalancejobstate)
-    - [StorageRebalanceTriggerThreshold.Metric](#storagerebalancetriggerthresholdmetric)
-    - [StorageRebalanceTriggerThreshold.Type](#storagerebalancetriggerthresholdtype)
-    - [StorageRebalanceWorkSummary.Type](#storagerebalanceworksummarytype)
     - [VolumeActionParam](#volumeactionparam)
     - [VolumeSpecPolicy.PolicyOp](#volumespecpolicypolicyop)
     - [VolumeState](#volumestate)
@@ -600,12 +546,6 @@ Delete cloud backup schedule
     [SdkCloudBackupSchedEnumerateResponse](#sdkcloudbackupschedenumerateresponse)
 
 Enumerate cloud backup schedules
-## Size {#methodopenstorageapiopenstoragecloudbackupsize}
-
-> **rpc** Size([SdkCloudBackupSizeRequest](#sdkcloudbackupsizerequest))
-    [SdkCloudBackupSizeResponse](#sdkcloudbackupsizeresponse)
-
-Size returns the size of any cloud backups of a volume
  <!-- end methods -->
 
 # OpenStorageCluster {#serviceopenstorageapiopenstoragecluster}
@@ -772,77 +712,6 @@ Delete a specified credential
 Validate is used to validate credentials
  <!-- end methods -->
 
-# OpenStorageFilesystemCheck {#serviceopenstorageapiopenstoragefilesystemcheck}
-
-
-## Start {#methodopenstorageapiopenstoragefilesystemcheckstart}
-
-> **rpc** Start([SdkFilesystemCheckStartRequest](#sdkfilesystemcheckstartrequest))
-    [SdkFilesystemCheckStartResponse](#sdkfilesystemcheckstartresponse)
-
-Start a filesystem-check background operation on a unmounted volume.
-## GetStatus {#methodopenstorageapiopenstoragefilesystemcheckgetstatus}
-
-> **rpc** GetStatus([SdkFilesystemCheckGetStatusRequest](#sdkfilesystemcheckgetstatusrequest))
-    [SdkFilesystemCheckGetStatusResponse](#sdkfilesystemcheckgetstatusresponse)
-
-Get Status of a filesystem-check background operation on an unmounted
-volume, if any
-## Stop {#methodopenstorageapiopenstoragefilesystemcheckstop}
-
-> **rpc** Stop([SdkFilesystemCheckStopRequest](#sdkfilesystemcheckstoprequest))
-    [SdkFilesystemCheckStopResponse](#sdkfilesystemcheckstopresponse)
-
-Stop a filesystem check background operation on an unmounted volume, if any
- <!-- end methods -->
-
-# OpenStorageFilesystemTrim {#serviceopenstorageapiopenstoragefilesystemtrim}
-## OpenStorageFilesystemTrim Service
-This service provides methods to manage filesystem trim operation on a
-volume.
-
-This operation runs in the background on a **mounted volume**. If the volumes
-are not mounted, these API return error.
-
-Once the filesystem trim operation is started, the clients have to poll for
-the status of the background operation using the
-`OpenStorageFilesystemTrim.GetStatus()` rpc request
-
-A typical workflow involving filesystem trim would be as follows
-1. Attach the volume
-   `OpenStorageMountAttachClient.Attach()`
-2. Mount the volume
-   `OpenStorageMountAttachClient.Mount()`
-3. Start the filesystem trim operation by issuing a grpc call to
-   `OpenStorageFilesystemTrimClient.Start()`
-   This call returns immediately with a status code indicating if the
-   operation was successfully started or not.
-4. To get the status of the Filesystem Trim operation, issue a grpc call to
-   `OpenStorageFilesystemTrimClient.GetStatus()`
-5. To stop the Filesystem Trim operation, issue a grpc call to
-   `OpenStorageFilesystemTrimClient.Stop()`
-
-## Start {#methodopenstorageapiopenstoragefilesystemtrimstart}
-
-> **rpc** Start([SdkFilesystemTrimStartRequest](#sdkfilesystemtrimstartrequest))
-    [SdkFilesystemTrimStartResponse](#sdkfilesystemtrimstartresponse)
-
-Start a filesystem Trim background operation on a mounted volume
-## GetStatus {#methodopenstorageapiopenstoragefilesystemtrimgetstatus}
-
-> **rpc** GetStatus([SdkFilesystemTrimGetStatusRequest](#sdkfilesystemtrimgetstatusrequest))
-    [SdkFilesystemTrimGetStatusResponse](#sdkfilesystemtrimgetstatusresponse)
-
-Get Status of a filesystem Trim background operation on a mounted
-volume, if any
-## Stop {#methodopenstorageapiopenstoragefilesystemtrimstop}
-
-> **rpc** Stop([SdkFilesystemTrimStopRequest](#sdkfilesystemtrimstoprequest))
-    [SdkFilesystemTrimStopResponse](#sdkfilesystemtrimstopresponse)
-
-Stop a filesystem Trim background operation on a mounted volume, if any
- <!-- end methods -->
-
 # OpenStorageIdentity {#serviceopenstorageapiopenstorageidentity}
 OpenStorageIdentity service provides methods to obtain information
 about the cluster
@@ -885,8 +754,7 @@ Cancel a migration operation
 > **rpc** Status([SdkCloudMigrateStatusRequest](#sdkcloudmigratestatusrequest))
     [SdkCloudMigrateStatusResponse](#sdkcloudmigratestatusresponse)
 
-Status for migration operation.
-If status request is empty, status for all migration operation will be returned.
+Inspect the status of migration operation
  <!-- end methods -->
 
 # OpenStorageMountAttach {#serviceopenstorageapiopenstoragemountattach}
@@ -1057,35 +925,7 @@ OpenStoragePool is a service used to manage storage pools in the cluster
 > **rpc** Resize([SdkStoragePoolResizeRequest](#sdkstoragepoolresizerequest))
     [SdkStoragePoolResizeResponse](#sdkstoragepoolresizeresponse)
 
-Resize expands the specified storage pool based on the request parameters
-## Rebalance {#methodopenstorageapiopenstoragepoolrebalance}
-
-> **rpc** Rebalance([SdkStorageRebalanceRequest](#sdkstoragerebalancerequest))
-    [SdkStorageRebalanceResponse](#sdkstoragerebalanceresponse)
-
-Rebalance creates a new rebalance task
-## UpdateRebalanceJobState {#methodopenstorageapiopenstoragepoolupdaterebalancejobstate}
-
-> **rpc** UpdateRebalanceJobState([SdkUpdateRebalanceJobRequest](#sdkupdaterebalancejobrequest))
-    [SdkUpdateRebalanceJobResponse](#sdkupdaterebalancejobresponse)
-
-UpdateRebalanceJobState updates existing rebalance task state.
-Only acceptable values are
-StorageRebalanceJobState_PAUSED - acceptable only from running state
-StorageRebalanceJobState_CANCELLED - acceptable only from running/pause state
-StorageRebalanceJobState_RUNNING - acceptable only from pause state
-## GetRebalanceJobStatus {#methodopenstorageapiopenstoragepoolgetrebalancejobstatus}
-
-> **rpc** GetRebalanceJobStatus([SdkGetRebalanceJobStatusRequest](#sdkgetrebalancejobstatusrequest))
-    [SdkGetRebalanceJobStatusResponse](#sdkgetrebalancejobstatusresponse)
-
-GetRebalanceJobStatus returns rebalance status for specified job
-## EnumerateRebalanceJobs {#methodopenstorageapiopenstoragepoolenumeraterebalancejobs}
-
-> **rpc** EnumerateRebalanceJobs([SdkEnumerateRebalanceJobsRequest](#sdkenumeraterebalancejobsrequest))
-    [SdkEnumerateRebalanceJobsResponse](#sdkenumeraterebalancejobsresponse)
-
-EnumerateRebalanceJobs returns all rebalance jobs currently known to the system
+Resize resizes the specified storage pool based on the request parameters
  <!-- end methods -->
 
 # OpenStorageRole {#serviceopenstorageapiopenstoragerole}
@@ -1737,53 +1577,6 @@ ExportSpec defines how the volume is exported..
  <!-- end HasFields -->
 
 
-## FastpathConfig {#fastpathconfig}
-FastpathConfig part of volume
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| setup_on | [ int32](#int32) | fastpath setup on this node |
-| promote | [ bool](#bool) | Fastpath temporary promotion during attach |
-| status | [ FastpathStatus](#fastpathstatus) | Fastpath consolidated current status across replicas |
-| replicas | [repeated FastpathReplState](#fastpathreplstate) | Fastpath replica state for each replica in replica set |
-| dirty | [ bool](#bool) | Dirty flag on volume - was attached in userspace |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## FastpathReplState {#fastpathreplstate}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| dev_id | [ uint64](#uint64) | none |
-| node_id | [ uint32](#uint32) | none |
-| protocol | [ FastpathProtocol](#fastpathprotocol) | none |
-| acl | [ bool](#bool) | none |
-| exported_device | [ string](#string) | target info |
-| block | [ bool](#bool) | none |
-| target | [ string](#string) | none |
-| exported | [ bool](#bool) | none |
-| imported | [ bool](#bool) | initiator info |
-| devpath | [ string](#string) | none |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## FilesystemCheck {#filesystemcheck}
-
-
- <!-- end HasFields -->
-
-
-## FilesystemTrim {#filesystemtrim}
-
-
- <!-- end HasFields -->
-
-
 ## GraphDriverChanges {#graphdriverchanges}
 GraphDriverChanges represent a list of changes between the filesystem layers
 specified by the ID and Parent.  // Parent may be an empty string, in which
@@ -1820,7 +1613,6 @@ GroupSnapCreateRequest specifies a request to create a snapshot of given group.
 | id | [ string](#string) | none |
 | Labels | [map GroupSnapCreateRequest.LabelsEntry](#groupsnapcreaterequestlabelsentry) | none |
 | volume_ids | [repeated string](#string) | none |
-| delete_on_failure | [ bool](#bool) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -1873,7 +1665,6 @@ IoStrategy defines how I/O should be performed to backing storage media.
 | ----- | ---- | ----------- |
 | async_io | [ bool](#bool) | AsyncIO enables kaio. |
 | early_ack | [ bool](#bool) | EarlyAck enables acks for async I/O at the source. |
-| direct_io | [ bool](#bool) | Enable direct I/O on the backing datastore |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -1975,18 +1766,6 @@ NOTE: To create an "admin" user which has access to any resource set the group v
 | ----- | ---- | ----------- |
 | groups | [map Ownership.AccessControl.GroupsEntry](#ownershipaccesscontrolgroupsentry) | Group access to resource which must match the group set in the authorization token. Can be set by the owner or the system administrator only. Possible values are: 1. no groups: Means no groups are given access. 2. `["*"]`: All groups are allowed. 3. `["group1", "group2"]`: Only certain groups are allowed. In this example only _group1_ and _group2_ are allowed. |
 | collaborators | [map Ownership.AccessControl.CollaboratorsEntry](#ownershipaccesscontrolcollaboratorsentry) | Collaborator access to resource gives access to other user. Must be the username (unique id) set in the authorization token. The owner or the administrator can set this value. Possible values are: 1. no collaborators: Means no users are given access. 2. `["*"]`: All users are allowed. 3. `["username1", "username2"]`: Only certain usernames are allowed. In this example only _username1_ and _username2_ are allowed. |
-| public | [ Ownership.PublicAccessControl](#ownershippublicaccesscontrol) | Public access to resource may be assigned for access by the public userd |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## Ownership.PublicAccessControl {#ownershippublicaccesscontrol}
-PublicAccessControl allows assigning public ownership
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| type | [ Ownership.AccessType](#ownershipaccesstype) | AccessType declares which level of public access is allowed |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -2027,61 +1806,6 @@ coded - for clustered storage arrays
 | ----- | ---- | ----------- |
 | directories | [ int64](#int64) | Directory count |
 | files | [ int64](#int64) | File count |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## RestoreVolSnashotSchedule {#restorevolsnashotschedule}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| schedule | [ string](#string) | none |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## RestoreVolStoragePolicy {#restorevolstoragepolicy}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| policy | [ string](#string) | none |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## RestoreVolumeSpec {#restorevolumespec}
-RestoreSpec allows some of the restore volume properties of to be modified
-while restoring the cloud baackup. All pointer fields with nil value will
-inherit corresponding field value from backup's spec.
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| ha_level | [ int64](#int64) | HaLevel specifies the number of copies of data. |
-| cos | [ CosType](#costype) | Cos specifies the relative class of service. |
-| io_profile | [ IoProfile](#ioprofile) | IoProfile provides a hint about application using this volume. |
-| snapshot_interval | [ uint32](#uint32) | SnapshotInterval in minutes, set to 0 to disable snapshots |
-| shared | [ RestoreParamBoolType](#restoreparambooltype) | Shared is true if this volume can be concurrently accessed by multiple users. |
-| replica_set | [ ReplicaSet](#replicaset) | ReplicaSet is the desired set of nodes for the volume data. |
-| aggregation_level | [ uint32](#uint32) | Aggregation level Specifies the number of parts the volume can be aggregated from. |
-| snapshot_schedule | [ RestoreVolSnashotSchedule](#restorevolsnashotschedule) | SnapshotSchedule a well known string that specifies when snapshots should be taken. |
-| sticky | [ RestoreParamBoolType](#restoreparambooltype) | Sticky volumes cannot be deleted until the flag is removed. |
-| group | [ Group](#group) | Group identifies a consistency group |
-| group_enforced | [ bool](#bool) | GroupEnforced is true if consistency group creation is enforced. |
-| journal | [ RestoreParamBoolType](#restoreparambooltype) | Journal is true if data for the volume goes into the journal. |
-| sharedv4 | [ RestoreParamBoolType](#restoreparambooltype) | Sharedv4 is true if this volume can be accessed via sharedv4. |
-| queue_depth | [ uint32](#uint32) | QueueDepth defines the desired block device queue depth |
-| nodiscard | [ RestoreParamBoolType](#restoreparambooltype) | Nodiscard specifies if the volume will be mounted with discard support disabled. i.e. FS will not release allocated blocks back to the backing storage pool. |
-| io_strategy | [ IoStrategy](#iostrategy) | IoStrategy preferred strategy for I/O. |
-| placement_strategy | [ VolumePlacementStrategy](#volumeplacementstrategy) | PlacementStrategy specifies a spec to indicate where to place the volume. |
-| storage_policy | [ RestoreVolStoragePolicy](#restorevolstoragepolicy) | StoragePolicy if applied/specified while creating volume |
-| ownership | [ Ownership](#ownership) | Ownership |
-| export_spec | [ ExportSpec](#exportspec) | ExportSpec defines how the volume should be exported. |
-| fp_preference | [ RestoreParamBoolType](#restoreparambooltype) | fastpath extensions |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -2568,8 +2292,6 @@ a cloud provider
 | credential_id | [ string](#string) | The credential to be used for restore operation |
 | node_id | [ string](#string) | Optional for provisioning restore volume (ResoreVolumeName should not be specified) |
 | task_id | [ string](#string) | TaskId of the task performing this restore |
-| spec | [ RestoreVolumeSpec](#restorevolumespec) | Modifiable Restore volume spec |
-| locator | [ VolumeLocator](#volumelocator) | RestoreVolume locator |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -2704,30 +2426,6 @@ a cloud provider
 | ----- | ---- | ----------- |
 | key | [ string](#string) | none |
 | value | [ string](#string) | none |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkCloudBackupSizeRequest {#sdkcloudbackupsizerequest}
-Defines a request to retrieve the size of the volume for the
-specificed volume
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| backup_id | [ string](#string) | BackupId is a value which is used to get information on the size of the specified backup. |
-| credential_id | [ string](#string) | Credential id describe the credentials for the cloud |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkCloudBackupSizeResponse {#sdkcloudbackupsizeresponse}
-Defines a response containing the size of the volume
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| size | [ uint64](#uint64) | Size is the size of the volume in bytes |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3221,188 +2919,6 @@ Empty response
  <!-- end HasFields -->
 
 
-## SdkEnumerateRebalanceJobsRequest {#sdkenumeraterebalancejobsrequest}
-
-
- <!-- end HasFields -->
-
-
-## SdkEnumerateRebalanceJobsResponse {#sdkenumeraterebalancejobsresponse}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| jobs | [repeated StorageRebalanceJob](#storagerebalancejob) | Jobs is the list of rebalance jobs in the response |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkFilesystemCheckGetStatusRequest {#sdkfilesystemcheckgetstatusrequest}
-SdkFilesystemCheckGetStatusRequest defines a request to get status of a
-background filesystem check operation
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| volume_id | [ string](#string) | Id of the volume |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkFilesystemCheckGetStatusResponse {#sdkfilesystemcheckgetstatusresponse}
-SdkFilesystemCheckGetStatusResponse defines the response for a
-SdkFilesystemCheckGetStatusRequest.
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| status | [ FilesystemCheck.FilesystemCheckStatus](#filesystemcheckfilesystemcheckstatus) | Status code representing the state of the filesystem check operation |
-| health_status | [ FilesystemCheck.FilesystemHealthStatus](#filesystemcheckfilesystemhealthstatus) | Status code representing the health of the filesystem after a checkHealth operation |
-| mode | [ string](#string) | Text string representing the mode of filesystem check operation |
-| message | [ string](#string) | Text blob containing ASCII text providing details of the operation |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkFilesystemCheckStartRequest {#sdkfilesystemcheckstartrequest}
-SdkFilesystemCheckStartRequest defines a request to start a background
-filesystem consistency check operation
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| volume_id | [ string](#string) | Id of the volume |
-| mode | [ string](#string) | Mode of operation |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkFilesystemCheckStartResponse {#sdkfilesystemcheckstartresponse}
-SdkFilesystemCheckStartResponse defines the response for a
-SdkFilesystemCheckStartRequest.
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| status | [ FilesystemCheck.FilesystemCheckStatus](#filesystemcheckfilesystemcheckstatus) | Status code representing the state of the filesystem check operation |
-| message | [ string](#string) | Text blob containing ASCII text providing details of the operation |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkFilesystemCheckStopRequest {#sdkfilesystemcheckstoprequest}
-SdkFilesystemCheckStopRequest defines a request to stop a background
-filesystem check operation
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| volume_id | [ string](#string) | Id of the volume |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkFilesystemCheckStopResponse {#sdkfilesystemcheckstopresponse}
-Empty response
-
- <!-- end HasFields -->
-
-
-## SdkFilesystemTrimGetStatusRequest {#sdkfilesystemtrimgetstatusrequest}
-SdkFilesystemTrimGetStatusRequest defines a request to get status of a
-background filesystem trim operation
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| volume_id | [ string](#string) | Id of the volume |
-| mount_path | [ string](#string) | Path where the volume is mounted |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkFilesystemTrimGetStatusResponse {#sdkfilesystemtrimgetstatusresponse}
-SdkFilesystemTrimGetStatusResponse defines the response for a
-SdkFilesystemTrimGetStatusRequest.
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| status | [ FilesystemTrim.FilesystemTrimStatus](#filesystemtrimfilesystemtrimstatus) | Status code representing the state of the filesystem trim operation |
-| message | [ string](#string) | Text blob containing ASCII text providing details of the operation |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkFilesystemTrimStartRequest {#sdkfilesystemtrimstartrequest}
-SdkFilesystemTrimStartRequest defines a request to start a background filesystem trim operation
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| volume_id | [ string](#string) | Id of the volume |
-| mount_path | [ string](#string) | Path where the volume is mounted |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkFilesystemTrimStartResponse {#sdkfilesystemtrimstartresponse}
-SdkFilesystemTrimStartResponse defines the response for a
-SdkFilesystemTrimStartRequest.
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| status | [ FilesystemTrim.FilesystemTrimStatus](#filesystemtrimfilesystemtrimstatus) | Status code representing the state of the filesystem trim operation |
-| message | [ string](#string) | Text blob containing ASCII text providing details of the operation |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkFilesystemTrimStopRequest {#sdkfilesystemtrimstoprequest}
-SdkFilesystemTrimStopRequest defines a request to stop a background
-filesystem trim operation
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| volume_id | [ string](#string) | Id of the volume |
-| mount_path | [ string](#string) | Path where the volume is mounted |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkFilesystemTrimStopResponse {#sdkfilesystemtrimstopresponse}
-Empty response
-
- <!-- end HasFields -->
-
-
-## SdkGetRebalanceJobStatusRequest {#sdkgetrebalancejobstatusrequest}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [ string](#string) | ID of the rebalance job |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkGetRebalanceJobStatusResponse {#sdkgetrebalancejobstatusresponse}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| job | [ StorageRebalanceJob](#storagerebalancejob) | Job for this rebalance |
-| summary | [ StorageRebalanceSummary](#storagerebalancesummary) | Summary summarizes the rebalance job |
-| actions | [repeated StorageRebalanceAudit](#storagerebalanceaudit) | Actions describe all the actions taken during this rebalance |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
 ## SdkGoogleCredentialRequest {#sdkgooglecredentialrequest}
 Defines credentials for Google
 
@@ -3874,9 +3390,6 @@ The following shows the supported format for SdkRule:
 
 Values can also be set to `*`, or start or end with `*` to allow multiple matches in services or apis.
 
-Services and APIs can also be denied by prefixing the value with a `!`. Note that on rule conflicts,
-denial will always be chosen.
-
 ### Examples
 
 * Allow any call:
@@ -4156,63 +3669,6 @@ Defines a response when resizing a storage pool
  <!-- end HasFields -->
 
 
-## SdkStorageRebalanceRequest {#sdkstoragerebalancerequest}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| trigger_thresholds | [repeated StorageRebalanceTriggerThreshold](#storagerebalancetriggerthreshold) | TriggerThresholds defines thresholds that would trigger rebalance. For example, TriggerThreshold{ThresholdTypeAbsolutePercent, MetricTypeUsedSpace, 75, 10} would trigger rebalance on pools where used space is more than 75% or less than 10%. Similarly, TriggerThreshold{ThresholdTypeDeltaMeanPercent, MetricTypeUsedSpace, 15, 25} will trigger rebalance for pools where used space is more than 15% from the mean percent for used space for the entire cluster or less than 25% from the mean percent for used space for the entire cluster. |
-| trial_run | [ bool](#bool) | TrialRun if true the job only produces steps that would be taken without making any changes |
-| pool_selector_labels | [map SdkStorageRebalanceRequest.PoolSelectorLabelsEntry](#sdkstoragerebalancerequestpoolselectorlabelsentry) | PoolSelectorLabels allows selecting pools to which trigger thresholds will apply |
-| max_duration_minutes | [ uint64](#uint64) | MaxDurationMinutes defines how long operation should run when started at schedule. 0 values means no limit on duration |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkStorageRebalanceRequest.PoolSelectorLabelsEntry {#sdkstoragerebalancerequestpoolselectorlabelsentry}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| key | [ string](#string) | none |
-| value | [ string](#string) | none |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkStorageRebalanceResponse {#sdkstoragerebalanceresponse}
-SdkStorageRebalanceResponse is the response to a storage rebalance request
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| job | [ StorageRebalanceJob](#storagerebalancejob) | Job for this rebalance |
-| summary | [ StorageRebalanceSummary](#storagerebalancesummary) | Summary summarizes the rebalance job |
-| actions | [repeated StorageRebalanceAudit](#storagerebalanceaudit) | Actions describe all the actions taken during this rebalance |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkUpdateRebalanceJobRequest {#sdkupdaterebalancejobrequest}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [ string](#string) | ID of the rebalance job |
-| state | [ StorageRebalanceJobState](#storagerebalancejobstate) | State is the new task state to update the job to |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkUpdateRebalanceJobResponse {#sdkupdaterebalancejobresponse}
-
-
- <!-- end HasFields -->
-
-
 ## SdkVersion {#sdkversion}
 SDK version in Major.Minor.Patch format. The goal of this
 message is to provide clients a method to determine the SDK
@@ -4238,7 +3694,6 @@ Options to attach device
 | secret_name | [ string](#string) | Indicates the name of the secret stored in a secret store In case of Hashicorp's Vault, it will be the key from the key-value pair stored in its kv backend. In case of Kubernetes secret, it is the name of the secret object itself |
 | secret_key | [ string](#string) | In case of Kubernetes, this will be the key stored in the Kubernetes secret |
 | secret_context | [ string](#string) | It indicates the additional context which could be used to retrieve the secret. In case of Kubernetes, this is the namespace in which the secret is created. |
-| fastpath | [ string](#string) | Indicates whether fastpath needs to be enabled during attach |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -5017,81 +4472,6 @@ StoragePoolOperation defines an operation being performed on a storage pool
  <!-- end HasFields -->
 
 
-## StorageRebalanceAudit {#storagerebalanceaudit}
-StorageRebalanceAudit describes the action taken during rebalance
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| volume_id | [ string](#string) | VolumeID is the id of the volume which was rebalanced |
-| name | [ string](#string) | Name is the name of the volumes which was rebalanced |
-| action | [ StorageRebalanceAudit.StorageRebalanceAction](#storagerebalanceauditstoragerebalanceaction) | Action is the action executed |
-| node | [ string](#string) | Node on which this action happened |
-| pool | [ string](#string) | Pool on which this action happened |
-| start_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | StartTime is the time at which action was started |
-| end_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | EndTime is time time at which action ended |
-| work_summary | [repeated StorageRebalanceWorkSummary](#storagerebalanceworksummary) | WorkSummary summarizes the work done |
-| replication_set_id | [ uint64](#uint64) | ReplicationSetId is the ID of the replication set |
-| state | [ StorageRebalanceJobState](#storagerebalancejobstate) | State is the current state of the rebalance action |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## StorageRebalanceJob {#storagerebalancejob}
-StorageRebalanceJob describes job input and current status
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [ string](#string) | ID of the rebalance job |
-| error | [ string](#string) | Error describes errors occurred during rebalance |
-| state | [ StorageRebalanceJobState](#storagerebalancejobstate) | State of the current job |
-| parameters | [ SdkStorageRebalanceRequest](#sdkstoragerebalancerequest) | Parameters is the original request params for this rebalance operation |
-| create_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | CreateTime is the time the job was created |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## StorageRebalanceSummary {#storagerebalancesummary}
-StorageRebalanceSummary describes summary for the job
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| last_update_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | LastUpdateTime is the time the job was last updated |
-| total_run_time_seconds | [ uint64](#uint64) | TotalRunTimeSeconds is the total time rebalance is running |
-| work_summary | [repeated StorageRebalanceWorkSummary](#storagerebalanceworksummary) | WorkSummary summarizes the work done |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## StorageRebalanceTriggerThreshold {#storagerebalancetriggerthreshold}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| type | [ StorageRebalanceTriggerThreshold.Type](#storagerebalancetriggerthresholdtype) | Type defines type of threshold |
-| metric | [ StorageRebalanceTriggerThreshold.Metric](#storagerebalancetriggerthresholdmetric) | Metric defines metric for which this threshold applies to. |
-| over_load_trigger_threshold | [ uint64](#uint64) | OverLoadTriggerThreshold will select entity which is over this threshold. OverLoadTriggerThreshold threshold selects pools which act as source for reduction of load defined by the metric. |
-| under_load_trigger_threshold | [ uint64](#uint64) | UnderLoadTriggerThreshold will select entity which is under this threshold. UnderLoadTriggerThreshold selects pools which act as targets for increasing load defined by metric. |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## StorageRebalanceWorkSummary {#storagerebalanceworksummary}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| type | [ StorageRebalanceWorkSummary.Type](#storagerebalanceworksummarytype) | Type describes the type of summary. |
-| done | [ uint64](#uint64) | Done is the amount of bytes/work done |
-| pending | [ uint64](#uint64) | Pending is the amount of bytes/work pending. Done + Pending == Total |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
 ## StorageResource {#storageresource}
 StorageResource groups properties of a storage device.
 
@@ -5155,7 +4535,7 @@ Volume represents an abstract storage volume.
 | ctime | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | Volume creation time |
 | spec | [ VolumeSpec](#volumespec) | User specified VolumeSpec |
 | usage | [ uint64](#uint64) | Usage is bytes consumed by this volume. |
-| last_fsck_scan | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | LastFsckScan is the time when an integrity check was run. |
+| last_scan | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | LastScan is the time when an integrity check was run. |
 | format | [ FSType](#fstype) | Format specifies the filesytem for this volume. |
 | status | [ VolumeStatus](#volumestatus) | VolumeStatus is the availability status of this volume. |
 | state | [ VolumeState](#volumestate) | VolumeState is the current runtime state of this volume. |
@@ -5172,8 +4552,6 @@ Volume represents an abstract storage volume.
 | fs_resize_required | [ bool](#bool) | FsResizeRequired if an FS resize is required on the volume. |
 | attach_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | AttachTime time this device was last attached externally. |
 | detach_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | DetachTime time this device was detached. |
-| fpConfig | [ FastpathConfig](#fastpathconfig) | Fastpath extensions |
-| last_fsck_scan_fix | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | LastFsckScanFix is the time when an integrity check fixed errors in filesystem |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -5334,68 +4712,6 @@ in: body Required: true |
  <!-- end HasFields -->
 
 
-## VolumeServiceInstanceResponse {#volumeserviceinstanceresponse}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| error | [ string](#string) | Error code |
-| status | [map VolumeServiceInstanceResponse.StatusEntry](#volumeserviceinstanceresponsestatusentry) | Status information exposed a map |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## VolumeServiceInstanceResponse.StatusEntry {#volumeserviceinstanceresponsestatusentry}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| key | [ string](#string) | none |
-| value | [ string](#string) | none |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## VolumeServiceRequest {#volumeservicerequest}
-VolumeServiceRequest provides details on what volume service command to
-perform in background on the volume
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| srv_cmd | [ string](#string) | User specified volume service command |
-| srv_cmd_params | [map VolumeServiceRequest.SrvCmdParamsEntry](#volumeservicerequestsrvcmdparamsentry) | User specified volume service command's params |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## VolumeServiceRequest.SrvCmdParamsEntry {#volumeservicerequestsrvcmdparamsentry}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| key | [ string](#string) | none |
-| value | [ string](#string) | none |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## VolumeServiceResponse {#volumeserviceresponse}
-VolumeServiceResponse specifies the response to a Volume Service command
-performed on a volumen
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| vol_srv_rsp_obj_cnt | [ int32](#int32) | Number of VolumeServiceInstanceResponse returned as part of this response structure |
-| vol_srv_rsp | [repeated VolumeServiceInstanceResponse](#volumeserviceinstanceresponse) | none |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
 ## VolumeSetRequest {#volumesetrequest}
 VolumeSet specifies a request to update a volume.
 
@@ -5472,7 +4788,6 @@ VolumeSpec has the properties needed to create a volume.
 | storage_policy | [ string](#string) | StoragePolicy if applied/specified while creating volume |
 | ownership | [ Ownership](#ownership) | Ownership |
 | export_spec | [ ExportSpec](#exportspec) | ExportSpec defines how the volume should be exported. |
-| fp_preference | [ bool](#bool) | fastpath extensions |
 | xattr | [ Xattr.Value](#xattrvalue) | Xattr specifies implementation specific volume attributes |
  <!-- end Fields -->
  <!-- end HasFields -->
@@ -5564,7 +4879,7 @@ VolumeSpecUpdate provides a method to set any of the VolumeSpec of an existing v
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) nodiscard_opt.nodiscard | [ bool](#bool) | none |
 | io_strategy | [ IoStrategy](#iostrategy) | IoStrategy preferred strategy for I/O. |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) export_spec_opt.export_spec | [ ExportSpec](#exportspec) | none |
-| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) fastpath_opt.fastpath | [ bool](#bool) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) xattr_opt.xattr | [ Xattr.Value](#xattrvalue) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -5742,80 +5057,6 @@ ExportProtocol defines how the device is exported..
 
 
 
-## FastpathProtocol {#fastpathprotocol}
-
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| FASTPATH_PROTO_UNKNOWN | 0 | none |
-| FASTPATH_PROTO_NVMEOF_TCP | 1 | none |
-| FASTPATH_PROTO_ISCSI | 2 | none |
-| FASTPATH_PROTO_LOCAL | 3 | none |
-
-
-
-
-## FastpathStatus {#fastpathstatus}
-fastpath extensions
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| FASTPATH_UNKNOWN | 0 | backward compatible state |
-| FASTPATH_ACTIVE | 1 | fastpath activated and enabled |
-| FASTPATH_INACTIVE | 2 | fastpath inactive |
-| FASTPATH_UNSUPPORTED | 3 | fastpath unsupported, disabled |
-| FASTPATH_PENDING | 4 | fastpath operation setup in progress |
-| FASTPATH_ERRORED | 5 | fastpath error'd, possible stuck failure |
-
-
-
-
-## FilesystemCheck.FilesystemCheckStatus {#filesystemcheckfilesystemcheckstatus}
-FilesystemChecktatus represents the status codes returned from
-OpenStorageFilesystemCheck service APIs()
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| FS_CHECK_UNKNOWN | 0 | Filesystem Check operation is an unknown state |
-| FS_CHECK_NOT_RUNNING | 1 | FilesystemCheck operation not running for the specified volume |
-| FS_CHECK_STARTED | 2 | FilesystemCheck operation started for the specified volume |
-| FS_CHECK_INPROGRESS | 3 | FilesystemCheck operation is in progress |
-| FS_CHECK_STOPPED | 4 | FilesystemCheck operation was stopped by the user |
-| FS_CHECK_COMPLETED | 5 | FilesystemCheck operation completed successfully |
-| FS_CHECK_FAILED | 6 | FilesystemCheck operation failed due to internal error |
-
-
-
-
-## FilesystemCheck.FilesystemHealthStatus {#filesystemcheckfilesystemhealthstatus}
-
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| FS_HEALTH_STATUS_UNKNOWN | 0 | filesystem health status is unknown |
-| FS_HEALTH_STATUS_HEALTHY | 1 | filesystem health is healthy |
-| FS_HEALTH_STATUS_NOT_HEALTHY | 2 | filesystem health is not healthy |
-
-
-
-
-## FilesystemTrim.FilesystemTrimStatus {#filesystemtrimfilesystemtrimstatus}
-FilesystemTrimStatus represents the status codes returned from
-OpenStorageFilesystemTrim service APIs()
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| FS_TRIM_UNKNOWN | 0 | Filesystem Trim operation is an unknown state |
-| FS_TRIM_NOT_RUNNING | 1 | Filesystem Trim operation is not running for the specified volume |
-| FS_TRIM_STARTED | 2 | Filesystem Trim operation started for the specified volume |
-| FS_TRIM_INPROGRESS | 3 | Filesystem Trim operation is in progress for the specified volume |
-| FS_TRIM_STOPPED | 4 | Filesystem Trim operation was stopped by the user for the specified volume |
-| FS_TRIM_COMPLETED | 5 | Filesystem Trim operation completed successfully for the specified volume |
-| FS_TRIM_FAILED | 6 | Filesystem Trim operation failed due to internal error for the specified volume |
-
-
-
-
 ## GraphDriverChangeType {#graphdriverchangetype}
 
 
@@ -5852,8 +5093,6 @@ OpenStorageFilesystemTrim service APIs()
 | IO_PROFILE_DB_REMOTE | 3 | none |
 | IO_PROFILE_CMS | 4 | none |
 | IO_PROFILE_SYNC_SHARED | 5 | none |
-| IO_PROFILE_AUTO | 6 | none |
-| IO_PROFILE_BKUPSRC | 7 | IO_PROFILE_BKUPSRC inherits cloudbackup's IOprofile |
 
 
 
@@ -5912,18 +5151,6 @@ used for.
 | RESOURCE_TYPE_CLUSTER | 3 | none |
 | RESOURCE_TYPE_DRIVE | 4 | none |
 | RESOURCE_TYPE_POOL | 5 | none |
-
-
-
-
-## RestoreParamBoolType {#restoreparambooltype}
-
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| PARAM_BKUPSRC | 0 | Default: whateever was cloudbakup's option for the parameter |
-| PARAM_FALSE | 1 | none |
-| PARAM_TRUE | 2 | none |
 
 
 
@@ -6055,8 +5282,8 @@ client and server applications
 | ---- | ------ | ----------- |
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
-| Minor | 83 | SDK version minor value of this specification |
-| Patch | 0 | SDK version patch value of this specification |
+| Minor | 42 | SDK version minor value of this specification |
+| Patch | 29 | SDK version patch value of this specification |
 
 
 
@@ -6106,66 +5333,6 @@ client and server applications
 | STORAGE_MEDIUM_MAGNETIC | 0 | Magnetic spinning disk. |
 | STORAGE_MEDIUM_SSD | 1 | SSD disk |
 | STORAGE_MEDIUM_NVME | 2 | NVME disk |
-
-
-
-
-## StorageRebalanceAudit.StorageRebalanceAction {#storagerebalanceauditstoragerebalanceaction}
-StorageRebalanceAction describes type of rebalance action
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| ADD_REPLICA | 0 | Indicates new replica was added |
-| REMOVE_REPLICA | 1 | Indicates existing replica was removed |
-
-
-
-
-## StorageRebalanceJobState {#storagerebalancejobstate}
-StorageRebalanceJobState is an enum for state of the current rebalance operation
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| PENDING | 0 | Pending indicates job is still pending and has not started work |
-| RUNNING | 1 | Running indicates job is actively running |
-| DONE | 2 | Done indicates job has finished processing |
-| PAUSED | 3 | Paused indicates job is paused |
-| CANCELLED | 4 | Cancelled indicates job is cancelled |
-
-
-
-
-## StorageRebalanceTriggerThreshold.Metric {#storagerebalancetriggerthresholdmetric}
-Metric is an enum that defines the metric to use for rebalance
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| PROVISION_SPACE | 0 | ProvisionSpace indicates rebalance for provisioned space |
-| USED_SPACE | 1 | UsedSpace indicates rebalance for used space |
-
-
-
-
-## StorageRebalanceTriggerThreshold.Type {#storagerebalancetriggerthresholdtype}
-Type is an enum that defines the type fo the trigger threshold
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| ABSOLUTE_PERCENT | 0 | AbsolutePercent indicates absolute percent comparison. Example, 75 % used of capacity, or 50 % provisioned of capacity. |
-| DELTA_MEAN_PERCENT | 1 | DeltaMeanPercent indicates mean percent comparision threshold. Example, 10 % more than mean for cluster. |
-
-
-
-
-## StorageRebalanceWorkSummary.Type {#storagerebalanceworksummarytype}
-Type is an enum to indicate the type of work summary
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| UnbalancedPools | 0 | summary for unbalanced pools |
-| UnbalancedVolumes | 1 | summary for unbalanced volumes |
-| UnbalancedProvisionedSpaceBytes | 2 | summary for unbalanced provisioned space |
-| UnbalancedUsedSpaceBytes | 3 | summary for unbalanced used space |
 
 
 

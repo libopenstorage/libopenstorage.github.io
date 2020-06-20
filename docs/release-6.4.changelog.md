@@ -2,158 +2,121 @@
 
 ## Releases
 
-### v0.69.11 - (6/16/2020)
-
-* Added support for fetching cloud backup size
-
-### v0.69.10 - (6/3/2020)
+### v0.42.29 - (6/3/2020)
 
 * Add storage-class options to credentials
 
-### v0.69.9 - (4/28/2020)
-
-* Add SDK APIs for storage rebalance
-
-### v0.69.8 - (4/22/2020)
-
-* Add "deleteOnFailure" flag for snapshotGroup api
-
-### v0.69.7 - (4/7/2020)
+### v0.42.28 - (4/7/2020)
 
 * Add implementation specific additional attributes for volume
 
-### v0.69.6 - (3/19/2020)
+### v0.42.27 - Tech Preview (04/07/2020)
 
 * Add IAM flag for credentials
 
-### v0.69.5 - (3/4/2020)
-
-* Add VolumeCatalog api for volumes
-
-### v0.69.4 - Tech Preview (1/27/2020)
-
-* Add Restore volume spec for Cloud Backup restore api
-
-### v0.69.3 - (1/21/2020)
-
-* Added documentation to SdkRule about new denial support
-
-### v0.69.2 - Tech Preview (1/15/2020)
-
-* Add auto to IoProfile
-
-### v0.69.1 - Tech Preview (1/9/2020)
-
-* Add support for public user access
-
-### v0.69.0 - Tech Preview (10/12/2019)
-
-* Add support for filesystem trim background operation
-* Add support for filesystem check background operation
-
-### v0.68.0 - Tech Preview (11/01/2019)
-
-* Add ExportSpec to Volume object
-
-### v0.67.0 - Tech Preview (10/29/2019)
+### v0.42.26 - Tech Preview (04/07/2020)
 
 * Add proxy flag for credentials
 
-### v0.66.0 - Tech Preview (10/22/2019)
+### v0.42.25 - (3/4/2020)
+
+* Add VolumeCatalog api for volumes
+
+### v0.42.24 - Tech Preview (11/01/2019)
+
+* Add ExportSpec to Volume object
+
+### v0.42.23 - Tech Preview (10/29/2019)
+
+* Add fields last_attached and last_detached to the Volume object.
+
+### v0.42.22 - Tech Preview (10/22/2019)
 
 * Add missing fields to cloudbackup schedule structure in sdk
 
-### v0.65.0 - Tech Preview (09/10/2019)
+### v0.42.21 - Tech Preview (09/10/2019)
 
 * Add pool UUIDs in ReplicaSet object
 
-### v0.64.0 - Tech Preview (9/26/2019)
-
-* Deprecated StoragePool.ID. Please use StoragePool.Uuid
-
-### v0.63.0 - Tech Preview (9/26/2019)
-
-* Deprecated StoragePool.ID. Please use StoragePool.Uuid
-
-### v0.62.0 - Tech Preview (9/26/2019)
+### v0.42.20 - Tech Preview (10/9/2019)
 
 * Added new parameter to cloudbackup enumerate API to specify backup ID
 
-### v0.61.0 - Tech Preview (9/26/2019)
+### v0.42.19 - Tech Preview (10/8/2019)
+
+* Deprecated StoragePool.ID. Please use StoragePool.Uuid
+
+### v0.42.18 - Tech Preview (9/26/2019)
 
 * Added new api to resize storage pools
 * Added new fields UUID and LastOperation to the StoragePool object
 
-### v0.60.0 - Tech Preview (6/11/2019)
+### v0.42.17 - Tech Preview (6/11/2019)
 
 * Added new api for cloudbackup schedule update
 
-### v0.59.0 - Tech Preview (7/16/2019)
-
-* Add EnumerateWithFilters api for Node server which returns complete StorageNode object
-
-### v0.58.0 - Tech Preview (6/5/2019)
-
-* Add cloud group-backup API
-
-### v0.57.0 - Tech Preview (6/4/2019)
+### v0.42.16 - Tech Preview (6/5/2019)
 
 * Addition to Node details, to store the hardware type
 
-### v0.56.0 - Tech Preview (6/4/2019)
+### v0.42.15 - Tech Preview (7/16/2019)
+
+* Add EnumerateWithFilters api for Node server which returns complete StorageNode object
+
+### v0.42.14 - Tech Preview (6/5/2019)
+
+* Add cloud group-backup API
+
+### v0.42.13 - Tech Preview (6/4/2019)
 
 * Added new param credential API to control path style access to s3
 
-### v0.55.0 - Tech Preview (5/7/2019)
+### v0.42.12 - Tech Preview (5/7/2019)
 
 * Additions to cloudbackup enumerate filters.
 
-### v0.54.0 - Tech Preview (5/2/2019)
+### v0.42.11 - Tech Preview (5/7/2019)
 
 * Added new field FullBackupFrequency to cloudbackup create API
 
-### v0.53.0 - Tech Preview (4/23/2019)
+### v0.42.10 - Tech Preview (4/25/2019)
 
 * Added new field RetentionDays to cloudbackup schedule
 
-### v0.52.0 - Tech Preview (4/23/2019)
-
-* (breaking change) Fix REST Gateway Snapshot enumerate with filters endpoint
-
-### v0.51.0 - Tech Preview (4/11/2019)
+### v0.42.9 - Tech Preview (4/11/2019)
 
 * Added VolumeInspectOptions to OpenStorageVolume.Inspect
 * Added new OpenStorageVolume.InspectWithFilters API
 
-### v0.50.0 - Tech Preview (4/2/2019)
+### v0.42.8 - Tech Preview (4/2/2019)
 
 * Add groupId field to SdkCloudBackupStatus structure
 
-### v0.49.0 - Tech Preview (4/3/2019)
+### v0.42.7 - Tech Preview (4/3/2019)
 
 * Add Group to VolumeLocator
 
-### v0.48.0 - Tech Preview (4/2/2019)
+### v0.42.6 - Tech Preview (4/2/2019)
 
 * Add cluster pair Mode option in CreatePair and ProcessPair requests
 
-### v0.47.0 - Tech Preview (3/26/2019)
+### v0.42.5 - Tech Preview (3/26/2019)
 
 * Change io_strategy type from oneof to pointer
 
-### v0.46.0 - Tech Preview (3/26/2019)
+### v0.42.4 - Tech Preview (3/26/2019)
 
 * Handle spec update for nodiscard, io_strategy
 
-### v0.45.0 - Tech Preview (3/13/2019)
+### v0.42.3 - Tech Preview (3/24/2019)
 
 * Add new APIs for managing OpenStorage ClusterDomains
 
-### v0.44.0 - Tech Preview (3/21/2019)
+### v0.42.2 - Tech Preview (3/13/2019)
 
 * Add ownership support to OpenStorageStoragePolicy
 
-### v0.43.0 - Tech Preview (3/12/2019)
+### v0.42.1 - Tech Preview (3/12/2019)
 
 * Add ownership support to OpenStorageCredential service APIs
 

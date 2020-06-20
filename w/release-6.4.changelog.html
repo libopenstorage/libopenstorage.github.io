@@ -69,10 +69,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="release-4.0.generated-api.html" />
+    <link rel="next" href="release-7.0.generated-api.html" />
     
     
-    <link rel="prev" href="release-sdk-0.9.generated-api.html" />
+    <link rel="prev" href="release-6.4.generated-api.html" />
     
 
     </head>
@@ -231,7 +231,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.5.1.1" data-path="release-sdk-0.9.changelog.html">
+        <li class="chapter " data-level="1.5.1.1" data-path="release-sdk-0.9.changelog.html">
             
                 <a href="release-sdk-0.9.changelog.html">
             
@@ -303,7 +303,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.5.3.1" data-path="release-6.4.changelog.html">
+        <li class="chapter active" data-level="1.5.3.1" data-path="release-6.4.changelog.html">
             
                 <a href="release-6.4.changelog.html">
             
@@ -446,24 +446,287 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="changelog">Changelog</h1>
-<blockquote>
-<p>NOTE: The SDK is still in tech preview. Once officially released, this changelog will also
-use the SDK version numbers.</p>
-</blockquote>
 <h2 id="releases">Releases</h2>
-<h3 id="v093---tech-preview-1252018">v0.9.3 - Tech Preview (12/5/2018)</h3>
+<h3 id="v04229---632020">v0.42.29 - (6/3/2020)</h3>
+<ul>
+<li>Add storage-class options to credentials</li>
+</ul>
+<h3 id="v04228---472020">v0.42.28 - (4/7/2020)</h3>
+<ul>
+<li>Add implementation specific additional attributes for volume</li>
+</ul>
+<h3 id="v04227---tech-preview-04072020">v0.42.27 - Tech Preview (04/07/2020)</h3>
+<ul>
+<li>Add IAM flag for credentials</li>
+</ul>
+<h3 id="v04226---tech-preview-04072020">v0.42.26 - Tech Preview (04/07/2020)</h3>
+<ul>
+<li>Add proxy flag for credentials</li>
+</ul>
+<h3 id="v04225---342020">v0.42.25 - (3/4/2020)</h3>
+<ul>
+<li>Add VolumeCatalog api for volumes</li>
+</ul>
+<h3 id="v04224---tech-preview-11012019">v0.42.24 - Tech Preview (11/01/2019)</h3>
+<ul>
+<li>Add ExportSpec to Volume object</li>
+</ul>
+<h3 id="v04223---tech-preview-10292019">v0.42.23 - Tech Preview (10/29/2019)</h3>
+<ul>
+<li>Add fields last_attached and last_detached to the Volume object.</li>
+</ul>
+<h3 id="v04222---tech-preview-10222019">v0.42.22 - Tech Preview (10/22/2019)</h3>
+<ul>
+<li>Add missing fields to cloudbackup schedule structure in sdk</li>
+</ul>
+<h3 id="v04221---tech-preview-09102019">v0.42.21 - Tech Preview (09/10/2019)</h3>
+<ul>
+<li>Add pool UUIDs in ReplicaSet object</li>
+</ul>
+<h3 id="v04220---tech-preview-1092019">v0.42.20 - Tech Preview (10/9/2019)</h3>
+<ul>
+<li>Added new parameter to cloudbackup enumerate API to specify backup ID</li>
+</ul>
+<h3 id="v04219---tech-preview-1082019">v0.42.19 - Tech Preview (10/8/2019)</h3>
+<ul>
+<li>Deprecated StoragePool.ID. Please use StoragePool.Uuid</li>
+</ul>
+<h3 id="v04218---tech-preview-9262019">v0.42.18 - Tech Preview (9/26/2019)</h3>
+<ul>
+<li>Added new api to resize storage pools</li>
+<li>Added new fields UUID and LastOperation to the StoragePool object</li>
+</ul>
+<h3 id="v04217---tech-preview-6112019">v0.42.17 - Tech Preview (6/11/2019)</h3>
+<ul>
+<li>Added new api for cloudbackup schedule update</li>
+</ul>
+<h3 id="v04216---tech-preview-652019">v0.42.16 - Tech Preview (6/5/2019)</h3>
+<ul>
+<li>Addition to Node details, to store the hardware type</li>
+</ul>
+<h3 id="v04215---tech-preview-7162019">v0.42.15 - Tech Preview (7/16/2019)</h3>
+<ul>
+<li>Add EnumerateWithFilters api for Node server which returns complete StorageNode object</li>
+</ul>
+<h3 id="v04214---tech-preview-652019">v0.42.14 - Tech Preview (6/5/2019)</h3>
+<ul>
+<li>Add cloud group-backup API</li>
+</ul>
+<h3 id="v04213---tech-preview-642019">v0.42.13 - Tech Preview (6/4/2019)</h3>
+<ul>
+<li>Added new param credential API to control path style access to s3</li>
+</ul>
+<h3 id="v04212---tech-preview-572019">v0.42.12 - Tech Preview (5/7/2019)</h3>
+<ul>
+<li>Additions to cloudbackup enumerate filters.</li>
+</ul>
+<h3 id="v04211---tech-preview-572019">v0.42.11 - Tech Preview (5/7/2019)</h3>
+<ul>
+<li>Added new field FullBackupFrequency to cloudbackup create API</li>
+</ul>
+<h3 id="v04210---tech-preview-4252019">v0.42.10 - Tech Preview (4/25/2019)</h3>
+<ul>
+<li>Added new field RetentionDays to cloudbackup schedule</li>
+</ul>
+<h3 id="v0429---tech-preview-4112019">v0.42.9 - Tech Preview (4/11/2019)</h3>
+<ul>
+<li>Added VolumeInspectOptions to OpenStorageVolume.Inspect</li>
+<li>Added new OpenStorageVolume.InspectWithFilters API</li>
+</ul>
+<h3 id="v0428---tech-preview-422019">v0.42.8 - Tech Preview (4/2/2019)</h3>
+<ul>
+<li>Add groupId field to SdkCloudBackupStatus structure</li>
+</ul>
+<h3 id="v0427---tech-preview-432019">v0.42.7 - Tech Preview (4/3/2019)</h3>
+<ul>
+<li>Add Group to VolumeLocator</li>
+</ul>
+<h3 id="v0426---tech-preview-422019">v0.42.6 - Tech Preview (4/2/2019)</h3>
+<ul>
+<li>Add cluster pair Mode option in CreatePair and ProcessPair requests</li>
+</ul>
+<h3 id="v0425---tech-preview-3262019">v0.42.5 - Tech Preview (3/26/2019)</h3>
+<ul>
+<li>Change io_strategy type from oneof to pointer</li>
+</ul>
+<h3 id="v0424---tech-preview-3262019">v0.42.4 - Tech Preview (3/26/2019)</h3>
+<ul>
+<li>Handle spec update for nodiscard, io_strategy</li>
+</ul>
+<h3 id="v0423---tech-preview-3242019">v0.42.3 - Tech Preview (3/24/2019)</h3>
+<ul>
+<li>Add new APIs for managing OpenStorage ClusterDomains</li>
+</ul>
+<h3 id="v0422---tech-preview-3132019">v0.42.2 - Tech Preview (3/13/2019)</h3>
+<ul>
+<li>Add ownership support to OpenStorageStoragePolicy</li>
+</ul>
+<h3 id="v0421---tech-preview-3122019">v0.42.1 - Tech Preview (3/12/2019)</h3>
+<ul>
+<li>Add ownership support to OpenStorageCredential service APIs</li>
+</ul>
+<h3 id="v0420---tech-preview-2202019">v0.42.0 - Tech Preview (2/20/2019)</h3>
+<ul>
+<li>SnapEnumerate REST endpoint now accepts empty volume ids</li>
+</ul>
+<h3 id="v0410---tech-preview-2202019">v0.41.0 - Tech Preview (2/20/2019)</h3>
+<ul>
+<li>Add driver options to RPCs in the MountAttach service</li>
+</ul>
+<h3 id="v0400---tech-preview-2192019">v0.40.0 - Tech Preview (2/19/2019)</h3>
+<ul>
+<li>Storage policy support</li>
+<li>Allow Enforce/Release of storage policy</li>
+</ul>
+<h3 id="v0390---tech-preview-1292019">v0.39.0 - Tech Preview (1/29/2019)</h3>
+<ul>
+<li>Additional fields to cloud-backup data structure to track group cloud backups.</li>
+</ul>
+<h3 id="v0380---tech-preview-1272019">v0.38.0 - Tech Preview (1/27/2019)</h3>
+<ul>
+<li>Ownership reworked to gain access type control. Now it supports Read, Write,
+and Admin access types.</li>
+</ul>
+<h3 id="v0370---tech-preview-1162019">v0.37.0 - Tech Preview (1/16/2019)</h3>
+<ul>
+<li>Ownership support in the VolumeSpec</li>
+</ul>
+<h3 id="v0360---tech-preview-172019">v0.36.0 - Tech Preview (1/7/2019)</h3>
+<ul>
+<li>Refactor confusing labels.<ul>
+<li>Deprecated Volume.Spec.VolumeLabels.</li>
+<li>Any labels in Volume.Spec.VolumeLabels will be copied to Volume.Locator</li>
+<li>Added Labels to Volume.Create</li>
+<li>Volume.Update now takes Labels and Name instead of VolumeLocator</li>
+<li>Volume.Inspect now also returns Name and Labels to match Volume.Create</li>
+</ul>
+</li>
+</ul>
+<h3 id="v0350---tech-preview-142019">v0.35.0 - Tech Preview (1/4/2019)</h3>
+<ul>
+<li>Rename SdkVolumeAttachRequest_Options to SdkVolumeAttachOptions</li>
+<li>Rename SdkVolumeUnmount_Options to SdkVolumeUnmountOptions</li>
+<li>Rename SdkVolumeDetach_Options to SdkVolumeDetachOptions</li>
+<li>Change SdkVolumeMountRequest to include SdkVolumeAttachOptions</li>
+</ul>
+<h3 id="v0340---tech-preview-122019">v0.34.0 - Tech Preview (1/2/2019)</h3>
+<ul>
+<li>Role support</li>
+<li>Added Cluster Pair and Migrate to Capabilites since they were missing</li>
+</ul>
+<h3 id="v0330---tech-preview-12052018">v0.33.0 - Tech Preview (12/05/2018)</h3>
+<ul>
+<li>Add TaskId and ClusterId to CloudMigrate status request</li>
+</ul>
+<h3 id="v0320---tech-preview-11282018">v0.32.0 - Tech Preview (11/28/2018)</h3>
+<ul>
+<li>Removing unused objects created for cluster pair APIs</li>
+</ul>
+<h3 id="v0310---tech-preview-11272018">v0.31.0 - Tech Preview (11/27/2018)</h3>
+<ul>
+<li>(breaking change) REST API for Sdk OpenStorageAlerts has changed</li>
+<li>(breaking change) OpenStorageAlerts.Enumerate is now EnumerateWithFilters</li>
+</ul>
+<h3 id="v0300---tech-preview-11202018">v0.30.0 - Tech Preview (11/20/2018)</h3>
+<ul>
+<li>SDK Alerts enumerate chunking bug resolution.</li>
+</ul>
+<h3 id="v0290---tech-preview-11172018">v0.29.0 - Tech Preview (11/17/2018)</h3>
+<ul>
+<li>SDK Alerts enumerate is now a server side streaming api.</li>
+</ul>
+<h3 id="v0280---tech-preview-11152018">v0.28.0 - Tech Preview (11/15/2018)</h3>
+<ul>
+<li>(breaking change) Restructured all SDK REST routes</li>
+<li>(breaking change) Reworded OpenStorageCloudBackup.Enumerate to EnumerateWithFilters</li>
+</ul>
+<h3 id="v0270---tech-preview-1182018">v0.27.0 - Tech Preview (11/8/2018)</h3>
 <ul>
 <li>Add new API for extracting volume capacity usage details.</li>
 </ul>
-<h3 id="v092---tech-preview-10152018">v0.9.2 - Tech Preview (10/15/2018)</h3>
+<h3 id="v0260---tech-preview-11142018">v0.26.0 - Tech Preview (11/14/2018)</h3>
+<ul>
+<li>Extend attribute of StorageResource to be marked as a cache.</li>
+</ul>
+<h3 id="v0250---tech-preview-11132018">v0.25.0 - Tech Preview (11/13/2018)</h3>
+<ul>
+<li>Added labels field to cloud backup create message</li>
+</ul>
+<h3 id="v0240---tech-preview-11122018">v0.24.0 - Tech Preview (11/12/2018)</h3>
+<ul>
+<li>Added ETA fields to cloud backup and cloud migrate status messages</li>
+</ul>
+<h3 id="v0230---tech-preview-1122018">v0.23.0 - Tech Preview (11/2/2018)</h3>
+<ul>
+<li>Cloud migrate status and cloud backup status now report
+total bytes to be transferred and bytes already transferred.</li>
+<li>These status blocks also report the start time of the operation
+so that client could calculate progress of the operation.</li>
+</ul>
+<h3 id="v0220---tech-preview-1112018">v0.22.0 - Tech Preview (11/1/2018)</h3>
+<ul>
+<li>Rename the field &quot;name&quot; to &quot;TaskId&quot; in sdkCloudBackupcreate/restore/status
+structures.</li>
+</ul>
+<h3 id="v0210---tech-preview-10312018">v0.21.0 - Tech Preview (10/31/2018)</h3>
+<ul>
+<li>Addition of ClusterPairing and VolumeMigrate services</li>
+</ul>
+<h3 id="v0200---tech-preview-1112018">v0.20.0 - Tech Preview (11/1/2018)</h3>
+<ul>
+<li>Added ETA for cloud snap status.</li>
+</ul>
+<h3 id="v0190---tech-preview-10232018">v0.19.0 - Tech Preview (10/23/2018)</h3>
+<ul>
+<li>CloudBackupStatus now returns CredentialUUID used for cloud for the
+backup/restore op under consideration.</li>
+</ul>
+<h3 id="v0180---tech-preview-10232018">v0.18.0 - Tech Preview (10/23/2018)</h3>
+<ul>
+<li>Following CloudBackup APIs have been refactored to include task id rather
+than source volume id.</li>
+<li>CloudBackupCreate now returns task id.</li>
+<li>CloudBackupRestore too returns task id along with restore volume id.</li>
+<li>CloudBackupStatusRequest can take task id as an optional parameter.</li>
+<li>Map key for CloudBackupStatusResponse is task id rather than source volume id.</li>
+<li>CloudBackupStateChange takes in taskid rather than source volume id.</li>
+</ul>
+<h3 id="v0170---tech-preview-10212018">v0.17.0 - Tech Preview (10/21/2018)</h3>
+<ul>
+<li>Added IoStrategy - ability to specify I/O characteristics.</li>
+</ul>
+<h3 id="v0160---tech-preview-10152018">v0.16.0 - Tech Preview (10/15/2018)</h3>
 <ul>
 <li>Changed value of SdkSchedulePolicyCreateRequest from <code>SchedulePolicy</code> to the
 correct name of <code>schedule_policy</code>. This will not impact Golang.</li>
 </ul>
-<h3 id="v091---tech-preview-10102018">v0.9.1 - Tech Preview (10/10/2018)</h3>
+<h3 id="v0150---tech-preview-10102018">v0.15.0 - Tech Preview (10/10/2018)</h3>
 <ul>
-<li>(Backport from v0.15.0) Added support to set the snapshot schedule policy of a Volume</li>
-<li>(Backport from v0.14.0) Added support for periodic type in OpenStorageSchedulePolicy service</li>
+<li>Added support to set the snapshot schedule policy of a Volume</li>
+</ul>
+<h3 id="v0140---tech-preview-1082018">v0.14.0 - Tech Preview (10/8/2018)</h3>
+<ul>
+<li>Added support for periodic type in OpenStorageSchedulePolicy service</li>
+</ul>
+<h3 id="v0130---tech-preview-9272018">v0.13.0 - Tech Preview (9/27/2018)</h3>
+<ul>
+<li>Added new field to CloudBackup schedules that allows scheduled backups
+to be always full and never incremental.</li>
+</ul>
+<h3 id="v0120---tech-preview-9272018">v0.12.0 - Tech Preview (9/27/2018)</h3>
+<ul>
+<li>Moved MountAttach service REST endpoints to their own namespace</li>
+<li>Added new MountAttach to SdkSErviceCapability</li>
+</ul>
+<h3 id="v0110---tech-preview-9252018">v0.11.0 - Tech Preview (9/25/2018)</h3>
+<ul>
+<li>New RPC in service called OpenStorageAlerts has been created and documented to
+allow deleting alert events.</li>
+</ul>
+<h3 id="v0100---tech-preview-9242018">v0.10.0 - Tech Preview (9/24/2018)</h3>
+<ul>
+<li>New service called OpenStorageAlerts has been created and documented to
+allow querying alert events.</li>
 </ul>
 <h3 id="v090---tech-preview-9182018">v0.9.0 - Tech Preview (9/18/2018)</h3>
 <p>NOTE: This release has breaking chages for the Mount/Attach/Detach/Unmount calls</p>
@@ -540,12 +803,12 @@ service to the OpenStorageMountAttach service.</li>
 
             
                 
-                <a href="release-sdk-0.9.generated-api.html" class="navigation navigation-prev " aria-label="Previous page: v0.9.x">
+                <a href="release-6.4.generated-api.html" class="navigation navigation-prev " aria-label="Previous page: v0.42.x">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="release-4.0.generated-api.html" class="navigation navigation-next " aria-label="Next page: v0.22.x">
+                <a href="release-7.0.generated-api.html" class="navigation navigation-next " aria-label="Next page: v0.69.x">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -556,7 +819,7 @@ service to the OpenStorageMountAttach service.</li>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Changelog","level":"1.5.1.1","depth":3,"next":{"title":"v0.22.x","level":"1.5.2","depth":2,"path":"release-4.0.generated-api.md","ref":"release-4.0.generated-api.md","articles":[{"title":"Changelog","level":"1.5.2.1","depth":3,"path":"release-4.0.changelog.md","ref":"release-4.0.changelog.md","articles":[]}]},"previous":{"title":"v0.9.x","level":"1.5.1","depth":2,"path":"release-sdk-0.9.generated-api.md","ref":"release-sdk-0.9.generated-api.md","articles":[{"title":"Changelog","level":"1.5.1.1","depth":3,"path":"release-sdk-0.9.changelog.md","ref":"release-sdk-0.9.changelog.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"livereload":{},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"release-sdk-0.9.changelog.md","mtime":"2020-06-20T00:51:21.918Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-20T00:52:09.303Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Changelog","level":"1.5.3.1","depth":3,"next":{"title":"v0.69.x","level":"1.5.4","depth":2,"path":"release-7.0.generated-api.md","ref":"release-7.0.generated-api.md","articles":[{"title":"Changelog","level":"1.5.4.1","depth":3,"path":"release-7.0.changelog.md","ref":"release-7.0.changelog.md","articles":[]}]},"previous":{"title":"v0.42.x","level":"1.5.3","depth":2,"path":"release-6.4.generated-api.md","ref":"release-6.4.generated-api.md","articles":[{"title":"Changelog","level":"1.5.3.1","depth":3,"path":"release-6.4.changelog.md","ref":"release-6.4.changelog.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"livereload":{},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"release-6.4.changelog.md","mtime":"2020-06-20T00:51:17.904Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-20T00:52:09.303Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

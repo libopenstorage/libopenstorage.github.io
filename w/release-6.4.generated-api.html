@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>v0.69.x · OpenStorage API</title>
+        <title>v0.42.x · OpenStorage API</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -69,10 +69,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="release-7.0.changelog.html" />
+    <link rel="next" href="release-6.4.changelog.html" />
     
     
-    <link rel="prev" href="release-6.4.changelog.html" />
+    <link rel="prev" href="release-4.0.changelog.html" />
     
 
     </head>
@@ -287,7 +287,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.3" data-path="release-6.4.generated-api.html">
+        <li class="chapter active" data-level="1.5.3" data-path="release-6.4.generated-api.html">
             
                 <a href="release-6.4.generated-api.html">
             
@@ -323,7 +323,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.5.4" data-path="release-7.0.generated-api.html">
+        <li class="chapter " data-level="1.5.4" data-path="release-7.0.generated-api.html">
             
                 <a href="release-7.0.generated-api.html">
             
@@ -430,7 +430,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >v0.69.x</a>
+        <a href="." >v0.42.x</a>
     </h1>
 </div>
 
@@ -455,8 +455,6 @@
 <li><a href="#serviceopenstorageapiopenstorageclusterdomains">OpenStorageClusterDomains</a></li>
 <li><a href="#serviceopenstorageapiopenstorageclusterpair">OpenStorageClusterPair</a></li>
 <li><a href="#serviceopenstorageapiopenstoragecredentials">OpenStorageCredentials</a></li>
-<li><a href="#serviceopenstorageapiopenstoragefilesystemcheck">OpenStorageFilesystemCheck</a></li>
-<li><a href="#serviceopenstorageapiopenstoragefilesystemtrim">OpenStorageFilesystemTrim</a></li>
 <li><a href="#serviceopenstorageapiopenstorageidentity">OpenStorageIdentity</a></li>
 <li><a href="#serviceopenstorageapiopenstoragemigrate">OpenStorageMigrate</a></li>
 <li><a href="#serviceopenstorageapiopenstoragemountattach">OpenStorageMountAttach</a></li>
@@ -503,10 +501,6 @@
 <li><a href="#clusterpairsenumerateresponsepairsentry">ClusterPairsEnumerateResponse.PairsEntry</a></li>
 <li><a href="#clusterresponse">ClusterResponse</a></li>
 <li><a href="#exportspec">ExportSpec</a></li>
-<li><a href="#fastpathconfig">FastpathConfig</a></li>
-<li><a href="#fastpathreplstate">FastpathReplState</a></li>
-<li><a href="#filesystemcheck">FilesystemCheck</a></li>
-<li><a href="#filesystemtrim">FilesystemTrim</a></li>
 <li><a href="#graphdriverchanges">GraphDriverChanges</a></li>
 <li><a href="#group">Group</a></li>
 <li><a href="#groupsnapcreaterequest">GroupSnapCreateRequest</a></li>
@@ -521,13 +515,9 @@
 <li><a href="#objectstoreinfo">ObjectstoreInfo</a></li>
 <li><a href="#ownership">Ownership</a></li>
 <li><a href="#ownershipaccesscontrol">Ownership.AccessControl</a></li>
-<li><a href="#ownershippublicaccesscontrol">Ownership.PublicAccessControl</a></li>
 <li><a href="#replicaplacementspec">ReplicaPlacementSpec</a></li>
 <li><a href="#replicaset">ReplicaSet</a></li>
 <li><a href="#report">Report</a></li>
-<li><a href="#restorevolsnashotschedule">RestoreVolSnashotSchedule</a></li>
-<li><a href="#restorevolstoragepolicy">RestoreVolStoragePolicy</a></li>
-<li><a href="#restorevolumespec">RestoreVolumeSpec</a></li>
 <li><a href="#runtimestatemap">RuntimeStateMap</a></li>
 <li><a href="#runtimestatemapruntimestateentry">RuntimeStateMap.RuntimeStateEntry</a></li>
 <li><a href="#sdkalertsalerttypequery">SdkAlertsAlertTypeQuery</a></li>
@@ -578,8 +568,6 @@
 <li><a href="#sdkcloudbackupschedupdateresponse">SdkCloudBackupSchedUpdateResponse</a></li>
 <li><a href="#sdkcloudbackupscheduleinfo">SdkCloudBackupScheduleInfo</a></li>
 <li><a href="#sdkcloudbackupscheduleinfolabelsentry">SdkCloudBackupScheduleInfo.LabelsEntry</a></li>
-<li><a href="#sdkcloudbackupsizerequest">SdkCloudBackupSizeRequest</a></li>
-<li><a href="#sdkcloudbackupsizeresponse">SdkCloudBackupSizeResponse</a></li>
 <li><a href="#sdkcloudbackupstatechangerequest">SdkCloudBackupStateChangeRequest</a></li>
 <li><a href="#sdkcloudbackupstatechangeresponse">SdkCloudBackupStateChangeResponse</a></li>
 <li><a href="#sdkcloudbackupstatus">SdkCloudBackupStatus</a></li>
@@ -627,26 +615,6 @@
 <li><a href="#sdkcredentialinspectresponse">SdkCredentialInspectResponse</a></li>
 <li><a href="#sdkcredentialvalidaterequest">SdkCredentialValidateRequest</a></li>
 <li><a href="#sdkcredentialvalidateresponse">SdkCredentialValidateResponse</a></li>
-<li><a href="#sdkenumeraterebalancejobsrequest">SdkEnumerateRebalanceJobsRequest</a></li>
-<li><a href="#sdkenumeraterebalancejobsresponse">SdkEnumerateRebalanceJobsResponse</a></li>
-<li><a href="#sdkfilesystemcheckcheckhealthgetstatusrequest">SdkFilesystemCheckCheckHealthGetStatusRequest</a></li>
-<li><a href="#sdkfilesystemcheckcheckhealthgetstatusresponse">SdkFilesystemCheckCheckHealthGetStatusResponse</a></li>
-<li><a href="#sdkfilesystemcheckcheckhealthrequest">SdkFilesystemCheckCheckHealthRequest</a></li>
-<li><a href="#sdkfilesystemcheckcheckhealthresponse">SdkFilesystemCheckCheckHealthResponse</a></li>
-<li><a href="#sdkfilesystemcheckfixallgetstatusrequest">SdkFilesystemCheckFixAllGetStatusRequest</a></li>
-<li><a href="#sdkfilesystemcheckfixallgetstatusresponse">SdkFilesystemCheckFixAllGetStatusResponse</a></li>
-<li><a href="#sdkfilesystemcheckfixallrequest">SdkFilesystemCheckFixAllRequest</a></li>
-<li><a href="#sdkfilesystemcheckfixallresponse">SdkFilesystemCheckFixAllResponse</a></li>
-<li><a href="#sdkfilesystemcheckstoprequest">SdkFilesystemCheckStopRequest</a></li>
-<li><a href="#sdkfilesystemcheckstopresponse">SdkFilesystemCheckStopResponse</a></li>
-<li><a href="#sdkfilesystemtrimgetstatusrequest">SdkFilesystemTrimGetStatusRequest</a></li>
-<li><a href="#sdkfilesystemtrimgetstatusresponse">SdkFilesystemTrimGetStatusResponse</a></li>
-<li><a href="#sdkfilesystemtrimstartrequest">SdkFilesystemTrimStartRequest</a></li>
-<li><a href="#sdkfilesystemtrimstartresponse">SdkFilesystemTrimStartResponse</a></li>
-<li><a href="#sdkfilesystemtrimstoprequest">SdkFilesystemTrimStopRequest</a></li>
-<li><a href="#sdkfilesystemtrimstopresponse">SdkFilesystemTrimStopResponse</a></li>
-<li><a href="#sdkgetrebalancejobstatusrequest">SdkGetRebalanceJobStatusRequest</a></li>
-<li><a href="#sdkgetrebalancejobstatusresponse">SdkGetRebalanceJobStatusResponse</a></li>
 <li><a href="#sdkgooglecredentialrequest">SdkGoogleCredentialRequest</a></li>
 <li><a href="#sdkgooglecredentialresponse">SdkGoogleCredentialResponse</a></li>
 <li><a href="#sdkidentitycapabilitiesrequest">SdkIdentityCapabilitiesRequest</a></li>
@@ -719,11 +687,6 @@
 <li><a href="#sdkstoragepool">SdkStoragePool</a></li>
 <li><a href="#sdkstoragepoolresizerequest">SdkStoragePoolResizeRequest</a></li>
 <li><a href="#sdkstoragepoolresizeresponse">SdkStoragePoolResizeResponse</a></li>
-<li><a href="#sdkstoragerebalancerequest">SdkStorageRebalanceRequest</a></li>
-<li><a href="#sdkstoragerebalancerequestpoolselectorlabelsentry">SdkStorageRebalanceRequest.PoolSelectorLabelsEntry</a></li>
-<li><a href="#sdkstoragerebalanceresponse">SdkStorageRebalanceResponse</a></li>
-<li><a href="#sdkupdaterebalancejobrequest">SdkUpdateRebalanceJobRequest</a></li>
-<li><a href="#sdkupdaterebalancejobresponse">SdkUpdateRebalanceJobResponse</a></li>
 <li><a href="#sdkversion">SdkVersion</a></li>
 <li><a href="#sdkvolumeattachoptions">SdkVolumeAttachOptions</a></li>
 <li><a href="#sdkvolumeattachrequest">SdkVolumeAttachRequest</a></li>
@@ -791,11 +754,6 @@
 <li><a href="#storagepoollabelsentry">StoragePool.LabelsEntry</a></li>
 <li><a href="#storagepooloperation">StoragePoolOperation</a></li>
 <li><a href="#storagepooloperationparamsentry">StoragePoolOperation.ParamsEntry</a></li>
-<li><a href="#storagerebalanceaudit">StorageRebalanceAudit</a></li>
-<li><a href="#storagerebalancejob">StorageRebalanceJob</a></li>
-<li><a href="#storagerebalancesummary">StorageRebalanceSummary</a></li>
-<li><a href="#storagerebalancetriggerthreshold">StorageRebalanceTriggerThreshold</a></li>
-<li><a href="#storagerebalanceworksummary">StorageRebalanceWorkSummary</a></li>
 <li><a href="#storageresource">StorageResource</a></li>
 <li><a href="#storageversion">StorageVersion</a></li>
 <li><a href="#storageversiondetailsentry">StorageVersion.DetailsEntry</a></li>
@@ -811,11 +769,6 @@
 <li><a href="#volumeplacementspec">VolumePlacementSpec</a></li>
 <li><a href="#volumeplacementstrategy">VolumePlacementStrategy</a></li>
 <li><a href="#volumeresponse">VolumeResponse</a></li>
-<li><a href="#volumeserviceinstanceresponse">VolumeServiceInstanceResponse</a></li>
-<li><a href="#volumeserviceinstanceresponsestatusentry">VolumeServiceInstanceResponse.StatusEntry</a></li>
-<li><a href="#volumeservicerequest">VolumeServiceRequest</a></li>
-<li><a href="#volumeservicerequestsrvcmdparamsentry">VolumeServiceRequest.SrvCmdParamsEntry</a></li>
-<li><a href="#volumeserviceresponse">VolumeServiceResponse</a></li>
 <li><a href="#volumesetrequest">VolumeSetRequest</a></li>
 <li><a href="#volumesetrequestoptionsentry">VolumeSetRequest.OptionsEntry</a></li>
 <li><a href="#volumesetresponse">VolumeSetResponse</a></li>
@@ -842,12 +795,6 @@
 <li><a href="#enforcementtype">EnforcementType</a></li>
 <li><a href="#exportprotocol">ExportProtocol</a></li>
 <li><a href="#fstype">FSType</a></li>
-<li><a href="#fastpathprotocol">FastpathProtocol</a></li>
-<li><a href="#fastpathstatus">FastpathStatus</a></li>
-<li><a href="#filesystemcheckcheckhealthstatus">FilesystemCheck.CheckHealthStatus</a></li>
-<li><a href="#filesystemcheckfilesystemcheckstatus">FilesystemCheck.FilesystemCheckStatus</a></li>
-<li><a href="#filesystemcheckfixallstatus">FilesystemCheck.FixAllStatus</a></li>
-<li><a href="#filesystemtrimfilesystemtrimstatus">FilesystemTrim.FilesystemTrimStatus</a></li>
 <li><a href="#graphdriverchangetype">GraphDriverChangeType</a></li>
 <li><a href="#hardwaretype">HardwareType</a></li>
 <li><a href="#ioprofile">IoProfile</a></li>
@@ -855,7 +802,6 @@
 <li><a href="#operationflags">OperationFlags</a></li>
 <li><a href="#ownershipaccesstype">Ownership.AccessType</a></li>
 <li><a href="#resourcetype">ResourceType</a></li>
-<li><a href="#restoreparambooltype">RestoreParamBoolType</a></li>
 <li><a href="#sdkcloudbackupoptype">SdkCloudBackupOpType</a></li>
 <li><a href="#sdkcloudbackuprequestedstate">SdkCloudBackupRequestedState</a></li>
 <li><a href="#sdkcloudbackupstatustype">SdkCloudBackupStatusType</a></li>
@@ -868,11 +814,6 @@
 <li><a href="#severitytype">SeverityType</a></li>
 <li><a href="#status">Status</a></li>
 <li><a href="#storagemedium">StorageMedium</a></li>
-<li><a href="#storagerebalanceauditstoragerebalanceaction">StorageRebalanceAudit.StorageRebalanceAction</a></li>
-<li><a href="#storagerebalancejobstate">StorageRebalanceJobState</a></li>
-<li><a href="#storagerebalancetriggerthresholdmetric">StorageRebalanceTriggerThreshold.Metric</a></li>
-<li><a href="#storagerebalancetriggerthresholdtype">StorageRebalanceTriggerThreshold.Type</a></li>
-<li><a href="#storagerebalanceworksummarytype">StorageRebalanceWorkSummary.Type</a></li>
 <li><a href="#volumeactionparam">VolumeActionParam</a></li>
 <li><a href="#volumespecpolicypolicyop">VolumeSpecPolicy.PolicyOp</a></li>
 <li><a href="#volumestate">VolumeState</a></li>
@@ -1039,13 +980,7 @@ backup and other backups are dependent on it, it will not be able to be deleted.
 <p><strong>rpc</strong> SchedEnumerate(<a href="#sdkcloudbackupschedenumeraterequest">SdkCloudBackupSchedEnumerateRequest</a>)
     <a href="#sdkcloudbackupschedenumerateresponse">SdkCloudBackupSchedEnumerateResponse</a></p>
 </blockquote>
-<p>Enumerate cloud backup schedules</p>
-<h2 id="methodopenstorageapiopenstoragecloudbackupsize">Size </h2>
-<blockquote>
-<p><strong>rpc</strong> Size(<a href="#sdkcloudbackupsizerequest">SdkCloudBackupSizeRequest</a>)
-    <a href="#sdkcloudbackupsizeresponse">SdkCloudBackupSizeResponse</a></p>
-</blockquote>
-<p>Size returns the size of any cloud backups of a volume
+<p>Enumerate cloud backup schedules
  <!-- end methods --></p>
 <h1 id="serviceopenstorageapiopenstoragecluster">OpenStorageCluster </h1>
 <p>OpenStorageCluster service provides the methods to manage the cluster</p>
@@ -1194,113 +1129,6 @@ id of the credentials once they are verified to work.</p>
     <a href="#sdkcredentialvalidateresponse">SdkCredentialValidateResponse</a></p>
 </blockquote>
 <p>Validate is used to validate credentials
- <!-- end methods --></p>
-<h1 id="serviceopenstorageapiopenstoragefilesystemcheck">OpenStorageFilesystemCheck </h1>
-<h2 id="openstoragefilesystemcheckservice">OpenStorageFilesystemCheckService</h2>
-<p>This service provides methods to manage filesystem check operation on a
-volume.</p>
-<p>This operation is run in the background on an <strong>unmounted volume</strong>.
-If the volume is mounted, then these APIs return error.</p>
-<p>Once the filesystem check operation(either CheckHealth() or FixAll()) is
-started, the clients have to poll for the status of the background operation
-using the <code>OpenStorageFilesystemcheck.CheckHealthGetStatus()</code> rpc request or
-<code>OpenStorageFilesystemCheck.FixAllGetStatus()</code> rpc request.</p>
-<p><strong>Note: CheckHealth() and FixAll() cannot run in parallel for the same volume</strong></p>
-<p>A typical workflow involving filesystem check would be as follows</p>
-<ol>
-<li>Attach the volume
-<code>OpenStorageMountAttachClient.Attach()</code></li>
-<li>Check the health of the filesystem by issuing a grpc call to
-<code>OpenStorageFilesystemCheckClient.CheckHealth()</code></li>
-<li>Status of the CheckHealth() operation can be retrieved by polling for the
-status using <code>OpenStorageFilesystemCheck.CheckHealthGetStatus()</code></li>
-<li>If the CheckHealth Operations status reports filesystem is in unhealthy
-state, then to fix all the problems issue a grpc call to
-<code>OpenStorageFilesystemCheckClient.FixAll()</code></li>
-<li>Status of the FixAll() operation can be retrieved by polling for the
-status using <code>OpenStorageFilesystemCheck.FixAllGetStatus()</code></li>
-<li>CheckHealth() and FixAll() operations run in the background, to stop these
-operations, issue a call to
-<code>OpenStorageFilesystemCheckClient.Stop()</code></li>
-</ol>
-<h2 id="methodopenstorageapiopenstoragefilesystemcheckcheckhealth">CheckHealth </h2>
-<blockquote>
-<p><strong>rpc</strong> CheckHealth(<a href="#sdkfilesystemcheckcheckhealthrequest">SdkFilesystemCheckCheckHealthRequest</a>)
-    <a href="#sdkfilesystemcheckcheckhealthresponse">SdkFilesystemCheckCheckHealthResponse</a></p>
-</blockquote>
-<p>Get a report of issues found on the filesystem. This operation works on an
-unmounted volume.</p>
-<h2 id="methodopenstorageapiopenstoragefilesystemcheckcheckhealthgetstatus">CheckHealthGetStatus </h2>
-<blockquote>
-<p><strong>rpc</strong> CheckHealthGetStatus(<a href="#sdkfilesystemcheckcheckhealthgetstatusrequest">SdkFilesystemCheckCheckHealthGetStatusRequest</a>)
-    <a href="#sdkfilesystemcheckcheckhealthgetstatusresponse">SdkFilesystemCheckCheckHealthGetStatusResponse</a></p>
-</blockquote>
-<p>Get Status of a filesystem CheckHealth background operation on an unmounted
-volume, if any</p>
-<h2 id="methodopenstorageapiopenstoragefilesystemcheckfixall">FixAll </h2>
-<blockquote>
-<p><strong>rpc</strong> FixAll(<a href="#sdkfilesystemcheckfixallrequest">SdkFilesystemCheckFixAllRequest</a>)
-    <a href="#sdkfilesystemcheckfixallresponse">SdkFilesystemCheckFixAllResponse</a></p>
-</blockquote>
-<p>FixAll fixes all the issues reported in the response to CheckHealth API on
-a filesystem. This operation works on an unmounted volume.</p>
-<h2 id="methodopenstorageapiopenstoragefilesystemcheckfixallgetstatus">FixAllGetStatus </h2>
-<blockquote>
-<p><strong>rpc</strong> FixAllGetStatus(<a href="#sdkfilesystemcheckfixallgetstatusrequest">SdkFilesystemCheckFixAllGetStatusRequest</a>)
-    <a href="#sdkfilesystemcheckfixallgetstatusresponse">SdkFilesystemCheckFixAllGetStatusResponse</a></p>
-</blockquote>
-<p>Get Status of a filesystem FixAll background operation on an unmounted
-volume, if any</p>
-<h2 id="methodopenstorageapiopenstoragefilesystemcheckstop">Stop </h2>
-<blockquote>
-<p><strong>rpc</strong> Stop(<a href="#sdkfilesystemcheckstoprequest">SdkFilesystemCheckStopRequest</a>)
-    <a href="#sdkfilesystemcheckstopresponse">SdkFilesystemCheckStopResponse</a></p>
-</blockquote>
-<p>Stop a filesystem check background operation on an unmounted volume, if any
- <!-- end methods --></p>
-<h1 id="serviceopenstorageapiopenstoragefilesystemtrim">OpenStorageFilesystemTrim </h1>
-<h2 id="openstoragefilesystemtrim-service">OpenStorageFilesystemTrim Service</h2>
-<p>This service provides methods to manage filesystem trim operation on a
-volume.</p>
-<p>This operation runs in the background on a <strong>mounted volume</strong>. If the volumes
-are not mounted, these API return error.</p>
-<p>Once the filesystem trim operation is started, the clients have to poll for
-the status of the background operation using the
-<code>OpenStorageFilesystemTrim.GetStatus()</code> rpc request</p>
-<p>A typical workflow involving filesystem trim would be as follows</p>
-<ol>
-<li>Attach the volume
-<code>OpenStorageMountAttachClient.Attach()</code></li>
-<li>Mount the volume
-<code>OpenStorageMountAttachClient.Mount()</code></li>
-<li>Start the filesystem trim operation by issuing a grpc call to
-<code>OpenStorageFilesystemTrimClient.Start()</code>
-This call returns immediately with a status code indicating if the
-operation was successfully started or not.</li>
-<li>To get the status of the Filesystem Trim operation, issue a grpc call to
-<code>OpenStorageFilesystemTrimClient.GetStatus()</code></li>
-<li>To stop the Filesystem Trim operation, issue a grpc call to
-<code>OpenStorageFilesystemTrimClient.Stop()</code></li>
-</ol>
-<h2 id="methodopenstorageapiopenstoragefilesystemtrimstart">Start </h2>
-<blockquote>
-<p><strong>rpc</strong> Start(<a href="#sdkfilesystemtrimstartrequest">SdkFilesystemTrimStartRequest</a>)
-    <a href="#sdkfilesystemtrimstartresponse">SdkFilesystemTrimStartResponse</a></p>
-</blockquote>
-<p>Start a filesystem Trim background operation on a mounted volume</p>
-<h2 id="methodopenstorageapiopenstoragefilesystemtrimgetstatus">GetStatus </h2>
-<blockquote>
-<p><strong>rpc</strong> GetStatus(<a href="#sdkfilesystemtrimgetstatusrequest">SdkFilesystemTrimGetStatusRequest</a>)
-    <a href="#sdkfilesystemtrimgetstatusresponse">SdkFilesystemTrimGetStatusResponse</a></p>
-</blockquote>
-<p>Get Status of a filesystem Trim background operation on a mounted
-volume, if any</p>
-<h2 id="methodopenstorageapiopenstoragefilesystemtrimstop">Stop </h2>
-<blockquote>
-<p><strong>rpc</strong> Stop(<a href="#sdkfilesystemtrimstoprequest">SdkFilesystemTrimStopRequest</a>)
-    <a href="#sdkfilesystemtrimstopresponse">SdkFilesystemTrimStopResponse</a></p>
-</blockquote>
-<p>Stop a filesystem Trim background operation on a mounted volume, if any
  <!-- end methods --></p>
 <h1 id="serviceopenstorageapiopenstorageidentity">OpenStorageIdentity </h1>
 <p>OpenStorageIdentity service provides methods to obtain information
@@ -1497,35 +1325,7 @@ creation
 <p><strong>rpc</strong> Resize(<a href="#sdkstoragepoolresizerequest">SdkStoragePoolResizeRequest</a>)
     <a href="#sdkstoragepoolresizeresponse">SdkStoragePoolResizeResponse</a></p>
 </blockquote>
-<p>Resize expands the specified storage pool based on the request parameters</p>
-<h2 id="methodopenstorageapiopenstoragepoolrebalance">Rebalance </h2>
-<blockquote>
-<p><strong>rpc</strong> Rebalance(<a href="#sdkstoragerebalancerequest">SdkStorageRebalanceRequest</a>)
-    <a href="#sdkstoragerebalanceresponse">SdkStorageRebalanceResponse</a></p>
-</blockquote>
-<p>Rebalance creates a new rebalance task</p>
-<h2 id="methodopenstorageapiopenstoragepoolupdaterebalancejobstate">UpdateRebalanceJobState </h2>
-<blockquote>
-<p><strong>rpc</strong> UpdateRebalanceJobState(<a href="#sdkupdaterebalancejobrequest">SdkUpdateRebalanceJobRequest</a>)
-    <a href="#sdkupdaterebalancejobresponse">SdkUpdateRebalanceJobResponse</a></p>
-</blockquote>
-<p>UpdateRebalanceJobState updates existing rebalance task state.
-Only acceptable values are
-StorageRebalanceJobState_PAUSED - acceptable only from running state
-StorageRebalanceJobState_CANCELLED - acceptable only from running/pause state
-StorageRebalanceJobState_RUNNING - acceptable only from pause state</p>
-<h2 id="methodopenstorageapiopenstoragepoolgetrebalancejobstatus">GetRebalanceJobStatus </h2>
-<blockquote>
-<p><strong>rpc</strong> GetRebalanceJobStatus(<a href="#sdkgetrebalancejobstatusrequest">SdkGetRebalanceJobStatusRequest</a>)
-    <a href="#sdkgetrebalancejobstatusresponse">SdkGetRebalanceJobStatusResponse</a></p>
-</blockquote>
-<p>GetRebalanceJobStatus returns rebalance status for specified job</p>
-<h2 id="methodopenstorageapiopenstoragepoolenumeraterebalancejobs">EnumerateRebalanceJobs </h2>
-<blockquote>
-<p><strong>rpc</strong> EnumerateRebalanceJobs(<a href="#sdkenumeraterebalancejobsrequest">SdkEnumerateRebalanceJobsRequest</a>)
-    <a href="#sdkenumeraterebalancejobsresponse">SdkEnumerateRebalanceJobsResponse</a></p>
-</blockquote>
-<p>EnumerateRebalanceJobs returns all rebalance jobs currently known to the system
+<p>Resize resizes the specified storage pool based on the request parameters
  <!-- end methods --></p>
 <h1 id="serviceopenstorageapiopenstoragerole">OpenStorageRole </h1>
 <p>OpenStorageRole service provides methods to manage user roles</p>
@@ -2641,109 +2441,6 @@ used by the other dependent snaps and parent volume.</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
-<h2 id="fastpathconfig">FastpathConfig </h2>
-<p>FastpathConfig part of volume</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>setup_on</td>
-<td><a href="#int32"> int32</a></td>
-<td>fastpath setup on this node</td>
-</tr>
-<tr>
-<td>promote</td>
-<td><a href="#bool"> bool</a></td>
-<td>Fastpath temporary promotion during attach</td>
-</tr>
-<tr>
-<td>status</td>
-<td><a href="#fastpathstatus"> FastpathStatus</a></td>
-<td>Fastpath consolidated current status across replicas</td>
-</tr>
-<tr>
-<td>replicas</td>
-<td><a href="#fastpathreplstate">repeated FastpathReplState</a></td>
-<td>Fastpath replica state for each replica in replica set</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="fastpathreplstate">FastpathReplState </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>dev_id</td>
-<td><a href="#uint64"> uint64</a></td>
-<td>none</td>
-</tr>
-<tr>
-<td>node_id</td>
-<td><a href="#uint32"> uint32</a></td>
-<td>none</td>
-</tr>
-<tr>
-<td>protocol</td>
-<td><a href="#fastpathprotocol"> FastpathProtocol</a></td>
-<td>none</td>
-</tr>
-<tr>
-<td>acl</td>
-<td><a href="#bool"> bool</a></td>
-<td>none</td>
-</tr>
-<tr>
-<td>exported_device</td>
-<td><a href="#string"> string</a></td>
-<td>target info</td>
-</tr>
-<tr>
-<td>block</td>
-<td><a href="#bool"> bool</a></td>
-<td>none</td>
-</tr>
-<tr>
-<td>target</td>
-<td><a href="#string"> string</a></td>
-<td>none</td>
-</tr>
-<tr>
-<td>exported</td>
-<td><a href="#bool"> bool</a></td>
-<td>none</td>
-</tr>
-<tr>
-<td>imported</td>
-<td><a href="#bool"> bool</a></td>
-<td>initiator info</td>
-</tr>
-<tr>
-<td>devpath</td>
-<td><a href="#string"> string</a></td>
-<td>none</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="filesystemcheck">FilesystemCheck </h2>
- <!-- end HasFields -->
-<h2 id="filesystemtrim">FilesystemTrim </h2>
- <!-- end HasFields -->
 <h2 id="graphdriverchanges">GraphDriverChanges </h2>
 <p>GraphDriverChanges represent a list of changes between the filesystem layers
 specified by the ID and Parent.  // Parent may be an empty string, in which
@@ -2817,11 +2514,6 @@ All volumes in the same group share this object.</p>
 <tr>
 <td>volume_ids</td>
 <td><a href="#string">repeated string</a></td>
-<td>none</td>
-</tr>
-<tr>
-<td>delete_on_failure</td>
-<td><a href="#bool"> bool</a></td>
 <td>none</td>
 </tr>
 </tbody>
@@ -3143,31 +2835,6 @@ Administrators are users who belong to the group <code>*</code>, meaning, every 
 <td><a href="#ownershipaccesscontrolcollaboratorsentry">map Ownership.AccessControl.CollaboratorsEntry</a></td>
 <td>Collaborator access to resource gives access to other user. Must be the username (unique id) set in the authorization token. The owner or the administrator can set this value. Possible values are: 1. no collaborators: Means no users are given access. 2. <code>[&quot;*&quot;]</code>: All users are allowed. 3. <code>[&quot;username1&quot;, &quot;username2&quot;]</code>: Only certain usernames are allowed. In this example only <em>username1</em> and <em>username2</em> are allowed.</td>
 </tr>
-<tr>
-<td>public</td>
-<td><a href="#ownershippublicaccesscontrol"> Ownership.PublicAccessControl</a></td>
-<td>Public access to resource may be assigned for access by the public userd</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="ownershippublicaccesscontrol">Ownership.PublicAccessControl </h2>
-<p>PublicAccessControl allows assigning public ownership</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>type</td>
-<td><a href="#ownershipaccesstype"> Ownership.AccessType</a></td>
-<td>AccessType declares which level of public access is allowed</td>
-</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -3256,166 +2923,6 @@ coded - for clustered storage arrays</p>
 <td>files</td>
 <td><a href="#int64"> int64</a></td>
 <td>File count</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="restorevolsnashotschedule">RestoreVolSnashotSchedule </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>schedule</td>
-<td><a href="#string"> string</a></td>
-<td>none</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="restorevolstoragepolicy">RestoreVolStoragePolicy </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>policy</td>
-<td><a href="#string"> string</a></td>
-<td>none</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="restorevolumespec">RestoreVolumeSpec </h2>
-<p>RestoreSpec allows some of the restore volume properties of to be modified
-while restoring the cloud baackup. All pointer fields with nil value will
-inherit corresponding field value from backup&apos;s spec.</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ha_level</td>
-<td><a href="#int64"> int64</a></td>
-<td>HaLevel specifies the number of copies of data.</td>
-</tr>
-<tr>
-<td>cos</td>
-<td><a href="#costype"> CosType</a></td>
-<td>Cos specifies the relative class of service.</td>
-</tr>
-<tr>
-<td>io_profile</td>
-<td><a href="#ioprofile"> IoProfile</a></td>
-<td>IoProfile provides a hint about application using this volume.</td>
-</tr>
-<tr>
-<td>snapshot_interval</td>
-<td><a href="#uint32"> uint32</a></td>
-<td>SnapshotInterval in minutes, set to 0 to disable snapshots</td>
-</tr>
-<tr>
-<td>shared</td>
-<td><a href="#restoreparambooltype"> RestoreParamBoolType</a></td>
-<td>Shared is true if this volume can be concurrently accessed by multiple users.</td>
-</tr>
-<tr>
-<td>replica_set</td>
-<td><a href="#replicaset"> ReplicaSet</a></td>
-<td>ReplicaSet is the desired set of nodes for the volume data.</td>
-</tr>
-<tr>
-<td>aggregation_level</td>
-<td><a href="#uint32"> uint32</a></td>
-<td>Aggregation level Specifies the number of parts the volume can be aggregated from.</td>
-</tr>
-<tr>
-<td>snapshot_schedule</td>
-<td><a href="#restorevolsnashotschedule"> RestoreVolSnashotSchedule</a></td>
-<td>SnapshotSchedule a well known string that specifies when snapshots should be taken.</td>
-</tr>
-<tr>
-<td>sticky</td>
-<td><a href="#restoreparambooltype"> RestoreParamBoolType</a></td>
-<td>Sticky volumes cannot be deleted until the flag is removed.</td>
-</tr>
-<tr>
-<td>group</td>
-<td><a href="#group"> Group</a></td>
-<td>Group identifies a consistency group</td>
-</tr>
-<tr>
-<td>group_enforced</td>
-<td><a href="#bool"> bool</a></td>
-<td>GroupEnforced is true if consistency group creation is enforced.</td>
-</tr>
-<tr>
-<td>journal</td>
-<td><a href="#restoreparambooltype"> RestoreParamBoolType</a></td>
-<td>Journal is true if data for the volume goes into the journal.</td>
-</tr>
-<tr>
-<td>sharedv4</td>
-<td><a href="#restoreparambooltype"> RestoreParamBoolType</a></td>
-<td>Sharedv4 is true if this volume can be accessed via sharedv4.</td>
-</tr>
-<tr>
-<td>queue_depth</td>
-<td><a href="#uint32"> uint32</a></td>
-<td>QueueDepth defines the desired block device queue depth</td>
-</tr>
-<tr>
-<td>nodiscard</td>
-<td><a href="#restoreparambooltype"> RestoreParamBoolType</a></td>
-<td>Nodiscard specifies if the volume will be mounted with discard support disabled. i.e. FS will not release allocated blocks back to the backing storage pool.</td>
-</tr>
-<tr>
-<td>io_strategy</td>
-<td><a href="#iostrategy"> IoStrategy</a></td>
-<td>IoStrategy preferred strategy for I/O.</td>
-</tr>
-<tr>
-<td>placement_strategy</td>
-<td><a href="#volumeplacementstrategy"> VolumePlacementStrategy</a></td>
-<td>PlacementStrategy specifies a spec to indicate where to place the volume.</td>
-</tr>
-<tr>
-<td>storage_policy</td>
-<td><a href="#restorevolstoragepolicy"> RestoreVolStoragePolicy</a></td>
-<td>StoragePolicy if applied/specified while creating volume</td>
-</tr>
-<tr>
-<td>ownership</td>
-<td><a href="#ownership"> Ownership</a></td>
-<td>Ownership</td>
-</tr>
-<tr>
-<td>export_spec</td>
-<td><a href="#exportspec"> ExportSpec</a></td>
-<td>ExportSpec defines how the volume should be exported.</td>
-</tr>
-<tr>
-<td>fp_preference</td>
-<td><a href="#restoreparambooltype"> RestoreParamBoolType</a></td>
-<td>fastpath extensions</td>
 </tr>
 </tbody>
 </table>
@@ -4449,16 +3956,6 @@ a cloud provider</p>
 <td><a href="#string"> string</a></td>
 <td>TaskId of the task performing this restore</td>
 </tr>
-<tr>
-<td>spec</td>
-<td><a href="#restorevolumespec"> RestoreVolumeSpec</a></td>
-<td>Modifiable Restore volume spec</td>
-</tr>
-<tr>
-<td>locator</td>
-<td><a href="#volumelocator"> VolumeLocator</a></td>
-<td>RestoreVolume locator</td>
-</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -4706,52 +4203,6 @@ a cloud provider</p>
 <td>value</td>
 <td><a href="#string"> string</a></td>
 <td>none</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkcloudbackupsizerequest">SdkCloudBackupSizeRequest </h2>
-<p>Defines a request to retrieve the size of the volume for the
-specificed volume</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>backup_id</td>
-<td><a href="#string"> string</a></td>
-<td>BackupId is a value which is used to get information on the size of the specified backup.</td>
-</tr>
-<tr>
-<td>credential_id</td>
-<td><a href="#string"> string</a></td>
-<td>Credential id describe the credentials for the cloud</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkcloudbackupsizeresponse">SdkCloudBackupSizeResponse </h2>
-<p>Defines a response containing the size of the volume</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>size</td>
-<td><a href="#uint64"> uint64</a></td>
-<td>Size is the size of the volume in bytes</td>
 </tr>
 </tbody>
 </table>
@@ -5652,429 +5103,6 @@ you will need to check if the value of credential_type is one of the ones below.
 <h2 id="sdkcredentialvalidateresponse">SdkCredentialValidateResponse </h2>
 <p>Empty response</p>
  <!-- end HasFields -->
-<h2 id="sdkenumeraterebalancejobsrequest">SdkEnumerateRebalanceJobsRequest </h2>
- <!-- end HasFields -->
-<h2 id="sdkenumeraterebalancejobsresponse">SdkEnumerateRebalanceJobsResponse </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>jobs</td>
-<td><a href="#storagerebalancejob">repeated StorageRebalanceJob</a></td>
-<td>Jobs is the list of rebalance jobs in the response</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkfilesystemcheckcheckhealthgetstatusrequest">SdkFilesystemCheckCheckHealthGetStatusRequest </h2>
-<p>SdkFilesystemCheckCheckHealthGetStatusRequest defines a request to get status of a
-background filesystem check operation</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>volume_id</td>
-<td><a href="#string"> string</a></td>
-<td>Id of the volume</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkfilesystemcheckcheckhealthgetstatusresponse">SdkFilesystemCheckCheckHealthGetStatusResponse </h2>
-<p>SdkFilesystemCheckCheckHealthGetStatusResponse defines the response for a
-SdkFilesystemCheckCheckHealthGetStatusRequest.</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>status</td>
-<td><a href="#filesystemcheckfilesystemcheckstatus"> FilesystemCheck.FilesystemCheckStatus</a></td>
-<td>Status code representing the state of the filesystem check operation</td>
-</tr>
-<tr>
-<td>health_status</td>
-<td><a href="#filesystemcheckcheckhealthstatus"> FilesystemCheck.CheckHealthStatus</a></td>
-<td>Status code representing the health of the filesystem after a checkHealth operation</td>
-</tr>
-<tr>
-<td>message</td>
-<td><a href="#string"> string</a></td>
-<td>Text blob containing ASCII text providing details of the operation</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkfilesystemcheckcheckhealthrequest">SdkFilesystemCheckCheckHealthRequest </h2>
-<p>SdkFilesystemCheckCheckHealthRequest defines a request to report the
-filesystem consistency issues</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>volume_id</td>
-<td><a href="#string"> string</a></td>
-<td>Id of the volume</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkfilesystemcheckcheckhealthresponse">SdkFilesystemCheckCheckHealthResponse </h2>
-<p>SdkFilesystemCheckCheckHealthResponse defines the response for a
-SdkFilesystemCheckCheckHealthRequest.</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>status</td>
-<td><a href="#filesystemcheckfilesystemcheckstatus"> FilesystemCheck.FilesystemCheckStatus</a></td>
-<td>Status code representing the state of the filesystem check operation</td>
-</tr>
-<tr>
-<td>message</td>
-<td><a href="#string"> string</a></td>
-<td>Text blob containing ASCII text providing details of the operation</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkfilesystemcheckfixallgetstatusrequest">SdkFilesystemCheckFixAllGetStatusRequest </h2>
-<p>SdkFilesystemCheckFixAllGetStatusRequest defines a request to get status of a
-background filesystem check operation</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>volume_id</td>
-<td><a href="#string"> string</a></td>
-<td>Id of the volume</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkfilesystemcheckfixallgetstatusresponse">SdkFilesystemCheckFixAllGetStatusResponse </h2>
-<p>SdkFilesystemCheckFixAllGetStatusResponse defines the response for a
-SdkFilesystemCheckFixAllGetStatusRequest.</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>status</td>
-<td><a href="#filesystemcheckfilesystemcheckstatus"> FilesystemCheck.FilesystemCheckStatus</a></td>
-<td>Status code representing the state of the filesystem check operation</td>
-</tr>
-<tr>
-<td>health_status</td>
-<td><a href="#filesystemcheckfixallstatus"> FilesystemCheck.FixAllStatus</a></td>
-<td>Status code representing the health of the filesystem after FixAll operation</td>
-</tr>
-<tr>
-<td>message</td>
-<td><a href="#string"> string</a></td>
-<td>Text blob containing ASCII text providing details of the operation</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkfilesystemcheckfixallrequest">SdkFilesystemCheckFixAllRequest </h2>
-<p>SdkFilesystemCheckFixAllRequest defines a request to fix all the filesystem
-consistency issues</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>volume_id</td>
-<td><a href="#string"> string</a></td>
-<td>Id of the volume</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkfilesystemcheckfixallresponse">SdkFilesystemCheckFixAllResponse </h2>
-<p>SdkFilesystemCheckFixAllResponse defines the response for a
-SdkFilesystemCheckFixAllRequest.</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>status</td>
-<td><a href="#filesystemcheckfilesystemcheckstatus"> FilesystemCheck.FilesystemCheckStatus</a></td>
-<td>Status code representing the state of the filesystem check operation</td>
-</tr>
-<tr>
-<td>message</td>
-<td><a href="#string"> string</a></td>
-<td>Text blob containing ASCII text providing details of the operation</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkfilesystemcheckstoprequest">SdkFilesystemCheckStopRequest </h2>
-<p>SdkFilesystemCheckStopRequest defines a request to stop a background
-filesystem check operation</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>volume_id</td>
-<td><a href="#string"> string</a></td>
-<td>Id of the volume</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkfilesystemcheckstopresponse">SdkFilesystemCheckStopResponse </h2>
-<p>Empty response</p>
- <!-- end HasFields -->
-<h2 id="sdkfilesystemtrimgetstatusrequest">SdkFilesystemTrimGetStatusRequest </h2>
-<p>SdkFilesystemTrimGetStatusRequest defines a request to get status of a
-background filesystem trim operation</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>volume_id</td>
-<td><a href="#string"> string</a></td>
-<td>Id of the volume</td>
-</tr>
-<tr>
-<td>mount_path</td>
-<td><a href="#string"> string</a></td>
-<td>Path where the volume is mounted</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkfilesystemtrimgetstatusresponse">SdkFilesystemTrimGetStatusResponse </h2>
-<p>SdkFilesystemTrimGetStatusResponse defines the response for a
-SdkFilesystemTrimGetStatusRequest.</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>status</td>
-<td><a href="#filesystemtrimfilesystemtrimstatus"> FilesystemTrim.FilesystemTrimStatus</a></td>
-<td>Status code representing the state of the filesystem trim operation</td>
-</tr>
-<tr>
-<td>message</td>
-<td><a href="#string"> string</a></td>
-<td>Text blob containing ASCII text providing details of the operation</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkfilesystemtrimstartrequest">SdkFilesystemTrimStartRequest </h2>
-<p>SdkFilesystemTrimStartRequest defines a request to start a background filesystem trim operation</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>volume_id</td>
-<td><a href="#string"> string</a></td>
-<td>Id of the volume</td>
-</tr>
-<tr>
-<td>mount_path</td>
-<td><a href="#string"> string</a></td>
-<td>Path where the volume is mounted</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkfilesystemtrimstartresponse">SdkFilesystemTrimStartResponse </h2>
-<p>SdkFilesystemTrimStartResponse defines the response for a
-SdkFilesystemTrimStartRequest.</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>status</td>
-<td><a href="#filesystemtrimfilesystemtrimstatus"> FilesystemTrim.FilesystemTrimStatus</a></td>
-<td>Status code representing the state of the filesystem trim operation</td>
-</tr>
-<tr>
-<td>message</td>
-<td><a href="#string"> string</a></td>
-<td>Text blob containing ASCII text providing details of the operation</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkfilesystemtrimstoprequest">SdkFilesystemTrimStopRequest </h2>
-<p>SdkFilesystemTrimStopRequest defines a request to stop a background
-filesystem trim operation</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>volume_id</td>
-<td><a href="#string"> string</a></td>
-<td>Id of the volume</td>
-</tr>
-<tr>
-<td>mount_path</td>
-<td><a href="#string"> string</a></td>
-<td>Path where the volume is mounted</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkfilesystemtrimstopresponse">SdkFilesystemTrimStopResponse </h2>
-<p>Empty response</p>
- <!-- end HasFields -->
-<h2 id="sdkgetrebalancejobstatusrequest">SdkGetRebalanceJobStatusRequest </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>id</td>
-<td><a href="#string"> string</a></td>
-<td>ID of the rebalance job</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkgetrebalancejobstatusresponse">SdkGetRebalanceJobStatusResponse </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>job</td>
-<td><a href="#storagerebalancejob"> StorageRebalanceJob</a></td>
-<td>Job for this rebalance</td>
-</tr>
-<tr>
-<td>summary</td>
-<td><a href="#storagerebalancesummary"> StorageRebalanceSummary</a></td>
-<td>Summary summarizes the rebalance job</td>
-</tr>
-<tr>
-<td>actions</td>
-<td><a href="#storagerebalanceaudit">repeated StorageRebalanceAudit</a></td>
-<td>Actions describe all the actions taken during this rebalance</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
 <h2 id="sdkgooglecredentialrequest">SdkGoogleCredentialRequest </h2>
 <p>Defines credentials for Google</p>
 <table>
@@ -6796,8 +5824,6 @@ specified volume</p>
 <li>Apis: Is the API name in the service in lowercase</li>
 </ul>
 <p>Values can also be set to <code>*</code>, or start or end with <code>*</code> to allow multiple matches in services or apis.</p>
-<p>Services and APIs can also be denied by prefixing the value with a <code>!</code>. Note that on rule conflicts,
-denial will always be chosen.</p>
 <h3 id="examples">Examples</h3>
 <ul>
 <li>Allow any call:</li>
@@ -7282,120 +6308,6 @@ rules followed</p>
 <h2 id="sdkstoragepoolresizeresponse">SdkStoragePoolResizeResponse </h2>
 <p>Defines a response when resizing a storage pool</p>
  <!-- end HasFields -->
-<h2 id="sdkstoragerebalancerequest">SdkStorageRebalanceRequest </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>trigger_thresholds</td>
-<td><a href="#storagerebalancetriggerthreshold">repeated StorageRebalanceTriggerThreshold</a></td>
-<td>TriggerThresholds defines thresholds that would trigger rebalance. For example, TriggerThreshold{ThresholdTypeAbsolutePercent, MetricTypeUsedSpace, 75, 10} would trigger rebalance on pools where used space is more than 75% or less than 10%. Similarly, TriggerThreshold{ThresholdTypeDeltaMeanPercent, MetricTypeUsedSpace, 15, 25} will trigger rebalance for pools where used space is more than 15% from the mean percent for used space for the entire cluster or less than 25% from the mean percent for used space for the entire cluster.</td>
-</tr>
-<tr>
-<td>trial_run</td>
-<td><a href="#bool"> bool</a></td>
-<td>TrialRun if true the job only produces steps that would be taken without making any changes</td>
-</tr>
-<tr>
-<td>pool_selector_labels</td>
-<td><a href="#sdkstoragerebalancerequestpoolselectorlabelsentry">map SdkStorageRebalanceRequest.PoolSelectorLabelsEntry</a></td>
-<td>PoolSelectorLabels allows selecting pools to which trigger thresholds will apply</td>
-</tr>
-<tr>
-<td>max_duration_minutes</td>
-<td><a href="#uint64"> uint64</a></td>
-<td>MaxDurationMinutes defines how long operation should run when started at schedule. 0 values means no limit on duration</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkstoragerebalancerequestpoolselectorlabelsentry">SdkStorageRebalanceRequest.PoolSelectorLabelsEntry </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>key</td>
-<td><a href="#string"> string</a></td>
-<td>none</td>
-</tr>
-<tr>
-<td>value</td>
-<td><a href="#string"> string</a></td>
-<td>none</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkstoragerebalanceresponse">SdkStorageRebalanceResponse </h2>
-<p>SdkStorageRebalanceResponse is the response to a storage rebalance request</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>job</td>
-<td><a href="#storagerebalancejob"> StorageRebalanceJob</a></td>
-<td>Job for this rebalance</td>
-</tr>
-<tr>
-<td>summary</td>
-<td><a href="#storagerebalancesummary"> StorageRebalanceSummary</a></td>
-<td>Summary summarizes the rebalance job</td>
-</tr>
-<tr>
-<td>actions</td>
-<td><a href="#storagerebalanceaudit">repeated StorageRebalanceAudit</a></td>
-<td>Actions describe all the actions taken during this rebalance</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkupdaterebalancejobrequest">SdkUpdateRebalanceJobRequest </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>id</td>
-<td><a href="#string"> string</a></td>
-<td>ID of the rebalance job</td>
-</tr>
-<tr>
-<td>state</td>
-<td><a href="#storagerebalancejobstate"> StorageRebalanceJobState</a></td>
-<td>State is the new task state to update the job to</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkupdaterebalancejobresponse">SdkUpdateRebalanceJobResponse </h2>
- <!-- end HasFields -->
 <h2 id="sdkversion">SdkVersion </h2>
 <p>SDK version in Major.Minor.Patch format. The goal of this
 message is to provide clients a method to determine the SDK
@@ -7458,11 +6370,6 @@ version run by an SDK server.</p>
 <td>secret_context</td>
 <td><a href="#string"> string</a></td>
 <td>It indicates the additional context which could be used to retrieve the secret. In case of Kubernetes, this is the namespace in which the secret is created.</td>
-</tr>
-<tr>
-<td>fastpath</td>
-<td><a href="#string"> string</a></td>
-<td>Indicates whether fastpath needs to be enabled during attach</td>
 </tr>
 </tbody>
 </table>
@@ -9078,204 +7985,6 @@ to seed the volume with data.</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
-<h2 id="storagerebalanceaudit">StorageRebalanceAudit </h2>
-<p>StorageRebalanceAudit describes the action taken during rebalance</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>volume_id</td>
-<td><a href="#string"> string</a></td>
-<td>VolumeID is the id of the volume which was rebalanced</td>
-</tr>
-<tr>
-<td>name</td>
-<td><a href="#string"> string</a></td>
-<td>Name is the name of the volumes which was rebalanced</td>
-</tr>
-<tr>
-<td>action</td>
-<td><a href="#storagerebalanceauditstoragerebalanceaction"> StorageRebalanceAudit.StorageRebalanceAction</a></td>
-<td>Action is the action executed</td>
-</tr>
-<tr>
-<td>node</td>
-<td><a href="#string"> string</a></td>
-<td>Node on which this action happened</td>
-</tr>
-<tr>
-<td>pool</td>
-<td><a href="#string"> string</a></td>
-<td>Pool on which this action happened</td>
-</tr>
-<tr>
-<td>start_time</td>
-<td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
-<td>StartTime is the time at which action was started</td>
-</tr>
-<tr>
-<td>end_time</td>
-<td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
-<td>EndTime is time time at which action ended</td>
-</tr>
-<tr>
-<td>work_summary</td>
-<td><a href="#storagerebalanceworksummary">repeated StorageRebalanceWorkSummary</a></td>
-<td>WorkSummary summarizes the work done</td>
-</tr>
-<tr>
-<td>replication_set_id</td>
-<td><a href="#uint64"> uint64</a></td>
-<td>ReplicationSetId is the ID of the replication set</td>
-</tr>
-<tr>
-<td>state</td>
-<td><a href="#storagerebalancejobstate"> StorageRebalanceJobState</a></td>
-<td>State is the current state of the rebalance action</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="storagerebalancejob">StorageRebalanceJob </h2>
-<p>StorageRebalanceJob describes job input and current status</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>id</td>
-<td><a href="#string"> string</a></td>
-<td>ID of the rebalance job</td>
-</tr>
-<tr>
-<td>error</td>
-<td><a href="#string"> string</a></td>
-<td>Error describes errors occurred during rebalance</td>
-</tr>
-<tr>
-<td>state</td>
-<td><a href="#storagerebalancejobstate"> StorageRebalanceJobState</a></td>
-<td>State of the current job</td>
-</tr>
-<tr>
-<td>parameters</td>
-<td><a href="#sdkstoragerebalancerequest"> SdkStorageRebalanceRequest</a></td>
-<td>Parameters is the original request params for this rebalance operation</td>
-</tr>
-<tr>
-<td>create_time</td>
-<td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
-<td>CreateTime is the time the job was created</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="storagerebalancesummary">StorageRebalanceSummary </h2>
-<p>StorageRebalanceSummary describes summary for the job</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>last_update_time</td>
-<td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
-<td>LastUpdateTime is the time the job was last updated</td>
-</tr>
-<tr>
-<td>total_run_time_seconds</td>
-<td><a href="#uint64"> uint64</a></td>
-<td>TotalRunTimeSeconds is the total time rebalance is running</td>
-</tr>
-<tr>
-<td>work_summary</td>
-<td><a href="#storagerebalanceworksummary">repeated StorageRebalanceWorkSummary</a></td>
-<td>WorkSummary summarizes the work done</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="storagerebalancetriggerthreshold">StorageRebalanceTriggerThreshold </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>type</td>
-<td><a href="#storagerebalancetriggerthresholdtype"> StorageRebalanceTriggerThreshold.Type</a></td>
-<td>Type defines type of threshold</td>
-</tr>
-<tr>
-<td>metric</td>
-<td><a href="#storagerebalancetriggerthresholdmetric"> StorageRebalanceTriggerThreshold.Metric</a></td>
-<td>Metric defines metric for which this threshold applies to.</td>
-</tr>
-<tr>
-<td>over_load_trigger_threshold</td>
-<td><a href="#uint64"> uint64</a></td>
-<td>OverLoadTriggerThreshold will select entity which is over this threshold. OverLoadTriggerThreshold threshold selects pools which act as source for reduction of load defined by the metric.</td>
-</tr>
-<tr>
-<td>under_load_trigger_threshold</td>
-<td><a href="#uint64"> uint64</a></td>
-<td>UnderLoadTriggerThreshold will select entity which is under this threshold. UnderLoadTriggerThreshold selects pools which act as targets for increasing load defined by metric.</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="storagerebalanceworksummary">StorageRebalanceWorkSummary </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>type</td>
-<td><a href="#storagerebalanceworksummarytype"> StorageRebalanceWorkSummary.Type</a></td>
-<td>Type describes the type of summary.</td>
-</tr>
-<tr>
-<td>done</td>
-<td><a href="#uint64"> uint64</a></td>
-<td>Done is the amount of bytes/work done</td>
-</tr>
-<tr>
-<td>pending</td>
-<td><a href="#uint64"> uint64</a></td>
-<td>Pending is the amount of bytes/work pending. Done + Pending == Total</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
 <h2 id="storageresource">StorageResource </h2>
 <p>StorageResource groups properties of a storage device.</p>
 <table>
@@ -9550,11 +8259,6 @@ to seed the volume with data.</p>
 <td>detach_time</td>
 <td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
 <td>DetachTime time this device was detached.</td>
-</tr>
-<tr>
-<td>fpConfig</td>
-<td><a href="#fastpathconfig"> FastpathConfig</a></td>
-<td>Fastpath extensions</td>
 </tr>
 </tbody>
 </table>
@@ -9893,130 +8597,6 @@ In situations, where 2 or more rules conflict, the weight of the rules will dict
 <p>in: body Required: true |
  <!-- end Fields -->
  <!-- end HasFields --></p>
-<h2 id="volumeserviceinstanceresponse">VolumeServiceInstanceResponse </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>error</td>
-<td><a href="#string"> string</a></td>
-<td>Error code</td>
-</tr>
-<tr>
-<td>status</td>
-<td><a href="#volumeserviceinstanceresponsestatusentry">map VolumeServiceInstanceResponse.StatusEntry</a></td>
-<td>Status information exposed a map</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="volumeserviceinstanceresponsestatusentry">VolumeServiceInstanceResponse.StatusEntry </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>key</td>
-<td><a href="#string"> string</a></td>
-<td>none</td>
-</tr>
-<tr>
-<td>value</td>
-<td><a href="#string"> string</a></td>
-<td>none</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="volumeservicerequest">VolumeServiceRequest </h2>
-<p>VolumeServiceRequest provides details on what volume service command to
-perform in background on the volume</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>srv_cmd</td>
-<td><a href="#string"> string</a></td>
-<td>User specified volume service command</td>
-</tr>
-<tr>
-<td>srv_cmd_params</td>
-<td><a href="#volumeservicerequestsrvcmdparamsentry">map VolumeServiceRequest.SrvCmdParamsEntry</a></td>
-<td>User specified volume service command&apos;s params</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="volumeservicerequestsrvcmdparamsentry">VolumeServiceRequest.SrvCmdParamsEntry </h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>key</td>
-<td><a href="#string"> string</a></td>
-<td>none</td>
-</tr>
-<tr>
-<td>value</td>
-<td><a href="#string"> string</a></td>
-<td>none</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="volumeserviceresponse">VolumeServiceResponse </h2>
-<p>VolumeServiceResponse specifies the response to a Volume Service command
-performed on a volumen</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>vol_srv_rsp_obj_cnt</td>
-<td><a href="#int32"> int32</a></td>
-<td>Number of VolumeServiceInstanceResponse returned as part of this response structure</td>
-</tr>
-<tr>
-<td>vol_srv_rsp</td>
-<td><a href="#volumeserviceinstanceresponse">repeated VolumeServiceInstanceResponse</a></td>
-<td>none</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
 <h2 id="volumesetrequest">VolumeSetRequest </h2>
 <p>VolumeSet specifies a request to update a volume.</p>
 <table>
@@ -10271,11 +8851,6 @@ performed on a volumen</p>
 <td>export_spec</td>
 <td><a href="#exportspec"> ExportSpec</a></td>
 <td>ExportSpec defines how the volume should be exported.</td>
-</tr>
-<tr>
-<td>fp_preference</td>
-<td><a href="#bool"> bool</a></td>
-<td>fastpath extensions</td>
 </tr>
 <tr>
 <td>xattr</td>
@@ -10591,8 +9166,8 @@ performed on a volumen</p>
 <td>none</td>
 </tr>
 <tr>
-<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> fastpath_opt.fastpath</td>
-<td><a href="#bool"> bool</a></td>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> xattr_opt.xattr</td>
+<td><a href="#xattrvalue"> Xattr.Value</a></td>
 <td>none</td>
 </tr>
 </tbody>
@@ -11028,248 +9603,6 @@ performed on a volumen</p>
 </tr>
 </tbody>
 </table>
-<h2 id="fastpathprotocol">FastpathProtocol </h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Number</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>FASTPATH_PROTO_UNKNOWN</td>
-<td>0</td>
-<td>none</td>
-</tr>
-<tr>
-<td>FASTPATH_PROTO_NVMEOF_TCP</td>
-<td>1</td>
-<td>none</td>
-</tr>
-<tr>
-<td>FASTPATH_PROTO_ISCSI</td>
-<td>2</td>
-<td>none</td>
-</tr>
-</tbody>
-</table>
-<h2 id="fastpathstatus">FastpathStatus </h2>
-<p>fastpath extensions</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Number</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>FASTPATH_UNKNOWN</td>
-<td>0</td>
-<td>backward compatible state</td>
-</tr>
-<tr>
-<td>FASTPATH_ACTIVE</td>
-<td>1</td>
-<td>fastpath activated and enabled</td>
-</tr>
-<tr>
-<td>FASTPATH_INACTIVE</td>
-<td>2</td>
-<td>fastpath inactive</td>
-</tr>
-<tr>
-<td>FASTPATH_UNSUPPORTED</td>
-<td>3</td>
-<td>fastpath unsupported, disabled</td>
-</tr>
-<tr>
-<td>FASTPATH_PENDING</td>
-<td>4</td>
-<td>fastpath operation setup in progress</td>
-</tr>
-<tr>
-<td>FASTPATH_ERRORED</td>
-<td>5</td>
-<td>fastpath error&apos;d, possible stuck failure</td>
-</tr>
-</tbody>
-</table>
-<h2 id="filesystemcheckcheckhealthstatus">FilesystemCheck.CheckHealthStatus </h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Number</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>CHECK_HEALTH_STATUS_UNKNOWN</td>
-<td>0</td>
-<td>filesystem health status is unknown</td>
-</tr>
-<tr>
-<td>CHECK_HEALTH_STATUS_HEALTHY</td>
-<td>1</td>
-<td>filesystem health is healthy</td>
-</tr>
-<tr>
-<td>CHECK_HEALTH_STATUS_NOT_HEALTHY</td>
-<td>2</td>
-<td>filesystem health is not healthy</td>
-</tr>
-</tbody>
-</table>
-<h2 id="filesystemcheckfilesystemcheckstatus">FilesystemCheck.FilesystemCheckStatus </h2>
-<p>FilesystemChecktatus represents the status codes returned from
-OpenStorageFilesystemCheck service APIs()</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Number</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>FS_CHECK_UNKNOWN</td>
-<td>0</td>
-<td>Filesystem Check operation is an unknown state</td>
-</tr>
-<tr>
-<td>FS_CHECK_NOT_RUNNING</td>
-<td>1</td>
-<td>FilesystemCheck operation not running for the specified volume</td>
-</tr>
-<tr>
-<td>FS_CHECK_STARTED</td>
-<td>2</td>
-<td>FilesystemCheck operation started for the specified volume</td>
-</tr>
-<tr>
-<td>FS_CHECK_CHECK_HEALTH_INPROGRESS</td>
-<td>3</td>
-<td>FilesystemCheck CheckHealth operation is in progress</td>
-</tr>
-<tr>
-<td>FS_CHECK_CHECK_HEALTH_STOPPED</td>
-<td>4</td>
-<td>FilesystemCheck CheckHealth operation was stopped by the user</td>
-</tr>
-<tr>
-<td>FS_CHECK_CHECK_HEALTH_COMPLETED</td>
-<td>5</td>
-<td>FilesystemCheck CheckHealth operation completed successfully</td>
-</tr>
-<tr>
-<td>FS_CHECK_CHECK_HEALTH_FAILED</td>
-<td>6</td>
-<td>FilesystemCheck CheckHealth operation failed due to internal error</td>
-</tr>
-<tr>
-<td>FS_CHECK_FIXALL_INPROGRESS</td>
-<td>7</td>
-<td>FilesystemCheck FixAll operation is in progress</td>
-</tr>
-<tr>
-<td>FS_CHECK_FIXALL_STOPPED</td>
-<td>8</td>
-<td>FilesystemCheck FixAll operation was stopped by the user</td>
-</tr>
-<tr>
-<td>FS_CHECK_FIXALL_COMPLETED</td>
-<td>9</td>
-<td>FilesystemCheck FixAll operation completed successfully</td>
-</tr>
-<tr>
-<td>FS_CHECK_FIXALL_FAILED</td>
-<td>10</td>
-<td>FilesystemCheck FixAll operation failed due to internal error</td>
-</tr>
-</tbody>
-</table>
-<h2 id="filesystemcheckfixallstatus">FilesystemCheck.FixAllStatus </h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Number</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>FIXALL_STATUS_UNKNOWN</td>
-<td>0</td>
-<td>filesystem check fixall status is unknown</td>
-</tr>
-<tr>
-<td>FIXALL_STATUS_HEALTHY</td>
-<td>1</td>
-<td>filesystem check fixall is healthy</td>
-</tr>
-<tr>
-<td>FIXALL_STATUS_NOT_HEALTHY</td>
-<td>2</td>
-<td>check fixall is not healthy</td>
-</tr>
-</tbody>
-</table>
-<h2 id="filesystemtrimfilesystemtrimstatus">FilesystemTrim.FilesystemTrimStatus </h2>
-<p>FilesystemTrimStatus represents the status codes returned from
-OpenStorageFilesystemTrim service APIs()</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Number</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>FS_TRIM_UNKNOWN</td>
-<td>0</td>
-<td>Filesystem Trim operation is an unknown state</td>
-</tr>
-<tr>
-<td>FS_TRIM_NOT_RUNNING</td>
-<td>1</td>
-<td>Filesystem Trim operation is not running for the specified volume</td>
-</tr>
-<tr>
-<td>FS_TRIM_STARTED</td>
-<td>2</td>
-<td>Filesystem Trim operation started for the specified volume</td>
-</tr>
-<tr>
-<td>FS_TRIM_INPROGRESS</td>
-<td>3</td>
-<td>Filesystem Trim operation is in progress for the specified volume</td>
-</tr>
-<tr>
-<td>FS_TRIM_STOPPED</td>
-<td>4</td>
-<td>Filesystem Trim operation was stopped by the user for the specified volume</td>
-</tr>
-<tr>
-<td>FS_TRIM_COMPLETED</td>
-<td>5</td>
-<td>Filesystem Trim operation completed successfully for the specified volume</td>
-</tr>
-<tr>
-<td>FS_TRIM_FAILED</td>
-<td>6</td>
-<td>Filesystem Trim operation failed due to internal error for the specified volume</td>
-</tr>
-</tbody>
-</table>
 <h2 id="graphdriverchangetype">GraphDriverChangeType </h2>
 <table>
 <thead>
@@ -11368,11 +9701,6 @@ OpenStorageFilesystemTrim service APIs()</p>
 <td>IO_PROFILE_SYNC_SHARED</td>
 <td>5</td>
 <td>none</td>
-</tr>
-<tr>
-<td>IO_PROFILE_BKUPSRC</td>
-<td>6</td>
-<td>IO_PROFILE_BKUPSRC inherits cloudbackup&apos;s IOprofile</td>
 </tr>
 </tbody>
 </table>
@@ -11515,33 +9843,6 @@ used for.</p>
 <tr>
 <td>RESOURCE_TYPE_POOL</td>
 <td>5</td>
-<td>none</td>
-</tr>
-</tbody>
-</table>
-<h2 id="restoreparambooltype">RestoreParamBoolType </h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Number</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>PARAM_BKUPSRC</td>
-<td>0</td>
-<td>Default: whateever was cloudbakup&apos;s option for the parameter</td>
-</tr>
-<tr>
-<td>PARAM_FALSE</td>
-<td>1</td>
-<td>none</td>
-</tr>
-<tr>
-<td>PARAM_TRUE</td>
-<td>2</td>
 <td>none</td>
 </tr>
 </tbody>
@@ -11904,12 +10205,12 @@ client and server applications</p>
 </tr>
 <tr>
 <td>Minor</td>
-<td>69</td>
+<td>42</td>
 <td>SDK version minor value of this specification</td>
 </tr>
 <tr>
 <td>Patch</td>
-<td>11</td>
+<td>29</td>
 <td>SDK version patch value of this specification</td>
 </tr>
 </tbody>
@@ -12057,146 +10358,6 @@ client and server applications</p>
 <td>STORAGE_MEDIUM_NVME</td>
 <td>2</td>
 <td>NVME disk</td>
-</tr>
-</tbody>
-</table>
-<h2 id="storagerebalanceauditstoragerebalanceaction">StorageRebalanceAudit.StorageRebalanceAction </h2>
-<p>StorageRebalanceAction describes type of rebalance action</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Number</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ADD_REPLICA</td>
-<td>0</td>
-<td>Indicates new replica was added</td>
-</tr>
-<tr>
-<td>REMOVE_REPLICA</td>
-<td>1</td>
-<td>Indicates existing replica was removed</td>
-</tr>
-</tbody>
-</table>
-<h2 id="storagerebalancejobstate">StorageRebalanceJobState </h2>
-<p>StorageRebalanceJobState is an enum for state of the current rebalance operation</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Number</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>PENDING</td>
-<td>0</td>
-<td>Pending indicates job is still pending and has not started work</td>
-</tr>
-<tr>
-<td>RUNNING</td>
-<td>1</td>
-<td>Running indicates job is actively running</td>
-</tr>
-<tr>
-<td>DONE</td>
-<td>2</td>
-<td>Done indicates job has finished processing</td>
-</tr>
-<tr>
-<td>PAUSED</td>
-<td>3</td>
-<td>Paused indicates job is paused</td>
-</tr>
-<tr>
-<td>CANCELLED</td>
-<td>4</td>
-<td>Cancelled indicates job is cancelled</td>
-</tr>
-</tbody>
-</table>
-<h2 id="storagerebalancetriggerthresholdmetric">StorageRebalanceTriggerThreshold.Metric </h2>
-<p>Metric is an enum that defines the metric to use for rebalance</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Number</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>PROVISION_SPACE</td>
-<td>0</td>
-<td>ProvisionSpace indicates rebalance for provisioned space</td>
-</tr>
-<tr>
-<td>USED_SPACE</td>
-<td>1</td>
-<td>UsedSpace indicates rebalance for used space</td>
-</tr>
-</tbody>
-</table>
-<h2 id="storagerebalancetriggerthresholdtype">StorageRebalanceTriggerThreshold.Type </h2>
-<p>Type is an enum that defines the type fo the trigger threshold</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Number</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ABSOLUTE_PERCENT</td>
-<td>0</td>
-<td>AbsolutePercent indicates absolute percent comparison. Example, 75 % used of capacity, or 50 % provisioned of capacity.</td>
-</tr>
-<tr>
-<td>DELTA_MEAN_PERCENT</td>
-<td>1</td>
-<td>DeltaMeanPercent indicates mean percent comparision threshold. Example, 10 % more than mean for cluster.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="storagerebalanceworksummarytype">StorageRebalanceWorkSummary.Type </h2>
-<p>Type is an enum to indicate the type of work summary</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Number</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>UnbalancedPools</td>
-<td>0</td>
-<td>summary for unbalanced pools</td>
-</tr>
-<tr>
-<td>UnbalancedVolumes</td>
-<td>1</td>
-<td>summary for unbalanced volumes</td>
-</tr>
-<tr>
-<td>UnbalancedProvisionedSpaceBytes</td>
-<td>2</td>
-<td>summary for unbalanced provisioned space</td>
-</tr>
-<tr>
-<td>UnbalancedUsedSpaceBytes</td>
-<td>3</td>
-<td>summary for unbalanced used space</td>
 </tr>
 </tbody>
 </table>
@@ -12526,12 +10687,12 @@ client and server applications</p>
 
             
                 
-                <a href="release-6.4.changelog.html" class="navigation navigation-prev " aria-label="Previous page: Changelog">
+                <a href="release-4.0.changelog.html" class="navigation navigation-prev " aria-label="Previous page: Changelog">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="release-7.0.changelog.html" class="navigation navigation-next " aria-label="Next page: Changelog">
+                <a href="release-6.4.changelog.html" class="navigation navigation-next " aria-label="Next page: Changelog">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -12542,7 +10703,7 @@ client and server applications</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"v0.69.x","level":"1.5.4","depth":2,"next":{"title":"Changelog","level":"1.5.4.1","depth":3,"path":"release-7.0.changelog.md","ref":"release-7.0.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.3.1","depth":3,"path":"release-6.4.changelog.md","ref":"release-6.4.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"livereload":{},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"release-7.0.generated-api.md","mtime":"2020-06-20T00:51:17.062Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-20T00:52:09.303Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"v0.42.x","level":"1.5.3","depth":2,"next":{"title":"Changelog","level":"1.5.3.1","depth":3,"path":"release-6.4.changelog.md","ref":"release-6.4.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.2.1","depth":3,"path":"release-4.0.changelog.md","ref":"release-4.0.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"livereload":{},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"release-6.4.generated-api.md","mtime":"2020-06-20T00:51:18.471Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-20T00:52:09.303Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

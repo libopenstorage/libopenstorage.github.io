@@ -13,7 +13,7 @@ serve: images docs/reference.md
 
 api:
 ifndef HAS_PROTOC
-	$(error "Please install protoc 1.3.3 or later")
+	$(error "Please install protoc 3.3.3 or later")
 endif
 ifndef HAS_PROTOGENDOC
 	$(error "Please install protoc-gen-doc. See README.md for more information")
