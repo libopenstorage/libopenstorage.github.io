@@ -37,7 +37,3 @@ version on the documentation website:
 1. Add an entry in the reference in `docs/SUMMARY.md`
 1. Create `docs/swagger-ui/<branch>.index.html` and adjust the json file accordingly
 
-## More information
-* [Gitbook](https://toolchain.gitbook.com/)
-* Examples gitbook json setup
-    * https://github.com/poppy-project/poppy-docs/blob/master/book.json
