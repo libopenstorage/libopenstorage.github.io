@@ -84,6 +84,7 @@
     - [RestoreVolumeSpec](#restorevolumespec)
     - [RuntimeStateMap](#runtimestatemap)
     - [RuntimeStateMap.RuntimeStateEntry](#runtimestatemapruntimestateentry)
+    - [ScanPolicy](#scanpolicy)
     - [SdkAlertsAlertTypeQuery](#sdkalertsalerttypequery)
     - [SdkAlertsCountSpan](#sdkalertscountspan)
     - [SdkAlertsDeleteRequest](#sdkalertsdeleterequest)
@@ -183,14 +184,10 @@
     - [SdkCredentialValidateResponse](#sdkcredentialvalidateresponse)
     - [SdkEnumerateRebalanceJobsRequest](#sdkenumeraterebalancejobsrequest)
     - [SdkEnumerateRebalanceJobsResponse](#sdkenumeraterebalancejobsresponse)
-    - [SdkFilesystemCheckCheckHealthGetStatusRequest](#sdkfilesystemcheckcheckhealthgetstatusrequest)
-    - [SdkFilesystemCheckCheckHealthGetStatusResponse](#sdkfilesystemcheckcheckhealthgetstatusresponse)
-    - [SdkFilesystemCheckCheckHealthRequest](#sdkfilesystemcheckcheckhealthrequest)
-    - [SdkFilesystemCheckCheckHealthResponse](#sdkfilesystemcheckcheckhealthresponse)
-    - [SdkFilesystemCheckFixAllGetStatusRequest](#sdkfilesystemcheckfixallgetstatusrequest)
-    - [SdkFilesystemCheckFixAllGetStatusResponse](#sdkfilesystemcheckfixallgetstatusresponse)
-    - [SdkFilesystemCheckFixAllRequest](#sdkfilesystemcheckfixallrequest)
-    - [SdkFilesystemCheckFixAllResponse](#sdkfilesystemcheckfixallresponse)
+    - [SdkFilesystemCheckStartRequest](#sdkfilesystemcheckstartrequest)
+    - [SdkFilesystemCheckStartResponse](#sdkfilesystemcheckstartresponse)
+    - [SdkFilesystemCheckStatusRequest](#sdkfilesystemcheckstatusrequest)
+    - [SdkFilesystemCheckStatusResponse](#sdkfilesystemcheckstatusresponse)
     - [SdkFilesystemCheckStopRequest](#sdkfilesystemcheckstoprequest)
     - [SdkFilesystemCheckStopResponse](#sdkfilesystemcheckstopresponse)
     - [SdkFilesystemTrimGetStatusRequest](#sdkfilesystemtrimgetstatusrequest)
@@ -274,7 +271,6 @@
     - [SdkStoragePoolResizeRequest](#sdkstoragepoolresizerequest)
     - [SdkStoragePoolResizeResponse](#sdkstoragepoolresizeresponse)
     - [SdkStorageRebalanceRequest](#sdkstoragerebalancerequest)
-    - [SdkStorageRebalanceRequest.PoolSelectorLabelsEntry](#sdkstoragerebalancerequestpoolselectorlabelsentry)
     - [SdkStorageRebalanceResponse](#sdkstoragerebalanceresponse)
     - [SdkUpdateRebalanceJobRequest](#sdkupdaterebalancejobrequest)
     - [SdkUpdateRebalanceJobResponse](#sdkupdaterebalancejobresponse)
@@ -397,9 +393,8 @@
     - [FSType](#fstype)
     - [FastpathProtocol](#fastpathprotocol)
     - [FastpathStatus](#fastpathstatus)
-    - [FilesystemCheck.CheckHealthStatus](#filesystemcheckcheckhealthstatus)
     - [FilesystemCheck.FilesystemCheckStatus](#filesystemcheckfilesystemcheckstatus)
-    - [FilesystemCheck.FixAllStatus](#filesystemcheckfixallstatus)
+    - [FilesystemHealthStatus](#filesystemhealthstatus)
     - [FilesystemTrim.FilesystemTrimStatus](#filesystemtrimfilesystemtrimstatus)
     - [GraphDriverChangeType](#graphdriverchangetype)
     - [HardwareType](#hardwaretype)
@@ -409,6 +404,8 @@
     - [Ownership.AccessType](#ownershipaccesstype)
     - [ResourceType](#resourcetype)
     - [RestoreParamBoolType](#restoreparambooltype)
+    - [ScanPolicy.ScanAction](#scanpolicyscanaction)
+    - [ScanPolicy.ScanTrigger](#scanpolicyscantrigger)
     - [SdkCloudBackupOpType](#sdkcloudbackupoptype)
     - [SdkCloudBackupRequestedState](#sdkcloudbackuprequestedstate)
     - [SdkCloudBackupStatusType](#sdkcloudbackupstatustype)
@@ -778,63 +775,20 @@ Validate is used to validate credentials
  <!-- end methods -->
 
 # OpenStorageFilesystemCheck {#serviceopenstorageapiopenstoragefilesystemcheck}
-## OpenStorageFilesystemCheckService
-This service provides methods to manage filesystem check operation on a
-volume.
 
-This operation is run in the background on an **unmounted volume**.
-If the volume is mounted, then these APIs return error.
 
-Once the filesystem check operation(either CheckHealth() or FixAll()) is
-started, the clients have to poll for the status of the background operation
-using the `OpenStorageFilesystemcheck.CheckHealthGetStatus()` rpc request or
-`OpenStorageFilesystemCheck.FixAllGetStatus()` rpc request.
+## Start {#methodopenstorageapiopenstoragefilesystemcheckstart}
 
-**Note: CheckHealth() and FixAll() cannot run in parallel for the same volume**
+> **rpc** Start([SdkFilesystemCheckStartRequest](#sdkfilesystemcheckstartrequest))
+    [SdkFilesystemCheckStartResponse](#sdkfilesystemcheckstartresponse)
 
-A typical workflow involving filesystem check would be as follows
-1. Attach the volume
-   `OpenStorageMountAttachClient.Attach()`
-2. Check the health of the filesystem by issuing a grpc call to
-   `OpenStorageFilesystemCheckClient.CheckHealth()`
-3. Status of the CheckHealth() operation can be retrieved by polling for the
-   status using `OpenStorageFilesystemCheck.CheckHealthGetStatus()`
-4. If the CheckHealth Operations status reports filesystem is in unhealthy
-   state, then to fix all the problems issue a grpc call to
-   `OpenStorageFilesystemCheckClient.FixAll()`
-5. Status of the FixAll() operation can be retrieved by polling for the
-   status using `OpenStorageFilesystemCheck.FixAllGetStatus()`
-6. CheckHealth() and FixAll() operations run in the background, to stop these
-   operations, issue a call to
-   `OpenStorageFilesystemCheckClient.Stop()`
+Start a filesystem-check background operation on a unmounted volume.
+## Status {#methodopenstorageapiopenstoragefilesystemcheckstatus}
 
-## CheckHealth {#methodopenstorageapiopenstoragefilesystemcheckcheckhealth}
+> **rpc** Status([SdkFilesystemCheckStatusRequest](#sdkfilesystemcheckstatusrequest))
+    [SdkFilesystemCheckStatusResponse](#sdkfilesystemcheckstatusresponse)
 
-> **rpc** CheckHealth([SdkFilesystemCheckCheckHealthRequest](#sdkfilesystemcheckcheckhealthrequest))
-    [SdkFilesystemCheckCheckHealthResponse](#sdkfilesystemcheckcheckhealthresponse)
-
-Get a report of issues found on the filesystem. This operation works on an
-unmounted volume.
-## CheckHealthGetStatus {#methodopenstorageapiopenstoragefilesystemcheckcheckhealthgetstatus}
-
-> **rpc** CheckHealthGetStatus([SdkFilesystemCheckCheckHealthGetStatusRequest](#sdkfilesystemcheckcheckhealthgetstatusrequest))
-    [SdkFilesystemCheckCheckHealthGetStatusResponse](#sdkfilesystemcheckcheckhealthgetstatusresponse)
-
-Get Status of a filesystem CheckHealth background operation on an unmounted
-volume, if any
-## FixAll {#methodopenstorageapiopenstoragefilesystemcheckfixall}
-
-> **rpc** FixAll([SdkFilesystemCheckFixAllRequest](#sdkfilesystemcheckfixallrequest))
-    [SdkFilesystemCheckFixAllResponse](#sdkfilesystemcheckfixallresponse)
-
-FixAll fixes all the issues reported in the response to CheckHealth API on
-a filesystem. This operation works on an unmounted volume.
-## FixAllGetStatus {#methodopenstorageapiopenstoragefilesystemcheckfixallgetstatus}
-
-> **rpc** FixAllGetStatus([SdkFilesystemCheckFixAllGetStatusRequest](#sdkfilesystemcheckfixallgetstatusrequest))
-    [SdkFilesystemCheckFixAllGetStatusResponse](#sdkfilesystemcheckfixallgetstatusresponse)
-
-Get Status of a filesystem FixAll background operation on an unmounted
+Get Status of a filesystem-check background operation on an unmounted
 volume, if any
 ## Stop {#methodopenstorageapiopenstoragefilesystemcheckstop}
 
@@ -2155,6 +2109,28 @@ information.
  <!-- end HasFields -->
 
 
+## ScanPolicy {#scanpolicy}
+ScanPolicy defines when a filesystem check is triggered and what action to take
+User can specify *one* of the following valid policies
+1. trigger=SCAN_TRIGGER_ON_MOUNT, action=SCAN_ACTION_SCAN_ONLY
+2. trigger=SCAN_TRIGGER_ON_MOUNT, action=SCAN_ACTION_SCAN_REPAIR
+3. trigger=SCAN_TRIGGER_ON_NEXT_MOUNT, action=SCAN_ACTION_SCAN_ONLY
+4. trigger=SCAN_TRIGGER_ON_NEXT_MOUNT, action=SCAN_ACTION_SCAN_REPAIR
+5. trigger=SCAN_TRIGGER_NONE, action=SCAN_ACTION_NONE
+Note: When trigger == SCAN_TRIGGER_ON_NEXT_MOUNT, the associated action is
+performed once on the next mount and the scanpolicy gets reset to
+`trigger=SCAN_TRIGGER_NONE, action=SCAN_ACTION_NONE`, irrespective of the
+output of the action.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| trigger | [ ScanPolicy.ScanTrigger](#scanpolicyscantrigger) | none |
+| action | [ ScanPolicy.ScanAction](#scanpolicyscanaction) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
 ## SdkAlertsAlertTypeQuery {#sdkalertsalerttypequery}
 SdkAlertsAlertTypeQuery queries for alerts using alert type
 and it requires that resource type be provided as well.
@@ -3283,8 +3259,34 @@ Empty response
  <!-- end HasFields -->
 
 
-## SdkFilesystemCheckCheckHealthGetStatusRequest {#sdkfilesystemcheckcheckhealthgetstatusrequest}
-SdkFilesystemCheckCheckHealthGetStatusRequest defines a request to get status of a
+## SdkFilesystemCheckStartRequest {#sdkfilesystemcheckstartrequest}
+SdkFilesystemCheckStartRequest defines a request to start a background
+filesystem consistency check operation
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id | [ string](#string) | Id of the volume |
+| mode | [ string](#string) | Mode of operation |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkFilesystemCheckStartResponse {#sdkfilesystemcheckstartresponse}
+SdkFilesystemCheckStartResponse defines the response for a
+SdkFilesystemCheckStartRequest.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| status | [ FilesystemCheck.FilesystemCheckStatus](#filesystemcheckfilesystemcheckstatus) | Status code representing the state of the filesystem check operation |
+| message | [ string](#string) | Text blob containing ASCII text providing details of the operation |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkFilesystemCheckStatusRequest {#sdkfilesystemcheckstatusrequest}
+SdkFilesystemCheckStatusRequest defines a request to get status of a
 background filesystem check operation
 
 
@@ -3295,91 +3297,16 @@ background filesystem check operation
  <!-- end HasFields -->
 
 
-## SdkFilesystemCheckCheckHealthGetStatusResponse {#sdkfilesystemcheckcheckhealthgetstatusresponse}
-SdkFilesystemCheckCheckHealthGetStatusResponse defines the response for a
-SdkFilesystemCheckCheckHealthGetStatusRequest.
+## SdkFilesystemCheckStatusResponse {#sdkfilesystemcheckstatusresponse}
+SdkFilesystemCheckStatusResponse defines the response for a
+SdkFilesystemCheckStatusRequest.
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | status | [ FilesystemCheck.FilesystemCheckStatus](#filesystemcheckfilesystemcheckstatus) | Status code representing the state of the filesystem check operation |
-| health_status | [ FilesystemCheck.CheckHealthStatus](#filesystemcheckcheckhealthstatus) | Status code representing the health of the filesystem after a checkHealth operation |
-| message | [ string](#string) | Text blob containing ASCII text providing details of the operation |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkFilesystemCheckCheckHealthRequest {#sdkfilesystemcheckcheckhealthrequest}
-SdkFilesystemCheckCheckHealthRequest defines a request to report the
-filesystem consistency issues
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| volume_id | [ string](#string) | Id of the volume |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkFilesystemCheckCheckHealthResponse {#sdkfilesystemcheckcheckhealthresponse}
-SdkFilesystemCheckCheckHealthResponse defines the response for a
-SdkFilesystemCheckCheckHealthRequest.
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| status | [ FilesystemCheck.FilesystemCheckStatus](#filesystemcheckfilesystemcheckstatus) | Status code representing the state of the filesystem check operation |
-| message | [ string](#string) | Text blob containing ASCII text providing details of the operation |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkFilesystemCheckFixAllGetStatusRequest {#sdkfilesystemcheckfixallgetstatusrequest}
-SdkFilesystemCheckFixAllGetStatusRequest defines a request to get status of a
-background filesystem check operation
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| volume_id | [ string](#string) | Id of the volume |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkFilesystemCheckFixAllGetStatusResponse {#sdkfilesystemcheckfixallgetstatusresponse}
-SdkFilesystemCheckFixAllGetStatusResponse defines the response for a
-SdkFilesystemCheckFixAllGetStatusRequest.
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| status | [ FilesystemCheck.FilesystemCheckStatus](#filesystemcheckfilesystemcheckstatus) | Status code representing the state of the filesystem check operation |
-| health_status | [ FilesystemCheck.FixAllStatus](#filesystemcheckfixallstatus) | Status code representing the health of the filesystem after FixAll operation |
-| message | [ string](#string) | Text blob containing ASCII text providing details of the operation |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkFilesystemCheckFixAllRequest {#sdkfilesystemcheckfixallrequest}
-SdkFilesystemCheckFixAllRequest defines a request to fix all the filesystem
-consistency issues
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| volume_id | [ string](#string) | Id of the volume |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkFilesystemCheckFixAllResponse {#sdkfilesystemcheckfixallresponse}
-SdkFilesystemCheckFixAllResponse defines the response for a
-SdkFilesystemCheckFixAllRequest.
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| status | [ FilesystemCheck.FilesystemCheckStatus](#filesystemcheckfilesystemcheckstatus) | Status code representing the state of the filesystem check operation |
+| health_status | [ FilesystemHealthStatus](#filesystemhealthstatus) | Status code representing the health of the filesystem after a checkHealth operation |
+| mode | [ string](#string) | Text string representing the mode of filesystem check operation |
 | message | [ string](#string) | Text blob containing ASCII text providing details of the operation |
  <!-- end Fields -->
  <!-- end HasFields -->
@@ -4258,20 +4185,10 @@ Defines a response when resizing a storage pool
 | ----- | ---- | ----------- |
 | trigger_thresholds | [repeated StorageRebalanceTriggerThreshold](#storagerebalancetriggerthreshold) | TriggerThresholds defines thresholds that would trigger rebalance. For example, TriggerThreshold{ThresholdTypeAbsolutePercent, MetricTypeUsedSpace, 75, 10} would trigger rebalance on pools where used space is more than 75% or less than 10%. Similarly, TriggerThreshold{ThresholdTypeDeltaMeanPercent, MetricTypeUsedSpace, 15, 25} will trigger rebalance for pools where used space is more than 15% from the mean percent for used space for the entire cluster or less than 25% from the mean percent for used space for the entire cluster. |
 | trial_run | [ bool](#bool) | TrialRun if true the job only produces steps that would be taken without making any changes |
-| pool_selector_labels | [map SdkStorageRebalanceRequest.PoolSelectorLabelsEntry](#sdkstoragerebalancerequestpoolselectorlabelsentry) | PoolSelectorLabels allows selecting pools to which trigger thresholds will apply |
+| source_pool_selector | [repeated LabelSelectorRequirement](#labelselectorrequirement) | SourcePoolSelector allows selecting pools to which trigger thresholds will apply as source |
+| target_pool_selector | [repeated LabelSelectorRequirement](#labelselectorrequirement) | TargetPoolSelector allows selecting pools to which trigger thresholds will apply as target |
 | max_duration_minutes | [ uint64](#uint64) | MaxDurationMinutes defines how long operation should run when started at schedule. 0 values means no limit on duration |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkStorageRebalanceRequest.PoolSelectorLabelsEntry {#sdkstoragerebalancerequestpoolselectorlabelsentry}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| key | [ string](#string) | none |
-| value | [ string](#string) | none |
+| remove_repl_1_snapshots | [ bool](#bool) | RemoveRepl1Snapshots if true will instruct rebalance job to remove repl-1 snapshots |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -5138,10 +5055,11 @@ StorageRebalanceJob describes job input and current status
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | id | [ string](#string) | ID of the rebalance job |
-| error | [ string](#string) | Error describes errors occurred during rebalance |
+| status | [ string](#string) | Status describes status of pools after rebalance if rebalance did not finish successfully |
 | state | [ StorageRebalanceJobState](#storagerebalancejobstate) | State of the current job |
 | parameters | [ SdkStorageRebalanceRequest](#sdkstoragerebalancerequest) | Parameters is the original request params for this rebalance operation |
 | create_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | CreateTime is the time the job was created |
+| last_update_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | LastUpdateTime is the time the job was updated |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -5152,7 +5070,6 @@ StorageRebalanceSummary describes summary for the job
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| last_update_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | LastUpdateTime is the time the job was last updated |
 | total_run_time_seconds | [ uint64](#uint64) | TotalRunTimeSeconds is the total time rebalance is running |
 | work_summary | [repeated StorageRebalanceWorkSummary](#storagerebalanceworksummary) | WorkSummary summarizes the work done |
  <!-- end Fields -->
@@ -5267,6 +5184,8 @@ Volume represents an abstract storage volume.
 | attach_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | AttachTime time this device was last attached externally. |
 | detach_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | DetachTime time this device was detached. |
 | fpConfig | [ FastpathConfig](#fastpathconfig) | Fastpath extensions |
+| last_scan_fix | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | LastScanFix is the time when an integrity check fixed errors in filesystem |
+| last_scan_status | [ FilesystemHealthStatus](#filesystemhealthstatus) | LastScanStatus is the time when an integrity check fixed errors in filesystem |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -5567,6 +5486,7 @@ VolumeSpec has the properties needed to create a volume.
 | export_spec | [ ExportSpec](#exportspec) | ExportSpec defines how the volume should be exported. |
 | fp_preference | [ bool](#bool) | fastpath extensions |
 | xattr | [ Xattr.Value](#xattrvalue) | Xattr specifies implementation specific volume attributes |
+| scan_policy | [ ScanPolicy](#scanpolicy) | ScanPolicy specifies the filesystem check policy |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -5615,6 +5535,7 @@ VolumeSpecPolicy provides a method to set volume storage policy
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) nodiscard_opt.nodiscard | [ bool](#bool) | none |
 | io_strategy | [ IoStrategy](#iostrategy) | IoStrategy preferred strategy for I/O. |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) export_spec_opt.export_spec | [ ExportSpec](#exportspec) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) scan_policy_opt.scan_policy | [ ScanPolicy](#scanpolicy) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -5658,6 +5579,8 @@ VolumeSpecUpdate provides a method to set any of the VolumeSpec of an existing v
 | io_strategy | [ IoStrategy](#iostrategy) | IoStrategy preferred strategy for I/O. |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) export_spec_opt.export_spec | [ ExportSpec](#exportspec) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) fastpath_opt.fastpath | [ bool](#bool) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) xattr_opt.xattr | [ Xattr.Value](#xattrvalue) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) scan_policy_opt.scan_policy | [ ScanPolicy](#scanpolicy) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -5862,18 +5785,6 @@ fastpath extensions
 
 
 
-## FilesystemCheck.CheckHealthStatus {#filesystemcheckcheckhealthstatus}
-
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| CHECK_HEALTH_STATUS_UNKNOWN | 0 | filesystem health status is unknown |
-| CHECK_HEALTH_STATUS_HEALTHY | 1 | filesystem health is healthy |
-| CHECK_HEALTH_STATUS_NOT_HEALTHY | 2 | filesystem health is not healthy |
-
-
-
-
 ## FilesystemCheck.FilesystemCheckStatus {#filesystemcheckfilesystemcheckstatus}
 FilesystemChecktatus represents the status codes returned from
 OpenStorageFilesystemCheck service APIs()
@@ -5883,26 +5794,23 @@ OpenStorageFilesystemCheck service APIs()
 | FS_CHECK_UNKNOWN | 0 | Filesystem Check operation is an unknown state |
 | FS_CHECK_NOT_RUNNING | 1 | FilesystemCheck operation not running for the specified volume |
 | FS_CHECK_STARTED | 2 | FilesystemCheck operation started for the specified volume |
-| FS_CHECK_CHECK_HEALTH_INPROGRESS | 3 | FilesystemCheck CheckHealth operation is in progress |
-| FS_CHECK_CHECK_HEALTH_STOPPED | 4 | FilesystemCheck CheckHealth operation was stopped by the user |
-| FS_CHECK_CHECK_HEALTH_COMPLETED | 5 | FilesystemCheck CheckHealth operation completed successfully |
-| FS_CHECK_CHECK_HEALTH_FAILED | 6 | FilesystemCheck CheckHealth operation failed due to internal error |
-| FS_CHECK_FIXALL_INPROGRESS | 7 | FilesystemCheck FixAll operation is in progress |
-| FS_CHECK_FIXALL_STOPPED | 8 | FilesystemCheck FixAll operation was stopped by the user |
-| FS_CHECK_FIXALL_COMPLETED | 9 | FilesystemCheck FixAll operation completed successfully |
-| FS_CHECK_FIXALL_FAILED | 10 | FilesystemCheck FixAll operation failed due to internal error |
+| FS_CHECK_INPROGRESS | 3 | FilesystemCheck operation is in progress |
+| FS_CHECK_STOPPED | 4 | FilesystemCheck operation was stopped by the user |
+| FS_CHECK_COMPLETED | 5 | FilesystemCheck operation completed successfully |
+| FS_CHECK_FAILED | 6 | FilesystemCheck operation failed due to internal error |
 
 
 
 
-## FilesystemCheck.FixAllStatus {#filesystemcheckfixallstatus}
+## FilesystemHealthStatus {#filesystemhealthstatus}
 
 
 | Name | Number | Description |
 | ---- | ------ | ----------- |
-| FIXALL_STATUS_UNKNOWN | 0 | filesystem check fixall status is unknown |
-| FIXALL_STATUS_HEALTHY | 1 | filesystem check fixall is healthy |
-| FIXALL_STATUS_NOT_HEALTHY | 2 | check fixall is not healthy |
+| FS_HEALTH_STATUS_UNKNOWN | 0 | filesystem health status is unknown |
+| FS_HEALTH_STATUS_HEALTHY | 1 | filesystem is a healthy |
+| FS_HEALTH_STATUS_SAFE_TO_FIX | 2 | filesystem has errors, but can be fixed safely |
+| FS_HEALTH_STATUS_NEEDS_INSPECTION | 3 | filesystem has errors, these cannot be fixed automatically, user needs to review the reported errors and take appropriate action |
 
 
 
@@ -6035,6 +5943,30 @@ used for.
 
 
 
+## ScanPolicy.ScanAction {#scanpolicyscanaction}
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| SCAN_ACTION_NONE | 0 | none |
+| SCAN_ACTION_SCAN_ONLY | 1 | none |
+| SCAN_ACTION_SCAN_REPAIR | 2 | none |
+
+
+
+
+## ScanPolicy.ScanTrigger {#scanpolicyscantrigger}
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| SCAN_TRIGGER_NONE | 0 | none |
+| SCAN_TRIGGER_ON_MOUNT | 1 | none |
+| SCAN_TRIGGER_ON_NEXT_MOUNT | 2 | none |
+
+
+
+
 ## SdkCloudBackupOpType {#sdkcloudbackupoptype}
 CloudBackup operations types
 
@@ -6163,7 +6095,7 @@ client and server applications
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
 | Minor | 69 | SDK version minor value of this specification |
-| Patch | 11 | SDK version patch value of this specification |
+| Patch | 15 | SDK version patch value of this specification |
 
 
 

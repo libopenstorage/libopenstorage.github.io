@@ -518,6 +518,8 @@
 <li><a href="#locateresponse">LocateResponse</a></li>
 <li><a href="#locateresponsedockeridsentry">LocateResponse.DockeridsEntry</a></li>
 <li><a href="#locateresponsemountsentry">LocateResponse.MountsEntry</a></li>
+<li><a href="#mountoptions">MountOptions</a></li>
+<li><a href="#mountoptionsoptionsentry">MountOptions.OptionsEntry</a></li>
 <li><a href="#objectstoreinfo">ObjectstoreInfo</a></li>
 <li><a href="#ownership">Ownership</a></li>
 <li><a href="#ownershipaccesscontrol">Ownership.AccessControl</a></li>
@@ -530,6 +532,7 @@
 <li><a href="#restorevolumespec">RestoreVolumeSpec</a></li>
 <li><a href="#runtimestatemap">RuntimeStateMap</a></li>
 <li><a href="#runtimestatemapruntimestateentry">RuntimeStateMap.RuntimeStateEntry</a></li>
+<li><a href="#scanpolicy">ScanPolicy</a></li>
 <li><a href="#sdkalertsalerttypequery">SdkAlertsAlertTypeQuery</a></li>
 <li><a href="#sdkalertscountspan">SdkAlertsCountSpan</a></li>
 <li><a href="#sdkalertsdeleterequest">SdkAlertsDeleteRequest</a></li>
@@ -629,10 +632,10 @@
 <li><a href="#sdkcredentialvalidateresponse">SdkCredentialValidateResponse</a></li>
 <li><a href="#sdkenumeraterebalancejobsrequest">SdkEnumerateRebalanceJobsRequest</a></li>
 <li><a href="#sdkenumeraterebalancejobsresponse">SdkEnumerateRebalanceJobsResponse</a></li>
-<li><a href="#sdkfilesystemcheckgetstatusrequest">SdkFilesystemCheckGetStatusRequest</a></li>
-<li><a href="#sdkfilesystemcheckgetstatusresponse">SdkFilesystemCheckGetStatusResponse</a></li>
 <li><a href="#sdkfilesystemcheckstartrequest">SdkFilesystemCheckStartRequest</a></li>
 <li><a href="#sdkfilesystemcheckstartresponse">SdkFilesystemCheckStartResponse</a></li>
+<li><a href="#sdkfilesystemcheckstatusrequest">SdkFilesystemCheckStatusRequest</a></li>
+<li><a href="#sdkfilesystemcheckstatusresponse">SdkFilesystemCheckStatusResponse</a></li>
 <li><a href="#sdkfilesystemcheckstoprequest">SdkFilesystemCheckStopRequest</a></li>
 <li><a href="#sdkfilesystemcheckstopresponse">SdkFilesystemCheckStopResponse</a></li>
 <li><a href="#sdkfilesystemtrimgetstatusrequest">SdkFilesystemTrimGetStatusRequest</a></li>
@@ -716,7 +719,6 @@
 <li><a href="#sdkstoragepoolresizerequest">SdkStoragePoolResizeRequest</a></li>
 <li><a href="#sdkstoragepoolresizeresponse">SdkStoragePoolResizeResponse</a></li>
 <li><a href="#sdkstoragerebalancerequest">SdkStorageRebalanceRequest</a></li>
-<li><a href="#sdkstoragerebalancerequestpoolselectorlabelsentry">SdkStorageRebalanceRequest.PoolSelectorLabelsEntry</a></li>
 <li><a href="#sdkstoragerebalanceresponse">SdkStorageRebalanceResponse</a></li>
 <li><a href="#sdkupdaterebalancejobrequest">SdkUpdateRebalanceJobRequest</a></li>
 <li><a href="#sdkupdaterebalancejobresponse">SdkUpdateRebalanceJobResponse</a></li>
@@ -841,7 +843,7 @@
 <li><a href="#fastpathprotocol">FastpathProtocol</a></li>
 <li><a href="#fastpathstatus">FastpathStatus</a></li>
 <li><a href="#filesystemcheckfilesystemcheckstatus">FilesystemCheck.FilesystemCheckStatus</a></li>
-<li><a href="#filesystemcheckfilesystemhealthstatus">FilesystemCheck.FilesystemHealthStatus</a></li>
+<li><a href="#filesystemhealthstatus">FilesystemHealthStatus</a></li>
 <li><a href="#filesystemtrimfilesystemtrimstatus">FilesystemTrim.FilesystemTrimStatus</a></li>
 <li><a href="#graphdriverchangetype">GraphDriverChangeType</a></li>
 <li><a href="#hardwaretype">HardwareType</a></li>
@@ -851,6 +853,8 @@
 <li><a href="#ownershipaccesstype">Ownership.AccessType</a></li>
 <li><a href="#resourcetype">ResourceType</a></li>
 <li><a href="#restoreparambooltype">RestoreParamBoolType</a></li>
+<li><a href="#scanpolicyscanaction">ScanPolicy.ScanAction</a></li>
+<li><a href="#scanpolicyscantrigger">ScanPolicy.ScanTrigger</a></li>
 <li><a href="#sdkcloudbackupoptype">SdkCloudBackupOpType</a></li>
 <li><a href="#sdkcloudbackuprequestedstate">SdkCloudBackupRequestedState</a></li>
 <li><a href="#sdkcloudbackupstatustype">SdkCloudBackupStatusType</a></li>
@@ -1197,10 +1201,10 @@ id of the credentials once they are verified to work.</p>
     <a href="#sdkfilesystemcheckstartresponse">SdkFilesystemCheckStartResponse</a></p>
 </blockquote>
 <p>Start a filesystem-check background operation on a unmounted volume.</p>
-<h2 id="methodopenstorageapiopenstoragefilesystemcheckgetstatus">GetStatus </h2>
+<h2 id="methodopenstorageapiopenstoragefilesystemcheckstatus">Status </h2>
 <blockquote>
-<p><strong>rpc</strong> GetStatus(<a href="#sdkfilesystemcheckgetstatusrequest">SdkFilesystemCheckGetStatusRequest</a>)
-    <a href="#sdkfilesystemcheckgetstatusresponse">SdkFilesystemCheckGetStatusResponse</a></p>
+<p><strong>rpc</strong> Status(<a href="#sdkfilesystemcheckstatusrequest">SdkFilesystemCheckStatusRequest</a>)
+    <a href="#sdkfilesystemcheckstatusresponse">SdkFilesystemCheckStatusResponse</a></p>
 </blockquote>
 <p>Get Status of a filesystem-check background operation on an unmounted
 volume, if any</p>
@@ -2993,6 +2997,50 @@ and/or Container IDs and their mount paths</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
+<h2 id="mountoptions">MountOptions </h2>
+<p>MountOptions defines the mount options with which a volume is mounted.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>options</td>
+<td><a href="#mountoptionsoptionsentry">map MountOptions.OptionsEntry</a></td>
+<td>Options are opaque key value pairs that are passed as mount options when a volume is mounted. If an empty value is provided only the key will be passed as an option If both key and value are provided then &apos;key=value&apos; will be passed as an option</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="mountoptionsoptionsentry">MountOptions.OptionsEntry </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
 <h2 id="objectstoreinfo">ObjectstoreInfo </h2>
 <p>ObjectstoreInfo is a structure that has current objectstore info</p>
 <table>
@@ -3381,6 +3429,11 @@ inherit corresponding field value from backup&apos;s spec.</p>
 <td><a href="#restoreparambooltype"> RestoreParamBoolType</a></td>
 <td>fastpath extensions</td>
 </tr>
+<tr>
+<td>mount_options</td>
+<td><a href="#mountoptions"> MountOptions</a></td>
+<td>MountOptions defines the options that should be used while mounting this volume</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -3424,6 +3477,43 @@ information.</p>
 <tr>
 <td>value</td>
 <td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="scanpolicy">ScanPolicy </h2>
+<p>ScanPolicy defines when a filesystem check is triggered and what action to take
+User can specify <em>one</em> of the following valid policies</p>
+<ol>
+<li>trigger=SCAN_TRIGGER_ON_MOUNT, action=SCAN_ACTION_SCAN_ONLY</li>
+<li>trigger=SCAN_TRIGGER_ON_MOUNT, action=SCAN_ACTION_SCAN_REPAIR</li>
+<li>trigger=SCAN_TRIGGER_ON_NEXT_MOUNT, action=SCAN_ACTION_SCAN_ONLY</li>
+<li>trigger=SCAN_TRIGGER_ON_NEXT_MOUNT, action=SCAN_ACTION_SCAN_REPAIR</li>
+<li>trigger=SCAN_TRIGGER_NONE, action=SCAN_ACTION_NONE
+Note: When trigger == SCAN_TRIGGER_ON_NEXT_MOUNT, the associated action is
+performed once on the next mount and the scanpolicy gets reset to
+<code>trigger=SCAN_TRIGGER_NONE, action=SCAN_ACTION_NONE</code>, irrespective of the
+output of the action.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>trigger</td>
+<td><a href="#scanpolicyscantrigger"> ScanPolicy.ScanTrigger</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>action</td>
+<td><a href="#scanpolicyscanaction"> ScanPolicy.ScanAction</a></td>
 <td>none</td>
 </tr>
 </tbody>
@@ -3914,6 +4004,11 @@ as well.</p>
 <td><a href="#uint32"> uint32</a></td>
 <td>FullBackupFrequency indicates number of incremental backup after whcih a fullbackup must be created. This is to override the default value for manual/user triggerred backups and not applicable for scheduled backups Value of 0 retains the default behavior.</td>
 </tr>
+<tr>
+<td>delete_local</td>
+<td><a href="#bool"> bool</a></td>
+<td>DeleteLocal indicates if local snap created for backup must be deleted after the backup is complete</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -4181,6 +4276,11 @@ and do not provide <code>volume_id</code> and <code>all</code>.</li>
 <td>labels</td>
 <td><a href="#sdkcloudbackupgroupcreaterequestlabelsentry">map SdkCloudBackupGroupCreateRequest.LabelsEntry</a></td>
 <td>Labels are list of key value pairs to tag the cloud backup. These labels are stored in the metadata associated with the backup.</td>
+</tr>
+<tr>
+<td>delete_local</td>
+<td><a href="#bool"> bool</a></td>
+<td>DeleteLocal indicates if local snap created for backup must be deleted after the backup is complete</td>
 </tr>
 </tbody>
 </table>
@@ -5637,63 +5737,6 @@ you will need to check if the value of credential_type is one of the ones below.
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
-<h2 id="sdkfilesystemcheckgetstatusrequest">SdkFilesystemCheckGetStatusRequest </h2>
-<p>SdkFilesystemCheckGetStatusRequest defines a request to get status of a
-background filesystem check operation</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>volume_id</td>
-<td><a href="#string"> string</a></td>
-<td>Id of the volume</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkfilesystemcheckgetstatusresponse">SdkFilesystemCheckGetStatusResponse </h2>
-<p>SdkFilesystemCheckGetStatusResponse defines the response for a
-SdkFilesystemCheckGetStatusRequest.</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>status</td>
-<td><a href="#filesystemcheckfilesystemcheckstatus"> FilesystemCheck.FilesystemCheckStatus</a></td>
-<td>Status code representing the state of the filesystem check operation</td>
-</tr>
-<tr>
-<td>health_status</td>
-<td><a href="#filesystemcheckfilesystemhealthstatus"> FilesystemCheck.FilesystemHealthStatus</a></td>
-<td>Status code representing the health of the filesystem after a checkHealth operation</td>
-</tr>
-<tr>
-<td>mode</td>
-<td><a href="#string"> string</a></td>
-<td>Text string representing the mode of filesystem check operation</td>
-</tr>
-<tr>
-<td>message</td>
-<td><a href="#string"> string</a></td>
-<td>Text blob containing ASCII text providing details of the operation</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
 <h2 id="sdkfilesystemcheckstartrequest">SdkFilesystemCheckStartRequest </h2>
 <p>SdkFilesystemCheckStartRequest defines a request to start a background
 filesystem consistency check operation</p>
@@ -5736,6 +5779,63 @@ SdkFilesystemCheckStartRequest.</p>
 <td>status</td>
 <td><a href="#filesystemcheckfilesystemcheckstatus"> FilesystemCheck.FilesystemCheckStatus</a></td>
 <td>Status code representing the state of the filesystem check operation</td>
+</tr>
+<tr>
+<td>message</td>
+<td><a href="#string"> string</a></td>
+<td>Text blob containing ASCII text providing details of the operation</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkfilesystemcheckstatusrequest">SdkFilesystemCheckStatusRequest </h2>
+<p>SdkFilesystemCheckStatusRequest defines a request to get status of a
+background filesystem check operation</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of the volume</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkfilesystemcheckstatusresponse">SdkFilesystemCheckStatusResponse </h2>
+<p>SdkFilesystemCheckStatusResponse defines the response for a
+SdkFilesystemCheckStatusRequest.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>status</td>
+<td><a href="#filesystemcheckfilesystemcheckstatus"> FilesystemCheck.FilesystemCheckStatus</a></td>
+<td>Status code representing the state of the filesystem check operation</td>
+</tr>
+<tr>
+<td>health_status</td>
+<td><a href="#filesystemhealthstatus"> FilesystemHealthStatus</a></td>
+<td>Status code representing the health of the filesystem after a checkHealth operation</td>
+</tr>
+<tr>
+<td>mode</td>
+<td><a href="#string"> string</a></td>
+<td>Text string representing the mode of filesystem check operation</td>
 </tr>
 <tr>
 <td>message</td>
@@ -7178,38 +7278,24 @@ rules followed</p>
 <td>TrialRun if true the job only produces steps that would be taken without making any changes</td>
 </tr>
 <tr>
-<td>pool_selector_labels</td>
-<td><a href="#sdkstoragerebalancerequestpoolselectorlabelsentry">map SdkStorageRebalanceRequest.PoolSelectorLabelsEntry</a></td>
-<td>PoolSelectorLabels allows selecting pools to which trigger thresholds will apply</td>
+<td>source_pool_selector</td>
+<td><a href="#labelselectorrequirement">repeated LabelSelectorRequirement</a></td>
+<td>SourcePoolSelector allows selecting pools to which trigger thresholds will apply as source</td>
+</tr>
+<tr>
+<td>target_pool_selector</td>
+<td><a href="#labelselectorrequirement">repeated LabelSelectorRequirement</a></td>
+<td>TargetPoolSelector allows selecting pools to which trigger thresholds will apply as target</td>
 </tr>
 <tr>
 <td>max_duration_minutes</td>
 <td><a href="#uint64"> uint64</a></td>
 <td>MaxDurationMinutes defines how long operation should run when started at schedule. 0 values means no limit on duration</td>
 </tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkstoragerebalancerequestpoolselectorlabelsentry">SdkStorageRebalanceRequest.PoolSelectorLabelsEntry </h2>
-<table>
-<thead>
 <tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>key</td>
-<td><a href="#string"> string</a></td>
-<td>none</td>
-</tr>
-<tr>
-<td>value</td>
-<td><a href="#string"> string</a></td>
-<td>none</td>
+<td>remove_repl_1_snapshots</td>
+<td><a href="#bool"> bool</a></td>
+<td>RemoveRepl1Snapshots if true will instruct rebalance job to remove repl-1 snapshots</td>
 </tr>
 </tbody>
 </table>
@@ -9035,9 +9121,9 @@ to seed the volume with data.</p>
 <td>ID of the rebalance job</td>
 </tr>
 <tr>
-<td>error</td>
+<td>status</td>
 <td><a href="#string"> string</a></td>
-<td>Error describes errors occurred during rebalance</td>
+<td>Status describes status of pools after rebalance if rebalance did not finish successfully</td>
 </tr>
 <tr>
 <td>state</td>
@@ -9054,6 +9140,11 @@ to seed the volume with data.</p>
 <td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
 <td>CreateTime is the time the job was created</td>
 </tr>
+<tr>
+<td>last_update_time</td>
+<td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
+<td>LastUpdateTime is the time the job was updated</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -9069,11 +9160,6 @@ to seed the volume with data.</p>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>last_update_time</td>
-<td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
-<td>LastUpdateTime is the time the job was last updated</td>
-</tr>
 <tr>
 <td>total_run_time_seconds</td>
 <td><a href="#uint64"> uint64</a></td>
@@ -9342,9 +9428,9 @@ to seed the volume with data.</p>
 <td>Usage is bytes consumed by this volume.</td>
 </tr>
 <tr>
-<td>last_fsck_scan</td>
+<td>last_scan</td>
 <td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
-<td>LastFsckScan is the time when an integrity check was run.</td>
+<td>LastScan is the time when an integrity check was run.</td>
 </tr>
 <tr>
 <td>format</td>
@@ -9432,9 +9518,19 @@ to seed the volume with data.</p>
 <td>Fastpath extensions</td>
 </tr>
 <tr>
-<td>last_fsck_scan_fix</td>
+<td>last_scan_fix</td>
 <td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
-<td>LastFsckScanFix is the time when an integrity check fixed errors in filesystem</td>
+<td>LastScanFix is the time when an integrity check fixed errors in filesystem</td>
+</tr>
+<tr>
+<td>last_scan_status</td>
+<td><a href="#filesystemhealthstatus"> FilesystemHealthStatus</a></td>
+<td>LastScanStatus is the time when an integrity check fixed errors in filesystem</td>
+</tr>
+<tr>
+<td>mount_options</td>
+<td><a href="#mountoptions"> MountOptions</a></td>
+<td>MountOptions are the runtime mount options that will be used while mounting this volume</td>
 </tr>
 </tbody>
 </table>
@@ -10162,6 +10258,16 @@ performed on a volumen</p>
 <td><a href="#xattrvalue"> Xattr.Value</a></td>
 <td>Xattr specifies implementation specific volume attributes</td>
 </tr>
+<tr>
+<td>scan_policy</td>
+<td><a href="#scanpolicy"> ScanPolicy</a></td>
+<td>ScanPolicy specifies the filesystem check policy</td>
+</tr>
+<tr>
+<td>mount_options</td>
+<td><a href="#mountoptions"> MountOptions</a></td>
+<td>MountOptions defines the options that should be used while mounting this volume</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -10331,6 +10437,16 @@ performed on a volumen</p>
 <td><a href="#exportspec"> ExportSpec</a></td>
 <td>none</td>
 </tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> scan_policy_opt.scan_policy</td>
+<td><a href="#scanpolicy"> ScanPolicy</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> mount_opt.mount_opt_spec</td>
+<td><a href="#mountoptions"> MountOptions</a></td>
+<td>none</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -10473,6 +10589,21 @@ performed on a volumen</p>
 <tr>
 <td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> fastpath_opt.fastpath</td>
 <td><a href="#bool"> bool</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> xattr_opt.xattr</td>
+<td><a href="#xattrvalue"> Xattr.Value</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> scan_policy_opt.scan_policy</td>
+<td><a href="#scanpolicy"> ScanPolicy</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> mount_opt.mount_opt_spec</td>
+<td><a href="#mountoptions"> MountOptions</a></td>
 <td>none</td>
 </tr>
 </tbody>
@@ -11032,7 +11163,7 @@ OpenStorageFilesystemCheck service APIs()</p>
 </tr>
 </tbody>
 </table>
-<h2 id="filesystemcheckfilesystemhealthstatus">FilesystemCheck.FilesystemHealthStatus </h2>
+<h2 id="filesystemhealthstatus">FilesystemHealthStatus </h2>
 <table>
 <thead>
 <tr>
@@ -11050,12 +11181,17 @@ OpenStorageFilesystemCheck service APIs()</p>
 <tr>
 <td>FS_HEALTH_STATUS_HEALTHY</td>
 <td>1</td>
-<td>filesystem health is healthy</td>
+<td>filesystem is a healthy</td>
 </tr>
 <tr>
-<td>FS_HEALTH_STATUS_NOT_HEALTHY</td>
+<td>FS_HEALTH_STATUS_SAFE_TO_FIX</td>
 <td>2</td>
-<td>filesystem health is not healthy</td>
+<td>filesystem has errors, but can be fixed safely</td>
+</tr>
+<tr>
+<td>FS_HEALTH_STATUS_NEEDS_INSPECTION</td>
+<td>3</td>
+<td>filesystem has errors, these cannot be fixed automatically, user needs to review the reported errors and take appropriate action</td>
 </tr>
 </tbody>
 </table>
@@ -11384,6 +11520,60 @@ used for.</p>
 </tr>
 <tr>
 <td>PARAM_TRUE</td>
+<td>2</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<h2 id="scanpolicyscanaction">ScanPolicy.ScanAction </h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SCAN_ACTION_NONE</td>
+<td>0</td>
+<td>none</td>
+</tr>
+<tr>
+<td>SCAN_ACTION_SCAN_ONLY</td>
+<td>1</td>
+<td>none</td>
+</tr>
+<tr>
+<td>SCAN_ACTION_SCAN_REPAIR</td>
+<td>2</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<h2 id="scanpolicyscantrigger">ScanPolicy.ScanTrigger </h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SCAN_TRIGGER_NONE</td>
+<td>0</td>
+<td>none</td>
+</tr>
+<tr>
+<td>SCAN_TRIGGER_ON_MOUNT</td>
+<td>1</td>
+<td>none</td>
+</tr>
+<tr>
+<td>SCAN_TRIGGER_ON_NEXT_MOUNT</td>
 <td>2</td>
 <td>none</td>
 </tr>
@@ -11747,7 +11937,7 @@ client and server applications</p>
 </tr>
 <tr>
 <td>Minor</td>
-<td>83</td>
+<td>91</td>
 <td>SDK version minor value of this specification</td>
 </tr>
 <tr>
@@ -12385,7 +12575,7 @@ client and server applications</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Nightly","level":"1.5.5","depth":2,"next":{"title":"Changelog","level":"1.5.5.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.4.1","depth":3,"path":"release-7.0.changelog.md","ref":"release-7.0.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"master.generated-api.md","mtime":"2020-06-20T01:15:47.091Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-20T01:15:55.235Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Nightly","level":"1.5.5","depth":2,"next":{"title":"Changelog","level":"1.5.5.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.4.1","depth":3,"path":"release-7.0.changelog.md","ref":"release-7.0.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"master.generated-api.md","mtime":"2020-07-14T16:14:35.021Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-14T16:14:44.359Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

@@ -72,6 +72,8 @@
     - [LocateResponse](#locateresponse)
     - [LocateResponse.DockeridsEntry](#locateresponsedockeridsentry)
     - [LocateResponse.MountsEntry](#locateresponsemountsentry)
+    - [MountOptions](#mountoptions)
+    - [MountOptions.OptionsEntry](#mountoptionsoptionsentry)
     - [ObjectstoreInfo](#objectstoreinfo)
     - [Ownership](#ownership)
     - [Ownership.AccessControl](#ownershipaccesscontrol)
@@ -84,6 +86,7 @@
     - [RestoreVolumeSpec](#restorevolumespec)
     - [RuntimeStateMap](#runtimestatemap)
     - [RuntimeStateMap.RuntimeStateEntry](#runtimestatemapruntimestateentry)
+    - [ScanPolicy](#scanpolicy)
     - [SdkAlertsAlertTypeQuery](#sdkalertsalerttypequery)
     - [SdkAlertsCountSpan](#sdkalertscountspan)
     - [SdkAlertsDeleteRequest](#sdkalertsdeleterequest)
@@ -183,10 +186,10 @@
     - [SdkCredentialValidateResponse](#sdkcredentialvalidateresponse)
     - [SdkEnumerateRebalanceJobsRequest](#sdkenumeraterebalancejobsrequest)
     - [SdkEnumerateRebalanceJobsResponse](#sdkenumeraterebalancejobsresponse)
-    - [SdkFilesystemCheckGetStatusRequest](#sdkfilesystemcheckgetstatusrequest)
-    - [SdkFilesystemCheckGetStatusResponse](#sdkfilesystemcheckgetstatusresponse)
     - [SdkFilesystemCheckStartRequest](#sdkfilesystemcheckstartrequest)
     - [SdkFilesystemCheckStartResponse](#sdkfilesystemcheckstartresponse)
+    - [SdkFilesystemCheckStatusRequest](#sdkfilesystemcheckstatusrequest)
+    - [SdkFilesystemCheckStatusResponse](#sdkfilesystemcheckstatusresponse)
     - [SdkFilesystemCheckStopRequest](#sdkfilesystemcheckstoprequest)
     - [SdkFilesystemCheckStopResponse](#sdkfilesystemcheckstopresponse)
     - [SdkFilesystemTrimGetStatusRequest](#sdkfilesystemtrimgetstatusrequest)
@@ -270,7 +273,6 @@
     - [SdkStoragePoolResizeRequest](#sdkstoragepoolresizerequest)
     - [SdkStoragePoolResizeResponse](#sdkstoragepoolresizeresponse)
     - [SdkStorageRebalanceRequest](#sdkstoragerebalancerequest)
-    - [SdkStorageRebalanceRequest.PoolSelectorLabelsEntry](#sdkstoragerebalancerequestpoolselectorlabelsentry)
     - [SdkStorageRebalanceResponse](#sdkstoragerebalanceresponse)
     - [SdkUpdateRebalanceJobRequest](#sdkupdaterebalancejobrequest)
     - [SdkUpdateRebalanceJobResponse](#sdkupdaterebalancejobresponse)
@@ -394,7 +396,7 @@
     - [FastpathProtocol](#fastpathprotocol)
     - [FastpathStatus](#fastpathstatus)
     - [FilesystemCheck.FilesystemCheckStatus](#filesystemcheckfilesystemcheckstatus)
-    - [FilesystemCheck.FilesystemHealthStatus](#filesystemcheckfilesystemhealthstatus)
+    - [FilesystemHealthStatus](#filesystemhealthstatus)
     - [FilesystemTrim.FilesystemTrimStatus](#filesystemtrimfilesystemtrimstatus)
     - [GraphDriverChangeType](#graphdriverchangetype)
     - [HardwareType](#hardwaretype)
@@ -404,6 +406,8 @@
     - [Ownership.AccessType](#ownershipaccesstype)
     - [ResourceType](#resourcetype)
     - [RestoreParamBoolType](#restoreparambooltype)
+    - [ScanPolicy.ScanAction](#scanpolicyscanaction)
+    - [ScanPolicy.ScanTrigger](#scanpolicyscantrigger)
     - [SdkCloudBackupOpType](#sdkcloudbackupoptype)
     - [SdkCloudBackupRequestedState](#sdkcloudbackuprequestedstate)
     - [SdkCloudBackupStatusType](#sdkcloudbackupstatustype)
@@ -781,10 +785,10 @@ Validate is used to validate credentials
     [SdkFilesystemCheckStartResponse](#sdkfilesystemcheckstartresponse)
 
 Start a filesystem-check background operation on a unmounted volume.
-## GetStatus {#methodopenstorageapiopenstoragefilesystemcheckgetstatus}
+## Status {#methodopenstorageapiopenstoragefilesystemcheckstatus}
 
-> **rpc** GetStatus([SdkFilesystemCheckGetStatusRequest](#sdkfilesystemcheckgetstatusrequest))
-    [SdkFilesystemCheckGetStatusResponse](#sdkfilesystemcheckgetstatusresponse)
+> **rpc** Status([SdkFilesystemCheckStatusRequest](#sdkfilesystemcheckstatusrequest))
+    [SdkFilesystemCheckStatusResponse](#sdkfilesystemcheckstatusresponse)
 
 Get Status of a filesystem-check background operation on an unmounted
 volume, if any
@@ -1929,6 +1933,29 @@ and/or Container IDs and their mount paths
  <!-- end HasFields -->
 
 
+## MountOptions {#mountoptions}
+MountOptions defines the mount options with which a volume is mounted.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| options | [map MountOptions.OptionsEntry](#mountoptionsoptionsentry) | Options are opaque key value pairs that are passed as mount options when a volume is mounted. If an empty value is provided only the key will be passed as an option If both key and value are provided then 'key=value' will be passed as an option |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## MountOptions.OptionsEntry {#mountoptionsoptionsentry}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [ string](#string) | none |
+| value | [ string](#string) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
 ## ObjectstoreInfo {#objectstoreinfo}
 ObjectstoreInfo is a structure that has current objectstore info
 
@@ -2082,6 +2109,7 @@ inherit corresponding field value from backup's spec.
 | ownership | [ Ownership](#ownership) | Ownership |
 | export_spec | [ ExportSpec](#exportspec) | ExportSpec defines how the volume should be exported. |
 | fp_preference | [ RestoreParamBoolType](#restoreparambooltype) | fastpath extensions |
+| mount_options | [ MountOptions](#mountoptions) | MountOptions defines the options that should be used while mounting this volume |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -2106,6 +2134,28 @@ information.
 | ----- | ---- | ----------- |
 | key | [ string](#string) | none |
 | value | [ string](#string) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## ScanPolicy {#scanpolicy}
+ScanPolicy defines when a filesystem check is triggered and what action to take
+User can specify *one* of the following valid policies
+1. trigger=SCAN_TRIGGER_ON_MOUNT, action=SCAN_ACTION_SCAN_ONLY
+2. trigger=SCAN_TRIGGER_ON_MOUNT, action=SCAN_ACTION_SCAN_REPAIR
+3. trigger=SCAN_TRIGGER_ON_NEXT_MOUNT, action=SCAN_ACTION_SCAN_ONLY
+4. trigger=SCAN_TRIGGER_ON_NEXT_MOUNT, action=SCAN_ACTION_SCAN_REPAIR
+5. trigger=SCAN_TRIGGER_NONE, action=SCAN_ACTION_NONE
+Note: When trigger == SCAN_TRIGGER_ON_NEXT_MOUNT, the associated action is
+performed once on the next mount and the scanpolicy gets reset to
+`trigger=SCAN_TRIGGER_NONE, action=SCAN_ACTION_NONE`, irrespective of the
+output of the action.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| trigger | [ ScanPolicy.ScanTrigger](#scanpolicyscantrigger) | none |
+| action | [ ScanPolicy.ScanAction](#scanpolicyscanaction) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -2332,6 +2382,7 @@ Defines a request to create a backup of a volume to the cloud
 | task_id | [ string](#string) | TaskId of the task performing this backup. This value can be used for idempotency. |
 | labels | [map SdkCloudBackupCreateRequest.LabelsEntry](#sdkcloudbackupcreaterequestlabelsentry) | Labels are list of key value pairs to tag the cloud backup. These labels are stored in the metadata associated with the backup. |
 | full_backup_frequency | [ uint32](#uint32) | FullBackupFrequency indicates number of incremental backup after whcih a fullbackup must be created. This is to override the default value for manual/user triggerred backups and not applicable for scheduled backups Value of 0 retains the default behavior. |
+| delete_local | [ bool](#bool) | DeleteLocal indicates if local snap created for backup must be deleted after the backup is complete |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -2463,6 +2514,7 @@ Defines a request to create a group backup of a group to the cloud
 | credential_id | [ string](#string) | Credential id refers to the cloud credentials needed to backup |
 | full | [ bool](#bool) | Full indicates if full backup is desired even though incremental is possible |
 | labels | [map SdkCloudBackupGroupCreateRequest.LabelsEntry](#sdkcloudbackupgroupcreaterequestlabelsentry) | Labels are list of key value pairs to tag the cloud backup. These labels are stored in the metadata associated with the backup. |
+| delete_local | [ bool](#bool) | DeleteLocal indicates if local snap created for backup must be deleted after the backup is complete |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3238,33 +3290,6 @@ Empty response
  <!-- end HasFields -->
 
 
-## SdkFilesystemCheckGetStatusRequest {#sdkfilesystemcheckgetstatusrequest}
-SdkFilesystemCheckGetStatusRequest defines a request to get status of a
-background filesystem check operation
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| volume_id | [ string](#string) | Id of the volume |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkFilesystemCheckGetStatusResponse {#sdkfilesystemcheckgetstatusresponse}
-SdkFilesystemCheckGetStatusResponse defines the response for a
-SdkFilesystemCheckGetStatusRequest.
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| status | [ FilesystemCheck.FilesystemCheckStatus](#filesystemcheckfilesystemcheckstatus) | Status code representing the state of the filesystem check operation |
-| health_status | [ FilesystemCheck.FilesystemHealthStatus](#filesystemcheckfilesystemhealthstatus) | Status code representing the health of the filesystem after a checkHealth operation |
-| mode | [ string](#string) | Text string representing the mode of filesystem check operation |
-| message | [ string](#string) | Text blob containing ASCII text providing details of the operation |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
 ## SdkFilesystemCheckStartRequest {#sdkfilesystemcheckstartrequest}
 SdkFilesystemCheckStartRequest defines a request to start a background
 filesystem consistency check operation
@@ -3286,6 +3311,33 @@ SdkFilesystemCheckStartRequest.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | status | [ FilesystemCheck.FilesystemCheckStatus](#filesystemcheckfilesystemcheckstatus) | Status code representing the state of the filesystem check operation |
+| message | [ string](#string) | Text blob containing ASCII text providing details of the operation |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkFilesystemCheckStatusRequest {#sdkfilesystemcheckstatusrequest}
+SdkFilesystemCheckStatusRequest defines a request to get status of a
+background filesystem check operation
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id | [ string](#string) | Id of the volume |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkFilesystemCheckStatusResponse {#sdkfilesystemcheckstatusresponse}
+SdkFilesystemCheckStatusResponse defines the response for a
+SdkFilesystemCheckStatusRequest.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| status | [ FilesystemCheck.FilesystemCheckStatus](#filesystemcheckfilesystemcheckstatus) | Status code representing the state of the filesystem check operation |
+| health_status | [ FilesystemHealthStatus](#filesystemhealthstatus) | Status code representing the health of the filesystem after a checkHealth operation |
+| mode | [ string](#string) | Text string representing the mode of filesystem check operation |
 | message | [ string](#string) | Text blob containing ASCII text providing details of the operation |
  <!-- end Fields -->
  <!-- end HasFields -->
@@ -4164,20 +4216,10 @@ Defines a response when resizing a storage pool
 | ----- | ---- | ----------- |
 | trigger_thresholds | [repeated StorageRebalanceTriggerThreshold](#storagerebalancetriggerthreshold) | TriggerThresholds defines thresholds that would trigger rebalance. For example, TriggerThreshold{ThresholdTypeAbsolutePercent, MetricTypeUsedSpace, 75, 10} would trigger rebalance on pools where used space is more than 75% or less than 10%. Similarly, TriggerThreshold{ThresholdTypeDeltaMeanPercent, MetricTypeUsedSpace, 15, 25} will trigger rebalance for pools where used space is more than 15% from the mean percent for used space for the entire cluster or less than 25% from the mean percent for used space for the entire cluster. |
 | trial_run | [ bool](#bool) | TrialRun if true the job only produces steps that would be taken without making any changes |
-| pool_selector_labels | [map SdkStorageRebalanceRequest.PoolSelectorLabelsEntry](#sdkstoragerebalancerequestpoolselectorlabelsentry) | PoolSelectorLabels allows selecting pools to which trigger thresholds will apply |
+| source_pool_selector | [repeated LabelSelectorRequirement](#labelselectorrequirement) | SourcePoolSelector allows selecting pools to which trigger thresholds will apply as source |
+| target_pool_selector | [repeated LabelSelectorRequirement](#labelselectorrequirement) | TargetPoolSelector allows selecting pools to which trigger thresholds will apply as target |
 | max_duration_minutes | [ uint64](#uint64) | MaxDurationMinutes defines how long operation should run when started at schedule. 0 values means no limit on duration |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkStorageRebalanceRequest.PoolSelectorLabelsEntry {#sdkstoragerebalancerequestpoolselectorlabelsentry}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| key | [ string](#string) | none |
-| value | [ string](#string) | none |
+| remove_repl_1_snapshots | [ bool](#bool) | RemoveRepl1Snapshots if true will instruct rebalance job to remove repl-1 snapshots |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -5044,10 +5086,11 @@ StorageRebalanceJob describes job input and current status
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | id | [ string](#string) | ID of the rebalance job |
-| error | [ string](#string) | Error describes errors occurred during rebalance |
+| status | [ string](#string) | Status describes status of pools after rebalance if rebalance did not finish successfully |
 | state | [ StorageRebalanceJobState](#storagerebalancejobstate) | State of the current job |
 | parameters | [ SdkStorageRebalanceRequest](#sdkstoragerebalancerequest) | Parameters is the original request params for this rebalance operation |
 | create_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | CreateTime is the time the job was created |
+| last_update_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | LastUpdateTime is the time the job was updated |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -5058,7 +5101,6 @@ StorageRebalanceSummary describes summary for the job
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| last_update_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | LastUpdateTime is the time the job was last updated |
 | total_run_time_seconds | [ uint64](#uint64) | TotalRunTimeSeconds is the total time rebalance is running |
 | work_summary | [repeated StorageRebalanceWorkSummary](#storagerebalanceworksummary) | WorkSummary summarizes the work done |
  <!-- end Fields -->
@@ -5155,7 +5197,7 @@ Volume represents an abstract storage volume.
 | ctime | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | Volume creation time |
 | spec | [ VolumeSpec](#volumespec) | User specified VolumeSpec |
 | usage | [ uint64](#uint64) | Usage is bytes consumed by this volume. |
-| last_fsck_scan | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | LastFsckScan is the time when an integrity check was run. |
+| last_scan | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | LastScan is the time when an integrity check was run. |
 | format | [ FSType](#fstype) | Format specifies the filesytem for this volume. |
 | status | [ VolumeStatus](#volumestatus) | VolumeStatus is the availability status of this volume. |
 | state | [ VolumeState](#volumestate) | VolumeState is the current runtime state of this volume. |
@@ -5173,7 +5215,9 @@ Volume represents an abstract storage volume.
 | attach_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | AttachTime time this device was last attached externally. |
 | detach_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | DetachTime time this device was detached. |
 | fpConfig | [ FastpathConfig](#fastpathconfig) | Fastpath extensions |
-| last_fsck_scan_fix | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | LastFsckScanFix is the time when an integrity check fixed errors in filesystem |
+| last_scan_fix | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | LastScanFix is the time when an integrity check fixed errors in filesystem |
+| last_scan_status | [ FilesystemHealthStatus](#filesystemhealthstatus) | LastScanStatus is the time when an integrity check fixed errors in filesystem |
+| mount_options | [ MountOptions](#mountoptions) | MountOptions are the runtime mount options that will be used while mounting this volume |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -5474,6 +5518,8 @@ VolumeSpec has the properties needed to create a volume.
 | export_spec | [ ExportSpec](#exportspec) | ExportSpec defines how the volume should be exported. |
 | fp_preference | [ bool](#bool) | fastpath extensions |
 | xattr | [ Xattr.Value](#xattrvalue) | Xattr specifies implementation specific volume attributes |
+| scan_policy | [ ScanPolicy](#scanpolicy) | ScanPolicy specifies the filesystem check policy |
+| mount_options | [ MountOptions](#mountoptions) | MountOptions defines the options that should be used while mounting this volume |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -5522,6 +5568,8 @@ VolumeSpecPolicy provides a method to set volume storage policy
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) nodiscard_opt.nodiscard | [ bool](#bool) | none |
 | io_strategy | [ IoStrategy](#iostrategy) | IoStrategy preferred strategy for I/O. |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) export_spec_opt.export_spec | [ ExportSpec](#exportspec) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) scan_policy_opt.scan_policy | [ ScanPolicy](#scanpolicy) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) mount_opt.mount_opt_spec | [ MountOptions](#mountoptions) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -5565,6 +5613,9 @@ VolumeSpecUpdate provides a method to set any of the VolumeSpec of an existing v
 | io_strategy | [ IoStrategy](#iostrategy) | IoStrategy preferred strategy for I/O. |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) export_spec_opt.export_spec | [ ExportSpec](#exportspec) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) fastpath_opt.fastpath | [ bool](#bool) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) xattr_opt.xattr | [ Xattr.Value](#xattrvalue) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) scan_policy_opt.scan_policy | [ ScanPolicy](#scanpolicy) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) mount_opt.mount_opt_spec | [ MountOptions](#mountoptions) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -5787,14 +5838,15 @@ OpenStorageFilesystemCheck service APIs()
 
 
 
-## FilesystemCheck.FilesystemHealthStatus {#filesystemcheckfilesystemhealthstatus}
+## FilesystemHealthStatus {#filesystemhealthstatus}
 
 
 | Name | Number | Description |
 | ---- | ------ | ----------- |
 | FS_HEALTH_STATUS_UNKNOWN | 0 | filesystem health status is unknown |
-| FS_HEALTH_STATUS_HEALTHY | 1 | filesystem health is healthy |
-| FS_HEALTH_STATUS_NOT_HEALTHY | 2 | filesystem health is not healthy |
+| FS_HEALTH_STATUS_HEALTHY | 1 | filesystem is a healthy |
+| FS_HEALTH_STATUS_SAFE_TO_FIX | 2 | filesystem has errors, but can be fixed safely |
+| FS_HEALTH_STATUS_NEEDS_INSPECTION | 3 | filesystem has errors, these cannot be fixed automatically, user needs to review the reported errors and take appropriate action |
 
 
 
@@ -5928,6 +5980,30 @@ used for.
 
 
 
+## ScanPolicy.ScanAction {#scanpolicyscanaction}
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| SCAN_ACTION_NONE | 0 | none |
+| SCAN_ACTION_SCAN_ONLY | 1 | none |
+| SCAN_ACTION_SCAN_REPAIR | 2 | none |
+
+
+
+
+## ScanPolicy.ScanTrigger {#scanpolicyscantrigger}
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| SCAN_TRIGGER_NONE | 0 | none |
+| SCAN_TRIGGER_ON_MOUNT | 1 | none |
+| SCAN_TRIGGER_ON_NEXT_MOUNT | 2 | none |
+
+
+
+
 ## SdkCloudBackupOpType {#sdkcloudbackupoptype}
 CloudBackup operations types
 
@@ -6055,7 +6131,7 @@ client and server applications
 | ---- | ------ | ----------- |
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
-| Minor | 83 | SDK version minor value of this specification |
+| Minor | 91 | SDK version minor value of this specification |
 | Patch | 0 | SDK version patch value of this specification |
 
 

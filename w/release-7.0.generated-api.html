@@ -530,6 +530,7 @@
 <li><a href="#restorevolumespec">RestoreVolumeSpec</a></li>
 <li><a href="#runtimestatemap">RuntimeStateMap</a></li>
 <li><a href="#runtimestatemapruntimestateentry">RuntimeStateMap.RuntimeStateEntry</a></li>
+<li><a href="#scanpolicy">ScanPolicy</a></li>
 <li><a href="#sdkalertsalerttypequery">SdkAlertsAlertTypeQuery</a></li>
 <li><a href="#sdkalertscountspan">SdkAlertsCountSpan</a></li>
 <li><a href="#sdkalertsdeleterequest">SdkAlertsDeleteRequest</a></li>
@@ -629,14 +630,10 @@
 <li><a href="#sdkcredentialvalidateresponse">SdkCredentialValidateResponse</a></li>
 <li><a href="#sdkenumeraterebalancejobsrequest">SdkEnumerateRebalanceJobsRequest</a></li>
 <li><a href="#sdkenumeraterebalancejobsresponse">SdkEnumerateRebalanceJobsResponse</a></li>
-<li><a href="#sdkfilesystemcheckcheckhealthgetstatusrequest">SdkFilesystemCheckCheckHealthGetStatusRequest</a></li>
-<li><a href="#sdkfilesystemcheckcheckhealthgetstatusresponse">SdkFilesystemCheckCheckHealthGetStatusResponse</a></li>
-<li><a href="#sdkfilesystemcheckcheckhealthrequest">SdkFilesystemCheckCheckHealthRequest</a></li>
-<li><a href="#sdkfilesystemcheckcheckhealthresponse">SdkFilesystemCheckCheckHealthResponse</a></li>
-<li><a href="#sdkfilesystemcheckfixallgetstatusrequest">SdkFilesystemCheckFixAllGetStatusRequest</a></li>
-<li><a href="#sdkfilesystemcheckfixallgetstatusresponse">SdkFilesystemCheckFixAllGetStatusResponse</a></li>
-<li><a href="#sdkfilesystemcheckfixallrequest">SdkFilesystemCheckFixAllRequest</a></li>
-<li><a href="#sdkfilesystemcheckfixallresponse">SdkFilesystemCheckFixAllResponse</a></li>
+<li><a href="#sdkfilesystemcheckstartrequest">SdkFilesystemCheckStartRequest</a></li>
+<li><a href="#sdkfilesystemcheckstartresponse">SdkFilesystemCheckStartResponse</a></li>
+<li><a href="#sdkfilesystemcheckstatusrequest">SdkFilesystemCheckStatusRequest</a></li>
+<li><a href="#sdkfilesystemcheckstatusresponse">SdkFilesystemCheckStatusResponse</a></li>
 <li><a href="#sdkfilesystemcheckstoprequest">SdkFilesystemCheckStopRequest</a></li>
 <li><a href="#sdkfilesystemcheckstopresponse">SdkFilesystemCheckStopResponse</a></li>
 <li><a href="#sdkfilesystemtrimgetstatusrequest">SdkFilesystemTrimGetStatusRequest</a></li>
@@ -720,7 +717,6 @@
 <li><a href="#sdkstoragepoolresizerequest">SdkStoragePoolResizeRequest</a></li>
 <li><a href="#sdkstoragepoolresizeresponse">SdkStoragePoolResizeResponse</a></li>
 <li><a href="#sdkstoragerebalancerequest">SdkStorageRebalanceRequest</a></li>
-<li><a href="#sdkstoragerebalancerequestpoolselectorlabelsentry">SdkStorageRebalanceRequest.PoolSelectorLabelsEntry</a></li>
 <li><a href="#sdkstoragerebalanceresponse">SdkStorageRebalanceResponse</a></li>
 <li><a href="#sdkupdaterebalancejobrequest">SdkUpdateRebalanceJobRequest</a></li>
 <li><a href="#sdkupdaterebalancejobresponse">SdkUpdateRebalanceJobResponse</a></li>
@@ -844,9 +840,8 @@
 <li><a href="#fstype">FSType</a></li>
 <li><a href="#fastpathprotocol">FastpathProtocol</a></li>
 <li><a href="#fastpathstatus">FastpathStatus</a></li>
-<li><a href="#filesystemcheckcheckhealthstatus">FilesystemCheck.CheckHealthStatus</a></li>
 <li><a href="#filesystemcheckfilesystemcheckstatus">FilesystemCheck.FilesystemCheckStatus</a></li>
-<li><a href="#filesystemcheckfixallstatus">FilesystemCheck.FixAllStatus</a></li>
+<li><a href="#filesystemhealthstatus">FilesystemHealthStatus</a></li>
 <li><a href="#filesystemtrimfilesystemtrimstatus">FilesystemTrim.FilesystemTrimStatus</a></li>
 <li><a href="#graphdriverchangetype">GraphDriverChangeType</a></li>
 <li><a href="#hardwaretype">HardwareType</a></li>
@@ -856,6 +851,8 @@
 <li><a href="#ownershipaccesstype">Ownership.AccessType</a></li>
 <li><a href="#resourcetype">ResourceType</a></li>
 <li><a href="#restoreparambooltype">RestoreParamBoolType</a></li>
+<li><a href="#scanpolicyscanaction">ScanPolicy.ScanAction</a></li>
+<li><a href="#scanpolicyscantrigger">ScanPolicy.ScanTrigger</a></li>
 <li><a href="#sdkcloudbackupoptype">SdkCloudBackupOpType</a></li>
 <li><a href="#sdkcloudbackuprequestedstate">SdkCloudBackupRequestedState</a></li>
 <li><a href="#sdkcloudbackupstatustype">SdkCloudBackupStatusType</a></li>
@@ -1196,60 +1193,18 @@ id of the credentials once they are verified to work.</p>
 <p>Validate is used to validate credentials
  <!-- end methods --></p>
 <h1 id="serviceopenstorageapiopenstoragefilesystemcheck">OpenStorageFilesystemCheck </h1>
-<h2 id="openstoragefilesystemcheckservice">OpenStorageFilesystemCheckService</h2>
-<p>This service provides methods to manage filesystem check operation on a
-volume.</p>
-<p>This operation is run in the background on an <strong>unmounted volume</strong>.
-If the volume is mounted, then these APIs return error.</p>
-<p>Once the filesystem check operation(either CheckHealth() or FixAll()) is
-started, the clients have to poll for the status of the background operation
-using the <code>OpenStorageFilesystemcheck.CheckHealthGetStatus()</code> rpc request or
-<code>OpenStorageFilesystemCheck.FixAllGetStatus()</code> rpc request.</p>
-<p><strong>Note: CheckHealth() and FixAll() cannot run in parallel for the same volume</strong></p>
-<p>A typical workflow involving filesystem check would be as follows</p>
-<ol>
-<li>Attach the volume
-<code>OpenStorageMountAttachClient.Attach()</code></li>
-<li>Check the health of the filesystem by issuing a grpc call to
-<code>OpenStorageFilesystemCheckClient.CheckHealth()</code></li>
-<li>Status of the CheckHealth() operation can be retrieved by polling for the
-status using <code>OpenStorageFilesystemCheck.CheckHealthGetStatus()</code></li>
-<li>If the CheckHealth Operations status reports filesystem is in unhealthy
-state, then to fix all the problems issue a grpc call to
-<code>OpenStorageFilesystemCheckClient.FixAll()</code></li>
-<li>Status of the FixAll() operation can be retrieved by polling for the
-status using <code>OpenStorageFilesystemCheck.FixAllGetStatus()</code></li>
-<li>CheckHealth() and FixAll() operations run in the background, to stop these
-operations, issue a call to
-<code>OpenStorageFilesystemCheckClient.Stop()</code></li>
-</ol>
-<h2 id="methodopenstorageapiopenstoragefilesystemcheckcheckhealth">CheckHealth </h2>
+<h2 id="methodopenstorageapiopenstoragefilesystemcheckstart">Start </h2>
 <blockquote>
-<p><strong>rpc</strong> CheckHealth(<a href="#sdkfilesystemcheckcheckhealthrequest">SdkFilesystemCheckCheckHealthRequest</a>)
-    <a href="#sdkfilesystemcheckcheckhealthresponse">SdkFilesystemCheckCheckHealthResponse</a></p>
+<p><strong>rpc</strong> Start(<a href="#sdkfilesystemcheckstartrequest">SdkFilesystemCheckStartRequest</a>)
+    <a href="#sdkfilesystemcheckstartresponse">SdkFilesystemCheckStartResponse</a></p>
 </blockquote>
-<p>Get a report of issues found on the filesystem. This operation works on an
-unmounted volume.</p>
-<h2 id="methodopenstorageapiopenstoragefilesystemcheckcheckhealthgetstatus">CheckHealthGetStatus </h2>
+<p>Start a filesystem-check background operation on a unmounted volume.</p>
+<h2 id="methodopenstorageapiopenstoragefilesystemcheckstatus">Status </h2>
 <blockquote>
-<p><strong>rpc</strong> CheckHealthGetStatus(<a href="#sdkfilesystemcheckcheckhealthgetstatusrequest">SdkFilesystemCheckCheckHealthGetStatusRequest</a>)
-    <a href="#sdkfilesystemcheckcheckhealthgetstatusresponse">SdkFilesystemCheckCheckHealthGetStatusResponse</a></p>
+<p><strong>rpc</strong> Status(<a href="#sdkfilesystemcheckstatusrequest">SdkFilesystemCheckStatusRequest</a>)
+    <a href="#sdkfilesystemcheckstatusresponse">SdkFilesystemCheckStatusResponse</a></p>
 </blockquote>
-<p>Get Status of a filesystem CheckHealth background operation on an unmounted
-volume, if any</p>
-<h2 id="methodopenstorageapiopenstoragefilesystemcheckfixall">FixAll </h2>
-<blockquote>
-<p><strong>rpc</strong> FixAll(<a href="#sdkfilesystemcheckfixallrequest">SdkFilesystemCheckFixAllRequest</a>)
-    <a href="#sdkfilesystemcheckfixallresponse">SdkFilesystemCheckFixAllResponse</a></p>
-</blockquote>
-<p>FixAll fixes all the issues reported in the response to CheckHealth API on
-a filesystem. This operation works on an unmounted volume.</p>
-<h2 id="methodopenstorageapiopenstoragefilesystemcheckfixallgetstatus">FixAllGetStatus </h2>
-<blockquote>
-<p><strong>rpc</strong> FixAllGetStatus(<a href="#sdkfilesystemcheckfixallgetstatusrequest">SdkFilesystemCheckFixAllGetStatusRequest</a>)
-    <a href="#sdkfilesystemcheckfixallgetstatusresponse">SdkFilesystemCheckFixAllGetStatusResponse</a></p>
-</blockquote>
-<p>Get Status of a filesystem FixAll background operation on an unmounted
+<p>Get Status of a filesystem-check background operation on an unmounted
 volume, if any</p>
 <h2 id="methodopenstorageapiopenstoragefilesystemcheckstop">Stop </h2>
 <blockquote>
@@ -3466,6 +3421,43 @@ information.</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
+<h2 id="scanpolicy">ScanPolicy </h2>
+<p>ScanPolicy defines when a filesystem check is triggered and what action to take
+User can specify <em>one</em> of the following valid policies</p>
+<ol>
+<li>trigger=SCAN_TRIGGER_ON_MOUNT, action=SCAN_ACTION_SCAN_ONLY</li>
+<li>trigger=SCAN_TRIGGER_ON_MOUNT, action=SCAN_ACTION_SCAN_REPAIR</li>
+<li>trigger=SCAN_TRIGGER_ON_NEXT_MOUNT, action=SCAN_ACTION_SCAN_ONLY</li>
+<li>trigger=SCAN_TRIGGER_ON_NEXT_MOUNT, action=SCAN_ACTION_SCAN_REPAIR</li>
+<li>trigger=SCAN_TRIGGER_NONE, action=SCAN_ACTION_NONE
+Note: When trigger == SCAN_TRIGGER_ON_NEXT_MOUNT, the associated action is
+performed once on the next mount and the scanpolicy gets reset to
+<code>trigger=SCAN_TRIGGER_NONE, action=SCAN_ACTION_NONE</code>, irrespective of the
+output of the action.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>trigger</td>
+<td><a href="#scanpolicyscantrigger"> ScanPolicy.ScanTrigger</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>action</td>
+<td><a href="#scanpolicyscanaction"> ScanPolicy.ScanAction</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
 <h2 id="sdkalertsalerttypequery">SdkAlertsAlertTypeQuery </h2>
 <p>SdkAlertsAlertTypeQuery queries for alerts using alert type
 and it requires that resource type be provided as well.</p>
@@ -5673,8 +5665,60 @@ you will need to check if the value of credential_type is one of the ones below.
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
-<h2 id="sdkfilesystemcheckcheckhealthgetstatusrequest">SdkFilesystemCheckCheckHealthGetStatusRequest </h2>
-<p>SdkFilesystemCheckCheckHealthGetStatusRequest defines a request to get status of a
+<h2 id="sdkfilesystemcheckstartrequest">SdkFilesystemCheckStartRequest </h2>
+<p>SdkFilesystemCheckStartRequest defines a request to start a background
+filesystem consistency check operation</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of the volume</td>
+</tr>
+<tr>
+<td>mode</td>
+<td><a href="#string"> string</a></td>
+<td>Mode of operation</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkfilesystemcheckstartresponse">SdkFilesystemCheckStartResponse </h2>
+<p>SdkFilesystemCheckStartResponse defines the response for a
+SdkFilesystemCheckStartRequest.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>status</td>
+<td><a href="#filesystemcheckfilesystemcheckstatus"> FilesystemCheck.FilesystemCheckStatus</a></td>
+<td>Status code representing the state of the filesystem check operation</td>
+</tr>
+<tr>
+<td>message</td>
+<td><a href="#string"> string</a></td>
+<td>Text blob containing ASCII text providing details of the operation</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkfilesystemcheckstatusrequest">SdkFilesystemCheckStatusRequest </h2>
+<p>SdkFilesystemCheckStatusRequest defines a request to get status of a
 background filesystem check operation</p>
 <table>
 <thead>
@@ -5694,9 +5738,9 @@ background filesystem check operation</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
-<h2 id="sdkfilesystemcheckcheckhealthgetstatusresponse">SdkFilesystemCheckCheckHealthGetStatusResponse </h2>
-<p>SdkFilesystemCheckCheckHealthGetStatusResponse defines the response for a
-SdkFilesystemCheckCheckHealthGetStatusRequest.</p>
+<h2 id="sdkfilesystemcheckstatusresponse">SdkFilesystemCheckStatusResponse </h2>
+<p>SdkFilesystemCheckStatusResponse defines the response for a
+SdkFilesystemCheckStatusRequest.</p>
 <table>
 <thead>
 <tr>
@@ -5713,154 +5757,13 @@ SdkFilesystemCheckCheckHealthGetStatusRequest.</p>
 </tr>
 <tr>
 <td>health_status</td>
-<td><a href="#filesystemcheckcheckhealthstatus"> FilesystemCheck.CheckHealthStatus</a></td>
+<td><a href="#filesystemhealthstatus"> FilesystemHealthStatus</a></td>
 <td>Status code representing the health of the filesystem after a checkHealth operation</td>
 </tr>
 <tr>
-<td>message</td>
+<td>mode</td>
 <td><a href="#string"> string</a></td>
-<td>Text blob containing ASCII text providing details of the operation</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkfilesystemcheckcheckhealthrequest">SdkFilesystemCheckCheckHealthRequest </h2>
-<p>SdkFilesystemCheckCheckHealthRequest defines a request to report the
-filesystem consistency issues</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>volume_id</td>
-<td><a href="#string"> string</a></td>
-<td>Id of the volume</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkfilesystemcheckcheckhealthresponse">SdkFilesystemCheckCheckHealthResponse </h2>
-<p>SdkFilesystemCheckCheckHealthResponse defines the response for a
-SdkFilesystemCheckCheckHealthRequest.</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>status</td>
-<td><a href="#filesystemcheckfilesystemcheckstatus"> FilesystemCheck.FilesystemCheckStatus</a></td>
-<td>Status code representing the state of the filesystem check operation</td>
-</tr>
-<tr>
-<td>message</td>
-<td><a href="#string"> string</a></td>
-<td>Text blob containing ASCII text providing details of the operation</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkfilesystemcheckfixallgetstatusrequest">SdkFilesystemCheckFixAllGetStatusRequest </h2>
-<p>SdkFilesystemCheckFixAllGetStatusRequest defines a request to get status of a
-background filesystem check operation</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>volume_id</td>
-<td><a href="#string"> string</a></td>
-<td>Id of the volume</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkfilesystemcheckfixallgetstatusresponse">SdkFilesystemCheckFixAllGetStatusResponse </h2>
-<p>SdkFilesystemCheckFixAllGetStatusResponse defines the response for a
-SdkFilesystemCheckFixAllGetStatusRequest.</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>status</td>
-<td><a href="#filesystemcheckfilesystemcheckstatus"> FilesystemCheck.FilesystemCheckStatus</a></td>
-<td>Status code representing the state of the filesystem check operation</td>
-</tr>
-<tr>
-<td>health_status</td>
-<td><a href="#filesystemcheckfixallstatus"> FilesystemCheck.FixAllStatus</a></td>
-<td>Status code representing the health of the filesystem after FixAll operation</td>
-</tr>
-<tr>
-<td>message</td>
-<td><a href="#string"> string</a></td>
-<td>Text blob containing ASCII text providing details of the operation</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkfilesystemcheckfixallrequest">SdkFilesystemCheckFixAllRequest </h2>
-<p>SdkFilesystemCheckFixAllRequest defines a request to fix all the filesystem
-consistency issues</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>volume_id</td>
-<td><a href="#string"> string</a></td>
-<td>Id of the volume</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkfilesystemcheckfixallresponse">SdkFilesystemCheckFixAllResponse </h2>
-<p>SdkFilesystemCheckFixAllResponse defines the response for a
-SdkFilesystemCheckFixAllRequest.</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>status</td>
-<td><a href="#filesystemcheckfilesystemcheckstatus"> FilesystemCheck.FilesystemCheckStatus</a></td>
-<td>Status code representing the state of the filesystem check operation</td>
+<td>Text string representing the mode of filesystem check operation</td>
 </tr>
 <tr>
 <td>message</td>
@@ -7303,38 +7206,24 @@ rules followed</p>
 <td>TrialRun if true the job only produces steps that would be taken without making any changes</td>
 </tr>
 <tr>
-<td>pool_selector_labels</td>
-<td><a href="#sdkstoragerebalancerequestpoolselectorlabelsentry">map SdkStorageRebalanceRequest.PoolSelectorLabelsEntry</a></td>
-<td>PoolSelectorLabels allows selecting pools to which trigger thresholds will apply</td>
+<td>source_pool_selector</td>
+<td><a href="#labelselectorrequirement">repeated LabelSelectorRequirement</a></td>
+<td>SourcePoolSelector allows selecting pools to which trigger thresholds will apply as source</td>
+</tr>
+<tr>
+<td>target_pool_selector</td>
+<td><a href="#labelselectorrequirement">repeated LabelSelectorRequirement</a></td>
+<td>TargetPoolSelector allows selecting pools to which trigger thresholds will apply as target</td>
 </tr>
 <tr>
 <td>max_duration_minutes</td>
 <td><a href="#uint64"> uint64</a></td>
 <td>MaxDurationMinutes defines how long operation should run when started at schedule. 0 values means no limit on duration</td>
 </tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkstoragerebalancerequestpoolselectorlabelsentry">SdkStorageRebalanceRequest.PoolSelectorLabelsEntry </h2>
-<table>
-<thead>
 <tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>key</td>
-<td><a href="#string"> string</a></td>
-<td>none</td>
-</tr>
-<tr>
-<td>value</td>
-<td><a href="#string"> string</a></td>
-<td>none</td>
+<td>remove_repl_1_snapshots</td>
+<td><a href="#bool"> bool</a></td>
+<td>RemoveRepl1Snapshots if true will instruct rebalance job to remove repl-1 snapshots</td>
 </tr>
 </tbody>
 </table>
@@ -9160,9 +9049,9 @@ to seed the volume with data.</p>
 <td>ID of the rebalance job</td>
 </tr>
 <tr>
-<td>error</td>
+<td>status</td>
 <td><a href="#string"> string</a></td>
-<td>Error describes errors occurred during rebalance</td>
+<td>Status describes status of pools after rebalance if rebalance did not finish successfully</td>
 </tr>
 <tr>
 <td>state</td>
@@ -9179,6 +9068,11 @@ to seed the volume with data.</p>
 <td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
 <td>CreateTime is the time the job was created</td>
 </tr>
+<tr>
+<td>last_update_time</td>
+<td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
+<td>LastUpdateTime is the time the job was updated</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -9194,11 +9088,6 @@ to seed the volume with data.</p>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>last_update_time</td>
-<td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
-<td>LastUpdateTime is the time the job was last updated</td>
-</tr>
 <tr>
 <td>total_run_time_seconds</td>
 <td><a href="#uint64"> uint64</a></td>
@@ -9555,6 +9444,16 @@ to seed the volume with data.</p>
 <td>fpConfig</td>
 <td><a href="#fastpathconfig"> FastpathConfig</a></td>
 <td>Fastpath extensions</td>
+</tr>
+<tr>
+<td>last_scan_fix</td>
+<td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
+<td>LastScanFix is the time when an integrity check fixed errors in filesystem</td>
+</tr>
+<tr>
+<td>last_scan_status</td>
+<td><a href="#filesystemhealthstatus"> FilesystemHealthStatus</a></td>
+<td>LastScanStatus is the time when an integrity check fixed errors in filesystem</td>
 </tr>
 </tbody>
 </table>
@@ -10282,6 +10181,11 @@ performed on a volumen</p>
 <td><a href="#xattrvalue"> Xattr.Value</a></td>
 <td>Xattr specifies implementation specific volume attributes</td>
 </tr>
+<tr>
+<td>scan_policy</td>
+<td><a href="#scanpolicy"> ScanPolicy</a></td>
+<td>ScanPolicy specifies the filesystem check policy</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -10451,6 +10355,11 @@ performed on a volumen</p>
 <td><a href="#exportspec"> ExportSpec</a></td>
 <td>none</td>
 </tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> scan_policy_opt.scan_policy</td>
+<td><a href="#scanpolicy"> ScanPolicy</a></td>
+<td>none</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -10593,6 +10502,16 @@ performed on a volumen</p>
 <tr>
 <td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> fastpath_opt.fastpath</td>
 <td><a href="#bool"> bool</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> xattr_opt.xattr</td>
+<td><a href="#xattrvalue"> Xattr.Value</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> scan_policy_opt.scan_policy</td>
+<td><a href="#scanpolicy"> ScanPolicy</a></td>
 <td>none</td>
 </tr>
 </tbody>
@@ -11098,33 +11017,6 @@ performed on a volumen</p>
 </tr>
 </tbody>
 </table>
-<h2 id="filesystemcheckcheckhealthstatus">FilesystemCheck.CheckHealthStatus </h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Number</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>CHECK_HEALTH_STATUS_UNKNOWN</td>
-<td>0</td>
-<td>filesystem health status is unknown</td>
-</tr>
-<tr>
-<td>CHECK_HEALTH_STATUS_HEALTHY</td>
-<td>1</td>
-<td>filesystem health is healthy</td>
-</tr>
-<tr>
-<td>CHECK_HEALTH_STATUS_NOT_HEALTHY</td>
-<td>2</td>
-<td>filesystem health is not healthy</td>
-</tr>
-</tbody>
-</table>
 <h2 id="filesystemcheckfilesystemcheckstatus">FilesystemCheck.FilesystemCheckStatus </h2>
 <p>FilesystemChecktatus represents the status codes returned from
 OpenStorageFilesystemCheck service APIs()</p>
@@ -11153,48 +11045,28 @@ OpenStorageFilesystemCheck service APIs()</p>
 <td>FilesystemCheck operation started for the specified volume</td>
 </tr>
 <tr>
-<td>FS_CHECK_CHECK_HEALTH_INPROGRESS</td>
+<td>FS_CHECK_INPROGRESS</td>
 <td>3</td>
-<td>FilesystemCheck CheckHealth operation is in progress</td>
+<td>FilesystemCheck operation is in progress</td>
 </tr>
 <tr>
-<td>FS_CHECK_CHECK_HEALTH_STOPPED</td>
+<td>FS_CHECK_STOPPED</td>
 <td>4</td>
-<td>FilesystemCheck CheckHealth operation was stopped by the user</td>
+<td>FilesystemCheck operation was stopped by the user</td>
 </tr>
 <tr>
-<td>FS_CHECK_CHECK_HEALTH_COMPLETED</td>
+<td>FS_CHECK_COMPLETED</td>
 <td>5</td>
-<td>FilesystemCheck CheckHealth operation completed successfully</td>
+<td>FilesystemCheck operation completed successfully</td>
 </tr>
 <tr>
-<td>FS_CHECK_CHECK_HEALTH_FAILED</td>
+<td>FS_CHECK_FAILED</td>
 <td>6</td>
-<td>FilesystemCheck CheckHealth operation failed due to internal error</td>
-</tr>
-<tr>
-<td>FS_CHECK_FIXALL_INPROGRESS</td>
-<td>7</td>
-<td>FilesystemCheck FixAll operation is in progress</td>
-</tr>
-<tr>
-<td>FS_CHECK_FIXALL_STOPPED</td>
-<td>8</td>
-<td>FilesystemCheck FixAll operation was stopped by the user</td>
-</tr>
-<tr>
-<td>FS_CHECK_FIXALL_COMPLETED</td>
-<td>9</td>
-<td>FilesystemCheck FixAll operation completed successfully</td>
-</tr>
-<tr>
-<td>FS_CHECK_FIXALL_FAILED</td>
-<td>10</td>
-<td>FilesystemCheck FixAll operation failed due to internal error</td>
+<td>FilesystemCheck operation failed due to internal error</td>
 </tr>
 </tbody>
 </table>
-<h2 id="filesystemcheckfixallstatus">FilesystemCheck.FixAllStatus </h2>
+<h2 id="filesystemhealthstatus">FilesystemHealthStatus </h2>
 <table>
 <thead>
 <tr>
@@ -11205,19 +11077,24 @@ OpenStorageFilesystemCheck service APIs()</p>
 </thead>
 <tbody>
 <tr>
-<td>FIXALL_STATUS_UNKNOWN</td>
+<td>FS_HEALTH_STATUS_UNKNOWN</td>
 <td>0</td>
-<td>filesystem check fixall status is unknown</td>
+<td>filesystem health status is unknown</td>
 </tr>
 <tr>
-<td>FIXALL_STATUS_HEALTHY</td>
+<td>FS_HEALTH_STATUS_HEALTHY</td>
 <td>1</td>
-<td>filesystem check fixall is healthy</td>
+<td>filesystem is a healthy</td>
 </tr>
 <tr>
-<td>FIXALL_STATUS_NOT_HEALTHY</td>
+<td>FS_HEALTH_STATUS_SAFE_TO_FIX</td>
 <td>2</td>
-<td>check fixall is not healthy</td>
+<td>filesystem has errors, but can be fixed safely</td>
+</tr>
+<tr>
+<td>FS_HEALTH_STATUS_NEEDS_INSPECTION</td>
+<td>3</td>
+<td>filesystem has errors, these cannot be fixed automatically, user needs to review the reported errors and take appropriate action</td>
 </tr>
 </tbody>
 </table>
@@ -11541,6 +11418,60 @@ used for.</p>
 </tr>
 <tr>
 <td>PARAM_TRUE</td>
+<td>2</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<h2 id="scanpolicyscanaction">ScanPolicy.ScanAction </h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SCAN_ACTION_NONE</td>
+<td>0</td>
+<td>none</td>
+</tr>
+<tr>
+<td>SCAN_ACTION_SCAN_ONLY</td>
+<td>1</td>
+<td>none</td>
+</tr>
+<tr>
+<td>SCAN_ACTION_SCAN_REPAIR</td>
+<td>2</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<h2 id="scanpolicyscantrigger">ScanPolicy.ScanTrigger </h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SCAN_TRIGGER_NONE</td>
+<td>0</td>
+<td>none</td>
+</tr>
+<tr>
+<td>SCAN_TRIGGER_ON_MOUNT</td>
+<td>1</td>
+<td>none</td>
+</tr>
+<tr>
+<td>SCAN_TRIGGER_ON_NEXT_MOUNT</td>
 <td>2</td>
 <td>none</td>
 </tr>
@@ -11909,7 +11840,7 @@ client and server applications</p>
 </tr>
 <tr>
 <td>Patch</td>
-<td>11</td>
+<td>15</td>
 <td>SDK version patch value of this specification</td>
 </tr>
 </tbody>
@@ -12542,7 +12473,7 @@ client and server applications</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"v0.69.x","level":"1.5.4","depth":2,"next":{"title":"Changelog","level":"1.5.4.1","depth":3,"path":"release-7.0.changelog.md","ref":"release-7.0.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.3.1","depth":3,"path":"release-6.4.changelog.md","ref":"release-6.4.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"release-7.0.generated-api.md","mtime":"2020-06-20T01:15:48.670Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-20T01:15:55.235Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"v0.69.x","level":"1.5.4","depth":2,"next":{"title":"Changelog","level":"1.5.4.1","depth":3,"path":"release-7.0.changelog.md","ref":"release-7.0.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.3.1","depth":3,"path":"release-6.4.changelog.md","ref":"release-6.4.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"release-7.0.generated-api.md","mtime":"2020-07-14T16:14:37.547Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-14T16:14:44.359Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

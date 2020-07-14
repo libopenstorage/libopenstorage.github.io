@@ -2,6 +2,39 @@
 
 ## Releases
 
+### v0.91.0 - (7/13/2020)
+
+* Add mount_options field to Volume and VolumeSpec object.
+* The mount_options will be used at runtime while mounting the volume.
+
+### v0.90.0 - (7/8/2020)
+
+* Added new field to CloudBackupGroupCreate api
+
+### v0.89.0 - (7/7/2020)
+
+* Remove LastUpdateTime from RebalanceJobSummary and added it RebalanceJob,
+
+### v0.88.0 - (7/6/2020)
+
+* Added new field to CloudBackupCreate api
+
+### v0.87.0 - (6/29/2020)
+
+* Modified fsck service interface and added new fields to volume and volume spec
+
+### v0.86.0 - (6/25/2020)
+
+* Add support for volume xattr update
+*
+### v0.85.0 - (6/25/2020)
+
+* Updated rebalance data structures
+
+### v0.84.0 - (6/24/2020)
+
+* Updated rebalance data structures
+
 ### v0.83.0 - (6/16/2020)
 
 * Added support for fetching cloud backup size

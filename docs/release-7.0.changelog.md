@@ -2,6 +2,25 @@
 
 ## Releases
 
+### v0.69.15 - (7/7/2020)
+
+* Remove LastUpdateTime from RebalanceJobSummary and added it RebalanceJob,
+  added RemoveRepl1Snapshots to RebalanceJob
+
+### v0.69.14 - (6/29/2020)
+
+* Modified fsck service interface and added new fields to volume and volume spec master PR1622
+* Add support for volume xattr update PR1577
+* Modified fsck service interface and added new fields to volume spec master PR1607
+
+### v0.69.13 - (6/24/2020)
+
+* Updated rebalance data structures
+
+### v0.69.12 - (6/24/2020)
+
+* Updated rebalance data structures
+
 ### v0.69.11 - (6/16/2020)
 
 * Added support for fetching cloud backup size
