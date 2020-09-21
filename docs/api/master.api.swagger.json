@@ -515,6 +515,10 @@
       },
       "apiClusterPairCreateRequest": {
         "properties": {
+          "credential_id": {
+            "title": "Use for the cluster pairing, if given\ncredential id will be used in ClusterPairCreate service",
+            "type": "string"
+          },
           "mode": {
             "$ref": "#/components/schemas/ClusterPairModeMode"
           },
@@ -832,10 +836,8 @@
           "IO_PROFILE_DB_REMOTE",
           "IO_PROFILE_CMS",
           "IO_PROFILE_SYNC_SHARED",
-          "IO_PROFILE_AUTO",
-          "IO_PROFILE_BKUPSRC"
+          "IO_PROFILE_AUTO"
         ],
-        "title": "- IO_PROFILE_BKUPSRC: IO_PROFILE_BKUPSRC inherits cloudbackup's IOprofile",
         "type": "string"
       },
       "apiIoStrategy": {
@@ -890,6 +892,202 @@
             "type": "object"
           }
         },
+        "type": "object"
+      },
+      "apiNFSProxySpec": {
+        "description": "NFSProxySpec is the spec for proxying an NFS share.",
+        "properties": {
+          "export_path": {
+            "title": "ExportPath is the NFS export path on the NFS server",
+            "type": "string"
+          },
+          "sub_path": {
+            "description": "SubPath is the sub-directory from an NFS share that should be reflected.",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "apiNodeDrainAttachmentOptions": {
+        "properties": {
+          "only_sharedv4": {
+            "description": "Drain only sharedv4 volumes from a node\nBy default all volumes will be drained.",
+            "format": "boolean",
+            "type": "boolean"
+          },
+          "selector": {
+            "description": "Selector is used for selecting volumes whose\nattachment needs to be moved from this node.\nThe selector could be a list of volume label\nkey value pairs to select a subset of volumes.",
+            "items": {
+              "$ref": "#/components/schemas/apiLabelSelectorRequirement"
+            },
+            "type": "array"
+          }
+        },
+        "title": "Options for draining volume attachment from a node",
+        "type": "object"
+      },
+      "apiNodeDrainCloudDriveOptions": {
+        "title": "Options for draining/detaching cloud drives from a node",
+        "type": "object"
+      },
+      "apiNodeDrainCloudDriveSummary": {
+        "properties": {
+          "message": {
+            "title": "Message provides a helpful message about the state",
+            "type": "string"
+          },
+          "state": {
+            "$ref": "#/components/schemas/apiNodeDrainSubOperationState"
+          }
+        },
+        "title": "NodeDrainCloudDriveSummary summary of the drain operation related to cloud drives",
+        "type": "object"
+      },
+      "apiNodeDrainJob": {
+        "description": "NodeDrainJob describe the node drain job's input and current state.",
+        "properties": {
+          "create_time": {
+            "format": "date-time",
+            "title": "CreateTime is the time the job was created",
+            "type": "string"
+          },
+          "id": {
+            "title": "ID of the node drain job",
+            "type": "string"
+          },
+          "last_update_time": {
+            "format": "date-time",
+            "title": "LastUpdateTime is the time the job was updated",
+            "type": "string"
+          },
+          "node_id": {
+            "title": "NodeID of the node for which this drain job is running",
+            "type": "string"
+          },
+          "parameters": {
+            "$ref": "#/components/schemas/apiSdkNodeDrainRequest"
+          },
+          "state": {
+            "$ref": "#/components/schemas/apiNodeDrainJobState"
+          }
+        },
+        "type": "object"
+      },
+      "apiNodeDrainJobState": {
+        "default": "NODE_DRAIN_PENDING",
+        "description": "- NODE_DRAIN_PENDING: Pending indicates job is still pending and has not started work\n - NODE_DRAIN_RUNNING: Running indicates job is actively running\n - NODE_DRAIN_DONE: Done indicates job has finished processing\n - NODE_DRAIN_PAUSED: Paused indicates job is paused\n - NODE_DRAIN_CANCELLED: Cancelled indicates job is cancelled",
+        "enum": [
+          "NODE_DRAIN_PENDING",
+          "NODE_DRAIN_RUNNING",
+          "NODE_DRAIN_DONE",
+          "NODE_DRAIN_PAUSED",
+          "NODE_DRAIN_CANCELLED"
+        ],
+        "title": "NodeDrainJobState is an enum for state of a node drain operation",
+        "type": "string"
+      },
+      "apiNodeDrainKvdbOptions": {
+        "title": "Options for draining kvdb from a node",
+        "type": "object"
+      },
+      "apiNodeDrainKvdbSummary": {
+        "properties": {
+          "message": {
+            "title": "Message provides a helpful message about the state",
+            "type": "string"
+          },
+          "state": {
+            "$ref": "#/components/schemas/apiNodeDrainSubOperationState"
+          }
+        },
+        "title": "NodeDrainKvdbSummary summary of the drain operation related to kvdb",
+        "type": "object"
+      },
+      "apiNodeDrainOptions": {
+        "properties": {
+          "drain_attachments": {
+            "$ref": "#/components/schemas/apiNodeDrainAttachmentOptions"
+          },
+          "drain_cloud_drives": {
+            "$ref": "#/components/schemas/apiNodeDrainCloudDriveOptions"
+          },
+          "drain_kvdb": {
+            "$ref": "#/components/schemas/apiNodeDrainKvdbOptions"
+          },
+          "drain_volume_replicas": {
+            "$ref": "#/components/schemas/apiNodeDrainVolumeReplicaOptions"
+          },
+          "selector": {
+            "items": {
+              "$ref": "#/components/schemas/apiLabelSelectorRequirement"
+            },
+            "title": "Selector is a global selector used while performing\na node drain sub operation. Per option selector take\nprecedence over global selector",
+            "type": "array"
+          }
+        },
+        "title": "Options for draining a node in the cluster",
+        "type": "object"
+      },
+      "apiNodeDrainSubOperationState": {
+        "default": "NODE_DRAIN_SUB_OPERATION_NOT_CONFIGURED",
+        "description": "- NODE_DRAIN_SUB_OPERATION_NOT_CONFIGURED: This node drain operation was not configured\n - NODE_DRAIN_SUB_OPERATION_PENDING: This node drain operation was configured but is pending\n - NODE_DRAIN_SUB_OPERATION_RUNNING: This node drain opeartion is running\n - NODE_DRAIN_SUB_OPERATION_DONE: This node drain operation has completed",
+        "enum": [
+          "NODE_DRAIN_SUB_OPERATION_NOT_CONFIGURED",
+          "NODE_DRAIN_SUB_OPERATION_PENDING",
+          "NODE_DRAIN_SUB_OPERATION_RUNNING",
+          "NODE_DRAIN_SUB_OPERATION_DONE"
+        ],
+        "title": "NodeDrainSubOperationState state of the node drain operation",
+        "type": "string"
+      },
+      "apiNodeDrainSummary": {
+        "properties": {
+          "attachment_summary": {
+            "$ref": "#/components/schemas/apiNodeDrainVolumeSummary"
+          },
+          "cloud_drive_summary": {
+            "$ref": "#/components/schemas/apiNodeDrainCloudDriveSummary"
+          },
+          "kvdb_summary": {
+            "$ref": "#/components/schemas/apiNodeDrainKvdbSummary"
+          },
+          "volume_replica_summary": {
+            "$ref": "#/components/schemas/apiNodeDrainVolumeSummary"
+          }
+        },
+        "title": "Provides a summary of  a node drain job",
+        "type": "object"
+      },
+      "apiNodeDrainVolumeReplicaOptions": {
+        "properties": {
+          "selector": {
+            "description": "Selector is used for selecting volumes whose\nreplicas need to be moved from this node to another.\nThe selector could be a list of volume label\nkey value pairs to select a subset of volumes.",
+            "items": {
+              "$ref": "#/components/schemas/apiLabelSelectorRequirement"
+            },
+            "type": "array"
+          }
+        },
+        "title": "Options for draining volume replicas from a node",
+        "type": "object"
+      },
+      "apiNodeDrainVolumeSummary": {
+        "properties": {
+          "num_volumes_done": {
+            "format": "uint64",
+            "title": "Number of volumes which have been drained",
+            "type": "string"
+          },
+          "num_volumes_pending": {
+            "format": "uint64",
+            "title": "Number of volumes which have not been drained yet",
+            "type": "string"
+          },
+          "state": {
+            "$ref": "#/components/schemas/apiNodeDrainSubOperationState"
+          }
+        },
+        "title": "NodeDrainVolumeSummary summary of the drain operation related to volumes",
         "type": "object"
       },
       "apiObjectstoreInfo": {
@@ -957,6 +1155,49 @@
           "owner": {
             "description": "Username of owner.\n\nThe storage system uses the username taken from the security authorization\ntoken and is saved on this field. Only users with system administration\ncan edit this value.",
             "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "apiPXDProxySpec": {
+        "properties": {
+          "id": {
+            "title": "ID of the remote portworx volume",
+            "type": "string"
+          }
+        },
+        "title": "PXDProxySpec is the spec for proxying a Portworx volume",
+        "type": "object"
+      },
+      "apiProxyProtocol": {
+        "default": "PROXY_PROTOCOL_INVALID",
+        "description": "ProxyProtocol defines the protocol used for proxy.\n\n - PROXY_PROTOCOL_INVALID: Invalid uninitialized value\n - PROXY_PROTOCOL_NFS: NFS indicates that the external data source is NFS and the volume\nwill be reflected over NFS protocol\n - PROXY_PROTOCOL_S3: S3 indicates that the external data source is an object store.\n - PROXY_PROTOCOL_PXD: PXD indicates that the external data source is a Portworx block volume.",
+        "enum": [
+          "PROXY_PROTOCOL_INVALID",
+          "PROXY_PROTOCOL_NFS",
+          "PROXY_PROTOCOL_S3",
+          "PROXY_PROTOCOL_PXD"
+        ],
+        "type": "string"
+      },
+      "apiProxySpec": {
+        "description": "ProxySpec defines how this volume will reflect an external data source.",
+        "properties": {
+          "endpoint": {
+            "description": "Endpoint is the external endpoint which can be used for accessing the\nexternal data source.",
+            "type": "string"
+          },
+          "nfs_spec": {
+            "$ref": "#/components/schemas/apiNFSProxySpec"
+          },
+          "proxy_protocol": {
+            "$ref": "#/components/schemas/apiProxyProtocol"
+          },
+          "pxd_spec": {
+            "$ref": "#/components/schemas/apiPXDProxySpec"
+          },
+          "s3_spec": {
+            "$ref": "#/components/schemas/apiS3ProxySpec"
           }
         },
         "type": "object"
@@ -1094,6 +1335,11 @@
           "io_profile": {
             "$ref": "#/components/schemas/apiIoProfile"
           },
+          "io_profile_bkup_src": {
+            "format": "boolean",
+            "title": "IoProfileBkupSrc indicates to inherit IoProfile from cloudbackup",
+            "type": "boolean"
+          },
           "io_strategy": {
             "$ref": "#/components/schemas/apiIoStrategy"
           },
@@ -1112,6 +1358,12 @@
           "placement_strategy": {
             "$ref": "#/components/schemas/apiVolumePlacementStrategy"
           },
+          "proxy_spec": {
+            "$ref": "#/components/schemas/apiProxySpec"
+          },
+          "proxy_write": {
+            "$ref": "#/components/schemas/apiRestoreParamBoolType"
+          },
           "queue_depth": {
             "format": "int64",
             "title": "QueueDepth defines the desired block device queue depth",
@@ -1125,6 +1377,9 @@
           },
           "sharedv4": {
             "$ref": "#/components/schemas/apiRestoreParamBoolType"
+          },
+          "sharedv4_mount_options": {
+            "$ref": "#/components/schemas/apiMountOptions"
           },
           "snapshot_interval": {
             "format": "int64",
@@ -1151,6 +1406,16 @@
               "type": "string"
             },
             "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "apiS3ProxySpec": {
+        "description": "S3ProxySpec is the spec for proxying an external object store.",
+        "properties": {
+          "bucket_name": {
+            "title": "BucketName is the name of the bucket from the object store",
+            "type": "string"
           }
         },
         "type": "object"
@@ -2280,6 +2545,19 @@
         "title": "Empty response",
         "type": "object"
       },
+      "apiSdkEnumerateNodeDrainJobsResponse": {
+        "properties": {
+          "jobs": {
+            "items": {
+              "$ref": "#/components/schemas/apiNodeDrainJob"
+            },
+            "title": "Jobs is the list of node drain jobs in the response",
+            "type": "array"
+          }
+        },
+        "title": "Defines a response will all the known node drain jobs",
+        "type": "object"
+      },
       "apiSdkEnumerateRebalanceJobsResponse": {
         "properties": {
           "jobs": {
@@ -2353,19 +2631,6 @@
         "title": "Empty response",
         "type": "object"
       },
-      "apiSdkFilesystemTrimGetStatusResponse": {
-        "description": "SdkFilesystemTrimGetStatusResponse defines the response for a\nSdkFilesystemTrimGetStatusRequest.",
-        "properties": {
-          "message": {
-            "title": "Text blob containing ASCII text providing details of the operation",
-            "type": "string"
-          },
-          "status": {
-            "$ref": "#/components/schemas/FilesystemTrimFilesystemTrimStatus"
-          }
-        },
-        "type": "object"
-      },
       "apiSdkFilesystemTrimStartRequest": {
         "properties": {
           "mount_path": {
@@ -2393,6 +2658,19 @@
         },
         "type": "object"
       },
+      "apiSdkFilesystemTrimStatusResponse": {
+        "description": "SdkFilesystemTrimStatusResponse defines the response for a\nSdkFilesystemTrimStatusRequest.",
+        "properties": {
+          "message": {
+            "title": "Text blob containing ASCII text providing details of the operation",
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/FilesystemTrimFilesystemTrimStatus"
+          }
+        },
+        "type": "object"
+      },
       "apiSdkFilesystemTrimStopRequest": {
         "properties": {
           "mount_path": {
@@ -2409,6 +2687,22 @@
       },
       "apiSdkFilesystemTrimStopResponse": {
         "title": "Empty response",
+        "type": "object"
+      },
+      "apiSdkGetNodeDrainJobStatusResponse": {
+        "properties": {
+          "job": {
+            "$ref": "#/components/schemas/apiNodeDrainJob"
+          },
+          "summary": {
+            "items": {
+              "$ref": "#/components/schemas/apiNodeDrainSummary"
+            },
+            "title": "Summary summarizes the node drain job",
+            "type": "array"
+          }
+        },
+        "title": "Defines the status of an existing node drain job",
         "type": "object"
       },
       "apiSdkGetRebalanceJobStatusResponse": {
@@ -2478,6 +2772,32 @@
         "title": "Defines a response containing version information",
         "type": "object"
       },
+      "apiSdkNodeDrainRequest": {
+        "properties": {
+          "node_id": {
+            "title": "Id of the node to drain",
+            "type": "string"
+          },
+          "options": {
+            "$ref": "#/components/schemas/apiNodeDrainOptions"
+          }
+        },
+        "title": "Defines a node drain request",
+        "type": "object"
+      },
+      "apiSdkNodeDrainResponse": {
+        "properties": {
+          "id": {
+            "title": "ID of the node drain job",
+            "type": "string"
+          },
+          "job": {
+            "$ref": "#/components/schemas/apiNodeDrainJob"
+          }
+        },
+        "title": "Defines a node drain response",
+        "type": "object"
+      },
       "apiSdkNodeEnumerateResponse": {
         "properties": {
           "node_ids": {
@@ -2520,6 +2840,15 @@
           }
         },
         "title": "Defines a response when inspecting a node",
+        "type": "object"
+      },
+      "apiSdkNodeVolumeUsageByNodeResponse": {
+        "properties": {
+          "volume_usage_info": {
+            "$ref": "#/components/schemas/apiVolumeUsageByNode"
+          }
+        },
+        "title": "Defines response containing Node's volumes/snapshot capacity usage details",
         "type": "object"
       },
       "apiSdkObjectstoreCreateRequest": {
@@ -3033,6 +3362,10 @@
         ],
         "title": "Defines times of day",
         "type": "string"
+      },
+      "apiSdkUpdateNodeDrainJobResponse": {
+        "title": "Defines the response for an update to an existing job",
+        "type": "object"
       },
       "apiSdkUpdateRebalanceJobResponse": {
         "type": "object"
@@ -4202,6 +4535,9 @@
             "description": "SecureDevicePath is the device path for an encrypted volume.",
             "type": "string"
           },
+          "sharedv4_mount_options": {
+            "$ref": "#/components/schemas/apiMountOptions"
+          },
           "source": {
             "$ref": "#/components/schemas/apiSource"
           },
@@ -4457,6 +4793,14 @@
           "placement_strategy": {
             "$ref": "#/components/schemas/apiVolumePlacementStrategy"
           },
+          "proxy_spec": {
+            "$ref": "#/components/schemas/apiProxySpec"
+          },
+          "proxy_write": {
+            "format": "boolean",
+            "title": "Proxy_write if true, per volume proxy write replication enabled",
+            "type": "boolean"
+          },
           "queue_depth": {
             "format": "int64",
             "title": "QueueDepth defines the desired block device queue depth",
@@ -4482,6 +4826,9 @@
             "description": "Sharedv4 is true if this volume can be accessed via sharedv4.",
             "format": "boolean",
             "type": "boolean"
+          },
+          "sharedv4_mount_options": {
+            "$ref": "#/components/schemas/apiMountOptions"
           },
           "size": {
             "format": "uint64",
@@ -4569,6 +4916,13 @@
           "passphrase": {
             "type": "string"
           },
+          "proxy_spec": {
+            "$ref": "#/components/schemas/apiProxySpec"
+          },
+          "proxy_write": {
+            "format": "boolean",
+            "type": "boolean"
+          },
           "queue_depth": {
             "format": "int64",
             "type": "integer"
@@ -4593,6 +4947,9 @@
           "sharedv4": {
             "format": "boolean",
             "type": "boolean"
+          },
+          "sharedv4_mount_opt_spec": {
+            "$ref": "#/components/schemas/apiMountOptions"
           },
           "size": {
             "format": "uint64",
@@ -4672,6 +5029,13 @@
           "passphrase": {
             "type": "string"
           },
+          "proxy_spec": {
+            "$ref": "#/components/schemas/apiProxySpec"
+          },
+          "proxy_write": {
+            "format": "boolean",
+            "type": "boolean"
+          },
           "queue_depth": {
             "format": "int64",
             "type": "integer"
@@ -4693,6 +5057,9 @@
           "sharedv4": {
             "format": "boolean",
             "type": "boolean"
+          },
+          "sharedv4_mount_opt_spec": {
+            "$ref": "#/components/schemas/apiMountOptions"
           },
           "size": {
             "format": "uint64",
@@ -4745,6 +5112,52 @@
         ],
         "type": "string"
       },
+      "apiVolumeUsage": {
+        "description": "Provides volume's exclusive bytes and its total usage. This cannot be \nretrieved individually and is obtained as part node's usage for a given\nnode.",
+        "properties": {
+          "exclusive_bytes": {
+            "format": "uint64",
+            "title": "size in bytes exclusively used by the volume/snapshot",
+            "type": "string"
+          },
+          "local_cloud_snapshot": {
+            "format": "boolean",
+            "title": "set to true if this volume is snapshot created by cloudbackups",
+            "type": "boolean"
+          },
+          "pool_uuid": {
+            "title": "uuid of the pool that this volume belongs to",
+            "type": "string"
+          },
+          "total_bytes": {
+            "format": "uint64",
+            "title": "size in bytes by the volume/snapshot",
+            "type": "string"
+          },
+          "volume_id": {
+            "title": "id for the volume/snapshot",
+            "type": "string"
+          },
+          "volume_name": {
+            "title": "name of the volume/snapshot",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "apiVolumeUsageByNode": {
+        "description": "Provides capacity usage of a node in terms of volumes. Returns VolumeUsage for\nall the volume/snapshot(s) in the node.",
+        "properties": {
+          "volume_usage": {
+            "items": {
+              "$ref": "#/components/schemas/apiVolumeUsage"
+            },
+            "title": "VolumeUsage returns list of VolumeUsage for given node",
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
       "openstorageapiStatus": {
         "default": "STATUS_NONE",
         "enum": [
@@ -4778,7 +5191,7 @@
   },
   "info": {
     "title": "OpenStorage SDK",
-    "version": "0.91.0"
+    "version": "0.100.0"
   },
   "openapi": "3.0.0",
   "paths": {
@@ -5897,7 +6310,7 @@
     },
     "/v1/filesystem-trim/status": {
       "get": {
-        "operationId": "GetStatus",
+        "operationId": "Status",
         "parameters": [
           {
             "description": "Id of the volume.",
@@ -5923,14 +6336,14 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/apiSdkFilesystemTrimGetStatusResponse"
+                  "$ref": "#/components/schemas/apiSdkFilesystemTrimStatusResponse"
                 }
               }
             },
             "description": ""
           }
         },
-        "summary": "Get Status of a filesystem Trim background operation on a mounted\nvolume, if any",
+        "summary": "Status of a filesystem Trim background operation on a mounted\nvolume, if any",
         "tags": [
           "OpenStorageFilesystemTrim"
         ]
@@ -6158,6 +6571,118 @@
         ]
       }
     },
+    "/v1/nodes/drain/job": {
+      "get": {
+        "operationId": "EnumerateNodeDrainJobs",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/apiSdkEnumerateNodeDrainJobsResponse"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "summary": "EnumerateNodeDrainJobs returns all the node drain jobs currently known to the system",
+        "tags": [
+          "OpenStorageNode"
+        ]
+      }
+    },
+    "/v1/nodes/drain/job/{id}": {
+      "get": {
+        "operationId": "GetDrainStatus",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/apiSdkGetNodeDrainJobStatusResponse"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "summary": "GetDrainStatus gets the status of node drain request",
+        "tags": [
+          "OpenStorageNode"
+        ]
+      },
+      "put": {
+        "operationId": "UpdateNodeDrainJobState",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/apiSdkUpdateNodeDrainJobResponse"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "summary": "UpdateNodeDrainJobState updates an existing node drain task\nOnly acceptable values are\nNodeDrainJobState_PAUSED - acceptable only from running state\nNodeDrainJobState_CANCELLED - acceptable only from running/pause state\nNodeDrainJobState_RUNNING - acceptable only from pause state",
+        "tags": [
+          "OpenStorageNode"
+        ]
+      }
+    },
+    "/v1/nodes/drain/{node_id}": {
+      "put": {
+        "operationId": "Drain",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "node_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/apiSdkNodeDrainResponse"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "summary": "Drain creates a task to drains the provided node in the cluster.\nThe options provided in the drain request govern the drain operation.",
+        "tags": [
+          "OpenStorageNode"
+        ]
+      }
+    },
     "/v1/nodes/filters": {
       "get": {
         "operationId": "EnumerateWithFilters",
@@ -6226,6 +6751,37 @@
           }
         },
         "summary": "InspectCurrent returns information about the storage node\nwhere the client is currently connected to.",
+        "tags": [
+          "OpenStorageNode"
+        ]
+      }
+    },
+    "/v1/nodes/usage/{node_id}": {
+      "get": {
+        "operationId": "VolumeUsageByNode",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "node_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/apiSdkNodeVolumeUsageByNodeResponse"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "summary": "Returns capacity usage of all volumes/snaps for a give node",
         "tags": [
           "OpenStorageNode"
         ]

@@ -74,10 +74,23 @@
     - [LocateResponse.MountsEntry](#locateresponsemountsentry)
     - [MountOptions](#mountoptions)
     - [MountOptions.OptionsEntry](#mountoptionsoptionsentry)
+    - [NFSProxySpec](#nfsproxyspec)
+    - [NodeDrainAttachmentOptions](#nodedrainattachmentoptions)
+    - [NodeDrainCloudDriveOptions](#nodedrainclouddriveoptions)
+    - [NodeDrainCloudDriveSummary](#nodedrainclouddrivesummary)
+    - [NodeDrainJob](#nodedrainjob)
+    - [NodeDrainKvdbOptions](#nodedrainkvdboptions)
+    - [NodeDrainKvdbSummary](#nodedrainkvdbsummary)
+    - [NodeDrainOptions](#nodedrainoptions)
+    - [NodeDrainSummary](#nodedrainsummary)
+    - [NodeDrainVolumeReplicaOptions](#nodedrainvolumereplicaoptions)
+    - [NodeDrainVolumeSummary](#nodedrainvolumesummary)
     - [ObjectstoreInfo](#objectstoreinfo)
     - [Ownership](#ownership)
     - [Ownership.AccessControl](#ownershipaccesscontrol)
     - [Ownership.PublicAccessControl](#ownershippublicaccesscontrol)
+    - [PXDProxySpec](#pxdproxyspec)
+    - [ProxySpec](#proxyspec)
     - [ReplicaPlacementSpec](#replicaplacementspec)
     - [ReplicaSet](#replicaset)
     - [Report](#report)
@@ -86,6 +99,7 @@
     - [RestoreVolumeSpec](#restorevolumespec)
     - [RuntimeStateMap](#runtimestatemap)
     - [RuntimeStateMap.RuntimeStateEntry](#runtimestatemapruntimestateentry)
+    - [S3ProxySpec](#s3proxyspec)
     - [ScanPolicy](#scanpolicy)
     - [SdkAlertsAlertTypeQuery](#sdkalertsalerttypequery)
     - [SdkAlertsCountSpan](#sdkalertscountspan)
@@ -184,6 +198,8 @@
     - [SdkCredentialInspectResponse](#sdkcredentialinspectresponse)
     - [SdkCredentialValidateRequest](#sdkcredentialvalidaterequest)
     - [SdkCredentialValidateResponse](#sdkcredentialvalidateresponse)
+    - [SdkEnumerateNodeDrainJobsRequest](#sdkenumeratenodedrainjobsrequest)
+    - [SdkEnumerateNodeDrainJobsResponse](#sdkenumeratenodedrainjobsresponse)
     - [SdkEnumerateRebalanceJobsRequest](#sdkenumeraterebalancejobsrequest)
     - [SdkEnumerateRebalanceJobsResponse](#sdkenumeraterebalancejobsresponse)
     - [SdkFilesystemCheckStartRequest](#sdkfilesystemcheckstartrequest)
@@ -192,12 +208,14 @@
     - [SdkFilesystemCheckStatusResponse](#sdkfilesystemcheckstatusresponse)
     - [SdkFilesystemCheckStopRequest](#sdkfilesystemcheckstoprequest)
     - [SdkFilesystemCheckStopResponse](#sdkfilesystemcheckstopresponse)
-    - [SdkFilesystemTrimGetStatusRequest](#sdkfilesystemtrimgetstatusrequest)
-    - [SdkFilesystemTrimGetStatusResponse](#sdkfilesystemtrimgetstatusresponse)
     - [SdkFilesystemTrimStartRequest](#sdkfilesystemtrimstartrequest)
     - [SdkFilesystemTrimStartResponse](#sdkfilesystemtrimstartresponse)
+    - [SdkFilesystemTrimStatusRequest](#sdkfilesystemtrimstatusrequest)
+    - [SdkFilesystemTrimStatusResponse](#sdkfilesystemtrimstatusresponse)
     - [SdkFilesystemTrimStopRequest](#sdkfilesystemtrimstoprequest)
     - [SdkFilesystemTrimStopResponse](#sdkfilesystemtrimstopresponse)
+    - [SdkGetNodeDrainJobStatusRequest](#sdkgetnodedrainjobstatusrequest)
+    - [SdkGetNodeDrainJobStatusResponse](#sdkgetnodedrainjobstatusresponse)
     - [SdkGetRebalanceJobStatusRequest](#sdkgetrebalancejobstatusrequest)
     - [SdkGetRebalanceJobStatusResponse](#sdkgetrebalancejobstatusresponse)
     - [SdkGoogleCredentialRequest](#sdkgooglecredentialrequest)
@@ -206,6 +224,8 @@
     - [SdkIdentityCapabilitiesResponse](#sdkidentitycapabilitiesresponse)
     - [SdkIdentityVersionRequest](#sdkidentityversionrequest)
     - [SdkIdentityVersionResponse](#sdkidentityversionresponse)
+    - [SdkNodeDrainRequest](#sdknodedrainrequest)
+    - [SdkNodeDrainResponse](#sdknodedrainresponse)
     - [SdkNodeEnumerateRequest](#sdknodeenumeraterequest)
     - [SdkNodeEnumerateResponse](#sdknodeenumerateresponse)
     - [SdkNodeEnumerateWithFiltersRequest](#sdknodeenumeratewithfiltersrequest)
@@ -214,6 +234,8 @@
     - [SdkNodeInspectCurrentResponse](#sdknodeinspectcurrentresponse)
     - [SdkNodeInspectRequest](#sdknodeinspectrequest)
     - [SdkNodeInspectResponse](#sdknodeinspectresponse)
+    - [SdkNodeVolumeUsageByNodeRequest](#sdknodevolumeusagebynoderequest)
+    - [SdkNodeVolumeUsageByNodeResponse](#sdknodevolumeusagebynoderesponse)
     - [SdkObjectstoreCreateRequest](#sdkobjectstorecreaterequest)
     - [SdkObjectstoreCreateResponse](#sdkobjectstorecreateresponse)
     - [SdkObjectstoreDeleteRequest](#sdkobjectstoredeleterequest)
@@ -274,6 +296,8 @@
     - [SdkStoragePoolResizeResponse](#sdkstoragepoolresizeresponse)
     - [SdkStorageRebalanceRequest](#sdkstoragerebalancerequest)
     - [SdkStorageRebalanceResponse](#sdkstoragerebalanceresponse)
+    - [SdkUpdateNodeDrainJobRequest](#sdkupdatenodedrainjobrequest)
+    - [SdkUpdateNodeDrainJobResponse](#sdkupdatenodedrainjobresponse)
     - [SdkUpdateRebalanceJobRequest](#sdkupdaterebalancejobrequest)
     - [SdkUpdateRebalanceJobResponse](#sdkupdaterebalancejobresponse)
     - [SdkVersion](#sdkversion)
@@ -377,6 +401,8 @@
     - [VolumeSpecPolicy.VolumeLabelsEntry](#volumespecpolicyvolumelabelsentry)
     - [VolumeSpecUpdate](#volumespecupdate)
     - [VolumeStateAction](#volumestateaction)
+    - [VolumeUsage](#volumeusage)
+    - [VolumeUsageByNode](#volumeusagebynode)
     - [Xattr](#xattr)
   
 
@@ -402,8 +428,11 @@
     - [HardwareType](#hardwaretype)
     - [IoProfile](#ioprofile)
     - [LabelSelectorRequirement.Operator](#labelselectorrequirementoperator)
+    - [NodeDrainJobState](#nodedrainjobstate)
+    - [NodeDrainSubOperationState](#nodedrainsuboperationstate)
     - [OperationFlags](#operationflags)
     - [Ownership.AccessType](#ownershipaccesstype)
+    - [ProxyProtocol](#proxyprotocol)
     - [ResourceType](#resourcetype)
     - [RestoreParamBoolType](#restoreparambooltype)
     - [ScanPolicy.ScanAction](#scanpolicyscanaction)
@@ -810,7 +839,7 @@ are not mounted, these API return error.
 
 Once the filesystem trim operation is started, the clients have to poll for
 the status of the background operation using the
-`OpenStorageFilesystemTrim.GetStatus()` rpc request
+`OpenStorageFilesystemTrim.Status()` rpc request
 
 A typical workflow involving filesystem trim would be as follows
 1. Attach the volume
@@ -822,7 +851,7 @@ A typical workflow involving filesystem trim would be as follows
    This call returns immediately with a status code indicating if the
    operation was successfully started or not.
 4. To get the status of the Filesystem Trim operation, issue a grpc call to
-   `OpenStorageFilesystemTrimClient.GetStatus()`
+   `OpenStorageFilesystemTrimClient.Status()`
 5. To stop the Filesystem Trim operation, issue a grpc call to
    `OpenStorageFilesystemTrimClient.Stop()`
 
@@ -832,12 +861,12 @@ A typical workflow involving filesystem trim would be as follows
     [SdkFilesystemTrimStartResponse](#sdkfilesystemtrimstartresponse)
 
 Start a filesystem Trim background operation on a mounted volume
-## GetStatus {#methodopenstorageapiopenstoragefilesystemtrimgetstatus}
+## Status {#methodopenstorageapiopenstoragefilesystemtrimstatus}
 
-> **rpc** GetStatus([SdkFilesystemTrimGetStatusRequest](#sdkfilesystemtrimgetstatusrequest))
-    [SdkFilesystemTrimGetStatusResponse](#sdkfilesystemtrimgetstatusresponse)
+> **rpc** Status([SdkFilesystemTrimStatusRequest](#sdkfilesystemtrimstatusrequest))
+    [SdkFilesystemTrimStatusResponse](#sdkfilesystemtrimstatusresponse)
 
-Get Status of a filesystem Trim background operation on a mounted
+Status of a filesystem Trim background operation on a mounted
 volume, if any
 ## Stop {#methodopenstorageapiopenstoragefilesystemtrimstop}
 
@@ -962,6 +991,41 @@ Enumerate returns the ids of all the nodes in the current cluster
     [SdkNodeEnumerateWithFiltersResponse](#sdknodeenumeratewithfiltersresponse)
 
 EnumerateWithFilters returns all the nodes in the current cluster
+## Drain {#methodopenstorageapiopenstoragenodedrain}
+
+> **rpc** Drain([SdkNodeDrainRequest](#sdknodedrainrequest))
+    [SdkNodeDrainResponse](#sdknodedrainresponse)
+
+Drain creates a task to drains the provided node in the cluster.
+The options provided in the drain request govern the drain operation.
+## UpdateNodeDrainJobState {#methodopenstorageapiopenstoragenodeupdatenodedrainjobstate}
+
+> **rpc** UpdateNodeDrainJobState([SdkUpdateNodeDrainJobRequest](#sdkupdatenodedrainjobrequest))
+    [SdkUpdateNodeDrainJobResponse](#sdkupdatenodedrainjobresponse)
+
+UpdateNodeDrainJobState updates an existing node drain task
+Only acceptable values are
+NodeDrainJobState_PAUSED - acceptable only from running state
+NodeDrainJobState_CANCELLED - acceptable only from running/pause state
+NodeDrainJobState_RUNNING - acceptable only from pause state
+## GetDrainStatus {#methodopenstorageapiopenstoragenodegetdrainstatus}
+
+> **rpc** GetDrainStatus([SdkGetNodeDrainJobStatusRequest](#sdkgetnodedrainjobstatusrequest))
+    [SdkGetNodeDrainJobStatusResponse](#sdkgetnodedrainjobstatusresponse)
+
+GetDrainStatus gets the status of node drain request
+## EnumerateNodeDrainJobs {#methodopenstorageapiopenstoragenodeenumeratenodedrainjobs}
+
+> **rpc** EnumerateNodeDrainJobs([SdkEnumerateNodeDrainJobsRequest](#sdkenumeratenodedrainjobsrequest))
+    [SdkEnumerateNodeDrainJobsResponse](#sdkenumeratenodedrainjobsresponse)
+
+EnumerateNodeDrainJobs returns all the node drain jobs currently known to the system
+## VolumeUsageByNode {#methodopenstorageapiopenstoragenodevolumeusagebynode}
+
+> **rpc** VolumeUsageByNode([SdkNodeVolumeUsageByNodeRequest](#sdknodevolumeusagebynoderequest))
+    [SdkNodeVolumeUsageByNodeResponse](#sdknodevolumeusagebynoderesponse)
+
+Returns capacity usage of all volumes/snaps for a give node
  <!-- end methods -->
 
 # OpenStorageObjectstore {#serviceopenstorageapiopenstorageobjectstore}
@@ -1579,6 +1643,7 @@ Used to send a request to create a cluster pair
 | remote_cluster_token | [ string](#string) | Token used to authenticate with the remote cluster |
 | set_default | [ bool](#bool) | Set the new pair as the default |
 | mode | [ ClusterPairMode.Mode](#clusterpairmodemode) | The mode to use for the cluster pair |
+| credential_id | [ string](#string) | Use for the cluster pairing, if given credential id will be used in ClusterPairCreate service |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -1651,6 +1716,7 @@ Used to process a pair request from a remote cluster
 | source_cluster_id | [ string](#string) | ID of the cluster requesting the pairing |
 | remote_cluster_token | [ string](#string) | Token used to authenticate with the remote cluster |
 | mode | [ ClusterPairMode.Mode](#clusterpairmodemode) | The mode to use for the cluster pair |
+| credential_id | [ string](#string) | Use for the cluster pairing, if given credential id will be used in ClusterPairCreate service |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -1956,6 +2022,135 @@ MountOptions defines the mount options with which a volume is mounted.
  <!-- end HasFields -->
 
 
+## NFSProxySpec {#nfsproxyspec}
+NFSProxySpec is the spec for proxying an NFS share.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| export_path | [ string](#string) | ExportPath is the NFS export path on the NFS server |
+| sub_path | [ string](#string) | SubPath is the sub-directory from an NFS share that should be reflected. |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## NodeDrainAttachmentOptions {#nodedrainattachmentoptions}
+Options for draining volume attachment from a node
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| selector | [repeated LabelSelectorRequirement](#labelselectorrequirement) | Selector is used for selecting volumes whose attachment needs to be moved from this node. The selector could be a list of volume label key value pairs to select a subset of volumes. |
+| only_sharedv4 | [ bool](#bool) | Drain only sharedv4 volumes from a node By default all volumes will be drained. |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## NodeDrainCloudDriveOptions {#nodedrainclouddriveoptions}
+Options for draining/detaching cloud drives from a node
+
+ <!-- end HasFields -->
+
+
+## NodeDrainCloudDriveSummary {#nodedrainclouddrivesummary}
+NodeDrainCloudDriveSummary summary of the drain operation related to cloud drives
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| state | [ NodeDrainSubOperationState](#nodedrainsuboperationstate) | State of this operation |
+| message | [ string](#string) | Message provides a helpful message about the state |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## NodeDrainJob {#nodedrainjob}
+NodeDrainJob describe the node drain job's input and current state.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [ string](#string) | ID of the node drain job |
+| node_id | [ string](#string) | NodeID of the node for which this drain job is running |
+| state | [ NodeDrainJobState](#nodedrainjobstate) | State of the current job |
+| parameters | [ SdkNodeDrainRequest](#sdknodedrainrequest) | Parameters is the original request params for this node drain operation |
+| create_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | CreateTime is the time the job was created |
+| last_update_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | LastUpdateTime is the time the job was updated |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## NodeDrainKvdbOptions {#nodedrainkvdboptions}
+Options for draining kvdb from a node
+
+ <!-- end HasFields -->
+
+
+## NodeDrainKvdbSummary {#nodedrainkvdbsummary}
+NodeDrainKvdbSummary summary of the drain operation related to kvdb
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| state | [ NodeDrainSubOperationState](#nodedrainsuboperationstate) | State of this operation |
+| message | [ string](#string) | Message provides a helpful message about the state |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## NodeDrainOptions {#nodedrainoptions}
+Options for draining a node in the cluster
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| selector | [repeated LabelSelectorRequirement](#labelselectorrequirement) | Selector is a global selector used while performing a node drain sub operation. Per option selector take precedence over global selector |
+| drain_attachments | [ NodeDrainAttachmentOptions](#nodedrainattachmentoptions) | When set volume attachments will be drained from this node by moving the applications using volume |
+| drain_volume_replicas | [ NodeDrainVolumeReplicaOptions](#nodedrainvolumereplicaoptions) | When set volume replicas from this node will be moved to another node |
+| drain_kvdb | [ NodeDrainKvdbOptions](#nodedrainkvdboptions) | When set if this node acts as a kvdb control node, kvdb will be drained from this node and will be moved to another node. |
+| drain_cloud_drives | [ NodeDrainCloudDriveOptions](#nodedrainclouddriveoptions) | When set the backing cloud storage disks will be detached from this node if the storage provider supports it |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## NodeDrainSummary {#nodedrainsummary}
+Provides a summary of  a node drain job
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| attachment_summary | [ NodeDrainVolumeSummary](#nodedrainvolumesummary) | Attachment summary |
+| volume_replica_summary | [ NodeDrainVolumeSummary](#nodedrainvolumesummary) | Volume replica summary |
+| kvdb_summary | [ NodeDrainKvdbSummary](#nodedrainkvdbsummary) | Kvdb drain summary |
+| cloud_drive_summary | [ NodeDrainCloudDriveSummary](#nodedrainclouddrivesummary) | Cloud drive summary |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## NodeDrainVolumeReplicaOptions {#nodedrainvolumereplicaoptions}
+Options for draining volume replicas from a node
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| selector | [repeated LabelSelectorRequirement](#labelselectorrequirement) | Selector is used for selecting volumes whose replicas need to be moved from this node to another. The selector could be a list of volume label key value pairs to select a subset of volumes. |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## NodeDrainVolumeSummary {#nodedrainvolumesummary}
+NodeDrainVolumeSummary summary of the drain operation related to volumes
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| state | [ NodeDrainSubOperationState](#nodedrainsuboperationstate) | State of this operation |
+| num_volumes_done | [ uint64](#uint64) | Number of volumes which have been drained |
+| num_volumes_pending | [ uint64](#uint64) | Number of volumes which have not been drained yet |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
 ## ObjectstoreInfo {#objectstoreinfo}
 ObjectstoreInfo is a structure that has current objectstore info
 
@@ -2014,6 +2209,32 @@ PublicAccessControl allows assigning public ownership
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | type | [ Ownership.AccessType](#ownershipaccesstype) | AccessType declares which level of public access is allowed |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## PXDProxySpec {#pxdproxyspec}
+PXDProxySpec is the spec for proxying a Portworx volume
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [ string](#string) | ID of the remote portworx volume |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## ProxySpec {#proxyspec}
+ProxySpec defines how this volume will reflect an external data source.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| proxy_protocol | [ ProxyProtocol](#proxyprotocol) | ProxyProtocol defines the protocol used for proxy. |
+| endpoint | [ string](#string) | Endpoint is the external endpoint which can be used for accessing the external data source. |
+| nfs_spec | [ NFSProxySpec](#nfsproxyspec) | NFSProxySpec is the spec for proxying an NFS share |
+| s3_spec | [ S3ProxySpec](#s3proxyspec) | S3ProxySpec is the spec for proxying an external object store |
+| pxd_spec | [ PXDProxySpec](#pxdproxyspec) | PXDProxySpec is the spec for proxying a Portworx volume |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -2090,7 +2311,7 @@ inherit corresponding field value from backup's spec.
 | ----- | ---- | ----------- |
 | ha_level | [ int64](#int64) | HaLevel specifies the number of copies of data. |
 | cos | [ CosType](#costype) | Cos specifies the relative class of service. |
-| io_profile | [ IoProfile](#ioprofile) | IoProfile provides a hint about application using this volume. |
+| io_profile | [ IoProfile](#ioprofile) | IoProfile provides a hint about application using this volume. This field is ignored if IoProfileBkupSrc is set true |
 | snapshot_interval | [ uint32](#uint32) | SnapshotInterval in minutes, set to 0 to disable snapshots |
 | shared | [ RestoreParamBoolType](#restoreparambooltype) | Shared is true if this volume can be concurrently accessed by multiple users. |
 | replica_set | [ ReplicaSet](#replicaset) | ReplicaSet is the desired set of nodes for the volume data. |
@@ -2110,6 +2331,10 @@ inherit corresponding field value from backup's spec.
 | export_spec | [ ExportSpec](#exportspec) | ExportSpec defines how the volume should be exported. |
 | fp_preference | [ RestoreParamBoolType](#restoreparambooltype) | fastpath extensions |
 | mount_options | [ MountOptions](#mountoptions) | MountOptions defines the options that should be used while mounting this volume |
+| sharedv4_mount_options | [ MountOptions](#mountoptions) | Sharedv4MountOptions defines the options that will be used while mounting a sharedv4 volume from a node where the volume replica does not exist |
+| proxy_write | [ RestoreParamBoolType](#restoreparambooltype) | Proxy_write is true if proxy write replication is enabled for the volume |
+| io_profile_bkup_src | [ bool](#bool) | IoProfileBkupSrc indicates to inherit IoProfile from cloudbackup |
+| proxy_spec | [ ProxySpec](#proxyspec) | ProxySpec indicates that this volume is used for proxying an external data source |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -2134,6 +2359,17 @@ information.
 | ----- | ---- | ----------- |
 | key | [ string](#string) | none |
 | value | [ string](#string) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## S3ProxySpec {#s3proxyspec}
+S3ProxySpec is the spec for proxying an external object store.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| bucket_name | [ string](#string) | BucketName is the name of the bucket from the object store |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3273,6 +3509,23 @@ Empty response
  <!-- end HasFields -->
 
 
+## SdkEnumerateNodeDrainJobsRequest {#sdkenumeratenodedrainjobsrequest}
+Defines a request to list all the node drain jobs
+
+ <!-- end HasFields -->
+
+
+## SdkEnumerateNodeDrainJobsResponse {#sdkenumeratenodedrainjobsresponse}
+Defines a response will all the known node drain jobs
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| jobs | [repeated NodeDrainJob](#nodedrainjob) | Jobs is the list of node drain jobs in the response |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
 ## SdkEnumerateRebalanceJobsRequest {#sdkenumeraterebalancejobsrequest}
 
 
@@ -3361,32 +3614,6 @@ Empty response
  <!-- end HasFields -->
 
 
-## SdkFilesystemTrimGetStatusRequest {#sdkfilesystemtrimgetstatusrequest}
-SdkFilesystemTrimGetStatusRequest defines a request to get status of a
-background filesystem trim operation
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| volume_id | [ string](#string) | Id of the volume |
-| mount_path | [ string](#string) | Path where the volume is mounted |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkFilesystemTrimGetStatusResponse {#sdkfilesystemtrimgetstatusresponse}
-SdkFilesystemTrimGetStatusResponse defines the response for a
-SdkFilesystemTrimGetStatusRequest.
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| status | [ FilesystemTrim.FilesystemTrimStatus](#filesystemtrimfilesystemtrimstatus) | Status code representing the state of the filesystem trim operation |
-| message | [ string](#string) | Text blob containing ASCII text providing details of the operation |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
 ## SdkFilesystemTrimStartRequest {#sdkfilesystemtrimstartrequest}
 SdkFilesystemTrimStartRequest defines a request to start a background filesystem trim operation
 
@@ -3402,6 +3629,32 @@ SdkFilesystemTrimStartRequest defines a request to start a background filesystem
 ## SdkFilesystemTrimStartResponse {#sdkfilesystemtrimstartresponse}
 SdkFilesystemTrimStartResponse defines the response for a
 SdkFilesystemTrimStartRequest.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| status | [ FilesystemTrim.FilesystemTrimStatus](#filesystemtrimfilesystemtrimstatus) | Status code representing the state of the filesystem trim operation |
+| message | [ string](#string) | Text blob containing ASCII text providing details of the operation |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkFilesystemTrimStatusRequest {#sdkfilesystemtrimstatusrequest}
+SdkFilesystemTrimStatusRequest defines a request to get status of a
+background filesystem trim operation
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id | [ string](#string) | Id of the volume |
+| mount_path | [ string](#string) | Path where the volume is mounted |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkFilesystemTrimStatusResponse {#sdkfilesystemtrimstatusresponse}
+SdkFilesystemTrimStatusResponse defines the response for a
+SdkFilesystemTrimStatusRequest.
 
 
 | Field | Type | Description |
@@ -3428,6 +3681,29 @@ filesystem trim operation
 ## SdkFilesystemTrimStopResponse {#sdkfilesystemtrimstopresponse}
 Empty response
 
+ <!-- end HasFields -->
+
+
+## SdkGetNodeDrainJobStatusRequest {#sdkgetnodedrainjobstatusrequest}
+Defines a request to get the status of an existing node drain job
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [ string](#string) | ID of the node drain job |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkGetNodeDrainJobStatusResponse {#sdkgetnodedrainjobstatusresponse}
+Defines the status of an existing node drain job
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| job | [ NodeDrainJob](#nodedrainjob) | Job for this node drain operation. |
+| summary | [repeated NodeDrainSummary](#nodedrainsummary) | Summary summarizes the node drain job |
+ <!-- end Fields -->
  <!-- end HasFields -->
 
 
@@ -3513,6 +3789,30 @@ Defines a response containing version information
  <!-- end HasFields -->
 
 
+## SdkNodeDrainRequest {#sdknodedrainrequest}
+Defines a node drain request
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| node_id | [ string](#string) | Id of the node to drain |
+| options | [ NodeDrainOptions](#nodedrainoptions) | Options that define how a node drain should be performed |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkNodeDrainResponse {#sdknodedrainresponse}
+Defines a node drain response
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [ string](#string) | ID of the node drain job |
+| job | [ NodeDrainJob](#nodedrainjob) | Job for this node drain operation |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
 ## SdkNodeEnumerateRequest {#sdknodeenumeraterequest}
 Empty request
 
@@ -3583,6 +3883,29 @@ Defines a response when inspecting a node
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | node | [ StorageNode](#storagenode) | Node information |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkNodeVolumeUsageByNodeRequest {#sdknodevolumeusagebynoderequest}
+Defines request to retrieve all volumes/snapshots capacity usage details
+for a given node
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| node_id | [ string](#string) | Id of the node to get snapshot/volumes capacity usage details |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkNodeVolumeUsageByNodeResponse {#sdknodevolumeusagebynoderesponse}
+Defines response containing Node's volumes/snapshot capacity usage details
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_usage_info | [ VolumeUsageByNode](#volumeusagebynode) | VolumeUsageByNode details |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -4234,6 +4557,24 @@ SdkStorageRebalanceResponse is the response to a storage rebalance request
 | summary | [ StorageRebalanceSummary](#storagerebalancesummary) | Summary summarizes the rebalance job |
 | actions | [repeated StorageRebalanceAudit](#storagerebalanceaudit) | Actions describe all the actions taken during this rebalance |
  <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkUpdateNodeDrainJobRequest {#sdkupdatenodedrainjobrequest}
+Defines a request to update an existing node drain job
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [ string](#string) | ID of the rebalance job |
+| state | [ NodeDrainJobState](#nodedrainjobstate) | State is the new task state to update the job to |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkUpdateNodeDrainJobResponse {#sdkupdatenodedrainjobresponse}
+Defines the response for an update to an existing job
+
  <!-- end HasFields -->
 
 
@@ -5218,6 +5559,7 @@ Volume represents an abstract storage volume.
 | last_scan_fix | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | LastScanFix is the time when an integrity check fixed errors in filesystem |
 | last_scan_status | [ FilesystemHealthStatus](#filesystemhealthstatus) | LastScanStatus is the time when an integrity check fixed errors in filesystem |
 | mount_options | [ MountOptions](#mountoptions) | MountOptions are the runtime mount options that will be used while mounting this volume |
+| sharedv4_mount_options | [ MountOptions](#mountoptions) | Sharedv4MountOptions are the runtime mount options that will be used while mounting a sharedv4 volume from a node where the volume replica does not exist |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -5519,7 +5861,10 @@ VolumeSpec has the properties needed to create a volume.
 | fp_preference | [ bool](#bool) | fastpath extensions |
 | xattr | [ Xattr.Value](#xattrvalue) | Xattr specifies implementation specific volume attributes |
 | scan_policy | [ ScanPolicy](#scanpolicy) | ScanPolicy specifies the filesystem check policy |
-| mount_options | [ MountOptions](#mountoptions) | MountOptions defines the options that should be used while mounting this volume |
+| mount_options | [ MountOptions](#mountoptions) | MountOptions defines the options that will be used while mounting this volume |
+| sharedv4_mount_options | [ MountOptions](#mountoptions) | Sharedv4MountOptions defines the options that will be used while mounting a sharedv4 volume from a node where the volume replica does not exist |
+| proxy_write | [ bool](#bool) | Proxy_write if true, per volume proxy write replication enabled |
+| proxy_spec | [ ProxySpec](#proxyspec) | ProxySpec indicates that this volume is used for proxying an external data source |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -5570,6 +5915,9 @@ VolumeSpecPolicy provides a method to set volume storage policy
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) export_spec_opt.export_spec | [ ExportSpec](#exportspec) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) scan_policy_opt.scan_policy | [ ScanPolicy](#scanpolicy) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) mount_opt.mount_opt_spec | [ MountOptions](#mountoptions) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) sharedv4_mount_opt.sharedv4_mount_opt_spec | [ MountOptions](#mountoptions) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) proxy_write_opt.proxy_write | [ bool](#bool) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) proxy_spec_opt.proxy_spec | [ ProxySpec](#proxyspec) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -5616,6 +5964,9 @@ VolumeSpecUpdate provides a method to set any of the VolumeSpec of an existing v
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) xattr_opt.xattr | [ Xattr.Value](#xattrvalue) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) scan_policy_opt.scan_policy | [ ScanPolicy](#scanpolicy) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) mount_opt.mount_opt_spec | [ MountOptions](#mountoptions) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) sharedv4_mount_opt.sharedv4_mount_opt_spec | [ MountOptions](#mountoptions) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) proxy_write_opt.proxy_write | [ bool](#bool) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) proxy_spec_opt.proxy_spec | [ ProxySpec](#proxyspec) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -5630,6 +5981,36 @@ VolumeStateAction specifies desired actions.
 | mount | [ VolumeActionParam](#volumeactionparam) | Mount or unmount volume |
 | mount_path | [ string](#string) | MountPath Path where the device is mounted |
 | device_path | [ string](#string) | DevicePath Path returned in attach |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## VolumeUsage {#volumeusage}
+Provides volume's exclusive bytes and its total usage. This cannot be 
+retrieved individually and is obtained as part node's usage for a given
+node.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id | [ string](#string) | id for the volume/snapshot |
+| volume_name | [ string](#string) | name of the volume/snapshot |
+| pool_uuid | [ string](#string) | uuid of the pool that this volume belongs to |
+| exclusive_bytes | [ uint64](#uint64) | size in bytes exclusively used by the volume/snapshot |
+| total_bytes | [ uint64](#uint64) | size in bytes by the volume/snapshot |
+| local_cloud_snapshot | [ bool](#bool) | set to true if this volume is snapshot created by cloudbackups |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## VolumeUsageByNode {#volumeusagebynode}
+Provides capacity usage of a node in terms of volumes. Returns VolumeUsage for
+all the volume/snapshot(s) in the node.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_usage | [repeated VolumeUsage](#volumeusage) | VolumeUsage returns list of VolumeUsage for given node |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -5905,7 +6286,6 @@ OpenStorageFilesystemTrim service APIs()
 | IO_PROFILE_CMS | 4 | none |
 | IO_PROFILE_SYNC_SHARED | 5 | none |
 | IO_PROFILE_AUTO | 6 | none |
-| IO_PROFILE_BKUPSRC | 7 | IO_PROFILE_BKUPSRC inherits cloudbackup's IOprofile |
 
 
 
@@ -5921,6 +6301,33 @@ This defines operator types used in a label matching rule
 | DoesNotExist | 3 | DoesNotExist means the 'key' should NOT exist |
 | Gt | 4 | Gt means the 'key' should be greater than the value(s) |
 | Lt | 5 | Lt means the 'key' should be less than the value(s) |
+
+
+
+
+## NodeDrainJobState {#nodedrainjobstate}
+NodeDrainJobState is an enum for state of a node drain operation
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| NODE_DRAIN_PENDING | 0 | Pending indicates job is still pending and has not started work |
+| NODE_DRAIN_RUNNING | 1 | Running indicates job is actively running |
+| NODE_DRAIN_DONE | 2 | Done indicates job has finished processing |
+| NODE_DRAIN_PAUSED | 3 | Paused indicates job is paused |
+| NODE_DRAIN_CANCELLED | 4 | Cancelled indicates job is cancelled |
+
+
+
+
+## NodeDrainSubOperationState {#nodedrainsuboperationstate}
+NodeDrainSubOperationState state of the node drain operation
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| NODE_DRAIN_SUB_OPERATION_NOT_CONFIGURED | 0 | This node drain operation was not configured |
+| NODE_DRAIN_SUB_OPERATION_PENDING | 1 | This node drain operation was configured but is pending |
+| NODE_DRAIN_SUB_OPERATION_RUNNING | 2 | This node drain opeartion is running |
+| NODE_DRAIN_SUB_OPERATION_DONE | 3 | This node drain operation has completed |
 
 
 
@@ -5949,6 +6356,19 @@ used for.
 | Read | 0 | Read access only and cannot affect the resource. |
 | Write | 1 | Write access and can affect the resource. This type automatically provides Read access also. |
 | Admin | 2 | Administrator access. This type automatically provides Read and Write access also. |
+
+
+
+
+## ProxyProtocol {#proxyprotocol}
+ProxyProtocol defines the protocol used for proxy.
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| PROXY_PROTOCOL_INVALID | 0 | Invalid uninitialized value |
+| PROXY_PROTOCOL_NFS | 1 | NFS indicates that the external data source is NFS and the volume will be reflected over NFS protocol |
+| PROXY_PROTOCOL_S3 | 2 | S3 indicates that the external data source is an object store. |
+| PROXY_PROTOCOL_PXD | 3 | PXD indicates that the external data source is a Portworx block volume. |
 
 
 
@@ -6131,7 +6551,7 @@ client and server applications
 | ---- | ------ | ----------- |
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
-| Minor | 91 | SDK version minor value of this specification |
+| Minor | 100 | SDK version minor value of this specification |
 | Patch | 0 | SDK version patch value of this specification |
 
 

@@ -515,6 +515,10 @@
       },
       "apiClusterPairCreateRequest": {
         "properties": {
+          "credential_id": {
+            "title": "Use for the cluster pairing, if given\ncredential id will be used in ClusterPairCreate service",
+            "type": "string"
+          },
           "mode": {
             "$ref": "#/components/schemas/ClusterPairModeMode"
           },
@@ -826,9 +830,8 @@
           "IO_PROFILE_DB_REMOTE",
           "IO_PROFILE_CMS",
           "IO_PROFILE_SYNC_SHARED",
-          "IO_PROFILE_BKUPSRC"
+          "IO_PROFILE_AUTO"
         ],
-        "title": "- IO_PROFILE_BKUPSRC: IO_PROFILE_BKUPSRC inherits cloudbackup's IOprofile",
         "type": "string"
       },
       "apiIoStrategy": {
@@ -863,6 +866,33 @@
               "type": "string"
             },
             "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "apiMountOptions": {
+        "description": "MountOptions defines the mount options with which a volume is mounted.",
+        "properties": {
+          "options": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "Options are opaque key value pairs that are passed as mount options when\na volume is mounted.\nIf an empty value is provided only the key will be passed as an option\nIf both key and value are provided then 'key=value' will be passed as an\noption",
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "apiNFSProxySpec": {
+        "description": "NFSProxySpec is the spec for proxying an NFS share.",
+        "properties": {
+          "export_path": {
+            "title": "ExportPath is the NFS export path on the NFS server",
+            "type": "string"
+          },
+          "sub_path": {
+            "description": "SubPath is the sub-directory from an NFS share that should be reflected.",
+            "type": "string"
           }
         },
         "type": "object"
@@ -932,6 +962,49 @@
           "owner": {
             "description": "Username of owner.\n\nThe storage system uses the username taken from the security authorization\ntoken and is saved on this field. Only users with system administration\ncan edit this value.",
             "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "apiPXDProxySpec": {
+        "properties": {
+          "id": {
+            "title": "ID of the remote portworx volume",
+            "type": "string"
+          }
+        },
+        "title": "PXDProxySpec is the spec for proxying a Portworx volume",
+        "type": "object"
+      },
+      "apiProxyProtocol": {
+        "default": "PROXY_PROTOCOL_INVALID",
+        "description": "ProxyProtocol defines the protocol used for proxy.\n\n - PROXY_PROTOCOL_INVALID: Invalid uninitialized value\n - PROXY_PROTOCOL_NFS: NFS indicates that the external data source is NFS and the volume\nwill be reflected over NFS protocol\n - PROXY_PROTOCOL_S3: S3 indicates that the external data source is an object store.\n - PROXY_PROTOCOL_PXD: PXD indicates that the external data source is a Portworx block volume.",
+        "enum": [
+          "PROXY_PROTOCOL_INVALID",
+          "PROXY_PROTOCOL_NFS",
+          "PROXY_PROTOCOL_S3",
+          "PROXY_PROTOCOL_PXD"
+        ],
+        "type": "string"
+      },
+      "apiProxySpec": {
+        "description": "ProxySpec defines how this volume will reflect an external data source.",
+        "properties": {
+          "endpoint": {
+            "description": "Endpoint is the external endpoint which can be used for accessing the\nexternal data source.",
+            "type": "string"
+          },
+          "nfs_spec": {
+            "$ref": "#/components/schemas/apiNFSProxySpec"
+          },
+          "proxy_protocol": {
+            "$ref": "#/components/schemas/apiProxyProtocol"
+          },
+          "pxd_spec": {
+            "$ref": "#/components/schemas/apiPXDProxySpec"
+          },
+          "s3_spec": {
+            "$ref": "#/components/schemas/apiS3ProxySpec"
           }
         },
         "type": "object"
@@ -1069,11 +1142,19 @@
           "io_profile": {
             "$ref": "#/components/schemas/apiIoProfile"
           },
+          "io_profile_bkup_src": {
+            "format": "boolean",
+            "title": "IoProfileBkupSrc indicates to inherit IoProfile from cloudbackup",
+            "type": "boolean"
+          },
           "io_strategy": {
             "$ref": "#/components/schemas/apiIoStrategy"
           },
           "journal": {
             "$ref": "#/components/schemas/apiRestoreParamBoolType"
+          },
+          "mount_options": {
+            "$ref": "#/components/schemas/apiMountOptions"
           },
           "nodiscard": {
             "$ref": "#/components/schemas/apiRestoreParamBoolType"
@@ -1083,6 +1164,12 @@
           },
           "placement_strategy": {
             "$ref": "#/components/schemas/apiVolumePlacementStrategy"
+          },
+          "proxy_spec": {
+            "$ref": "#/components/schemas/apiProxySpec"
+          },
+          "proxy_write": {
+            "$ref": "#/components/schemas/apiRestoreParamBoolType"
           },
           "queue_depth": {
             "format": "int64",
@@ -1097,6 +1184,9 @@
           },
           "sharedv4": {
             "$ref": "#/components/schemas/apiRestoreParamBoolType"
+          },
+          "sharedv4_mount_options": {
+            "$ref": "#/components/schemas/apiMountOptions"
           },
           "snapshot_interval": {
             "format": "int64",
@@ -1123,6 +1213,16 @@
               "type": "string"
             },
             "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "apiS3ProxySpec": {
+        "description": "S3ProxySpec is the spec for proxying an external object store.",
+        "properties": {
+          "bucket_name": {
+            "title": "BucketName is the name of the bucket from the object store",
+            "type": "string"
           }
         },
         "type": "object"
@@ -1418,6 +1518,11 @@
             "title": "Credential id refers to the cloud credentials needed to backup",
             "type": "string"
           },
+          "delete_local": {
+            "format": "boolean",
+            "title": "DeleteLocal indicates if local snap created for backup must be deleted after\nthe backup is complete",
+            "type": "boolean"
+          },
           "full": {
             "format": "boolean",
             "title": "Full indicates if full backup is desired even though incremental is possible",
@@ -1547,6 +1652,11 @@
           "credential_id": {
             "title": "Credential id refers to the cloud credentials needed to backup",
             "type": "string"
+          },
+          "delete_local": {
+            "format": "boolean",
+            "title": "DeleteLocal indicates if local snap created for backup must be deleted after\nthe backup is complete",
+            "type": "boolean"
           },
           "full": {
             "format": "boolean",
@@ -2315,19 +2425,6 @@
         "title": "Empty response",
         "type": "object"
       },
-      "apiSdkFilesystemTrimGetStatusResponse": {
-        "description": "SdkFilesystemTrimGetStatusResponse defines the response for a\nSdkFilesystemTrimGetStatusRequest.",
-        "properties": {
-          "message": {
-            "title": "Text blob containing ASCII text providing details of the operation",
-            "type": "string"
-          },
-          "status": {
-            "$ref": "#/components/schemas/FilesystemTrimFilesystemTrimStatus"
-          }
-        },
-        "type": "object"
-      },
       "apiSdkFilesystemTrimStartRequest": {
         "properties": {
           "mount_path": {
@@ -2344,6 +2441,19 @@
       },
       "apiSdkFilesystemTrimStartResponse": {
         "description": "SdkFilesystemTrimStartResponse defines the response for a\nSdkFilesystemTrimStartRequest.",
+        "properties": {
+          "message": {
+            "title": "Text blob containing ASCII text providing details of the operation",
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/FilesystemTrimFilesystemTrimStatus"
+          }
+        },
+        "type": "object"
+      },
+      "apiSdkFilesystemTrimStatusResponse": {
+        "description": "SdkFilesystemTrimStatusResponse defines the response for a\nSdkFilesystemTrimStatusRequest.",
         "properties": {
           "message": {
             "title": "Text blob containing ASCII text providing details of the operation",
@@ -2482,6 +2592,15 @@
           }
         },
         "title": "Defines a response when inspecting a node",
+        "type": "object"
+      },
+      "apiSdkNodeVolumeUsageByNodeResponse": {
+        "properties": {
+          "volume_usage_info": {
+            "$ref": "#/components/schemas/apiVolumeUsageByNode"
+          }
+        },
+        "title": "Defines response containing Node's volumes/snapshot capacity usage details",
         "type": "object"
       },
       "apiSdkObjectstoreCreateRequest": {
@@ -4138,6 +4257,9 @@
           "locator": {
             "$ref": "#/components/schemas/apiVolumeLocator"
           },
+          "mount_options": {
+            "$ref": "#/components/schemas/apiMountOptions"
+          },
           "readonly": {
             "description": "Readonly is true if this volume is to be mounted with readonly access.",
             "format": "boolean",
@@ -4160,6 +4282,9 @@
           "secure_device_path": {
             "description": "SecureDevicePath is the device path for an encrypted volume.",
             "type": "string"
+          },
+          "sharedv4_mount_options": {
+            "$ref": "#/components/schemas/apiMountOptions"
           },
           "source": {
             "$ref": "#/components/schemas/apiSource"
@@ -4398,6 +4523,9 @@
             "format": "boolean",
             "type": "boolean"
           },
+          "mount_options": {
+            "$ref": "#/components/schemas/apiMountOptions"
+          },
           "nodiscard": {
             "description": "Nodiscard specifies if the volume will be mounted with discard support disabled.\ni.e. FS will not release allocated blocks back to the backing storage pool.",
             "format": "boolean",
@@ -4412,6 +4540,14 @@
           },
           "placement_strategy": {
             "$ref": "#/components/schemas/apiVolumePlacementStrategy"
+          },
+          "proxy_spec": {
+            "$ref": "#/components/schemas/apiProxySpec"
+          },
+          "proxy_write": {
+            "format": "boolean",
+            "title": "Proxy_write if true, per volume proxy write replication enabled",
+            "type": "boolean"
           },
           "queue_depth": {
             "format": "int64",
@@ -4438,6 +4574,9 @@
             "description": "Sharedv4 is true if this volume can be accessed via sharedv4.",
             "format": "boolean",
             "type": "boolean"
+          },
+          "sharedv4_mount_options": {
+            "$ref": "#/components/schemas/apiMountOptions"
           },
           "size": {
             "format": "uint64",
@@ -4515,12 +4654,22 @@
             "format": "boolean",
             "type": "boolean"
           },
+          "mount_opt_spec": {
+            "$ref": "#/components/schemas/apiMountOptions"
+          },
           "nodiscard": {
             "format": "boolean",
             "type": "boolean"
           },
           "passphrase": {
             "type": "string"
+          },
+          "proxy_spec": {
+            "$ref": "#/components/schemas/apiProxySpec"
+          },
+          "proxy_write": {
+            "format": "boolean",
+            "type": "boolean"
           },
           "queue_depth": {
             "format": "int64",
@@ -4546,6 +4695,9 @@
           "sharedv4": {
             "format": "boolean",
             "type": "boolean"
+          },
+          "sharedv4_mount_opt_spec": {
+            "$ref": "#/components/schemas/apiMountOptions"
           },
           "size": {
             "format": "uint64",
@@ -4612,6 +4764,9 @@
             "format": "boolean",
             "type": "boolean"
           },
+          "mount_opt_spec": {
+            "$ref": "#/components/schemas/apiMountOptions"
+          },
           "nodiscard": {
             "format": "boolean",
             "type": "boolean"
@@ -4621,6 +4776,13 @@
           },
           "passphrase": {
             "type": "string"
+          },
+          "proxy_spec": {
+            "$ref": "#/components/schemas/apiProxySpec"
+          },
+          "proxy_write": {
+            "format": "boolean",
+            "type": "boolean"
           },
           "queue_depth": {
             "format": "int64",
@@ -4643,6 +4805,9 @@
           "sharedv4": {
             "format": "boolean",
             "type": "boolean"
+          },
+          "sharedv4_mount_opt_spec": {
+            "$ref": "#/components/schemas/apiMountOptions"
           },
           "size": {
             "format": "uint64",
@@ -4695,6 +4860,52 @@
         ],
         "type": "string"
       },
+      "apiVolumeUsage": {
+        "description": "Provides volume's exclusive bytes and its total usage. This cannot be \nretrieved individually and is obtained as part node's usage for a given\nnode.",
+        "properties": {
+          "exclusive_bytes": {
+            "format": "uint64",
+            "title": "size in bytes exclusively used by the volume/snapshot",
+            "type": "string"
+          },
+          "local_cloud_snapshot": {
+            "format": "boolean",
+            "title": "set to true if this volume is snapshot created by cloudbackups",
+            "type": "boolean"
+          },
+          "pool_uuid": {
+            "title": "uuid of the pool that this volume belongs to",
+            "type": "string"
+          },
+          "total_bytes": {
+            "format": "uint64",
+            "title": "size in bytes by the volume/snapshot",
+            "type": "string"
+          },
+          "volume_id": {
+            "title": "id for the volume/snapshot",
+            "type": "string"
+          },
+          "volume_name": {
+            "title": "name of the volume/snapshot",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "apiVolumeUsageByNode": {
+        "description": "Provides capacity usage of a node in terms of volumes. Returns VolumeUsage for\nall the volume/snapshot(s) in the node.",
+        "properties": {
+          "volume_usage": {
+            "items": {
+              "$ref": "#/components/schemas/apiVolumeUsage"
+            },
+            "title": "VolumeUsage returns list of VolumeUsage for given node",
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
       "openstorageapiStatus": {
         "default": "STATUS_NONE",
         "enum": [
@@ -4728,7 +4939,7 @@
   },
   "info": {
     "title": "OpenStorage SDK",
-    "version": "0.69.15"
+    "version": "0.69.27"
   },
   "openapi": "3.0.0",
   "paths": {
@@ -5847,7 +6058,7 @@
     },
     "/v1/filesystem-trim/status": {
       "get": {
-        "operationId": "GetStatus",
+        "operationId": "Status",
         "parameters": [
           {
             "description": "Id of the volume.",
@@ -5873,14 +6084,14 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/apiSdkFilesystemTrimGetStatusResponse"
+                  "$ref": "#/components/schemas/apiSdkFilesystemTrimStatusResponse"
                 }
               }
             },
             "description": ""
           }
         },
-        "summary": "Get Status of a filesystem Trim background operation on a mounted\nvolume, if any",
+        "summary": "Status of a filesystem Trim background operation on a mounted\nvolume, if any",
         "tags": [
           "OpenStorageFilesystemTrim"
         ]
@@ -6176,6 +6387,37 @@
           }
         },
         "summary": "InspectCurrent returns information about the storage node\nwhere the client is currently connected to.",
+        "tags": [
+          "OpenStorageNode"
+        ]
+      }
+    },
+    "/v1/nodes/usage/{node_id}": {
+      "get": {
+        "operationId": "VolumeUsageByNode",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "node_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/apiSdkNodeVolumeUsageByNodeResponse"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "summary": "Returns capacity usage of all volumes/snaps for a give node",
         "tags": [
           "OpenStorageNode"
         ]

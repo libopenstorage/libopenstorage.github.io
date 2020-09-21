@@ -2,6 +2,59 @@
 
 ## Releases
 
+### v0.69.27 - (9/10/2020)
+
+* Add VolumeUsageByNode SDK API to OpenstorageNode service.
+
+### v0.69.26 - (9/10/2020)
+
+* Added proxy write flag in volume spec
+
+### v0.69.25 - (9/1/2020)
+
+* Added new field to CloudBackupGroupCreate api
+
+### v0.69.24 - (8/31/2020)
+
+* Added new field to CloudBackupCreate api
+
+### v0.69.23 - (8/10/2020)
+
+* Rename reflection volumes to proxy volumes.
+
+### v0.69.22 - (8/7/2020)
+
+* Add support for Reflection Volumes.
+* Reflection Volumes essentially reflect an external data source as an openstorage volume.
+* Added a new field ReflectionSpec to VolumeSpec object.
+
+### v0.69.21 - (8/6/2020)
+
+* Add CredentialId field to ClusterPairCreate api
+
+### v0.69.20 - (8/5/2020)
+
+* Add IO_PROFILE_AUTO to the ioProfile list
+
+### v0.69.19 - (8/8/2020)
+
+* Removed IO_PROFILE_BKUPSRC from ioProfile list
+
+### v0.69.18 - (7/27/2020)
+
+* Renamed FilesystemTrim Api GetStatus() to Status().
+
+### v0.69.17 - (7/16/2020)
+
+* Add sharedv4_mount_options field to Volume and VolumeSpec object.
+* The sharedv4_mount_options will be used at runtime while mounting the sharedv4 volume from
+  a node (client) which does not have the volume replica.
+
+### v0.69.16 - (7/13/2020)
+
+* Add mount_options field to Volume and VolumeSpec object.
+* The mount_options will be used at runtime while mounting the volume.
+
 ### v0.69.15 - (7/7/2020)
 
 * Remove LastUpdateTime from RebalanceJobSummary and added it RebalanceJob,

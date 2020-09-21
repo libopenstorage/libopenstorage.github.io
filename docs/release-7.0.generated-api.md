@@ -72,10 +72,15 @@
     - [LocateResponse](#locateresponse)
     - [LocateResponse.DockeridsEntry](#locateresponsedockeridsentry)
     - [LocateResponse.MountsEntry](#locateresponsemountsentry)
+    - [MountOptions](#mountoptions)
+    - [MountOptions.OptionsEntry](#mountoptionsoptionsentry)
+    - [NFSProxySpec](#nfsproxyspec)
     - [ObjectstoreInfo](#objectstoreinfo)
     - [Ownership](#ownership)
     - [Ownership.AccessControl](#ownershipaccesscontrol)
     - [Ownership.PublicAccessControl](#ownershippublicaccesscontrol)
+    - [PXDProxySpec](#pxdproxyspec)
+    - [ProxySpec](#proxyspec)
     - [ReplicaPlacementSpec](#replicaplacementspec)
     - [ReplicaSet](#replicaset)
     - [Report](#report)
@@ -84,6 +89,7 @@
     - [RestoreVolumeSpec](#restorevolumespec)
     - [RuntimeStateMap](#runtimestatemap)
     - [RuntimeStateMap.RuntimeStateEntry](#runtimestatemapruntimestateentry)
+    - [S3ProxySpec](#s3proxyspec)
     - [ScanPolicy](#scanpolicy)
     - [SdkAlertsAlertTypeQuery](#sdkalertsalerttypequery)
     - [SdkAlertsCountSpan](#sdkalertscountspan)
@@ -190,10 +196,10 @@
     - [SdkFilesystemCheckStatusResponse](#sdkfilesystemcheckstatusresponse)
     - [SdkFilesystemCheckStopRequest](#sdkfilesystemcheckstoprequest)
     - [SdkFilesystemCheckStopResponse](#sdkfilesystemcheckstopresponse)
-    - [SdkFilesystemTrimGetStatusRequest](#sdkfilesystemtrimgetstatusrequest)
-    - [SdkFilesystemTrimGetStatusResponse](#sdkfilesystemtrimgetstatusresponse)
     - [SdkFilesystemTrimStartRequest](#sdkfilesystemtrimstartrequest)
     - [SdkFilesystemTrimStartResponse](#sdkfilesystemtrimstartresponse)
+    - [SdkFilesystemTrimStatusRequest](#sdkfilesystemtrimstatusrequest)
+    - [SdkFilesystemTrimStatusResponse](#sdkfilesystemtrimstatusresponse)
     - [SdkFilesystemTrimStopRequest](#sdkfilesystemtrimstoprequest)
     - [SdkFilesystemTrimStopResponse](#sdkfilesystemtrimstopresponse)
     - [SdkGetRebalanceJobStatusRequest](#sdkgetrebalancejobstatusrequest)
@@ -212,6 +218,8 @@
     - [SdkNodeInspectCurrentResponse](#sdknodeinspectcurrentresponse)
     - [SdkNodeInspectRequest](#sdknodeinspectrequest)
     - [SdkNodeInspectResponse](#sdknodeinspectresponse)
+    - [SdkNodeVolumeUsageByNodeRequest](#sdknodevolumeusagebynoderequest)
+    - [SdkNodeVolumeUsageByNodeResponse](#sdknodevolumeusagebynoderesponse)
     - [SdkObjectstoreCreateRequest](#sdkobjectstorecreaterequest)
     - [SdkObjectstoreCreateResponse](#sdkobjectstorecreateresponse)
     - [SdkObjectstoreDeleteRequest](#sdkobjectstoredeleterequest)
@@ -375,6 +383,8 @@
     - [VolumeSpecPolicy.VolumeLabelsEntry](#volumespecpolicyvolumelabelsentry)
     - [VolumeSpecUpdate](#volumespecupdate)
     - [VolumeStateAction](#volumestateaction)
+    - [VolumeUsage](#volumeusage)
+    - [VolumeUsageByNode](#volumeusagebynode)
     - [Xattr](#xattr)
   
 
@@ -402,6 +412,7 @@
     - [LabelSelectorRequirement.Operator](#labelselectorrequirementoperator)
     - [OperationFlags](#operationflags)
     - [Ownership.AccessType](#ownershipaccesstype)
+    - [ProxyProtocol](#proxyprotocol)
     - [ResourceType](#resourcetype)
     - [RestoreParamBoolType](#restoreparambooltype)
     - [ScanPolicy.ScanAction](#scanpolicyscanaction)
@@ -808,7 +819,7 @@ are not mounted, these API return error.
 
 Once the filesystem trim operation is started, the clients have to poll for
 the status of the background operation using the
-`OpenStorageFilesystemTrim.GetStatus()` rpc request
+`OpenStorageFilesystemTrim.Status()` rpc request
 
 A typical workflow involving filesystem trim would be as follows
 1. Attach the volume
@@ -820,7 +831,7 @@ A typical workflow involving filesystem trim would be as follows
    This call returns immediately with a status code indicating if the
    operation was successfully started or not.
 4. To get the status of the Filesystem Trim operation, issue a grpc call to
-   `OpenStorageFilesystemTrimClient.GetStatus()`
+   `OpenStorageFilesystemTrimClient.Status()`
 5. To stop the Filesystem Trim operation, issue a grpc call to
    `OpenStorageFilesystemTrimClient.Stop()`
 
@@ -830,12 +841,12 @@ A typical workflow involving filesystem trim would be as follows
     [SdkFilesystemTrimStartResponse](#sdkfilesystemtrimstartresponse)
 
 Start a filesystem Trim background operation on a mounted volume
-## GetStatus {#methodopenstorageapiopenstoragefilesystemtrimgetstatus}
+## Status {#methodopenstorageapiopenstoragefilesystemtrimstatus}
 
-> **rpc** GetStatus([SdkFilesystemTrimGetStatusRequest](#sdkfilesystemtrimgetstatusrequest))
-    [SdkFilesystemTrimGetStatusResponse](#sdkfilesystemtrimgetstatusresponse)
+> **rpc** Status([SdkFilesystemTrimStatusRequest](#sdkfilesystemtrimstatusrequest))
+    [SdkFilesystemTrimStatusResponse](#sdkfilesystemtrimstatusresponse)
 
-Get Status of a filesystem Trim background operation on a mounted
+Status of a filesystem Trim background operation on a mounted
 volume, if any
 ## Stop {#methodopenstorageapiopenstoragefilesystemtrimstop}
 
@@ -959,6 +970,12 @@ Enumerate returns the ids of all the nodes in the current cluster
     [SdkNodeEnumerateWithFiltersResponse](#sdknodeenumeratewithfiltersresponse)
 
 EnumerateWithFilters returns all the nodes in the current cluster
+## VolumeUsageByNode {#methodopenstorageapiopenstoragenodevolumeusagebynode}
+
+> **rpc** VolumeUsageByNode([SdkNodeVolumeUsageByNodeRequest](#sdknodevolumeusagebynoderequest))
+    [SdkNodeVolumeUsageByNodeResponse](#sdknodevolumeusagebynoderesponse)
+
+Returns capacity usage of all volumes/snaps for a give node
  <!-- end methods -->
 
 # OpenStorageObjectstore {#serviceopenstorageapiopenstorageobjectstore}
@@ -1576,6 +1593,7 @@ Used to send a request to create a cluster pair
 | remote_cluster_token | [ string](#string) | Token used to authenticate with the remote cluster |
 | set_default | [ bool](#bool) | Set the new pair as the default |
 | mode | [ ClusterPairMode.Mode](#clusterpairmodemode) | The mode to use for the cluster pair |
+| credential_id | [ string](#string) | Use for the cluster pairing, if given credential id will be used in ClusterPairCreate service |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -1648,6 +1666,7 @@ Used to process a pair request from a remote cluster
 | source_cluster_id | [ string](#string) | ID of the cluster requesting the pairing |
 | remote_cluster_token | [ string](#string) | Token used to authenticate with the remote cluster |
 | mode | [ ClusterPairMode.Mode](#clusterpairmodemode) | The mode to use for the cluster pair |
+| credential_id | [ string](#string) | Use for the cluster pairing, if given credential id will be used in ClusterPairCreate service |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -1928,6 +1947,41 @@ and/or Container IDs and their mount paths
  <!-- end HasFields -->
 
 
+## MountOptions {#mountoptions}
+MountOptions defines the mount options with which a volume is mounted.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| options | [map MountOptions.OptionsEntry](#mountoptionsoptionsentry) | Options are opaque key value pairs that are passed as mount options when a volume is mounted. If an empty value is provided only the key will be passed as an option If both key and value are provided then 'key=value' will be passed as an option |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## MountOptions.OptionsEntry {#mountoptionsoptionsentry}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [ string](#string) | none |
+| value | [ string](#string) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## NFSProxySpec {#nfsproxyspec}
+NFSProxySpec is the spec for proxying an NFS share.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| export_path | [ string](#string) | ExportPath is the NFS export path on the NFS server |
+| sub_path | [ string](#string) | SubPath is the sub-directory from an NFS share that should be reflected. |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
 ## ObjectstoreInfo {#objectstoreinfo}
 ObjectstoreInfo is a structure that has current objectstore info
 
@@ -1986,6 +2040,32 @@ PublicAccessControl allows assigning public ownership
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | type | [ Ownership.AccessType](#ownershipaccesstype) | AccessType declares which level of public access is allowed |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## PXDProxySpec {#pxdproxyspec}
+PXDProxySpec is the spec for proxying a Portworx volume
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [ string](#string) | ID of the remote portworx volume |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## ProxySpec {#proxyspec}
+ProxySpec defines how this volume will reflect an external data source.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| proxy_protocol | [ ProxyProtocol](#proxyprotocol) | ProxyProtocol defines the protocol used for proxy. |
+| endpoint | [ string](#string) | Endpoint is the external endpoint which can be used for accessing the external data source. |
+| nfs_spec | [ NFSProxySpec](#nfsproxyspec) | NFSProxySpec is the spec for proxying an NFS share |
+| s3_spec | [ S3ProxySpec](#s3proxyspec) | S3ProxySpec is the spec for proxying an external object store |
+| pxd_spec | [ PXDProxySpec](#pxdproxyspec) | PXDProxySpec is the spec for proxying a Portworx volume |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -2062,7 +2142,7 @@ inherit corresponding field value from backup's spec.
 | ----- | ---- | ----------- |
 | ha_level | [ int64](#int64) | HaLevel specifies the number of copies of data. |
 | cos | [ CosType](#costype) | Cos specifies the relative class of service. |
-| io_profile | [ IoProfile](#ioprofile) | IoProfile provides a hint about application using this volume. |
+| io_profile | [ IoProfile](#ioprofile) | IoProfile provides a hint about application using this volume. This field is ignored if IoProfileBkupSrc is set true |
 | snapshot_interval | [ uint32](#uint32) | SnapshotInterval in minutes, set to 0 to disable snapshots |
 | shared | [ RestoreParamBoolType](#restoreparambooltype) | Shared is true if this volume can be concurrently accessed by multiple users. |
 | replica_set | [ ReplicaSet](#replicaset) | ReplicaSet is the desired set of nodes for the volume data. |
@@ -2081,6 +2161,11 @@ inherit corresponding field value from backup's spec.
 | ownership | [ Ownership](#ownership) | Ownership |
 | export_spec | [ ExportSpec](#exportspec) | ExportSpec defines how the volume should be exported. |
 | fp_preference | [ RestoreParamBoolType](#restoreparambooltype) | fastpath extensions |
+| mount_options | [ MountOptions](#mountoptions) | MountOptions defines the options that should be used while mounting this volume |
+| sharedv4_mount_options | [ MountOptions](#mountoptions) | Sharedv4MountOptions defines the options that will be used while mounting a sharedv4 volume from a node where the volume replica does not exist |
+| io_profile_bkup_src | [ bool](#bool) | IoProfileBkupSrc indicates to inherit IoProfile from cloudbackup |
+| proxy_spec | [ ProxySpec](#proxyspec) | ProxySpec indicates that this volume is used for proxying an external data source |
+| proxy_write | [ RestoreParamBoolType](#restoreparambooltype) | Proxy_write is true if proxy write replication is enabled for the volume |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -2105,6 +2190,17 @@ information.
 | ----- | ---- | ----------- |
 | key | [ string](#string) | none |
 | value | [ string](#string) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## S3ProxySpec {#s3proxyspec}
+S3ProxySpec is the spec for proxying an external object store.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| bucket_name | [ string](#string) | BucketName is the name of the bucket from the object store |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -2353,6 +2449,7 @@ Defines a request to create a backup of a volume to the cloud
 | task_id | [ string](#string) | TaskId of the task performing this backup. This value can be used for idempotency. |
 | labels | [map SdkCloudBackupCreateRequest.LabelsEntry](#sdkcloudbackupcreaterequestlabelsentry) | Labels are list of key value pairs to tag the cloud backup. These labels are stored in the metadata associated with the backup. |
 | full_backup_frequency | [ uint32](#uint32) | FullBackupFrequency indicates number of incremental backup after whcih a fullbackup must be created. This is to override the default value for manual/user triggerred backups and not applicable for scheduled backups Value of 0 retains the default behavior. |
+| delete_local | [ bool](#bool) | DeleteLocal indicates if local snap created for backup must be deleted after the backup is complete |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -2484,6 +2581,7 @@ Defines a request to create a group backup of a group to the cloud
 | credential_id | [ string](#string) | Credential id refers to the cloud credentials needed to backup |
 | full | [ bool](#bool) | Full indicates if full backup is desired even though incremental is possible |
 | labels | [map SdkCloudBackupGroupCreateRequest.LabelsEntry](#sdkcloudbackupgroupcreaterequestlabelsentry) | Labels are list of key value pairs to tag the cloud backup. These labels are stored in the metadata associated with the backup. |
+| delete_local | [ bool](#bool) | DeleteLocal indicates if local snap created for backup must be deleted after the backup is complete |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3330,32 +3428,6 @@ Empty response
  <!-- end HasFields -->
 
 
-## SdkFilesystemTrimGetStatusRequest {#sdkfilesystemtrimgetstatusrequest}
-SdkFilesystemTrimGetStatusRequest defines a request to get status of a
-background filesystem trim operation
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| volume_id | [ string](#string) | Id of the volume |
-| mount_path | [ string](#string) | Path where the volume is mounted |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkFilesystemTrimGetStatusResponse {#sdkfilesystemtrimgetstatusresponse}
-SdkFilesystemTrimGetStatusResponse defines the response for a
-SdkFilesystemTrimGetStatusRequest.
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| status | [ FilesystemTrim.FilesystemTrimStatus](#filesystemtrimfilesystemtrimstatus) | Status code representing the state of the filesystem trim operation |
-| message | [ string](#string) | Text blob containing ASCII text providing details of the operation |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
 ## SdkFilesystemTrimStartRequest {#sdkfilesystemtrimstartrequest}
 SdkFilesystemTrimStartRequest defines a request to start a background filesystem trim operation
 
@@ -3371,6 +3443,32 @@ SdkFilesystemTrimStartRequest defines a request to start a background filesystem
 ## SdkFilesystemTrimStartResponse {#sdkfilesystemtrimstartresponse}
 SdkFilesystemTrimStartResponse defines the response for a
 SdkFilesystemTrimStartRequest.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| status | [ FilesystemTrim.FilesystemTrimStatus](#filesystemtrimfilesystemtrimstatus) | Status code representing the state of the filesystem trim operation |
+| message | [ string](#string) | Text blob containing ASCII text providing details of the operation |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkFilesystemTrimStatusRequest {#sdkfilesystemtrimstatusrequest}
+SdkFilesystemTrimStatusRequest defines a request to get status of a
+background filesystem trim operation
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id | [ string](#string) | Id of the volume |
+| mount_path | [ string](#string) | Path where the volume is mounted |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkFilesystemTrimStatusResponse {#sdkfilesystemtrimstatusresponse}
+SdkFilesystemTrimStatusResponse defines the response for a
+SdkFilesystemTrimStatusRequest.
 
 
 | Field | Type | Description |
@@ -3552,6 +3650,29 @@ Defines a response when inspecting a node
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | node | [ StorageNode](#storagenode) | Node information |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkNodeVolumeUsageByNodeRequest {#sdknodevolumeusagebynoderequest}
+Defines request to retrieve all volumes/snapshots capacity usage details
+for a given node
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| node_id | [ string](#string) | Id of the node to get snapshot/volumes capacity usage details |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkNodeVolumeUsageByNodeResponse {#sdknodevolumeusagebynoderesponse}
+Defines response containing Node's volumes/snapshot capacity usage details
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_usage_info | [ VolumeUsageByNode](#volumeusagebynode) | VolumeUsageByNode details |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -5186,6 +5307,8 @@ Volume represents an abstract storage volume.
 | fpConfig | [ FastpathConfig](#fastpathconfig) | Fastpath extensions |
 | last_scan_fix | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | LastScanFix is the time when an integrity check fixed errors in filesystem |
 | last_scan_status | [ FilesystemHealthStatus](#filesystemhealthstatus) | LastScanStatus is the time when an integrity check fixed errors in filesystem |
+| mount_options | [ MountOptions](#mountoptions) | MountOptions are the runtime mount options that will be used while mounting this volume |
+| sharedv4_mount_options | [ MountOptions](#mountoptions) | Sharedv4MountOptions are the runtime mount options that will be used while mounting a sharedv4 volume from a node where the volume replica does not exist |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -5487,6 +5610,10 @@ VolumeSpec has the properties needed to create a volume.
 | fp_preference | [ bool](#bool) | fastpath extensions |
 | xattr | [ Xattr.Value](#xattrvalue) | Xattr specifies implementation specific volume attributes |
 | scan_policy | [ ScanPolicy](#scanpolicy) | ScanPolicy specifies the filesystem check policy |
+| mount_options | [ MountOptions](#mountoptions) | MountOptions defines the options that will be used while mounting this volume |
+| sharedv4_mount_options | [ MountOptions](#mountoptions) | Sharedv4MountOptions defines the options that will be used while mounting a sharedv4 volume from a node where the volume replica does not exist |
+| proxy_spec | [ ProxySpec](#proxyspec) | ProxySpec indicates that this volume is used for proxying an external data source |
+| proxy_write | [ bool](#bool) | Proxy_write if true, per volume proxy write replication enabled |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -5536,6 +5663,10 @@ VolumeSpecPolicy provides a method to set volume storage policy
 | io_strategy | [ IoStrategy](#iostrategy) | IoStrategy preferred strategy for I/O. |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) export_spec_opt.export_spec | [ ExportSpec](#exportspec) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) scan_policy_opt.scan_policy | [ ScanPolicy](#scanpolicy) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) mount_opt.mount_opt_spec | [ MountOptions](#mountoptions) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) sharedv4_mount_opt.sharedv4_mount_opt_spec | [ MountOptions](#mountoptions) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) proxy_spec_opt.proxy_spec | [ ProxySpec](#proxyspec) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) proxy_write_opt.proxy_write | [ bool](#bool) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -5581,6 +5712,10 @@ VolumeSpecUpdate provides a method to set any of the VolumeSpec of an existing v
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) fastpath_opt.fastpath | [ bool](#bool) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) xattr_opt.xattr | [ Xattr.Value](#xattrvalue) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) scan_policy_opt.scan_policy | [ ScanPolicy](#scanpolicy) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) mount_opt.mount_opt_spec | [ MountOptions](#mountoptions) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) sharedv4_mount_opt.sharedv4_mount_opt_spec | [ MountOptions](#mountoptions) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) proxy_spec_opt.proxy_spec | [ ProxySpec](#proxyspec) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) proxy_write_opt.proxy_write | [ bool](#bool) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -5595,6 +5730,36 @@ VolumeStateAction specifies desired actions.
 | mount | [ VolumeActionParam](#volumeactionparam) | Mount or unmount volume |
 | mount_path | [ string](#string) | MountPath Path where the device is mounted |
 | device_path | [ string](#string) | DevicePath Path returned in attach |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## VolumeUsage {#volumeusage}
+Provides volume's exclusive bytes and its total usage. This cannot be 
+retrieved individually and is obtained as part node's usage for a given
+node.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id | [ string](#string) | id for the volume/snapshot |
+| volume_name | [ string](#string) | name of the volume/snapshot |
+| pool_uuid | [ string](#string) | uuid of the pool that this volume belongs to |
+| exclusive_bytes | [ uint64](#uint64) | size in bytes exclusively used by the volume/snapshot |
+| total_bytes | [ uint64](#uint64) | size in bytes by the volume/snapshot |
+| local_cloud_snapshot | [ bool](#bool) | set to true if this volume is snapshot created by cloudbackups |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## VolumeUsageByNode {#volumeusagebynode}
+Provides capacity usage of a node in terms of volumes. Returns VolumeUsage for
+all the volume/snapshot(s) in the node.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_usage | [repeated VolumeUsage](#volumeusage) | VolumeUsage returns list of VolumeUsage for given node |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -5868,7 +6033,7 @@ OpenStorageFilesystemTrim service APIs()
 | IO_PROFILE_DB_REMOTE | 3 | none |
 | IO_PROFILE_CMS | 4 | none |
 | IO_PROFILE_SYNC_SHARED | 5 | none |
-| IO_PROFILE_BKUPSRC | 6 | IO_PROFILE_BKUPSRC inherits cloudbackup's IOprofile |
+| IO_PROFILE_AUTO | 6 | none |
 
 
 
@@ -5912,6 +6077,19 @@ used for.
 | Read | 0 | Read access only and cannot affect the resource. |
 | Write | 1 | Write access and can affect the resource. This type automatically provides Read access also. |
 | Admin | 2 | Administrator access. This type automatically provides Read and Write access also. |
+
+
+
+
+## ProxyProtocol {#proxyprotocol}
+ProxyProtocol defines the protocol used for proxy.
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| PROXY_PROTOCOL_INVALID | 0 | Invalid uninitialized value |
+| PROXY_PROTOCOL_NFS | 1 | NFS indicates that the external data source is NFS and the volume will be reflected over NFS protocol |
+| PROXY_PROTOCOL_S3 | 2 | S3 indicates that the external data source is an object store. |
+| PROXY_PROTOCOL_PXD | 3 | PXD indicates that the external data source is a Portworx block volume. |
 
 
 
@@ -6095,7 +6273,7 @@ client and server applications
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
 | Minor | 69 | SDK version minor value of this specification |
-| Patch | 15 | SDK version patch value of this specification |
+| Patch | 27 | SDK version patch value of this specification |
 
 
 

@@ -445,6 +445,46 @@
                                 
                                 <h1 id="changelog">Changelog</h1>
 <h2 id="releases">Releases</h2>
+<h3 id="v01000---9102020">v0.100.0 - (9/10/2020)</h3>
+<ul>
+<li>Add VolumeUsageByNode SDK API to OpenstorageNode service.</li>
+</ul>
+<h3 id="v0990---8122020">v0.99.0 - (8/12/2020)</h3>
+<ul>
+<li>Add NodeDrain SDK API to OpenstorageNode service.</li>
+</ul>
+<h3 id="v0980---872020">v0.98.0 - (8/7/2020)</h3>
+<ul>
+<li>Rename reflection volumes to proxy volumes.</li>
+</ul>
+<h3 id="v0970---872020">v0.97.0 - (8/7/2020)</h3>
+<ul>
+<li>Add support for Reflection Volumes.</li>
+<li>Reflection Volumes essentially reflect an external data source as an openstorage volume.</li>
+<li>Added a new field ReflectionSpec to VolumeSpec object.</li>
+</ul>
+<h3 id="v0960---852020">v0.96.0 - (8/5/2020)</h3>
+<ul>
+<li>Add CredentialId field to ClusterPairCreate api</li>
+</ul>
+<h3 id="v0950---842020">v0.95.0 - (8/4/2020)</h3>
+<ul>
+<li>Removed IO_PROFILE_BKUPSRC from ioProfile list</li>
+</ul>
+<h3 id="v0940---7292020">v0.94.0 - (7/29/2020)</h3>
+<ul>
+<li>Added proxy write flag in volume spec</li>
+</ul>
+<h3 id="v0930---7232020">v0.93.0 - (7/23/2020)</h3>
+<ul>
+<li>Renamed FilesystemTrim Api GetStatus() to Status().</li>
+</ul>
+<h3 id="v0920---7162020">v0.92.0 - (7/16/2020)</h3>
+<ul>
+<li>Add sharedv4_mount_options field to Volume and VolumeSpec object.</li>
+<li>The sharedv4_mount_options will be used at runtime while mounting the sharedv4 volume from
+a node (client) which does not have the volume replica.</li>
+</ul>
 <h3 id="v0910---7132020">v0.91.0 - (7/13/2020)</h3>
 <ul>
 <li>Add mount_options field to Volume and VolumeSpec object.</li>
@@ -896,7 +936,7 @@ service to the OpenStorageMountAttach service.</li>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Changelog","level":"1.5.5.1","depth":3,"previous":{"title":"Nightly","level":"1.5.5","depth":2,"path":"master.generated-api.md","ref":"master.generated-api.md","articles":[{"title":"Changelog","level":"1.5.5.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"master.changelog.md","mtime":"2020-07-14T16:14:34.590Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-14T16:14:44.359Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Changelog","level":"1.5.5.1","depth":3,"previous":{"title":"Nightly","level":"1.5.5","depth":2,"path":"master.generated-api.md","ref":"master.generated-api.md","articles":[{"title":"Changelog","level":"1.5.5.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"master.changelog.md","mtime":"2020-09-21T22:17:46.860Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-21T22:17:58.341Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
