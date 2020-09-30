@@ -521,16 +521,6 @@
 <li><a href="#mountoptions">MountOptions</a></li>
 <li><a href="#mountoptionsoptionsentry">MountOptions.OptionsEntry</a></li>
 <li><a href="#nfsproxyspec">NFSProxySpec</a></li>
-<li><a href="#nodedrainattachmentoptions">NodeDrainAttachmentOptions</a></li>
-<li><a href="#nodedrainclouddriveoptions">NodeDrainCloudDriveOptions</a></li>
-<li><a href="#nodedrainclouddrivesummary">NodeDrainCloudDriveSummary</a></li>
-<li><a href="#nodedrainjob">NodeDrainJob</a></li>
-<li><a href="#nodedrainkvdboptions">NodeDrainKvdbOptions</a></li>
-<li><a href="#nodedrainkvdbsummary">NodeDrainKvdbSummary</a></li>
-<li><a href="#nodedrainoptions">NodeDrainOptions</a></li>
-<li><a href="#nodedrainsummary">NodeDrainSummary</a></li>
-<li><a href="#nodedrainvolumereplicaoptions">NodeDrainVolumeReplicaOptions</a></li>
-<li><a href="#nodedrainvolumesummary">NodeDrainVolumeSummary</a></li>
 <li><a href="#objectstoreinfo">ObjectstoreInfo</a></li>
 <li><a href="#ownership">Ownership</a></li>
 <li><a href="#ownershipaccesscontrol">Ownership.AccessControl</a></li>
@@ -644,8 +634,6 @@
 <li><a href="#sdkcredentialinspectresponse">SdkCredentialInspectResponse</a></li>
 <li><a href="#sdkcredentialvalidaterequest">SdkCredentialValidateRequest</a></li>
 <li><a href="#sdkcredentialvalidateresponse">SdkCredentialValidateResponse</a></li>
-<li><a href="#sdkenumeratenodedrainjobsrequest">SdkEnumerateNodeDrainJobsRequest</a></li>
-<li><a href="#sdkenumeratenodedrainjobsresponse">SdkEnumerateNodeDrainJobsResponse</a></li>
 <li><a href="#sdkenumeraterebalancejobsrequest">SdkEnumerateRebalanceJobsRequest</a></li>
 <li><a href="#sdkenumeraterebalancejobsresponse">SdkEnumerateRebalanceJobsResponse</a></li>
 <li><a href="#sdkfilesystemcheckstartrequest">SdkFilesystemCheckStartRequest</a></li>
@@ -660,8 +648,6 @@
 <li><a href="#sdkfilesystemtrimstatusresponse">SdkFilesystemTrimStatusResponse</a></li>
 <li><a href="#sdkfilesystemtrimstoprequest">SdkFilesystemTrimStopRequest</a></li>
 <li><a href="#sdkfilesystemtrimstopresponse">SdkFilesystemTrimStopResponse</a></li>
-<li><a href="#sdkgetnodedrainjobstatusrequest">SdkGetNodeDrainJobStatusRequest</a></li>
-<li><a href="#sdkgetnodedrainjobstatusresponse">SdkGetNodeDrainJobStatusResponse</a></li>
 <li><a href="#sdkgetrebalancejobstatusrequest">SdkGetRebalanceJobStatusRequest</a></li>
 <li><a href="#sdkgetrebalancejobstatusresponse">SdkGetRebalanceJobStatusResponse</a></li>
 <li><a href="#sdkgooglecredentialrequest">SdkGoogleCredentialRequest</a></li>
@@ -670,8 +656,6 @@
 <li><a href="#sdkidentitycapabilitiesresponse">SdkIdentityCapabilitiesResponse</a></li>
 <li><a href="#sdkidentityversionrequest">SdkIdentityVersionRequest</a></li>
 <li><a href="#sdkidentityversionresponse">SdkIdentityVersionResponse</a></li>
-<li><a href="#sdknodedrainrequest">SdkNodeDrainRequest</a></li>
-<li><a href="#sdknodedrainresponse">SdkNodeDrainResponse</a></li>
 <li><a href="#sdknodeenumeraterequest">SdkNodeEnumerateRequest</a></li>
 <li><a href="#sdknodeenumerateresponse">SdkNodeEnumerateResponse</a></li>
 <li><a href="#sdknodeenumeratewithfiltersrequest">SdkNodeEnumerateWithFiltersRequest</a></li>
@@ -742,8 +726,6 @@
 <li><a href="#sdkstoragepoolresizeresponse">SdkStoragePoolResizeResponse</a></li>
 <li><a href="#sdkstoragerebalancerequest">SdkStorageRebalanceRequest</a></li>
 <li><a href="#sdkstoragerebalanceresponse">SdkStorageRebalanceResponse</a></li>
-<li><a href="#sdkupdatenodedrainjobrequest">SdkUpdateNodeDrainJobRequest</a></li>
-<li><a href="#sdkupdatenodedrainjobresponse">SdkUpdateNodeDrainJobResponse</a></li>
 <li><a href="#sdkupdaterebalancejobrequest">SdkUpdateRebalanceJobRequest</a></li>
 <li><a href="#sdkupdaterebalancejobresponse">SdkUpdateRebalanceJobResponse</a></li>
 <li><a href="#sdkversion">SdkVersion</a></li>
@@ -875,8 +857,6 @@
 <li><a href="#hardwaretype">HardwareType</a></li>
 <li><a href="#ioprofile">IoProfile</a></li>
 <li><a href="#labelselectorrequirementoperator">LabelSelectorRequirement.Operator</a></li>
-<li><a href="#nodedrainjobstate">NodeDrainJobState</a></li>
-<li><a href="#nodedrainsuboperationstate">NodeDrainSubOperationState</a></li>
 <li><a href="#operationflags">OperationFlags</a></li>
 <li><a href="#ownershipaccesstype">Ownership.AccessType</a></li>
 <li><a href="#proxyprotocol">ProxyProtocol</a></li>
@@ -1392,35 +1372,6 @@ where the client is currently connected to.</p>
     <a href="#sdknodeenumeratewithfiltersresponse">SdkNodeEnumerateWithFiltersResponse</a></p>
 </blockquote>
 <p>EnumerateWithFilters returns all the nodes in the current cluster</p>
-<h2 id="methodopenstorageapiopenstoragenodedrain">Drain </h2>
-<blockquote>
-<p><strong>rpc</strong> Drain(<a href="#sdknodedrainrequest">SdkNodeDrainRequest</a>)
-    <a href="#sdknodedrainresponse">SdkNodeDrainResponse</a></p>
-</blockquote>
-<p>Drain creates a task to drains the provided node in the cluster.
-The options provided in the drain request govern the drain operation.</p>
-<h2 id="methodopenstorageapiopenstoragenodeupdatenodedrainjobstate">UpdateNodeDrainJobState </h2>
-<blockquote>
-<p><strong>rpc</strong> UpdateNodeDrainJobState(<a href="#sdkupdatenodedrainjobrequest">SdkUpdateNodeDrainJobRequest</a>)
-    <a href="#sdkupdatenodedrainjobresponse">SdkUpdateNodeDrainJobResponse</a></p>
-</blockquote>
-<p>UpdateNodeDrainJobState updates an existing node drain task
-Only acceptable values are
-NodeDrainJobState_PAUSED - acceptable only from running state
-NodeDrainJobState_CANCELLED - acceptable only from running/pause state
-NodeDrainJobState_RUNNING - acceptable only from pause state</p>
-<h2 id="methodopenstorageapiopenstoragenodegetdrainstatus">GetDrainStatus </h2>
-<blockquote>
-<p><strong>rpc</strong> GetDrainStatus(<a href="#sdkgetnodedrainjobstatusrequest">SdkGetNodeDrainJobStatusRequest</a>)
-    <a href="#sdkgetnodedrainjobstatusresponse">SdkGetNodeDrainJobStatusResponse</a></p>
-</blockquote>
-<p>GetDrainStatus gets the status of node drain request</p>
-<h2 id="methodopenstorageapiopenstoragenodeenumeratenodedrainjobs">EnumerateNodeDrainJobs </h2>
-<blockquote>
-<p><strong>rpc</strong> EnumerateNodeDrainJobs(<a href="#sdkenumeratenodedrainjobsrequest">SdkEnumerateNodeDrainJobsRequest</a>)
-    <a href="#sdkenumeratenodedrainjobsresponse">SdkEnumerateNodeDrainJobsResponse</a></p>
-</blockquote>
-<p>EnumerateNodeDrainJobs returns all the node drain jobs currently known to the system</p>
 <h2 id="methodopenstorageapiopenstoragenodevolumeusagebynode">VolumeUsageByNode </h2>
 <blockquote>
 <p><strong>rpc</strong> VolumeUsageByNode(<a href="#sdknodevolumeusagebynoderequest">SdkNodeVolumeUsageByNodeRequest</a>)
@@ -3135,257 +3086,6 @@ and/or Container IDs and their mount paths</p>
 <td>sub_path</td>
 <td><a href="#string"> string</a></td>
 <td>SubPath is the sub-directory from an NFS share that should be reflected.</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="nodedrainattachmentoptions">NodeDrainAttachmentOptions </h2>
-<p>Options for draining volume attachment from a node</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>selector</td>
-<td><a href="#labelselectorrequirement">repeated LabelSelectorRequirement</a></td>
-<td>Selector is used for selecting volumes whose attachment needs to be moved from this node. The selector could be a list of volume label key value pairs to select a subset of volumes.</td>
-</tr>
-<tr>
-<td>only_sharedv4</td>
-<td><a href="#bool"> bool</a></td>
-<td>Drain only sharedv4 volumes from a node By default all volumes will be drained.</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="nodedrainclouddriveoptions">NodeDrainCloudDriveOptions </h2>
-<p>Options for draining/detaching cloud drives from a node</p>
- <!-- end HasFields -->
-<h2 id="nodedrainclouddrivesummary">NodeDrainCloudDriveSummary </h2>
-<p>NodeDrainCloudDriveSummary summary of the drain operation related to cloud drives</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>state</td>
-<td><a href="#nodedrainsuboperationstate"> NodeDrainSubOperationState</a></td>
-<td>State of this operation</td>
-</tr>
-<tr>
-<td>message</td>
-<td><a href="#string"> string</a></td>
-<td>Message provides a helpful message about the state</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="nodedrainjob">NodeDrainJob </h2>
-<p>NodeDrainJob describe the node drain job&apos;s input and current state.</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>id</td>
-<td><a href="#string"> string</a></td>
-<td>ID of the node drain job</td>
-</tr>
-<tr>
-<td>node_id</td>
-<td><a href="#string"> string</a></td>
-<td>NodeID of the node for which this drain job is running</td>
-</tr>
-<tr>
-<td>state</td>
-<td><a href="#nodedrainjobstate"> NodeDrainJobState</a></td>
-<td>State of the current job</td>
-</tr>
-<tr>
-<td>parameters</td>
-<td><a href="#sdknodedrainrequest"> SdkNodeDrainRequest</a></td>
-<td>Parameters is the original request params for this node drain operation</td>
-</tr>
-<tr>
-<td>create_time</td>
-<td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
-<td>CreateTime is the time the job was created</td>
-</tr>
-<tr>
-<td>last_update_time</td>
-<td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
-<td>LastUpdateTime is the time the job was updated</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="nodedrainkvdboptions">NodeDrainKvdbOptions </h2>
-<p>Options for draining kvdb from a node</p>
- <!-- end HasFields -->
-<h2 id="nodedrainkvdbsummary">NodeDrainKvdbSummary </h2>
-<p>NodeDrainKvdbSummary summary of the drain operation related to kvdb</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>state</td>
-<td><a href="#nodedrainsuboperationstate"> NodeDrainSubOperationState</a></td>
-<td>State of this operation</td>
-</tr>
-<tr>
-<td>message</td>
-<td><a href="#string"> string</a></td>
-<td>Message provides a helpful message about the state</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="nodedrainoptions">NodeDrainOptions </h2>
-<p>Options for draining a node in the cluster</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>selector</td>
-<td><a href="#labelselectorrequirement">repeated LabelSelectorRequirement</a></td>
-<td>Selector is a global selector used while performing a node drain sub operation. Per option selector take precedence over global selector</td>
-</tr>
-<tr>
-<td>drain_attachments</td>
-<td><a href="#nodedrainattachmentoptions"> NodeDrainAttachmentOptions</a></td>
-<td>When set volume attachments will be drained from this node by moving the applications using volume</td>
-</tr>
-<tr>
-<td>drain_volume_replicas</td>
-<td><a href="#nodedrainvolumereplicaoptions"> NodeDrainVolumeReplicaOptions</a></td>
-<td>When set volume replicas from this node will be moved to another node</td>
-</tr>
-<tr>
-<td>drain_kvdb</td>
-<td><a href="#nodedrainkvdboptions"> NodeDrainKvdbOptions</a></td>
-<td>When set if this node acts as a kvdb control node, kvdb will be drained from this node and will be moved to another node.</td>
-</tr>
-<tr>
-<td>drain_cloud_drives</td>
-<td><a href="#nodedrainclouddriveoptions"> NodeDrainCloudDriveOptions</a></td>
-<td>When set the backing cloud storage disks will be detached from this node if the storage provider supports it</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="nodedrainsummary">NodeDrainSummary </h2>
-<p>Provides a summary of  a node drain job</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>attachment_summary</td>
-<td><a href="#nodedrainvolumesummary"> NodeDrainVolumeSummary</a></td>
-<td>Attachment summary</td>
-</tr>
-<tr>
-<td>volume_replica_summary</td>
-<td><a href="#nodedrainvolumesummary"> NodeDrainVolumeSummary</a></td>
-<td>Volume replica summary</td>
-</tr>
-<tr>
-<td>kvdb_summary</td>
-<td><a href="#nodedrainkvdbsummary"> NodeDrainKvdbSummary</a></td>
-<td>Kvdb drain summary</td>
-</tr>
-<tr>
-<td>cloud_drive_summary</td>
-<td><a href="#nodedrainclouddrivesummary"> NodeDrainCloudDriveSummary</a></td>
-<td>Cloud drive summary</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="nodedrainvolumereplicaoptions">NodeDrainVolumeReplicaOptions </h2>
-<p>Options for draining volume replicas from a node</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>selector</td>
-<td><a href="#labelselectorrequirement">repeated LabelSelectorRequirement</a></td>
-<td>Selector is used for selecting volumes whose replicas need to be moved from this node to another. The selector could be a list of volume label key value pairs to select a subset of volumes.</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="nodedrainvolumesummary">NodeDrainVolumeSummary </h2>
-<p>NodeDrainVolumeSummary summary of the drain operation related to volumes</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>state</td>
-<td><a href="#nodedrainsuboperationstate"> NodeDrainSubOperationState</a></td>
-<td>State of this operation</td>
-</tr>
-<tr>
-<td>num_volumes_done</td>
-<td><a href="#uint64"> uint64</a></td>
-<td>Number of volumes which have been drained</td>
-</tr>
-<tr>
-<td>num_volumes_pending</td>
-<td><a href="#uint64"> uint64</a></td>
-<td>Number of volumes which have not been drained yet</td>
 </tr>
 </tbody>
 </table>
@@ -6166,29 +5866,6 @@ you will need to check if the value of credential_type is one of the ones below.
 <h2 id="sdkcredentialvalidateresponse">SdkCredentialValidateResponse </h2>
 <p>Empty response</p>
  <!-- end HasFields -->
-<h2 id="sdkenumeratenodedrainjobsrequest">SdkEnumerateNodeDrainJobsRequest </h2>
-<p>Defines a request to list all the node drain jobs</p>
- <!-- end HasFields -->
-<h2 id="sdkenumeratenodedrainjobsresponse">SdkEnumerateNodeDrainJobsResponse </h2>
-<p>Defines a response will all the known node drain jobs</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>jobs</td>
-<td><a href="#nodedrainjob">repeated NodeDrainJob</a></td>
-<td>Jobs is the list of node drain jobs in the response</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
 <h2 id="sdkenumeraterebalancejobsrequest">SdkEnumerateRebalanceJobsRequest </h2>
  <!-- end HasFields -->
 <h2 id="sdkenumeraterebalancejobsresponse">SdkEnumerateRebalanceJobsResponse </h2>
@@ -6475,51 +6152,6 @@ filesystem trim operation</p>
 <h2 id="sdkfilesystemtrimstopresponse">SdkFilesystemTrimStopResponse </h2>
 <p>Empty response</p>
  <!-- end HasFields -->
-<h2 id="sdkgetnodedrainjobstatusrequest">SdkGetNodeDrainJobStatusRequest </h2>
-<p>Defines a request to get the status of an existing node drain job</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>id</td>
-<td><a href="#string"> string</a></td>
-<td>ID of the node drain job</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkgetnodedrainjobstatusresponse">SdkGetNodeDrainJobStatusResponse </h2>
-<p>Defines the status of an existing node drain job</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>job</td>
-<td><a href="#nodedrainjob"> NodeDrainJob</a></td>
-<td>Job for this node drain operation.</td>
-</tr>
-<tr>
-<td>summary</td>
-<td><a href="#nodedrainsummary">repeated NodeDrainSummary</a></td>
-<td>Summary summarizes the node drain job</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
 <h2 id="sdkgetrebalancejobstatusrequest">SdkGetRebalanceJobStatusRequest </h2>
 <table>
 <thead>
@@ -6659,56 +6291,6 @@ filesystem trim operation</p>
 <td>version</td>
 <td><a href="#storageversion"> StorageVersion</a></td>
 <td>Version information about the storage system</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdknodedrainrequest">SdkNodeDrainRequest </h2>
-<p>Defines a node drain request</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>node_id</td>
-<td><a href="#string"> string</a></td>
-<td>Id of the node to drain</td>
-</tr>
-<tr>
-<td>options</td>
-<td><a href="#nodedrainoptions"> NodeDrainOptions</a></td>
-<td>Options that define how a node drain should be performed</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdknodedrainresponse">SdkNodeDrainResponse </h2>
-<p>Defines a node drain response</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>id</td>
-<td><a href="#string"> string</a></td>
-<td>ID of the node drain job</td>
-</tr>
-<tr>
-<td>job</td>
-<td><a href="#nodedrainjob"> NodeDrainJob</a></td>
-<td>Job for this node drain operation</td>
 </tr>
 </tbody>
 </table>
@@ -7939,34 +7521,6 @@ rules followed</p>
 </tbody>
 </table>
  <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkupdatenodedrainjobrequest">SdkUpdateNodeDrainJobRequest </h2>
-<p>Defines a request to update an existing node drain job</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>id</td>
-<td><a href="#string"> string</a></td>
-<td>ID of the rebalance job</td>
-</tr>
-<tr>
-<td>state</td>
-<td><a href="#nodedrainjobstate"> NodeDrainJobState</a></td>
-<td>State is the new task state to update the job to</td>
-</tr>
-</tbody>
-</table>
- <!-- end Fields -->
- <!-- end HasFields -->
-<h2 id="sdkupdatenodedrainjobresponse">SdkUpdateNodeDrainJobResponse </h2>
-<p>Defines the response for an update to an existing job</p>
  <!-- end HasFields -->
 <h2 id="sdkupdaterebalancejobrequest">SdkUpdateRebalanceJobRequest </h2>
 <table>
@@ -11333,7 +10887,7 @@ performed on a volumen</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="volumeusage">VolumeUsage </h2>
-<p>Provides volume&apos;s exclusive bytes and its total usage. This cannot be 
+<p>Provides volume&apos;s exclusive bytes and its total usage. This cannot be
 retrieved individually and is obtained as part node&apos;s usage for a given
 node.</p>
 <table>
@@ -12148,77 +11702,6 @@ OpenStorageFilesystemTrim service APIs()</p>
 </tr>
 </tbody>
 </table>
-<h2 id="nodedrainjobstate">NodeDrainJobState </h2>
-<p>NodeDrainJobState is an enum for state of a node drain operation</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Number</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>NODE_DRAIN_PENDING</td>
-<td>0</td>
-<td>Pending indicates job is still pending and has not started work</td>
-</tr>
-<tr>
-<td>NODE_DRAIN_RUNNING</td>
-<td>1</td>
-<td>Running indicates job is actively running</td>
-</tr>
-<tr>
-<td>NODE_DRAIN_DONE</td>
-<td>2</td>
-<td>Done indicates job has finished processing</td>
-</tr>
-<tr>
-<td>NODE_DRAIN_PAUSED</td>
-<td>3</td>
-<td>Paused indicates job is paused</td>
-</tr>
-<tr>
-<td>NODE_DRAIN_CANCELLED</td>
-<td>4</td>
-<td>Cancelled indicates job is cancelled</td>
-</tr>
-</tbody>
-</table>
-<h2 id="nodedrainsuboperationstate">NodeDrainSubOperationState </h2>
-<p>NodeDrainSubOperationState state of the node drain operation</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Number</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>NODE_DRAIN_SUB_OPERATION_NOT_CONFIGURED</td>
-<td>0</td>
-<td>This node drain operation was not configured</td>
-</tr>
-<tr>
-<td>NODE_DRAIN_SUB_OPERATION_PENDING</td>
-<td>1</td>
-<td>This node drain operation was configured but is pending</td>
-</tr>
-<tr>
-<td>NODE_DRAIN_SUB_OPERATION_RUNNING</td>
-<td>2</td>
-<td>This node drain opeartion is running</td>
-</tr>
-<tr>
-<td>NODE_DRAIN_SUB_OPERATION_DONE</td>
-<td>3</td>
-<td>This node drain operation has completed</td>
-</tr>
-</tbody>
-</table>
 <h2 id="operationflags">OperationFlags </h2>
 <table>
 <thead>
@@ -12791,7 +12274,7 @@ client and server applications</p>
 </tr>
 <tr>
 <td>Minor</td>
-<td>100</td>
+<td>99</td>
 <td>SDK version minor value of this specification</td>
 </tr>
 <tr>
@@ -13429,7 +12912,7 @@ client and server applications</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Nightly","level":"1.5.5","depth":2,"next":{"title":"Changelog","level":"1.5.5.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.4.1","depth":3,"path":"release-7.0.changelog.md","ref":"release-7.0.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"master.generated-api.md","mtime":"2020-09-21T22:17:47.654Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-21T22:17:58.341Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Nightly","level":"1.5.5","depth":2,"next":{"title":"Changelog","level":"1.5.5.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.4.1","depth":3,"path":"release-7.0.changelog.md","ref":"release-7.0.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"master.generated-api.md","mtime":"2020-09-30T02:54:35.522Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-30T02:54:44.563Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

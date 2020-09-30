@@ -75,16 +75,6 @@
     - [MountOptions](#mountoptions)
     - [MountOptions.OptionsEntry](#mountoptionsoptionsentry)
     - [NFSProxySpec](#nfsproxyspec)
-    - [NodeDrainAttachmentOptions](#nodedrainattachmentoptions)
-    - [NodeDrainCloudDriveOptions](#nodedrainclouddriveoptions)
-    - [NodeDrainCloudDriveSummary](#nodedrainclouddrivesummary)
-    - [NodeDrainJob](#nodedrainjob)
-    - [NodeDrainKvdbOptions](#nodedrainkvdboptions)
-    - [NodeDrainKvdbSummary](#nodedrainkvdbsummary)
-    - [NodeDrainOptions](#nodedrainoptions)
-    - [NodeDrainSummary](#nodedrainsummary)
-    - [NodeDrainVolumeReplicaOptions](#nodedrainvolumereplicaoptions)
-    - [NodeDrainVolumeSummary](#nodedrainvolumesummary)
     - [ObjectstoreInfo](#objectstoreinfo)
     - [Ownership](#ownership)
     - [Ownership.AccessControl](#ownershipaccesscontrol)
@@ -198,8 +188,6 @@
     - [SdkCredentialInspectResponse](#sdkcredentialinspectresponse)
     - [SdkCredentialValidateRequest](#sdkcredentialvalidaterequest)
     - [SdkCredentialValidateResponse](#sdkcredentialvalidateresponse)
-    - [SdkEnumerateNodeDrainJobsRequest](#sdkenumeratenodedrainjobsrequest)
-    - [SdkEnumerateNodeDrainJobsResponse](#sdkenumeratenodedrainjobsresponse)
     - [SdkEnumerateRebalanceJobsRequest](#sdkenumeraterebalancejobsrequest)
     - [SdkEnumerateRebalanceJobsResponse](#sdkenumeraterebalancejobsresponse)
     - [SdkFilesystemCheckStartRequest](#sdkfilesystemcheckstartrequest)
@@ -214,8 +202,6 @@
     - [SdkFilesystemTrimStatusResponse](#sdkfilesystemtrimstatusresponse)
     - [SdkFilesystemTrimStopRequest](#sdkfilesystemtrimstoprequest)
     - [SdkFilesystemTrimStopResponse](#sdkfilesystemtrimstopresponse)
-    - [SdkGetNodeDrainJobStatusRequest](#sdkgetnodedrainjobstatusrequest)
-    - [SdkGetNodeDrainJobStatusResponse](#sdkgetnodedrainjobstatusresponse)
     - [SdkGetRebalanceJobStatusRequest](#sdkgetrebalancejobstatusrequest)
     - [SdkGetRebalanceJobStatusResponse](#sdkgetrebalancejobstatusresponse)
     - [SdkGoogleCredentialRequest](#sdkgooglecredentialrequest)
@@ -224,8 +210,6 @@
     - [SdkIdentityCapabilitiesResponse](#sdkidentitycapabilitiesresponse)
     - [SdkIdentityVersionRequest](#sdkidentityversionrequest)
     - [SdkIdentityVersionResponse](#sdkidentityversionresponse)
-    - [SdkNodeDrainRequest](#sdknodedrainrequest)
-    - [SdkNodeDrainResponse](#sdknodedrainresponse)
     - [SdkNodeEnumerateRequest](#sdknodeenumeraterequest)
     - [SdkNodeEnumerateResponse](#sdknodeenumerateresponse)
     - [SdkNodeEnumerateWithFiltersRequest](#sdknodeenumeratewithfiltersrequest)
@@ -296,8 +280,6 @@
     - [SdkStoragePoolResizeResponse](#sdkstoragepoolresizeresponse)
     - [SdkStorageRebalanceRequest](#sdkstoragerebalancerequest)
     - [SdkStorageRebalanceResponse](#sdkstoragerebalanceresponse)
-    - [SdkUpdateNodeDrainJobRequest](#sdkupdatenodedrainjobrequest)
-    - [SdkUpdateNodeDrainJobResponse](#sdkupdatenodedrainjobresponse)
     - [SdkUpdateRebalanceJobRequest](#sdkupdaterebalancejobrequest)
     - [SdkUpdateRebalanceJobResponse](#sdkupdaterebalancejobresponse)
     - [SdkVersion](#sdkversion)
@@ -428,8 +410,6 @@
     - [HardwareType](#hardwaretype)
     - [IoProfile](#ioprofile)
     - [LabelSelectorRequirement.Operator](#labelselectorrequirementoperator)
-    - [NodeDrainJobState](#nodedrainjobstate)
-    - [NodeDrainSubOperationState](#nodedrainsuboperationstate)
     - [OperationFlags](#operationflags)
     - [Ownership.AccessType](#ownershipaccesstype)
     - [ProxyProtocol](#proxyprotocol)
@@ -991,35 +971,6 @@ Enumerate returns the ids of all the nodes in the current cluster
     [SdkNodeEnumerateWithFiltersResponse](#sdknodeenumeratewithfiltersresponse)
 
 EnumerateWithFilters returns all the nodes in the current cluster
-## Drain {#methodopenstorageapiopenstoragenodedrain}
-
-> **rpc** Drain([SdkNodeDrainRequest](#sdknodedrainrequest))
-    [SdkNodeDrainResponse](#sdknodedrainresponse)
-
-Drain creates a task to drains the provided node in the cluster.
-The options provided in the drain request govern the drain operation.
-## UpdateNodeDrainJobState {#methodopenstorageapiopenstoragenodeupdatenodedrainjobstate}
-
-> **rpc** UpdateNodeDrainJobState([SdkUpdateNodeDrainJobRequest](#sdkupdatenodedrainjobrequest))
-    [SdkUpdateNodeDrainJobResponse](#sdkupdatenodedrainjobresponse)
-
-UpdateNodeDrainJobState updates an existing node drain task
-Only acceptable values are
-NodeDrainJobState_PAUSED - acceptable only from running state
-NodeDrainJobState_CANCELLED - acceptable only from running/pause state
-NodeDrainJobState_RUNNING - acceptable only from pause state
-## GetDrainStatus {#methodopenstorageapiopenstoragenodegetdrainstatus}
-
-> **rpc** GetDrainStatus([SdkGetNodeDrainJobStatusRequest](#sdkgetnodedrainjobstatusrequest))
-    [SdkGetNodeDrainJobStatusResponse](#sdkgetnodedrainjobstatusresponse)
-
-GetDrainStatus gets the status of node drain request
-## EnumerateNodeDrainJobs {#methodopenstorageapiopenstoragenodeenumeratenodedrainjobs}
-
-> **rpc** EnumerateNodeDrainJobs([SdkEnumerateNodeDrainJobsRequest](#sdkenumeratenodedrainjobsrequest))
-    [SdkEnumerateNodeDrainJobsResponse](#sdkenumeratenodedrainjobsresponse)
-
-EnumerateNodeDrainJobs returns all the node drain jobs currently known to the system
 ## VolumeUsageByNode {#methodopenstorageapiopenstoragenodevolumeusagebynode}
 
 > **rpc** VolumeUsageByNode([SdkNodeVolumeUsageByNodeRequest](#sdknodevolumeusagebynoderequest))
@@ -2030,123 +1981,6 @@ NFSProxySpec is the spec for proxying an NFS share.
 | ----- | ---- | ----------- |
 | export_path | [ string](#string) | ExportPath is the NFS export path on the NFS server |
 | sub_path | [ string](#string) | SubPath is the sub-directory from an NFS share that should be reflected. |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## NodeDrainAttachmentOptions {#nodedrainattachmentoptions}
-Options for draining volume attachment from a node
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| selector | [repeated LabelSelectorRequirement](#labelselectorrequirement) | Selector is used for selecting volumes whose attachment needs to be moved from this node. The selector could be a list of volume label key value pairs to select a subset of volumes. |
-| only_sharedv4 | [ bool](#bool) | Drain only sharedv4 volumes from a node By default all volumes will be drained. |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## NodeDrainCloudDriveOptions {#nodedrainclouddriveoptions}
-Options for draining/detaching cloud drives from a node
-
- <!-- end HasFields -->
-
-
-## NodeDrainCloudDriveSummary {#nodedrainclouddrivesummary}
-NodeDrainCloudDriveSummary summary of the drain operation related to cloud drives
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| state | [ NodeDrainSubOperationState](#nodedrainsuboperationstate) | State of this operation |
-| message | [ string](#string) | Message provides a helpful message about the state |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## NodeDrainJob {#nodedrainjob}
-NodeDrainJob describe the node drain job's input and current state.
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [ string](#string) | ID of the node drain job |
-| node_id | [ string](#string) | NodeID of the node for which this drain job is running |
-| state | [ NodeDrainJobState](#nodedrainjobstate) | State of the current job |
-| parameters | [ SdkNodeDrainRequest](#sdknodedrainrequest) | Parameters is the original request params for this node drain operation |
-| create_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | CreateTime is the time the job was created |
-| last_update_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | LastUpdateTime is the time the job was updated |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## NodeDrainKvdbOptions {#nodedrainkvdboptions}
-Options for draining kvdb from a node
-
- <!-- end HasFields -->
-
-
-## NodeDrainKvdbSummary {#nodedrainkvdbsummary}
-NodeDrainKvdbSummary summary of the drain operation related to kvdb
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| state | [ NodeDrainSubOperationState](#nodedrainsuboperationstate) | State of this operation |
-| message | [ string](#string) | Message provides a helpful message about the state |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## NodeDrainOptions {#nodedrainoptions}
-Options for draining a node in the cluster
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| selector | [repeated LabelSelectorRequirement](#labelselectorrequirement) | Selector is a global selector used while performing a node drain sub operation. Per option selector take precedence over global selector |
-| drain_attachments | [ NodeDrainAttachmentOptions](#nodedrainattachmentoptions) | When set volume attachments will be drained from this node by moving the applications using volume |
-| drain_volume_replicas | [ NodeDrainVolumeReplicaOptions](#nodedrainvolumereplicaoptions) | When set volume replicas from this node will be moved to another node |
-| drain_kvdb | [ NodeDrainKvdbOptions](#nodedrainkvdboptions) | When set if this node acts as a kvdb control node, kvdb will be drained from this node and will be moved to another node. |
-| drain_cloud_drives | [ NodeDrainCloudDriveOptions](#nodedrainclouddriveoptions) | When set the backing cloud storage disks will be detached from this node if the storage provider supports it |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## NodeDrainSummary {#nodedrainsummary}
-Provides a summary of  a node drain job
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| attachment_summary | [ NodeDrainVolumeSummary](#nodedrainvolumesummary) | Attachment summary |
-| volume_replica_summary | [ NodeDrainVolumeSummary](#nodedrainvolumesummary) | Volume replica summary |
-| kvdb_summary | [ NodeDrainKvdbSummary](#nodedrainkvdbsummary) | Kvdb drain summary |
-| cloud_drive_summary | [ NodeDrainCloudDriveSummary](#nodedrainclouddrivesummary) | Cloud drive summary |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## NodeDrainVolumeReplicaOptions {#nodedrainvolumereplicaoptions}
-Options for draining volume replicas from a node
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| selector | [repeated LabelSelectorRequirement](#labelselectorrequirement) | Selector is used for selecting volumes whose replicas need to be moved from this node to another. The selector could be a list of volume label key value pairs to select a subset of volumes. |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## NodeDrainVolumeSummary {#nodedrainvolumesummary}
-NodeDrainVolumeSummary summary of the drain operation related to volumes
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| state | [ NodeDrainSubOperationState](#nodedrainsuboperationstate) | State of this operation |
-| num_volumes_done | [ uint64](#uint64) | Number of volumes which have been drained |
-| num_volumes_pending | [ uint64](#uint64) | Number of volumes which have not been drained yet |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3509,23 +3343,6 @@ Empty response
  <!-- end HasFields -->
 
 
-## SdkEnumerateNodeDrainJobsRequest {#sdkenumeratenodedrainjobsrequest}
-Defines a request to list all the node drain jobs
-
- <!-- end HasFields -->
-
-
-## SdkEnumerateNodeDrainJobsResponse {#sdkenumeratenodedrainjobsresponse}
-Defines a response will all the known node drain jobs
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| jobs | [repeated NodeDrainJob](#nodedrainjob) | Jobs is the list of node drain jobs in the response |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
 ## SdkEnumerateRebalanceJobsRequest {#sdkenumeraterebalancejobsrequest}
 
 
@@ -3684,29 +3501,6 @@ Empty response
  <!-- end HasFields -->
 
 
-## SdkGetNodeDrainJobStatusRequest {#sdkgetnodedrainjobstatusrequest}
-Defines a request to get the status of an existing node drain job
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [ string](#string) | ID of the node drain job |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkGetNodeDrainJobStatusResponse {#sdkgetnodedrainjobstatusresponse}
-Defines the status of an existing node drain job
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| job | [ NodeDrainJob](#nodedrainjob) | Job for this node drain operation. |
-| summary | [repeated NodeDrainSummary](#nodedrainsummary) | Summary summarizes the node drain job |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
 ## SdkGetRebalanceJobStatusRequest {#sdkgetrebalancejobstatusrequest}
 
 
@@ -3785,30 +3579,6 @@ Defines a response containing version information
 | ----- | ---- | ----------- |
 | sdk_version | [ SdkVersion](#sdkversion) | OpenStorage SDK version used by the server |
 | version | [ StorageVersion](#storageversion) | Version information about the storage system |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkNodeDrainRequest {#sdknodedrainrequest}
-Defines a node drain request
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| node_id | [ string](#string) | Id of the node to drain |
-| options | [ NodeDrainOptions](#nodedrainoptions) | Options that define how a node drain should be performed |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkNodeDrainResponse {#sdknodedrainresponse}
-Defines a node drain response
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [ string](#string) | ID of the node drain job |
-| job | [ NodeDrainJob](#nodedrainjob) | Job for this node drain operation |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -4557,24 +4327,6 @@ SdkStorageRebalanceResponse is the response to a storage rebalance request
 | summary | [ StorageRebalanceSummary](#storagerebalancesummary) | Summary summarizes the rebalance job |
 | actions | [repeated StorageRebalanceAudit](#storagerebalanceaudit) | Actions describe all the actions taken during this rebalance |
  <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkUpdateNodeDrainJobRequest {#sdkupdatenodedrainjobrequest}
-Defines a request to update an existing node drain job
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [ string](#string) | ID of the rebalance job |
-| state | [ NodeDrainJobState](#nodedrainjobstate) | State is the new task state to update the job to |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkUpdateNodeDrainJobResponse {#sdkupdatenodedrainjobresponse}
-Defines the response for an update to an existing job
-
  <!-- end HasFields -->
 
 
@@ -5986,7 +5738,7 @@ VolumeStateAction specifies desired actions.
 
 
 ## VolumeUsage {#volumeusage}
-Provides volume's exclusive bytes and its total usage. This cannot be 
+Provides volume's exclusive bytes and its total usage. This cannot be
 retrieved individually and is obtained as part node's usage for a given
 node.
 
@@ -6305,33 +6057,6 @@ This defines operator types used in a label matching rule
 
 
 
-## NodeDrainJobState {#nodedrainjobstate}
-NodeDrainJobState is an enum for state of a node drain operation
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| NODE_DRAIN_PENDING | 0 | Pending indicates job is still pending and has not started work |
-| NODE_DRAIN_RUNNING | 1 | Running indicates job is actively running |
-| NODE_DRAIN_DONE | 2 | Done indicates job has finished processing |
-| NODE_DRAIN_PAUSED | 3 | Paused indicates job is paused |
-| NODE_DRAIN_CANCELLED | 4 | Cancelled indicates job is cancelled |
-
-
-
-
-## NodeDrainSubOperationState {#nodedrainsuboperationstate}
-NodeDrainSubOperationState state of the node drain operation
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| NODE_DRAIN_SUB_OPERATION_NOT_CONFIGURED | 0 | This node drain operation was not configured |
-| NODE_DRAIN_SUB_OPERATION_PENDING | 1 | This node drain operation was configured but is pending |
-| NODE_DRAIN_SUB_OPERATION_RUNNING | 2 | This node drain opeartion is running |
-| NODE_DRAIN_SUB_OPERATION_DONE | 3 | This node drain operation has completed |
-
-
-
-
 ## OperationFlags {#operationflags}
 
 
@@ -6551,7 +6276,7 @@ client and server applications
 | ---- | ------ | ----------- |
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
-| Minor | 100 | SDK version minor value of this specification |
+| Minor | 99 | SDK version minor value of this specification |
 | Patch | 0 | SDK version patch value of this specification |
 
 
