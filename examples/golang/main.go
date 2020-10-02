@@ -30,16 +30,26 @@ var (
 	address = flag.String("address", "127.0.0.1:9100", "Address to server as <address>:<port>")
 )
 
-type OpenStorageSdkToken struct{}
+type OpenStorageSdkToken struct {
+	token  string
+	useTls bool
+}
+
+func NewOpenStorageSdkToken(token string, useTls bool) OpenStorageSdkToken {
+	return OpenStorageSdkToken{
+		token:  token,
+		useTls: useTls,
+	}
+}
 
 func (t OpenStorageSdkToken) GetRequestMetadata(ctx context.Context, uri ...string) (map[string]string, error) {
 	return map[string]string{
-		"authorization": "bearer " + *token,
+		"authorization": "bearer " + t.token,
 	}, nil
 }
 
 func (t OpenStorageSdkToken) RequireTransportSecurity() bool {
-	return *useTls
+	return t.useTls
 }
 
 func main() {
@@ -59,7 +69,7 @@ func main() {
 	//
 	//   To accomplish this, we first need to create an object that satisfies the
 	//   interface needed by grpc.WithPerRPCCredentials(..)
-	contextToken := OpenStorageSdkToken{}
+	contextToken := NewOpenStorageSdkToken(*token, *useTls)
 
 	dialOptions := []grpc.DialOption{grpc.WithInsecure()}
 	if *useTls {
