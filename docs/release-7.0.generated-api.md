@@ -13,6 +13,7 @@
     - [OpenStorageFilesystemCheck](#serviceopenstorageapiopenstoragefilesystemcheck)
     - [OpenStorageFilesystemTrim](#serviceopenstorageapiopenstoragefilesystemtrim)
     - [OpenStorageIdentity](#serviceopenstorageapiopenstorageidentity)
+    - [OpenStorageJob](#serviceopenstorageapiopenstoragejob)
     - [OpenStorageMigrate](#serviceopenstorageapiopenstoragemigrate)
     - [OpenStorageMountAttach](#serviceopenstorageapiopenstoragemountattach)
     - [OpenStorageNode](#serviceopenstorageapiopenstoragenode)
@@ -56,6 +57,7 @@
     - [ClusterPairsEnumerateResponse](#clusterpairsenumerateresponse)
     - [ClusterPairsEnumerateResponse.PairsEntry](#clusterpairsenumerateresponsepairsentry)
     - [ClusterResponse](#clusterresponse)
+    - [DrainAttachmentsSummary](#drainattachmentssummary)
     - [ExportSpec](#exportspec)
     - [FastpathConfig](#fastpathconfig)
     - [FastpathReplState](#fastpathreplstate)
@@ -68,6 +70,10 @@
     - [GroupSnapCreateResponse](#groupsnapcreateresponse)
     - [GroupSnapCreateResponse.SnapshotsEntry](#groupsnapcreateresponsesnapshotsentry)
     - [IoStrategy](#iostrategy)
+    - [Job](#job)
+    - [JobAudit](#jobaudit)
+    - [JobSummary](#jobsummary)
+    - [JobWorkSummary](#jobworksummary)
     - [LabelSelectorRequirement](#labelselectorrequirement)
     - [LocateResponse](#locateresponse)
     - [LocateResponse.DockeridsEntry](#locateresponsedockeridsentry)
@@ -75,6 +81,8 @@
     - [MountOptions](#mountoptions)
     - [MountOptions.OptionsEntry](#mountoptionsoptionsentry)
     - [NFSProxySpec](#nfsproxyspec)
+    - [NodeDrainAttachmentOptions](#nodedrainattachmentoptions)
+    - [NodeDrainAttachmentsJob](#nodedrainattachmentsjob)
     - [ObjectstoreInfo](#objectstoreinfo)
     - [Ownership](#ownership)
     - [Ownership.AccessControl](#ownershipaccesscontrol)
@@ -180,6 +188,8 @@
     - [SdkClusterPairResetTokenResponse](#sdkclusterpairresettokenresponse)
     - [SdkCredentialCreateRequest](#sdkcredentialcreaterequest)
     - [SdkCredentialCreateResponse](#sdkcredentialcreateresponse)
+    - [SdkCredentialDeleteReferencesRequest](#sdkcredentialdeletereferencesrequest)
+    - [SdkCredentialDeleteReferencesResponse](#sdkcredentialdeletereferencesresponse)
     - [SdkCredentialDeleteRequest](#sdkcredentialdeleterequest)
     - [SdkCredentialDeleteResponse](#sdkcredentialdeleteresponse)
     - [SdkCredentialEnumerateRequest](#sdkcredentialenumeraterequest)
@@ -188,6 +198,8 @@
     - [SdkCredentialInspectResponse](#sdkcredentialinspectresponse)
     - [SdkCredentialValidateRequest](#sdkcredentialvalidaterequest)
     - [SdkCredentialValidateResponse](#sdkcredentialvalidateresponse)
+    - [SdkEnumerateJobsRequest](#sdkenumeratejobsrequest)
+    - [SdkEnumerateJobsResponse](#sdkenumeratejobsresponse)
     - [SdkEnumerateRebalanceJobsRequest](#sdkenumeraterebalancejobsrequest)
     - [SdkEnumerateRebalanceJobsResponse](#sdkenumeraterebalancejobsresponse)
     - [SdkFilesystemCheckStartRequest](#sdkfilesystemcheckstartrequest)
@@ -202,6 +214,8 @@
     - [SdkFilesystemTrimStatusResponse](#sdkfilesystemtrimstatusresponse)
     - [SdkFilesystemTrimStopRequest](#sdkfilesystemtrimstoprequest)
     - [SdkFilesystemTrimStopResponse](#sdkfilesystemtrimstopresponse)
+    - [SdkGetJobStatusRequest](#sdkgetjobstatusrequest)
+    - [SdkGetJobStatusResponse](#sdkgetjobstatusresponse)
     - [SdkGetRebalanceJobStatusRequest](#sdkgetrebalancejobstatusrequest)
     - [SdkGetRebalanceJobStatusResponse](#sdkgetrebalancejobstatusresponse)
     - [SdkGoogleCredentialRequest](#sdkgooglecredentialrequest)
@@ -210,6 +224,10 @@
     - [SdkIdentityCapabilitiesResponse](#sdkidentitycapabilitiesresponse)
     - [SdkIdentityVersionRequest](#sdkidentityversionrequest)
     - [SdkIdentityVersionResponse](#sdkidentityversionresponse)
+    - [SdkJobResponse](#sdkjobresponse)
+    - [SdkNodeCordonAttachmentsRequest](#sdknodecordonattachmentsrequest)
+    - [SdkNodeCordonAttachmentsResponse](#sdknodecordonattachmentsresponse)
+    - [SdkNodeDrainAttachmentsRequest](#sdknodedrainattachmentsrequest)
     - [SdkNodeEnumerateRequest](#sdknodeenumeraterequest)
     - [SdkNodeEnumerateResponse](#sdknodeenumerateresponse)
     - [SdkNodeEnumerateWithFiltersRequest](#sdknodeenumeratewithfiltersrequest)
@@ -218,6 +236,8 @@
     - [SdkNodeInspectCurrentResponse](#sdknodeinspectcurrentresponse)
     - [SdkNodeInspectRequest](#sdknodeinspectrequest)
     - [SdkNodeInspectResponse](#sdknodeinspectresponse)
+    - [SdkNodeUncordonAttachmentsRequest](#sdknodeuncordonattachmentsrequest)
+    - [SdkNodeUncordonAttachmentsResponse](#sdknodeuncordonattachmentsresponse)
     - [SdkNodeVolumeUsageByNodeRequest](#sdknodevolumeusagebynoderequest)
     - [SdkNodeVolumeUsageByNodeResponse](#sdknodevolumeusagebynoderesponse)
     - [SdkObjectstoreCreateRequest](#sdkobjectstorecreaterequest)
@@ -280,6 +300,8 @@
     - [SdkStoragePoolResizeResponse](#sdkstoragepoolresizeresponse)
     - [SdkStorageRebalanceRequest](#sdkstoragerebalancerequest)
     - [SdkStorageRebalanceResponse](#sdkstoragerebalanceresponse)
+    - [SdkUpdateJobRequest](#sdkupdatejobrequest)
+    - [SdkUpdateJobResponse](#sdkupdatejobresponse)
     - [SdkUpdateRebalanceJobRequest](#sdkupdaterebalancejobrequest)
     - [SdkUpdateRebalanceJobResponse](#sdkupdaterebalancejobresponse)
     - [SdkVersion](#sdkversion)
@@ -409,6 +431,8 @@
     - [GraphDriverChangeType](#graphdriverchangetype)
     - [HardwareType](#hardwaretype)
     - [IoProfile](#ioprofile)
+    - [JobState](#jobstate)
+    - [JobType](#jobtype)
     - [LabelSelectorRequirement.Operator](#labelselectorrequirementoperator)
     - [OperationFlags](#operationflags)
     - [Ownership.AccessType](#ownershipaccesstype)
@@ -783,6 +807,12 @@ Delete a specified credential
     [SdkCredentialValidateResponse](#sdkcredentialvalidateresponse)
 
 Validate is used to validate credentials
+## DeleteReferences {#methodopenstorageapiopenstoragecredentialsdeletereferences}
+
+> **rpc** DeleteReferences([SdkCredentialDeleteReferencesRequest](#sdkcredentialdeletereferencesrequest))
+    [SdkCredentialDeleteReferencesResponse](#sdkcredentialdeletereferencesresponse)
+
+DeleteReferences is used to remove references to credentials
  <!-- end methods -->
 
 # OpenStorageFilesystemCheck {#serviceopenstorageapiopenstoragefilesystemcheck}
@@ -876,6 +906,34 @@ different versions.
     [SdkIdentityVersionResponse](#sdkidentityversionresponse)
 
 Version returns version information about the system.
+ <!-- end methods -->
+
+# OpenStorageJob {#serviceopenstorageapiopenstoragejob}
+OpenstorageJob is a service that provides a common set of APIs for services
+that use the asynchronous job framework
+
+## UpdateJobState {#methodopenstorageapiopenstoragejobupdatejobstate}
+
+> **rpc** UpdateJobState([SdkUpdateJobRequest](#sdkupdatejobrequest))
+    [SdkUpdateJobResponse](#sdkupdatejobresponse)
+
+UpdateJobState updates an existing job
+Only acceptable values are
+JobState_PAUSED - acceptable only from running state
+JobState_CANCELLED - acceptable only from running/pause state
+JobState_RUNNING - acceptable only from pause state
+## GetJobStatus {#methodopenstorageapiopenstoragejobgetjobstatus}
+
+> **rpc** GetJobStatus([SdkGetJobStatusRequest](#sdkgetjobstatusrequest))
+    [SdkGetJobStatusResponse](#sdkgetjobstatusresponse)
+
+GetJobStatus gets the status of a job
+## EnumerateJobs {#methodopenstorageapiopenstoragejobenumeratejobs}
+
+> **rpc** EnumerateJobs([SdkEnumerateJobsRequest](#sdkenumeratejobsrequest))
+    [SdkEnumerateJobsResponse](#sdkenumeratejobsresponse)
+
+EnumerateJobs returns all the jobs currently known to the system
  <!-- end methods -->
 
 # OpenStorageMigrate {#serviceopenstorageapiopenstoragemigrate}
@@ -976,6 +1034,28 @@ EnumerateWithFilters returns all the nodes in the current cluster
     [SdkNodeVolumeUsageByNodeResponse](#sdknodevolumeusagebynoderesponse)
 
 Returns capacity usage of all volumes/snaps for a give node
+## DrainAttachments {#methodopenstorageapiopenstoragenodedrainattachments}
+
+> **rpc** DrainAttachments([SdkNodeDrainAttachmentsRequest](#sdknodedrainattachmentsrequest))
+    [SdkJobResponse](#sdkjobresponse)
+
+DrainAttachments creates a task to drain volume attachments
+from the provided node in the cluster.
+## CordonAttachments {#methodopenstorageapiopenstoragenodecordonattachments}
+
+> **rpc** CordonAttachments([SdkNodeCordonAttachmentsRequest](#sdknodecordonattachmentsrequest))
+    [SdkNodeCordonAttachmentsResponse](#sdknodecordonattachmentsresponse)
+
+CordonAttachments disables any new volume attachments
+from the provided node in the cluster. Existing volume attachments
+will stay on the node.
+## UncordonAttachments {#methodopenstorageapiopenstoragenodeuncordonattachments}
+
+> **rpc** UncordonAttachments([SdkNodeUncordonAttachmentsRequest](#sdknodeuncordonattachmentsrequest))
+    [SdkNodeUncordonAttachmentsResponse](#sdknodeuncordonattachmentsresponse)
+
+UncordonAttachments re-enables volume attachments
+on the provided node in the cluster.
  <!-- end methods -->
 
 # OpenStorageObjectstore {#serviceopenstorageapiopenstorageobjectstore}
@@ -1745,6 +1825,20 @@ in: body |
  <!-- end HasFields -->
 
 
+## DrainAttachmentsSummary {#drainattachmentssummary}
+DrainAttachments summary of the volumes whose attachments need to be drained
+from a node
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| num_volumes_total | [ uint64](#uint64) | Total number of volumes that need to be drained |
+| num_volumes_done | [ uint64](#uint64) | Number of volumes which have been drained |
+| num_volumes_pending | [ uint64](#uint64) | Number of volumes which have not been drained yet |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
 ## ExportSpec {#exportspec}
 ExportSpec defines how the volume is exported..
 
@@ -1896,6 +1990,59 @@ IoStrategy defines how I/O should be performed to backing storage media.
  <!-- end HasFields -->
 
 
+## Job {#job}
+Job is a generic job object that can encapsulate other
+messages which follow the job framework of APIs
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [ string](#string) | ID of the job |
+| state | [ JobState](#jobstate) | State of the current job |
+| type | [ JobType](#jobtype) | Type is the job type |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) job.drain_attachments | [ NodeDrainAttachmentsJob](#nodedrainattachmentsjob) | NodeDrainAttachmentsJob if selected this job desribes the task for removing volume attachments from a node |
+| create_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | CreateTime is the time the job was created |
+| last_update_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | LastUpdateTime is the time the job was updated |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## JobAudit {#jobaudit}
+JobAudit is an audit entry for a job describing the different operations
+performed as a part of the job
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| summary | [repeated JobWorkSummary](#jobworksummary) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## JobSummary {#jobsummary}
+JobSummary provides a summary of a job
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [ string](#string) | ID of the job |
+| total_runtime_seconds | [ uint64](#uint64) | Total runtime in seconds |
+| work_summaries | [repeated JobWorkSummary](#jobworksummary) | Summary provides more information about the on-going job |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## JobWorkSummary {#jobworksummary}
+JobWorkSummary describes an action taken while performing the hob
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) summary.drain_attachments_summary | [ DrainAttachmentsSummary](#drainattachmentssummary) | Summary summarizes drain attachment job |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
 ## LabelSelectorRequirement {#labelselectorrequirement}
 LabelSelectorRequirement is a selector that contains values, a key, and an operator that
 relates the key and values.
@@ -1978,6 +2125,28 @@ NFSProxySpec is the spec for proxying an NFS share.
 | ----- | ---- | ----------- |
 | export_path | [ string](#string) | ExportPath is the NFS export path on the NFS server |
 | sub_path | [ string](#string) | SubPath is the sub-directory from an NFS share that should be reflected. |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## NodeDrainAttachmentOptions {#nodedrainattachmentoptions}
+Options for draining volume attachment from a node
+
+ <!-- end HasFields -->
+
+
+## NodeDrainAttachmentsJob {#nodedrainattachmentsjob}
+NodeDrainAttachmentsJob describe a job to drain volume attachments from a node
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| node_id | [ string](#string) | NodeID of the node for which this drain job is running |
+| Status | [ string](#string) | Status describes a helpful status of this node drain operation |
+| issuer | [ string](#string) | Issuer is a user friendly name for the caller who is invoking the API. It can be used by caller to filter out drain requests from a particular issuer |
+| parameters | [ SdkNodeDrainAttachmentsRequest](#sdknodedrainattachmentsrequest) | Parameters is the original request params for this node drain operation This node drain job is applicable to only one of these node drain operations. |
+| create_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | CreateTime is the time the job was created |
+| last_update_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | LastUpdateTime is the time the job was updated |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3257,6 +3426,23 @@ Defines a response from creating a credential
  <!-- end HasFields -->
 
 
+## SdkCredentialDeleteReferencesRequest {#sdkcredentialdeletereferencesrequest}
+Defines a request to remove any references to credentials
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| credential_id | [ string](#string) | Id of the credentials |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCredentialDeleteReferencesResponse {#sdkcredentialdeletereferencesresponse}
+Empty response
+
+ <!-- end HasFields -->
+
+
 ## SdkCredentialDeleteRequest {#sdkcredentialdeleterequest}
 Defines the request to delete credentials
 
@@ -3337,6 +3523,28 @@ Defines a request to validate credentials
 ## SdkCredentialValidateResponse {#sdkcredentialvalidateresponse}
 Empty response
 
+ <!-- end HasFields -->
+
+
+## SdkEnumerateJobsRequest {#sdkenumeratejobsrequest}
+Defines a request to list all the  jobs
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| type | [ JobType](#jobtype) | Type if specified will list the jobs of the provided type |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkEnumerateJobsResponse {#sdkenumeratejobsresponse}
+Defines a response will all the known jobs
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| jobs | [repeated Job](#job) | Jobs is the list of jobs in the response |
+ <!-- end Fields -->
  <!-- end HasFields -->
 
 
@@ -3498,6 +3706,30 @@ Empty response
  <!-- end HasFields -->
 
 
+## SdkGetJobStatusRequest {#sdkgetjobstatusrequest}
+Defines a request to get the status of an existing job
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [ string](#string) | ID of the job |
+| type | [ JobType](#jobtype) | Type of the job |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkGetJobStatusResponse {#sdkgetjobstatusresponse}
+Defines the status of an existing job
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| job | [ Job](#job) | Job for this node drain operation. |
+| summary | [ JobSummary](#jobsummary) | Summary of this job |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
 ## SdkGetRebalanceJobStatusRequest {#sdkgetrebalancejobstatusrequest}
 
 
@@ -3580,6 +3812,51 @@ Defines a response containing version information
  <!-- end HasFields -->
 
 
+## SdkJobResponse {#sdkjobresponse}
+Defines a response for an SDK request that spins up a new job
+to perform the request
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| job | [ Job](#job) | Job that was created for the SDK request |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkNodeCordonAttachmentsRequest {#sdknodecordonattachmentsrequest}
+SdkNodeCordonAttachmentsRequest request for disabling new volume
+attachments from a node
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| node_id | [ string](#string) | Node ID on which any further volume attachments will be disabled |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkNodeCordonAttachmentsResponse {#sdknodecordonattachmentsresponse}
+SdkNodeCordonAttachmentsRespinse response for disabling new volume
+attachments from a node
+
+ <!-- end HasFields -->
+
+
+## SdkNodeDrainAttachmentsRequest {#sdknodedrainattachmentsrequest}
+Defines a node drain volume attachments request
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| node_id | [ string](#string) | Id of the node to drain |
+| selector | [repeated LabelSelectorRequirement](#labelselectorrequirement) | Selector is used for selecting volumes whose attachment needs to be moved from this node. The selector could be a list of volume label key value pairs to select a subset of volumes. |
+| only_sharedv4 | [ bool](#bool) | Drain only sharedv4 volumes from a node By default all volumes will be drained. |
+| issuer | [ string](#string) | Issuer is a user friendly name for the caller who is invoking the API. It can be used by caller to filter out drain requests from a particular issuer |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
 ## SdkNodeEnumerateRequest {#sdknodeenumeraterequest}
 Empty request
 
@@ -3651,6 +3928,25 @@ Defines a response when inspecting a node
 | ----- | ---- | ----------- |
 | node | [ StorageNode](#storagenode) | Node information |
  <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkNodeUncordonAttachmentsRequest {#sdknodeuncordonattachmentsrequest}
+SdkNodeUncordonAttachmentsRequest request for re-enabling volume
+attachments for a node
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| node_id | [ string](#string) | Node ID on which any further volume attachments will be enabled |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkNodeUncordonAttachmentsResponse {#sdknodeuncordonattachmentsresponse}
+SdkNodeUncordonAttachmentsRespinse response for enabling new volume
+attachments from a node
+
  <!-- end HasFields -->
 
 
@@ -4324,6 +4620,25 @@ SdkStorageRebalanceResponse is the response to a storage rebalance request
 | summary | [ StorageRebalanceSummary](#storagerebalancesummary) | Summary summarizes the rebalance job |
 | actions | [repeated StorageRebalanceAudit](#storagerebalanceaudit) | Actions describe all the actions taken during this rebalance |
  <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkUpdateJobRequest {#sdkupdatejobrequest}
+Defines a request to update an existing job
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [ string](#string) | ID of the job |
+| type | [ JobType](#jobtype) | Type of the job |
+| state | [ JobState](#jobstate) | State is the new task state to update the job to |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkUpdateJobResponse {#sdkupdatejobresponse}
+Defines the response for an update to an existing job
+
  <!-- end HasFields -->
 
 
@@ -5735,7 +6050,7 @@ VolumeStateAction specifies desired actions.
 
 
 ## VolumeUsage {#volumeusage}
-Provides volume's exclusive bytes and its total usage. This cannot be 
+Provides volume's exclusive bytes and its total usage. This cannot be
 retrieved individually and is obtained as part node's usage for a given
 node.
 
@@ -6038,6 +6353,32 @@ OpenStorageFilesystemTrim service APIs()
 
 
 
+## JobState {#jobstate}
+JobState is an enum for state of a node drain operation
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| JOB_STATE_PENDING | 0 | Pending indicates job is still pending and has not started work |
+| JOB_STATE_RUNNING | 1 | Running indicates job is actively running |
+| JOB_STATE_DONE | 2 | Done indicates job has finished processing |
+| JOB_STATE_PAUSED | 3 | Paused indicates job is paused |
+| JOB_STATE_CANCELLED | 4 | Cancelled indicates job is cancelled |
+| JOB_STATE_FAILED | 5 | Failed indicates job has failed |
+
+
+
+
+## JobType {#jobtype}
+JobType are the supported job types
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| JobTypeNone | 0 | none |
+| JobTypeDrainAttachments | 1 | none |
+
+
+
+
 ## LabelSelectorRequirement.Operator {#labelselectorrequirementoperator}
 This defines operator types used in a label matching rule
 
@@ -6273,7 +6614,7 @@ client and server applications
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
 | Minor | 69 | SDK version minor value of this specification |
-| Patch | 27 | SDK version patch value of this specification |
+| Patch | 29 | SDK version patch value of this specification |
 
 
 

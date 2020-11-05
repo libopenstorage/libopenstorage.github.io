@@ -6617,7 +6617,7 @@ client and server applications
 | ---- | ------ | ----------- |
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
-| Minor | 101 | SDK version minor value of this specification |
+| Minor | 101 | SDK version minor value of this specification Frozen for this branch. Bump the Patch value instead. |
 | Patch | 0 | SDK version patch value of this specification |
 
 

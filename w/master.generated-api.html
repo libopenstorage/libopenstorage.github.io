@@ -458,6 +458,7 @@
 <li><a href="#serviceopenstorageapiopenstoragefilesystemcheck">OpenStorageFilesystemCheck</a></li>
 <li><a href="#serviceopenstorageapiopenstoragefilesystemtrim">OpenStorageFilesystemTrim</a></li>
 <li><a href="#serviceopenstorageapiopenstorageidentity">OpenStorageIdentity</a></li>
+<li><a href="#serviceopenstorageapiopenstoragejob">OpenStorageJob</a></li>
 <li><a href="#serviceopenstorageapiopenstoragemigrate">OpenStorageMigrate</a></li>
 <li><a href="#serviceopenstorageapiopenstoragemountattach">OpenStorageMountAttach</a></li>
 <li><a href="#serviceopenstorageapiopenstoragenode">OpenStorageNode</a></li>
@@ -502,6 +503,7 @@
 <li><a href="#clusterpairsenumerateresponse">ClusterPairsEnumerateResponse</a></li>
 <li><a href="#clusterpairsenumerateresponsepairsentry">ClusterPairsEnumerateResponse.PairsEntry</a></li>
 <li><a href="#clusterresponse">ClusterResponse</a></li>
+<li><a href="#drainattachmentssummary">DrainAttachmentsSummary</a></li>
 <li><a href="#exportspec">ExportSpec</a></li>
 <li><a href="#fastpathconfig">FastpathConfig</a></li>
 <li><a href="#fastpathreplstate">FastpathReplState</a></li>
@@ -514,6 +516,10 @@
 <li><a href="#groupsnapcreateresponse">GroupSnapCreateResponse</a></li>
 <li><a href="#groupsnapcreateresponsesnapshotsentry">GroupSnapCreateResponse.SnapshotsEntry</a></li>
 <li><a href="#iostrategy">IoStrategy</a></li>
+<li><a href="#job">Job</a></li>
+<li><a href="#jobaudit">JobAudit</a></li>
+<li><a href="#jobsummary">JobSummary</a></li>
+<li><a href="#jobworksummary">JobWorkSummary</a></li>
 <li><a href="#labelselectorrequirement">LabelSelectorRequirement</a></li>
 <li><a href="#locateresponse">LocateResponse</a></li>
 <li><a href="#locateresponsedockeridsentry">LocateResponse.DockeridsEntry</a></li>
@@ -521,6 +527,8 @@
 <li><a href="#mountoptions">MountOptions</a></li>
 <li><a href="#mountoptionsoptionsentry">MountOptions.OptionsEntry</a></li>
 <li><a href="#nfsproxyspec">NFSProxySpec</a></li>
+<li><a href="#nodedrainattachmentoptions">NodeDrainAttachmentOptions</a></li>
+<li><a href="#nodedrainattachmentsjob">NodeDrainAttachmentsJob</a></li>
 <li><a href="#objectstoreinfo">ObjectstoreInfo</a></li>
 <li><a href="#ownership">Ownership</a></li>
 <li><a href="#ownershipaccesscontrol">Ownership.AccessControl</a></li>
@@ -626,6 +634,8 @@
 <li><a href="#sdkclusterpairresettokenresponse">SdkClusterPairResetTokenResponse</a></li>
 <li><a href="#sdkcredentialcreaterequest">SdkCredentialCreateRequest</a></li>
 <li><a href="#sdkcredentialcreateresponse">SdkCredentialCreateResponse</a></li>
+<li><a href="#sdkcredentialdeletereferencesrequest">SdkCredentialDeleteReferencesRequest</a></li>
+<li><a href="#sdkcredentialdeletereferencesresponse">SdkCredentialDeleteReferencesResponse</a></li>
 <li><a href="#sdkcredentialdeleterequest">SdkCredentialDeleteRequest</a></li>
 <li><a href="#sdkcredentialdeleteresponse">SdkCredentialDeleteResponse</a></li>
 <li><a href="#sdkcredentialenumeraterequest">SdkCredentialEnumerateRequest</a></li>
@@ -634,6 +644,8 @@
 <li><a href="#sdkcredentialinspectresponse">SdkCredentialInspectResponse</a></li>
 <li><a href="#sdkcredentialvalidaterequest">SdkCredentialValidateRequest</a></li>
 <li><a href="#sdkcredentialvalidateresponse">SdkCredentialValidateResponse</a></li>
+<li><a href="#sdkenumeratejobsrequest">SdkEnumerateJobsRequest</a></li>
+<li><a href="#sdkenumeratejobsresponse">SdkEnumerateJobsResponse</a></li>
 <li><a href="#sdkenumeraterebalancejobsrequest">SdkEnumerateRebalanceJobsRequest</a></li>
 <li><a href="#sdkenumeraterebalancejobsresponse">SdkEnumerateRebalanceJobsResponse</a></li>
 <li><a href="#sdkfilesystemcheckstartrequest">SdkFilesystemCheckStartRequest</a></li>
@@ -648,6 +660,8 @@
 <li><a href="#sdkfilesystemtrimstatusresponse">SdkFilesystemTrimStatusResponse</a></li>
 <li><a href="#sdkfilesystemtrimstoprequest">SdkFilesystemTrimStopRequest</a></li>
 <li><a href="#sdkfilesystemtrimstopresponse">SdkFilesystemTrimStopResponse</a></li>
+<li><a href="#sdkgetjobstatusrequest">SdkGetJobStatusRequest</a></li>
+<li><a href="#sdkgetjobstatusresponse">SdkGetJobStatusResponse</a></li>
 <li><a href="#sdkgetrebalancejobstatusrequest">SdkGetRebalanceJobStatusRequest</a></li>
 <li><a href="#sdkgetrebalancejobstatusresponse">SdkGetRebalanceJobStatusResponse</a></li>
 <li><a href="#sdkgooglecredentialrequest">SdkGoogleCredentialRequest</a></li>
@@ -656,6 +670,10 @@
 <li><a href="#sdkidentitycapabilitiesresponse">SdkIdentityCapabilitiesResponse</a></li>
 <li><a href="#sdkidentityversionrequest">SdkIdentityVersionRequest</a></li>
 <li><a href="#sdkidentityversionresponse">SdkIdentityVersionResponse</a></li>
+<li><a href="#sdkjobresponse">SdkJobResponse</a></li>
+<li><a href="#sdknodecordonattachmentsrequest">SdkNodeCordonAttachmentsRequest</a></li>
+<li><a href="#sdknodecordonattachmentsresponse">SdkNodeCordonAttachmentsResponse</a></li>
+<li><a href="#sdknodedrainattachmentsrequest">SdkNodeDrainAttachmentsRequest</a></li>
 <li><a href="#sdknodeenumeraterequest">SdkNodeEnumerateRequest</a></li>
 <li><a href="#sdknodeenumerateresponse">SdkNodeEnumerateResponse</a></li>
 <li><a href="#sdknodeenumeratewithfiltersrequest">SdkNodeEnumerateWithFiltersRequest</a></li>
@@ -664,6 +682,8 @@
 <li><a href="#sdknodeinspectcurrentresponse">SdkNodeInspectCurrentResponse</a></li>
 <li><a href="#sdknodeinspectrequest">SdkNodeInspectRequest</a></li>
 <li><a href="#sdknodeinspectresponse">SdkNodeInspectResponse</a></li>
+<li><a href="#sdknodeuncordonattachmentsrequest">SdkNodeUncordonAttachmentsRequest</a></li>
+<li><a href="#sdknodeuncordonattachmentsresponse">SdkNodeUncordonAttachmentsResponse</a></li>
 <li><a href="#sdknodevolumeusagebynoderequest">SdkNodeVolumeUsageByNodeRequest</a></li>
 <li><a href="#sdknodevolumeusagebynoderesponse">SdkNodeVolumeUsageByNodeResponse</a></li>
 <li><a href="#sdkobjectstorecreaterequest">SdkObjectstoreCreateRequest</a></li>
@@ -726,6 +746,8 @@
 <li><a href="#sdkstoragepoolresizeresponse">SdkStoragePoolResizeResponse</a></li>
 <li><a href="#sdkstoragerebalancerequest">SdkStorageRebalanceRequest</a></li>
 <li><a href="#sdkstoragerebalanceresponse">SdkStorageRebalanceResponse</a></li>
+<li><a href="#sdkupdatejobrequest">SdkUpdateJobRequest</a></li>
+<li><a href="#sdkupdatejobresponse">SdkUpdateJobResponse</a></li>
 <li><a href="#sdkupdaterebalancejobrequest">SdkUpdateRebalanceJobRequest</a></li>
 <li><a href="#sdkupdaterebalancejobresponse">SdkUpdateRebalanceJobResponse</a></li>
 <li><a href="#sdkversion">SdkVersion</a></li>
@@ -856,6 +878,8 @@
 <li><a href="#graphdriverchangetype">GraphDriverChangeType</a></li>
 <li><a href="#hardwaretype">HardwareType</a></li>
 <li><a href="#ioprofile">IoProfile</a></li>
+<li><a href="#jobstate">JobState</a></li>
+<li><a href="#jobtype">JobType</a></li>
 <li><a href="#labelselectorrequirementoperator">LabelSelectorRequirement.Operator</a></li>
 <li><a href="#operationflags">OperationFlags</a></li>
 <li><a href="#ownershipaccesstype">Ownership.AccessType</a></li>
@@ -1201,7 +1225,13 @@ id of the credentials once they are verified to work.</p>
 <p><strong>rpc</strong> Validate(<a href="#sdkcredentialvalidaterequest">SdkCredentialValidateRequest</a>)
     <a href="#sdkcredentialvalidateresponse">SdkCredentialValidateResponse</a></p>
 </blockquote>
-<p>Validate is used to validate credentials
+<p>Validate is used to validate credentials</p>
+<h2 id="methodopenstorageapiopenstoragecredentialsdeletereferences">DeleteReferences </h2>
+<blockquote>
+<p><strong>rpc</strong> DeleteReferences(<a href="#sdkcredentialdeletereferencesrequest">SdkCredentialDeleteReferencesRequest</a>)
+    <a href="#sdkcredentialdeletereferencesresponse">SdkCredentialDeleteReferencesResponse</a></p>
+</blockquote>
+<p>DeleteReferences is used to remove references to credentials
  <!-- end methods --></p>
 <h1 id="serviceopenstorageapiopenstoragefilesystemcheck">OpenStorageFilesystemCheck </h1>
 <h2 id="methodopenstorageapiopenstoragefilesystemcheckstart">Start </h2>
@@ -1287,6 +1317,32 @@ different versions.</p>
     <a href="#sdkidentityversionresponse">SdkIdentityVersionResponse</a></p>
 </blockquote>
 <p>Version returns version information about the system.
+ <!-- end methods --></p>
+<h1 id="serviceopenstorageapiopenstoragejob">OpenStorageJob </h1>
+<p>OpenstorageJob is a service that provides a common set of APIs for services
+that use the asynchronous job framework</p>
+<h2 id="methodopenstorageapiopenstoragejobupdatejobstate">UpdateJobState </h2>
+<blockquote>
+<p><strong>rpc</strong> UpdateJobState(<a href="#sdkupdatejobrequest">SdkUpdateJobRequest</a>)
+    <a href="#sdkupdatejobresponse">SdkUpdateJobResponse</a></p>
+</blockquote>
+<p>UpdateJobState updates an existing job
+Only acceptable values are
+JobState_PAUSED - acceptable only from running state
+JobState_CANCELLED - acceptable only from running/pause state
+JobState_RUNNING - acceptable only from pause state</p>
+<h2 id="methodopenstorageapiopenstoragejobgetjobstatus">GetJobStatus </h2>
+<blockquote>
+<p><strong>rpc</strong> GetJobStatus(<a href="#sdkgetjobstatusrequest">SdkGetJobStatusRequest</a>)
+    <a href="#sdkgetjobstatusresponse">SdkGetJobStatusResponse</a></p>
+</blockquote>
+<p>GetJobStatus gets the status of a job</p>
+<h2 id="methodopenstorageapiopenstoragejobenumeratejobs">EnumerateJobs </h2>
+<blockquote>
+<p><strong>rpc</strong> EnumerateJobs(<a href="#sdkenumeratejobsrequest">SdkEnumerateJobsRequest</a>)
+    <a href="#sdkenumeratejobsresponse">SdkEnumerateJobsResponse</a></p>
+</blockquote>
+<p>EnumerateJobs returns all the jobs currently known to the system
  <!-- end methods --></p>
 <h1 id="serviceopenstorageapiopenstoragemigrate">OpenStorageMigrate </h1>
 <p>OpenStorageMigrate is a service used to manage migration of volumes</p>
@@ -1377,7 +1433,29 @@ where the client is currently connected to.</p>
 <p><strong>rpc</strong> VolumeUsageByNode(<a href="#sdknodevolumeusagebynoderequest">SdkNodeVolumeUsageByNodeRequest</a>)
     <a href="#sdknodevolumeusagebynoderesponse">SdkNodeVolumeUsageByNodeResponse</a></p>
 </blockquote>
-<p>Returns capacity usage of all volumes/snaps for a give node
+<p>Returns capacity usage of all volumes/snaps for a give node</p>
+<h2 id="methodopenstorageapiopenstoragenodedrainattachments">DrainAttachments </h2>
+<blockquote>
+<p><strong>rpc</strong> DrainAttachments(<a href="#sdknodedrainattachmentsrequest">SdkNodeDrainAttachmentsRequest</a>)
+    <a href="#sdkjobresponse">SdkJobResponse</a></p>
+</blockquote>
+<p>DrainAttachments creates a task to drain volume attachments
+from the provided node in the cluster.</p>
+<h2 id="methodopenstorageapiopenstoragenodecordonattachments">CordonAttachments </h2>
+<blockquote>
+<p><strong>rpc</strong> CordonAttachments(<a href="#sdknodecordonattachmentsrequest">SdkNodeCordonAttachmentsRequest</a>)
+    <a href="#sdknodecordonattachmentsresponse">SdkNodeCordonAttachmentsResponse</a></p>
+</blockquote>
+<p>CordonAttachments disables any new volume attachments
+from the provided node in the cluster. Existing volume attachments
+will stay on the node.</p>
+<h2 id="methodopenstorageapiopenstoragenodeuncordonattachments">UncordonAttachments </h2>
+<blockquote>
+<p><strong>rpc</strong> UncordonAttachments(<a href="#sdknodeuncordonattachmentsrequest">SdkNodeUncordonAttachmentsRequest</a>)
+    <a href="#sdknodeuncordonattachmentsresponse">SdkNodeUncordonAttachmentsResponse</a></p>
+</blockquote>
+<p>UncordonAttachments re-enables volume attachments
+on the provided node in the cluster.
  <!-- end methods --></p>
 <h1 id="serviceopenstorageapiopenstorageobjectstore">OpenStorageObjectstore </h1>
 <p>OpenStorageObjectstore is a service used to manage object store services on volumes</p>
@@ -2599,6 +2677,37 @@ used by the other dependent snaps and parent volume.</p>
 <p>in: body |
  <!-- end Fields -->
  <!-- end HasFields --></p>
+<h2 id="drainattachmentssummary">DrainAttachmentsSummary </h2>
+<p>DrainAttachments summary of the volumes whose attachments need to be drained
+from a node</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>num_volumes_total</td>
+<td><a href="#uint64"> uint64</a></td>
+<td>Total number of volumes that need to be drained</td>
+</tr>
+<tr>
+<td>num_volumes_done</td>
+<td><a href="#uint64"> uint64</a></td>
+<td>Number of volumes which have been drained</td>
+</tr>
+<tr>
+<td>num_volumes_pending</td>
+<td><a href="#uint64"> uint64</a></td>
+<td>Number of volumes which have not been drained yet</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
 <h2 id="exportspec">ExportSpec </h2>
 <p>ExportSpec defines how the volume is exported..</p>
 <table>
@@ -2917,6 +3026,123 @@ All volumes in the same group share this object.</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
+<h2 id="job">Job </h2>
+<p>Job is a generic job object that can encapsulate other
+messages which follow the job framework of APIs</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td><a href="#string"> string</a></td>
+<td>ID of the job</td>
+</tr>
+<tr>
+<td>state</td>
+<td><a href="#jobstate"> JobState</a></td>
+<td>State of the current job</td>
+</tr>
+<tr>
+<td>type</td>
+<td><a href="#jobtype"> JobType</a></td>
+<td>Type is the job type</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> job.drain_attachments</td>
+<td><a href="#nodedrainattachmentsjob"> NodeDrainAttachmentsJob</a></td>
+<td>NodeDrainAttachmentsJob if selected this job desribes the task for removing volume attachments from a node</td>
+</tr>
+<tr>
+<td>create_time</td>
+<td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
+<td>CreateTime is the time the job was created</td>
+</tr>
+<tr>
+<td>last_update_time</td>
+<td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
+<td>LastUpdateTime is the time the job was updated</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="jobaudit">JobAudit </h2>
+<p>JobAudit is an audit entry for a job describing the different operations
+performed as a part of the job</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>summary</td>
+<td><a href="#jobworksummary">repeated JobWorkSummary</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="jobsummary">JobSummary </h2>
+<p>JobSummary provides a summary of a job</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td><a href="#string"> string</a></td>
+<td>ID of the job</td>
+</tr>
+<tr>
+<td>total_runtime_seconds</td>
+<td><a href="#uint64"> uint64</a></td>
+<td>Total runtime in seconds</td>
+</tr>
+<tr>
+<td>work_summaries</td>
+<td><a href="#jobworksummary">repeated JobWorkSummary</a></td>
+<td>Summary provides more information about the on-going job</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="jobworksummary">JobWorkSummary </h2>
+<p>JobWorkSummary describes an action taken while performing the hob</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> summary.drain_attachments_summary</td>
+<td><a href="#drainattachmentssummary"> DrainAttachmentsSummary</a></td>
+<td>Summary summarizes drain attachment job</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
 <h2 id="labelselectorrequirement">LabelSelectorRequirement </h2>
 <p>LabelSelectorRequirement is a selector that contains values, a key, and an operator that
 relates the key and values.</p>
@@ -3086,6 +3312,54 @@ and/or Container IDs and their mount paths</p>
 <td>sub_path</td>
 <td><a href="#string"> string</a></td>
 <td>SubPath is the sub-directory from an NFS share that should be reflected.</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="nodedrainattachmentoptions">NodeDrainAttachmentOptions </h2>
+<p>Options for draining volume attachment from a node</p>
+ <!-- end HasFields -->
+<h2 id="nodedrainattachmentsjob">NodeDrainAttachmentsJob </h2>
+<p>NodeDrainAttachmentsJob describe a job to drain volume attachments from a node</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>node_id</td>
+<td><a href="#string"> string</a></td>
+<td>NodeID of the node for which this drain job is running</td>
+</tr>
+<tr>
+<td>Status</td>
+<td><a href="#string"> string</a></td>
+<td>Status describes a helpful status of this node drain operation</td>
+</tr>
+<tr>
+<td>issuer</td>
+<td><a href="#string"> string</a></td>
+<td>Issuer is a user friendly name for the caller who is invoking the API. It can be used by caller to filter out drain requests from a particular issuer</td>
+</tr>
+<tr>
+<td>parameters</td>
+<td><a href="#sdknodedrainattachmentsrequest"> SdkNodeDrainAttachmentsRequest</a></td>
+<td>Parameters is the original request params for this node drain operation This node drain job is applicable to only one of these node drain operations.</td>
+</tr>
+<tr>
+<td>create_time</td>
+<td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
+<td>CreateTime is the time the job was created</td>
+</tr>
+<tr>
+<td>last_update_time</td>
+<td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
+<td>LastUpdateTime is the time the job was updated</td>
 </tr>
 </tbody>
 </table>
@@ -5715,6 +5989,29 @@ specified volume</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
+<h2 id="sdkcredentialdeletereferencesrequest">SdkCredentialDeleteReferencesRequest </h2>
+<p>Defines a request to remove any references to credentials</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>credential_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of the credentials</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcredentialdeletereferencesresponse">SdkCredentialDeleteReferencesResponse </h2>
+<p>Empty response</p>
+ <!-- end HasFields -->
 <h2 id="sdkcredentialdeleterequest">SdkCredentialDeleteRequest </h2>
 <p>Defines the request to delete credentials</p>
 <table>
@@ -5865,6 +6162,46 @@ you will need to check if the value of credential_type is one of the ones below.
  <!-- end HasFields -->
 <h2 id="sdkcredentialvalidateresponse">SdkCredentialValidateResponse </h2>
 <p>Empty response</p>
+ <!-- end HasFields -->
+<h2 id="sdkenumeratejobsrequest">SdkEnumerateJobsRequest </h2>
+<p>Defines a request to list all the  jobs</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="#jobtype"> JobType</a></td>
+<td>Type if specified will list the jobs of the provided type</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkenumeratejobsresponse">SdkEnumerateJobsResponse </h2>
+<p>Defines a response will all the known jobs</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>jobs</td>
+<td><a href="#job">repeated Job</a></td>
+<td>Jobs is the list of jobs in the response</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkenumeraterebalancejobsrequest">SdkEnumerateRebalanceJobsRequest </h2>
  <!-- end HasFields -->
@@ -6152,6 +6489,56 @@ filesystem trim operation</p>
 <h2 id="sdkfilesystemtrimstopresponse">SdkFilesystemTrimStopResponse </h2>
 <p>Empty response</p>
  <!-- end HasFields -->
+<h2 id="sdkgetjobstatusrequest">SdkGetJobStatusRequest </h2>
+<p>Defines a request to get the status of an existing job</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td><a href="#string"> string</a></td>
+<td>ID of the job</td>
+</tr>
+<tr>
+<td>type</td>
+<td><a href="#jobtype"> JobType</a></td>
+<td>Type of the job</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkgetjobstatusresponse">SdkGetJobStatusResponse </h2>
+<p>Defines the status of an existing job</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>job</td>
+<td><a href="#job"> Job</a></td>
+<td>Job for this node drain operation.</td>
+</tr>
+<tr>
+<td>summary</td>
+<td><a href="#jobsummary"> JobSummary</a></td>
+<td>Summary of this job</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
 <h2 id="sdkgetrebalancejobstatusrequest">SdkGetRebalanceJobStatusRequest </h2>
 <table>
 <thead>
@@ -6296,6 +6683,87 @@ filesystem trim operation</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
+<h2 id="sdkjobresponse">SdkJobResponse </h2>
+<p>Defines a response for an SDK request that spins up a new job
+to perform the request</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>job</td>
+<td><a href="#job"> Job</a></td>
+<td>Job that was created for the SDK request</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdknodecordonattachmentsrequest">SdkNodeCordonAttachmentsRequest </h2>
+<p>SdkNodeCordonAttachmentsRequest request for disabling new volume
+attachments from a node</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>node_id</td>
+<td><a href="#string"> string</a></td>
+<td>Node ID on which any further volume attachments will be disabled</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdknodecordonattachmentsresponse">SdkNodeCordonAttachmentsResponse </h2>
+<p>SdkNodeCordonAttachmentsRespinse response for disabling new volume
+attachments from a node</p>
+ <!-- end HasFields -->
+<h2 id="sdknodedrainattachmentsrequest">SdkNodeDrainAttachmentsRequest </h2>
+<p>Defines a node drain volume attachments request</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>node_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of the node to drain</td>
+</tr>
+<tr>
+<td>selector</td>
+<td><a href="#labelselectorrequirement">repeated LabelSelectorRequirement</a></td>
+<td>Selector is used for selecting volumes whose attachment needs to be moved from this node. The selector could be a list of volume label key value pairs to select a subset of volumes.</td>
+</tr>
+<tr>
+<td>only_sharedv4</td>
+<td><a href="#bool"> bool</a></td>
+<td>Drain only sharedv4 volumes from a node By default all volumes will be drained.</td>
+</tr>
+<tr>
+<td>issuer</td>
+<td><a href="#string"> string</a></td>
+<td>Issuer is a user friendly name for the caller who is invoking the API. It can be used by caller to filter out drain requests from a particular issuer</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
 <h2 id="sdknodeenumeraterequest">SdkNodeEnumerateRequest </h2>
 <p>Empty request</p>
  <!-- end HasFields -->
@@ -6405,6 +6873,31 @@ no filters and all the nodes will be returned.</p>
 </tbody>
 </table>
  <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdknodeuncordonattachmentsrequest">SdkNodeUncordonAttachmentsRequest </h2>
+<p>SdkNodeUncordonAttachmentsRequest request for re-enabling volume
+attachments for a node</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>node_id</td>
+<td><a href="#string"> string</a></td>
+<td>Node ID on which any further volume attachments will be enabled</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdknodeuncordonattachmentsresponse">SdkNodeUncordonAttachmentsResponse </h2>
+<p>SdkNodeUncordonAttachmentsRespinse response for enabling new volume
+attachments from a node</p>
  <!-- end HasFields -->
 <h2 id="sdknodevolumeusagebynoderequest">SdkNodeVolumeUsageByNodeRequest </h2>
 <p>Defines request to retrieve all volumes/snapshots capacity usage details
@@ -7521,6 +8014,39 @@ rules followed</p>
 </tbody>
 </table>
  <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkupdatejobrequest">SdkUpdateJobRequest </h2>
+<p>Defines a request to update an existing job</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td><a href="#string"> string</a></td>
+<td>ID of the job</td>
+</tr>
+<tr>
+<td>type</td>
+<td><a href="#jobtype"> JobType</a></td>
+<td>Type of the job</td>
+</tr>
+<tr>
+<td>state</td>
+<td><a href="#jobstate"> JobState</a></td>
+<td>State is the new task state to update the job to</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkupdatejobresponse">SdkUpdateJobResponse </h2>
+<p>Defines the response for an update to an existing job</p>
  <!-- end HasFields -->
 <h2 id="sdkupdaterebalancejobrequest">SdkUpdateRebalanceJobRequest </h2>
 <table>
@@ -11659,6 +12185,72 @@ OpenStorageFilesystemTrim service APIs()</p>
 </tr>
 </tbody>
 </table>
+<h2 id="jobstate">JobState </h2>
+<p>JobState is an enum for state of a node drain operation</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>JOB_STATE_PENDING</td>
+<td>0</td>
+<td>Pending indicates job is still pending and has not started work</td>
+</tr>
+<tr>
+<td>JOB_STATE_RUNNING</td>
+<td>1</td>
+<td>Running indicates job is actively running</td>
+</tr>
+<tr>
+<td>JOB_STATE_DONE</td>
+<td>2</td>
+<td>Done indicates job has finished processing</td>
+</tr>
+<tr>
+<td>JOB_STATE_PAUSED</td>
+<td>3</td>
+<td>Paused indicates job is paused</td>
+</tr>
+<tr>
+<td>JOB_STATE_CANCELLED</td>
+<td>4</td>
+<td>Cancelled indicates job is cancelled</td>
+</tr>
+<tr>
+<td>JOB_STATE_FAILED</td>
+<td>5</td>
+<td>Failed indicates job has failed</td>
+</tr>
+</tbody>
+</table>
+<h2 id="jobtype">JobType </h2>
+<p>JobType are the supported job types</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>JobTypeNone</td>
+<td>0</td>
+<td>none</td>
+</tr>
+<tr>
+<td>JobTypeDrainAttachments</td>
+<td>1</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
 <h2 id="labelselectorrequirementoperator">LabelSelectorRequirement.Operator </h2>
 <p>This defines operator types used in a label matching rule</p>
 <table>
@@ -12274,7 +12866,7 @@ client and server applications</p>
 </tr>
 <tr>
 <td>Minor</td>
-<td>99</td>
+<td>101</td>
 <td>SDK version minor value of this specification</td>
 </tr>
 <tr>
@@ -12912,7 +13504,7 @@ client and server applications</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Nightly","level":"1.5.5","depth":2,"next":{"title":"Changelog","level":"1.5.5.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.4.1","depth":3,"path":"release-7.0.changelog.md","ref":"release-7.0.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"master.generated-api.md","mtime":"2020-09-30T02:54:35.522Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-30T02:54:44.563Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Nightly","level":"1.5.5","depth":2,"next":{"title":"Changelog","level":"1.5.5.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.4.1","depth":3,"path":"release-7.0.changelog.md","ref":"release-7.0.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"master.generated-api.md","mtime":"2020-11-05T22:36:58.015Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-11-05T22:37:09.065Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
