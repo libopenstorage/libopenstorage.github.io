@@ -14,6 +14,8 @@
         * [Changelog](release-6.4.changelog.md)
     * [v0.69.x](release-7.0.generated-api.md)
         * [Changelog](release-7.0.changelog.md)
+    * [v0.101.x](release-9.0.generated-api.md)
+        * [Changelog](release-9.0.changelog.md)
     * [Nightly](master.generated-api.md)
         * [Changelog](master.changelog.md)
 
