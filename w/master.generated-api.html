@@ -517,6 +517,7 @@
 <li><a href="#capacityusageinfo">CapacityUsageInfo</a></li>
 <li><a href="#catalog">Catalog</a></li>
 <li><a href="#catalogresponse">CatalogResponse</a></li>
+<li><a href="#clouddrivetransferjob">CloudDriveTransferJob</a></li>
 <li><a href="#cloudmigrate">CloudMigrate</a></li>
 <li><a href="#cloudmigratecancelrequest">CloudMigrateCancelRequest</a></li>
 <li><a href="#cloudmigrateinfo">CloudMigrateInfo</a></li>
@@ -914,8 +915,8 @@
 <li><a href="#graphdriverchangetype">GraphDriverChangeType</a></li>
 <li><a href="#hardwaretype">HardwareType</a></li>
 <li><a href="#ioprofile">IoProfile</a></li>
-<li><a href="#jobstate">JobState</a></li>
-<li><a href="#jobtype">JobType</a></li>
+<li><a href="#jobstate">Job.State</a></li>
+<li><a href="#jobtype">Job.Type</a></li>
 <li><a href="#labelselectorrequirementoperator">LabelSelectorRequirement.Operator</a></li>
 <li><a href="#operationflags">OperationFlags</a></li>
 <li><a href="#ownershipaccesstype">Ownership.AccessType</a></li>
@@ -1357,28 +1358,28 @@ different versions.</p>
 <h1 id="serviceopenstorageapiopenstoragejob">OpenStorageJob </h1>
 <p>OpenstorageJob is a service that provides a common set of APIs for services
 that use the asynchronous job framework</p>
-<h2 id="methodopenstorageapiopenstoragejobupdatejobstate">UpdateJobState </h2>
+<h2 id="methodopenstorageapiopenstoragejobupdate">Update </h2>
 <blockquote>
-<p><strong>rpc</strong> UpdateJobState(<a href="#sdkupdatejobrequest">SdkUpdateJobRequest</a>)
+<p><strong>rpc</strong> Update(<a href="#sdkupdatejobrequest">SdkUpdateJobRequest</a>)
     <a href="#sdkupdatejobresponse">SdkUpdateJobResponse</a></p>
 </blockquote>
-<p>UpdateJobState updates an existing job
-Only acceptable values are
+<p>Update updates an existing job&apos;s state
+Only acceptable state values are
 JobState_PAUSED - acceptable only from running state
 JobState_CANCELLED - acceptable only from running/pause state
 JobState_RUNNING - acceptable only from pause state</p>
-<h2 id="methodopenstorageapiopenstoragejobgetjobstatus">GetJobStatus </h2>
+<h2 id="methodopenstorageapiopenstoragejobgetstatus">GetStatus </h2>
 <blockquote>
-<p><strong>rpc</strong> GetJobStatus(<a href="#sdkgetjobstatusrequest">SdkGetJobStatusRequest</a>)
+<p><strong>rpc</strong> GetStatus(<a href="#sdkgetjobstatusrequest">SdkGetJobStatusRequest</a>)
     <a href="#sdkgetjobstatusresponse">SdkGetJobStatusResponse</a></p>
 </blockquote>
-<p>GetJobStatus gets the status of a job</p>
-<h2 id="methodopenstorageapiopenstoragejobenumeratejobs">EnumerateJobs </h2>
+<p>GetStatus gets the status of a job</p>
+<h2 id="methodopenstorageapiopenstoragejobenumerate">Enumerate </h2>
 <blockquote>
-<p><strong>rpc</strong> EnumerateJobs(<a href="#sdkenumeratejobsrequest">SdkEnumerateJobsRequest</a>)
+<p><strong>rpc</strong> Enumerate(<a href="#sdkenumeratejobsrequest">SdkEnumerateJobsRequest</a>)
     <a href="#sdkenumeratejobsresponse">SdkEnumerateJobsResponse</a></p>
 </blockquote>
-<p>EnumerateJobs returns all the jobs currently known to the system
+<p>Enumerate returns all the jobs currently known to the system
  <!-- end methods --></p>
 <h1 id="serviceopenstorageapiopenstoragemigrate">OpenStorageMigrate </h1>
 <p>OpenStorageMigrate is a service used to manage migration of volumes</p>
@@ -2099,6 +2100,35 @@ used by the other dependent snaps and parent volume.</p>
 <td>report</td>
 <td><a href="#report"> Report</a></td>
 <td>Report of total directories and files count</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="clouddrivetransferjob">CloudDriveTransferJob </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>source_driveset_id</td>
+<td><a href="#string"> string</a></td>
+<td>SourceDrivesetID is the ID of the current driveset that needs to be transferred</td>
+</tr>
+<tr>
+<td>destination_driveset_id</td>
+<td><a href="#string"> string</a></td>
+<td>DestinationDrivesetID is the ID of the storageless driveset that needs to take over the SourceDriveSetID</td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="#string"> string</a></td>
+<td>Status describes a helpful status of this operation</td>
 </tr>
 </tbody>
 </table>
@@ -3081,18 +3111,23 @@ messages which follow the job framework of APIs</p>
 </tr>
 <tr>
 <td>state</td>
-<td><a href="#jobstate"> JobState</a></td>
+<td><a href="#jobstate"> Job.State</a></td>
 <td>State of the current job</td>
 </tr>
 <tr>
 <td>type</td>
-<td><a href="#jobtype"> JobType</a></td>
+<td><a href="#jobtype"> Job.Type</a></td>
 <td>Type is the job type</td>
 </tr>
 <tr>
 <td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> job.drain_attachments</td>
 <td><a href="#nodedrainattachmentsjob"> NodeDrainAttachmentsJob</a></td>
 <td>NodeDrainAttachmentsJob if selected this job desribes the task for removing volume attachments from a node</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> job.clouddrive_transfer</td>
+<td><a href="#clouddrivetransferjob"> CloudDriveTransferJob</a></td>
+<td>CloudDriveTransferJob if selected describes the task to transfer a cloud driveset from one node to another</td>
 </tr>
 <tr>
 <td>create_time</td>
@@ -6212,7 +6247,7 @@ you will need to check if the value of credential_type is one of the ones below.
 <tbody>
 <tr>
 <td>type</td>
-<td><a href="#jobtype"> JobType</a></td>
+<td><a href="#jobtype"> Job.Type</a></td>
 <td>Type if specified will list the jobs of the provided type</td>
 </tr>
 </tbody>
@@ -6543,7 +6578,7 @@ filesystem trim operation</p>
 </tr>
 <tr>
 <td>type</td>
-<td><a href="#jobtype"> JobType</a></td>
+<td><a href="#jobtype"> Job.Type</a></td>
 <td>Type of the job</td>
 </tr>
 </tbody>
@@ -8069,12 +8104,12 @@ rules followed</p>
 </tr>
 <tr>
 <td>type</td>
-<td><a href="#jobtype"> JobType</a></td>
+<td><a href="#jobtype"> Job.Type</a></td>
 <td>Type of the job</td>
 </tr>
 <tr>
 <td>state</td>
-<td><a href="#jobstate"> JobState</a></td>
+<td><a href="#jobstate"> Job.State</a></td>
 <td>State is the new task state to update the job to</td>
 </tr>
 </tbody>
@@ -12221,8 +12256,8 @@ OpenStorageFilesystemTrim service APIs()</p>
 </tr>
 </tbody>
 </table>
-<h2 id="jobstate">JobState </h2>
-<p>JobState is an enum for state of a node drain operation</p>
+<h2 id="jobstate">Job.State </h2>
+<p>State is an enum for state of a node drain operation</p>
 <table>
 <thead>
 <tr>
@@ -12233,39 +12268,44 @@ OpenStorageFilesystemTrim service APIs()</p>
 </thead>
 <tbody>
 <tr>
-<td>JOB_STATE_PENDING</td>
+<td>UNSPECIFIED_STATE</td>
 <td>0</td>
+<td>Unspecified</td>
+</tr>
+<tr>
+<td>PENDING</td>
+<td>1</td>
 <td>Pending indicates job is still pending and has not started work</td>
 </tr>
 <tr>
-<td>JOB_STATE_RUNNING</td>
-<td>1</td>
+<td>RUNNING</td>
+<td>2</td>
 <td>Running indicates job is actively running</td>
 </tr>
 <tr>
-<td>JOB_STATE_DONE</td>
-<td>2</td>
+<td>DONE</td>
+<td>3</td>
 <td>Done indicates job has finished processing</td>
 </tr>
 <tr>
-<td>JOB_STATE_PAUSED</td>
-<td>3</td>
+<td>PAUSED</td>
+<td>4</td>
 <td>Paused indicates job is paused</td>
 </tr>
 <tr>
-<td>JOB_STATE_CANCELLED</td>
-<td>4</td>
+<td>CANCELLED</td>
+<td>5</td>
 <td>Cancelled indicates job is cancelled</td>
 </tr>
 <tr>
-<td>JOB_STATE_FAILED</td>
-<td>5</td>
+<td>FAILED</td>
+<td>6</td>
 <td>Failed indicates job has failed</td>
 </tr>
 </tbody>
 </table>
-<h2 id="jobtype">JobType </h2>
-<p>JobType are the supported job types</p>
+<h2 id="jobtype">Job.Type </h2>
+<p>Type are the supported job types</p>
 <table>
 <thead>
 <tr>
@@ -12276,14 +12316,24 @@ OpenStorageFilesystemTrim service APIs()</p>
 </thead>
 <tbody>
 <tr>
-<td>JobTypeNone</td>
+<td>UNSPECIFIED_TYPE</td>
 <td>0</td>
-<td>none</td>
+<td>Unspecified</td>
 </tr>
 <tr>
-<td>JobTypeDrainAttachments</td>
+<td>NONE</td>
 <td>1</td>
-<td>none</td>
+<td>None</td>
+</tr>
+<tr>
+<td>DRAIN_ATTACHMENTS</td>
+<td>2</td>
+<td>Job for draining volume attachments</td>
+</tr>
+<tr>
+<td>CLOUD_DRIVE_TRANSFER</td>
+<td>3</td>
+<td>Job for transferring cloud drives between nodes</td>
 </tr>
 </tbody>
 </table>
@@ -12902,7 +12952,7 @@ client and server applications</p>
 </tr>
 <tr>
 <td>Minor</td>
-<td>101</td>
+<td>103</td>
 <td>SDK version minor value of this specification</td>
 </tr>
 <tr>
@@ -13540,7 +13590,7 @@ client and server applications</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Nightly","level":"1.5.6","depth":2,"next":{"title":"Changelog","level":"1.5.6.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.5.1","depth":3,"path":"release-9.0.changelog.md","ref":"release-9.0.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"master.generated-api.md","mtime":"2020-11-05T22:45:12.085Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-11-05T22:45:23.495Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Nightly","level":"1.5.6","depth":2,"next":{"title":"Changelog","level":"1.5.6.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.5.1","depth":3,"path":"release-9.0.changelog.md","ref":"release-9.0.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"master.generated-api.md","mtime":"2020-11-09T21:36:16.022Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-11-09T21:36:27.301Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

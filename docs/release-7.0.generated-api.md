@@ -431,8 +431,8 @@
     - [GraphDriverChangeType](#graphdriverchangetype)
     - [HardwareType](#hardwaretype)
     - [IoProfile](#ioprofile)
-    - [JobState](#jobstate)
-    - [JobType](#jobtype)
+    - [Job.State](#jobstate)
+    - [Job.Type](#jobtype)
     - [LabelSelectorRequirement.Operator](#labelselectorrequirementoperator)
     - [OperationFlags](#operationflags)
     - [Ownership.AccessType](#ownershipaccesstype)
@@ -912,28 +912,28 @@ Version returns version information about the system.
 OpenstorageJob is a service that provides a common set of APIs for services
 that use the asynchronous job framework
 
-## UpdateJobState {#methodopenstorageapiopenstoragejobupdatejobstate}
+## Update {#methodopenstorageapiopenstoragejobupdate}
 
-> **rpc** UpdateJobState([SdkUpdateJobRequest](#sdkupdatejobrequest))
+> **rpc** Update([SdkUpdateJobRequest](#sdkupdatejobrequest))
     [SdkUpdateJobResponse](#sdkupdatejobresponse)
 
-UpdateJobState updates an existing job
-Only acceptable values are
+Update updates an existing job's state
+Only acceptable state values are
 JobState_PAUSED - acceptable only from running state
 JobState_CANCELLED - acceptable only from running/pause state
 JobState_RUNNING - acceptable only from pause state
-## GetJobStatus {#methodopenstorageapiopenstoragejobgetjobstatus}
+## GetStatus {#methodopenstorageapiopenstoragejobgetstatus}
 
-> **rpc** GetJobStatus([SdkGetJobStatusRequest](#sdkgetjobstatusrequest))
+> **rpc** GetStatus([SdkGetJobStatusRequest](#sdkgetjobstatusrequest))
     [SdkGetJobStatusResponse](#sdkgetjobstatusresponse)
 
-GetJobStatus gets the status of a job
-## EnumerateJobs {#methodopenstorageapiopenstoragejobenumeratejobs}
+GetStatus gets the status of a job
+## Enumerate {#methodopenstorageapiopenstoragejobenumerate}
 
-> **rpc** EnumerateJobs([SdkEnumerateJobsRequest](#sdkenumeratejobsrequest))
+> **rpc** Enumerate([SdkEnumerateJobsRequest](#sdkenumeratejobsrequest))
     [SdkEnumerateJobsResponse](#sdkenumeratejobsresponse)
 
-EnumerateJobs returns all the jobs currently known to the system
+Enumerate returns all the jobs currently known to the system
  <!-- end methods -->
 
 # OpenStorageMigrate {#serviceopenstorageapiopenstoragemigrate}
@@ -1998,8 +1998,8 @@ messages which follow the job framework of APIs
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | id | [ string](#string) | ID of the job |
-| state | [ JobState](#jobstate) | State of the current job |
-| type | [ JobType](#jobtype) | Type is the job type |
+| state | [ Job.State](#jobstate) | State of the current job |
+| type | [ Job.Type](#jobtype) | Type is the job type |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) job.drain_attachments | [ NodeDrainAttachmentsJob](#nodedrainattachmentsjob) | NodeDrainAttachmentsJob if selected this job desribes the task for removing volume attachments from a node |
 | create_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | CreateTime is the time the job was created |
 | last_update_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | LastUpdateTime is the time the job was updated |
@@ -3532,7 +3532,7 @@ Defines a request to list all the  jobs
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| type | [ JobType](#jobtype) | Type if specified will list the jobs of the provided type |
+| type | [ Job.Type](#jobtype) | Type if specified will list the jobs of the provided type |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3713,7 +3713,7 @@ Defines a request to get the status of an existing job
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | id | [ string](#string) | ID of the job |
-| type | [ JobType](#jobtype) | Type of the job |
+| type | [ Job.Type](#jobtype) | Type of the job |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -4630,8 +4630,8 @@ Defines a request to update an existing job
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | id | [ string](#string) | ID of the job |
-| type | [ JobType](#jobtype) | Type of the job |
-| state | [ JobState](#jobstate) | State is the new task state to update the job to |
+| type | [ Job.Type](#jobtype) | Type of the job |
+| state | [ Job.State](#jobstate) | State is the new task state to update the job to |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -6353,28 +6353,30 @@ OpenStorageFilesystemTrim service APIs()
 
 
 
-## JobState {#jobstate}
-JobState is an enum for state of a node drain operation
+## Job.State {#jobstate}
+State is an enum for state of a node drain operation
 
 | Name | Number | Description |
 | ---- | ------ | ----------- |
-| JOB_STATE_PENDING | 0 | Pending indicates job is still pending and has not started work |
-| JOB_STATE_RUNNING | 1 | Running indicates job is actively running |
-| JOB_STATE_DONE | 2 | Done indicates job has finished processing |
-| JOB_STATE_PAUSED | 3 | Paused indicates job is paused |
-| JOB_STATE_CANCELLED | 4 | Cancelled indicates job is cancelled |
-| JOB_STATE_FAILED | 5 | Failed indicates job has failed |
+| UNSPECIFIED_STATE | 0 | Unspecified |
+| PENDING | 1 | Pending indicates job is still pending and has not started work |
+| RUNNING | 2 | Running indicates job is actively running |
+| DONE | 3 | Done indicates job has finished processing |
+| PAUSED | 4 | Paused indicates job is paused |
+| CANCELLED | 5 | Cancelled indicates job is cancelled |
+| FAILED | 6 | Failed indicates job has failed |
 
 
 
 
-## JobType {#jobtype}
-JobType are the supported job types
+## Job.Type {#jobtype}
+Type are the supported job types
 
 | Name | Number | Description |
 | ---- | ------ | ----------- |
-| JobTypeNone | 0 | none |
-| JobTypeDrainAttachments | 1 | none |
+| UNSPECIFIED_TYPE | 0 | Unspecified |
+| NONE | 1 | None |
+| DRAIN_ATTACHMENTS | 2 | Job for draining volume attachments |
 
 
 
@@ -6614,7 +6616,7 @@ client and server applications
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
 | Minor | 69 | SDK version minor value of this specification |
-| Patch | 29 | SDK version patch value of this specification |
+| Patch | 30 | SDK version patch value of this specification |
 
 
 
