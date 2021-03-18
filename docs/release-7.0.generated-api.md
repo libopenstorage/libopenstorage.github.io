@@ -35,6 +35,7 @@
     - [CapacityUsageInfo](#capacityusageinfo)
     - [Catalog](#catalog)
     - [CatalogResponse](#catalogresponse)
+    - [CloudDriveTransferJob](#clouddrivetransferjob)
     - [CloudMigrate](#cloudmigrate)
     - [CloudMigrateCancelRequest](#cloudmigratecancelrequest)
     - [CloudMigrateInfo](#cloudmigrateinfo)
@@ -1549,6 +1550,19 @@ used by the other dependent snaps and parent volume.
  <!-- end HasFields -->
 
 
+## CloudDriveTransferJob {#clouddrivetransferjob}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| source_driveset_id | [ string](#string) | SourceDrivesetID is the ID of the current driveset that needs to be transferred |
+| destination_instance_id | [ string](#string) | DestinationInstanceID is the ID of the storageless instance that needs to take over the SourceDriveSetID |
+| status | [ string](#string) | Status describes a helpful status of this operation |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
 ## CloudMigrate {#cloudmigrate}
 
 
@@ -2001,6 +2015,7 @@ messages which follow the job framework of APIs
 | state | [ Job.State](#jobstate) | State of the current job |
 | type | [ Job.Type](#jobtype) | Type is the job type |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) job.drain_attachments | [ NodeDrainAttachmentsJob](#nodedrainattachmentsjob) | NodeDrainAttachmentsJob if selected this job desribes the task for removing volume attachments from a node |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) job.clouddrive_transfer | [ CloudDriveTransferJob](#clouddrivetransferjob) | CloudDriveTransferJob if selected describes the task to transfer a cloud driveset from one node to another |
 | create_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | CreateTime is the time the job was created |
 | last_update_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | LastUpdateTime is the time the job was updated |
  <!-- end Fields -->
@@ -6377,6 +6392,7 @@ Type are the supported job types
 | UNSPECIFIED_TYPE | 0 | Unspecified |
 | NONE | 1 | None |
 | DRAIN_ATTACHMENTS | 2 | Job for draining volume attachments |
+| CLOUD_DRIVE_TRANSFER | 3 | Job for transferring cloud drives between nodes |
 
 
 
@@ -6616,7 +6632,7 @@ client and server applications
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
 | Minor | 69 | SDK version minor value of this specification |
-| Patch | 30 | SDK version patch value of this specification |
+| Patch | 32 | SDK version patch value of this specification |
 
 
 

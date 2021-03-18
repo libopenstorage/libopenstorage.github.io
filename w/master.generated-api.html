@@ -842,6 +842,7 @@
 <li><a href="#sdkvolumeupdaterequest">SdkVolumeUpdateRequest</a></li>
 <li><a href="#sdkvolumeupdaterequestlabelsentry">SdkVolumeUpdateRequest.LabelsEntry</a></li>
 <li><a href="#sdkvolumeupdateresponse">SdkVolumeUpdateResponse</a></li>
+<li><a href="#sharedv4servicespec">Sharedv4ServiceSpec</a></li>
 <li><a href="#snapcreaterequest">SnapCreateRequest</a></li>
 <li><a href="#snapcreateresponse">SnapCreateResponse</a></li>
 <li><a href="#source">Source</a></li>
@@ -935,6 +936,7 @@
 <li><a href="#sdktimeweekday">SdkTimeWeekday</a></li>
 <li><a href="#sdkversionversion">SdkVersion.Version</a></li>
 <li><a href="#severitytype">SeverityType</a></li>
+<li><a href="#sharedv4servicetype">Sharedv4ServiceType</a></li>
 <li><a href="#status">Status</a></li>
 <li><a href="#storagemedium">StorageMedium</a></li>
 <li><a href="#storagerebalanceauditstoragerebalanceaction">StorageRebalanceAudit.StorageRebalanceAction</a></li>
@@ -2121,9 +2123,9 @@ used by the other dependent snaps and parent volume.</p>
 <td>SourceDrivesetID is the ID of the current driveset that needs to be transferred</td>
 </tr>
 <tr>
-<td>destination_driveset_id</td>
+<td>destination_instance_id</td>
 <td><a href="#string"> string</a></td>
-<td>DestinationDrivesetID is the ID of the storageless driveset that needs to take over the SourceDriveSetID</td>
+<td>DestinationInstanceID is the ID of the storageless instance that needs to take over the SourceDriveSetID</td>
 </tr>
 <tr>
 <td>status</td>
@@ -2835,6 +2837,11 @@ from a node</p>
 <td><a href="#bool"> bool</a></td>
 <td>Dirty flag on volume - was attached in userspace</td>
 </tr>
+<tr>
+<td>coord_uuid</td>
+<td><a href="#string"> string</a></td>
+<td>fastpath coordinator node uuid to enhance reporting</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -2898,6 +2905,11 @@ from a node</p>
 <td>devpath</td>
 <td><a href="#string"> string</a></td>
 <td>none</td>
+</tr>
+<tr>
+<td>node_uuid</td>
+<td><a href="#string"> string</a></td>
+<td>node_uuid added to enhance UI reporting</td>
 </tr>
 </tbody>
 </table>
@@ -3908,6 +3920,11 @@ inherit corresponding field value from backup&apos;s spec.</p>
 <td>proxy_spec</td>
 <td><a href="#proxyspec"> ProxySpec</a></td>
 <td>ProxySpec indicates that this volume is used for proxying an external data source</td>
+</tr>
+<tr>
+<td>sharedv4_service_spec</td>
+<td><a href="#sharedv4servicespec"> Sharedv4ServiceSpec</a></td>
+<td>Sharedv4ServiceSpec specifies a spec for configuring a service for a sharedv4 volume</td>
 </tr>
 </tbody>
 </table>
@@ -9369,6 +9386,32 @@ to update any labels on the volume.</p>
 <h2 id="sdkvolumeupdateresponse">SdkVolumeUpdateResponse </h2>
 <p>Empty response</p>
  <!-- end HasFields -->
+<h2 id="sharedv4servicespec">Sharedv4ServiceSpec </h2>
+<p>Sharedv4ServiceSpec when set creates a service endpoint for accessing
+a sharedv4 volume.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td><a href="#string"> string</a></td>
+<td>Name of the service. If not provided the name of the volume will be used for setting up a service</td>
+</tr>
+<tr>
+<td>type</td>
+<td><a href="#sharedv4servicetype"> Sharedv4ServiceType</a></td>
+<td>Type indicates what kind of service would be created for this volume</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
 <h2 id="snapcreaterequest">SnapCreateRequest </h2>
 <p>SnapCreateRequest specifies a request to create a snapshot of given volume.</p>
 <table>
@@ -9511,6 +9554,26 @@ to seed the volume with data.</p>
 <td>interval_ms</td>
 <td><a href="#uint64"> uint64</a></td>
 <td>Interval in ms during which stats were collected</td>
+</tr>
+<tr>
+<td>discards</td>
+<td><a href="#uint64"> uint64</a></td>
+<td>Discards completed successfully</td>
+</tr>
+<tr>
+<td>discard_ms</td>
+<td><a href="#uint64"> uint64</a></td>
+<td>Time spent in discards in ms</td>
+</tr>
+<tr>
+<td>discard_bytes</td>
+<td><a href="#uint64"> uint64</a></td>
+<td>Number of bytes discarded</td>
+</tr>
+<tr>
+<td>unique_blocks</td>
+<td><a href="#uint64"> uint64</a></td>
+<td>Unique Blocks</td>
 </tr>
 </tbody>
 </table>
@@ -10325,6 +10388,21 @@ to seed the volume with data.</p>
 <td><a href="#mountoptions"> MountOptions</a></td>
 <td>Sharedv4MountOptions are the runtime mount options that will be used while mounting a sharedv4 volume from a node where the volume replica does not exist</td>
 </tr>
+<tr>
+<td>prev_state</td>
+<td><a href="#volumestate"> VolumeState</a></td>
+<td>VolumeState is the current runtime state of this volume.</td>
+</tr>
+<tr>
+<td>delete_time</td>
+<td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>expiry_time</td>
+<td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
+<td>none</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -11076,6 +11154,11 @@ performed on a volumen</p>
 <td><a href="#proxyspec"> ProxySpec</a></td>
 <td>ProxySpec indicates that this volume is used for proxying an external data source</td>
 </tr>
+<tr>
+<td>sharedv4_service_spec</td>
+<td><a href="#sharedv4servicespec"> Sharedv4ServiceSpec</a></td>
+<td>Sharedv4ServiceSpec specifies a spec for configuring a service for a sharedv4 volume</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -11270,6 +11353,16 @@ performed on a volumen</p>
 <td><a href="#proxyspec"> ProxySpec</a></td>
 <td>none</td>
 </tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> sharedv4_service_spec_opt.sharedv4_service_spec</td>
+<td><a href="#sharedv4servicespec"> Sharedv4ServiceSpec</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> fastpath_opt.fastpath</td>
+<td><a href="#bool"> bool</a></td>
+<td>none</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -11442,6 +11535,11 @@ performed on a volumen</p>
 <tr>
 <td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> proxy_spec_opt.proxy_spec</td>
 <td><a href="#proxyspec"> ProxySpec</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> sharedv4_service_spec_opt.sharedv4_service_spec</td>
+<td><a href="#sharedv4servicespec"> Sharedv4ServiceSpec</a></td>
 <td>none</td>
 </tr>
 </tbody>
@@ -12952,7 +13050,7 @@ client and server applications</p>
 </tr>
 <tr>
 <td>Minor</td>
-<td>103</td>
+<td>109</td>
 <td>SDK version minor value of this specification</td>
 </tr>
 <tr>
@@ -12991,6 +13089,41 @@ client and server applications</p>
 <td>SEVERITY_TYPE_NOTIFY</td>
 <td>3</td>
 <td>none</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sharedv4servicetype">Sharedv4ServiceType </h2>
+<p>Sharedv4ServiceType defines the type of sharedv4 service
+The type of services are governed by the different types of services
+supported by Container Orchestrator&apos;s like Kubernetes</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SHAREDV4_SERVICE_TYPE_INVALID</td>
+<td>0</td>
+<td>Invalid uninitialized value</td>
+</tr>
+<tr>
+<td>SHAREDV4_SERVICE_TYPE_NODEPORT</td>
+<td>1</td>
+<td>NodePort will export the sharedv4 service on each Node&apos;s IP In this mode the sharedv4 volume can be accessed from outside the cluster using one of the node&apos;s IPs.</td>
+</tr>
+<tr>
+<td>SHAREDV4_SERVICE_TYPE_CLUSTERIP</td>
+<td>2</td>
+<td>ClusterIP will export the shared4 service on an internal cluster IP. In this mode the sharedv4 volume will only be accessible within the cluster via this service</td>
+</tr>
+<tr>
+<td>SHAREDV4_SERVICE_TYPE_LOADBALANCER</td>
+<td>3</td>
+<td>LoadBalancer is applicable when running in cloud and will expose the sharedv4 service on a cloud provider&apos;s load balancer. In this mode the sharedv4 volume can be accessed from outside the cluster</td>
 </tr>
 </tbody>
 </table>
@@ -13364,6 +13497,11 @@ client and server applications</p>
 <td>9</td>
 <td>Volume is undergoing restore</td>
 </tr>
+<tr>
+<td>VOLUME_STATE_IN_TRASHCAN</td>
+<td>10</td>
+<td>Volume is marked as being in the trashcan</td>
+</tr>
 </tbody>
 </table>
 <h2 id="volumestatus">VolumeStatus </h2>
@@ -13590,7 +13728,7 @@ client and server applications</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Nightly","level":"1.5.6","depth":2,"next":{"title":"Changelog","level":"1.5.6.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.5.1","depth":3,"path":"release-9.0.changelog.md","ref":"release-9.0.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"master.generated-api.md","mtime":"2020-11-09T21:36:16.022Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-11-09T21:36:27.301Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Nightly","level":"1.5.6","depth":2,"next":{"title":"Changelog","level":"1.5.6.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.5.1","depth":3,"path":"release-9.0.changelog.md","ref":"release-9.0.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"master.generated-api.md","mtime":"2021-03-18T20:26:17.052Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-18T20:26:23.824Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

@@ -13,7 +13,7 @@ getBranch() {
 	curl https://raw.githubusercontent.com/libopenstorage/openstorage/${branch}/api/api.proto \
 		--output ${branch}.api.proto --silent
 	protoc -I. -I /usr/local/include -I ${GOPATH}/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
-		--doc_out=docs/ --doc_opt=./template/sdk.tmpl,${branch}.generated-api.md ${branch}.api.proto
+		--doc_out=./template/sdk.tmpl,${branch}.generated-api.md:docs/ ${branch}.api.proto
 	rm -f ${branch}.api.proto
 
 	ver=$(cat docs/api/${branch}.api.swagger.json | jq -r '.info.version')

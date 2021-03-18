@@ -360,6 +360,7 @@
     - [SdkVolumeUpdateRequest](#sdkvolumeupdaterequest)
     - [SdkVolumeUpdateRequest.LabelsEntry](#sdkvolumeupdaterequestlabelsentry)
     - [SdkVolumeUpdateResponse](#sdkvolumeupdateresponse)
+    - [Sharedv4ServiceSpec](#sharedv4servicespec)
     - [SnapCreateRequest](#snapcreaterequest)
     - [SnapCreateResponse](#snapcreateresponse)
     - [Source](#source)
@@ -452,6 +453,7 @@
     - [SdkTimeWeekday](#sdktimeweekday)
     - [SdkVersion.Version](#sdkversionversion)
     - [SeverityType](#severitytype)
+    - [Sharedv4ServiceType](#sharedv4servicetype)
     - [Status](#status)
     - [StorageMedium](#storagemedium)
     - [StorageRebalanceAudit.StorageRebalanceAction](#storagerebalanceauditstoragerebalanceaction)
@@ -1558,7 +1560,7 @@ used by the other dependent snaps and parent volume.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | source_driveset_id | [ string](#string) | SourceDrivesetID is the ID of the current driveset that needs to be transferred |
-| destination_driveset_id | [ string](#string) | DestinationDrivesetID is the ID of the storageless driveset that needs to take over the SourceDriveSetID |
+| destination_instance_id | [ string](#string) | DestinationInstanceID is the ID of the storageless instance that needs to take over the SourceDriveSetID |
 | status | [ string](#string) | Status describes a helpful status of this operation |
  <!-- end Fields -->
  <!-- end HasFields -->
@@ -1877,6 +1879,7 @@ FastpathConfig part of volume
 | status | [ FastpathStatus](#fastpathstatus) | Fastpath consolidated current status across replicas |
 | replicas | [repeated FastpathReplState](#fastpathreplstate) | Fastpath replica state for each replica in replica set |
 | dirty | [ bool](#bool) | Dirty flag on volume - was attached in userspace |
+| coord_uuid | [ string](#string) | fastpath coordinator node uuid to enhance reporting |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -1897,6 +1900,7 @@ FastpathConfig part of volume
 | exported | [ bool](#bool) | none |
 | imported | [ bool](#bool) | initiator info |
 | devpath | [ string](#string) | none |
+| node_uuid | [ string](#string) | node_uuid added to enhance UI reporting |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -2353,6 +2357,7 @@ inherit corresponding field value from backup's spec.
 | proxy_write | [ RestoreParamBoolType](#restoreparambooltype) | Proxy_write is true if proxy write replication is enabled for the volume |
 | io_profile_bkup_src | [ bool](#bool) | IoProfileBkupSrc indicates to inherit IoProfile from cloudbackup |
 | proxy_spec | [ ProxySpec](#proxyspec) | ProxySpec indicates that this volume is used for proxying an external data source |
+| sharedv4_service_spec | [ Sharedv4ServiceSpec](#sharedv4servicespec) | Sharedv4ServiceSpec specifies a spec for configuring a service for a sharedv4 volume |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -5303,6 +5308,19 @@ Empty response
  <!-- end HasFields -->
 
 
+## Sharedv4ServiceSpec {#sharedv4servicespec}
+Sharedv4ServiceSpec when set creates a service endpoint for accessing
+a sharedv4 volume.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| name | [ string](#string) | Name of the service. If not provided the name of the volume will be used for setting up a service |
+| type | [ Sharedv4ServiceType](#sharedv4servicetype) | Type indicates what kind of service would be created for this volume |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
 ## SnapCreateRequest {#snapcreaterequest}
 SnapCreateRequest specifies a request to create a snapshot of given volume.
 
@@ -5359,6 +5377,10 @@ Stats is a structure that represents last collected stats for a volume
 | io_ms | [ uint64](#uint64) | Time spent doing IOs ms |
 | bytes_used | [ uint64](#uint64) | BytesUsed |
 | interval_ms | [ uint64](#uint64) | Interval in ms during which stats were collected |
+| discards | [ uint64](#uint64) | Discards completed successfully |
+| discard_ms | [ uint64](#uint64) | Time spent in discards in ms |
+| discard_bytes | [ uint64](#uint64) | Number of bytes discarded |
+| unique_blocks | [ uint64](#uint64) | Unique Blocks |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -5642,6 +5664,9 @@ Volume represents an abstract storage volume.
 | last_scan_status | [ FilesystemHealthStatus](#filesystemhealthstatus) | LastScanStatus is the time when an integrity check fixed errors in filesystem |
 | mount_options | [ MountOptions](#mountoptions) | MountOptions are the runtime mount options that will be used while mounting this volume |
 | sharedv4_mount_options | [ MountOptions](#mountoptions) | Sharedv4MountOptions are the runtime mount options that will be used while mounting a sharedv4 volume from a node where the volume replica does not exist |
+| prev_state | [ VolumeState](#volumestate) | VolumeState is the current runtime state of this volume. |
+| delete_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | none |
+| expiry_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -5947,6 +5972,7 @@ VolumeSpec has the properties needed to create a volume.
 | sharedv4_mount_options | [ MountOptions](#mountoptions) | Sharedv4MountOptions defines the options that will be used while mounting a sharedv4 volume from a node where the volume replica does not exist |
 | proxy_write | [ bool](#bool) | Proxy_write if true, per volume proxy write replication enabled |
 | proxy_spec | [ ProxySpec](#proxyspec) | ProxySpec indicates that this volume is used for proxying an external data source |
+| sharedv4_service_spec | [ Sharedv4ServiceSpec](#sharedv4servicespec) | Sharedv4ServiceSpec specifies a spec for configuring a service for a sharedv4 volume |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -6000,6 +6026,8 @@ VolumeSpecPolicy provides a method to set volume storage policy
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) sharedv4_mount_opt.sharedv4_mount_opt_spec | [ MountOptions](#mountoptions) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) proxy_write_opt.proxy_write | [ bool](#bool) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) proxy_spec_opt.proxy_spec | [ ProxySpec](#proxyspec) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) sharedv4_service_spec_opt.sharedv4_service_spec | [ Sharedv4ServiceSpec](#sharedv4servicespec) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) fastpath_opt.fastpath | [ bool](#bool) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -6049,6 +6077,7 @@ VolumeSpecUpdate provides a method to set any of the VolumeSpec of an existing v
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) sharedv4_mount_opt.sharedv4_mount_opt_spec | [ MountOptions](#mountoptions) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) proxy_write_opt.proxy_write | [ bool](#bool) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) proxy_spec_opt.proxy_spec | [ ProxySpec](#proxyspec) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) sharedv4_service_spec_opt.sharedv4_service_spec | [ Sharedv4ServiceSpec](#sharedv4servicespec) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -6635,7 +6664,7 @@ client and server applications
 | ---- | ------ | ----------- |
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
-| Minor | 103 | SDK version minor value of this specification |
+| Minor | 109 | SDK version minor value of this specification |
 | Patch | 0 | SDK version patch value of this specification |
 
 
@@ -6650,6 +6679,21 @@ client and server applications
 | SEVERITY_TYPE_ALARM | 1 | none |
 | SEVERITY_TYPE_WARNING | 2 | none |
 | SEVERITY_TYPE_NOTIFY | 3 | none |
+
+
+
+
+## Sharedv4ServiceType {#sharedv4servicetype}
+Sharedv4ServiceType defines the type of sharedv4 service
+The type of services are governed by the different types of services
+supported by Container Orchestrator's like Kubernetes
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| SHAREDV4_SERVICE_TYPE_INVALID | 0 | Invalid uninitialized value |
+| SHAREDV4_SERVICE_TYPE_NODEPORT | 1 | NodePort will export the sharedv4 service on each Node's IP In this mode the sharedv4 volume can be accessed from outside the cluster using one of the node's IPs. |
+| SHAREDV4_SERVICE_TYPE_CLUSTERIP | 2 | ClusterIP will export the shared4 service on an internal cluster IP. In this mode the sharedv4 volume will only be accessible within the cluster via this service |
+| SHAREDV4_SERVICE_TYPE_LOADBALANCER | 3 | LoadBalancer is applicable when running in cloud and will expose the sharedv4 service on a cloud provider's load balancer. In this mode the sharedv4 volume can be accessed from outside the cluster |
 
 
 
@@ -6789,6 +6833,7 @@ VolumeState represents the state of a volume.
 | VOLUME_STATE_DELETED | 7 | Volume is deleted, it will remain in this state while resources are asynchronously reclaimed |
 | VOLUME_STATE_TRY_DETACHING | 8 | Volume is trying to be detached |
 | VOLUME_STATE_RESTORE | 9 | Volume is undergoing restore |
+| VOLUME_STATE_IN_TRASHCAN | 10 | Volume is marked as being in the trashcan |
 
 
 

@@ -388,6 +388,23 @@
         },
         "type": "object"
       },
+      "apiCloudDriveTransferJob": {
+        "properties": {
+          "destination_instance_id": {
+            "title": "DestinationInstanceID is the ID of the storageless instance that needs to take over the SourceDriveSetID",
+            "type": "string"
+          },
+          "source_driveset_id": {
+            "title": "SourceDrivesetID is the ID of the current driveset that needs to be transferred",
+            "type": "string"
+          },
+          "status": {
+            "title": "Status describes a helpful status of this operation",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
       "apiCloudMigrateCancelRequest": {
         "properties": {
           "task_id": {
@@ -736,6 +753,10 @@
       },
       "apiFastpathConfig": {
         "properties": {
+          "coord_uuid": {
+            "title": "fastpath coordinator node uuid to enhance reporting",
+            "type": "string"
+          },
           "dirty": {
             "format": "boolean",
             "title": "Dirty flag on volume - was attached in userspace",
@@ -808,6 +829,10 @@
           "node_id": {
             "format": "int64",
             "type": "integer"
+          },
+          "node_uuid": {
+            "title": "node_uuid added to enhance UI reporting",
+            "type": "string"
           },
           "protocol": {
             "$ref": "#/components/schemas/apiFastpathProtocol"
@@ -899,6 +924,9 @@
       },
       "apiJob": {
         "properties": {
+          "clouddrive_transfer": {
+            "$ref": "#/components/schemas/apiCloudDriveTransferJob"
+          },
           "create_time": {
             "format": "date-time",
             "title": "CreateTime is the time the job was created",
@@ -950,11 +978,12 @@
       },
       "apiJobType": {
         "default": "UNSPECIFIED_TYPE",
-        "description": "- UNSPECIFIED_TYPE: Unspecified\n - NONE: None\n - DRAIN_ATTACHMENTS: Job for draining volume attachments",
+        "description": "- UNSPECIFIED_TYPE: Unspecified\n - NONE: None\n - DRAIN_ATTACHMENTS: Job for draining volume attachments\n - CLOUD_DRIVE_TRANSFER: Job for transferring cloud drives between nodes",
         "enum": [
           "UNSPECIFIED_TYPE",
           "NONE",
-          "DRAIN_ATTACHMENTS"
+          "DRAIN_ATTACHMENTS",
+          "CLOUD_DRIVE_TRANSFER"
         ],
         "title": "Type are the supported job types",
         "type": "string"
@@ -4895,6 +4924,10 @@
           "export_spec": {
             "$ref": "#/components/schemas/apiExportSpec"
           },
+          "fastpath": {
+            "format": "boolean",
+            "type": "boolean"
+          },
           "group": {
             "$ref": "#/components/schemas/apiGroup"
           },
@@ -5200,7 +5233,7 @@
   },
   "info": {
     "title": "OpenStorage SDK",
-    "version": "0.101.1"
+    "version": "0.101.4"
   },
   "openapi": "3.0.0",
   "paths": {
@@ -6467,7 +6500,7 @@
         "operationId": "Enumerate",
         "parameters": [
           {
-            "description": "Type if specified will list the jobs of the provided type.\n\n - UNSPECIFIED_TYPE: Unspecified\n - NONE: None\n - DRAIN_ATTACHMENTS: Job for draining volume attachments",
+            "description": "Type if specified will list the jobs of the provided type.\n\n - UNSPECIFIED_TYPE: Unspecified\n - NONE: None\n - DRAIN_ATTACHMENTS: Job for draining volume attachments\n - CLOUD_DRIVE_TRANSFER: Job for transferring cloud drives between nodes",
             "in": "query",
             "name": "type",
             "required": false,
@@ -6476,7 +6509,8 @@
               "enum": [
                 "UNSPECIFIED_TYPE",
                 "NONE",
-                "DRAIN_ATTACHMENTS"
+                "DRAIN_ATTACHMENTS",
+                "CLOUD_DRIVE_TRANSFER"
               ],
               "type": "string"
             }
@@ -6513,7 +6547,7 @@
             }
           },
           {
-            "description": "Type of the job.\n\n - UNSPECIFIED_TYPE: Unspecified\n - NONE: None\n - DRAIN_ATTACHMENTS: Job for draining volume attachments",
+            "description": "Type of the job.\n\n - UNSPECIFIED_TYPE: Unspecified\n - NONE: None\n - DRAIN_ATTACHMENTS: Job for draining volume attachments\n - CLOUD_DRIVE_TRANSFER: Job for transferring cloud drives between nodes",
             "in": "query",
             "name": "type",
             "required": false,
@@ -6522,7 +6556,8 @@
               "enum": [
                 "UNSPECIFIED_TYPE",
                 "NONE",
-                "DRAIN_ATTACHMENTS"
+                "DRAIN_ATTACHMENTS",
+                "CLOUD_DRIVE_TRANSFER"
               ],
               "type": "string"
             }

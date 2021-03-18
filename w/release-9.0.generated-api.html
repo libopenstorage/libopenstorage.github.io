@@ -517,6 +517,7 @@
 <li><a href="#capacityusageinfo">CapacityUsageInfo</a></li>
 <li><a href="#catalog">Catalog</a></li>
 <li><a href="#catalogresponse">CatalogResponse</a></li>
+<li><a href="#clouddrivetransferjob">CloudDriveTransferJob</a></li>
 <li><a href="#cloudmigrate">CloudMigrate</a></li>
 <li><a href="#cloudmigratecancelrequest">CloudMigrateCancelRequest</a></li>
 <li><a href="#cloudmigrateinfo">CloudMigrateInfo</a></li>
@@ -2104,6 +2105,35 @@ used by the other dependent snaps and parent volume.</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
+<h2 id="clouddrivetransferjob">CloudDriveTransferJob </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>source_driveset_id</td>
+<td><a href="#string"> string</a></td>
+<td>SourceDrivesetID is the ID of the current driveset that needs to be transferred</td>
+</tr>
+<tr>
+<td>destination_instance_id</td>
+<td><a href="#string"> string</a></td>
+<td>DestinationInstanceID is the ID of the storageless instance that needs to take over the SourceDriveSetID</td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="#string"> string</a></td>
+<td>Status describes a helpful status of this operation</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
 <h2 id="cloudmigrate">CloudMigrate </h2>
  <!-- end HasFields -->
 <h2 id="cloudmigratecancelrequest">CloudMigrateCancelRequest </h2>
@@ -2805,6 +2835,11 @@ from a node</p>
 <td><a href="#bool"> bool</a></td>
 <td>Dirty flag on volume - was attached in userspace</td>
 </tr>
+<tr>
+<td>coord_uuid</td>
+<td><a href="#string"> string</a></td>
+<td>fastpath coordinator node uuid to enhance reporting</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -2868,6 +2903,11 @@ from a node</p>
 <td>devpath</td>
 <td><a href="#string"> string</a></td>
 <td>none</td>
+</tr>
+<tr>
+<td>node_uuid</td>
+<td><a href="#string"> string</a></td>
+<td>node_uuid added to enhance UI reporting</td>
 </tr>
 </tbody>
 </table>
@@ -3093,6 +3133,11 @@ messages which follow the job framework of APIs</p>
 <td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> job.drain_attachments</td>
 <td><a href="#nodedrainattachmentsjob"> NodeDrainAttachmentsJob</a></td>
 <td>NodeDrainAttachmentsJob if selected this job desribes the task for removing volume attachments from a node</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> job.clouddrive_transfer</td>
+<td><a href="#clouddrivetransferjob"> CloudDriveTransferJob</a></td>
+<td>CloudDriveTransferJob if selected describes the task to transfer a cloud driveset from one node to another</td>
 </tr>
 <tr>
 <td>create_time</td>
@@ -11235,6 +11280,11 @@ performed on a volumen</p>
 <td><a href="#proxyspec"> ProxySpec</a></td>
 <td>none</td>
 </tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> fastpath_opt.fastpath</td>
+<td><a href="#bool"> bool</a></td>
+<td>none</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -12295,6 +12345,11 @@ OpenStorageFilesystemTrim service APIs()</p>
 <td>2</td>
 <td>Job for draining volume attachments</td>
 </tr>
+<tr>
+<td>CLOUD_DRIVE_TRANSFER</td>
+<td>3</td>
+<td>Job for transferring cloud drives between nodes</td>
+</tr>
 </tbody>
 </table>
 <h2 id="labelselectorrequirementoperator">LabelSelectorRequirement.Operator </h2>
@@ -12917,7 +12972,7 @@ client and server applications</p>
 </tr>
 <tr>
 <td>Patch</td>
-<td>1</td>
+<td>4</td>
 <td>SDK version patch value of this specification</td>
 </tr>
 </tbody>
@@ -13550,7 +13605,7 @@ client and server applications</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"v0.101.x","level":"1.5.5","depth":2,"next":{"title":"Changelog","level":"1.5.5.1","depth":3,"path":"release-9.0.changelog.md","ref":"release-9.0.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.4.1","depth":3,"path":"release-7.0.changelog.md","ref":"release-7.0.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"release-9.0.generated-api.md","mtime":"2020-11-09T21:36:17.269Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-11-09T21:36:27.301Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"v0.101.x","level":"1.5.5","depth":2,"next":{"title":"Changelog","level":"1.5.5.1","depth":3,"path":"release-9.0.changelog.md","ref":"release-9.0.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.4.1","depth":3,"path":"release-7.0.changelog.md","ref":"release-7.0.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"release-9.0.generated-api.md","mtime":"2021-03-18T20:26:17.968Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-18T20:26:23.824Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

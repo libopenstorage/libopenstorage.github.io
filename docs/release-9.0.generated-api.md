@@ -35,6 +35,7 @@
     - [CapacityUsageInfo](#capacityusageinfo)
     - [Catalog](#catalog)
     - [CatalogResponse](#catalogresponse)
+    - [CloudDriveTransferJob](#clouddrivetransferjob)
     - [CloudMigrate](#cloudmigrate)
     - [CloudMigrateCancelRequest](#cloudmigratecancelrequest)
     - [CloudMigrateInfo](#cloudmigrateinfo)
@@ -1550,6 +1551,19 @@ used by the other dependent snaps and parent volume.
  <!-- end HasFields -->
 
 
+## CloudDriveTransferJob {#clouddrivetransferjob}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| source_driveset_id | [ string](#string) | SourceDrivesetID is the ID of the current driveset that needs to be transferred |
+| destination_instance_id | [ string](#string) | DestinationInstanceID is the ID of the storageless instance that needs to take over the SourceDriveSetID |
+| status | [ string](#string) | Status describes a helpful status of this operation |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
 ## CloudMigrate {#cloudmigrate}
 
 
@@ -1863,6 +1877,7 @@ FastpathConfig part of volume
 | status | [ FastpathStatus](#fastpathstatus) | Fastpath consolidated current status across replicas |
 | replicas | [repeated FastpathReplState](#fastpathreplstate) | Fastpath replica state for each replica in replica set |
 | dirty | [ bool](#bool) | Dirty flag on volume - was attached in userspace |
+| coord_uuid | [ string](#string) | fastpath coordinator node uuid to enhance reporting |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -1883,6 +1898,7 @@ FastpathConfig part of volume
 | exported | [ bool](#bool) | none |
 | imported | [ bool](#bool) | initiator info |
 | devpath | [ string](#string) | none |
+| node_uuid | [ string](#string) | node_uuid added to enhance UI reporting |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -2004,6 +2020,7 @@ messages which follow the job framework of APIs
 | state | [ Job.State](#jobstate) | State of the current job |
 | type | [ Job.Type](#jobtype) | Type is the job type |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) job.drain_attachments | [ NodeDrainAttachmentsJob](#nodedrainattachmentsjob) | NodeDrainAttachmentsJob if selected this job desribes the task for removing volume attachments from a node |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) job.clouddrive_transfer | [ CloudDriveTransferJob](#clouddrivetransferjob) | CloudDriveTransferJob if selected describes the task to transfer a cloud driveset from one node to another |
 | create_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | CreateTime is the time the job was created |
 | last_update_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | LastUpdateTime is the time the job was updated |
  <!-- end Fields -->
@@ -5985,6 +6002,7 @@ VolumeSpecPolicy provides a method to set volume storage policy
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) sharedv4_mount_opt.sharedv4_mount_opt_spec | [ MountOptions](#mountoptions) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) proxy_write_opt.proxy_write | [ bool](#bool) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) proxy_spec_opt.proxy_spec | [ ProxySpec](#proxyspec) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) fastpath_opt.fastpath | [ bool](#bool) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -6381,6 +6399,7 @@ Type are the supported job types
 | UNSPECIFIED_TYPE | 0 | Unspecified |
 | NONE | 1 | None |
 | DRAIN_ATTACHMENTS | 2 | Job for draining volume attachments |
+| CLOUD_DRIVE_TRANSFER | 3 | Job for transferring cloud drives between nodes |
 
 
 
@@ -6620,7 +6639,7 @@ client and server applications
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
 | Minor | 101 | SDK version minor value of this specification Frozen for this branch. Bump the Patch value instead. |
-| Patch | 1 | SDK version patch value of this specification |
+| Patch | 4 | SDK version patch value of this specification |
 
 
 

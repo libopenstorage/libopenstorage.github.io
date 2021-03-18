@@ -1,6 +1,33 @@
 # Changelog
 
 ## Releases
+
+### v0.109.0 - (02/17/2021)
+
+* Add Trashcan volume objects 
+
+### v0.108.0 - (01/26/2021)
+
+* Handle volume spec update for fastpath 
+
+### v0.107.0 - (12/14/2020)
+
+* Add a spec for defining a service for sharedv4 volumes. The service
+  can be used for accessing this sharedv4 volume within and from outside
+  the cluster.
+
+### v0.106.0 - (01/06/2021)
+
+* Extend volume stats structure to include discards
+
+### v0.105.0 - (11/17/2020)
+
+* Use destination instance ID for cloud driver transfer job
+
+### v0.104.0 - (11/05/2020)
+
+* Fastpath extend to carry node UUID instead of internal int
+
 ### v0.103.0 - (11/05/2020)
 
 * Change the API definitions for OpenstorageJobServer RPCs
