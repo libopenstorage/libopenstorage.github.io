@@ -2,13 +2,39 @@
 
 ## Releases
 
+### v0.115.0 - (04/12/2021)
+
+* Add new fields to VolumeInfo and ReplicaSet to enable dynamic volume chunking
+
+### v0.114.0 - (04/07/2021)
+
+* StorageNode now have security status
+
+### v0.113.0 - (04/06/2021)
+
+* Add live option to diags collection SDK to collect live cores
+
+### v0.112.0 - (03/30/2021)
+
+* auto fstrim flag in volume spec
+
+### v0.111.0 - (03/24/2021)
+
+* Additions to CloudBackupEnumerate API to allow enumerating cloudbackups
+* with whose source volumes are missing in the cluster. Also indicate if
+* cloudbackup belongs to current cluster with enumerate data.
+
+### v0.110.0 - (02/22/2021)
+
+* Add SDK for diags collection
+
 ### v0.109.0 - (02/17/2021)
 
-* Add Trashcan volume objects 
+* Add Trashcan volume objects
 
 ### v0.108.0 - (01/26/2021)
 
-* Handle volume spec update for fastpath 
+* Handle volume spec update for fastpath
 
 ### v0.107.0 - (12/14/2020)
 

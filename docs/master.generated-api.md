@@ -10,6 +10,7 @@
     - [OpenStorageClusterDomains](#serviceopenstorageapiopenstorageclusterdomains)
     - [OpenStorageClusterPair](#serviceopenstorageapiopenstorageclusterpair)
     - [OpenStorageCredentials](#serviceopenstorageapiopenstoragecredentials)
+    - [OpenStorageDiags](#serviceopenstorageapiopenstoragediags)
     - [OpenStorageFilesystemCheck](#serviceopenstorageapiopenstoragefilesystemcheck)
     - [OpenStorageFilesystemTrim](#serviceopenstorageapiopenstoragefilesystemtrim)
     - [OpenStorageIdentity](#serviceopenstorageapiopenstorageidentity)
@@ -58,6 +59,10 @@
     - [ClusterPairsEnumerateResponse](#clusterpairsenumerateresponse)
     - [ClusterPairsEnumerateResponse.PairsEntry](#clusterpairsenumerateresponsepairsentry)
     - [ClusterResponse](#clusterresponse)
+    - [CollectDiagsJob](#collectdiagsjob)
+    - [DiagsCollectionStatus](#diagscollectionstatus)
+    - [DiagsNodeSelector](#diagsnodeselector)
+    - [DiagsVolumeSelector](#diagsvolumeselector)
     - [DrainAttachmentsSummary](#drainattachmentssummary)
     - [ExportSpec](#exportspec)
     - [FastpathConfig](#fastpathconfig)
@@ -199,6 +204,8 @@
     - [SdkCredentialInspectResponse](#sdkcredentialinspectresponse)
     - [SdkCredentialValidateRequest](#sdkcredentialvalidaterequest)
     - [SdkCredentialValidateResponse](#sdkcredentialvalidateresponse)
+    - [SdkDiagsCollectRequest](#sdkdiagscollectrequest)
+    - [SdkDiagsCollectResponse](#sdkdiagscollectresponse)
     - [SdkEnumerateJobsRequest](#sdkenumeratejobsrequest)
     - [SdkEnumerateJobsResponse](#sdkenumeratejobsresponse)
     - [SdkEnumerateRebalanceJobsRequest](#sdkenumeraterebalancejobsrequest)
@@ -421,6 +428,7 @@
     - [CloudMigrate.Status](#cloudmigratestatus)
     - [ClusterPairMode.Mode](#clusterpairmodemode)
     - [CosType](#costype)
+    - [DiagsCollectionStatus.State](#diagscollectionstatusstate)
     - [DriverType](#drivertype)
     - [EnforcementType](#enforcementtype)
     - [ExportProtocol](#exportprotocol)
@@ -443,6 +451,7 @@
     - [RestoreParamBoolType](#restoreparambooltype)
     - [ScanPolicy.ScanAction](#scanpolicyscanaction)
     - [ScanPolicy.ScanTrigger](#scanpolicyscantrigger)
+    - [SdkCloudBackupClusterType](#sdkcloudbackupclustertype)
     - [SdkCloudBackupOpType](#sdkcloudbackupoptype)
     - [SdkCloudBackupRequestedState](#sdkcloudbackuprequestedstate)
     - [SdkCloudBackupStatusType](#sdkcloudbackupstatustype)
@@ -456,6 +465,7 @@
     - [Sharedv4ServiceType](#sharedv4servicetype)
     - [Status](#status)
     - [StorageMedium](#storagemedium)
+    - [StorageNode.SecurityStatus](#storagenodesecuritystatus)
     - [StorageRebalanceAudit.StorageRebalanceAction](#storagerebalanceauditstoragerebalanceaction)
     - [StorageRebalanceJobState](#storagerebalancejobstate)
     - [StorageRebalanceTriggerThreshold.Metric](#storagerebalancetriggerthresholdmetric)
@@ -816,6 +826,19 @@ Validate is used to validate credentials
     [SdkCredentialDeleteReferencesResponse](#sdkcredentialdeletereferencesresponse)
 
 DeleteReferences is used to remove references to credentials
+ <!-- end methods -->
+
+# OpenStorageDiags {#serviceopenstorageapiopenstoragediags}
+OpenStorageDiags service provides methods to manage diagnostic bundles
+
+## Collect {#methodopenstorageapiopenstoragediagscollect}
+
+> **rpc** Collect([SdkDiagsCollectRequest](#sdkdiagscollectrequest))
+    [SdkDiagsCollectResponse](#sdkdiagscollectresponse)
+
+Collect starts a job to collect diagnostics from set of nodes that are selected based on the selectors provided
+in the SdkDiagsCollectRequest. See SdkDiagsCollectRequest for more details on how to select the nodes
+Returns SdkDiagsCollectResponse which has the job that is responsible for collecting the diags.
  <!-- end methods -->
 
 # OpenStorageFilesystemCheck {#serviceopenstorageapiopenstoragefilesystemcheck}
@@ -1842,6 +1865,61 @@ in: body |
  <!-- end HasFields -->
 
 
+## CollectDiagsJob {#collectdiagsjob}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| request | [ SdkDiagsCollectRequest](#sdkdiagscollectrequest) | Request is the user request for this diags collection job |
+| statuses | [repeated DiagsCollectionStatus](#diagscollectionstatus) | Statuses is a list of statuses for diags collection for each node that is part of the request |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## DiagsCollectionStatus {#diagscollectionstatus}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| node | [ string](#string) | Node is the node that's collecting the diags |
+| state | [ DiagsCollectionStatus.State](#diagscollectionstatusstate) | State is the current state of diags collection on the node |
+| message | [ string](#string) | Message is a user friendly message for current status of diags collection |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## DiagsNodeSelector {#diagsnodeselector}
+DiagsNodeSelector allows selecting nodes for diags collection
+User can select NodeLabelSelector AND/OR NodeIDs. If both are provided, the implementation will select nodes based on
+both labels and IDs and also handle overlaps
+If All is set to true, other selectors are ignored since it selects all nodes
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| node_label_selector | [repeated LabelSelectorRequirement](#labelselectorrequirement) | NodeLabelSelector is a label selector used to select the nodes for which diags will be collected |
+| node_ids | [repeated string](#string) | NodeIDs are unique IDs fo the nodes for which the diags will be collected |
+| all | [ bool](#bool) | All selects all nodes for diags collection |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## DiagsVolumeSelector {#diagsvolumeselector}
+DiagsVolumeSelector allows selecting volumes for diags collection
+User can select VolumeLabelSelector AND/OR VolumeIDs. If both are provided, the implementation will select nodes
+based on both labels and IDs and also handle overlaps
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_label_selector | [repeated LabelSelectorRequirement](#labelselectorrequirement) | VolumeLabelSelector selects volumes by their labels and then uses replica and attached nodes for those volumes for diags collection |
+| volume_ids | [repeated string](#string) | VolumeIDs selects volumes by their unique IDs and then uses replica and attached nodes for those volumes for diags collection |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
 ## DrainAttachmentsSummary {#drainattachmentssummary}
 DrainAttachments summary of the volumes whose attachments need to be drained
 from a node
@@ -2023,6 +2101,7 @@ messages which follow the job framework of APIs
 | type | [ Job.Type](#jobtype) | Type is the job type |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) job.drain_attachments | [ NodeDrainAttachmentsJob](#nodedrainattachmentsjob) | NodeDrainAttachmentsJob if selected this job desribes the task for removing volume attachments from a node |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) job.clouddrive_transfer | [ CloudDriveTransferJob](#clouddrivetransferjob) | CloudDriveTransferJob if selected describes the task to transfer a cloud driveset from one node to another |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) job.collect_diags | [ CollectDiagsJob](#collectdiagsjob) | CollectDiagsJob if selected describes the task to collect diagnostics for the cluster |
 | create_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | CreateTime is the time the job was created |
 | last_update_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | LastUpdateTime is the time the job was updated |
  <!-- end Fields -->
@@ -2285,6 +2364,7 @@ coded - for clustered storage arrays
 | ----- | ---- | ----------- |
 | nodes | [repeated string](#string) | none |
 | pool_uuids | [repeated string](#string) | Unique IDs of the storage pools for this replica set |
+| id | [ uint32](#uint32) | ID is the unique ID of this replica set |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -2358,6 +2438,7 @@ inherit corresponding field value from backup's spec.
 | io_profile_bkup_src | [ bool](#bool) | IoProfileBkupSrc indicates to inherit IoProfile from cloudbackup |
 | proxy_spec | [ ProxySpec](#proxyspec) | ProxySpec indicates that this volume is used for proxying an external data source |
 | sharedv4_service_spec | [ Sharedv4ServiceSpec](#sharedv4servicespec) | Sharedv4ServiceSpec specifies a spec for configuring a service for a sharedv4 volume |
+| auto_fstrim | [ RestoreParamBoolType](#restoreparambooltype) | Autofstrim is true if automatic fstrim is enabled for the volume |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -2734,6 +2815,7 @@ and do not provide `volume_id` and `all`.
 | max_backups | [ uint64](#uint64) | (optional) if caller wished to limit number of backups returned by enumerate |
 | continuation_token | [ string](#string) | Returned in the enumerate response if not all of the backups could be returned in the response. |
 | cloud_backup_id | [ string](#string) | If one wants to enumerate known backup, set this field to the backup ID naming format :clusteruuidORbicketname/srcVolId-snapId(-incr) |
+| missing_src_volumes | [ bool](#bool) | To enumerate cloudbackups for which source volumes do not exist in this cluster |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -2851,6 +2933,8 @@ SdkCloudBackupInfo has information about a backup stored by a cloud provider
 | timestamp | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | Timestamp is the timestamp at which the source volume was backed up to cloud |
 | metadata | [map SdkCloudBackupInfo.MetadataEntry](#sdkcloudbackupinfometadataentry) | Metadata associated with the backup |
 | status | [ SdkCloudBackupStatusType](#sdkcloudbackupstatustype) | Status indicates the status of the backup |
+| cluster_type | [ SdkCloudBackupClusterType](#sdkcloudbackupclustertype) | cluster indicates if the cloudbackup belongs to current cluster, with older cluster this value may be unknown |
+| namespace | [ string](#string) | k8s namespace to which this backup belongs to |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3546,6 +3630,35 @@ Defines a request to validate credentials
 ## SdkCredentialValidateResponse {#sdkcredentialvalidateresponse}
 Empty response
 
+ <!-- end HasFields -->
+
+
+## SdkDiagsCollectRequest {#sdkdiagscollectrequest}
+SdkDiagsCollectRequest is the request object that specifies what should be part of the diags that are collected
+User can specify both Node and Volume or just one of them. If both are provided, the implementation will select
+nodes based on both and also handle overlaps
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| node | [ DiagsNodeSelector](#diagsnodeselector) | Node selects the node(s) for diags collection |
+| volume | [ DiagsVolumeSelector](#diagsvolumeselector) | Volume selects the volume(s) for diags collection |
+| profile_only | [ bool](#bool) | ProfileOnly is an optional flag if true will only collect the stack and heap profile of the driver and will skip other diag components |
+| issuer | [ string](#string) | Issuer is an optional user friendly name for the caller invoking the API |
+| timeout_mins | [ int64](#int64) | TimeoutMins is the timeout in minutes for the job. This is an optional field and if not provided, the implementation of the SDK will use a sane default |
+| live | [ bool](#bool) | Live is an optional flag if true will collect live cores from running processes of the driver |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkDiagsCollectResponse {#sdkdiagscollectresponse}
+SdkDiagsCollectResponse defines a response for an SDK request to collect diags
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| job | [ Job](#job) | Job that was created for the SDK request |
+ <!-- end Fields -->
  <!-- end HasFields -->
 
 
@@ -5419,6 +5532,7 @@ StorageNode describes the state of the node
 | node_labels | [map StorageNode.NodeLabelsEntry](#storagenodenodelabelsentry) | User defined labels for the node |
 | scheduler_node_name | [ string](#string) | SchedulerNodeName is name of the node in scheduler context. It can be empty if unable to get the name from the scheduler. |
 | HWType | [ HardwareType](#hardwaretype) | HardwareType is the type of the hardware the node has |
+| security_status | [ StorageNode.SecurityStatus](#storagenodesecuritystatus) | Determine if the node is secured |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -5973,6 +6087,8 @@ VolumeSpec has the properties needed to create a volume.
 | proxy_write | [ bool](#bool) | Proxy_write if true, per volume proxy write replication enabled |
 | proxy_spec | [ ProxySpec](#proxyspec) | ProxySpec indicates that this volume is used for proxying an external data source |
 | sharedv4_service_spec | [ Sharedv4ServiceSpec](#sharedv4servicespec) | Sharedv4ServiceSpec specifies a spec for configuring a service for a sharedv4 volume |
+| auto_fstrim | [ bool](#bool) | Autofstrim indicates that fstrim would be run on this volume automatically, without user intervention |
+| number_of_chunks | [ uint32](#uint32) | NumberOfChunks indicates how many chunks must be created, 0 and 1 both mean 1 |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -6028,6 +6144,7 @@ VolumeSpecPolicy provides a method to set volume storage policy
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) proxy_spec_opt.proxy_spec | [ ProxySpec](#proxyspec) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) sharedv4_service_spec_opt.sharedv4_service_spec | [ Sharedv4ServiceSpec](#sharedv4servicespec) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) fastpath_opt.fastpath | [ bool](#bool) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) auto_fstrim_opt.auto_fstrim | [ bool](#bool) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -6078,6 +6195,7 @@ VolumeSpecUpdate provides a method to set any of the VolumeSpec of an existing v
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) proxy_write_opt.proxy_write | [ bool](#bool) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) proxy_spec_opt.proxy_spec | [ ProxySpec](#proxyspec) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) sharedv4_service_spec_opt.sharedv4_service_spec | [ Sharedv4ServiceSpec](#sharedv4servicespec) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) auto_fstrim_opt.auto_fstrim | [ bool](#bool) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -6223,6 +6341,20 @@ Xattr defines implementation specific volume attribute
 | LOW | 1 | none |
 | MEDIUM | 2 | none |
 | HIGH | 3 | none |
+
+
+
+
+## DiagsCollectionStatus.State {#diagscollectionstatusstate}
+State is an enum for state of diags collection on a given node
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| UNSPECIFIED | 0 | Unspecified means uninitialized or unknown state |
+| PENDING | 1 | Pending indicates the diags collection is pending and hasn't started |
+| RUNNING | 2 | Running indicates diags collection is actively running |
+| DONE | 3 | Done indicates diags collection has finished |
+| FAILED | 4 | Failed indicates diags collection has failed |
 
 
 
@@ -6426,6 +6558,7 @@ Type are the supported job types
 | NONE | 1 | None |
 | DRAIN_ATTACHMENTS | 2 | Job for draining volume attachments |
 | CLOUD_DRIVE_TRANSFER | 3 | Job for transferring cloud drives between nodes |
+| COLLECT_DIAGS | 4 | Job for collecting diags from the cluster nodes |
 
 
 
@@ -6533,6 +6666,18 @@ ProxyProtocol defines the protocol used for proxy.
 | SCAN_TRIGGER_NONE | 0 | none |
 | SCAN_TRIGGER_ON_MOUNT | 1 | none |
 | SCAN_TRIGGER_ON_NEXT_MOUNT | 2 | none |
+
+
+
+
+## SdkCloudBackupClusterType {#sdkcloudbackupclustertype}
+CloudBackup operations types
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| SdkCloudBackupClusterUnknown | 0 | Unknown |
+| SdkCloudBackupClusterCurrent | 1 | Beongs to this cluster |
+| SdkCloudBackupClusterOther | 2 | not this. other cluster |
 
 
 
@@ -6664,7 +6809,7 @@ client and server applications
 | ---- | ------ | ----------- |
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
-| Minor | 109 | SDK version minor value of this specification |
+| Minor | 115 | SDK version minor value of this specification |
 | Patch | 0 | SDK version patch value of this specification |
 
 
@@ -6730,6 +6875,19 @@ supported by Container Orchestrator's like Kubernetes
 | STORAGE_MEDIUM_MAGNETIC | 0 | Magnetic spinning disk. |
 | STORAGE_MEDIUM_SSD | 1 | SSD disk |
 | STORAGE_MEDIUM_NVME | 2 | NVME disk |
+
+
+
+
+## StorageNode.SecurityStatus {#storagenodesecuritystatus}
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| UNSPECIFIED | 0 | Security status type is unknown |
+| UNSECURED | 1 | Node is unsecure |
+| SECURED | 2 | Node is secured with authentication and authorization |
+| SECURED_ALLOW_SECURITY_REMOVAL | 3 | Node is secured, but in the process of removing security. This state allows other unsecured nodes to join the cluster since the cluster is in the process of removing secuirty authenticaiton and authorization. |
 
 
 

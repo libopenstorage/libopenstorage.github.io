@@ -454,6 +454,7 @@
     - [SeverityType](#severitytype)
     - [Status](#status)
     - [StorageMedium](#storagemedium)
+    - [StorageNode.SecurityStatus](#storagenodesecuritystatus)
     - [StorageRebalanceAudit.StorageRebalanceAction](#storagerebalanceauditstoragerebalanceaction)
     - [StorageRebalanceJobState](#storagerebalancejobstate)
     - [StorageRebalanceTriggerThreshold.Metric](#storagerebalancetriggerthresholdmetric)
@@ -5399,6 +5400,7 @@ StorageNode describes the state of the node
 | node_labels | [map StorageNode.NodeLabelsEntry](#storagenodenodelabelsentry) | User defined labels for the node |
 | scheduler_node_name | [ string](#string) | SchedulerNodeName is name of the node in scheduler context. It can be empty if unable to get the name from the scheduler. |
 | HWType | [ HardwareType](#hardwaretype) | HardwareType is the type of the hardware the node has |
+| security_status | [ StorageNode.SecurityStatus](#storagenodesecuritystatus) | Determine if the node is secured |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -6639,7 +6641,7 @@ client and server applications
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
 | Minor | 101 | SDK version minor value of this specification Frozen for this branch. Bump the Patch value instead. |
-| Patch | 4 | SDK version patch value of this specification |
+| Patch | 5 | SDK version patch value of this specification |
 
 
 
@@ -6689,6 +6691,19 @@ client and server applications
 | STORAGE_MEDIUM_MAGNETIC | 0 | Magnetic spinning disk. |
 | STORAGE_MEDIUM_SSD | 1 | SSD disk |
 | STORAGE_MEDIUM_NVME | 2 | NVME disk |
+
+
+
+
+## StorageNode.SecurityStatus {#storagenodesecuritystatus}
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| UNSPECIFIED | 0 | Security status type is unknown |
+| UNSECURED | 1 | Node is unsecure |
+| SECURED | 2 | Node is secured with authentication and authorization |
+| SECURED_ALLOW_SECURITY_REMOVAL | 3 | Node is secured, but in the process of removing security. This state allows other unsecured nodes to join the cluster since the cluster is in the process of removing secuirty authenticaiton and authorization. |
 
 
 

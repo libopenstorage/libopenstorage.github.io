@@ -937,6 +937,7 @@
 <li><a href="#severitytype">SeverityType</a></li>
 <li><a href="#status">Status</a></li>
 <li><a href="#storagemedium">StorageMedium</a></li>
+<li><a href="#storagenodesecuritystatus">StorageNode.SecurityStatus</a></li>
 <li><a href="#storagerebalanceauditstoragerebalanceaction">StorageRebalanceAudit.StorageRebalanceAction</a></li>
 <li><a href="#storagerebalancejobstate">StorageRebalanceJobState</a></li>
 <li><a href="#storagerebalancetriggerthresholdmetric">StorageRebalanceTriggerThreshold.Metric</a></li>
@@ -9642,6 +9643,11 @@ to seed the volume with data.</p>
 <td><a href="#hardwaretype"> HardwareType</a></td>
 <td>HardwareType is the type of the hardware the node has</td>
 </tr>
+<tr>
+<td>security_status</td>
+<td><a href="#storagenodesecuritystatus"> StorageNode.SecurityStatus</a></td>
+<td>Determine if the node is secured</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -12972,7 +12978,7 @@ client and server applications</p>
 </tr>
 <tr>
 <td>Patch</td>
-<td>4</td>
+<td>5</td>
 <td>SDK version patch value of this specification</td>
 </tr>
 </tbody>
@@ -13120,6 +13126,38 @@ client and server applications</p>
 <td>STORAGE_MEDIUM_NVME</td>
 <td>2</td>
 <td>NVME disk</td>
+</tr>
+</tbody>
+</table>
+<h2 id="storagenodesecuritystatus">StorageNode.SecurityStatus </h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UNSPECIFIED</td>
+<td>0</td>
+<td>Security status type is unknown</td>
+</tr>
+<tr>
+<td>UNSECURED</td>
+<td>1</td>
+<td>Node is unsecure</td>
+</tr>
+<tr>
+<td>SECURED</td>
+<td>2</td>
+<td>Node is secured with authentication and authorization</td>
+</tr>
+<tr>
+<td>SECURED_ALLOW_SECURITY_REMOVAL</td>
+<td>3</td>
+<td>Node is secured, but in the process of removing security. This state allows other unsecured nodes to join the cluster since the cluster is in the process of removing secuirty authenticaiton and authorization.</td>
 </tr>
 </tbody>
 </table>
@@ -13605,7 +13643,7 @@ client and server applications</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"v0.101.x","level":"1.5.5","depth":2,"next":{"title":"Changelog","level":"1.5.5.1","depth":3,"path":"release-9.0.changelog.md","ref":"release-9.0.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.4.1","depth":3,"path":"release-7.0.changelog.md","ref":"release-7.0.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"release-9.0.generated-api.md","mtime":"2021-03-18T20:26:17.968Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-18T20:26:23.824Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"v0.101.x","level":"1.5.5","depth":2,"next":{"title":"Changelog","level":"1.5.5.1","depth":3,"path":"release-9.0.changelog.md","ref":"release-9.0.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.4.1","depth":3,"path":"release-7.0.changelog.md","ref":"release-7.0.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"release-9.0.generated-api.md","mtime":"2021-04-15T15:47:28.089Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-15T15:47:34.990Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
