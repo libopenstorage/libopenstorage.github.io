@@ -1018,28 +1018,6 @@
         },
         "type": "object"
       },
-      "apiIoThrottle": {
-        "properties": {
-          "read_bw_mbytes": {
-            "format": "int64",
-            "type": "integer"
-          },
-          "read_iops": {
-            "format": "int64",
-            "type": "integer"
-          },
-          "write_bw_mbytes": {
-            "format": "int64",
-            "type": "integer"
-          },
-          "write_iops": {
-            "format": "int64",
-            "type": "integer"
-          }
-        },
-        "title": "IoThrottle defines IO throttle limits for a volume\nread_iops : maximum read iops this volume is allowed\nwrite_iops : maximum write iops this volume is allowed\nread_bw_mbytes  : maximum read bandwidth this volume is allowed in MegaBytes\nwrite_bw_mbytes : maximum write bandwidth this volume is allowed in MegaBytes",
-        "type": "object"
-      },
       "apiJob": {
         "properties": {
           "clouddrive_transfer": {
@@ -1345,17 +1323,6 @@
         "title": "PureFileSpec is the spec for proxying a volume on pure_file backends",
         "type": "object"
       },
-      "apiRelaxedReclaimPurge": {
-        "properties": {
-          "num_purged": {
-            "format": "uint64",
-            "title": "num_purged returns number of volumes purged",
-            "type": "string"
-          }
-        },
-        "title": "Purges the RelaxedReclaim queue",
-        "type": "object"
-      },
       "apiReplicaPlacementSpec": {
         "properties": {
           "affected_replicas": {
@@ -1387,11 +1354,6 @@
       },
       "apiReplicaSet": {
         "properties": {
-          "id": {
-            "format": "int64",
-            "title": "ID is the unique ID of this replica set",
-            "type": "integer"
-          },
           "nodes": {
             "items": {
               "type": "string"
@@ -1469,9 +1431,6 @@
             "format": "int64",
             "type": "integer"
           },
-          "auto_fstrim": {
-            "$ref": "#/components/schemas/apiRestoreParamBoolType"
-          },
           "cos": {
             "$ref": "#/components/schemas/apiCosType"
           },
@@ -1504,9 +1463,6 @@
           },
           "io_strategy": {
             "$ref": "#/components/schemas/apiIoStrategy"
-          },
-          "io_throttle": {
-            "$ref": "#/components/schemas/apiIoThrottle"
           },
           "journal": {
             "$ref": "#/components/schemas/apiRestoreParamBoolType"
@@ -1873,17 +1829,6 @@
         "title": "Defines a response containing the contents of a backup stored by a cloud provider",
         "type": "object"
       },
-      "apiSdkCloudBackupClusterType": {
-        "default": "SdkCloudBackupClusterUnknown",
-        "description": "- SdkCloudBackupClusterUnknown: Unknown\n - SdkCloudBackupClusterCurrent: Beongs to this cluster\n - SdkCloudBackupClusterOther: not this. other cluster",
-        "enum": [
-          "SdkCloudBackupClusterUnknown",
-          "SdkCloudBackupClusterCurrent",
-          "SdkCloudBackupClusterOther"
-        ],
-        "title": "CloudBackup operations types",
-        "type": "string"
-      },
       "apiSdkCloudBackupCreateRequest": {
         "properties": {
           "credential_id": {
@@ -1991,11 +1936,6 @@
             },
             "title": "(optional) Enumerates backups that have tags of this type",
             "type": "object"
-          },
-          "missing_src_volumes": {
-            "format": "boolean",
-            "title": "To enumerate cloudbackups for which source volumes do not exist in this\ncluster",
-            "type": "boolean"
           },
           "src_volume_id": {
             "description": "(optional) Source id of the volume for the request.",
@@ -2112,9 +2052,6 @@
       },
       "apiSdkCloudBackupInfo": {
         "properties": {
-          "cluster_type": {
-            "$ref": "#/components/schemas/apiSdkCloudBackupClusterType"
-          },
           "id": {
             "title": "This is the id as represented by the cloud provider",
             "type": "string"
@@ -2125,10 +2062,6 @@
             },
             "title": "Metadata associated with the backup",
             "type": "object"
-          },
-          "namespace": {
-            "title": "k8s namespace to which this backup belongs to",
-            "type": "string"
           },
           "src_volume_id": {
             "title": "Source volumeID of the backup",
@@ -2736,22 +2669,6 @@
         },
         "type": "object"
       },
-      "apiSdkCredentialUpdateRequest": {
-        "properties": {
-          "credential_id": {
-            "type": "string"
-          },
-          "update_req": {
-            "$ref": "#/components/schemas/apiSdkCredentialCreateRequest"
-          }
-        },
-        "title": "Defines request for credential update",
-        "type": "object"
-      },
-      "apiSdkCredentialUpdateResponse": {
-        "title": "Defines response for credential update",
-        "type": "object"
-      },
       "apiSdkCredentialValidateResponse": {
         "title": "Empty response",
         "type": "object"
@@ -3110,15 +3027,6 @@
           }
         },
         "title": "Defines a response when inspecting a node",
-        "type": "object"
-      },
-      "apiSdkNodeRelaxedReclaimPurgeResponse": {
-        "properties": {
-          "status": {
-            "$ref": "#/components/schemas/apiRelaxedReclaimPurge"
-          }
-        },
-        "title": "Defines response containing status of the trigger",
         "type": "object"
       },
       "apiSdkNodeUncordonAttachmentsRequest": {
@@ -4264,21 +4172,6 @@
             "title": "BytesUsed",
             "type": "string"
           },
-          "discard_bytes": {
-            "format": "uint64",
-            "title": "Number of bytes discarded",
-            "type": "string"
-          },
-          "discard_ms": {
-            "format": "uint64",
-            "title": "Time spent in discards in ms",
-            "type": "string"
-          },
-          "discards": {
-            "format": "uint64",
-            "title": "Discards completed successfully",
-            "type": "string"
-          },
           "interval_ms": {
             "format": "uint64",
             "title": "Interval in ms during which stats were collected",
@@ -4307,11 +4200,6 @@
           "reads": {
             "format": "uint64",
             "title": "Reads completed successfully",
-            "type": "string"
-          },
-          "unique_blocks": {
-            "format": "uint64",
-            "title": "Unique Blocks",
             "type": "string"
           },
           "write_bytes": {
@@ -4807,10 +4695,6 @@
             "title": "Volume creation time",
             "type": "string"
           },
-          "delete_time": {
-            "format": "date-time",
-            "type": "string"
-          },
           "detach_time": {
             "description": "DetachTime time this device was detached.",
             "format": "date-time",
@@ -4822,10 +4706,6 @@
           },
           "error": {
             "description": "Error is the Last recorded error.",
-            "type": "string"
-          },
-          "expiry_time": {
-            "format": "date-time",
             "type": "string"
           },
           "format": {
@@ -4864,9 +4744,6 @@
           },
           "mount_options": {
             "$ref": "#/components/schemas/apiMountOptions"
-          },
-          "prev_state": {
-            "$ref": "#/components/schemas/apiVolumeState"
           },
           "readonly": {
             "description": "Readonly is true if this volume is to be mounted with readonly access.",
@@ -5058,11 +4935,6 @@
             "format": "int64",
             "type": "integer"
           },
-          "auto_fstrim": {
-            "format": "boolean",
-            "title": "Autofstrim indicates that fstrim would be run on this volume automatically, without user intervention",
-            "type": "boolean"
-          },
           "block_size": {
             "description": "BlockSize for the filesystem.",
             "format": "int64",
@@ -5131,9 +5003,6 @@
           "io_strategy": {
             "$ref": "#/components/schemas/apiIoStrategy"
           },
-          "io_throttle": {
-            "$ref": "#/components/schemas/apiIoThrottle"
-          },
           "journal": {
             "description": "Journal is true if data for the volume goes into the journal.",
             "format": "boolean",
@@ -5146,11 +5015,6 @@
             "description": "Nodiscard specifies if the volume will be mounted with discard support disabled.\ni.e. FS will not release allocated blocks back to the backing storage pool.",
             "format": "boolean",
             "type": "boolean"
-          },
-          "number_of_chunks": {
-            "format": "int64",
-            "title": "NumberOfChunks indicates how many chunks must be created, 0 and 1 both mean 1",
-            "type": "integer"
           },
           "ownership": {
             "$ref": "#/components/schemas/apiOwnership"
@@ -5244,10 +5108,6 @@
             "format": "int64",
             "type": "integer"
           },
-          "auto_fstrim": {
-            "format": "boolean",
-            "type": "boolean"
-          },
           "cos": {
             "$ref": "#/components/schemas/apiCosType"
           },
@@ -5281,9 +5141,6 @@
           },
           "io_strategy": {
             "$ref": "#/components/schemas/apiIoStrategy"
-          },
-          "io_throttle": {
-            "$ref": "#/components/schemas/apiIoThrottle"
           },
           "journal": {
             "format": "boolean",
@@ -5371,10 +5228,6 @@
       },
       "apiVolumeSpecUpdate": {
         "properties": {
-          "auto_fstrim": {
-            "format": "boolean",
-            "type": "boolean"
-          },
           "cos": {
             "$ref": "#/components/schemas/apiCosType"
           },
@@ -5401,9 +5254,6 @@
           },
           "io_strategy": {
             "$ref": "#/components/schemas/apiIoStrategy"
-          },
-          "io_throttle": {
-            "$ref": "#/components/schemas/apiIoThrottle"
           },
           "journal": {
             "format": "boolean",
@@ -5481,7 +5331,7 @@
       },
       "apiVolumeState": {
         "default": "VOLUME_STATE_NONE",
-        "description": "VolumeState represents the state of a volume.\n\n - VOLUME_STATE_PENDING: Volume is transitioning to new state\n - VOLUME_STATE_AVAILABLE: Volume is ready to be assigned to a container\n - VOLUME_STATE_ATTACHED: Volume is attached to container\n - VOLUME_STATE_DETACHED: Volume is detached but associated with a container\n - VOLUME_STATE_DETATCHING: Volume detach is in progress\n - VOLUME_STATE_ERROR: Volume is in error state\n - VOLUME_STATE_DELETED: Volume is deleted, it will remain in this state\nwhile resources are asynchronously reclaimed\n - VOLUME_STATE_TRY_DETACHING: Volume is trying to be detached\n - VOLUME_STATE_RESTORE: Volume is undergoing restore\n - VOLUME_STATE_IN_TRASHCAN: Volume is marked as being in the trashcan",
+        "description": "VolumeState represents the state of a volume.\n\n - VOLUME_STATE_PENDING: Volume is transitioning to new state\n - VOLUME_STATE_AVAILABLE: Volume is ready to be assigned to a container\n - VOLUME_STATE_ATTACHED: Volume is attached to container\n - VOLUME_STATE_DETACHED: Volume is detached but associated with a container\n - VOLUME_STATE_DETATCHING: Volume detach is in progress\n - VOLUME_STATE_ERROR: Volume is in error state\n - VOLUME_STATE_DELETED: Volume is deleted, it will remain in this state\nwhile resources are asynchronously reclaimed\n - VOLUME_STATE_TRY_DETACHING: Volume is trying to be detached\n - VOLUME_STATE_RESTORE: Volume is undergoing restore",
         "enum": [
           "VOLUME_STATE_NONE",
           "VOLUME_STATE_PENDING",
@@ -5492,8 +5342,7 @@
           "VOLUME_STATE_ERROR",
           "VOLUME_STATE_DELETED",
           "VOLUME_STATE_TRY_DETACHING",
-          "VOLUME_STATE_RESTORE",
-          "VOLUME_STATE_IN_TRASHCAN"
+          "VOLUME_STATE_RESTORE"
         ],
         "type": "string"
       },
@@ -5588,7 +5437,7 @@
   },
   "info": {
     "title": "OpenStorage SDK",
-    "version": "0.120.0"
+    "version": "0.101.10"
   },
   "openapi": "3.0.0",
   "paths": {
@@ -6609,45 +6458,6 @@
         "tags": [
           "OpenStorageCredentials"
         ]
-      },
-      "put": {
-        "operationId": "Update",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "credential_id",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/apiSdkCredentialUpdateRequest"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/apiSdkCredentialUpdateResponse"
-                }
-              }
-            },
-            "description": ""
-          }
-        },
-        "summary": "input is very same as credential create",
-        "tags": [
-          "OpenStorageCredentials"
-        ]
       }
     },
     "/v1/diags": {
@@ -7394,7 +7204,7 @@
     },
     "/v1/nodes/usage/{node_id}": {
       "get": {
-        "operationId": "RelaxedReclaimPurge",
+        "operationId": "VolumeUsageByNode",
         "parameters": [
           {
             "in": "path",
@@ -7410,14 +7220,14 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/apiSdkNodeRelaxedReclaimPurgeResponse"
+                  "$ref": "#/components/schemas/apiSdkNodeVolumeUsageByNodeResponse"
                 }
               }
             },
             "description": ""
           }
         },
-        "summary": "Triggers RelaxedReclaim purge for a give node",
+        "summary": "Returns capacity usage of all volumes/snaps for a give node",
         "tags": [
           "OpenStorageNode"
         ]

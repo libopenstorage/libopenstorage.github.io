@@ -76,7 +76,6 @@
     - [GroupSnapCreateResponse](#groupsnapcreateresponse)
     - [GroupSnapCreateResponse.SnapshotsEntry](#groupsnapcreateresponsesnapshotsentry)
     - [IoStrategy](#iostrategy)
-    - [IoThrottle](#iothrottle)
     - [Job](#job)
     - [JobAudit](#jobaudit)
     - [JobSummary](#jobsummary)
@@ -98,7 +97,6 @@
     - [ProxySpec](#proxyspec)
     - [PureBlockSpec](#pureblockspec)
     - [PureFileSpec](#purefilespec)
-    - [RelaxedReclaimPurge](#relaxedreclaimpurge)
     - [ReplicaPlacementSpec](#replicaplacementspec)
     - [ReplicaSet](#replicaset)
     - [Report](#report)
@@ -206,8 +204,6 @@
     - [SdkCredentialEnumerateResponse](#sdkcredentialenumerateresponse)
     - [SdkCredentialInspectRequest](#sdkcredentialinspectrequest)
     - [SdkCredentialInspectResponse](#sdkcredentialinspectresponse)
-    - [SdkCredentialUpdateRequest](#sdkcredentialupdaterequest)
-    - [SdkCredentialUpdateResponse](#sdkcredentialupdateresponse)
     - [SdkCredentialValidateRequest](#sdkcredentialvalidaterequest)
     - [SdkCredentialValidateResponse](#sdkcredentialvalidateresponse)
     - [SdkDiagsCollectRequest](#sdkdiagscollectrequest)
@@ -250,8 +246,6 @@
     - [SdkNodeInspectCurrentResponse](#sdknodeinspectcurrentresponse)
     - [SdkNodeInspectRequest](#sdknodeinspectrequest)
     - [SdkNodeInspectResponse](#sdknodeinspectresponse)
-    - [SdkNodeRelaxedReclaimPurgeRequest](#sdknoderelaxedreclaimpurgerequest)
-    - [SdkNodeRelaxedReclaimPurgeResponse](#sdknoderelaxedreclaimpurgeresponse)
     - [SdkNodeUncordonAttachmentsRequest](#sdknodeuncordonattachmentsrequest)
     - [SdkNodeUncordonAttachmentsResponse](#sdknodeuncordonattachmentsresponse)
     - [SdkNodeVolumeUsageByNodeRequest](#sdknodevolumeusagebynoderequest)
@@ -459,7 +453,6 @@
     - [RestoreParamBoolType](#restoreparambooltype)
     - [ScanPolicy.ScanAction](#scanpolicyscanaction)
     - [ScanPolicy.ScanTrigger](#scanpolicyscantrigger)
-    - [SdkCloudBackupClusterType](#sdkcloudbackupclustertype)
     - [SdkCloudBackupOpType](#sdkcloudbackupoptype)
     - [SdkCloudBackupRequestedState](#sdkcloudbackuprequestedstate)
     - [SdkCloudBackupStatusType](#sdkcloudbackupstatustype)
@@ -804,12 +797,6 @@ en_resp = client.Create(api_pb2.SdkCredentialCreateRequest(
     endpoint='dummy-endpoint',
     region='dummy-region')))
 {%- endcodetabs %}
-## Update {#methodopenstorageapiopenstoragecredentialsupdate}
-
-> **rpc** Update([SdkCredentialUpdateRequest](#sdkcredentialupdaterequest))
-    [SdkCredentialUpdateResponse](#sdkcredentialupdateresponse)
-
-input is very same as credential create
 ## Enumerate {#methodopenstorageapiopenstoragecredentialsenumerate}
 
 > **rpc** Enumerate([SdkCredentialEnumerateRequest](#sdkcredentialenumeraterequest))
@@ -1075,12 +1062,6 @@ EnumerateWithFilters returns all the nodes in the current cluster
     [SdkNodeVolumeUsageByNodeResponse](#sdknodevolumeusagebynoderesponse)
 
 Returns capacity usage of all volumes/snaps for a give node
-## RelaxedReclaimPurge {#methodopenstorageapiopenstoragenoderelaxedreclaimpurge}
-
-> **rpc** RelaxedReclaimPurge([SdkNodeRelaxedReclaimPurgeRequest](#sdknoderelaxedreclaimpurgerequest))
-    [SdkNodeRelaxedReclaimPurgeResponse](#sdknoderelaxedreclaimpurgeresponse)
-
-Triggers RelaxedReclaim purge for a give node
 ## DrainAttachments {#methodopenstorageapiopenstoragenodedrainattachments}
 
 > **rpc** DrainAttachments([SdkNodeDrainAttachmentsRequest](#sdknodedrainattachmentsrequest))
@@ -2109,24 +2090,6 @@ IoStrategy defines how I/O should be performed to backing storage media.
  <!-- end HasFields -->
 
 
-## IoThrottle {#iothrottle}
-IoThrottle defines IO throttle limits for a volume
-read_iops : maximum read iops this volume is allowed
-write_iops : maximum write iops this volume is allowed
-read_bw_mbytes  : maximum read bandwidth this volume is allowed in MegaBytes
-write_bw_mbytes : maximum write bandwidth this volume is allowed in MegaBytes
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| read_iops | [ uint32](#uint32) | none |
-| write_iops | [ uint32](#uint32) | none |
-| read_bw_mbytes | [ uint32](#uint32) | none |
-| write_bw_mbytes | [ uint32](#uint32) | none |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
 ## Job {#job}
 Job is a generic job object that can encapsulate other
 messages which follow the job framework of APIs
@@ -2397,17 +2360,6 @@ PureFileSpec is the spec for proxying a volume on pure_file backends
  <!-- end HasFields -->
 
 
-## RelaxedReclaimPurge {#relaxedreclaimpurge}
-Purges the RelaxedReclaim queue
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| num_purged | [ uint64](#uint64) | num_purged returns number of volumes purged |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
 ## ReplicaPlacementSpec {#replicaplacementspec}
 
 
@@ -2432,7 +2384,6 @@ coded - for clustered storage arrays
 | ----- | ---- | ----------- |
 | nodes | [repeated string](#string) | none |
 | pool_uuids | [repeated string](#string) | Unique IDs of the storage pools for this replica set |
-| id | [ uint32](#uint32) | ID is the unique ID of this replica set |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -2506,8 +2457,6 @@ inherit corresponding field value from backup's spec.
 | io_profile_bkup_src | [ bool](#bool) | IoProfileBkupSrc indicates to inherit IoProfile from cloudbackup |
 | proxy_spec | [ ProxySpec](#proxyspec) | ProxySpec indicates that this volume is used for proxying an external data source |
 | sharedv4_service_spec | [ Sharedv4ServiceSpec](#sharedv4servicespec) | Sharedv4ServiceSpec specifies a spec for configuring a service for a sharedv4 volume |
-| auto_fstrim | [ RestoreParamBoolType](#restoreparambooltype) | Autofstrim is true if automatic fstrim is enabled for the volume |
-| io_throttle | [ IoThrottle](#iothrottle) | IoThrottle specifies maximum io(iops/bandwidth) this volume is restricted to |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -2884,7 +2833,6 @@ and do not provide `volume_id` and `all`.
 | max_backups | [ uint64](#uint64) | (optional) if caller wished to limit number of backups returned by enumerate |
 | continuation_token | [ string](#string) | Returned in the enumerate response if not all of the backups could be returned in the response. |
 | cloud_backup_id | [ string](#string) | If one wants to enumerate known backup, set this field to the backup ID naming format :clusteruuidORbicketname/srcVolId-snapId(-incr) |
-| missing_src_volumes | [ bool](#bool) | To enumerate cloudbackups for which source volumes do not exist in this cluster |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3002,8 +2950,6 @@ SdkCloudBackupInfo has information about a backup stored by a cloud provider
 | timestamp | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | Timestamp is the timestamp at which the source volume was backed up to cloud |
 | metadata | [map SdkCloudBackupInfo.MetadataEntry](#sdkcloudbackupinfometadataentry) | Metadata associated with the backup |
 | status | [ SdkCloudBackupStatusType](#sdkcloudbackupstatustype) | Status indicates the status of the backup |
-| cluster_type | [ SdkCloudBackupClusterType](#sdkcloudbackupclustertype) | cluster indicates if the cloudbackup belongs to current cluster, with older cluster this value may be unknown |
-| namespace | [ string](#string) | k8s namespace to which this backup belongs to |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3685,24 +3631,6 @@ you will need to check if the value of credential_type is one of the ones below.
  <!-- end HasFields -->
 
 
-## SdkCredentialUpdateRequest {#sdkcredentialupdaterequest}
-Defines request for credential update
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| credential_id | [ string](#string) | none |
-| update_req | [ SdkCredentialCreateRequest](#sdkcredentialcreaterequest) | none |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkCredentialUpdateResponse {#sdkcredentialupdateresponse}
-Defines response for credential update
-
- <!-- end HasFields -->
-
-
 ## SdkCredentialValidateRequest {#sdkcredentialvalidaterequest}
 Defines a request to validate credentials
 
@@ -4150,29 +4078,6 @@ Defines a response when inspecting a node
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | node | [ StorageNode](#storagenode) | Node information |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkNodeRelaxedReclaimPurgeRequest {#sdknoderelaxedreclaimpurgerequest}
-Defines request to trigger RelaxedReclaim purge
-for a given node
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| node_id | [ string](#string) | Id of the node to trigger the purge |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkNodeRelaxedReclaimPurgeResponse {#sdknoderelaxedreclaimpurgeresponse}
-Defines response containing status of the trigger
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| status | [ RelaxedReclaimPurge](#relaxedreclaimpurge) | status returns true on successful purge |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -5600,10 +5505,6 @@ Stats is a structure that represents last collected stats for a volume
 | io_ms | [ uint64](#uint64) | Time spent doing IOs ms |
 | bytes_used | [ uint64](#uint64) | BytesUsed |
 | interval_ms | [ uint64](#uint64) | Interval in ms during which stats were collected |
-| discards | [ uint64](#uint64) | Discards completed successfully |
-| discard_ms | [ uint64](#uint64) | Time spent in discards in ms |
-| discard_bytes | [ uint64](#uint64) | Number of bytes discarded |
-| unique_blocks | [ uint64](#uint64) | Unique Blocks |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -5888,9 +5789,6 @@ Volume represents an abstract storage volume.
 | last_scan_status | [ FilesystemHealthStatus](#filesystemhealthstatus) | LastScanStatus is the time when an integrity check fixed errors in filesystem |
 | mount_options | [ MountOptions](#mountoptions) | MountOptions are the runtime mount options that will be used while mounting this volume |
 | sharedv4_mount_options | [ MountOptions](#mountoptions) | Sharedv4MountOptions are the runtime mount options that will be used while mounting a sharedv4 volume from a node where the volume replica does not exist |
-| prev_state | [ VolumeState](#volumestate) | VolumeState is the current runtime state of this volume. |
-| delete_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | none |
-| expiry_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -6197,9 +6095,6 @@ VolumeSpec has the properties needed to create a volume.
 | proxy_write | [ bool](#bool) | Proxy_write if true, per volume proxy write replication enabled |
 | proxy_spec | [ ProxySpec](#proxyspec) | ProxySpec indicates that this volume is used for proxying an external data source |
 | sharedv4_service_spec | [ Sharedv4ServiceSpec](#sharedv4servicespec) | Sharedv4ServiceSpec specifies a spec for configuring a service for a sharedv4 volume |
-| auto_fstrim | [ bool](#bool) | Autofstrim indicates that fstrim would be run on this volume automatically, without user intervention |
-| number_of_chunks | [ uint32](#uint32) | NumberOfChunks indicates how many chunks must be created, 0 and 1 both mean 1 |
-| io_throttle | [ IoThrottle](#iothrottle) | IoThrottle specifies maximum io(iops/bandwidth) this volume is restricted to |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -6253,10 +6148,8 @@ VolumeSpecPolicy provides a method to set volume storage policy
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) sharedv4_mount_opt.sharedv4_mount_opt_spec | [ MountOptions](#mountoptions) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) proxy_write_opt.proxy_write | [ bool](#bool) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) proxy_spec_opt.proxy_spec | [ ProxySpec](#proxyspec) | none |
-| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) sharedv4_service_spec_opt.sharedv4_service_spec | [ Sharedv4ServiceSpec](#sharedv4servicespec) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) fastpath_opt.fastpath | [ bool](#bool) | none |
-| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) auto_fstrim_opt.auto_fstrim | [ bool](#bool) | none |
-| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) io_throttle_opt.io_throttle | [ IoThrottle](#iothrottle) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) sharedv4_service_spec_opt.sharedv4_service_spec | [ Sharedv4ServiceSpec](#sharedv4servicespec) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -6307,8 +6200,6 @@ VolumeSpecUpdate provides a method to set any of the VolumeSpec of an existing v
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) proxy_write_opt.proxy_write | [ bool](#bool) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) proxy_spec_opt.proxy_spec | [ ProxySpec](#proxyspec) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) sharedv4_service_spec_opt.sharedv4_service_spec | [ Sharedv4ServiceSpec](#sharedv4servicespec) | none |
-| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) auto_fstrim_opt.auto_fstrim | [ bool](#bool) | none |
-| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) io_throttle_opt.io_throttle | [ IoThrottle](#iothrottle) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -6785,18 +6676,6 @@ ProxyProtocol defines the protocol used for proxy.
 
 
 
-## SdkCloudBackupClusterType {#sdkcloudbackupclustertype}
-CloudBackup operations types
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| SdkCloudBackupClusterUnknown | 0 | Unknown |
-| SdkCloudBackupClusterCurrent | 1 | Beongs to this cluster |
-| SdkCloudBackupClusterOther | 2 | not this. other cluster |
-
-
-
-
 ## SdkCloudBackupOpType {#sdkcloudbackupoptype}
 CloudBackup operations types
 
@@ -6924,8 +6803,8 @@ client and server applications
 | ---- | ------ | ----------- |
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
-| Minor | 120 | SDK version minor value of this specification |
-| Patch | 0 | SDK version patch value of this specification |
+| Minor | 101 | SDK version minor value of this specification Frozen for this branch. Bump the Patch value instead. |
+| Patch | 10 | SDK version patch value of this specification |
 
 
 
@@ -7105,7 +6984,6 @@ VolumeState represents the state of a volume.
 | VOLUME_STATE_DELETED | 7 | Volume is deleted, it will remain in this state while resources are asynchronously reclaimed |
 | VOLUME_STATE_TRY_DETACHING | 8 | Volume is trying to be detached |
 | VOLUME_STATE_RESTORE | 9 | Volume is undergoing restore |
-| VOLUME_STATE_IN_TRASHCAN | 10 | Volume is marked as being in the trashcan |
 
 
 

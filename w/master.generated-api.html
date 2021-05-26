@@ -72,7 +72,7 @@
     <link rel="next" href="master.changelog.html" />
     
     
-    <link rel="prev" href="release-9.0.changelog.html" />
+    <link rel="prev" href="release-9.1.changelog.html" />
     
 
     </head>
@@ -359,9 +359,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.5" data-path="release-9.0.generated-api.html">
+        <li class="chapter " data-level="1.5.5" data-path="release-9.1.generated-api.html">
             
-                <a href="release-9.0.generated-api.html">
+                <a href="release-9.1.generated-api.html">
             
                     
                         <b>1.5.5.</b>
@@ -375,9 +375,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.5.5.1" data-path="release-9.0.changelog.html">
+        <li class="chapter " data-level="1.5.5.1" data-path="release-9.1.changelog.html">
             
-                <a href="release-9.0.changelog.html">
+                <a href="release-9.1.changelog.html">
             
                     
                         <b>1.5.5.1.</b>
@@ -558,6 +558,7 @@
 <li><a href="#groupsnapcreateresponse">GroupSnapCreateResponse</a></li>
 <li><a href="#groupsnapcreateresponsesnapshotsentry">GroupSnapCreateResponse.SnapshotsEntry</a></li>
 <li><a href="#iostrategy">IoStrategy</a></li>
+<li><a href="#iothrottle">IoThrottle</a></li>
 <li><a href="#job">Job</a></li>
 <li><a href="#jobaudit">JobAudit</a></li>
 <li><a href="#jobsummary">JobSummary</a></li>
@@ -577,6 +578,9 @@
 <li><a href="#ownershippublicaccesscontrol">Ownership.PublicAccessControl</a></li>
 <li><a href="#pxdproxyspec">PXDProxySpec</a></li>
 <li><a href="#proxyspec">ProxySpec</a></li>
+<li><a href="#pureblockspec">PureBlockSpec</a></li>
+<li><a href="#purefilespec">PureFileSpec</a></li>
+<li><a href="#relaxedreclaimpurge">RelaxedReclaimPurge</a></li>
 <li><a href="#replicaplacementspec">ReplicaPlacementSpec</a></li>
 <li><a href="#replicaset">ReplicaSet</a></li>
 <li><a href="#report">Report</a></li>
@@ -684,6 +688,8 @@
 <li><a href="#sdkcredentialenumerateresponse">SdkCredentialEnumerateResponse</a></li>
 <li><a href="#sdkcredentialinspectrequest">SdkCredentialInspectRequest</a></li>
 <li><a href="#sdkcredentialinspectresponse">SdkCredentialInspectResponse</a></li>
+<li><a href="#sdkcredentialupdaterequest">SdkCredentialUpdateRequest</a></li>
+<li><a href="#sdkcredentialupdateresponse">SdkCredentialUpdateResponse</a></li>
 <li><a href="#sdkcredentialvalidaterequest">SdkCredentialValidateRequest</a></li>
 <li><a href="#sdkcredentialvalidateresponse">SdkCredentialValidateResponse</a></li>
 <li><a href="#sdkdiagscollectrequest">SdkDiagsCollectRequest</a></li>
@@ -726,6 +732,8 @@
 <li><a href="#sdknodeinspectcurrentresponse">SdkNodeInspectCurrentResponse</a></li>
 <li><a href="#sdknodeinspectrequest">SdkNodeInspectRequest</a></li>
 <li><a href="#sdknodeinspectresponse">SdkNodeInspectResponse</a></li>
+<li><a href="#sdknoderelaxedreclaimpurgerequest">SdkNodeRelaxedReclaimPurgeRequest</a></li>
+<li><a href="#sdknoderelaxedreclaimpurgeresponse">SdkNodeRelaxedReclaimPurgeResponse</a></li>
 <li><a href="#sdknodeuncordonattachmentsrequest">SdkNodeUncordonAttachmentsRequest</a></li>
 <li><a href="#sdknodeuncordonattachmentsresponse">SdkNodeUncordonAttachmentsResponse</a></li>
 <li><a href="#sdknodevolumeusagebynoderequest">SdkNodeVolumeUsageByNodeRequest</a></li>
@@ -945,7 +953,7 @@
 <li><a href="#sdktimeweekday">SdkTimeWeekday</a></li>
 <li><a href="#sdkversionversion">SdkVersion.Version</a></li>
 <li><a href="#severitytype">SeverityType</a></li>
-<li><a href="#sharedv4servicetype">Sharedv4ServiceType</a></li>
+<li><a href="#sharedv4servicespecservicetype">Sharedv4ServiceSpec.ServiceType</a></li>
 <li><a href="#status">Status</a></li>
 <li><a href="#storagemedium">StorageMedium</a></li>
 <li><a href="#storagenodesecuritystatus">StorageNode.SecurityStatus</a></li>
@@ -1251,6 +1259,12 @@ id of the credentials once they are verified to work.</p>
     secret_key<span class="token operator">=</span><span class="token string">&apos;dumm-secret&apos;</span><span class="token punctuation">,</span>
     endpoint<span class="token operator">=</span><span class="token string">&apos;dummy-endpoint&apos;</span><span class="token punctuation">,</span>
     region<span class="token operator">=</span><span class="token string">&apos;dummy-region&apos;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre></div></div></div></p>
+<h2 id="methodopenstorageapiopenstoragecredentialsupdate">Update </h2>
+<blockquote>
+<p><strong>rpc</strong> Update(<a href="#sdkcredentialupdaterequest">SdkCredentialUpdateRequest</a>)
+    <a href="#sdkcredentialupdateresponse">SdkCredentialUpdateResponse</a></p>
+</blockquote>
+<p>input is very same as credential create</p>
 <h2 id="methodopenstorageapiopenstoragecredentialsenumerate">Enumerate </h2>
 <blockquote>
 <p><strong>rpc</strong> Enumerate(<a href="#sdkcredentialenumeraterequest">SdkCredentialEnumerateRequest</a>)
@@ -1494,6 +1508,12 @@ where the client is currently connected to.</p>
     <a href="#sdknodevolumeusagebynoderesponse">SdkNodeVolumeUsageByNodeResponse</a></p>
 </blockquote>
 <p>Returns capacity usage of all volumes/snaps for a give node</p>
+<h2 id="methodopenstorageapiopenstoragenoderelaxedreclaimpurge">RelaxedReclaimPurge </h2>
+<blockquote>
+<p><strong>rpc</strong> RelaxedReclaimPurge(<a href="#sdknoderelaxedreclaimpurgerequest">SdkNodeRelaxedReclaimPurgeRequest</a>)
+    <a href="#sdknoderelaxedreclaimpurgeresponse">SdkNodeRelaxedReclaimPurgeResponse</a></p>
+</blockquote>
+<p>Triggers RelaxedReclaim purge for a give node</p>
 <h2 id="methodopenstorageapiopenstoragenodedrainattachments">DrainAttachments </h2>
 <blockquote>
 <p><strong>rpc</strong> DrainAttachments(<a href="#sdknodedrainattachmentsrequest">SdkNodeDrainAttachmentsRequest</a>)
@@ -3238,6 +3258,45 @@ All volumes in the same group share this object.</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
+<h2 id="iothrottle">IoThrottle </h2>
+<p>IoThrottle defines IO throttle limits for a volume
+read_iops : maximum read iops this volume is allowed
+write_iops : maximum write iops this volume is allowed
+read_bw_mbytes  : maximum read bandwidth this volume is allowed in MegaBytes
+write_bw_mbytes : maximum write bandwidth this volume is allowed in MegaBytes</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>read_iops</td>
+<td><a href="#uint32"> uint32</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>write_iops</td>
+<td><a href="#uint32"> uint32</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>read_bw_mbytes</td>
+<td><a href="#uint32"> uint32</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>write_bw_mbytes</td>
+<td><a href="#uint32"> uint32</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
 <h2 id="job">Job </h2>
 <p>Job is a generic job object that can encapsulate other
 messages which follow the job framework of APIs</p>
@@ -3786,6 +3845,59 @@ Administrators are users who belong to the group <code>*</code>, meaning, every 
 <td><a href="#pxdproxyspec"> PXDProxySpec</a></td>
 <td>PXDProxySpec is the spec for proxying a Portworx volume</td>
 </tr>
+<tr>
+<td>pure_block_spec</td>
+<td><a href="#pureblockspec"> PureBlockSpec</a></td>
+<td>PureFileSpec is the spec for proxying a volume on pure_file backends</td>
+</tr>
+<tr>
+<td>pure_file_spec</td>
+<td><a href="#purefilespec"> PureFileSpec</a></td>
+<td>PureFileSpec is the spec for proxying a volume on pure_file backends</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="pureblockspec">PureBlockSpec </h2>
+<p>PureBlockSpec is the spec for proxying a volume on pure_block backends</p>
+ <!-- end HasFields -->
+<h2 id="purefilespec">PureFileSpec </h2>
+<p>PureFileSpec is the spec for proxying a volume on pure_file backends</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>export_rules</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="relaxedreclaimpurge">RelaxedReclaimPurge </h2>
+<p>Purges the RelaxedReclaim queue</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>num_purged</td>
+<td><a href="#uint64"> uint64</a></td>
+<td>num_purged returns number of volumes purged</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -4074,6 +4186,11 @@ inherit corresponding field value from backup&apos;s spec.</p>
 <td>auto_fstrim</td>
 <td><a href="#restoreparambooltype"> RestoreParamBoolType</a></td>
 <td>Autofstrim is true if automatic fstrim is enabled for the volume</td>
+</tr>
+<tr>
+<td>io_throttle</td>
+<td><a href="#iothrottle"> IoThrottle</a></td>
+<td>IoThrottle specifies maximum io(iops/bandwidth) this volume is restricted to</td>
 </tr>
 </tbody>
 </table>
@@ -6392,6 +6509,34 @@ you will need to check if the value of credential_type is one of the ones below.
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
+<h2 id="sdkcredentialupdaterequest">SdkCredentialUpdateRequest </h2>
+<p>Defines request for credential update</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>credential_id</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>update_req</td>
+<td><a href="#sdkcredentialcreaterequest"> SdkCredentialCreateRequest</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcredentialupdateresponse">SdkCredentialUpdateResponse </h2>
+<p>Defines response for credential update</p>
+ <!-- end HasFields -->
 <h2 id="sdkcredentialvalidaterequest">SdkCredentialValidateRequest </h2>
 <p>Defines a request to validate credentials</p>
 <table>
@@ -7188,6 +7333,47 @@ no filters and all the nodes will be returned.</p>
 <td>node</td>
 <td><a href="#storagenode"> StorageNode</a></td>
 <td>Node information</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdknoderelaxedreclaimpurgerequest">SdkNodeRelaxedReclaimPurgeRequest </h2>
+<p>Defines request to trigger RelaxedReclaim purge
+for a given node</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>node_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of the node to trigger the purge</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdknoderelaxedreclaimpurgeresponse">SdkNodeRelaxedReclaimPurgeResponse </h2>
+<p>Defines response containing status of the trigger</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>status</td>
+<td><a href="#relaxedreclaimpurge"> RelaxedReclaimPurge</a></td>
+<td>status returns true on successful purge</td>
 </tr>
 </tbody>
 </table>
@@ -9618,7 +9804,7 @@ to update any labels on the volume.</p>
 <p>Empty response</p>
  <!-- end HasFields -->
 <h2 id="sharedv4servicespec">Sharedv4ServiceSpec </h2>
-<p>Sharedv4ServiceSpec when set creates a service endpoint for accessing
+<p>Sharedv4ServiceSpec when set, creates a service endpoint for accessing
 a sharedv4 volume.</p>
 <table>
 <thead>
@@ -9636,8 +9822,8 @@ a sharedv4 volume.</p>
 </tr>
 <tr>
 <td>type</td>
-<td><a href="#sharedv4servicetype"> Sharedv4ServiceType</a></td>
-<td>Type indicates what kind of service would be created for this volume</td>
+<td><a href="#sharedv4servicespecservicetype"> Sharedv4ServiceSpec.ServiceType</a></td>
+<td>Indicates what kind of service would be created for this volume.</td>
 </tr>
 </tbody>
 </table>
@@ -11405,6 +11591,11 @@ performed on a volumen</p>
 <td><a href="#uint32"> uint32</a></td>
 <td>NumberOfChunks indicates how many chunks must be created, 0 and 1 both mean 1</td>
 </tr>
+<tr>
+<td>io_throttle</td>
+<td><a href="#iothrottle"> IoThrottle</a></td>
+<td>IoThrottle specifies maximum io(iops/bandwidth) this volume is restricted to</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -11614,6 +11805,11 @@ performed on a volumen</p>
 <td><a href="#bool"> bool</a></td>
 <td>none</td>
 </tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> io_throttle_opt.io_throttle</td>
+<td><a href="#iothrottle"> IoThrottle</a></td>
+<td>none</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -11796,6 +11992,11 @@ performed on a volumen</p>
 <tr>
 <td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> auto_fstrim_opt.auto_fstrim</td>
 <td><a href="#bool"> bool</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> io_throttle_opt.io_throttle</td>
+<td><a href="#iothrottle"> IoThrottle</a></td>
 <td>none</td>
 </tr>
 </tbody>
@@ -12866,6 +13067,16 @@ used for.</p>
 <td>3</td>
 <td>PXD indicates that the external data source is a Portworx block volume.</td>
 </tr>
+<tr>
+<td>PROXY_PROTOCOL_PURE_BLOCK</td>
+<td>4</td>
+<td>PURE_BLOCK indicates that the external data source is a pure_block volume.</td>
+</tr>
+<tr>
+<td>PROXY_PROTOCOL_PURE_FILE</td>
+<td>5</td>
+<td>PURE_FILE indicates that the external data source is a pure_file volume.</td>
+</tr>
 </tbody>
 </table>
 <h2 id="resourcetype">ResourceType </h2>
@@ -13377,7 +13588,7 @@ client and server applications</p>
 </tr>
 <tr>
 <td>Minor</td>
-<td>115</td>
+<td>120</td>
 <td>SDK version minor value of this specification</td>
 </tr>
 <tr>
@@ -13419,10 +13630,9 @@ client and server applications</p>
 </tr>
 </tbody>
 </table>
-<h2 id="sharedv4servicetype">Sharedv4ServiceType </h2>
-<p>Sharedv4ServiceType defines the type of sharedv4 service
-The type of services are governed by the different types of services
-supported by Container Orchestrator&apos;s like Kubernetes</p>
+<h2 id="sharedv4servicespecservicetype">Sharedv4ServiceSpec.ServiceType </h2>
+<p>Type of sharedv4 service. Values are governed by the different types
+of services supported by container orchestrators such as Kubernetes.</p>
 <table>
 <thead>
 <tr>
@@ -13433,24 +13643,24 @@ supported by Container Orchestrator&apos;s like Kubernetes</p>
 </thead>
 <tbody>
 <tr>
-<td>SHAREDV4_SERVICE_TYPE_INVALID</td>
+<td>UNSPECIFIED</td>
 <td>0</td>
-<td>Invalid uninitialized value</td>
+<td>Unspecified</td>
 </tr>
 <tr>
-<td>SHAREDV4_SERVICE_TYPE_NODEPORT</td>
+<td>NODEPORT</td>
 <td>1</td>
-<td>NodePort will export the sharedv4 service on each Node&apos;s IP In this mode the sharedv4 volume can be accessed from outside the cluster using one of the node&apos;s IPs.</td>
+<td>Export the sharedv4 service on each Node&apos;s IP. In this mode the sharedv4 volume can be accessed from outside the cluster using one of the node&apos;s IPs.</td>
 </tr>
 <tr>
-<td>SHAREDV4_SERVICE_TYPE_CLUSTERIP</td>
+<td>CLUSTERIP</td>
 <td>2</td>
-<td>ClusterIP will export the shared4 service on an internal cluster IP. In this mode the sharedv4 volume will only be accessible within the cluster via this service</td>
+<td>Export the shared4 service on an internal cluster IP. In this mode the sharedv4 volume will only be accessible within the cluster via this service.</td>
 </tr>
 <tr>
-<td>SHAREDV4_SERVICE_TYPE_LOADBALANCER</td>
+<td>LOADBALANCER</td>
 <td>3</td>
-<td>LoadBalancer is applicable when running in cloud and will expose the sharedv4 service on a cloud provider&apos;s load balancer. In this mode the sharedv4 volume can be accessed from outside the cluster</td>
+<td>Expose the sharedv4 service on cloud provider&apos;s load balancer. Applicable when running in cloud. In this mode the sharedv4 volume can be accessed from outside the cluster.</td>
 </tr>
 </tbody>
 </table>
@@ -14071,7 +14281,7 @@ supported by Container Orchestrator&apos;s like Kubernetes</p>
 
             
                 
-                <a href="release-9.0.changelog.html" class="navigation navigation-prev " aria-label="Previous page: Changelog">
+                <a href="release-9.1.changelog.html" class="navigation navigation-prev " aria-label="Previous page: Changelog">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -14087,7 +14297,7 @@ supported by Container Orchestrator&apos;s like Kubernetes</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Nightly","level":"1.5.6","depth":2,"next":{"title":"Changelog","level":"1.5.6.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.5.1","depth":3,"path":"release-9.0.changelog.md","ref":"release-9.0.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"master.generated-api.md","mtime":"2021-04-15T15:47:27.165Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-15T15:47:34.990Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Nightly","level":"1.5.6","depth":2,"next":{"title":"Changelog","level":"1.5.6.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.5.1","depth":3,"path":"release-9.1.changelog.md","ref":"release-9.1.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"master.generated-api.md","mtime":"2021-05-26T15:22:33.514Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-05-26T15:22:37.591Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

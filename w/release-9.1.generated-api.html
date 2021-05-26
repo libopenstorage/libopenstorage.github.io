@@ -69,7 +69,7 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="release-9.0.changelog.html" />
+    <link rel="next" href="release-9.1.changelog.html" />
     
     
     <link rel="prev" href="release-7.0.changelog.html" />
@@ -359,9 +359,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.5.5" data-path="release-9.0.generated-api.html">
+        <li class="chapter active" data-level="1.5.5" data-path="release-9.1.generated-api.html">
             
-                <a href="release-9.0.generated-api.html">
+                <a href="release-9.1.generated-api.html">
             
                     
                         <b>1.5.5.</b>
@@ -375,9 +375,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.5.5.1" data-path="release-9.0.changelog.html">
+        <li class="chapter " data-level="1.5.5.1" data-path="release-9.1.changelog.html">
             
-                <a href="release-9.0.changelog.html">
+                <a href="release-9.1.changelog.html">
             
                     
                         <b>1.5.5.1.</b>
@@ -491,6 +491,7 @@
 <li><a href="#serviceopenstorageapiopenstorageclusterdomains">OpenStorageClusterDomains</a></li>
 <li><a href="#serviceopenstorageapiopenstorageclusterpair">OpenStorageClusterPair</a></li>
 <li><a href="#serviceopenstorageapiopenstoragecredentials">OpenStorageCredentials</a></li>
+<li><a href="#serviceopenstorageapiopenstoragediags">OpenStorageDiags</a></li>
 <li><a href="#serviceopenstorageapiopenstoragefilesystemcheck">OpenStorageFilesystemCheck</a></li>
 <li><a href="#serviceopenstorageapiopenstoragefilesystemtrim">OpenStorageFilesystemTrim</a></li>
 <li><a href="#serviceopenstorageapiopenstorageidentity">OpenStorageIdentity</a></li>
@@ -540,6 +541,10 @@
 <li><a href="#clusterpairsenumerateresponse">ClusterPairsEnumerateResponse</a></li>
 <li><a href="#clusterpairsenumerateresponsepairsentry">ClusterPairsEnumerateResponse.PairsEntry</a></li>
 <li><a href="#clusterresponse">ClusterResponse</a></li>
+<li><a href="#collectdiagsjob">CollectDiagsJob</a></li>
+<li><a href="#diagscollectionstatus">DiagsCollectionStatus</a></li>
+<li><a href="#diagsnodeselector">DiagsNodeSelector</a></li>
+<li><a href="#diagsvolumeselector">DiagsVolumeSelector</a></li>
 <li><a href="#drainattachmentssummary">DrainAttachmentsSummary</a></li>
 <li><a href="#exportspec">ExportSpec</a></li>
 <li><a href="#fastpathconfig">FastpathConfig</a></li>
@@ -572,6 +577,8 @@
 <li><a href="#ownershippublicaccesscontrol">Ownership.PublicAccessControl</a></li>
 <li><a href="#pxdproxyspec">PXDProxySpec</a></li>
 <li><a href="#proxyspec">ProxySpec</a></li>
+<li><a href="#pureblockspec">PureBlockSpec</a></li>
+<li><a href="#purefilespec">PureFileSpec</a></li>
 <li><a href="#replicaplacementspec">ReplicaPlacementSpec</a></li>
 <li><a href="#replicaset">ReplicaSet</a></li>
 <li><a href="#report">Report</a></li>
@@ -681,6 +688,8 @@
 <li><a href="#sdkcredentialinspectresponse">SdkCredentialInspectResponse</a></li>
 <li><a href="#sdkcredentialvalidaterequest">SdkCredentialValidateRequest</a></li>
 <li><a href="#sdkcredentialvalidateresponse">SdkCredentialValidateResponse</a></li>
+<li><a href="#sdkdiagscollectrequest">SdkDiagsCollectRequest</a></li>
+<li><a href="#sdkdiagscollectresponse">SdkDiagsCollectResponse</a></li>
 <li><a href="#sdkenumeratejobsrequest">SdkEnumerateJobsRequest</a></li>
 <li><a href="#sdkenumeratejobsresponse">SdkEnumerateJobsResponse</a></li>
 <li><a href="#sdkenumeraterebalancejobsrequest">SdkEnumerateRebalanceJobsRequest</a></li>
@@ -842,6 +851,7 @@
 <li><a href="#sdkvolumeupdaterequest">SdkVolumeUpdateRequest</a></li>
 <li><a href="#sdkvolumeupdaterequestlabelsentry">SdkVolumeUpdateRequest.LabelsEntry</a></li>
 <li><a href="#sdkvolumeupdateresponse">SdkVolumeUpdateResponse</a></li>
+<li><a href="#sharedv4servicespec">Sharedv4ServiceSpec</a></li>
 <li><a href="#snapcreaterequest">SnapCreateRequest</a></li>
 <li><a href="#snapcreateresponse">SnapCreateResponse</a></li>
 <li><a href="#source">Source</a></li>
@@ -903,6 +913,7 @@
 <li><a href="#cloudmigratestatus">CloudMigrate.Status</a></li>
 <li><a href="#clusterpairmodemode">ClusterPairMode.Mode</a></li>
 <li><a href="#costype">CosType</a></li>
+<li><a href="#diagscollectionstatusstate">DiagsCollectionStatus.State</a></li>
 <li><a href="#drivertype">DriverType</a></li>
 <li><a href="#enforcementtype">EnforcementType</a></li>
 <li><a href="#exportprotocol">ExportProtocol</a></li>
@@ -935,6 +946,7 @@
 <li><a href="#sdktimeweekday">SdkTimeWeekday</a></li>
 <li><a href="#sdkversionversion">SdkVersion.Version</a></li>
 <li><a href="#severitytype">SeverityType</a></li>
+<li><a href="#sharedv4servicespecservicetype">Sharedv4ServiceSpec.ServiceType</a></li>
 <li><a href="#status">Status</a></li>
 <li><a href="#storagemedium">StorageMedium</a></li>
 <li><a href="#storagenodesecuritystatus">StorageNode.SecurityStatus</a></li>
@@ -1270,6 +1282,17 @@ id of the credentials once they are verified to work.</p>
     <a href="#sdkcredentialdeletereferencesresponse">SdkCredentialDeleteReferencesResponse</a></p>
 </blockquote>
 <p>DeleteReferences is used to remove references to credentials
+ <!-- end methods --></p>
+<h1 id="serviceopenstorageapiopenstoragediags">OpenStorageDiags </h1>
+<p>OpenStorageDiags service provides methods to manage diagnostic bundles</p>
+<h2 id="methodopenstorageapiopenstoragediagscollect">Collect </h2>
+<blockquote>
+<p><strong>rpc</strong> Collect(<a href="#sdkdiagscollectrequest">SdkDiagsCollectRequest</a>)
+    <a href="#sdkdiagscollectresponse">SdkDiagsCollectResponse</a></p>
+</blockquote>
+<p>Collect starts a job to collect diagnostics from set of nodes that are selected based on the selectors provided
+in the SdkDiagsCollectRequest. See SdkDiagsCollectRequest for more details on how to select the nodes
+Returns SdkDiagsCollectResponse which has the job that is responsible for collecting the diags.
  <!-- end methods --></p>
 <h1 id="serviceopenstorageapiopenstoragefilesystemcheck">OpenStorageFilesystemCheck </h1>
 <h2 id="methodopenstorageapiopenstoragefilesystemcheckstart">Start </h2>
@@ -2744,6 +2767,119 @@ used by the other dependent snaps and parent volume.</p>
 <p>in: body |
  <!-- end Fields -->
  <!-- end HasFields --></p>
+<h2 id="collectdiagsjob">CollectDiagsJob </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>request</td>
+<td><a href="#sdkdiagscollectrequest"> SdkDiagsCollectRequest</a></td>
+<td>Request is the user request for this diags collection job</td>
+</tr>
+<tr>
+<td>statuses</td>
+<td><a href="#diagscollectionstatus">repeated DiagsCollectionStatus</a></td>
+<td>Statuses is a list of statuses for diags collection for each node that is part of the request</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="diagscollectionstatus">DiagsCollectionStatus </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>node</td>
+<td><a href="#string"> string</a></td>
+<td>Node is the node that&apos;s collecting the diags</td>
+</tr>
+<tr>
+<td>state</td>
+<td><a href="#diagscollectionstatusstate"> DiagsCollectionStatus.State</a></td>
+<td>State is the current state of diags collection on the node</td>
+</tr>
+<tr>
+<td>message</td>
+<td><a href="#string"> string</a></td>
+<td>Message is a user friendly message for current status of diags collection</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="diagsnodeselector">DiagsNodeSelector </h2>
+<p>DiagsNodeSelector allows selecting nodes for diags collection
+User can select NodeLabelSelector AND/OR NodeIDs. If both are provided, the implementation will select nodes based on
+both labels and IDs and also handle overlaps
+If All is set to true, other selectors are ignored since it selects all nodes</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>node_label_selector</td>
+<td><a href="#labelselectorrequirement">repeated LabelSelectorRequirement</a></td>
+<td>NodeLabelSelector is a label selector used to select the nodes for which diags will be collected</td>
+</tr>
+<tr>
+<td>node_ids</td>
+<td><a href="#string">repeated string</a></td>
+<td>NodeIDs are unique IDs fo the nodes for which the diags will be collected</td>
+</tr>
+<tr>
+<td>all</td>
+<td><a href="#bool"> bool</a></td>
+<td>All selects all nodes for diags collection</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="diagsvolumeselector">DiagsVolumeSelector </h2>
+<p>DiagsVolumeSelector allows selecting volumes for diags collection
+User can select VolumeLabelSelector AND/OR VolumeIDs. If both are provided, the implementation will select nodes
+based on both labels and IDs and also handle overlaps</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume_label_selector</td>
+<td><a href="#labelselectorrequirement">repeated LabelSelectorRequirement</a></td>
+<td>VolumeLabelSelector selects volumes by their labels and then uses replica and attached nodes for those volumes for diags collection</td>
+</tr>
+<tr>
+<td>volume_ids</td>
+<td><a href="#string">repeated string</a></td>
+<td>VolumeIDs selects volumes by their unique IDs and then uses replica and attached nodes for those volumes for diags collection</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
 <h2 id="drainattachmentssummary">DrainAttachmentsSummary </h2>
 <p>DrainAttachments summary of the volumes whose attachments need to be drained
 from a node</p>
@@ -3139,6 +3275,11 @@ messages which follow the job framework of APIs</p>
 <td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> job.clouddrive_transfer</td>
 <td><a href="#clouddrivetransferjob"> CloudDriveTransferJob</a></td>
 <td>CloudDriveTransferJob if selected describes the task to transfer a cloud driveset from one node to another</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> job.collect_diags</td>
+<td><a href="#collectdiagsjob"> CollectDiagsJob</a></td>
+<td>CollectDiagsJob if selected describes the task to collect diagnostics for the cluster</td>
 </tr>
 <tr>
 <td>create_time</td>
@@ -3646,6 +3787,39 @@ Administrators are users who belong to the group <code>*</code>, meaning, every 
 <td><a href="#pxdproxyspec"> PXDProxySpec</a></td>
 <td>PXDProxySpec is the spec for proxying a Portworx volume</td>
 </tr>
+<tr>
+<td>pure_block_spec</td>
+<td><a href="#pureblockspec"> PureBlockSpec</a></td>
+<td>PureFileSpec is the spec for proxying a volume on pure_file backends</td>
+</tr>
+<tr>
+<td>pure_file_spec</td>
+<td><a href="#purefilespec"> PureFileSpec</a></td>
+<td>PureFileSpec is the spec for proxying a volume on pure_file backends</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="pureblockspec">PureBlockSpec </h2>
+<p>PureBlockSpec is the spec for proxying a volume on pure_block backends</p>
+ <!-- end HasFields -->
+<h2 id="purefilespec">PureFileSpec </h2>
+<p>PureFileSpec is the spec for proxying a volume on pure_file backends</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>export_rules</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -3919,6 +4093,11 @@ inherit corresponding field value from backup&apos;s spec.</p>
 <td>proxy_spec</td>
 <td><a href="#proxyspec"> ProxySpec</a></td>
 <td>ProxySpec indicates that this volume is used for proxying an external data source</td>
+</tr>
+<tr>
+<td>sharedv4_service_spec</td>
+<td><a href="#sharedv4servicespec"> Sharedv4ServiceSpec</a></td>
+<td>Sharedv4ServiceSpec specifies a spec for configuring a service for a sharedv4 volume</td>
 </tr>
 </tbody>
 </table>
@@ -6244,6 +6423,73 @@ you will need to check if the value of credential_type is one of the ones below.
  <!-- end HasFields -->
 <h2 id="sdkcredentialvalidateresponse">SdkCredentialValidateResponse </h2>
 <p>Empty response</p>
+ <!-- end HasFields -->
+<h2 id="sdkdiagscollectrequest">SdkDiagsCollectRequest </h2>
+<p>SdkDiagsCollectRequest is the request object that specifies what should be part of the diags that are collected
+User can specify both Node and Volume or just one of them. If both are provided, the implementation will select
+nodes based on both and also handle overlaps</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>node</td>
+<td><a href="#diagsnodeselector"> DiagsNodeSelector</a></td>
+<td>Node selects the node(s) for diags collection</td>
+</tr>
+<tr>
+<td>volume</td>
+<td><a href="#diagsvolumeselector"> DiagsVolumeSelector</a></td>
+<td>Volume selects the volume(s) for diags collection</td>
+</tr>
+<tr>
+<td>profile_only</td>
+<td><a href="#bool"> bool</a></td>
+<td>ProfileOnly is an optional flag if true will only collect the stack and heap profile of the driver and will skip other diag components</td>
+</tr>
+<tr>
+<td>issuer</td>
+<td><a href="#string"> string</a></td>
+<td>Issuer is an optional user friendly name for the caller invoking the API</td>
+</tr>
+<tr>
+<td>timeout_mins</td>
+<td><a href="#int64"> int64</a></td>
+<td>TimeoutMins is the timeout in minutes for the job. This is an optional field and if not provided, the implementation of the SDK will use a sane default</td>
+</tr>
+<tr>
+<td>live</td>
+<td><a href="#bool"> bool</a></td>
+<td>Live is an optional flag if true will collect live cores from running processes of the driver</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkdiagscollectresponse">SdkDiagsCollectResponse </h2>
+<p>SdkDiagsCollectResponse defines a response for an SDK request to collect diags</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>job</td>
+<td><a href="#job"> Job</a></td>
+<td>Job that was created for the SDK request</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkenumeratejobsrequest">SdkEnumerateJobsRequest </h2>
 <p>Defines a request to list all the  jobs</p>
@@ -9380,6 +9626,32 @@ to update any labels on the volume.</p>
 <h2 id="sdkvolumeupdateresponse">SdkVolumeUpdateResponse </h2>
 <p>Empty response</p>
  <!-- end HasFields -->
+<h2 id="sharedv4servicespec">Sharedv4ServiceSpec </h2>
+<p>Sharedv4ServiceSpec when set, creates a service endpoint for accessing
+a sharedv4 volume.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td><a href="#string"> string</a></td>
+<td>Name of the service. If not provided the name of the volume will be used for setting up a service</td>
+</tr>
+<tr>
+<td>type</td>
+<td><a href="#sharedv4servicespecservicetype"> Sharedv4ServiceSpec.ServiceType</a></td>
+<td>Indicates what kind of service would be created for this volume.</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
 <h2 id="snapcreaterequest">SnapCreateRequest </h2>
 <p>SnapCreateRequest specifies a request to create a snapshot of given volume.</p>
 <table>
@@ -11092,6 +11364,11 @@ performed on a volumen</p>
 <td><a href="#proxyspec"> ProxySpec</a></td>
 <td>ProxySpec indicates that this volume is used for proxying an external data source</td>
 </tr>
+<tr>
+<td>sharedv4_service_spec</td>
+<td><a href="#sharedv4servicespec"> Sharedv4ServiceSpec</a></td>
+<td>Sharedv4ServiceSpec specifies a spec for configuring a service for a sharedv4 volume</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -11291,6 +11568,11 @@ performed on a volumen</p>
 <td><a href="#bool"> bool</a></td>
 <td>none</td>
 </tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> sharedv4_service_spec_opt.sharedv4_service_spec</td>
+<td><a href="#sharedv4servicespec"> Sharedv4ServiceSpec</a></td>
+<td>none</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -11463,6 +11745,11 @@ performed on a volumen</p>
 <tr>
 <td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> proxy_spec_opt.proxy_spec</td>
 <td><a href="#proxyspec"> ProxySpec</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> sharedv4_service_spec_opt.sharedv4_service_spec</td>
+<td><a href="#sharedv4servicespec"> Sharedv4ServiceSpec</a></td>
 <td>none</td>
 </tr>
 </tbody>
@@ -11803,6 +12090,44 @@ all the volume/snapshot(s) in the node.</p>
 <td>HIGH</td>
 <td>3</td>
 <td>none</td>
+</tr>
+</tbody>
+</table>
+<h2 id="diagscollectionstatusstate">DiagsCollectionStatus.State </h2>
+<p>State is an enum for state of diags collection on a given node</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UNSPECIFIED</td>
+<td>0</td>
+<td>Unspecified means uninitialized or unknown state</td>
+</tr>
+<tr>
+<td>PENDING</td>
+<td>1</td>
+<td>Pending indicates the diags collection is pending and hasn&apos;t started</td>
+</tr>
+<tr>
+<td>RUNNING</td>
+<td>2</td>
+<td>Running indicates diags collection is actively running</td>
+</tr>
+<tr>
+<td>DONE</td>
+<td>3</td>
+<td>Done indicates diags collection has finished</td>
+</tr>
+<tr>
+<td>FAILED</td>
+<td>4</td>
+<td>Failed indicates diags collection has failed</td>
 </tr>
 </tbody>
 </table>
@@ -12356,6 +12681,11 @@ OpenStorageFilesystemTrim service APIs()</p>
 <td>3</td>
 <td>Job for transferring cloud drives between nodes</td>
 </tr>
+<tr>
+<td>COLLECT_DIAGS</td>
+<td>4</td>
+<td>Job for collecting diags from the cluster nodes</td>
+</tr>
 </tbody>
 </table>
 <h2 id="labelselectorrequirementoperator">LabelSelectorRequirement.Operator </h2>
@@ -12489,6 +12819,16 @@ used for.</p>
 <td>PROXY_PROTOCOL_PXD</td>
 <td>3</td>
 <td>PXD indicates that the external data source is a Portworx block volume.</td>
+</tr>
+<tr>
+<td>PROXY_PROTOCOL_PURE_BLOCK</td>
+<td>4</td>
+<td>PURE_BLOCK indicates that the external data source is a pure_block volume.</td>
+</tr>
+<tr>
+<td>PROXY_PROTOCOL_PURE_FILE</td>
+<td>5</td>
+<td>PURE_FILE indicates that the external data source is a pure_file volume.</td>
 </tr>
 </tbody>
 </table>
@@ -12978,7 +13318,7 @@ client and server applications</p>
 </tr>
 <tr>
 <td>Patch</td>
-<td>5</td>
+<td>10</td>
 <td>SDK version patch value of this specification</td>
 </tr>
 </tbody>
@@ -13012,6 +13352,40 @@ client and server applications</p>
 <td>SEVERITY_TYPE_NOTIFY</td>
 <td>3</td>
 <td>none</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sharedv4servicespecservicetype">Sharedv4ServiceSpec.ServiceType </h2>
+<p>Type of sharedv4 service. Values are governed by the different types
+of services supported by container orchestrators such as Kubernetes.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UNSPECIFIED</td>
+<td>0</td>
+<td>Unspecified</td>
+</tr>
+<tr>
+<td>NODEPORT</td>
+<td>1</td>
+<td>Export the sharedv4 service on each Node&apos;s IP. In this mode the sharedv4 volume can be accessed from outside the cluster using one of the node&apos;s IPs.</td>
+</tr>
+<tr>
+<td>CLUSTERIP</td>
+<td>2</td>
+<td>Export the shared4 service on an internal cluster IP. In this mode the sharedv4 volume will only be accessible within the cluster via this service.</td>
+</tr>
+<tr>
+<td>LOADBALANCER</td>
+<td>3</td>
+<td>Expose the sharedv4 service on cloud provider&apos;s load balancer. Applicable when running in cloud. In this mode the sharedv4 volume can be accessed from outside the cluster.</td>
 </tr>
 </tbody>
 </table>
@@ -13632,7 +14006,7 @@ client and server applications</p>
                 </a>
                 
                 
-                <a href="release-9.0.changelog.html" class="navigation navigation-next " aria-label="Next page: Changelog">
+                <a href="release-9.1.changelog.html" class="navigation navigation-next " aria-label="Next page: Changelog">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -13643,7 +14017,7 @@ client and server applications</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"v0.101.x","level":"1.5.5","depth":2,"next":{"title":"Changelog","level":"1.5.5.1","depth":3,"path":"release-9.0.changelog.md","ref":"release-9.0.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.4.1","depth":3,"path":"release-7.0.changelog.md","ref":"release-7.0.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"release-9.0.generated-api.md","mtime":"2021-04-15T15:47:28.089Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-15T15:47:34.990Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"v0.101.x","level":"1.5.5","depth":2,"next":{"title":"Changelog","level":"1.5.5.1","depth":3,"path":"release-9.1.changelog.md","ref":"release-9.1.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.4.1","depth":3,"path":"release-7.0.changelog.md","ref":"release-7.0.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"release-9.1.generated-api.md","mtime":"2021-05-26T15:22:33.982Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-05-26T15:22:37.591Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
