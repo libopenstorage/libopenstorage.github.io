@@ -69,7 +69,7 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="release-9.1.changelog.html" />
+    <link rel="next" href="release-9.2.changelog.html" />
     
     
     <link rel="prev" href="release-7.0.changelog.html" />
@@ -359,9 +359,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.5.5" data-path="release-9.1.generated-api.html">
+        <li class="chapter active" data-level="1.5.5" data-path="release-9.2.generated-api.html">
             
-                <a href="release-9.1.generated-api.html">
+                <a href="release-9.2.generated-api.html">
             
                     
                         <b>1.5.5.</b>
@@ -375,9 +375,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.5.5.1" data-path="release-9.1.changelog.html">
+        <li class="chapter " data-level="1.5.5.1" data-path="release-9.2.changelog.html">
             
-                <a href="release-9.1.changelog.html">
+                <a href="release-9.2.changelog.html">
             
                     
                         <b>1.5.5.1.</b>
@@ -606,6 +606,7 @@
 <li><a href="#sdkazurecredentialresponse">SdkAzureCredentialResponse</a></li>
 <li><a href="#sdkcloudbackupcatalogrequest">SdkCloudBackupCatalogRequest</a></li>
 <li><a href="#sdkcloudbackupcatalogresponse">SdkCloudBackupCatalogResponse</a></li>
+<li><a href="#sdkcloudbackupclustertype">SdkCloudBackupClusterType</a></li>
 <li><a href="#sdkcloudbackupcreaterequest">SdkCloudBackupCreateRequest</a></li>
 <li><a href="#sdkcloudbackupcreaterequestlabelsentry">SdkCloudBackupCreateRequest.LabelsEntry</a></li>
 <li><a href="#sdkcloudbackupcreateresponse">SdkCloudBackupCreateResponse</a></li>
@@ -851,7 +852,9 @@
 <li><a href="#sdkvolumeupdaterequest">SdkVolumeUpdateRequest</a></li>
 <li><a href="#sdkvolumeupdaterequestlabelsentry">SdkVolumeUpdateRequest.LabelsEntry</a></li>
 <li><a href="#sdkvolumeupdateresponse">SdkVolumeUpdateResponse</a></li>
+<li><a href="#sharedv4failoverstrategy">Sharedv4FailoverStrategy</a></li>
 <li><a href="#sharedv4servicespec">Sharedv4ServiceSpec</a></li>
+<li><a href="#sharedv4spec">Sharedv4Spec</a></li>
 <li><a href="#snapcreaterequest">SnapCreateRequest</a></li>
 <li><a href="#snapcreateresponse">SnapCreateResponse</a></li>
 <li><a href="#source">Source</a></li>
@@ -936,6 +939,7 @@
 <li><a href="#restoreparambooltype">RestoreParamBoolType</a></li>
 <li><a href="#scanpolicyscanaction">ScanPolicy.ScanAction</a></li>
 <li><a href="#scanpolicyscantrigger">ScanPolicy.ScanTrigger</a></li>
+<li><a href="#sdkcloudbackupclustertypevalue">SdkCloudBackupClusterType.Value</a></li>
 <li><a href="#sdkcloudbackupoptype">SdkCloudBackupOpType</a></li>
 <li><a href="#sdkcloudbackuprequestedstate">SdkCloudBackupRequestedState</a></li>
 <li><a href="#sdkcloudbackupstatustype">SdkCloudBackupStatusType</a></li>
@@ -946,6 +950,7 @@
 <li><a href="#sdktimeweekday">SdkTimeWeekday</a></li>
 <li><a href="#sdkversionversion">SdkVersion.Version</a></li>
 <li><a href="#severitytype">SeverityType</a></li>
+<li><a href="#sharedv4failoverstrategyvalue">Sharedv4FailoverStrategy.Value</a></li>
 <li><a href="#sharedv4servicespecservicetype">Sharedv4ServiceSpec.ServiceType</a></li>
 <li><a href="#status">Status</a></li>
 <li><a href="#storagemedium">StorageMedium</a></li>
@@ -4099,6 +4104,11 @@ inherit corresponding field value from backup&apos;s spec.</p>
 <td><a href="#sharedv4servicespec"> Sharedv4ServiceSpec</a></td>
 <td>Sharedv4ServiceSpec specifies a spec for configuring a service for a sharedv4 volume</td>
 </tr>
+<tr>
+<td>sharedv4_spec</td>
+<td><a href="#sharedv4spec"> Sharedv4Spec</a></td>
+<td>Sharedv4Spec specifies common properties of sharedv4 and sharedv4 service volumes</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -4648,6 +4658,9 @@ as well.</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
+<h2 id="sdkcloudbackupclustertype">SdkCloudBackupClusterType </h2>
+<p>CloudBackup owner cluster</p>
+ <!-- end HasFields -->
 <h2 id="sdkcloudbackupcreaterequest">SdkCloudBackupCreateRequest </h2>
 <p>Defines a request to create a backup of a volume to the cloud</p>
 <table>
@@ -4872,6 +4885,11 @@ and do not provide <code>volume_id</code> and <code>all</code>.</li>
 <td>cloud_backup_id</td>
 <td><a href="#string"> string</a></td>
 <td>If one wants to enumerate known backup, set this field to the backup ID naming format :clusteruuidORbicketname/srcVolId-snapId(-incr)</td>
+</tr>
+<tr>
+<td>missing_src_volumes</td>
+<td><a href="#bool"> bool</a></td>
+<td>To enumerate cloudbackups for which source volumes do not exist in this cluster</td>
 </tr>
 </tbody>
 </table>
@@ -5132,6 +5150,16 @@ a specific volume to a cloud provider</p>
 <td>status</td>
 <td><a href="#sdkcloudbackupstatustype"> SdkCloudBackupStatusType</a></td>
 <td>Status indicates the status of the backup</td>
+</tr>
+<tr>
+<td>cluster_type</td>
+<td><a href="#sdkcloudbackupclustertypevalue"> SdkCloudBackupClusterType.Value</a></td>
+<td>indicates if the cloudbackup belongs to current cluster, with older cluster this value may be unknown</td>
+</tr>
+<tr>
+<td>namespace</td>
+<td><a href="#string"> string</a></td>
+<td>k8s namespace to which this backup belongs to</td>
 </tr>
 </tbody>
 </table>
@@ -9626,6 +9654,9 @@ to update any labels on the volume.</p>
 <h2 id="sdkvolumeupdateresponse">SdkVolumeUpdateResponse </h2>
 <p>Empty response</p>
  <!-- end HasFields -->
+<h2 id="sharedv4failoverstrategy">Sharedv4FailoverStrategy </h2>
+<p>Sharedv4FailoverStrategy specifies how long to wait before failing over to a new server.</p>
+ <!-- end HasFields -->
 <h2 id="sharedv4servicespec">Sharedv4ServiceSpec </h2>
 <p>Sharedv4ServiceSpec when set, creates a service endpoint for accessing
 a sharedv4 volume.</p>
@@ -9647,6 +9678,26 @@ a sharedv4 volume.</p>
 <td>type</td>
 <td><a href="#sharedv4servicespecservicetype"> Sharedv4ServiceSpec.ServiceType</a></td>
 <td>Indicates what kind of service would be created for this volume.</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sharedv4spec">Sharedv4Spec </h2>
+<p>Sharedv4Spec specifies common properties of sharedv4 and sharedv4 service volumes</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>failover_strategy</td>
+<td><a href="#sharedv4failoverstrategyvalue"> Sharedv4FailoverStrategy.Value</a></td>
+<td>Indicates how aggressively to fail over to a new server.</td>
 </tr>
 </tbody>
 </table>
@@ -10613,6 +10664,11 @@ to seed the volume with data.</p>
 <td><a href="#mountoptions"> MountOptions</a></td>
 <td>Sharedv4MountOptions are the runtime mount options that will be used while mounting a sharedv4 volume from a node where the volume replica does not exist</td>
 </tr>
+<tr>
+<td>derived_io_profile</td>
+<td><a href="#ioprofile"> IoProfile</a></td>
+<td>DerivedIoProfile the IO profile determined from the pattern</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -11369,6 +11425,11 @@ performed on a volumen</p>
 <td><a href="#sharedv4servicespec"> Sharedv4ServiceSpec</a></td>
 <td>Sharedv4ServiceSpec specifies a spec for configuring a service for a sharedv4 volume</td>
 </tr>
+<tr>
+<td>sharedv4_spec</td>
+<td><a href="#sharedv4spec"> Sharedv4Spec</a></td>
+<td>Sharedv4Spec specifies common properties of sharedv4 and sharedv4 service volumes</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -11573,6 +11634,11 @@ performed on a volumen</p>
 <td><a href="#sharedv4servicespec"> Sharedv4ServiceSpec</a></td>
 <td>none</td>
 </tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> sharedv4_spec_opt.sharedv4_spec</td>
+<td><a href="#sharedv4spec"> Sharedv4Spec</a></td>
+<td>none</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -11750,6 +11816,11 @@ performed on a volumen</p>
 <tr>
 <td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> sharedv4_service_spec_opt.sharedv4_service_spec</td>
 <td><a href="#sharedv4servicespec"> Sharedv4ServiceSpec</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> sharedv4_spec_opt.sharedv4_spec</td>
+<td><a href="#sharedv4spec"> Sharedv4Spec</a></td>
 <td>none</td>
 </tr>
 </tbody>
@@ -12600,6 +12671,11 @@ OpenStorageFilesystemTrim service APIs()</p>
 <td>6</td>
 <td>none</td>
 </tr>
+<tr>
+<td>IO_PROFILE_NONE</td>
+<td>7</td>
+<td>none</td>
+</tr>
 </tbody>
 </table>
 <h2 id="jobstate">Job.State </h2>
@@ -12952,6 +13028,33 @@ used for.</p>
 <td>SCAN_TRIGGER_ON_NEXT_MOUNT</td>
 <td>2</td>
 <td>none</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sdkcloudbackupclustertypevalue">SdkCloudBackupClusterType.Value </h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UNKNOWN</td>
+<td>0</td>
+<td>Unknown</td>
+</tr>
+<tr>
+<td>CURRENT_CLUSTER</td>
+<td>1</td>
+<td>Belongs to this cluster</td>
+</tr>
+<tr>
+<td>OTHER_CLUSTER</td>
+<td>2</td>
+<td>belongs to other cluster</td>
 </tr>
 </tbody>
 </table>
@@ -13318,7 +13421,7 @@ client and server applications</p>
 </tr>
 <tr>
 <td>Patch</td>
-<td>10</td>
+<td>14</td>
 <td>SDK version patch value of this specification</td>
 </tr>
 </tbody>
@@ -13352,6 +13455,33 @@ client and server applications</p>
 <td>SEVERITY_TYPE_NOTIFY</td>
 <td>3</td>
 <td>none</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sharedv4failoverstrategyvalue">Sharedv4FailoverStrategy.Value </h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UNSPECIFIED</td>
+<td>0</td>
+<td>Unspecified</td>
+</tr>
+<tr>
+<td>AGGRESSIVE</td>
+<td>1</td>
+<td>Fail over to the new NFS server quickly. This is appropriate for the apps with sharedv4 service volumes. It can also be used for the apps with sharedv4 volumes when such apps are able to restart quickly.</td>
+</tr>
+<tr>
+<td>NORMAL</td>
+<td>2</td>
+<td>Give the old NFS server more time to come back up before triggering the failover. This is appropriate for the apps with sharedv4 volumes (non-service).</td>
 </tr>
 </tbody>
 </table>
@@ -13470,8 +13600,13 @@ of services supported by container orchestrators such as Kubernetes.</p>
 <td>none</td>
 </tr>
 <tr>
-<td>STATUS_MAX</td>
+<td>STATUS_POOLMAINTENANCE</td>
 <td>14</td>
+<td>none</td>
+</tr>
+<tr>
+<td>STATUS_MAX</td>
+<td>15</td>
 <td>Add statuses before MAX and update the number for MAX</td>
 </tr>
 </tbody>
@@ -14006,7 +14141,7 @@ of services supported by container orchestrators such as Kubernetes.</p>
                 </a>
                 
                 
-                <a href="release-9.1.changelog.html" class="navigation navigation-next " aria-label="Next page: Changelog">
+                <a href="release-9.2.changelog.html" class="navigation navigation-next " aria-label="Next page: Changelog">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -14017,7 +14152,7 @@ of services supported by container orchestrators such as Kubernetes.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"v0.101.x","level":"1.5.5","depth":2,"next":{"title":"Changelog","level":"1.5.5.1","depth":3,"path":"release-9.1.changelog.md","ref":"release-9.1.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.4.1","depth":3,"path":"release-7.0.changelog.md","ref":"release-7.0.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"release-9.1.generated-api.md","mtime":"2021-05-26T15:22:33.982Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-05-26T15:22:37.591Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"v0.101.x","level":"1.5.5","depth":2,"next":{"title":"Changelog","level":"1.5.5.1","depth":3,"path":"release-9.2.changelog.md","ref":"release-9.2.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.4.1","depth":3,"path":"release-7.0.changelog.md","ref":"release-7.0.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"release-9.2.generated-api.md","mtime":"2021-10-01T15:13:36.242Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-10-01T15:13:42.952Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
