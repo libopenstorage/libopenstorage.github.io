@@ -551,6 +551,7 @@
 <li><a href="#fastpathreplstate">FastpathReplState</a></li>
 <li><a href="#filesystemcheck">FilesystemCheck</a></li>
 <li><a href="#filesystemtrim">FilesystemTrim</a></li>
+<li><a href="#fstrimvolumeusageinfo">FstrimVolumeUsageInfo</a></li>
 <li><a href="#graphdriverchanges">GraphDriverChanges</a></li>
 <li><a href="#group">Group</a></li>
 <li><a href="#groupsnapcreaterequest">GroupSnapCreateRequest</a></li>
@@ -605,6 +606,9 @@
 <li><a href="#sdkautofstrimstatusrequest">SdkAutoFSTrimStatusRequest</a></li>
 <li><a href="#sdkautofstrimstatusresponse">SdkAutoFSTrimStatusResponse</a></li>
 <li><a href="#sdkautofstrimstatusresponsetrimstatusentry">SdkAutoFSTrimStatusResponse.TrimStatusEntry</a></li>
+<li><a href="#sdkautofstrimusagerequest">SdkAutoFSTrimUsageRequest</a></li>
+<li><a href="#sdkautofstrimusageresponse">SdkAutoFSTrimUsageResponse</a></li>
+<li><a href="#sdkautofstrimusageresponseusageentry">SdkAutoFSTrimUsageResponse.UsageEntry</a></li>
 <li><a href="#sdkawscredentialrequest">SdkAwsCredentialRequest</a></li>
 <li><a href="#sdkawscredentialresponse">SdkAwsCredentialResponse</a></li>
 <li><a href="#sdkazurecredentialrequest">SdkAzureCredentialRequest</a></li>
@@ -1376,6 +1380,13 @@ volume, if any</p>
 <p><strong>rpc</strong> AutoFSTrimStatus(<a href="#sdkautofstrimstatusrequest">SdkAutoFSTrimStatusRequest</a>)
     <a href="#sdkautofstrimstatusresponse">SdkAutoFSTrimStatusResponse</a></p>
 </blockquote>
+<h2 id="methodopenstorageapiopenstoragefilesystemtrimautofstrimusage">AutoFSTrimUsage </h2>
+<blockquote>
+<p><strong>rpc</strong> AutoFSTrimUsage(<a href="#sdkautofstrimusagerequest">SdkAutoFSTrimUsageRequest</a>)
+    <a href="#sdkautofstrimusageresponse">SdkAutoFSTrimUsageResponse</a></p>
+</blockquote>
+<p>Usage of a filesystem Trim background operation on all locally mounted
+volume</p>
 <h2 id="methodopenstorageapiopenstoragefilesystemtrimstop">Stop </h2>
 <blockquote>
 <p><strong>rpc</strong> Stop(<a href="#sdkfilesystemtrimstoprequest">SdkFilesystemTrimStopRequest</a>)
@@ -3084,6 +3095,46 @@ from a node</p>
  <!-- end HasFields -->
 <h2 id="filesystemtrim">FilesystemTrim </h2>
  <!-- end HasFields -->
+<h2 id="fstrimvolumeusageinfo">FstrimVolumeUsageInfo </h2>
+<p>FstrimVolUsageInfo</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume_name</td>
+<td><a href="#string"> string</a></td>
+<td>Volume name</td>
+</tr>
+<tr>
+<td>volume_size</td>
+<td><a href="#uint64"> uint64</a></td>
+<td>Volume size</td>
+</tr>
+<tr>
+<td>du_usage</td>
+<td><a href="#uint64"> uint64</a></td>
+<td>Disk usage in bytes</td>
+</tr>
+<tr>
+<td>px_usage</td>
+<td><a href="#uint64"> uint64</a></td>
+<td>Disk usage seen in Portworx in bytes</td>
+</tr>
+<tr>
+<td>perform_auto_fstrim</td>
+<td><a href="#string"> string</a></td>
+<td>If auto fstrim is performed to the volume, if not, why</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
 <h2 id="graphdriverchanges">GraphDriverChanges </h2>
 <p>GraphDriverChanges represent a list of changes between the filesystem layers
 specified by the ID and Parent.  // Parent may be an empty string, in which
@@ -4624,6 +4675,59 @@ SdkAutoFSTrimStatusRequest.</p>
 <tr>
 <td>value</td>
 <td><a href="#filesystemtrimfilesystemtrimstatus"> FilesystemTrim.FilesystemTrimStatus</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkautofstrimusagerequest">SdkAutoFSTrimUsageRequest </h2>
+<p>SdkAutoFSTrimUsageRequest defines a request to get status of autofs trim operation</p>
+ <!-- end HasFields -->
+<h2 id="sdkautofstrimusageresponse">SdkAutoFSTrimUsageResponse </h2>
+<p>SdkAutoFSTrimUsageResponse defines the response for a
+SdkAutoFSTrimUsageRequest.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>usage</td>
+<td><a href="#sdkautofstrimusageresponseusageentry">map SdkAutoFSTrimUsageResponse.UsageEntry</a></td>
+<td>map of fstrim disk usage and volume name</td>
+</tr>
+<tr>
+<td>message</td>
+<td><a href="#string"> string</a></td>
+<td>Text blob containing ASCII text providing details of the operation</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkautofstrimusageresponseusageentry">SdkAutoFSTrimUsageResponse.UsageEntry </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="#fstrimvolumeusageinfo"> FstrimVolumeUsageInfo</a></td>
 <td>none</td>
 </tr>
 </tbody>
@@ -6671,6 +6775,11 @@ nodes based on both and also handle overlaps</p>
 <td>live</td>
 <td><a href="#bool"> bool</a></td>
 <td>Live is an optional flag if true will collect live cores from running processes of the driver</td>
+</tr>
+<tr>
+<td>filename</td>
+<td><a href="#string"> string</a></td>
+<td>Filename is an optional flag only to be used for testing purposes.</td>
 </tr>
 </tbody>
 </table>
@@ -13700,7 +13809,7 @@ client and server applications</p>
 </tr>
 <tr>
 <td>Minor</td>
-<td>126</td>
+<td>130</td>
 <td>SDK version minor value of this specification</td>
 </tr>
 <tr>
@@ -14436,7 +14545,7 @@ of services supported by container orchestrators such as Kubernetes.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Nightly","level":"1.5.6","depth":2,"next":{"title":"Changelog","level":"1.5.6.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.5.1","depth":3,"path":"release-9.2.changelog.md","ref":"release-9.2.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"master.generated-api.md","mtime":"2021-10-01T15:13:35.290Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-10-01T15:13:42.952Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Nightly","level":"1.5.6","depth":2,"next":{"title":"Changelog","level":"1.5.6.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.5.1","depth":3,"path":"release-9.2.changelog.md","ref":"release-9.2.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"master.generated-api.md","mtime":"2022-01-12T22:17:22.704Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-12T22:17:27.630Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

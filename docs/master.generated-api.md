@@ -69,6 +69,7 @@
     - [FastpathReplState](#fastpathreplstate)
     - [FilesystemCheck](#filesystemcheck)
     - [FilesystemTrim](#filesystemtrim)
+    - [FstrimVolumeUsageInfo](#fstrimvolumeusageinfo)
     - [GraphDriverChanges](#graphdriverchanges)
     - [Group](#group)
     - [GroupSnapCreateRequest](#groupsnapcreaterequest)
@@ -123,6 +124,9 @@
     - [SdkAutoFSTrimStatusRequest](#sdkautofstrimstatusrequest)
     - [SdkAutoFSTrimStatusResponse](#sdkautofstrimstatusresponse)
     - [SdkAutoFSTrimStatusResponse.TrimStatusEntry](#sdkautofstrimstatusresponsetrimstatusentry)
+    - [SdkAutoFSTrimUsageRequest](#sdkautofstrimusagerequest)
+    - [SdkAutoFSTrimUsageResponse](#sdkautofstrimusageresponse)
+    - [SdkAutoFSTrimUsageResponse.UsageEntry](#sdkautofstrimusageresponseusageentry)
     - [SdkAwsCredentialRequest](#sdkawscredentialrequest)
     - [SdkAwsCredentialResponse](#sdkawscredentialresponse)
     - [SdkAzureCredentialRequest](#sdkazurecredentialrequest)
@@ -930,6 +934,13 @@ volume, if any
     [SdkAutoFSTrimStatusResponse](#sdkautofstrimstatusresponse)
 
 
+## AutoFSTrimUsage {#methodopenstorageapiopenstoragefilesystemtrimautofstrimusage}
+
+> **rpc** AutoFSTrimUsage([SdkAutoFSTrimUsageRequest](#sdkautofstrimusagerequest))
+    [SdkAutoFSTrimUsageResponse](#sdkautofstrimusageresponse)
+
+Usage of a filesystem Trim background operation on all locally mounted
+volume
 ## Stop {#methodopenstorageapiopenstoragefilesystemtrimstop}
 
 > **rpc** Stop([SdkFilesystemTrimStopRequest](#sdkfilesystemtrimstoprequest))
@@ -2027,6 +2038,21 @@ FastpathConfig part of volume
  <!-- end HasFields -->
 
 
+## FstrimVolumeUsageInfo {#fstrimvolumeusageinfo}
+FstrimVolUsageInfo
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_name | [ string](#string) | Volume name |
+| volume_size | [ uint64](#uint64) | Volume size |
+| du_usage | [ uint64](#uint64) | Disk usage in bytes |
+| px_usage | [ uint64](#uint64) | Disk usage seen in Portworx in bytes |
+| perform_auto_fstrim | [ string](#string) | If auto fstrim is performed to the volume, if not, why |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
 ## GraphDriverChanges {#graphdriverchanges}
 GraphDriverChanges represent a list of changes between the filesystem layers
 specified by the ID and Parent.  // Parent may be an empty string, in which
@@ -2741,6 +2767,37 @@ SdkAutoFSTrimStatusRequest.
 | ----- | ---- | ----------- |
 | key | [ string](#string) | none |
 | value | [ FilesystemTrim.FilesystemTrimStatus](#filesystemtrimfilesystemtrimstatus) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkAutoFSTrimUsageRequest {#sdkautofstrimusagerequest}
+SdkAutoFSTrimUsageRequest defines a request to get status of autofs trim operation
+
+ <!-- end HasFields -->
+
+
+## SdkAutoFSTrimUsageResponse {#sdkautofstrimusageresponse}
+SdkAutoFSTrimUsageResponse defines the response for a
+SdkAutoFSTrimUsageRequest.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| usage | [map SdkAutoFSTrimUsageResponse.UsageEntry](#sdkautofstrimusageresponseusageentry) | map of fstrim disk usage and volume name |
+| message | [ string](#string) | Text blob containing ASCII text providing details of the operation |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkAutoFSTrimUsageResponse.UsageEntry {#sdkautofstrimusageresponseusageentry}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [ string](#string) | none |
+| value | [ FstrimVolumeUsageInfo](#fstrimvolumeusageinfo) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3778,6 +3835,7 @@ nodes based on both and also handle overlaps
 | issuer | [ string](#string) | Issuer is an optional user friendly name for the caller invoking the API |
 | timeout_mins | [ int64](#int64) | TimeoutMins is the timeout in minutes for the job. This is an optional field and if not provided, the implementation of the SDK will use a sane default |
 | live | [ bool](#bool) | Live is an optional flag if true will collect live cores from running processes of the driver |
+| filename | [ string](#string) | Filename is an optional flag only to be used for testing purposes. |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -6989,7 +7047,7 @@ client and server applications
 | ---- | ------ | ----------- |
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
-| Minor | 126 | SDK version minor value of this specification |
+| Minor | 130 | SDK version minor value of this specification |
 | Patch | 0 | SDK version patch value of this specification |
 
 
