@@ -69,7 +69,7 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="release-9.2.changelog.html" />
+    <link rel="next" href="release-9.5.changelog.html" />
     
     
     <link rel="prev" href="release-7.0.changelog.html" />
@@ -359,9 +359,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.5.5" data-path="release-9.2.generated-api.html">
+        <li class="chapter active" data-level="1.5.5" data-path="release-9.5.generated-api.html">
             
-                <a href="release-9.2.generated-api.html">
+                <a href="release-9.5.generated-api.html">
             
                     
                         <b>1.5.5.</b>
@@ -375,9 +375,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.5.5.1" data-path="release-9.2.changelog.html">
+        <li class="chapter " data-level="1.5.5.1" data-path="release-9.5.changelog.html">
             
-                <a href="release-9.2.changelog.html">
+                <a href="release-9.5.changelog.html">
             
                     
                         <b>1.5.5.1.</b>
@@ -486,6 +486,7 @@
 <ul>
 <li>Services<ul>
 <li><a href="#serviceopenstorageapiopenstoragealerts">OpenStorageAlerts</a></li>
+<li><a href="#serviceopenstorageapiopenstoragebucket">OpenStorageBucket</a></li>
 <li><a href="#serviceopenstorageapiopenstoragecloudbackup">OpenStorageCloudBackup</a></li>
 <li><a href="#serviceopenstorageapiopenstoragecluster">OpenStorageCluster</a></li>
 <li><a href="#serviceopenstorageapiopenstorageclusterdomains">OpenStorageClusterDomains</a></li>
@@ -515,6 +516,15 @@
 <li><a href="#activerequests">ActiveRequests</a></li>
 <li><a href="#alert">Alert</a></li>
 <li><a href="#alerts">Alerts</a></li>
+<li><a href="#bucketaccesscredentials">BucketAccessCredentials</a></li>
+<li><a href="#bucketcreaterequest">BucketCreateRequest</a></li>
+<li><a href="#bucketcreateresponse">BucketCreateResponse</a></li>
+<li><a href="#bucketdeleterequest">BucketDeleteRequest</a></li>
+<li><a href="#bucketdeleteresponse">BucketDeleteResponse</a></li>
+<li><a href="#bucketgrantaccessrequest">BucketGrantAccessRequest</a></li>
+<li><a href="#bucketgrantaccessresponse">BucketGrantAccessResponse</a></li>
+<li><a href="#bucketrevokeaccessrequest">BucketRevokeAccessRequest</a></li>
+<li><a href="#bucketrevokeaccessresponse">BucketRevokeAccessResponse</a></li>
 <li><a href="#capacityusageinfo">CapacityUsageInfo</a></li>
 <li><a href="#catalog">Catalog</a></li>
 <li><a href="#catalogresponse">CatalogResponse</a></li>
@@ -551,6 +561,7 @@
 <li><a href="#fastpathreplstate">FastpathReplState</a></li>
 <li><a href="#filesystemcheck">FilesystemCheck</a></li>
 <li><a href="#filesystemtrim">FilesystemTrim</a></li>
+<li><a href="#fstrimvolumeusageinfo">FstrimVolumeUsageInfo</a></li>
 <li><a href="#graphdriverchanges">GraphDriverChanges</a></li>
 <li><a href="#group">Group</a></li>
 <li><a href="#groupsnapcreaterequest">GroupSnapCreateRequest</a></li>
@@ -558,6 +569,7 @@
 <li><a href="#groupsnapcreateresponse">GroupSnapCreateResponse</a></li>
 <li><a href="#groupsnapcreateresponsesnapshotsentry">GroupSnapCreateResponse.SnapshotsEntry</a></li>
 <li><a href="#iostrategy">IoStrategy</a></li>
+<li><a href="#iothrottle">IoThrottle</a></li>
 <li><a href="#job">Job</a></li>
 <li><a href="#jobaudit">JobAudit</a></li>
 <li><a href="#jobsummary">JobSummary</a></li>
@@ -579,6 +591,7 @@
 <li><a href="#proxyspec">ProxySpec</a></li>
 <li><a href="#pureblockspec">PureBlockSpec</a></li>
 <li><a href="#purefilespec">PureFileSpec</a></li>
+<li><a href="#relaxedreclaimpurge">RelaxedReclaimPurge</a></li>
 <li><a href="#replicaplacementspec">ReplicaPlacementSpec</a></li>
 <li><a href="#replicaset">ReplicaSet</a></li>
 <li><a href="#report">Report</a></li>
@@ -589,6 +602,8 @@
 <li><a href="#runtimestatemapruntimestateentry">RuntimeStateMap.RuntimeStateEntry</a></li>
 <li><a href="#s3proxyspec">S3ProxySpec</a></li>
 <li><a href="#scanpolicy">ScanPolicy</a></li>
+<li><a href="#schedulertopology">SchedulerTopology</a></li>
+<li><a href="#schedulertopologylabelsentry">SchedulerTopology.LabelsEntry</a></li>
 <li><a href="#sdkalertsalerttypequery">SdkAlertsAlertTypeQuery</a></li>
 <li><a href="#sdkalertscountspan">SdkAlertsCountSpan</a></li>
 <li><a href="#sdkalertsdeleterequest">SdkAlertsDeleteRequest</a></li>
@@ -600,6 +615,12 @@
 <li><a href="#sdkalertsresourceidquery">SdkAlertsResourceIdQuery</a></li>
 <li><a href="#sdkalertsresourcetypequery">SdkAlertsResourceTypeQuery</a></li>
 <li><a href="#sdkalertstimespan">SdkAlertsTimeSpan</a></li>
+<li><a href="#sdkautofstrimstatusrequest">SdkAutoFSTrimStatusRequest</a></li>
+<li><a href="#sdkautofstrimstatusresponse">SdkAutoFSTrimStatusResponse</a></li>
+<li><a href="#sdkautofstrimstatusresponsetrimstatusentry">SdkAutoFSTrimStatusResponse.TrimStatusEntry</a></li>
+<li><a href="#sdkautofstrimusagerequest">SdkAutoFSTrimUsageRequest</a></li>
+<li><a href="#sdkautofstrimusageresponse">SdkAutoFSTrimUsageResponse</a></li>
+<li><a href="#sdkautofstrimusageresponseusageentry">SdkAutoFSTrimUsageResponse.UsageEntry</a></li>
 <li><a href="#sdkawscredentialrequest">SdkAwsCredentialRequest</a></li>
 <li><a href="#sdkawscredentialresponse">SdkAwsCredentialResponse</a></li>
 <li><a href="#sdkazurecredentialrequest">SdkAzureCredentialRequest</a></li>
@@ -687,6 +708,8 @@
 <li><a href="#sdkcredentialenumerateresponse">SdkCredentialEnumerateResponse</a></li>
 <li><a href="#sdkcredentialinspectrequest">SdkCredentialInspectRequest</a></li>
 <li><a href="#sdkcredentialinspectresponse">SdkCredentialInspectResponse</a></li>
+<li><a href="#sdkcredentialupdaterequest">SdkCredentialUpdateRequest</a></li>
+<li><a href="#sdkcredentialupdateresponse">SdkCredentialUpdateResponse</a></li>
 <li><a href="#sdkcredentialvalidaterequest">SdkCredentialValidateRequest</a></li>
 <li><a href="#sdkcredentialvalidateresponse">SdkCredentialValidateResponse</a></li>
 <li><a href="#sdkdiagscollectrequest">SdkDiagsCollectRequest</a></li>
@@ -875,6 +898,8 @@
 <li><a href="#storageresource">StorageResource</a></li>
 <li><a href="#storageversion">StorageVersion</a></li>
 <li><a href="#storageversiondetailsentry">StorageVersion.DetailsEntry</a></li>
+<li><a href="#topologyrequirement">TopologyRequirement</a></li>
+<li><a href="#topologyrequirementlabelsentry">TopologyRequirement.LabelsEntry</a></li>
 <li><a href="#volume">Volume</a></li>
 <li><a href="#volumeattachinfoentry">Volume.AttachInfoEntry</a></li>
 <li><a href="#volumeconsumer">VolumeConsumer</a></li>
@@ -910,6 +935,7 @@
 <ul>
 <li>Enums<ul>
 <li><a href="#alertactiontype">AlertActionType</a></li>
+<li><a href="#anonymousbucketaccessmode">AnonymousBucketAccessMode</a></li>
 <li><a href="#attachstate">AttachState</a></li>
 <li><a href="#cloudmigrateoperationtype">CloudMigrate.OperationType</a></li>
 <li><a href="#cloudmigratestage">CloudMigrate.Stage</a></li>
@@ -1021,6 +1047,29 @@ eventually packed as list in SdkAlertsEnumerateRequest.</p>
 <p>SdkAlertsDeleteRequest takes a list of such queries and all alerts
 that match at least one of the queries are deleted.
  <!-- end methods --></p>
+<h1 id="serviceopenstorageapiopenstoragebucket">OpenStorageBucket </h1>
+<p>BucketService to manage the bucket driver</p>
+<h2 id="methodopenstorageapiopenstoragebucketcreate">Create </h2>
+<blockquote>
+<p><strong>rpc</strong> Create(<a href="#bucketcreaterequest">BucketCreateRequest</a>)
+    <a href="#bucketcreateresponse">BucketCreateResponse</a></p>
+</blockquote>
+<h2 id="methodopenstorageapiopenstoragebucketdelete">Delete </h2>
+<blockquote>
+<p><strong>rpc</strong> Delete(<a href="#bucketdeleterequest">BucketDeleteRequest</a>)
+    <a href="#bucketdeleteresponse">BucketDeleteResponse</a></p>
+</blockquote>
+<h2 id="methodopenstorageapiopenstoragebucketgrantaccess">GrantAccess </h2>
+<blockquote>
+<p><strong>rpc</strong> GrantAccess(<a href="#bucketgrantaccessrequest">BucketGrantAccessRequest</a>)
+    <a href="#bucketgrantaccessresponse">BucketGrantAccessResponse</a></p>
+</blockquote>
+<h2 id="methodopenstorageapiopenstoragebucketrevokeaccess">RevokeAccess </h2>
+<blockquote>
+<p><strong>rpc</strong> RevokeAccess(<a href="#bucketrevokeaccessrequest">BucketRevokeAccessRequest</a>)
+    <a href="#bucketrevokeaccessresponse">BucketRevokeAccessResponse</a></p>
+</blockquote>
+ <!-- end methods -->
 <h1 id="serviceopenstorageapiopenstoragecloudbackup">OpenStorageCloudBackup </h1>
 <p>OpenStorageCloudBackup service manages backing up volumes to a cloud
 location like Amazon, Google, or Azure.</p>
@@ -1257,6 +1306,12 @@ id of the credentials once they are verified to work.</p>
     secret_key<span class="token operator">=</span><span class="token string">&apos;dumm-secret&apos;</span><span class="token punctuation">,</span>
     endpoint<span class="token operator">=</span><span class="token string">&apos;dummy-endpoint&apos;</span><span class="token punctuation">,</span>
     region<span class="token operator">=</span><span class="token string">&apos;dummy-region&apos;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre></div></div></div></p>
+<h2 id="methodopenstorageapiopenstoragecredentialsupdate">Update </h2>
+<blockquote>
+<p><strong>rpc</strong> Update(<a href="#sdkcredentialupdaterequest">SdkCredentialUpdateRequest</a>)
+    <a href="#sdkcredentialupdateresponse">SdkCredentialUpdateResponse</a></p>
+</blockquote>
+<p>input is very same as credential create</p>
 <h2 id="methodopenstorageapiopenstoragecredentialsenumerate">Enumerate </h2>
 <blockquote>
 <p><strong>rpc</strong> Enumerate(<a href="#sdkcredentialenumeraterequest">SdkCredentialEnumerateRequest</a>)
@@ -1357,6 +1412,18 @@ operation was successfully started or not.</li>
 </blockquote>
 <p>Status of a filesystem Trim background operation on a mounted
 volume, if any</p>
+<h2 id="methodopenstorageapiopenstoragefilesystemtrimautofstrimstatus">AutoFSTrimStatus </h2>
+<blockquote>
+<p><strong>rpc</strong> AutoFSTrimStatus(<a href="#sdkautofstrimstatusrequest">SdkAutoFSTrimStatusRequest</a>)
+    <a href="#sdkautofstrimstatusresponse">SdkAutoFSTrimStatusResponse</a></p>
+</blockquote>
+<h2 id="methodopenstorageapiopenstoragefilesystemtrimautofstrimusage">AutoFSTrimUsage </h2>
+<blockquote>
+<p><strong>rpc</strong> AutoFSTrimUsage(<a href="#sdkautofstrimusagerequest">SdkAutoFSTrimUsageRequest</a>)
+    <a href="#sdkautofstrimusageresponse">SdkAutoFSTrimUsageResponse</a></p>
+</blockquote>
+<p>Usage of a filesystem Trim background operation on all locally mounted
+volume</p>
 <h2 id="methodopenstorageapiopenstoragefilesystemtrimstop">Stop </h2>
 <blockquote>
 <p><strong>rpc</strong> Stop(<a href="#sdkfilesystemtrimstoprequest">SdkFilesystemTrimStopRequest</a>)
@@ -2032,6 +2099,207 @@ Takes a path that can be used as the new root for the catalog request.
 </tbody>
 </table>
  <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="bucketaccesscredentials">BucketAccessCredentials </h2>
+<p>Defines the bucket access credential object</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>access_key_id</td>
+<td><a href="#string"> string</a></td>
+<td>Access key id</td>
+</tr>
+<tr>
+<td>secret_access_key</td>
+<td><a href="#string"> string</a></td>
+<td>Secret access key</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="bucketcreaterequest">BucketCreateRequest </h2>
+<p>Defines a request to create a bucket.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td><a href="#string"> string</a></td>
+<td>Unique name of the bucket. This will be used for idempotency.</td>
+</tr>
+<tr>
+<td>region</td>
+<td><a href="#string"> string</a></td>
+<td>Region in which bucket will be created.</td>
+</tr>
+<tr>
+<td>endpoint</td>
+<td><a href="#string"> string</a></td>
+<td>Endpoint to use when creating the bucket</td>
+</tr>
+<tr>
+<td>anonymousBucketAccessMode</td>
+<td><a href="#anonymousbucketaccessmode"> AnonymousBucketAccessMode</a></td>
+<td>Anonymous access policy for the bucket.</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="bucketcreateresponse">BucketCreateResponse </h2>
+<p>Defines a response to the creation of a bucket</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bucket_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of new bucket</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="bucketdeleterequest">BucketDeleteRequest </h2>
+<p>Defines the request to delete a bucket</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bucket_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of bucket to delete</td>
+</tr>
+<tr>
+<td>region</td>
+<td><a href="#string"> string</a></td>
+<td>Region in which bucket will be created.</td>
+</tr>
+<tr>
+<td>endpoint</td>
+<td><a href="#string"> string</a></td>
+<td>Endpoint to use when deleting the bucket</td>
+</tr>
+<tr>
+<td>clear_bucket</td>
+<td><a href="#bool"> bool</a></td>
+<td>Flag to allow non empty bucket deletion.</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="bucketdeleteresponse">BucketDeleteResponse </h2>
+<p>Empty response</p>
+ <!-- end HasFields -->
+<h2 id="bucketgrantaccessrequest">BucketGrantAccessRequest </h2>
+<p>Defines a request to grant access to the bucket</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bucket_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of the bucket</td>
+</tr>
+<tr>
+<td>account_name</td>
+<td><a href="#string"> string</a></td>
+<td>Name of the account to which access to be provided</td>
+</tr>
+<tr>
+<td>access_policy</td>
+<td><a href="#string"> string</a></td>
+<td>Access policy to be applied for the account</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="bucketgrantaccessresponse">BucketGrantAccessResponse </h2>
+<p>Defines a response to the creation of a bucket</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>account_id</td>
+<td><a href="#string"> string</a></td>
+<td>This is the account_id that is being provided access. This will This will be required later to revoke access.</td>
+</tr>
+<tr>
+<td>credentials</td>
+<td><a href="#bucketaccesscredentials"> BucketAccessCredentials</a></td>
+<td>Credentials supplied for accessing the bucket ex: aws access key id and secret, etc.</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="bucketrevokeaccessrequest">BucketRevokeAccessRequest </h2>
+<p>Defines the request to revoke access to the bucket</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bucket_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of bucket to delete</td>
+</tr>
+<tr>
+<td>account_id</td>
+<td><a href="#string"> string</a></td>
+<td>AccountId that is having its access revoked.</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="bucketrevokeaccessresponse">BucketRevokeAccessResponse </h2>
+<p>Empty response</p>
  <!-- end HasFields -->
 <h2 id="capacityusageinfo">CapacityUsageInfo </h2>
 <p>Provides details on exclusive and shared storage used by
@@ -3059,6 +3327,46 @@ from a node</p>
  <!-- end HasFields -->
 <h2 id="filesystemtrim">FilesystemTrim </h2>
  <!-- end HasFields -->
+<h2 id="fstrimvolumeusageinfo">FstrimVolumeUsageInfo </h2>
+<p>FstrimVolUsageInfo</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume_name</td>
+<td><a href="#string"> string</a></td>
+<td>Volume name</td>
+</tr>
+<tr>
+<td>volume_size</td>
+<td><a href="#uint64"> uint64</a></td>
+<td>Volume size</td>
+</tr>
+<tr>
+<td>du_usage</td>
+<td><a href="#uint64"> uint64</a></td>
+<td>Disk usage in bytes</td>
+</tr>
+<tr>
+<td>px_usage</td>
+<td><a href="#uint64"> uint64</a></td>
+<td>Disk usage seen in Portworx in bytes</td>
+</tr>
+<tr>
+<td>perform_auto_fstrim</td>
+<td><a href="#string"> string</a></td>
+<td>If auto fstrim is performed to the volume, if not, why</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
 <h2 id="graphdriverchanges">GraphDriverChanges </h2>
 <p>GraphDriverChanges represent a list of changes between the filesystem layers
 specified by the ID and Parent.  // Parent may be an empty string, in which
@@ -3239,6 +3547,45 @@ All volumes in the same group share this object.</p>
 <td>direct_io</td>
 <td><a href="#bool"> bool</a></td>
 <td>Enable direct I/O on the backing datastore</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="iothrottle">IoThrottle </h2>
+<p>IoThrottle defines IO throttle limits for a volume
+read_iops : maximum read iops this volume is allowed
+write_iops : maximum write iops this volume is allowed
+read_bw_mbytes  : maximum read bandwidth this volume is allowed in MegaBytes
+write_bw_mbytes : maximum write bandwidth this volume is allowed in MegaBytes</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>read_iops</td>
+<td><a href="#uint32"> uint32</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>write_iops</td>
+<td><a href="#uint32"> uint32</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>read_bw_mbytes</td>
+<td><a href="#uint32"> uint32</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>write_bw_mbytes</td>
+<td><a href="#uint32"> uint32</a></td>
+<td>none</td>
 </tr>
 </tbody>
 </table>
@@ -3808,6 +4155,28 @@ Administrators are users who belong to the group <code>*</code>, meaning, every 
  <!-- end HasFields -->
 <h2 id="pureblockspec">PureBlockSpec </h2>
 <p>PureBlockSpec is the spec for proxying a volume on pure_block backends</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>serial_num</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>full_vol_name</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="purefilespec">PureFileSpec </h2>
 <p>PureFileSpec is the spec for proxying a volume on pure_file backends</p>
@@ -3824,6 +4193,31 @@ Administrators are users who belong to the group <code>*</code>, meaning, every 
 <td>export_rules</td>
 <td><a href="#string"> string</a></td>
 <td>none</td>
+</tr>
+<tr>
+<td>full_vol_name</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="relaxedreclaimpurge">RelaxedReclaimPurge </h2>
+<p>Purges the RelaxedReclaim queue</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>num_purged</td>
+<td><a href="#uint64"> uint64</a></td>
+<td>num_purged returns number of volumes purged</td>
 </tr>
 </tbody>
 </table>
@@ -4109,6 +4503,16 @@ inherit corresponding field value from backup&apos;s spec.</p>
 <td><a href="#sharedv4spec"> Sharedv4Spec</a></td>
 <td>Sharedv4Spec specifies common properties of sharedv4 and sharedv4 service volumes</td>
 </tr>
+<tr>
+<td>auto_fstrim</td>
+<td><a href="#restoreparambooltype"> RestoreParamBoolType</a></td>
+<td>Autofstrim is true if automatic fstrim is enabled for the volume</td>
+</tr>
+<tr>
+<td>io_throttle</td>
+<td><a href="#iothrottle"> IoThrottle</a></td>
+<td>IoThrottle specifies maximum io(iops/bandwidth) this volume is restricted to</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -4209,6 +4613,51 @@ output of the action.</li>
 <tr>
 <td>action</td>
 <td><a href="#scanpolicyscanaction"> ScanPolicy.ScanAction</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="schedulertopology">SchedulerTopology </h2>
+<p>SchedulerTopology defines the topology information of the storage node
+in scheduler context</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>labels</td>
+<td><a href="#schedulertopologylabelsentry">map SchedulerTopology.LabelsEntry</a></td>
+<td>Key-value pairs defining the topology of the node</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="schedulertopologylabelsentry">SchedulerTopology.LabelsEntry </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="#string"> string</a></td>
 <td>none</td>
 </tr>
 </tbody>
@@ -4473,6 +4922,112 @@ as well.</p>
 <td>end_time</td>
 <td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
 <td>End timestamp when Alert occured</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkautofstrimstatusrequest">SdkAutoFSTrimStatusRequest </h2>
+<p>SdkAutoFSTrimStatusRequest defines a request to get status of autofs trim operation</p>
+ <!-- end HasFields -->
+<h2 id="sdkautofstrimstatusresponse">SdkAutoFSTrimStatusResponse </h2>
+<p>SdkAutoFSTrimStatusResponse defines the response for a
+SdkAutoFSTrimStatusRequest.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>trim_status</td>
+<td><a href="#sdkautofstrimstatusresponsetrimstatusentry">map SdkAutoFSTrimStatusResponse.TrimStatusEntry</a></td>
+<td>map of volume id and the state of the filesystem trim operation</td>
+</tr>
+<tr>
+<td>message</td>
+<td><a href="#string"> string</a></td>
+<td>Text blob containing ASCII text providing details of the operation</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkautofstrimstatusresponsetrimstatusentry">SdkAutoFSTrimStatusResponse.TrimStatusEntry </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="#filesystemtrimfilesystemtrimstatus"> FilesystemTrim.FilesystemTrimStatus</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkautofstrimusagerequest">SdkAutoFSTrimUsageRequest </h2>
+<p>SdkAutoFSTrimUsageRequest defines a request to get status of autofs trim operation</p>
+ <!-- end HasFields -->
+<h2 id="sdkautofstrimusageresponse">SdkAutoFSTrimUsageResponse </h2>
+<p>SdkAutoFSTrimUsageResponse defines the response for a
+SdkAutoFSTrimUsageRequest.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>usage</td>
+<td><a href="#sdkautofstrimusageresponseusageentry">map SdkAutoFSTrimUsageResponse.UsageEntry</a></td>
+<td>map of fstrim disk usage and volume name</td>
+</tr>
+<tr>
+<td>message</td>
+<td><a href="#string"> string</a></td>
+<td>Text blob containing ASCII text providing details of the operation</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkautofstrimusageresponseusageentry">SdkAutoFSTrimUsageResponse.UsageEntry </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="#fstrimvolumeusageinfo"> FstrimVolumeUsageInfo</a></td>
+<td>none</td>
 </tr>
 </tbody>
 </table>
@@ -6428,6 +6983,34 @@ you will need to check if the value of credential_type is one of the ones below.
 </tbody>
 </table>
  <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcredentialupdaterequest">SdkCredentialUpdateRequest </h2>
+<p>Defines request for credential update</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>credential_id</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>update_req</td>
+<td><a href="#sdkcredentialcreaterequest"> SdkCredentialCreateRequest</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkcredentialupdateresponse">SdkCredentialUpdateResponse </h2>
+<p>Defines response for credential update</p>
  <!-- end HasFields -->
 <h2 id="sdkcredentialvalidaterequest">SdkCredentialValidateRequest </h2>
 <p>Defines a request to validate credentials</p>
@@ -9846,6 +10429,11 @@ to seed the volume with data.</p>
 <td><a href="#uint64"> uint64</a></td>
 <td>Interval in ms during which stats were collected</td>
 </tr>
+<tr>
+<td>unique_blocks</td>
+<td><a href="#uint64"> uint64</a></td>
+<td>Unique Blocks</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -9970,6 +10558,11 @@ to seed the volume with data.</p>
 <td>security_status</td>
 <td><a href="#storagenodesecuritystatus"> StorageNode.SecurityStatus</a></td>
 <td>Determine if the node is secured</td>
+</tr>
+<tr>
+<td>scheduler_topology</td>
+<td><a href="#schedulertopology"> SchedulerTopology</a></td>
+<td>Topology information of the node in scheduler context</td>
 </tr>
 </tbody>
 </table>
@@ -10503,6 +11096,50 @@ to seed the volume with data.</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
+<h2 id="topologyrequirement">TopologyRequirement </h2>
+<p>TopologyRequirement defines the topology requirement for a volume</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>labels</td>
+<td><a href="#topologyrequirementlabelsentry">map TopologyRequirement.LabelsEntry</a></td>
+<td>Key-value pairs defining the required topology for a volume</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="topologyrequirementlabelsentry">TopologyRequirement.LabelsEntry </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
 <h2 id="volume">Volume </h2>
 <p>Volume represents an abstract storage volume.</p>
 <table>
@@ -10668,6 +11305,11 @@ to seed the volume with data.</p>
 <td>derived_io_profile</td>
 <td><a href="#ioprofile"> IoProfile</a></td>
 <td>DerivedIoProfile the IO profile determined from the pattern</td>
+</tr>
+<tr>
+<td>in_trashcan</td>
+<td><a href="#bool"> bool</a></td>
+<td>InTrashcan if the volume is in trashcan</td>
 </tr>
 </tbody>
 </table>
@@ -11430,6 +12072,21 @@ performed on a volumen</p>
 <td><a href="#sharedv4spec"> Sharedv4Spec</a></td>
 <td>Sharedv4Spec specifies common properties of sharedv4 and sharedv4 service volumes</td>
 </tr>
+<tr>
+<td>auto_fstrim</td>
+<td><a href="#bool"> bool</a></td>
+<td>Autofstrim indicates that fstrim would be run on this volume automatically, without user intervention</td>
+</tr>
+<tr>
+<td>io_throttle</td>
+<td><a href="#iothrottle"> IoThrottle</a></td>
+<td>IoThrottle specifies maximum io(iops/bandwidth) this volume is restricted to</td>
+</tr>
+<tr>
+<td>topology_requirement</td>
+<td><a href="#topologyrequirement"> TopologyRequirement</a></td>
+<td>TopologyRequirement topology requirement for this volume</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -11639,6 +12296,16 @@ performed on a volumen</p>
 <td><a href="#sharedv4spec"> Sharedv4Spec</a></td>
 <td>none</td>
 </tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> auto_fstrim_opt.auto_fstrim</td>
+<td><a href="#bool"> bool</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> io_throttle_opt.io_throttle</td>
+<td><a href="#iothrottle"> IoThrottle</a></td>
+<td>none</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -11823,6 +12490,16 @@ performed on a volumen</p>
 <td><a href="#sharedv4spec"> Sharedv4Spec</a></td>
 <td>none</td>
 </tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> auto_fstrim_opt.auto_fstrim</td>
+<td><a href="#bool"> bool</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> io_throttle_opt.io_throttle</td>
+<td><a href="#iothrottle"> IoThrottle</a></td>
+<td>none</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -11964,6 +12641,43 @@ all the volume/snapshot(s) in the node.</p>
 <td>ALERT_ACTION_TYPE_UPDATE</td>
 <td>3</td>
 <td>none</td>
+</tr>
+</tbody>
+</table>
+<h2 id="anonymousbucketaccessmode">AnonymousBucketAccessMode </h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UnknownBucketAccessMode</td>
+<td>0</td>
+<td>none</td>
+</tr>
+<tr>
+<td>Private</td>
+<td>1</td>
+<td>Default, disallow uncredentialed access to the backend storage.</td>
+</tr>
+<tr>
+<td>ReadOnly</td>
+<td>2</td>
+<td>Read only, uncredentialed users can call ListBucket and GetObject.</td>
+</tr>
+<tr>
+<td>WriteOnly</td>
+<td>3</td>
+<td>Write only, uncredentialed users can only call PutObject.</td>
+</tr>
+<tr>
+<td>ReadWrite</td>
+<td>4</td>
+<td>Read/Write, uncredentialed users can read objects as well as PutObject.</td>
 </tr>
 </tbody>
 </table>
@@ -12129,6 +12843,11 @@ all the volume/snapshot(s) in the node.</p>
 <td>DisasterRecovery</td>
 <td>1</td>
 <td>Paired for DisasterRecovery</td>
+</tr>
+<tr>
+<td>OneTimeMigration</td>
+<td>2</td>
+<td>Paired for one-time migration</td>
 </tr>
 </tbody>
 </table>
@@ -13417,11 +14136,11 @@ client and server applications</p>
 <tr>
 <td>Minor</td>
 <td>101</td>
-<td>SDK version minor value of this specification Frozen for this branch. Bump the Patch value instead.</td>
+<td>SDK version minor value of this specification</td>
 </tr>
 <tr>
 <td>Patch</td>
-<td>14</td>
+<td>27</td>
 <td>SDK version patch value of this specification</td>
 </tr>
 </tbody>
@@ -14141,7 +14860,7 @@ of services supported by container orchestrators such as Kubernetes.</p>
                 </a>
                 
                 
-                <a href="release-9.2.changelog.html" class="navigation navigation-next " aria-label="Next page: Changelog">
+                <a href="release-9.5.changelog.html" class="navigation navigation-next " aria-label="Next page: Changelog">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -14152,7 +14871,7 @@ of services supported by container orchestrators such as Kubernetes.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"v0.101.x","level":"1.5.5","depth":2,"next":{"title":"Changelog","level":"1.5.5.1","depth":3,"path":"release-9.2.changelog.md","ref":"release-9.2.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.4.1","depth":3,"path":"release-7.0.changelog.md","ref":"release-7.0.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"release-9.2.generated-api.md","mtime":"2022-01-12T22:17:23.148Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-12T22:17:27.630Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"v0.101.x","level":"1.5.5","depth":2,"next":{"title":"Changelog","level":"1.5.5.1","depth":3,"path":"release-9.5.changelog.md","ref":"release-9.5.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.4.1","depth":3,"path":"release-7.0.changelog.md","ref":"release-7.0.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"livereload":{},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"release-9.5.generated-api.md","mtime":"2022-08-02T20:24:42.019Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-08-02T20:24:43.568Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
@@ -14187,6 +14906,10 @@ of services supported by container orchestrators such as Kubernetes.</p>
     
         
         <script src="gitbook/gitbook-plugin-page-toc/page-toc.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
         
     
         

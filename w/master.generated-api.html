@@ -72,7 +72,7 @@
     <link rel="next" href="master.changelog.html" />
     
     
-    <link rel="prev" href="release-9.2.changelog.html" />
+    <link rel="prev" href="release-9.5.changelog.html" />
     
 
     </head>
@@ -359,9 +359,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.5" data-path="release-9.2.generated-api.html">
+        <li class="chapter " data-level="1.5.5" data-path="release-9.5.generated-api.html">
             
-                <a href="release-9.2.generated-api.html">
+                <a href="release-9.5.generated-api.html">
             
                     
                         <b>1.5.5.</b>
@@ -375,9 +375,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.5.5.1" data-path="release-9.2.changelog.html">
+        <li class="chapter " data-level="1.5.5.1" data-path="release-9.5.changelog.html">
             
-                <a href="release-9.2.changelog.html">
+                <a href="release-9.5.changelog.html">
             
                     
                         <b>1.5.5.1.</b>
@@ -486,6 +486,7 @@
 <ul>
 <li>Services<ul>
 <li><a href="#serviceopenstorageapiopenstoragealerts">OpenStorageAlerts</a></li>
+<li><a href="#serviceopenstorageapiopenstoragebucket">OpenStorageBucket</a></li>
 <li><a href="#serviceopenstorageapiopenstoragecloudbackup">OpenStorageCloudBackup</a></li>
 <li><a href="#serviceopenstorageapiopenstoragecluster">OpenStorageCluster</a></li>
 <li><a href="#serviceopenstorageapiopenstorageclusterdomains">OpenStorageClusterDomains</a></li>
@@ -515,6 +516,15 @@
 <li><a href="#activerequests">ActiveRequests</a></li>
 <li><a href="#alert">Alert</a></li>
 <li><a href="#alerts">Alerts</a></li>
+<li><a href="#bucketaccesscredentials">BucketAccessCredentials</a></li>
+<li><a href="#bucketcreaterequest">BucketCreateRequest</a></li>
+<li><a href="#bucketcreateresponse">BucketCreateResponse</a></li>
+<li><a href="#bucketdeleterequest">BucketDeleteRequest</a></li>
+<li><a href="#bucketdeleteresponse">BucketDeleteResponse</a></li>
+<li><a href="#bucketgrantaccessrequest">BucketGrantAccessRequest</a></li>
+<li><a href="#bucketgrantaccessresponse">BucketGrantAccessResponse</a></li>
+<li><a href="#bucketrevokeaccessrequest">BucketRevokeAccessRequest</a></li>
+<li><a href="#bucketrevokeaccessresponse">BucketRevokeAccessResponse</a></li>
 <li><a href="#capacityusageinfo">CapacityUsageInfo</a></li>
 <li><a href="#catalog">Catalog</a></li>
 <li><a href="#catalogresponse">CatalogResponse</a></li>
@@ -592,6 +602,8 @@
 <li><a href="#runtimestatemapruntimestateentry">RuntimeStateMap.RuntimeStateEntry</a></li>
 <li><a href="#s3proxyspec">S3ProxySpec</a></li>
 <li><a href="#scanpolicy">ScanPolicy</a></li>
+<li><a href="#schedulertopology">SchedulerTopology</a></li>
+<li><a href="#schedulertopologylabelsentry">SchedulerTopology.LabelsEntry</a></li>
 <li><a href="#sdkalertsalerttypequery">SdkAlertsAlertTypeQuery</a></li>
 <li><a href="#sdkalertscountspan">SdkAlertsCountSpan</a></li>
 <li><a href="#sdkalertsdeleterequest">SdkAlertsDeleteRequest</a></li>
@@ -887,6 +899,8 @@
 <li><a href="#storageresource">StorageResource</a></li>
 <li><a href="#storageversion">StorageVersion</a></li>
 <li><a href="#storageversiondetailsentry">StorageVersion.DetailsEntry</a></li>
+<li><a href="#topologyrequirement">TopologyRequirement</a></li>
+<li><a href="#topologyrequirementlabelsentry">TopologyRequirement.LabelsEntry</a></li>
 <li><a href="#volume">Volume</a></li>
 <li><a href="#volumeattachinfoentry">Volume.AttachInfoEntry</a></li>
 <li><a href="#volumeconsumer">VolumeConsumer</a></li>
@@ -922,6 +936,7 @@
 <ul>
 <li>Enums<ul>
 <li><a href="#alertactiontype">AlertActionType</a></li>
+<li><a href="#anonymousbucketaccessmode">AnonymousBucketAccessMode</a></li>
 <li><a href="#attachstate">AttachState</a></li>
 <li><a href="#cloudmigrateoperationtype">CloudMigrate.OperationType</a></li>
 <li><a href="#cloudmigratestage">CloudMigrate.Stage</a></li>
@@ -999,7 +1014,7 @@
 </ul>
 <h4 id="input">Input</h4>
 <p>SdkAlertsEnumerateRequest takes a list of such queries and the returned
-output is a collective ouput from each of these queries. In that sense,
+output is a collective output from each of these queries. In that sense,
 the filtering of these queries has a behavior of OR operation.
 Each query also has a list of optional options. These options allow
 narrowing down the scope of alerts search. These options have a
@@ -1033,6 +1048,29 @@ eventually packed as list in SdkAlertsEnumerateRequest.</p>
 <p>SdkAlertsDeleteRequest takes a list of such queries and all alerts
 that match at least one of the queries are deleted.
  <!-- end methods --></p>
+<h1 id="serviceopenstorageapiopenstoragebucket">OpenStorageBucket </h1>
+<p>BucketService to manage the bucket driver</p>
+<h2 id="methodopenstorageapiopenstoragebucketcreate">Create </h2>
+<blockquote>
+<p><strong>rpc</strong> Create(<a href="#bucketcreaterequest">BucketCreateRequest</a>)
+    <a href="#bucketcreateresponse">BucketCreateResponse</a></p>
+</blockquote>
+<h2 id="methodopenstorageapiopenstoragebucketdelete">Delete </h2>
+<blockquote>
+<p><strong>rpc</strong> Delete(<a href="#bucketdeleterequest">BucketDeleteRequest</a>)
+    <a href="#bucketdeleteresponse">BucketDeleteResponse</a></p>
+</blockquote>
+<h2 id="methodopenstorageapiopenstoragebucketgrantaccess">GrantAccess </h2>
+<blockquote>
+<p><strong>rpc</strong> GrantAccess(<a href="#bucketgrantaccessrequest">BucketGrantAccessRequest</a>)
+    <a href="#bucketgrantaccessresponse">BucketGrantAccessResponse</a></p>
+</blockquote>
+<h2 id="methodopenstorageapiopenstoragebucketrevokeaccess">RevokeAccess </h2>
+<blockquote>
+<p><strong>rpc</strong> RevokeAccess(<a href="#bucketrevokeaccessrequest">BucketRevokeAccessRequest</a>)
+    <a href="#bucketrevokeaccessresponse">BucketRevokeAccessResponse</a></p>
+</blockquote>
+ <!-- end methods -->
 <h1 id="serviceopenstorageapiopenstoragecloudbackup">OpenStorageCloudBackup </h1>
 <p>OpenStorageCloudBackup service manages backing up volumes to a cloud
 location like Amazon, Google, or Azure.</p>
@@ -1882,7 +1920,7 @@ a snapshot, please use OpenStorageVolume.Clone().</p>
 </blockquote>
 <p>SnapshotEnumerate returns a list of snapshots.
 To filter all the snapshots for a specific volume which may no longer exist,
-specifiy a volume id.
+specify a volume id.
 Labels can also be used to filter the snapshot list.
 If neither are provided all snapshots will be returned.</p>
 <h2 id="methodopenstorageapiopenstoragevolumesnapshotscheduleupdate">SnapshotScheduleUpdate </h2>
@@ -2008,17 +2046,17 @@ Takes a path that can be used as the new root for the catalog request.
 <tr>
 <td>timestamp</td>
 <td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
-<td>Timestamp when Alert occured</td>
+<td>Timestamp when Alert occurred</td>
 </tr>
 <tr>
 <td>resource_id</td>
 <td><a href="#string"> string</a></td>
-<td>ResourceId where Alert occured</td>
+<td>ResourceId where Alert occurred</td>
 </tr>
 <tr>
 <td>resource</td>
 <td><a href="#resourcetype"> ResourceType</a></td>
-<td>Resource where Alert occured</td>
+<td>Resource where Alert occurred</td>
 </tr>
 <tr>
 <td>cleared</td>
@@ -2069,10 +2107,211 @@ Takes a path that can be used as the new root for the catalog request.
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
+<h2 id="bucketaccesscredentials">BucketAccessCredentials </h2>
+<p>Defines the bucket access credential object</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>access_key_id</td>
+<td><a href="#string"> string</a></td>
+<td>Access key id</td>
+</tr>
+<tr>
+<td>secret_access_key</td>
+<td><a href="#string"> string</a></td>
+<td>Secret access key</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="bucketcreaterequest">BucketCreateRequest </h2>
+<p>Defines a request to create a bucket.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td><a href="#string"> string</a></td>
+<td>Unique name of the bucket. This will be used for idempotency.</td>
+</tr>
+<tr>
+<td>region</td>
+<td><a href="#string"> string</a></td>
+<td>Region in which bucket will be created.</td>
+</tr>
+<tr>
+<td>endpoint</td>
+<td><a href="#string"> string</a></td>
+<td>Endpoint to use when creating the bucket</td>
+</tr>
+<tr>
+<td>anonymousBucketAccessMode</td>
+<td><a href="#anonymousbucketaccessmode"> AnonymousBucketAccessMode</a></td>
+<td>Anonymous access policy for the bucket.</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="bucketcreateresponse">BucketCreateResponse </h2>
+<p>Defines a response to the creation of a bucket</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bucket_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of new bucket</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="bucketdeleterequest">BucketDeleteRequest </h2>
+<p>Defines the request to delete a bucket</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bucket_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of bucket to delete</td>
+</tr>
+<tr>
+<td>region</td>
+<td><a href="#string"> string</a></td>
+<td>Region in which bucket will be created.</td>
+</tr>
+<tr>
+<td>endpoint</td>
+<td><a href="#string"> string</a></td>
+<td>Endpoint to use when deleting the bucket</td>
+</tr>
+<tr>
+<td>clear_bucket</td>
+<td><a href="#bool"> bool</a></td>
+<td>Flag to allow non empty bucket deletion.</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="bucketdeleteresponse">BucketDeleteResponse </h2>
+<p>Empty response</p>
+ <!-- end HasFields -->
+<h2 id="bucketgrantaccessrequest">BucketGrantAccessRequest </h2>
+<p>Defines a request to grant access to the bucket</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bucket_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of the bucket</td>
+</tr>
+<tr>
+<td>account_name</td>
+<td><a href="#string"> string</a></td>
+<td>Name of the account to which access to be provided</td>
+</tr>
+<tr>
+<td>access_policy</td>
+<td><a href="#string"> string</a></td>
+<td>Access policy to be applied for the account</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="bucketgrantaccessresponse">BucketGrantAccessResponse </h2>
+<p>Defines a response to the creation of a bucket</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>account_id</td>
+<td><a href="#string"> string</a></td>
+<td>This is the account_id that is being provided access. This will This will be required later to revoke access.</td>
+</tr>
+<tr>
+<td>credentials</td>
+<td><a href="#bucketaccesscredentials"> BucketAccessCredentials</a></td>
+<td>Credentials supplied for accessing the bucket ex: aws access key id and secret, etc.</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="bucketrevokeaccessrequest">BucketRevokeAccessRequest </h2>
+<p>Defines the request to revoke access to the bucket</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bucket_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of bucket to delete</td>
+</tr>
+<tr>
+<td>account_id</td>
+<td><a href="#string"> string</a></td>
+<td>AccountId that is having its access revoked.</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="bucketrevokeaccessresponse">BucketRevokeAccessResponse </h2>
+<p>Empty response</p>
+ <!-- end HasFields -->
 <h2 id="capacityusageinfo">CapacityUsageInfo </h2>
 <p>Provides details on exclusive and shared storage used by
 snapshot/volume specifically for copy-on-write(COW) snapshots. Deletion
-of snapshots and overwirte of volume will affect the exclusive storage
+of snapshots and overwrite of volume will affect the exclusive storage
 used by the other dependent snaps and parent volume.</p>
 <table>
 <thead>
@@ -2524,7 +2763,7 @@ used by the other dependent snaps and parent volume.</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="clusterpairgetresponse">ClusterPairGetResponse </h2>
-<p>Reponse to get a cluster pair</p>
+<p>Response to get a cluster pair</p>
 <table>
 <thead>
 <tr>
@@ -3923,6 +4162,28 @@ Administrators are users who belong to the group <code>*</code>, meaning, every 
  <!-- end HasFields -->
 <h2 id="pureblockspec">PureBlockSpec </h2>
 <p>PureBlockSpec is the spec for proxying a volume on pure_block backends</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>serial_num</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>full_vol_name</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="purefilespec">PureFileSpec </h2>
 <p>PureFileSpec is the spec for proxying a volume on pure_file backends</p>
@@ -3937,6 +4198,11 @@ Administrators are users who belong to the group <code>*</code>, meaning, every 
 <tbody>
 <tr>
 <td>export_rules</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>full_vol_name</td>
 <td><a href="#string"> string</a></td>
 <td>none</td>
 </tr>
@@ -4245,6 +4511,11 @@ inherit corresponding field value from backup&apos;s spec.</p>
 <td>Sharedv4ServiceSpec specifies a spec for configuring a service for a sharedv4 volume</td>
 </tr>
 <tr>
+<td>sharedv4_spec</td>
+<td><a href="#sharedv4spec"> Sharedv4Spec</a></td>
+<td>Sharedv4Spec specifies common properties of sharedv4 and sharedv4 service volumes</td>
+</tr>
+<tr>
 <td>auto_fstrim</td>
 <td><a href="#restoreparambooltype"> RestoreParamBoolType</a></td>
 <td>Autofstrim is true if automatic fstrim is enabled for the volume</td>
@@ -4255,9 +4526,9 @@ inherit corresponding field value from backup&apos;s spec.</p>
 <td>IoThrottle specifies maximum io(iops/bandwidth) this volume is restricted to</td>
 </tr>
 <tr>
-<td>sharedv4_spec</td>
-<td><a href="#sharedv4spec"> Sharedv4Spec</a></td>
-<td>Sharedv4Spec specifies common properties of sharedv4 and sharedv4 service volumes</td>
+<td>readahead</td>
+<td><a href="#restoreparambooltype"> RestoreParamBoolType</a></td>
+<td>Enable readahead for the volume</td>
 </tr>
 </tbody>
 </table>
@@ -4359,6 +4630,51 @@ output of the action.</li>
 <tr>
 <td>action</td>
 <td><a href="#scanpolicyscanaction"> ScanPolicy.ScanAction</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="schedulertopology">SchedulerTopology </h2>
+<p>SchedulerTopology defines the topology information of the storage node
+in scheduler context</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>labels</td>
+<td><a href="#schedulertopologylabelsentry">map SchedulerTopology.LabelsEntry</a></td>
+<td>Key-value pairs defining the topology of the node</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="schedulertopologylabelsentry">SchedulerTopology.LabelsEntry </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="#string"> string</a></td>
 <td>none</td>
 </tr>
 </tbody>
@@ -4617,12 +4933,12 @@ as well.</p>
 <tr>
 <td>start_time</td>
 <td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
-<td>Start timestamp when Alert occured</td>
+<td>Start timestamp when Alert occurred</td>
 </tr>
 <tr>
 <td>end_time</td>
 <td><a href="#googleprotobuftimestamp"> google.protobuf.Timestamp</a></td>
-<td>End timestamp when Alert occured</td>
+<td>End timestamp when Alert occurred</td>
 </tr>
 </tbody>
 </table>
@@ -4953,7 +5269,7 @@ SdkAutoFSTrimUsageRequest.</p>
 <tr>
 <td>full_backup_frequency</td>
 <td><a href="#uint32"> uint32</a></td>
-<td>FullBackupFrequency indicates number of incremental backup after whcih a fullbackup must be created. This is to override the default value for manual/user triggerred backups and not applicable for scheduled backups Value of 0 retains the default behavior.</td>
+<td>FullBackupFrequency indicates number of incremental backup after which a fullbackup must be created. This is to override the default value for manual/user triggerred backups and not applicable for scheduled backups Value of 0 retains the default behavior.</td>
 </tr>
 <tr>
 <td>delete_local</td>
@@ -5323,7 +5639,7 @@ specific volume</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkcloudbackuphistoryrequest">SdkCloudBackupHistoryRequest </h2>
-<p>Defines a request to retreive the history of the backups for
+<p>Defines a request to retrieve the history of the backups for
 a specific volume to a cloud provider</p>
 <table>
 <thead>
@@ -5897,7 +6213,7 @@ from a cloud provider</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sdkcloudbackupstatusrequest">SdkCloudBackupStatusRequest </h2>
-<p>Defines a request to retreive the status of a backup or restore for a
+<p>Defines a request to retrieve the status of a backup or restore for a
 specified volume</p>
 <table>
 <thead>
@@ -7278,7 +7594,7 @@ filesystem trim operation</p>
 <p>Empty request</p>
  <!-- end HasFields -->
 <h2 id="sdkidentitycapabilitiesresponse">SdkIdentityCapabilitiesResponse </h2>
-<p>Defines a response containing the capabilites of the cluster</p>
+<p>Defines a response containing the capabilities of the cluster</p>
 <table>
 <thead>
 <tr>
@@ -7291,7 +7607,7 @@ filesystem trim operation</p>
 <tr>
 <td>capabilities</td>
 <td><a href="#sdkservicecapability">repeated SdkServiceCapability</a></td>
-<td>Provides all the capabilites supported by the cluster</td>
+<td>Provides all the capabilities supported by the cluster</td>
 </tr>
 </tbody>
 </table>
@@ -9789,7 +10105,7 @@ to update any labels on the volume.</p>
 <p>Empty response</p>
  <!-- end HasFields -->
 <h2 id="sdkvolumestatsrequest">SdkVolumeStatsRequest </h2>
-<p>Defines a request to retreive volume statistics</p>
+<p>Defines a request to retrieve volume statistics</p>
 <table>
 <thead>
 <tr>
@@ -10323,6 +10639,11 @@ to seed the volume with data.</p>
 <td><a href="#storagenodesecuritystatus"> StorageNode.SecurityStatus</a></td>
 <td>Determine if the node is secured</td>
 </tr>
+<tr>
+<td>scheduler_topology</td>
+<td><a href="#schedulertopology"> SchedulerTopology</a></td>
+<td>Topology information of the node in scheduler context</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -10797,6 +11118,11 @@ to seed the volume with data.</p>
 <td><a href="#bool"> bool</a></td>
 <td>True if dedicated as cache</td>
 </tr>
+<tr>
+<td>pool_metadata_dev</td>
+<td><a href="#bool"> bool</a></td>
+<td>True if the resource is used as thin pool metadata disk</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -10832,6 +11158,50 @@ to seed the volume with data.</p>
  <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="storageversiondetailsentry">StorageVersion.DetailsEntry </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="topologyrequirement">TopologyRequirement </h2>
+<p>TopologyRequirement defines the topology requirement for a volume</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>labels</td>
+<td><a href="#topologyrequirementlabelsentry">map TopologyRequirement.LabelsEntry</a></td>
+<td>Key-value pairs defining the required topology for a volume</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="topologyrequirementlabelsentry">TopologyRequirement.LabelsEntry </h2>
 <table>
 <thead>
 <tr>
@@ -11017,14 +11387,14 @@ to seed the volume with data.</p>
 <td>Sharedv4MountOptions are the runtime mount options that will be used while mounting a sharedv4 volume from a node where the volume replica does not exist</td>
 </tr>
 <tr>
-<td>in_trashcan</td>
-<td><a href="#bool"> bool</a></td>
-<td>InTrashcan if the volume is in trashcan</td>
-</tr>
-<tr>
 <td>derived_io_profile</td>
 <td><a href="#ioprofile"> IoProfile</a></td>
 <td>DerivedIoProfile the IO profile determined from the pattern</td>
+</tr>
+<tr>
+<td>in_trashcan</td>
+<td><a href="#bool"> bool</a></td>
+<td>InTrashcan if the volume is in trashcan</td>
 </tr>
 </tbody>
 </table>
@@ -11783,14 +12153,14 @@ performed on a volumen</p>
 <td>Sharedv4ServiceSpec specifies a spec for configuring a service for a sharedv4 volume</td>
 </tr>
 <tr>
+<td>sharedv4_spec</td>
+<td><a href="#sharedv4spec"> Sharedv4Spec</a></td>
+<td>Sharedv4Spec specifies common properties of sharedv4 and sharedv4 service volumes</td>
+</tr>
+<tr>
 <td>auto_fstrim</td>
 <td><a href="#bool"> bool</a></td>
 <td>Autofstrim indicates that fstrim would be run on this volume automatically, without user intervention</td>
-</tr>
-<tr>
-<td>number_of_chunks</td>
-<td><a href="#uint32"> uint32</a></td>
-<td>NumberOfChunks indicates how many chunks must be created, 0 and 1 both mean 1</td>
 </tr>
 <tr>
 <td>io_throttle</td>
@@ -11798,9 +12168,24 @@ performed on a volumen</p>
 <td>IoThrottle specifies maximum io(iops/bandwidth) this volume is restricted to</td>
 </tr>
 <tr>
-<td>sharedv4_spec</td>
-<td><a href="#sharedv4spec"> Sharedv4Spec</a></td>
-<td>Sharedv4Spec specifies common properties of sharedv4 and sharedv4 service volumes</td>
+<td>number_of_chunks</td>
+<td><a href="#uint32"> uint32</a></td>
+<td>NumberOfChunks indicates how many chunks must be created, 0 and 1 both mean 1</td>
+</tr>
+<tr>
+<td>readahead</td>
+<td><a href="#bool"> bool</a></td>
+<td>Enable readahead for the volume</td>
+</tr>
+<tr>
+<td>topology_requirement</td>
+<td><a href="#topologyrequirement"> TopologyRequirement</a></td>
+<td>TopologyRequirement topology requirement for this volume</td>
+</tr>
+<tr>
+<td>winshare</td>
+<td><a href="#bool"> bool</a></td>
+<td>winshare is true if this volume can be accessed from windows pods.</td>
 </tr>
 </tbody>
 </table>
@@ -11997,13 +12382,18 @@ performed on a volumen</p>
 <td>none</td>
 </tr>
 <tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> fastpath_opt.fastpath</td>
+<td><a href="#bool"> bool</a></td>
+<td>none</td>
+</tr>
+<tr>
 <td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> sharedv4_service_spec_opt.sharedv4_service_spec</td>
 <td><a href="#sharedv4servicespec"> Sharedv4ServiceSpec</a></td>
 <td>none</td>
 </tr>
 <tr>
-<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> fastpath_opt.fastpath</td>
-<td><a href="#bool"> bool</a></td>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> sharedv4_spec_opt.sharedv4_spec</td>
+<td><a href="#sharedv4spec"> Sharedv4Spec</a></td>
 <td>none</td>
 </tr>
 <tr>
@@ -12017,8 +12407,13 @@ performed on a volumen</p>
 <td>none</td>
 </tr>
 <tr>
-<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> sharedv4_spec_opt.sharedv4_spec</td>
-<td><a href="#sharedv4spec"> Sharedv4Spec</a></td>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> readahead_opt.readahead</td>
+<td><a href="#bool"> bool</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> winshare_opt.winshare</td>
+<td><a href="#bool"> bool</a></td>
 <td>none</td>
 </tr>
 </tbody>
@@ -12201,6 +12596,11 @@ performed on a volumen</p>
 <td>none</td>
 </tr>
 <tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> sharedv4_spec_opt.sharedv4_spec</td>
+<td><a href="#sharedv4spec"> Sharedv4Spec</a></td>
+<td>none</td>
+</tr>
+<tr>
 <td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> auto_fstrim_opt.auto_fstrim</td>
 <td><a href="#bool"> bool</a></td>
 <td>none</td>
@@ -12211,8 +12611,13 @@ performed on a volumen</p>
 <td>none</td>
 </tr>
 <tr>
-<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> sharedv4_spec_opt.sharedv4_spec</td>
-<td><a href="#sharedv4spec"> Sharedv4Spec</a></td>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> readahead_opt.readahead</td>
+<td><a href="#bool"> bool</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> winshare_opt.winshare</td>
+<td><a href="#bool"> bool</a></td>
 <td>none</td>
 </tr>
 </tbody>
@@ -12356,6 +12761,43 @@ all the volume/snapshot(s) in the node.</p>
 <td>ALERT_ACTION_TYPE_UPDATE</td>
 <td>3</td>
 <td>none</td>
+</tr>
+</tbody>
+</table>
+<h2 id="anonymousbucketaccessmode">AnonymousBucketAccessMode </h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UnknownBucketAccessMode</td>
+<td>0</td>
+<td>none</td>
+</tr>
+<tr>
+<td>Private</td>
+<td>1</td>
+<td>Default, disallow uncredentialed access to the backend storage.</td>
+</tr>
+<tr>
+<td>ReadOnly</td>
+<td>2</td>
+<td>Read only, uncredentialed users can call ListBucket and GetObject.</td>
+</tr>
+<tr>
+<td>WriteOnly</td>
+<td>3</td>
+<td>Write only, uncredentialed users can only call PutObject.</td>
+</tr>
+<tr>
+<td>ReadWrite</td>
+<td>4</td>
+<td>Read/Write, uncredentialed users can read objects as well as PutObject.</td>
 </tr>
 </tbody>
 </table>
@@ -12522,6 +12964,11 @@ all the volume/snapshot(s) in the node.</p>
 <td>1</td>
 <td>Paired for DisasterRecovery</td>
 </tr>
+<tr>
+<td>OneTimeMigration</td>
+<td>2</td>
+<td>Paired for one-time migration</td>
+</tr>
 </tbody>
 </table>
 <h2 id="costype">CosType </h2>
@@ -12678,7 +13125,7 @@ all the volume/snapshot(s) in the node.</p>
 <tr>
 <td>PXD</td>
 <td>1</td>
-<td>PXD the volume is exported over Portworx block interace.</td>
+<td>PXD the volume is exported over Portworx block interface.</td>
 </tr>
 <tr>
 <td>ISCSI</td>
@@ -12693,7 +13140,7 @@ all the volume/snapshot(s) in the node.</p>
 <tr>
 <td>CUSTOM</td>
 <td>4</td>
-<td>Custom the volume is exported over custom interace.</td>
+<td>Custom the volume is exported over custom interface.</td>
 </tr>
 </tbody>
 </table>
@@ -13527,7 +13974,7 @@ to or from a cloud provider</p>
 <tr>
 <td>SdkCloudBackupStatusTypeUnknown</td>
 <td>0</td>
-<td>Unkonwn</td>
+<td>Unknown</td>
 </tr>
 <tr>
 <td>SdkCloudBackupStatusTypeNotStarted</td>
@@ -13809,7 +14256,7 @@ client and server applications</p>
 </tr>
 <tr>
 <td>Minor</td>
-<td>130</td>
+<td>147</td>
 <td>SDK version minor value of this specification</td>
 </tr>
 <tr>
@@ -14059,7 +14506,7 @@ of services supported by container orchestrators such as Kubernetes.</p>
 <tr>
 <td>SECURED_ALLOW_SECURITY_REMOVAL</td>
 <td>3</td>
-<td>Node is secured, but in the process of removing security. This state allows other unsecured nodes to join the cluster since the cluster is in the process of removing secuirty authenticaiton and authorization.</td>
+<td>Node is secured, but in the process of removing security. This state allows other unsecured nodes to join the cluster since the cluster is in the process of removing security authentication and authorization.</td>
 </tr>
 </tbody>
 </table>
@@ -14166,7 +14613,7 @@ of services supported by container orchestrators such as Kubernetes.</p>
 <tr>
 <td>DELTA_MEAN_PERCENT</td>
 <td>1</td>
-<td>DeltaMeanPercent indicates mean percent comparision threshold. Example, 10 % more than mean for cluster.</td>
+<td>DeltaMeanPercent indicates mean percent comparison threshold. Example, 10 % more than mean for cluster.</td>
 </tr>
 </tbody>
 </table>
@@ -14529,7 +14976,7 @@ of services supported by container orchestrators such as Kubernetes.</p>
 
             
                 
-                <a href="release-9.2.changelog.html" class="navigation navigation-prev " aria-label="Previous page: Changelog">
+                <a href="release-9.5.changelog.html" class="navigation navigation-prev " aria-label="Previous page: Changelog">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -14545,7 +14992,7 @@ of services supported by container orchestrators such as Kubernetes.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Nightly","level":"1.5.6","depth":2,"next":{"title":"Changelog","level":"1.5.6.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.5.1","depth":3,"path":"release-9.2.changelog.md","ref":"release-9.2.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"master.generated-api.md","mtime":"2022-01-12T22:17:22.704Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-12T22:17:27.630Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Nightly","level":"1.5.6","depth":2,"next":{"title":"Changelog","level":"1.5.6.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.5.1","depth":3,"path":"release-9.5.changelog.md","ref":"release-9.5.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"livereload":{},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"master.generated-api.md","mtime":"2022-08-02T20:24:41.779Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-08-02T20:24:43.568Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
@@ -14580,6 +15027,10 @@ of services supported by container orchestrators such as Kubernetes.</p>
     
         
         <script src="gitbook/gitbook-plugin-page-toc/page-toc.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
         
     
         

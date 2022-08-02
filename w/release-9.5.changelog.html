@@ -72,7 +72,7 @@
     <link rel="next" href="master.generated-api.html" />
     
     
-    <link rel="prev" href="release-9.2.generated-api.html" />
+    <link rel="prev" href="release-9.5.generated-api.html" />
     
 
     </head>
@@ -359,9 +359,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.5" data-path="release-9.2.generated-api.html">
+        <li class="chapter " data-level="1.5.5" data-path="release-9.5.generated-api.html">
             
-                <a href="release-9.2.generated-api.html">
+                <a href="release-9.5.generated-api.html">
             
                     
                         <b>1.5.5.</b>
@@ -375,9 +375,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.5.5.1" data-path="release-9.2.changelog.html">
+        <li class="chapter active" data-level="1.5.5.1" data-path="release-9.5.changelog.html">
             
-                <a href="release-9.2.changelog.html">
+                <a href="release-9.5.changelog.html">
             
                     
                         <b>1.5.5.1.</b>
@@ -483,6 +483,64 @@
                                 
                                 <h1 id="changelog">Changelog</h1>
 <h2 id="releases">Releases</h2>
+<h3 id="v010127---07252022">v0.101.27 - (07/25/2022)</h3>
+<ul>
+<li>Added Create and Delete api for SDK Bucket driver interface.</li>
+<li>Added Access and Revoke api for SDK Bucket driver interface.</li>
+<li>Updating api params for Create and Delete Bucket service.</li>
+<li>Updating open storage bucket access credential object.</li>
+<li>Update create bucket api param to include anonymous bucket access mode.</li>
+<li>Update create/delete bucket api param to include endpoint.</li>
+</ul>
+<h3 id="v010126---06072022">v0.101.26 - (06/07/2022)</h3>
+<ul>
+<li>Adds full_vol_name field to PureBlockSpec.</li>
+<li>Adds full_vol_name field to PureFileSpec.</li>
+</ul>
+<h3 id="v010125---03172022">v0.101.25 - (03/17/2022)</h3>
+<ul>
+<li>Add serial number to PureBlockSpec.</li>
+</ul>
+<h3 id="v010124---272022">v0.101.24 - (2/7/2022)</h3>
+<ul>
+<li>Add topology requirement field the VolumeSpec</li>
+</ul>
+<h3 id="v010123---02072022">v0.101.23 - (02/07/2022)</h3>
+<ul>
+<li>Add scheduler topology field to the StorageNode object</li>
+</ul>
+<h3 id="v010122---02032022">v0.101.22 - (02/03/2022)</h3>
+<ul>
+<li>Add new api to upadte existing credentials</li>
+</ul>
+<h3 id="v010121---02012022">v0.101.21 - (02/01/2022)</h3>
+<ul>
+<li>Add support for per-volume throttling of IOPS and/or bandwidth</li>
+</ul>
+<h3 id="v010120---02012022">v0.101.20 - (02/01/2022)</h3>
+<ul>
+<li>Add api for auto fstrim disk usage report</li>
+</ul>
+<h3 id="v010119---02012022">v0.101.19 - (02/01/2022)</h3>
+<ul>
+<li>Added api for auto fs trim status</li>
+</ul>
+<h3 id="v010118---02012022">v0.101.18 - (02/01/2022)</h3>
+<ul>
+<li>auto fstrim flag in volume spec</li>
+</ul>
+<h3 id="v010117---02022022">v0.101.17 - (02/02/2022)</h3>
+<ul>
+<li>Added a new cluster pairing mode for OneTimeMigration.</li>
+</ul>
+<h3 id="v010116---02012022">v0.101.16 - (02/01/2022)</h3>
+<ul>
+<li>Remove unused fields from volume spec and VolumeState</li>
+</ul>
+<h3 id="v010115---02012022">v0.101.15 - (02/01/2022)</h3>
+<ul>
+<li>Add Trashcan volume objects</li>
+</ul>
 <h3 id="v010114---09282021">v0.101.14 - (09/28/2021)</h3>
 <ul>
 <li>Add sharedv4 failover strategy option</li>
@@ -1028,7 +1086,7 @@ service to the OpenStorageMountAttach service.</li>
 
             
                 
-                <a href="release-9.2.generated-api.html" class="navigation navigation-prev " aria-label="Previous page: v0.101.x">
+                <a href="release-9.5.generated-api.html" class="navigation navigation-prev " aria-label="Previous page: v0.101.x">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -1044,7 +1102,7 @@ service to the OpenStorageMountAttach service.</li>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Changelog","level":"1.5.5.1","depth":3,"next":{"title":"Nightly","level":"1.5.6","depth":2,"path":"master.generated-api.md","ref":"master.generated-api.md","articles":[{"title":"Changelog","level":"1.5.6.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]}]},"previous":{"title":"v0.101.x","level":"1.5.5","depth":2,"path":"release-9.2.generated-api.md","ref":"release-9.2.generated-api.md","articles":[{"title":"Changelog","level":"1.5.5.1","depth":3,"path":"release-9.2.changelog.md","ref":"release-9.2.changelog.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"release-9.2.changelog.md","mtime":"2022-01-12T22:17:22.900Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-12T22:17:27.630Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Changelog","level":"1.5.5.1","depth":3,"next":{"title":"Nightly","level":"1.5.6","depth":2,"path":"master.generated-api.md","ref":"master.generated-api.md","articles":[{"title":"Changelog","level":"1.5.6.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]}]},"previous":{"title":"v0.101.x","level":"1.5.5","depth":2,"path":"release-9.5.generated-api.md","ref":"release-9.5.generated-api.md","articles":[{"title":"Changelog","level":"1.5.5.1","depth":3,"path":"release-9.5.changelog.md","ref":"release-9.5.changelog.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"livereload":{},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"release-9.5.changelog.md","mtime":"2022-08-02T20:24:41.899Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-08-02T20:24:43.568Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
@@ -1079,6 +1137,10 @@ service to the OpenStorageMountAttach service.</li>
     
         
         <script src="gitbook/gitbook-plugin-page-toc/page-toc.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
         
     
         

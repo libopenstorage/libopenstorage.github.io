@@ -1,195 +1,66 @@
 # Changelog
 
 ## Releases
-### v0.147.0 - (7/29/2022)
 
-* Update volume spec for windows share
-
-### v0.146.0 - (7/1/2022)
-
-* Update create/delete bucket api param to include endpoint.
-
-### v0.145.0 - (6/20/2022)
-
-* Update create bucket api param to include anonymous bucket access mode.
-
-### v0.144.0 - (6/8/2022)
-
-* Revise for thin pool metadata device in storage resource
-
-### v0.143.0 - (8/6/2022)
-
-* Updating open storage bucket access credential object.
-
-### v0.142.0 - (6/6/2022)
-
-* Updating api params for Create and Delete Bucket service.
-
-### v0.141.0 - (6/6/2022)
-
-* Extend storage resource for thin pool metadata disk
-
-### v0.140.0 - (5/31/2022)
-
-* Added Access and Revoke api for SDK Bucket driver interface.
-
-### v0.139.0 - (5/17/2022)
-
-* Added Create and Delete api for SDK Bucket driver interface.
-
-### v0.138.0 - (4/12/2022)
-
-* Fixes many typos
-
-### v0.137.0 - (3/31/2022)
-
-* Adds full_vol_name field to PureBlockSpec.
-* Adds full_vol_name field to PureFileSpec.
-
-### v0.136.0 - (3/17/2022)
-
-* Add topology requirement field the VolumeSpec.
-
-### v0.135.0 - (2/7/2022)
-
-* Add serial number to PureBlockSpec.
-
-### v0.134.0 - (2/7/2022)
-
-* Add scheduler topology field to the StorageNode object.
-
-### v0.133.0 - (2/3/2022)
-
-* Renumbered the fields to match release branches.
-
-### v0.132.0 - (1/31/2022)
-
-* Added a new cluster pairing mode for OneTimeMigration.
-
-### v0.131.0 - (1/15/2022)
-
-* Add a readahead flag in volume spec
-
-### v0.130.0 - (1/4/2022)
-
-* Add a filename field to DiagsCollectionRequest for test purposes
-
-### v0.129.0 - (11/30/2021)
-
-* Add message to show auto fstrim enable/disable info
-
-### v0.128.0 - (11/17/2021)
-
-* Add api for auto fstrim disk usage report
-
-### v0.127.0 - (11/11/2021)
-
-* Upgrade to proto3
-
-### v0.126.0 - (09/28/2021)
-
-* Added api for auto fs trim status
-
-### v0.125.0 - (09/28/2021)
+### v0.101.14 - (09/28/2021)
 
 * Add sharedv4 failover strategy option
 
-### v0.124.0 - (09/20/2021)
-
-* Add pool maintenance status code
-
-### v0.123.0 - (07/07/2021)
+### v0.101.13 - (09/20/2021)
 
 * Add DerivedIoProfile to Volume and a new NONE IO Profile
 
-### v0.122.0 - (07/07/2021)
+### v0.101.12 - (09/21/2021)
 
-* Add a flag in Sharedv4ServiceSpec to indicate whether the service needs to be accessed outside of the cluster
+* Add pool maintenance status code
 
-### v0.121.0 - (06/09/2021)
-
-* Remove unused fields from volume spec and VolumeState
-
-### v0.120.0 - (05/12/2021)
-
-* Add RelaxedReclaimPurge SDK API to OpenstorageNode service.
-
-### v0.119.0 - (05/03/2021)
-
-* Add new api to update existing credentials
-
-### v0.118.0 - (04/22/2021)
-
-* Add support for per-volume throttling of IOPS and/or bandwidth
-
-### v0.117.0 - (05/06/2021)
-
-* Change sharedv4 servicey type enum to conform to the style guilde
-
-### v0.116.0 - (04/26/2021)
-
-* Add Pure pass through volume specs into ProxySpec
-* Parse mountOptions flag from storage class for Pure pass through volumes
-
-### v0.115.0 - (04/12/2021)
-
-* Add new fields to VolumeInfo and ReplicaSet to enable dynamic volume chunking
-
-### v0.114.0 - (04/07/2021)
-
-* StorageNode now have security status
-
-### v0.113.0 - (04/06/2021)
-
-* Add live option to diags collection SDK to collect live cores
-
-### v0.112.0 - (03/30/2021)
-
-* auto fstrim flag in volume spec
-
-### v0.111.0 - (03/24/2021)
+### v0.101.11 - (08/18/2021)
 
 * Additions to CloudBackupEnumerate API to allow enumerating cloudbackups
 * with whose source volumes are missing in the cluster. Also indicate if
 * cloudbackup belongs to current cluster with enumerate data.
 
-### v0.110.0 - (02/22/2021)
+### v0.101.10 - (05/06/2021)
+
+* Change sharedv4 servicey type enum to conform to the style guilde
+
+### v0.101.9 - (04/30/2021)
+
+* Add Pure pass through volume specs into ProxySpec
+* Parse mountOptions flag from storage class for Pure pass through volumes
+
+### v0.101.8 - (04/22/2021)
+
+* Add live option to diags collection SDK to collect live cores
+
+### v0.101.7 - (04/22/2021)
 
 * Add SDK for diags collection
 
-### v0.109.0 - (02/17/2021)
-
-* Add Trashcan volume objects
-
-### v0.108.0 - (01/26/2021)
-
-* Handle volume spec update for fastpath
-
-### v0.107.0 - (12/14/2020)
-
+### v0.101.6 - (04/14/2021)
 * Add a spec for defining a service for sharedv4 volumes. The service
   can be used for accessing this sharedv4 volume within and from outside
   the cluster.
 
-### v0.106.0 - (01/06/2021)
+### v0.101.5 - (04/07/2021)
 
-* Extend volume stats structure to include discards
+* StorageNodes now have security status
 
-### v0.105.0 - (11/17/2020)
+### v0.101.4 - (02/17/2021)
 
-* Use destination instance ID for cloud driver transfer job
+* Add CloudDriveTransfer job type
 
-### v0.104.0 - (11/05/2020)
+### v0.101.3 - (01/26/2021)
+
+* Handle volume spec update for fastpath
+
+### v0.101.2 - (11/05/2020)
 
 * Fastpath extend to carry node UUID instead of internal int
 
-### v0.103.0 - (11/05/2020)
+### v0.101.1 - (11/05/2020)
 
 * Change the API definitions for OpenstorageJobServer RPCs
-
-### v0.102.0 - (11/05/2020)
-
-* Add CloudDriveTransfer job type
 
 ### v0.101.0 - (10/14/2020)
 
@@ -481,7 +352,7 @@
 ### v0.34.0 - Tech Preview (1/2/2019)
 
 * Role support
-* Added Cluster Pair and Migrate to Capabilities since they were missing
+* Added Cluster Pair and Migrate to Capabilites since they were missing
 
 ### v0.33.0 - Tech Preview (12/05/2018)
 
