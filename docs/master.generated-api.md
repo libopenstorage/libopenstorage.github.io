@@ -3124,6 +3124,7 @@ Defines a request to delete a single backup stored by a cloud provider
 | backup_id | [ string](#string) | ID is the ID of the cloud backup |
 | credential_id | [ string](#string) | Credential id is the credential for cloud to be used for the request |
 | force | [ bool](#bool) | Force Delete cloudbackup even if there are dependencies. This may be needed if the backup is an incremental backup and subsequent backups depend on this backup specified by `backup_id`. |
+| bucket | [ string](#string) | Bucket name to which cloud backup belongs to |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -7270,7 +7271,7 @@ client and server applications
 | ---- | ------ | ----------- |
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
-| Minor | 147 | SDK version minor value of this specification |
+| Minor | 148 | SDK version minor value of this specification |
 | Patch | 0 | SDK version patch value of this specification |
 
 
