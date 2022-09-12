@@ -2,6 +2,8 @@
 
 BRANCHES="master release-9.5 release-7.0 release-6.4 release-4.0 release-sdk-0.9"
 
+apt install -y jq
+
 getBranch() {
 	local branch=$1
 
@@ -12,7 +14,9 @@ getBranch() {
 		--output docs/${branch}.changelog.md --silent
 	curl https://raw.githubusercontent.com/libopenstorage/openstorage/${branch}/api/api.proto \
 		--output ${branch}.api.proto --silent
-	protoc -I. -I /usr/local/include -I ${GOPATH}/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
+	protoc -I. -I /usr/local/include \
+		-I ${GOPATH}/src/github.com/grpc-ecosystem/grpc-gateway \
+		-I ${GOPATH}/src/github.com/googleapis/googleapis \
 		--doc_out=./template/sdk.tmpl,${branch}.generated-api.md:docs/ ${branch}.api.proto
 	rm -f ${branch}.api.proto
 

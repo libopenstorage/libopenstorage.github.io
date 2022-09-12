@@ -5,20 +5,27 @@ all: build
 images:
 	$(MAKE) -C docs/images
 
-build: images docs/reference.md
+build: api images docs/reference.md
 	gitbook build docs/ w
 
-serve: images docs/reference.md
+serve: api images docs/reference.md
 	gitbook serve docs/ w
 
 api:
-ifndef HAS_PROTOC
-	$(error "Please install protoc 3.3.3 or later")
-endif
-ifndef HAS_PROTOGENDOC
-	$(error "Please install protoc-gen-doc. See README.md for more information")
-endif
+ifndef DOCKER_PROTO
+	docker run \
+        --privileged --rm \
+        -v $(shell pwd):/go/src/code \
+        -e "GOPATH=/go" \
+        -e "DOCKER_PROTO=yes" \
+        -e "PROTO_USER=$(shell id -u)" \
+        -e "PROTO_GROUP=$(shell id -g)" \
+        -e "PATH=/bin:/usr/bin:/usr/local/bin:/go/bin:/usr/local/go/bin" \
+        quay.io/openstorage/grpc-framework:latest \
+            make api
+else
 	bash getcontent.sh
+endif
 
 docs/reference.md: api
 

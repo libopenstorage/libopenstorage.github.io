@@ -586,6 +586,8 @@
 <li><a href="#objectstoreinfo">ObjectstoreInfo</a></li>
 <li><a href="#ownership">Ownership</a></li>
 <li><a href="#ownershipaccesscontrol">Ownership.AccessControl</a></li>
+<li><a href="#ownershipaccesscontrolcollaboratorsentry">Ownership.AccessControl.CollaboratorsEntry</a></li>
+<li><a href="#ownershipaccesscontrolgroupsentry">Ownership.AccessControl.GroupsEntry</a></li>
 <li><a href="#ownershippublicaccesscontrol">Ownership.PublicAccessControl</a></li>
 <li><a href="#pxdproxyspec">PXDProxySpec</a></li>
 <li><a href="#proxyspec">ProxySpec</a></li>
@@ -3250,6 +3252,11 @@ from a node</p>
 <td><a href="#string"> string</a></td>
 <td>fastpath coordinator node uuid to enhance reporting</td>
 </tr>
+<tr>
+<td>force_failover</td>
+<td><a href="#bool"> bool</a></td>
+<td>fastpath force failover, disable auto promote to fastpath</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -4058,6 +4065,54 @@ Administrators are users who belong to the group <code>*</code>, meaning, every 
 <td>public</td>
 <td><a href="#ownershippublicaccesscontrol"> Ownership.PublicAccessControl</a></td>
 <td>Public access to resource may be assigned for access by the public userd</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="ownershipaccesscontrolcollaboratorsentry">Ownership.AccessControl.CollaboratorsEntry </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="#ownershipaccesstype"> Ownership.AccessType</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="ownershipaccesscontrolgroupsentry">Ownership.AccessControl.GroupsEntry </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="#ownershipaccesstype"> Ownership.AccessType</a></td>
+<td>none</td>
 </tr>
 </tbody>
 </table>
@@ -11038,6 +11093,11 @@ to seed the volume with data.</p>
 <td><a href="#bool"> bool</a></td>
 <td>True if dedicated as cache</td>
 </tr>
+<tr>
+<td>pool_metadata_dev</td>
+<td><a href="#bool"> bool</a></td>
+<td>True if the resource is used as thin pool metadata disk</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -14140,7 +14200,7 @@ client and server applications</p>
 </tr>
 <tr>
 <td>Patch</td>
-<td>27</td>
+<td>28</td>
 <td>SDK version patch value of this specification</td>
 </tr>
 </tbody>
@@ -14871,7 +14931,7 @@ of services supported by container orchestrators such as Kubernetes.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"v0.101.x","level":"1.5.5","depth":2,"next":{"title":"Changelog","level":"1.5.5.1","depth":3,"path":"release-9.5.changelog.md","ref":"release-9.5.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.4.1","depth":3,"path":"release-7.0.changelog.md","ref":"release-7.0.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"release-9.5.generated-api.md","mtime":"2022-08-03T15:22:57.715Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-08-03T15:22:59.630Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"v0.101.x","level":"1.5.5","depth":2,"next":{"title":"Changelog","level":"1.5.5.1","depth":3,"path":"release-9.5.changelog.md","ref":"release-9.5.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.4.1","depth":3,"path":"release-7.0.changelog.md","ref":"release-7.0.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"release-9.5.generated-api.md","mtime":"2022-09-12T16:31:24.865Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-09-12T16:31:27.703Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

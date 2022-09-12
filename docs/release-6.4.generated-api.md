@@ -69,6 +69,8 @@
     - [ObjectstoreInfo](#objectstoreinfo)
     - [Ownership](#ownership)
     - [Ownership.AccessControl](#ownershipaccesscontrol)
+    - [Ownership.AccessControl.CollaboratorsEntry](#ownershipaccesscontrolcollaboratorsentry)
+    - [Ownership.AccessControl.GroupsEntry](#ownershipaccesscontrolgroupsentry)
     - [ReplicaPlacementSpec](#replicaplacementspec)
     - [ReplicaSet](#replicaset)
     - [Report](#report)
@@ -1766,6 +1768,30 @@ NOTE: To create an "admin" user which has access to any resource set the group v
 | ----- | ---- | ----------- |
 | groups | [map Ownership.AccessControl.GroupsEntry](#ownershipaccesscontrolgroupsentry) | Group access to resource which must match the group set in the authorization token. Can be set by the owner or the system administrator only. Possible values are: 1. no groups: Means no groups are given access. 2. `["*"]`: All groups are allowed. 3. `["group1", "group2"]`: Only certain groups are allowed. In this example only _group1_ and _group2_ are allowed. |
 | collaborators | [map Ownership.AccessControl.CollaboratorsEntry](#ownershipaccesscontrolcollaboratorsentry) | Collaborator access to resource gives access to other user. Must be the username (unique id) set in the authorization token. The owner or the administrator can set this value. Possible values are: 1. no collaborators: Means no users are given access. 2. `["*"]`: All users are allowed. 3. `["username1", "username2"]`: Only certain usernames are allowed. In this example only _username1_ and _username2_ are allowed. |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## Ownership.AccessControl.CollaboratorsEntry {#ownershipaccesscontrolcollaboratorsentry}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [ string](#string) | none |
+| value | [ Ownership.AccessType](#ownershipaccesstype) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## Ownership.AccessControl.GroupsEntry {#ownershipaccesscontrolgroupsentry}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [ string](#string) | none |
+| value | [ Ownership.AccessType](#ownershipaccesstype) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 

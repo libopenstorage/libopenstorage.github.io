@@ -104,6 +104,8 @@
     - [ObjectstoreInfo](#objectstoreinfo)
     - [Ownership](#ownership)
     - [Ownership.AccessControl](#ownershipaccesscontrol)
+    - [Ownership.AccessControl.CollaboratorsEntry](#ownershipaccesscontrolcollaboratorsentry)
+    - [Ownership.AccessControl.GroupsEntry](#ownershipaccesscontrolgroupsentry)
     - [Ownership.PublicAccessControl](#ownershippublicaccesscontrol)
     - [PXDProxySpec](#pxdproxyspec)
     - [ProxySpec](#proxyspec)
@@ -2138,6 +2140,7 @@ FastpathConfig part of volume
 | replicas | [repeated FastpathReplState](#fastpathreplstate) | Fastpath replica state for each replica in replica set |
 | dirty | [ bool](#bool) | Dirty flag on volume - was attached in userspace |
 | coord_uuid | [ string](#string) | fastpath coordinator node uuid to enhance reporting |
+| force_failover | [ bool](#bool) | fastpath force failover, disable auto promote to fastpath |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -2512,6 +2515,30 @@ NOTE: To create an "admin" user which has access to any resource set the group v
 | groups | [map Ownership.AccessControl.GroupsEntry](#ownershipaccesscontrolgroupsentry) | Group access to resource which must match the group set in the authorization token. Can be set by the owner or the system administrator only. Possible values are: 1. no groups: Means no groups are given access. 2. `["*"]`: All groups are allowed. 3. `["group1", "group2"]`: Only certain groups are allowed. In this example only _group1_ and _group2_ are allowed. |
 | collaborators | [map Ownership.AccessControl.CollaboratorsEntry](#ownershipaccesscontrolcollaboratorsentry) | Collaborator access to resource gives access to other user. Must be the username (unique id) set in the authorization token. The owner or the administrator can set this value. Possible values are: 1. no collaborators: Means no users are given access. 2. `["*"]`: All users are allowed. 3. `["username1", "username2"]`: Only certain usernames are allowed. In this example only _username1_ and _username2_ are allowed. |
 | public | [ Ownership.PublicAccessControl](#ownershippublicaccesscontrol) | Public access to resource may be assigned for access by the public userd |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## Ownership.AccessControl.CollaboratorsEntry {#ownershipaccesscontrolcollaboratorsentry}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [ string](#string) | none |
+| value | [ Ownership.AccessType](#ownershipaccesstype) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## Ownership.AccessControl.GroupsEntry {#ownershipaccesscontrolgroupsentry}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [ string](#string) | none |
+| value | [ Ownership.AccessType](#ownershipaccesstype) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -6089,6 +6116,7 @@ StorageResource groups properties of a storage device.
 | last_scan | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | Timestamp of last time this device was scanned. |
 | metadata | [ bool](#bool) | True if dedicated for metadata. |
 | cache | [ bool](#bool) | True if dedicated as cache |
+| pool_metadata_dev | [ bool](#bool) | True if the resource is used as thin pool metadata disk |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -7232,7 +7260,7 @@ client and server applications
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
 | Minor | 101 | SDK version minor value of this specification |
-| Patch | 27 | SDK version patch value of this specification |
+| Patch | 28 | SDK version patch value of this specification |
 
 
 

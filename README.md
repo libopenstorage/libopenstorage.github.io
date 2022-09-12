@@ -4,11 +4,16 @@ This stores the sources and output for https://libopenstorage.github.io. This we
 output html created by gitbook is located in `w` directory.
 
 ## Environment setup
+
+### Install githbook
+
 First, you may need to install [npm](https://nodejs.org/en/download/). Then install gitbook:
 
 ```
-$ npm install -g gitbook-cli
+npm install -g gitbook-cli
 ```
+
+## Build the website
 
 To build:
 
@@ -21,12 +26,6 @@ To serve locally on `http://localhost:4000` while editing, run:
 ```
 make serve
 ```
-
-## Generating API Documentation
-To generate it, you will need to install [protoc-gen-doc](https://github.com/lpabon/protoc-gen-doc/releases/tag/v1.1.1)
-
-
-Then type `make api` to generate the API documentation.
 
 ## Releasing
 When releasing new version use the following method to maintain that release

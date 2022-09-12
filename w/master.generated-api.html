@@ -586,6 +586,8 @@
 <li><a href="#objectstoreinfo">ObjectstoreInfo</a></li>
 <li><a href="#ownership">Ownership</a></li>
 <li><a href="#ownershipaccesscontrol">Ownership.AccessControl</a></li>
+<li><a href="#ownershipaccesscontrolcollaboratorsentry">Ownership.AccessControl.CollaboratorsEntry</a></li>
+<li><a href="#ownershipaccesscontrolgroupsentry">Ownership.AccessControl.GroupsEntry</a></li>
 <li><a href="#ownershippublicaccesscontrol">Ownership.PublicAccessControl</a></li>
 <li><a href="#pxdproxyspec">PXDProxySpec</a></li>
 <li><a href="#proxyspec">ProxySpec</a></li>
@@ -740,6 +742,8 @@
 <li><a href="#sdkidentityversionrequest">SdkIdentityVersionRequest</a></li>
 <li><a href="#sdkidentityversionresponse">SdkIdentityVersionResponse</a></li>
 <li><a href="#sdkjobresponse">SdkJobResponse</a></li>
+<li><a href="#sdknfscredentialrequest">SdkNfsCredentialRequest</a></li>
+<li><a href="#sdknfscredentialresponse">SdkNfsCredentialResponse</a></li>
 <li><a href="#sdknodecordonattachmentsrequest">SdkNodeCordonAttachmentsRequest</a></li>
 <li><a href="#sdknodecordonattachmentsresponse">SdkNodeCordonAttachmentsResponse</a></li>
 <li><a href="#sdknodedrainattachmentsrequest">SdkNodeDrainAttachmentsRequest</a></li>
@@ -3257,6 +3261,11 @@ from a node</p>
 <td><a href="#string"> string</a></td>
 <td>fastpath coordinator node uuid to enhance reporting</td>
 </tr>
+<tr>
+<td>force_failover</td>
+<td><a href="#bool"> bool</a></td>
+<td>fastpath force failover, disable auto promote to fastpath</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -4065,6 +4074,54 @@ Administrators are users who belong to the group <code>*</code>, meaning, every 
 <td>public</td>
 <td><a href="#ownershippublicaccesscontrol"> Ownership.PublicAccessControl</a></td>
 <td>Public access to resource may be assigned for access by the public userd</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="ownershipaccesscontrolcollaboratorsentry">Ownership.AccessControl.CollaboratorsEntry </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="#ownershipaccesstype"> Ownership.AccessType</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="ownershipaccesscontrolgroupsentry">Ownership.AccessControl.GroupsEntry </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="#ownershipaccesstype"> Ownership.AccessType</a></td>
+<td>none</td>
 </tr>
 </tbody>
 </table>
@@ -6828,6 +6885,11 @@ specified volume</p>
 <td><a href="#sdkgooglecredentialrequest"> SdkGoogleCredentialRequest</a></td>
 <td>Credentials for Google</td>
 </tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> credential_type.nfs_credential</td>
+<td><a href="#sdknfscredentialrequest"> SdkNfsCredentialRequest</a></td>
+<td>Credentials for NFS</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -6998,6 +7060,11 @@ you will need to check if the value of credential_type is one of the ones below.
 <td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> credential_type.google_credential</td>
 <td><a href="#sdkgooglecredentialresponse"> SdkGoogleCredentialResponse</a></td>
 <td>Google credentials</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> credential_type.nfs_credential</td>
+<td><a href="#sdknfscredentialresponse"> SdkNfsCredentialResponse</a></td>
+<td>NFS credentials</td>
 </tr>
 </tbody>
 </table>
@@ -7662,6 +7729,76 @@ to perform the request</p>
 <td>job</td>
 <td><a href="#job"> Job</a></td>
 <td>Job that was created for the SDK request</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdknfscredentialrequest">SdkNfsCredentialRequest </h2>
+<p>Defines credentials for NFS</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>server</td>
+<td><a href="#string"> string</a></td>
+<td>NFS Server address</td>
+</tr>
+<tr>
+<td>sub_path</td>
+<td><a href="#string"> string</a></td>
+<td>NFS export path</td>
+</tr>
+<tr>
+<td>mount_opts</td>
+<td><a href="#string"> string</a></td>
+<td>mount options for nfs mount</td>
+</tr>
+<tr>
+<td>timeout_seconds</td>
+<td><a href="#uint32"> uint32</a></td>
+<td>timeout for nfs IO in seconds</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdknfscredentialresponse">SdkNfsCredentialResponse </h2>
+<p>Defines the response for NFS credential</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>server</td>
+<td><a href="#string"> string</a></td>
+<td>NFS Server Address</td>
+</tr>
+<tr>
+<td>sub_path</td>
+<td><a href="#string"> string</a></td>
+<td>NFS export path</td>
+</tr>
+<tr>
+<td>mount_opts</td>
+<td><a href="#string"> string</a></td>
+<td>mount options ( &quot;,&quot; separated)</td>
+</tr>
+<tr>
+<td>timeout_seconds</td>
+<td><a href="#uint32"> uint32</a></td>
+<td>timeout in seconds</td>
 </tr>
 </tbody>
 </table>
@@ -14261,7 +14398,7 @@ client and server applications</p>
 </tr>
 <tr>
 <td>Minor</td>
-<td>148</td>
+<td>150</td>
 <td>SDK version minor value of this specification</td>
 </tr>
 <tr>
@@ -14997,7 +15134,7 @@ of services supported by container orchestrators such as Kubernetes.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Nightly","level":"1.5.6","depth":2,"next":{"title":"Changelog","level":"1.5.6.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.5.1","depth":3,"path":"release-9.5.changelog.md","ref":"release-9.5.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"master.generated-api.md","mtime":"2022-08-03T15:22:57.495Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-08-03T15:22:59.630Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Nightly","level":"1.5.6","depth":2,"next":{"title":"Changelog","level":"1.5.6.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.5.1","depth":3,"path":"release-9.5.changelog.md","ref":"release-9.5.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"master.generated-api.md","mtime":"2022-09-12T16:31:24.349Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-09-12T16:31:27.703Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

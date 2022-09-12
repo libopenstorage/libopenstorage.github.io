@@ -104,6 +104,8 @@
     - [ObjectstoreInfo](#objectstoreinfo)
     - [Ownership](#ownership)
     - [Ownership.AccessControl](#ownershipaccesscontrol)
+    - [Ownership.AccessControl.CollaboratorsEntry](#ownershipaccesscontrolcollaboratorsentry)
+    - [Ownership.AccessControl.GroupsEntry](#ownershipaccesscontrolgroupsentry)
     - [Ownership.PublicAccessControl](#ownershippublicaccesscontrol)
     - [PXDProxySpec](#pxdproxyspec)
     - [ProxySpec](#proxyspec)
@@ -258,6 +260,8 @@
     - [SdkIdentityVersionRequest](#sdkidentityversionrequest)
     - [SdkIdentityVersionResponse](#sdkidentityversionresponse)
     - [SdkJobResponse](#sdkjobresponse)
+    - [SdkNfsCredentialRequest](#sdknfscredentialrequest)
+    - [SdkNfsCredentialResponse](#sdknfscredentialresponse)
     - [SdkNodeCordonAttachmentsRequest](#sdknodecordonattachmentsrequest)
     - [SdkNodeCordonAttachmentsResponse](#sdknodecordonattachmentsresponse)
     - [SdkNodeDrainAttachmentsRequest](#sdknodedrainattachmentsrequest)
@@ -2145,6 +2149,7 @@ FastpathConfig part of volume
 | replicas | [repeated FastpathReplState](#fastpathreplstate) | Fastpath replica state for each replica in replica set |
 | dirty | [ bool](#bool) | Dirty flag on volume - was attached in userspace |
 | coord_uuid | [ string](#string) | fastpath coordinator node uuid to enhance reporting |
+| force_failover | [ bool](#bool) | fastpath force failover, disable auto promote to fastpath |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -2519,6 +2524,30 @@ NOTE: To create an "admin" user which has access to any resource set the group v
 | groups | [map Ownership.AccessControl.GroupsEntry](#ownershipaccesscontrolgroupsentry) | Group access to resource which must match the group set in the authorization token. Can be set by the owner or the system administrator only. Possible values are: 1. no groups: Means no groups are given access. 2. `["*"]`: All groups are allowed. 3. `["group1", "group2"]`: Only certain groups are allowed. In this example only _group1_ and _group2_ are allowed. |
 | collaborators | [map Ownership.AccessControl.CollaboratorsEntry](#ownershipaccesscontrolcollaboratorsentry) | Collaborator access to resource gives access to other user. Must be the username (unique id) set in the authorization token. The owner or the administrator can set this value. Possible values are: 1. no collaborators: Means no users are given access. 2. `["*"]`: All users are allowed. 3. `["username1", "username2"]`: Only certain usernames are allowed. In this example only _username1_ and _username2_ are allowed. |
 | public | [ Ownership.PublicAccessControl](#ownershippublicaccesscontrol) | Public access to resource may be assigned for access by the public userd |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## Ownership.AccessControl.CollaboratorsEntry {#ownershipaccesscontrolcollaboratorsentry}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [ string](#string) | none |
+| value | [ Ownership.AccessType](#ownershipaccesstype) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## Ownership.AccessControl.GroupsEntry {#ownershipaccesscontrolgroupsentry}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [ string](#string) | none |
+| value | [ Ownership.AccessType](#ownershipaccesstype) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3865,6 +3894,7 @@ Defines a request to create credentials
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.aws_credential | [ SdkAwsCredentialRequest](#sdkawscredentialrequest) | Credentials for AWS/S3 |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.azure_credential | [ SdkAzureCredentialRequest](#sdkazurecredentialrequest) | Credentials for Azure |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.google_credential | [ SdkGoogleCredentialRequest](#sdkgooglecredentialrequest) | Credentials for Google |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.nfs_credential | [ SdkNfsCredentialRequest](#sdknfscredentialrequest) | Credentials for NFS |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3959,6 +3989,7 @@ you will need to check if the value of credential_type is one of the ones below.
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.aws_credential | [ SdkAwsCredentialResponse](#sdkawscredentialresponse) | Aws credentials |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.azure_credential | [ SdkAzureCredentialResponse](#sdkazurecredentialresponse) | Azure credentials |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.google_credential | [ SdkGoogleCredentialResponse](#sdkgooglecredentialresponse) | Google credentials |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) credential_type.nfs_credential | [ SdkNfsCredentialResponse](#sdknfscredentialresponse) | NFS credentials |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -4322,6 +4353,34 @@ to perform the request
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | job | [ Job](#job) | Job that was created for the SDK request |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkNfsCredentialRequest {#sdknfscredentialrequest}
+Defines credentials for NFS
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| server | [ string](#string) | NFS Server address |
+| sub_path | [ string](#string) | NFS export path |
+| mount_opts | [ string](#string) | mount options for nfs mount |
+| timeout_seconds | [ uint32](#uint32) | timeout for nfs IO in seconds |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkNfsCredentialResponse {#sdknfscredentialresponse}
+Defines the response for NFS credential
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| server | [ string](#string) | NFS Server Address |
+| sub_path | [ string](#string) | NFS export path |
+| mount_opts | [ string](#string) | mount options ( "," separated) |
+| timeout_seconds | [ uint32](#uint32) | timeout in seconds |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -7271,7 +7330,7 @@ client and server applications
 | ---- | ------ | ----------- |
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
-| Minor | 148 | SDK version minor value of this specification |
+| Minor | 150 | SDK version minor value of this specification |
 | Patch | 0 | SDK version patch value of this specification |
 
 

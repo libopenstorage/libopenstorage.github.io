@@ -960,6 +960,11 @@
             "title": "Dirty flag on volume - was attached in userspace",
             "type": "boolean"
           },
+          "force_failover": {
+            "format": "boolean",
+            "title": "fastpath force failover, disable auto promote to fastpath",
+            "type": "boolean"
+          },
           "promote": {
             "format": "boolean",
             "title": "Fastpath temporary promotion during attach",
@@ -4894,6 +4899,11 @@
             "description": "Path device path for this storage resource.",
             "type": "string"
           },
+          "pool_metadata_dev": {
+            "format": "boolean",
+            "title": "True if the resource is used as thin pool metadata disk",
+            "type": "boolean"
+          },
           "randRW": {
             "format": "double",
             "title": "RandRW",
@@ -5788,7 +5798,7 @@
   },
   "info": {
     "title": "OpenStorage SDK",
-    "version": "0.101.27"
+    "version": "0.101.28"
   },
   "openapi": "3.0.0",
   "paths": {
