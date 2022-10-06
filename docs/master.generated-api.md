@@ -7330,7 +7330,7 @@ client and server applications
 | ---- | ------ | ----------- |
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
-| Minor | 150 | SDK version minor value of this specification |
+| Minor | 151 | SDK version minor value of this specification |
 | Patch | 0 | SDK version patch value of this specification |
 
 
@@ -7371,6 +7371,7 @@ of services supported by container orchestrators such as Kubernetes.
 | NODEPORT | 1 | Export the sharedv4 service on each Node's IP. In this mode the sharedv4 volume can be accessed from outside the cluster using one of the node's IPs. |
 | CLUSTERIP | 2 | Export the shared4 service on an internal cluster IP. In this mode the sharedv4 volume will only be accessible within the cluster via this service. |
 | LOADBALANCER | 3 | Expose the sharedv4 service on cloud provider's load balancer. Applicable when running in cloud. In this mode the sharedv4 volume can be accessed from outside the cluster. |
+| NONE | 4 | Do not use sharedv4 service feature. Use legacy sharedv4 volumes instead. |
 
 
 
