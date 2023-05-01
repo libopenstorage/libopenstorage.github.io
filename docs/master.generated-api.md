@@ -135,6 +135,10 @@
     - [SdkAlertsResourceIdQuery](#sdkalertsresourceidquery)
     - [SdkAlertsResourceTypeQuery](#sdkalertsresourcetypequery)
     - [SdkAlertsTimeSpan](#sdkalertstimespan)
+    - [SdkAutoFSTrimPopRequest](#sdkautofstrimpoprequest)
+    - [SdkAutoFSTrimPopResponse](#sdkautofstrimpopresponse)
+    - [SdkAutoFSTrimPushRequest](#sdkautofstrimpushrequest)
+    - [SdkAutoFSTrimPushResponse](#sdkautofstrimpushresponse)
     - [SdkAutoFSTrimStatusRequest](#sdkautofstrimstatusrequest)
     - [SdkAutoFSTrimStatusResponse](#sdkautofstrimstatusresponse)
     - [SdkAutoFSTrimStatusResponse.TrimStatusEntry](#sdkautofstrimstatusresponsetrimstatusentry)
@@ -348,11 +352,14 @@
     - [SdkVolumeAttachRequest](#sdkvolumeattachrequest)
     - [SdkVolumeAttachRequest.DriverOptionsEntry](#sdkvolumeattachrequestdriveroptionsentry)
     - [SdkVolumeAttachResponse](#sdkvolumeattachresponse)
+    - [SdkVolumeBytesUsedRequest](#sdkvolumebytesusedrequest)
+    - [SdkVolumeBytesUsedResponse](#sdkvolumebytesusedresponse)
     - [SdkVolumeCapacityUsageRequest](#sdkvolumecapacityusagerequest)
     - [SdkVolumeCapacityUsageResponse](#sdkvolumecapacityusageresponse)
     - [SdkVolumeCatalogRequest](#sdkvolumecatalogrequest)
     - [SdkVolumeCatalogResponse](#sdkvolumecatalogresponse)
     - [SdkVolumeCloneRequest](#sdkvolumeclonerequest)
+    - [SdkVolumeCloneRequest.AdditionalLabelsEntry](#sdkvolumeclonerequestadditionallabelsentry)
     - [SdkVolumeCloneResponse](#sdkvolumecloneresponse)
     - [SdkVolumeCreateRequest](#sdkvolumecreaterequest)
     - [SdkVolumeCreateRequest.LabelsEntry](#sdkvolumecreaterequestlabelsentry)
@@ -425,6 +432,8 @@
     - [TopologyRequirement.LabelsEntry](#topologyrequirementlabelsentry)
     - [Volume](#volume)
     - [Volume.AttachInfoEntry](#volumeattachinfoentry)
+    - [VolumeBytesUsed](#volumebytesused)
+    - [VolumeBytesUsedByNode](#volumebytesusedbynode)
     - [VolumeConsumer](#volumeconsumer)
     - [VolumeCreateRequest](#volumecreaterequest)
     - [VolumeCreateResponse](#volumecreateresponse)
@@ -480,6 +489,7 @@
     - [Job.State](#jobstate)
     - [Job.Type](#jobtype)
     - [LabelSelectorRequirement.Operator](#labelselectorrequirementoperator)
+    - [NearSyncReplicationStrategy](#nearsyncreplicationstrategy)
     - [OperationFlags](#operationflags)
     - [Ownership.AccessType](#ownershipaccesstype)
     - [ProxyProtocol](#proxyprotocol)
@@ -995,6 +1005,18 @@ volume
     [SdkFilesystemTrimStopResponse](#sdkfilesystemtrimstopresponse)
 
 Stop a filesystem Trim background operation on a mounted volume, if any
+## AutoFSTrimPush {#methodopenstorageapiopenstoragefilesystemtrimautofstrimpush}
+
+> **rpc** AutoFSTrimPush([SdkAutoFSTrimPushRequest](#sdkautofstrimpushrequest))
+    [SdkAutoFSTrimPushResponse](#sdkautofstrimpushresponse)
+
+Push a auto filesystem Trim job into the queue
+## AutoFSTrimPop {#methodopenstorageapiopenstoragefilesystemtrimautofstrimpop}
+
+> **rpc** AutoFSTrimPop([SdkAutoFSTrimPopRequest](#sdkautofstrimpoprequest))
+    [SdkAutoFSTrimPopResponse](#sdkautofstrimpopresponse)
+
+Pop a auto filesystem Trim job from the queue
  <!-- end methods -->
 
 # OpenStorageIdentity {#serviceopenstorageapiopenstorageidentity}
@@ -1174,6 +1196,12 @@ will stay on the node.
 
 UncordonAttachments re-enables volume attachments
 on the provided node in the cluster.
+## VolumeBytesUsedByNode {#methodopenstorageapiopenstoragenodevolumebytesusedbynode}
+
+> **rpc** VolumeBytesUsedByNode([SdkVolumeBytesUsedRequest](#sdkvolumebytesusedrequest))
+    [SdkVolumeBytesUsedResponse](#sdkvolumebytesusedresponse)
+
+Returns bytes used of multiple volumes for a give node
  <!-- end methods -->
 
 # OpenStorageObjectstore {#serviceopenstorageapiopenstorageobjectstore}
@@ -2945,6 +2973,54 @@ SdkAlertsTimeSpan to store time window information.
  <!-- end HasFields -->
 
 
+## SdkAutoFSTrimPopRequest {#sdkautofstrimpoprequest}
+SdkAutoFSTrimPopRequest defines the request to pop a volume to autofstrim
+queue
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id | [ string](#string) | Id of the volume |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkAutoFSTrimPopResponse {#sdkautofstrimpopresponse}
+SdkAutoFSTrimPopResponse defines the response to pop a volume to autofstrim
+queue
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| message | [ string](#string) | Text blob containing ASCII text providing details of the operation |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkAutoFSTrimPushRequest {#sdkautofstrimpushrequest}
+SdkAutoFSTrimPushRequest defines the request to push a volume to autofstrim
+queue
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id | [ string](#string) | Id of the volume |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkAutoFSTrimPushResponse {#sdkautofstrimpushresponse}
+SdkAutoFSTrimPushResponse defines the response to push a volume to autofstrim
+queue
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| message | [ string](#string) | Text blob containing ASCII text providing details of the operation |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
 ## SdkAutoFSTrimStatusRequest {#sdkautofstrimstatusrequest}
 SdkAutoFSTrimStatusRequest defines a request to get status of autofs trim operation
 
@@ -3098,6 +3174,7 @@ Defines a request to create a backup of a volume to the cloud
 | labels | [map SdkCloudBackupCreateRequest.LabelsEntry](#sdkcloudbackupcreaterequestlabelsentry) | Labels are list of key value pairs to tag the cloud backup. These labels are stored in the metadata associated with the backup. |
 | full_backup_frequency | [ uint32](#uint32) | FullBackupFrequency indicates number of incremental backup after which a fullbackup must be created. This is to override the default value for manual/user triggerred backups and not applicable for scheduled backups Value of 0 retains the default behavior. |
 | delete_local | [ bool](#bool) | DeleteLocal indicates if local snap created for backup must be deleted after the backup is complete |
+| near_sync_migrate | [ bool](#bool) | Indicates if this is a near sync migrate |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3498,7 +3575,10 @@ Defines a response containing the size of the volume
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| size | [ uint64](#uint64) | Size is the size of the volume in bytes |
+| size | [ uint64](#uint64) | Same value as total_download_bytes, will be deprecated |
+| total_download_bytes | [ uint64](#uint64) | Total download size of all the backups (full & incremental) required for a restore |
+| compressed_object_bytes | [ uint64](#uint64) | Size of the compressed individual backup in object-store or NFS |
+| capacity_required_for_restore | [ uint64](#uint64) | Used size of the volume to be restored (in bytes) |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3555,6 +3635,7 @@ specified volume
 | volume_id | [ string](#string) | (optional) VolumeId is a value which is used to get information on the status of a backup for the specified volume. If no volume id and task_id is provided, then status for all volumes is returned. |
 | local | [ bool](#bool) | Local indicates if only those backups/restores that are active on current node must be returned |
 | task_id | [ string](#string) | TaskId of the backup/restore task, if this is specified, volume_id is ignored. |
+| near_sync_migrate | [ bool](#bool) | Indicates if this is for nearsync migration |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -5310,6 +5391,30 @@ Defines a response from the node which received the request to attach
  <!-- end HasFields -->
 
 
+## SdkVolumeBytesUsedRequest {#sdkvolumebytesusedrequest}
+SdkVolumeBytesUsedRequest defines a request for fetching per volume utilization
+from multiple volume in a given node
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| node_id | [ string](#string) | machine uuid of targeted node |
+| ids | [repeated uint64](#uint64) | volume ids to be found in usage response, can be empty |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVolumeBytesUsedResponse {#sdkvolumebytesusedresponse}
+SdkVolumeBytesUsedResponse defines a response to fetch multiple volume util from a given node
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| vol_util_info | [ VolumeBytesUsedByNode](#volumebytesusedbynode) | Provides vol util of multiple requested volumes from a given node |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
 ## SdkVolumeCapacityUsageRequest {#sdkvolumecapacityusagerequest}
 Defines request to retrieve volume/snapshot capacity usage details
 
@@ -5364,6 +5469,19 @@ Defines a request to clone a volume or create a volume from a snapshot
 | ----- | ---- | ----------- |
 | name | [ string](#string) | Unique name of the volume. This will be used for idempotency. |
 | parent_id | [ string](#string) | Parent volume id or snapshot id will create a new volume as a clone of the parent. |
+| additional_labels | [map SdkVolumeCloneRequest.AdditionalLabelsEntry](#sdkvolumeclonerequestadditionallabelsentry) | Additional labels to be appended after cloning the volume. Note that clone will issue a snapshot, which copies most labels except pvc and namespace. This map allows you to pass additional labels that are not part of the parent volume. |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVolumeCloneRequest.AdditionalLabelsEntry {#sdkvolumeclonerequestadditionallabelsentry}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [ string](#string) | none |
+| value | [ string](#string) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -6287,6 +6405,30 @@ Volume represents an abstract storage volume.
  <!-- end HasFields -->
 
 
+## VolumeBytesUsed {#volumebytesused}
+VolumeBytesUsed defines volume utilization
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id | [ string](#string) | id for the volume/snapshot |
+| total_bytes | [ uint64](#uint64) | size in bytes by the volume/snapshot |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## VolumeBytesUsedByNode {#volumebytesusedbynode}
+VolumeBytesUsedByNode defines volume utilization for multiple volumes in a given node
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| node_id | [ string](#string) | machine uuid |
+| vol_usage | [repeated VolumeBytesUsed](#volumebytesused) | VolumeBytesUsed for each requested volume on the given node |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
 ## VolumeConsumer {#volumeconsumer}
 VolumeConsumer identifies a consumer for a Volume. An example of a VolumeConsumer
 would be a Pod in Kubernetes who has mounted the PersistentVolumeClaim for the
@@ -6584,6 +6726,9 @@ VolumeSpec has the properties needed to create a volume.
 | readahead | [ bool](#bool) | Enable readahead for the volume |
 | topology_requirement | [ TopologyRequirement](#topologyrequirement) | TopologyRequirement topology requirement for this volume |
 | winshare | [ bool](#bool) | winshare is true if this volume can be accessed from windows pods. |
+| fa_create_options | [ string](#string) | Filesystem create options to be honored. |
+| near_sync | [ bool](#bool) | NearSync specifies the volume has a near-sync replica |
+| near_sync_replication_strategy | [ NearSyncReplicationStrategy](#nearsyncreplicationstrategy) | NearSyncReplicationStrategy is replication strategy for near sync volumes |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -6699,6 +6844,7 @@ VolumeSpecUpdate provides a method to set any of the VolumeSpec of an existing v
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) io_throttle_opt.io_throttle | [ IoThrottle](#iothrottle) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) readahead_opt.readahead | [ bool](#bool) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) winshare_opt.winshare | [ bool](#bool) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) near_sync_replication_strategy_opt.near_sync_replication_strategy | [ NearSyncReplicationStrategy](#nearsyncreplicationstrategy) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -7097,6 +7243,18 @@ This defines operator types used in a label matching rule
 
 
 
+## NearSyncReplicationStrategy {#nearsyncreplicationstrategy}
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| NEAR_SYNC_STRATEGY_NONE | 0 | none |
+| NEAR_SYNC_STRATEGY_AGGRESSIVE | 1 | none |
+| NEAR_SYNC_STRATEGY_OPTIMIZED | 2 | none |
+
+
+
+
 ## OperationFlags {#operationflags}
 
 
@@ -7211,6 +7369,9 @@ CloudBackup operations types
 | SdkCloudBackupOpTypeUnknown | 0 | Unknown |
 | SdkCloudBackupOpTypeBackupOp | 1 | Backup |
 | SdkCloudBackupOpTypeRestoreOp | 2 | Restore |
+| SdkNearSyncOpTypeCloneOp | 3 | NearSync clone |
+| SdkNearSyncOpTypeReplAddOp | 4 | NearSync replication add |
+| SdkNearSyncOpTypeRestoreOp | 5 | NearSync restore |
 
 
 
@@ -7225,6 +7386,9 @@ to or from a cloud provider
 | SdkCloudBackupRequestedStatePause | 1 | Pause the backup or restore |
 | SdkCloudBackupRequestedStateResume | 2 | Resume the backup or restore |
 | SdkCloudBackupRequestedStateStop | 3 | Stop a backup or restore |
+| SdkNearSyncRequestedStatePause | 4 | Pause the near sync migrate |
+| SdkNearSyncRequestedStateResume | 5 | Resume the near sync migrate |
+| SdkNearSyncRequestedStateStop | 6 | Stop a near sync migrate |
 
 
 
@@ -7244,6 +7408,13 @@ CloudBackup status types
 | SdkCloudBackupStatusTypeFailed | 7 | Failed |
 | SdkCloudBackupStatusTypeQueued | 8 | Queued |
 | SdkCloudBackupStatusTypeInvalid | 9 | Invalid, used by enumerate, includes failed, stopped and aborted |
+| SdkNearSyncStatusTypeNotStarted | 10 | Near sync Not started |
+| SdkNearSyncStatusTypeDone | 11 | Done |
+| SdkNearSyncStatusTypePaused | 12 | Paused |
+| SdkNearSyncStatusTypeStopped | 13 | Stopped |
+| SdkNearSyncStatusTypeActive | 14 | Active |
+| SdkNearSyncStatusTypeFailed | 15 | Failed |
+| SdkNearSyncStatusTypeInvalid | 16 | Invalid |
 
 
 
@@ -7330,7 +7501,7 @@ client and server applications
 | ---- | ------ | ----------- |
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
-| Minor | 151 | SDK version minor value of this specification |
+| Minor | 159 | SDK version minor value of this specification |
 | Patch | 0 | SDK version patch value of this specification |
 
 

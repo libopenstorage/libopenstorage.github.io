@@ -617,6 +617,10 @@
 <li><a href="#sdkalertsresourceidquery">SdkAlertsResourceIdQuery</a></li>
 <li><a href="#sdkalertsresourcetypequery">SdkAlertsResourceTypeQuery</a></li>
 <li><a href="#sdkalertstimespan">SdkAlertsTimeSpan</a></li>
+<li><a href="#sdkautofstrimpoprequest">SdkAutoFSTrimPopRequest</a></li>
+<li><a href="#sdkautofstrimpopresponse">SdkAutoFSTrimPopResponse</a></li>
+<li><a href="#sdkautofstrimpushrequest">SdkAutoFSTrimPushRequest</a></li>
+<li><a href="#sdkautofstrimpushresponse">SdkAutoFSTrimPushResponse</a></li>
 <li><a href="#sdkautofstrimstatusrequest">SdkAutoFSTrimStatusRequest</a></li>
 <li><a href="#sdkautofstrimstatusresponse">SdkAutoFSTrimStatusResponse</a></li>
 <li><a href="#sdkautofstrimstatusresponsetrimstatusentry">SdkAutoFSTrimStatusResponse.TrimStatusEntry</a></li>
@@ -830,11 +834,14 @@
 <li><a href="#sdkvolumeattachrequest">SdkVolumeAttachRequest</a></li>
 <li><a href="#sdkvolumeattachrequestdriveroptionsentry">SdkVolumeAttachRequest.DriverOptionsEntry</a></li>
 <li><a href="#sdkvolumeattachresponse">SdkVolumeAttachResponse</a></li>
+<li><a href="#sdkvolumebytesusedrequest">SdkVolumeBytesUsedRequest</a></li>
+<li><a href="#sdkvolumebytesusedresponse">SdkVolumeBytesUsedResponse</a></li>
 <li><a href="#sdkvolumecapacityusagerequest">SdkVolumeCapacityUsageRequest</a></li>
 <li><a href="#sdkvolumecapacityusageresponse">SdkVolumeCapacityUsageResponse</a></li>
 <li><a href="#sdkvolumecatalogrequest">SdkVolumeCatalogRequest</a></li>
 <li><a href="#sdkvolumecatalogresponse">SdkVolumeCatalogResponse</a></li>
 <li><a href="#sdkvolumeclonerequest">SdkVolumeCloneRequest</a></li>
+<li><a href="#sdkvolumeclonerequestadditionallabelsentry">SdkVolumeCloneRequest.AdditionalLabelsEntry</a></li>
 <li><a href="#sdkvolumecloneresponse">SdkVolumeCloneResponse</a></li>
 <li><a href="#sdkvolumecreaterequest">SdkVolumeCreateRequest</a></li>
 <li><a href="#sdkvolumecreaterequestlabelsentry">SdkVolumeCreateRequest.LabelsEntry</a></li>
@@ -907,6 +914,8 @@
 <li><a href="#topologyrequirementlabelsentry">TopologyRequirement.LabelsEntry</a></li>
 <li><a href="#volume">Volume</a></li>
 <li><a href="#volumeattachinfoentry">Volume.AttachInfoEntry</a></li>
+<li><a href="#volumebytesused">VolumeBytesUsed</a></li>
+<li><a href="#volumebytesusedbynode">VolumeBytesUsedByNode</a></li>
 <li><a href="#volumeconsumer">VolumeConsumer</a></li>
 <li><a href="#volumecreaterequest">VolumeCreateRequest</a></li>
 <li><a href="#volumecreateresponse">VolumeCreateResponse</a></li>
@@ -963,6 +972,7 @@
 <li><a href="#jobstate">Job.State</a></li>
 <li><a href="#jobtype">Job.Type</a></li>
 <li><a href="#labelselectorrequirementoperator">LabelSelectorRequirement.Operator</a></li>
+<li><a href="#nearsyncreplicationstrategy">NearSyncReplicationStrategy</a></li>
 <li><a href="#operationflags">OperationFlags</a></li>
 <li><a href="#ownershipaccesstype">Ownership.AccessType</a></li>
 <li><a href="#proxyprotocol">ProxyProtocol</a></li>
@@ -1434,7 +1444,19 @@ volume</p>
 <p><strong>rpc</strong> Stop(<a href="#sdkfilesystemtrimstoprequest">SdkFilesystemTrimStopRequest</a>)
     <a href="#sdkfilesystemtrimstopresponse">SdkFilesystemTrimStopResponse</a></p>
 </blockquote>
-<p>Stop a filesystem Trim background operation on a mounted volume, if any
+<p>Stop a filesystem Trim background operation on a mounted volume, if any</p>
+<h2 id="methodopenstorageapiopenstoragefilesystemtrimautofstrimpush">AutoFSTrimPush </h2>
+<blockquote>
+<p><strong>rpc</strong> AutoFSTrimPush(<a href="#sdkautofstrimpushrequest">SdkAutoFSTrimPushRequest</a>)
+    <a href="#sdkautofstrimpushresponse">SdkAutoFSTrimPushResponse</a></p>
+</blockquote>
+<p>Push a auto filesystem Trim job into the queue</p>
+<h2 id="methodopenstorageapiopenstoragefilesystemtrimautofstrimpop">AutoFSTrimPop </h2>
+<blockquote>
+<p><strong>rpc</strong> AutoFSTrimPop(<a href="#sdkautofstrimpoprequest">SdkAutoFSTrimPopRequest</a>)
+    <a href="#sdkautofstrimpopresponse">SdkAutoFSTrimPopResponse</a></p>
+</blockquote>
+<p>Pop a auto filesystem Trim job from the queue
  <!-- end methods --></p>
 <h1 id="serviceopenstorageapiopenstorageidentity">OpenStorageIdentity </h1>
 <p>OpenStorageIdentity service provides methods to obtain information
@@ -1599,7 +1621,13 @@ will stay on the node.</p>
     <a href="#sdknodeuncordonattachmentsresponse">SdkNodeUncordonAttachmentsResponse</a></p>
 </blockquote>
 <p>UncordonAttachments re-enables volume attachments
-on the provided node in the cluster.
+on the provided node in the cluster.</p>
+<h2 id="methodopenstorageapiopenstoragenodevolumebytesusedbynode">VolumeBytesUsedByNode </h2>
+<blockquote>
+<p><strong>rpc</strong> VolumeBytesUsedByNode(<a href="#sdkvolumebytesusedrequest">SdkVolumeBytesUsedRequest</a>)
+    <a href="#sdkvolumebytesusedresponse">SdkVolumeBytesUsedResponse</a></p>
+</blockquote>
+<p>Returns bytes used of multiple volumes for a give node
  <!-- end methods --></p>
 <h1 id="serviceopenstorageapiopenstorageobjectstore">OpenStorageObjectstore </h1>
 <p>OpenStorageObjectstore is a service used to manage object store services on volumes</p>
@@ -5001,6 +5029,90 @@ as well.</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
+<h2 id="sdkautofstrimpoprequest">SdkAutoFSTrimPopRequest </h2>
+<p>SdkAutoFSTrimPopRequest defines the request to pop a volume to autofstrim
+queue</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of the volume</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkautofstrimpopresponse">SdkAutoFSTrimPopResponse </h2>
+<p>SdkAutoFSTrimPopResponse defines the response to pop a volume to autofstrim
+queue</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>message</td>
+<td><a href="#string"> string</a></td>
+<td>Text blob containing ASCII text providing details of the operation</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkautofstrimpushrequest">SdkAutoFSTrimPushRequest </h2>
+<p>SdkAutoFSTrimPushRequest defines the request to push a volume to autofstrim
+queue</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of the volume</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkautofstrimpushresponse">SdkAutoFSTrimPushResponse </h2>
+<p>SdkAutoFSTrimPushResponse defines the response to push a volume to autofstrim
+queue</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>message</td>
+<td><a href="#string"> string</a></td>
+<td>Text blob containing ASCII text providing details of the operation</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
 <h2 id="sdkautofstrimstatusrequest">SdkAutoFSTrimStatusRequest </h2>
 <p>SdkAutoFSTrimStatusRequest defines a request to get status of autofs trim operation</p>
  <!-- end HasFields -->
@@ -5332,6 +5444,11 @@ SdkAutoFSTrimUsageRequest.</p>
 <td>delete_local</td>
 <td><a href="#bool"> bool</a></td>
 <td>DeleteLocal indicates if local snap created for backup must be deleted after the backup is complete</td>
+</tr>
+<tr>
+<td>near_sync_migrate</td>
+<td><a href="#bool"> bool</a></td>
+<td>Indicates if this is a near sync migrate</td>
 </tr>
 </tbody>
 </table>
@@ -6159,7 +6276,22 @@ specificed volume</p>
 <tr>
 <td>size</td>
 <td><a href="#uint64"> uint64</a></td>
-<td>Size is the size of the volume in bytes</td>
+<td>Same value as total_download_bytes, will be deprecated</td>
+</tr>
+<tr>
+<td>total_download_bytes</td>
+<td><a href="#uint64"> uint64</a></td>
+<td>Total download size of all the backups (full &amp; incremental) required for a restore</td>
+</tr>
+<tr>
+<td>compressed_object_bytes</td>
+<td><a href="#uint64"> uint64</a></td>
+<td>Size of the compressed individual backup in object-store or NFS</td>
+</tr>
+<tr>
+<td>capacity_required_for_restore</td>
+<td><a href="#uint64"> uint64</a></td>
+<td>Used size of the volume to be restored (in bytes)</td>
 </tr>
 </tbody>
 </table>
@@ -6300,6 +6432,11 @@ specified volume</p>
 <td>task_id</td>
 <td><a href="#string"> string</a></td>
 <td>TaskId of the backup/restore task, if this is specified, volume_id is ignored.</td>
+</tr>
+<tr>
+<td>near_sync_migrate</td>
+<td><a href="#bool"> bool</a></td>
+<td>Indicates if this is for nearsync migration</td>
 </tr>
 </tbody>
 </table>
@@ -9361,6 +9498,52 @@ version run by an SDK server.</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
+<h2 id="sdkvolumebytesusedrequest">SdkVolumeBytesUsedRequest </h2>
+<p>SdkVolumeBytesUsedRequest defines a request for fetching per volume utilization
+from multiple volume in a given node</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>node_id</td>
+<td><a href="#string"> string</a></td>
+<td>machine uuid of targeted node</td>
+</tr>
+<tr>
+<td>ids</td>
+<td><a href="#uint64">repeated uint64</a></td>
+<td>volume ids to be found in usage response, can be empty</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkvolumebytesusedresponse">SdkVolumeBytesUsedResponse </h2>
+<p>SdkVolumeBytesUsedResponse defines a response to fetch multiple volume util from a given node</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vol_util_info</td>
+<td><a href="#volumebytesusedbynode"> VolumeBytesUsedByNode</a></td>
+<td>Provides vol util of multiple requested volumes from a given node</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
 <h2 id="sdkvolumecapacityusagerequest">SdkVolumeCapacityUsageRequest </h2>
 <p>Defines request to retrieve volume/snapshot capacity usage details</p>
 <table>
@@ -9471,6 +9654,35 @@ version run by an SDK server.</p>
 <td>parent_id</td>
 <td><a href="#string"> string</a></td>
 <td>Parent volume id or snapshot id will create a new volume as a clone of the parent.</td>
+</tr>
+<tr>
+<td>additional_labels</td>
+<td><a href="#sdkvolumeclonerequestadditionallabelsentry">map SdkVolumeCloneRequest.AdditionalLabelsEntry</a></td>
+<td>Additional labels to be appended after cloning the volume. Note that clone will issue a snapshot, which copies most labels except pvc and namespace. This map allows you to pass additional labels that are not part of the parent volume.</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkvolumeclonerequestadditionallabelsentry">SdkVolumeCloneRequest.AdditionalLabelsEntry </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
 </tr>
 </tbody>
 </table>
@@ -11566,6 +11778,56 @@ to seed the volume with data.</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
+<h2 id="volumebytesused">VolumeBytesUsed </h2>
+<p>VolumeBytesUsed defines volume utilization</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume_id</td>
+<td><a href="#string"> string</a></td>
+<td>id for the volume/snapshot</td>
+</tr>
+<tr>
+<td>total_bytes</td>
+<td><a href="#uint64"> uint64</a></td>
+<td>size in bytes by the volume/snapshot</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="volumebytesusedbynode">VolumeBytesUsedByNode </h2>
+<p>VolumeBytesUsedByNode defines volume utilization for multiple volumes in a given node</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>node_id</td>
+<td><a href="#string"> string</a></td>
+<td>machine uuid</td>
+</tr>
+<tr>
+<td>vol_usage</td>
+<td><a href="#volumebytesused">repeated VolumeBytesUsed</a></td>
+<td>VolumeBytesUsed for each requested volume on the given node</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
 <h2 id="volumeconsumer">VolumeConsumer </h2>
 <p>VolumeConsumer identifies a consumer for a Volume. An example of a VolumeConsumer
 would be a Pod in Kubernetes who has mounted the PersistentVolumeClaim for the
@@ -12329,6 +12591,21 @@ performed on a volumen</p>
 <td><a href="#bool"> bool</a></td>
 <td>winshare is true if this volume can be accessed from windows pods.</td>
 </tr>
+<tr>
+<td>fa_create_options</td>
+<td><a href="#string"> string</a></td>
+<td>Filesystem create options to be honored.</td>
+</tr>
+<tr>
+<td>near_sync</td>
+<td><a href="#bool"> bool</a></td>
+<td>NearSync specifies the volume has a near-sync replica</td>
+</tr>
+<tr>
+<td>near_sync_replication_strategy</td>
+<td><a href="#nearsyncreplicationstrategy"> NearSyncReplicationStrategy</a></td>
+<td>NearSyncReplicationStrategy is replication strategy for near sync volumes</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -12760,6 +13037,11 @@ performed on a volumen</p>
 <tr>
 <td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> winshare_opt.winshare</td>
 <td><a href="#bool"> bool</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> near_sync_replication_strategy_opt.near_sync_replication_strategy</td>
+<td><a href="#nearsyncreplicationstrategy"> NearSyncReplicationStrategy</a></td>
 <td>none</td>
 </tr>
 </tbody>
@@ -13788,6 +14070,33 @@ OpenStorageFilesystemTrim service APIs()</p>
 </tr>
 </tbody>
 </table>
+<h2 id="nearsyncreplicationstrategy">NearSyncReplicationStrategy </h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NEAR_SYNC_STRATEGY_NONE</td>
+<td>0</td>
+<td>none</td>
+</tr>
+<tr>
+<td>NEAR_SYNC_STRATEGY_AGGRESSIVE</td>
+<td>1</td>
+<td>none</td>
+</tr>
+<tr>
+<td>NEAR_SYNC_STRATEGY_OPTIMIZED</td>
+<td>2</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
 <h2 id="operationflags">OperationFlags </h2>
 <table>
 <thead>
@@ -14066,6 +14375,21 @@ used for.</p>
 <td>2</td>
 <td>Restore</td>
 </tr>
+<tr>
+<td>SdkNearSyncOpTypeCloneOp</td>
+<td>3</td>
+<td>NearSync clone</td>
+</tr>
+<tr>
+<td>SdkNearSyncOpTypeReplAddOp</td>
+<td>4</td>
+<td>NearSync replication add</td>
+</tr>
+<tr>
+<td>SdkNearSyncOpTypeRestoreOp</td>
+<td>5</td>
+<td>NearSync restore</td>
+</tr>
 </tbody>
 </table>
 <h2 id="sdkcloudbackuprequestedstate">SdkCloudBackupRequestedState </h2>
@@ -14099,6 +14423,21 @@ to or from a cloud provider</p>
 <td>SdkCloudBackupRequestedStateStop</td>
 <td>3</td>
 <td>Stop a backup or restore</td>
+</tr>
+<tr>
+<td>SdkNearSyncRequestedStatePause</td>
+<td>4</td>
+<td>Pause the near sync migrate</td>
+</tr>
+<tr>
+<td>SdkNearSyncRequestedStateResume</td>
+<td>5</td>
+<td>Resume the near sync migrate</td>
+</tr>
+<tr>
+<td>SdkNearSyncRequestedStateStop</td>
+<td>6</td>
+<td>Stop a near sync migrate</td>
 </tr>
 </tbody>
 </table>
@@ -14162,6 +14501,41 @@ to or from a cloud provider</p>
 <td>SdkCloudBackupStatusTypeInvalid</td>
 <td>9</td>
 <td>Invalid, used by enumerate, includes failed, stopped and aborted</td>
+</tr>
+<tr>
+<td>SdkNearSyncStatusTypeNotStarted</td>
+<td>10</td>
+<td>Near sync Not started</td>
+</tr>
+<tr>
+<td>SdkNearSyncStatusTypeDone</td>
+<td>11</td>
+<td>Done</td>
+</tr>
+<tr>
+<td>SdkNearSyncStatusTypePaused</td>
+<td>12</td>
+<td>Paused</td>
+</tr>
+<tr>
+<td>SdkNearSyncStatusTypeStopped</td>
+<td>13</td>
+<td>Stopped</td>
+</tr>
+<tr>
+<td>SdkNearSyncStatusTypeActive</td>
+<td>14</td>
+<td>Active</td>
+</tr>
+<tr>
+<td>SdkNearSyncStatusTypeFailed</td>
+<td>15</td>
+<td>Failed</td>
+</tr>
+<tr>
+<td>SdkNearSyncStatusTypeInvalid</td>
+<td>16</td>
+<td>Invalid</td>
 </tr>
 </tbody>
 </table>
@@ -14398,7 +14772,7 @@ client and server applications</p>
 </tr>
 <tr>
 <td>Minor</td>
-<td>151</td>
+<td>159</td>
 <td>SDK version minor value of this specification</td>
 </tr>
 <tr>
@@ -15139,7 +15513,7 @@ of services supported by container orchestrators such as Kubernetes.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Nightly","level":"1.5.6","depth":2,"next":{"title":"Changelog","level":"1.5.6.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.5.1","depth":3,"path":"release-9.5.changelog.md","ref":"release-9.5.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"master.generated-api.md","mtime":"2022-10-06T21:11:29.998Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-10-06T21:11:33.325Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Nightly","level":"1.5.6","depth":2,"next":{"title":"Changelog","level":"1.5.6.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.5.1","depth":3,"path":"release-9.5.changelog.md","ref":"release-9.5.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"master.generated-api.md","mtime":"2023-05-01T19:21:18.832Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-05-01T19:21:23.672Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

@@ -350,6 +350,7 @@
     - [SdkVolumeCatalogRequest](#sdkvolumecatalogrequest)
     - [SdkVolumeCatalogResponse](#sdkvolumecatalogresponse)
     - [SdkVolumeCloneRequest](#sdkvolumeclonerequest)
+    - [SdkVolumeCloneRequest.AdditionalLabelsEntry](#sdkvolumeclonerequestadditionallabelsentry)
     - [SdkVolumeCloneResponse](#sdkvolumecloneresponse)
     - [SdkVolumeCreateRequest](#sdkvolumecreaterequest)
     - [SdkVolumeCreateRequest.LabelsEntry](#sdkvolumecreaterequestlabelsentry)
@@ -5304,6 +5305,19 @@ Defines a request to clone a volume or create a volume from a snapshot
 | ----- | ---- | ----------- |
 | name | [ string](#string) | Unique name of the volume. This will be used for idempotency. |
 | parent_id | [ string](#string) | Parent volume id or snapshot id will create a new volume as a clone of the parent. |
+| additional_labels | [map SdkVolumeCloneRequest.AdditionalLabelsEntry](#sdkvolumeclonerequestadditionallabelsentry) | Additional labels to be appended after cloning the volume. Note that clone will issue a snapshot, which copies most labels except pvc and namespace. This map allows you to pass additional labels that are not part of the parent volume. |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVolumeCloneRequest.AdditionalLabelsEntry {#sdkvolumeclonerequestadditionallabelsentry}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [ string](#string) | none |
+| value | [ string](#string) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -6517,6 +6531,7 @@ VolumeSpec has the properties needed to create a volume.
 | auto_fstrim | [ bool](#bool) | Autofstrim indicates that fstrim would be run on this volume automatically, without user intervention |
 | io_throttle | [ IoThrottle](#iothrottle) | IoThrottle specifies maximum io(iops/bandwidth) this volume is restricted to |
 | topology_requirement | [ TopologyRequirement](#topologyrequirement) | TopologyRequirement topology requirement for this volume |
+| fa_create_options | [ string](#string) | Filesystem create options to be honored. |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -7260,7 +7275,7 @@ client and server applications
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
 | Minor | 101 | SDK version minor value of this specification |
-| Patch | 28 | SDK version patch value of this specification |
+| Patch | 31 | SDK version patch value of this specification |
 
 
 
@@ -7300,6 +7315,7 @@ of services supported by container orchestrators such as Kubernetes.
 | NODEPORT | 1 | Export the sharedv4 service on each Node's IP. In this mode the sharedv4 volume can be accessed from outside the cluster using one of the node's IPs. |
 | CLUSTERIP | 2 | Export the shared4 service on an internal cluster IP. In this mode the sharedv4 volume will only be accessible within the cluster via this service. |
 | LOADBALANCER | 3 | Expose the sharedv4 service on cloud provider's load balancer. Applicable when running in cloud. In this mode the sharedv4 volume can be accessed from outside the cluster. |
+| NONE | 4 | Do not use sharedv4 service feature. Use legacy sharedv4 volumes instead. |
 
 
 

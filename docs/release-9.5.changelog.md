@@ -2,6 +2,18 @@
 
 ## Releases
 
+### v0.101.31 - (12/21/2022)
+
+* Add pvc/namespace labels to cloned csi volumes
+
+### v0.101.30 - (11/08/2022)
+
+* FA DirectAccess CreateOptions is not honoroed by PX
+
+### v0.101.29 - (11/07/2022)
+
+* Add NONE value to sharedv4 service type enum
+
 ### v0.101.28 - (8/18/2022)
 
 * PWX-26324: Extend fastpath config to disable auto fallback

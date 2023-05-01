@@ -6,8 +6,6 @@ volume.
 
 The sources for this tutorial are available in the [`examples/python`](https://github.com/libopenstorage/libopenstorage.github.io/tree/master/examples/python) directory in the repo for this website.
 
-If you would like to try this tutorial on the web, check out our
-[Katacoda Scenario: OpenStorage SDK Python Client Tutorial](https://www.katacoda.com/lpabon/scenarios/tutorial-python).
 
 ## Setting up your environment
 To setup your environment, run the following:
@@ -187,36 +185,6 @@ Status of the backup is SdkCloudBackupStatusTypeDone
 Backup history for volume 9b64012f-db53-4a7b-8393-94b3d1ba0b02
 Time:2018-07-18T02:04:53.278579951Z Status:SdkCloudBackupStatusTypeDone
 ```
-
-## Using the Python SDK Documentation
-
-The python SDK generated documentation in the [API reference](reference.md)
-provides some necessary information on the Python bindings for the OpenStorage
-SDK, but it does not provide a full model. This is due to the python protobuf
-generator. You will need to use both the gRPC and Python API references
-to achieve this.
-
-Here is an example model of how to to access the UUID of a cluster.
-
-1. Go to the OpenStorageCluster service in the gRPC reference. Here you will notice
-   that the _SdkClusterInspectCurrentResponse_ is returned with a field named
-   `cluster` of type `StorageCluster`.
-1. Now go to the Python API reference and open the `api_pb2` module. Here you
-   can search for _SdkClusterInspectCurrentResponse_ and notice that it returns
-   a `var cluster`. This is the gRPC `field` named `cluster` in the gRPC
-   reference, but the python document does not provide the type of the variable
-   so that you can determine its instance variables. As you noticed on the
-   previous step, `cluster` is of type `StorageCluster`.
-1. In the same `api_pb2` python document, look up `StorageCluster` class. You
-   will notice that it shows three instance variables: `id`, `name`, and
-   `status`.
-1. `cluster.id` and `cluster.name` are `strings` as shown in the gRPC
-   documentation, but `cluster.status` is an enum of type `Status`.
-1. If you print the value from `cluster.status` you will get the `int` value of
-   the enum, but if you want the string value of the enum, protobuf provides a
-   conversion funcion called: `api_pb2.<enum>.Name(value)`. You can print the
-   string value of the enum `cluster.status` by calling
-   `api_pb2.Status.Name(cluster.status)`.
 
 ## Next
 As you can see from the above, working with OpenStorage SDK is quite easy,
