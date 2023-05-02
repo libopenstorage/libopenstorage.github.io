@@ -69,7 +69,7 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="release-9.5.changelog.html" />
+    <link rel="next" href="release-9.7.changelog.html" />
     
     
     <link rel="prev" href="release-7.0.changelog.html" />
@@ -359,9 +359,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.5.5" data-path="release-9.5.generated-api.html">
+        <li class="chapter active" data-level="1.5.5" data-path="release-9.7.generated-api.html">
             
-                <a href="release-9.5.generated-api.html">
+                <a href="release-9.7.generated-api.html">
             
                     
                         <b>1.5.5.</b>
@@ -375,9 +375,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.5.5.1" data-path="release-9.5.changelog.html">
+        <li class="chapter " data-level="1.5.5.1" data-path="release-9.7.changelog.html">
             
-                <a href="release-9.5.changelog.html">
+                <a href="release-9.7.changelog.html">
             
                     
                         <b>1.5.5.1.</b>
@@ -617,6 +617,10 @@
 <li><a href="#sdkalertsresourceidquery">SdkAlertsResourceIdQuery</a></li>
 <li><a href="#sdkalertsresourcetypequery">SdkAlertsResourceTypeQuery</a></li>
 <li><a href="#sdkalertstimespan">SdkAlertsTimeSpan</a></li>
+<li><a href="#sdkautofstrimpoprequest">SdkAutoFSTrimPopRequest</a></li>
+<li><a href="#sdkautofstrimpopresponse">SdkAutoFSTrimPopResponse</a></li>
+<li><a href="#sdkautofstrimpushrequest">SdkAutoFSTrimPushRequest</a></li>
+<li><a href="#sdkautofstrimpushresponse">SdkAutoFSTrimPushResponse</a></li>
 <li><a href="#sdkautofstrimstatusrequest">SdkAutoFSTrimStatusRequest</a></li>
 <li><a href="#sdkautofstrimstatusresponse">SdkAutoFSTrimStatusResponse</a></li>
 <li><a href="#sdkautofstrimstatusresponsetrimstatusentry">SdkAutoFSTrimStatusResponse.TrimStatusEntry</a></li>
@@ -743,6 +747,8 @@
 <li><a href="#sdkidentityversionrequest">SdkIdentityVersionRequest</a></li>
 <li><a href="#sdkidentityversionresponse">SdkIdentityVersionResponse</a></li>
 <li><a href="#sdkjobresponse">SdkJobResponse</a></li>
+<li><a href="#sdknfscredentialrequest">SdkNfsCredentialRequest</a></li>
+<li><a href="#sdknfscredentialresponse">SdkNfsCredentialResponse</a></li>
 <li><a href="#sdknodecordonattachmentsrequest">SdkNodeCordonAttachmentsRequest</a></li>
 <li><a href="#sdknodecordonattachmentsresponse">SdkNodeCordonAttachmentsResponse</a></li>
 <li><a href="#sdknodedrainattachmentsrequest">SdkNodeDrainAttachmentsRequest</a></li>
@@ -961,6 +967,7 @@
 <li><a href="#jobstate">Job.State</a></li>
 <li><a href="#jobtype">Job.Type</a></li>
 <li><a href="#labelselectorrequirementoperator">LabelSelectorRequirement.Operator</a></li>
+<li><a href="#nearsyncreplicationstrategy">NearSyncReplicationStrategy</a></li>
 <li><a href="#operationflags">OperationFlags</a></li>
 <li><a href="#ownershipaccesstype">Ownership.AccessType</a></li>
 <li><a href="#proxyprotocol">ProxyProtocol</a></li>
@@ -1432,7 +1439,19 @@ volume</p>
 <p><strong>rpc</strong> Stop(<a href="#sdkfilesystemtrimstoprequest">SdkFilesystemTrimStopRequest</a>)
     <a href="#sdkfilesystemtrimstopresponse">SdkFilesystemTrimStopResponse</a></p>
 </blockquote>
-<p>Stop a filesystem Trim background operation on a mounted volume, if any
+<p>Stop a filesystem Trim background operation on a mounted volume, if any</p>
+<h2 id="methodopenstorageapiopenstoragefilesystemtrimautofstrimpush">AutoFSTrimPush </h2>
+<blockquote>
+<p><strong>rpc</strong> AutoFSTrimPush(<a href="#sdkautofstrimpushrequest">SdkAutoFSTrimPushRequest</a>)
+    <a href="#sdkautofstrimpushresponse">SdkAutoFSTrimPushResponse</a></p>
+</blockquote>
+<p>Push a auto filesystem Trim job into the queue</p>
+<h2 id="methodopenstorageapiopenstoragefilesystemtrimautofstrimpop">AutoFSTrimPop </h2>
+<blockquote>
+<p><strong>rpc</strong> AutoFSTrimPop(<a href="#sdkautofstrimpoprequest">SdkAutoFSTrimPopRequest</a>)
+    <a href="#sdkautofstrimpopresponse">SdkAutoFSTrimPopResponse</a></p>
+</blockquote>
+<p>Pop a auto filesystem Trim job from the queue
  <!-- end methods --></p>
 <h1 id="serviceopenstorageapiopenstorageidentity">OpenStorageIdentity </h1>
 <p>OpenStorageIdentity service provides methods to obtain information
@@ -4983,6 +5002,90 @@ as well.</p>
 </table>
  <!-- end Fields -->
  <!-- end HasFields -->
+<h2 id="sdkautofstrimpoprequest">SdkAutoFSTrimPopRequest </h2>
+<p>SdkAutoFSTrimPopRequest defines the request to pop a volume to autofstrim
+queue</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of the volume</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkautofstrimpopresponse">SdkAutoFSTrimPopResponse </h2>
+<p>SdkAutoFSTrimPopResponse defines the response to pop a volume to autofstrim
+queue</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>message</td>
+<td><a href="#string"> string</a></td>
+<td>Text blob containing ASCII text providing details of the operation</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkautofstrimpushrequest">SdkAutoFSTrimPushRequest </h2>
+<p>SdkAutoFSTrimPushRequest defines the request to push a volume to autofstrim
+queue</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume_id</td>
+<td><a href="#string"> string</a></td>
+<td>Id of the volume</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkautofstrimpushresponse">SdkAutoFSTrimPushResponse </h2>
+<p>SdkAutoFSTrimPushResponse defines the response to push a volume to autofstrim
+queue</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>message</td>
+<td><a href="#string"> string</a></td>
+<td>Text blob containing ASCII text providing details of the operation</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
 <h2 id="sdkautofstrimstatusrequest">SdkAutoFSTrimStatusRequest </h2>
 <p>SdkAutoFSTrimStatusRequest defines a request to get status of autofs trim operation</p>
  <!-- end HasFields -->
@@ -5318,6 +5421,11 @@ SdkAutoFSTrimUsageRequest.</p>
 <td><a href="#bool"> bool</a></td>
 <td>DeleteLocal indicates if local snap created for backup must be deleted after the backup is complete</td>
 </tr>
+<tr>
+<td>near_sync_migrate</td>
+<td><a href="#bool"> bool</a></td>
+<td>Indicates if this is a near sync migrate</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -5420,6 +5528,11 @@ for a specified volume</p>
 <td>force</td>
 <td><a href="#bool"> bool</a></td>
 <td>Force Delete cloudbackup even if there are dependencies. This may be needed if the backup is an incremental backup and subsequent backups depend on this backup specified by <code>backup_id</code>.</td>
+</tr>
+<tr>
+<td>bucket</td>
+<td><a href="#string"> string</a></td>
+<td>Bucket name to which cloud backup belongs to</td>
 </tr>
 </tbody>
 </table>
@@ -6139,7 +6252,22 @@ specificed volume</p>
 <tr>
 <td>size</td>
 <td><a href="#uint64"> uint64</a></td>
-<td>Size is the size of the volume in bytes</td>
+<td>Same value as total_download_bytes, will be deprecated</td>
+</tr>
+<tr>
+<td>total_download_bytes</td>
+<td><a href="#uint64"> uint64</a></td>
+<td>Total download size of all the backups (full &amp; incremental) required for a restore</td>
+</tr>
+<tr>
+<td>compressed_object_bytes</td>
+<td><a href="#uint64"> uint64</a></td>
+<td>Size of the compressed individual backup in object-store or NFS</td>
+</tr>
+<tr>
+<td>capacity_required_for_restore</td>
+<td><a href="#uint64"> uint64</a></td>
+<td>Used size of the volume to be restored (in bytes)</td>
 </tr>
 </tbody>
 </table>
@@ -6280,6 +6408,11 @@ specified volume</p>
 <td>task_id</td>
 <td><a href="#string"> string</a></td>
 <td>TaskId of the backup/restore task, if this is specified, volume_id is ignored.</td>
+</tr>
+<tr>
+<td>near_sync_migrate</td>
+<td><a href="#bool"> bool</a></td>
+<td>Indicates if this is for nearsync migration</td>
 </tr>
 </tbody>
 </table>
@@ -6865,6 +6998,11 @@ specified volume</p>
 <td><a href="#sdkgooglecredentialrequest"> SdkGoogleCredentialRequest</a></td>
 <td>Credentials for Google</td>
 </tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> credential_type.nfs_credential</td>
+<td><a href="#sdknfscredentialrequest"> SdkNfsCredentialRequest</a></td>
+<td>Credentials for NFS</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -7035,6 +7173,11 @@ you will need to check if the value of credential_type is one of the ones below.
 <td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> credential_type.google_credential</td>
 <td><a href="#sdkgooglecredentialresponse"> SdkGoogleCredentialResponse</a></td>
 <td>Google credentials</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> credential_type.nfs_credential</td>
+<td><a href="#sdknfscredentialresponse"> SdkNfsCredentialResponse</a></td>
+<td>NFS credentials</td>
 </tr>
 </tbody>
 </table>
@@ -7694,6 +7837,76 @@ to perform the request</p>
 <td>job</td>
 <td><a href="#job"> Job</a></td>
 <td>Job that was created for the SDK request</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdknfscredentialrequest">SdkNfsCredentialRequest </h2>
+<p>Defines credentials for NFS</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>server</td>
+<td><a href="#string"> string</a></td>
+<td>NFS Server address</td>
+</tr>
+<tr>
+<td>sub_path</td>
+<td><a href="#string"> string</a></td>
+<td>NFS export path</td>
+</tr>
+<tr>
+<td>mount_opts</td>
+<td><a href="#string"> string</a></td>
+<td>mount options for nfs mount</td>
+</tr>
+<tr>
+<td>timeout_seconds</td>
+<td><a href="#uint32"> uint32</a></td>
+<td>timeout for nfs IO in seconds</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdknfscredentialresponse">SdkNfsCredentialResponse </h2>
+<p>Defines the response for NFS credential</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>server</td>
+<td><a href="#string"> string</a></td>
+<td>NFS Server Address</td>
+</tr>
+<tr>
+<td>sub_path</td>
+<td><a href="#string"> string</a></td>
+<td>NFS export path</td>
+</tr>
+<tr>
+<td>mount_opts</td>
+<td><a href="#string"> string</a></td>
+<td>mount options ( &quot;,&quot; separated)</td>
+</tr>
+<tr>
+<td>timeout_seconds</td>
+<td><a href="#uint32"> uint32</a></td>
+<td>timeout in seconds</td>
 </tr>
 </tbody>
 </table>
@@ -12182,6 +12395,16 @@ performed on a volumen</p>
 <td><a href="#string"> string</a></td>
 <td>Filesystem create options to be honored.</td>
 </tr>
+<tr>
+<td>near_sync</td>
+<td><a href="#bool"> bool</a></td>
+<td>NearSync specifies the volume has a near-sync replica</td>
+</tr>
+<tr>
+<td>near_sync_replication_strategy</td>
+<td><a href="#nearsyncreplicationstrategy"> NearSyncReplicationStrategy</a></td>
+<td>NearSyncReplicationStrategy is replication strategy for near sync volumes</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -12593,6 +12816,11 @@ performed on a volumen</p>
 <tr>
 <td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> io_throttle_opt.io_throttle</td>
 <td><a href="#iothrottle"> IoThrottle</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> near_sync_replication_strategy_opt.near_sync_replication_strategy</td>
+<td><a href="#nearsyncreplicationstrategy"> NearSyncReplicationStrategy</a></td>
 <td>none</td>
 </tr>
 </tbody>
@@ -13621,6 +13849,33 @@ OpenStorageFilesystemTrim service APIs()</p>
 </tr>
 </tbody>
 </table>
+<h2 id="nearsyncreplicationstrategy">NearSyncReplicationStrategy </h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NEAR_SYNC_STRATEGY_NONE</td>
+<td>0</td>
+<td>none</td>
+</tr>
+<tr>
+<td>NEAR_SYNC_STRATEGY_AGGRESSIVE</td>
+<td>1</td>
+<td>none</td>
+</tr>
+<tr>
+<td>NEAR_SYNC_STRATEGY_OPTIMIZED</td>
+<td>2</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
 <h2 id="operationflags">OperationFlags </h2>
 <table>
 <thead>
@@ -13898,6 +14153,21 @@ used for.</p>
 <td>2</td>
 <td>Restore</td>
 </tr>
+<tr>
+<td>SdkNearSyncOpTypeCloneOp</td>
+<td>3</td>
+<td>NearSync clone</td>
+</tr>
+<tr>
+<td>SdkNearSyncOpTypeReplAddOp</td>
+<td>4</td>
+<td>NearSync replication add</td>
+</tr>
+<tr>
+<td>SdkNearSyncOpTypeRestoreOp</td>
+<td>5</td>
+<td>NearSync restore</td>
+</tr>
 </tbody>
 </table>
 <h2 id="sdkcloudbackuprequestedstate">SdkCloudBackupRequestedState </h2>
@@ -13931,6 +14201,21 @@ to or from a cloud provider</p>
 <td>SdkCloudBackupRequestedStateStop</td>
 <td>3</td>
 <td>Stop a backup or restore</td>
+</tr>
+<tr>
+<td>SdkNearSyncRequestedStatePause</td>
+<td>4</td>
+<td>Pause the near sync migrate</td>
+</tr>
+<tr>
+<td>SdkNearSyncRequestedStateResume</td>
+<td>5</td>
+<td>Resume the near sync migrate</td>
+</tr>
+<tr>
+<td>SdkNearSyncRequestedStateStop</td>
+<td>6</td>
+<td>Stop a near sync migrate</td>
 </tr>
 </tbody>
 </table>
@@ -13994,6 +14279,41 @@ to or from a cloud provider</p>
 <td>SdkCloudBackupStatusTypeInvalid</td>
 <td>9</td>
 <td>Invalid, used by enumerate, includes failed, stopped and aborted</td>
+</tr>
+<tr>
+<td>SdkNearSyncStatusTypeNotStarted</td>
+<td>10</td>
+<td>Near sync Not started</td>
+</tr>
+<tr>
+<td>SdkNearSyncStatusTypeDone</td>
+<td>11</td>
+<td>Done</td>
+</tr>
+<tr>
+<td>SdkNearSyncStatusTypePaused</td>
+<td>12</td>
+<td>Paused</td>
+</tr>
+<tr>
+<td>SdkNearSyncStatusTypeStopped</td>
+<td>13</td>
+<td>Stopped</td>
+</tr>
+<tr>
+<td>SdkNearSyncStatusTypeActive</td>
+<td>14</td>
+<td>Active</td>
+</tr>
+<tr>
+<td>SdkNearSyncStatusTypeFailed</td>
+<td>15</td>
+<td>Failed</td>
+</tr>
+<tr>
+<td>SdkNearSyncStatusTypeInvalid</td>
+<td>16</td>
+<td>Invalid</td>
 </tr>
 </tbody>
 </table>
@@ -14235,7 +14555,7 @@ client and server applications</p>
 </tr>
 <tr>
 <td>Patch</td>
-<td>31</td>
+<td>36</td>
 <td>SDK version patch value of this specification</td>
 </tr>
 </tbody>
@@ -14960,7 +15280,7 @@ of services supported by container orchestrators such as Kubernetes.</p>
                 </a>
                 
                 
-                <a href="release-9.5.changelog.html" class="navigation navigation-next " aria-label="Next page: Changelog">
+                <a href="release-9.7.changelog.html" class="navigation navigation-next " aria-label="Next page: Changelog">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -14971,7 +15291,7 @@ of services supported by container orchestrators such as Kubernetes.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"v0.101.x","level":"1.5.5","depth":2,"next":{"title":"Changelog","level":"1.5.5.1","depth":3,"path":"release-9.5.changelog.md","ref":"release-9.5.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.4.1","depth":3,"path":"release-7.0.changelog.md","ref":"release-7.0.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"release-9.5.generated-api.md","mtime":"2023-05-01T19:45:03.328Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-05-01T19:45:07.492Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"v0.101.x","level":"1.5.5","depth":2,"next":{"title":"Changelog","level":"1.5.5.1","depth":3,"path":"release-9.7.changelog.md","ref":"release-9.7.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.4.1","depth":3,"path":"release-7.0.changelog.md","ref":"release-7.0.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"release-9.7.generated-api.md","mtime":"2023-05-02T17:39:48.573Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-05-02T17:39:52.904Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

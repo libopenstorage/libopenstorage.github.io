@@ -1,6 +1,6 @@
 #!/bin/sh
 
-BRANCHES="master release-9.5 release-7.0 release-6.4 release-4.0 release-sdk-0.9"
+BRANCHES="master release-9.7 release-7.0 release-6.4 release-4.0 release-sdk-0.9"
 
 apt install -y jq
 
