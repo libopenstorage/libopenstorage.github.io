@@ -12,6 +12,16 @@
         ],
         "type": "string"
       },
+      "ClusterPairModeMode": {
+        "default": "Default",
+        "enum": [
+          "Default",
+          "DisasterRecovery",
+          "OneTimeMigration"
+        ],
+        "title": "- Default: Default pairing mode\n - DisasterRecovery: Paired for DisasterRecovery\n - OneTimeMigration: Paired for one-time migration",
+        "type": "string"
+      },
       "FilesystemCheckFilesystemCheckStatus": {
         "default": "FS_CHECK_UNKNOWN",
         "description": "- FS_CHECK_UNKNOWN: Filesystem Check operation is an unknown state\n - FS_CHECK_NOT_RUNNING: FilesystemCheck operation not running for the specified volume\n - FS_CHECK_STARTED: FilesystemCheck operation started for the specified volume\n - FS_CHECK_INPROGRESS: FilesystemCheck operation is in progress\n - FS_CHECK_STOPPED: FilesystemCheck operation was stopped by the user\n - FS_CHECK_COMPLETED: FilesystemCheck operation completed successfully\n - FS_CHECK_FAILED: FilesystemCheck operation failed due to internal error",
@@ -203,7 +213,7 @@
       },
       "StorageNodeSecurityStatus": {
         "default": "UNSPECIFIED",
-        "description": " - UNSPECIFIED: Security status type is unknown\n - UNSECURED: Node is unsecure\n - SECURED: Node is secured with authentication and authorization\n - SECURED_ALLOW_SECURITY_REMOVAL: Node is secured, but in the process of removing security. This state allows\nother unsecured nodes to join the cluster since the cluster is in the process\nof removing security authentication and authorization.",
+        "description": " - UNSPECIFIED: Security status type is unknown\n - UNSECURED: Node is unsecure\n - SECURED: Node is secured with authentication and authorization\n - SECURED_ALLOW_SECURITY_REMOVAL: Node is secured, but in the process of removing security. This state allows\nother unsecured nodes to join the cluster since the cluster is in the process\nof removing secuirty authenticaiton and authorization.",
         "enum": [
           "UNSPECIFIED",
           "UNSECURED",
@@ -251,6 +261,7 @@
             "type": "string"
           },
           "cleared": {
+            "format": "boolean",
             "title": "Cleared Flag",
             "type": "boolean"
           },
@@ -277,7 +288,7 @@
             "$ref": "#/components/schemas/apiResourceType"
           },
           "resource_id": {
-            "title": "ResourceId where Alert occurred",
+            "title": "ResourceId where Alert occured",
             "type": "string"
           },
           "severity": {
@@ -285,7 +296,7 @@
           },
           "timestamp": {
             "format": "date-time",
-            "title": "Timestamp when Alert occurred",
+            "title": "Timestamp when Alert occured",
             "type": "string"
           },
           "ttl": {
@@ -422,7 +433,7 @@
         "type": "object"
       },
       "apiCapacityUsageInfo": {
-        "description": "Provides details on exclusive and shared storage used by\nsnapshot/volume specifically for copy-on-write(COW) snapshots. Deletion\nof snapshots and overwrite of volume will affect the exclusive storage\nused by the other dependent snaps and parent volume.",
+        "description": "Provides details on exclusive and shared storage used by\nsnapshot/volume specifically for copy-on-write(COW) snapshots. Deletion\nof snapshots and overwirte of volume will affect the exclusive storage\nused by the other dependent snaps and parent volume.",
         "properties": {
           "exclusive_bytes": {
             "description": "Storage consumed exclusively by this single snapshot. Deletion of this\nsnapshot may increase the free storage available by this amount.",
@@ -651,7 +662,7 @@
             "type": "string"
           },
           "mode": {
-            "$ref": "#/components/schemas/apiClusterPairModeMode"
+            "$ref": "#/components/schemas/ClusterPairModeMode"
           },
           "remote_cluster_ip": {
             "title": "IP of the remote cluster",
@@ -667,6 +678,7 @@
             "type": "string"
           },
           "set_default": {
+            "format": "boolean",
             "title": "Set the new pair as the default",
             "type": "boolean"
           }
@@ -694,7 +706,7 @@
             "$ref": "#/components/schemas/apiClusterPairInfo"
           }
         },
-        "title": "Response to get a cluster pair",
+        "title": "Reponse to get a cluster pair",
         "type": "object"
       },
       "apiClusterPairInfo": {
@@ -715,7 +727,7 @@
             "type": "string"
           },
           "mode": {
-            "$ref": "#/components/schemas/apiClusterPairModeMode"
+            "$ref": "#/components/schemas/ClusterPairModeMode"
           },
           "name": {
             "title": "Name of the cluster",
@@ -729,6 +741,7 @@
             "type": "object"
           },
           "secure": {
+            "format": "boolean",
             "title": "Flag used to determine if communication is over a secure channel",
             "type": "boolean"
           },
@@ -739,16 +752,6 @@
         },
         "title": "Information about a cluster pair",
         "type": "object"
-      },
-      "apiClusterPairModeMode": {
-        "default": "Default",
-        "enum": [
-          "Default",
-          "DisasterRecovery",
-          "OneTimeMigration"
-        ],
-        "title": "- Default: Default pairing mode\n - DisasterRecovery: Paired for DisasterRecovery\n - OneTimeMigration: Paired for one-time migration",
-        "type": "string"
       },
       "apiClusterPairTokenGetResponse": {
         "properties": {
@@ -834,6 +837,7 @@
       "apiDiagsNodeSelector": {
         "properties": {
           "all": {
+            "format": "boolean",
             "title": "All selects all nodes for diags collection",
             "type": "boolean"
           },
@@ -908,7 +912,7 @@
       },
       "apiExportProtocol": {
         "default": "INVALID",
-        "description": "ExportProtocol defines how the device is exported..\n\n - INVALID: Invalid uninitialized value\n - PXD: PXD the volume is exported over Portworx block interface.\n - ISCSI: ISCSI the volume is exported over ISCSI.\n - NFS: NFS the volume is exported over NFS.\n - CUSTOM: Custom the volume is exported over custom interface.",
+        "description": "ExportProtocol defines how the device is exported..\n\n - INVALID: Invalid uninitialized value\n - PXD: PXD the volume is exported over Portworx block interace.\n - ISCSI: ISCSI the volume is exported over ISCSI.\n - NFS: NFS the volume is exported over NFS.\n - CUSTOM: Custom the volume is exported over custom interace.",
         "enum": [
           "INVALID",
           "PXD",
@@ -953,14 +957,17 @@
             "type": "string"
           },
           "dirty": {
+            "format": "boolean",
             "title": "Dirty flag on volume - was attached in userspace",
             "type": "boolean"
           },
           "force_failover": {
+            "format": "boolean",
             "title": "fastpath force failover, disable auto promote to fastpath",
             "type": "boolean"
           },
           "promote": {
+            "format": "boolean",
             "title": "Fastpath temporary promotion during attach",
             "type": "boolean"
           },
@@ -996,9 +1003,11 @@
       "apiFastpathReplState": {
         "properties": {
           "acl": {
+            "format": "boolean",
             "type": "boolean"
           },
           "block": {
+            "format": "boolean",
             "type": "boolean"
           },
           "dev_id": {
@@ -1009,6 +1018,7 @@
             "type": "string"
           },
           "exported": {
+            "format": "boolean",
             "type": "boolean"
           },
           "exported_device": {
@@ -1016,6 +1026,7 @@
             "type": "string"
           },
           "imported": {
+            "format": "boolean",
             "title": "initiator info",
             "type": "boolean"
           },
@@ -1121,8 +1132,7 @@
           "IO_PROFILE_SYNC_SHARED",
           "IO_PROFILE_AUTO",
           "IO_PROFILE_NONE",
-          "IO_PROFILE_JOURNAL",
-          "IO_PROFILE_AUTO_JOURNAL"
+          "IO_PROFILE_JOURNAL"
         ],
         "type": "string"
       },
@@ -1131,14 +1141,17 @@
         "properties": {
           "async_io": {
             "description": "AsyncIO enables kaio.",
+            "format": "boolean",
             "type": "boolean"
           },
           "direct_io": {
+            "format": "boolean",
             "title": "Enable direct I/O on the backing datastore",
             "type": "boolean"
           },
           "early_ack": {
             "description": "EarlyAck enables acks for async I/O at the source.",
+            "format": "boolean",
             "type": "boolean"
           }
         },
@@ -1368,6 +1381,7 @@
             "type": "string"
           },
           "enabled": {
+            "format": "boolean",
             "title": "Enable/Disable created objectstore",
             "type": "boolean"
           },
@@ -1490,17 +1504,6 @@
         "title": "PureFileSpec is the spec for proxying a volume on pure_file backends",
         "type": "object"
       },
-      "apiRelaxedReclaimPurge": {
-        "properties": {
-          "num_purged": {
-            "format": "uint64",
-            "title": "num_purged returns number of volumes purged",
-            "type": "string"
-          }
-        },
-        "title": "Purges the RelaxedReclaim queue",
-        "type": "object"
-      },
       "apiReplicaPlacementSpec": {
         "properties": {
           "affected_replicas": {
@@ -1532,11 +1535,6 @@
       },
       "apiReplicaSet": {
         "properties": {
-          "id": {
-            "format": "int64",
-            "title": "ID is the unique ID of this replica set",
-            "type": "integer"
-          },
           "nodes": {
             "items": {
               "type": "string"
@@ -1631,6 +1629,7 @@
           },
           "group_enforced": {
             "description": "GroupEnforced is true if consistency group creation is enforced.",
+            "format": "boolean",
             "type": "boolean"
           },
           "ha_level": {
@@ -1642,6 +1641,7 @@
             "$ref": "#/components/schemas/apiIoProfile"
           },
           "io_profile_bkup_src": {
+            "format": "boolean",
             "title": "IoProfileBkupSrc indicates to inherit IoProfile from cloudbackup",
             "type": "boolean"
           },
@@ -1676,9 +1676,6 @@
             "format": "int64",
             "title": "QueueDepth defines the desired block device queue depth",
             "type": "integer"
-          },
-          "readahead": {
-            "$ref": "#/components/schemas/apiRestoreParamBoolType"
           },
           "replica_set": {
             "$ref": "#/components/schemas/apiReplicaSet"
@@ -1843,6 +1840,7 @@
           },
           "is_cleared": {
             "description": "Query using cleared flag.",
+            "format": "boolean",
             "type": "boolean"
           },
           "min_severity_type": {
@@ -1908,12 +1906,12 @@
         "properties": {
           "end_time": {
             "format": "date-time",
-            "title": "End timestamp when Alert occurred",
+            "title": "End timestamp when Alert occured",
             "type": "string"
           },
           "start_time": {
             "format": "date-time",
-            "title": "Start timestamp when Alert occurred",
+            "title": "Start timestamp when Alert occured",
             "type": "string"
           }
         },
@@ -2000,10 +1998,12 @@
             "type": "string"
           },
           "disable_path_style": {
+            "format": "boolean",
             "title": "(optional) Disable path-style access",
             "type": "boolean"
           },
           "disable_ssl": {
+            "format": "boolean",
             "title": "(optional) Disable SSL connection",
             "type": "boolean"
           },
@@ -2030,10 +2030,12 @@
             "type": "string"
           },
           "disable_path_style": {
+            "format": "boolean",
             "title": "(optional) Disable path-style access",
             "type": "boolean"
           },
           "disable_ssl": {
+            "format": "boolean",
             "title": "(optional) Disable SSL connection",
             "type": "boolean"
           },
@@ -2104,15 +2106,14 @@
         "title": "Defines a response containing the contents of a backup stored by a cloud provider",
         "type": "object"
       },
-      "apiSdkCloudBackupClusterType": {
-        "default": "SdkCloudBackupClusterUnknown",
-        "description": "- SdkCloudBackupClusterUnknown: Unknown\n - SdkCloudBackupClusterCurrent: Beongs to this cluster\n - SdkCloudBackupClusterOther: not this. other cluster",
+      "apiSdkCloudBackupClusterTypeValue": {
+        "default": "UNKNOWN",
         "enum": [
-          "SdkCloudBackupClusterUnknown",
-          "SdkCloudBackupClusterCurrent",
-          "SdkCloudBackupClusterOther"
+          "UNKNOWN",
+          "CURRENT_CLUSTER",
+          "OTHER_CLUSTER"
         ],
-        "title": "CloudBackup operations types",
+        "title": "- UNKNOWN: Unknown\n - CURRENT_CLUSTER: Belongs to this cluster\n - OTHER_CLUSTER: belongs to other cluster",
         "type": "string"
       },
       "apiSdkCloudBackupCreateRequest": {
@@ -2122,15 +2123,17 @@
             "type": "string"
           },
           "delete_local": {
+            "format": "boolean",
             "title": "DeleteLocal indicates if local snap created for backup must be deleted after\nthe backup is complete",
             "type": "boolean"
           },
           "full": {
+            "format": "boolean",
             "title": "Full indicates if full backup is desired even though incremental is possible",
             "type": "boolean"
           },
           "full_backup_frequency": {
-            "description": "FullBackupFrequency indicates number of incremental backup after which\na fullbackup must be created. This is to override the default value for\nmanual/user triggerred backups and not applicable for scheduled backups\nValue of 0 retains the default behavior.",
+            "description": "FullBackupFrequency indicates number of incremental backup after whcih\na fullbackup must be created. This is to override the default value for\nmanual/user triggerred backups and not applicable for scheduled backups\nValue of 0 retains the default behavior.",
             "format": "int64",
             "type": "integer"
           },
@@ -2142,6 +2145,7 @@
             "type": "object"
           },
           "near_sync_migrate": {
+            "format": "boolean",
             "title": "Indicates if this is a near sync migrate",
             "type": "boolean"
           },
@@ -2194,6 +2198,7 @@
         "properties": {
           "all": {
             "description": "(optional) All indicates if the request should show cloud backups for all clusters or the current cluster.",
+            "format": "boolean",
             "type": "boolean"
           },
           "cloud_backup_id": {
@@ -2225,6 +2230,7 @@
             "type": "object"
           },
           "missing_src_volumes": {
+            "format": "boolean",
             "title": "To enumerate cloudbackups for which source volumes do not exist in this\ncluster",
             "type": "boolean"
           },
@@ -2262,10 +2268,12 @@
             "type": "string"
           },
           "delete_local": {
+            "format": "boolean",
             "title": "DeleteLocal indicates if local snap created for backup must be deleted after\nthe backup is complete",
             "type": "boolean"
           },
           "full": {
+            "format": "boolean",
             "title": "Full indicates if full backup is desired even though incremental is possible",
             "type": "boolean"
           },
@@ -2342,7 +2350,7 @@
       "apiSdkCloudBackupInfo": {
         "properties": {
           "cluster_type": {
-            "$ref": "#/components/schemas/apiSdkCloudBackupClusterType"
+            "$ref": "#/components/schemas/apiSdkCloudBackupClusterTypeValue"
           },
           "id": {
             "title": "This is the id as represented by the cloud provider",
@@ -2514,6 +2522,7 @@
           },
           "full": {
             "description": "Full indicates if scheduled backups should always be full and never incremental.",
+            "format": "boolean",
             "type": "boolean"
           },
           "group_id": {
@@ -2662,10 +2671,12 @@
       "apiSdkCloudBackupStatusRequest": {
         "properties": {
           "local": {
+            "format": "boolean",
             "title": "Local indicates if only those backups/restores that are\nactive on current node must be returned",
             "type": "boolean"
           },
           "near_sync_migrate": {
+            "format": "boolean",
             "title": "Indicates if this is for nearsync migration",
             "type": "boolean"
           },
@@ -2678,7 +2689,7 @@
             "type": "string"
           }
         },
-        "title": "Defines a request to retrieve the status of a backup or restore for a\nspecified volume",
+        "title": "Defines a request to retreive the status of a backup or restore for a\nspecified volume",
         "type": "object"
       },
       "apiSdkCloudBackupStatusResponse": {
@@ -2696,7 +2707,7 @@
       },
       "apiSdkCloudBackupStatusType": {
         "default": "SdkCloudBackupStatusTypeUnknown",
-        "description": "- SdkCloudBackupStatusTypeUnknown: Unknown\n - SdkCloudBackupStatusTypeNotStarted: Not started\n - SdkCloudBackupStatusTypeDone: Done\n - SdkCloudBackupStatusTypeAborted: Aborted\n - SdkCloudBackupStatusTypePaused: Paused\n - SdkCloudBackupStatusTypeStopped: Stopped\n - SdkCloudBackupStatusTypeActive: Active\n - SdkCloudBackupStatusTypeFailed: Failed\n - SdkCloudBackupStatusTypeQueued: Queued\n - SdkCloudBackupStatusTypeInvalid: Invalid, used by enumerate, includes failed,\nstopped and aborted\n - SdkNearSyncStatusTypeNotStarted: Near sync\nNot started\n - SdkNearSyncStatusTypeDone: Done\n - SdkNearSyncStatusTypePaused: Paused\n - SdkNearSyncStatusTypeStopped: Stopped\n - SdkNearSyncStatusTypeActive: Active\n - SdkNearSyncStatusTypeFailed: Failed\n - SdkNearSyncStatusTypeInvalid: Invalid",
+        "description": "- SdkCloudBackupStatusTypeUnknown: Unkonwn\n - SdkCloudBackupStatusTypeNotStarted: Not started\n - SdkCloudBackupStatusTypeDone: Done\n - SdkCloudBackupStatusTypeAborted: Aborted\n - SdkCloudBackupStatusTypePaused: Paused\n - SdkCloudBackupStatusTypeStopped: Stopped\n - SdkCloudBackupStatusTypeActive: Active\n - SdkCloudBackupStatusTypeFailed: Failed\n - SdkCloudBackupStatusTypeQueued: Queued\n - SdkCloudBackupStatusTypeInvalid: Invalid, used by enumerate, includes failed,\nstopped and aborted\n - SdkNearSyncStatusTypeNotStarted: Near sync\nNot started\n - SdkNearSyncStatusTypeDone: Done\n - SdkNearSyncStatusTypePaused: Paused\n - SdkNearSyncStatusTypeStopped: Stopped\n - SdkNearSyncStatusTypeActive: Active\n - SdkNearSyncStatusTypeFailed: Failed\n - SdkNearSyncStatusTypeInvalid: Invalid",
         "enum": [
           "SdkCloudBackupStatusTypeUnknown",
           "SdkCloudBackupStatusTypeNotStarted",
@@ -2788,6 +2799,7 @@
             "type": "string"
           },
           "is_active": {
+            "format": "boolean",
             "title": "IsActive indicates whether this cluster domain is active",
             "type": "boolean"
           }
@@ -2899,6 +2911,7 @@
             "$ref": "#/components/schemas/apiSdkGoogleCredentialRequest"
           },
           "iam_policy": {
+            "format": "boolean",
             "title": "iamPolicy indicates if IAM creds must be used for access",
             "type": "boolean"
           },
@@ -2917,6 +2930,7 @@
             "type": "string"
           },
           "use_proxy": {
+            "format": "boolean",
             "title": "use_proxy indicates if a proxy must be used",
             "type": "boolean"
           }
@@ -2976,6 +2990,7 @@
             "$ref": "#/components/schemas/apiSdkGoogleCredentialResponse"
           },
           "iam_policy": {
+            "format": "boolean",
             "title": "iamPolicy indicates if IAM creds must be used for access",
             "type": "boolean"
           },
@@ -2990,6 +3005,7 @@
             "$ref": "#/components/schemas/apiOwnership"
           },
           "use_proxy": {
+            "format": "boolean",
             "title": "proxy flag for the credential",
             "type": "boolean"
           }
@@ -3018,15 +3034,12 @@
       },
       "apiSdkDiagsCollectRequest": {
         "properties": {
-          "filename": {
-            "description": "Filename is an optional flag only to be used for testing purposes.",
-            "type": "string"
-          },
           "issuer": {
             "title": "Issuer is an optional  user friendly name for the caller invoking the API",
             "type": "string"
           },
           "live": {
+            "format": "boolean",
             "title": "Live is an optional flag if true will collect live cores from running processes of the driver",
             "type": "boolean"
           },
@@ -3034,6 +3047,7 @@
             "$ref": "#/components/schemas/apiDiagsNodeSelector"
           },
           "profile_only": {
+            "format": "boolean",
             "title": "ProfileOnly is an optional flag if true will only collect the stack and heap profile of the driver and will skip\nother diag components",
             "type": "boolean"
           },
@@ -3262,11 +3276,11 @@
             "items": {
               "$ref": "#/components/schemas/apiSdkServiceCapability"
             },
-            "title": "Provides all the capabilities supported by the cluster",
+            "title": "Provides all the capabilites supported by the cluster",
             "type": "array"
           }
         },
-        "title": "Defines a response containing the capabilities of the cluster",
+        "title": "Defines a response containing the capabilites of the cluster",
         "type": "object"
       },
       "apiSdkIdentityVersionResponse": {
@@ -3362,6 +3376,7 @@
           },
           "only_sharedv4": {
             "description": "Drain only sharedv4 volumes from a node\nBy default all volumes will be drained.",
+            "format": "boolean",
             "type": "boolean"
           },
           "selector": {
@@ -3417,15 +3432,6 @@
           }
         },
         "title": "Defines a response when inspecting a node",
-        "type": "object"
-      },
-      "apiSdkNodeRelaxedReclaimPurgeResponse": {
-        "properties": {
-          "status": {
-            "$ref": "#/components/schemas/apiRelaxedReclaimPurge"
-          }
-        },
-        "title": "Defines response containing status of the trigger",
         "type": "object"
       },
       "apiSdkNodeUncordonAttachmentsRequest": {
@@ -3486,6 +3492,7 @@
       "apiSdkObjectstoreUpdateRequest": {
         "properties": {
           "enable": {
+            "format": "boolean",
             "title": "enable/disable objectstore",
             "type": "boolean"
           },
@@ -3851,10 +3858,12 @@
       "apiSdkStoragePolicy": {
         "properties": {
           "allow_update": {
+            "format": "boolean",
             "title": "If set a volume can be updated without storage Policy\nrestriction, otherwise volume update will be followed as per storage policy\nspecification",
             "type": "boolean"
           },
           "force": {
+            "format": "boolean",
             "title": "Force if set to true volume specs will be overwritten, otherwise\nvolume creation will fail if the volume specifications are not inline with storage policy",
             "type": "boolean"
           },
@@ -3892,10 +3901,8 @@
             "title": "MaxDurationMinutes defines how long operation should run when started at schedule.\n0 values means no limit on duration",
             "type": "string"
           },
-          "mode": {
-            "$ref": "#/components/schemas/apiSdkStorageRebalanceRequestMode"
-          },
           "remove_repl_1_snapshots": {
+            "format": "boolean",
             "title": "RemoveRepl1Snapshots if true will instruct rebalance job to remove repl-1 snapshots",
             "type": "boolean"
           },
@@ -3914,6 +3921,7 @@
             "type": "array"
           },
           "trial_run": {
+            "format": "boolean",
             "title": "TrialRun if true the job only produces steps that would be taken without making any changes",
             "type": "boolean"
           },
@@ -3926,16 +3934,6 @@
           }
         },
         "type": "object"
-      },
-      "apiSdkStorageRebalanceRequestMode": {
-        "default": "STORAGE_REBALANCE",
-        "description": "- STORAGE_REBALANCE: StorageRebalance mode: rebalance pools based on provisioned/used space (the default mode)\n - VOLUME_PLACEMENT_FIX: VolumePlacementFix mode: scan all volumes for incorrect placement and fix them",
-        "enum": [
-          "STORAGE_REBALANCE",
-          "VOLUME_PLACEMENT_FIX"
-        ],
-        "title": "Mode is an enum that defines the mode of the volume reorg job",
-        "type": "string"
       },
       "apiSdkStorageRebalanceResponse": {
         "properties": {
@@ -4071,33 +4069,6 @@
         "title": "Defines a response from the node which received the request to attach",
         "type": "object"
       },
-      "apiSdkVolumeBytesUsedRequest": {
-        "properties": {
-          "ids": {
-            "items": {
-              "format": "uint64",
-              "type": "string"
-            },
-            "title": "volume ids to be found in usage response, can be empty",
-            "type": "array"
-          },
-          "node_id": {
-            "title": "machine uuid of targeted node",
-            "type": "string"
-          }
-        },
-        "title": "SdkVolumeBytesUsedRequest defines a request for fetching per volume utilization\nfrom multiple volume in a given node",
-        "type": "object"
-      },
-      "apiSdkVolumeBytesUsedResponse": {
-        "properties": {
-          "vol_util_info": {
-            "$ref": "#/components/schemas/apiVolumeBytesUsedByNode"
-          }
-        },
-        "title": "SdkVolumeBytesUsedResponse defines a response to fetch multiple volume util from a given node",
-        "type": "object"
-      },
       "apiSdkVolumeCapacityUsageResponse": {
         "properties": {
           "capacity_usage_info": {
@@ -4202,14 +4173,17 @@
       "apiSdkVolumeDetachOptions": {
         "properties": {
           "force": {
+            "format": "boolean",
             "title": "Forcefully detach device from the kernel",
             "type": "boolean"
           },
           "redirect": {
+            "format": "boolean",
             "title": "redirect the request to the attached node",
             "type": "boolean"
           },
           "unmount_before_detach": {
+            "format": "boolean",
             "title": "Unmount the volume before detaching",
             "type": "boolean"
           }
@@ -4501,11 +4475,13 @@
       "apiSdkVolumeUnmountOptions": {
         "properties": {
           "delete_mount_path": {
+            "format": "boolean",
             "title": "Delete the mount path on the node after unmounting",
             "type": "boolean"
           },
           "no_delay_before_deleting_mount_path": {
             "description": "Do not wait for a delay before deleting path.\nNormally a storage driver may delay before deleting the mount path,\nwhich may be necessary to reduce the risk of race conditions. This\nchoice will remove that delay. This value is only usable when\n`delete_mount_path` is set.",
+            "format": "boolean",
             "type": "boolean"
           }
         },
@@ -4564,50 +4540,6 @@
         "title": "Empty response",
         "type": "object"
       },
-      "apiSdkVolumeWatchRequest": {
-        "properties": {
-          "labels": {
-            "additionalProperties": {
-              "type": "string"
-            },
-            "title": "labels to filter out the volumes to watch on",
-            "type": "object"
-          }
-        },
-        "title": "Defines the request to watch an openstorage volume event for the given label\nif the label is empty, it returns all the volume events",
-        "type": "object"
-      },
-      "apiSdkVolumeWatchResponse": {
-        "properties": {
-          "name": {
-            "title": "Name of volume",
-            "type": "string"
-          },
-          "volume": {
-            "$ref": "#/components/schemas/apiVolume"
-          }
-        },
-        "title": "Defines the response containing an volume with a state changed",
-        "type": "object"
-      },
-      "apiSdkWatchRequest": {
-        "properties": {
-          "volume_event": {
-            "$ref": "#/components/schemas/apiSdkVolumeWatchRequest"
-          }
-        },
-        "title": "Defines the request to watch an openstorage event. An event can be a volume, a node, a disk, etc",
-        "type": "object"
-      },
-      "apiSdkWatchResponse": {
-        "properties": {
-          "volume_event": {
-            "$ref": "#/components/schemas/apiSdkVolumeWatchResponse"
-          }
-        },
-        "title": "Defines the response to watch an openstorage event. An event can be a volume, a node, a disk, etc",
-        "type": "object"
-      },
       "apiSeverityType": {
         "default": "SEVERITY_TYPE_NONE",
         "enum": [
@@ -4631,10 +4563,6 @@
       "apiSharedv4ServiceSpec": {
         "description": "Sharedv4ServiceSpec when set, creates a service endpoint for accessing\na sharedv4 volume.",
         "properties": {
-          "external_access": {
-            "title": "Indicates whether the service needs to be accessed outside of the cluster",
-            "type": "boolean"
-          },
           "name": {
             "title": "Name of the service. If not provided the name of the volume will be\nused for setting up a service",
             "type": "string"
@@ -4673,21 +4601,6 @@
           "bytes_used": {
             "format": "uint64",
             "title": "BytesUsed",
-            "type": "string"
-          },
-          "discard_bytes": {
-            "format": "uint64",
-            "title": "Number of bytes discarded",
-            "type": "string"
-          },
-          "discard_ms": {
-            "format": "uint64",
-            "title": "Time spent in discards in ms",
-            "type": "string"
-          },
-          "discards": {
-            "format": "uint64",
-            "title": "Discards completed successfully",
             "type": "string"
           },
           "interval_ms": {
@@ -5057,7 +4970,7 @@
       },
       "apiStorageRebalanceTriggerThresholdType": {
         "default": "ABSOLUTE_PERCENT",
-        "description": "- ABSOLUTE_PERCENT: AbsolutePercent indicates absolute percent comparison.\nExample, 75 % used of capacity, or 50 % provisioned of capacity.\n - DELTA_MEAN_PERCENT: DeltaMeanPercent indicates mean percent comparison threshold.\nExample, 10 % more than mean for cluster.",
+        "description": "- ABSOLUTE_PERCENT: AbsolutePercent indicates absolute percent comparison.\nExample, 75 % used of capacity, or 50 % provisioned of capacity.\n - DELTA_MEAN_PERCENT: DeltaMeanPercent indicates mean percent comparision threshold.\nExample, 10 % more than mean for cluster.",
         "enum": [
           "ABSOLUTE_PERCENT",
           "DELTA_MEAN_PERCENT"
@@ -5099,6 +5012,7 @@
         "description": "StorageResource groups properties of a storage device.",
         "properties": {
           "cache": {
+            "format": "boolean",
             "title": "True if dedicated as cache",
             "type": "boolean"
           },
@@ -5121,10 +5035,12 @@
           },
           "metadata": {
             "description": "True if dedicated for metadata.",
+            "format": "boolean",
             "type": "boolean"
           },
           "online": {
             "description": "True if this device is online.",
+            "format": "boolean",
             "type": "boolean"
           },
           "path": {
@@ -5132,6 +5048,7 @@
             "type": "string"
           },
           "pool_metadata_dev": {
+            "format": "boolean",
             "title": "True if the resource is used as thin pool metadata disk",
             "type": "boolean"
           },
@@ -5259,6 +5176,7 @@
           },
           "fs_resize_required": {
             "description": "FsResizeRequired if an FS resize is required on the volume.",
+            "format": "boolean",
             "type": "boolean"
           },
           "group": {
@@ -5269,6 +5187,7 @@
             "type": "string"
           },
           "in_trashcan": {
+            "format": "boolean",
             "title": "InTrashcan if the volume is in trashcan",
             "type": "boolean"
           },
@@ -5293,6 +5212,7 @@
           },
           "readonly": {
             "description": "Readonly is true if this volume is to be mounted with readonly access.",
+            "format": "boolean",
             "type": "boolean"
           },
           "replica_sets": {
@@ -5343,38 +5263,6 @@
         },
         "type": "object"
       },
-      "apiVolumeBytesUsed": {
-        "properties": {
-          "total_bytes": {
-            "format": "uint64",
-            "title": "size in bytes by the volume/snapshot",
-            "type": "string"
-          },
-          "volume_id": {
-            "title": "id for the volume/snapshot",
-            "type": "string"
-          }
-        },
-        "title": "VolumeBytesUsed defines volume utilization",
-        "type": "object"
-      },
-      "apiVolumeBytesUsedByNode": {
-        "properties": {
-          "node_id": {
-            "title": "machine uuid",
-            "type": "string"
-          },
-          "vol_usage": {
-            "items": {
-              "$ref": "#/components/schemas/apiVolumeBytesUsed"
-            },
-            "title": "VolumeBytesUsed for each requested volume on the given node",
-            "type": "array"
-          }
-        },
-        "title": "VolumeBytesUsedByNode defines volume utilization for multiple volumes in a given node",
-        "type": "object"
-      },
       "apiVolumeConsumer": {
         "properties": {
           "name": {
@@ -5409,6 +5297,7 @@
         "properties": {
           "deep": {
             "description": "Deep inspection is used to collect more information about\nthe volume. Setting this value may delay the request.",
+            "format": "boolean",
             "type": "boolean"
           }
         },
@@ -5512,6 +5401,7 @@
             "type": "integer"
           },
           "auto_fstrim": {
+            "format": "boolean",
             "title": "Autofstrim indicates that fstrim would be run on this volume automatically, without user intervention",
             "type": "boolean"
           },
@@ -5522,10 +5412,12 @@
           },
           "cascaded": {
             "description": "Cascaded is true if this volume can be populated on any node from an external source.",
+            "format": "boolean",
             "type": "boolean"
           },
           "compressed": {
             "description": "Compressed is true if this volume is to be compressed.",
+            "format": "boolean",
             "type": "boolean"
           },
           "cos": {
@@ -5533,13 +5425,16 @@
           },
           "dedupe": {
             "description": "Dedupe specifies if the volume data is to be de-duplicated.",
+            "format": "boolean",
             "type": "boolean"
           },
           "encrypted": {
             "description": "Encrypted is true if this volume will be cryptographically secured.",
+            "format": "boolean",
             "type": "boolean"
           },
           "ephemeral": {
+            "format": "boolean",
             "title": "Ephemeral storage",
             "type": "boolean"
           },
@@ -5552,12 +5447,14 @@
           },
           "force_unsupported_fs_type": {
             "description": "Use to force a file system type which is not recommended.\nThe driver may still refuse to use the file system type.",
+            "format": "boolean",
             "type": "boolean"
           },
           "format": {
             "$ref": "#/components/schemas/apiFSType"
           },
           "fp_preference": {
+            "format": "boolean",
             "title": "fastpath extensions",
             "type": "boolean"
           },
@@ -5566,6 +5463,7 @@
           },
           "group_enforced": {
             "description": "GroupEnforced is true if consistency group creation is enforced.",
+            "format": "boolean",
             "type": "boolean"
           },
           "ha_level": {
@@ -5584,12 +5482,14 @@
           },
           "journal": {
             "description": "Journal is true if data for the volume goes into the journal.",
+            "format": "boolean",
             "type": "boolean"
           },
           "mount_options": {
             "$ref": "#/components/schemas/apiMountOptions"
           },
           "near_sync": {
+            "format": "boolean",
             "title": "NearSync specifies the volume has a near-sync replica",
             "type": "boolean"
           },
@@ -5598,12 +5498,8 @@
           },
           "nodiscard": {
             "description": "Nodiscard specifies if the volume will be mounted with discard support disabled.\ni.e. FS will not release allocated blocks back to the backing storage pool.",
+            "format": "boolean",
             "type": "boolean"
-          },
-          "number_of_chunks": {
-            "format": "int64",
-            "title": "NumberOfChunks indicates how many chunks must be created, 0 and 1 both mean 1",
-            "type": "integer"
           },
           "ownership": {
             "$ref": "#/components/schemas/apiOwnership"
@@ -5619,6 +5515,7 @@
             "$ref": "#/components/schemas/apiProxySpec"
           },
           "proxy_write": {
+            "format": "boolean",
             "title": "Proxy_write if true, per volume proxy write replication enabled",
             "type": "boolean"
           },
@@ -5626,10 +5523,6 @@
             "format": "int64",
             "title": "QueueDepth defines the desired block device queue depth",
             "type": "integer"
-          },
-          "readahead": {
-            "title": "Enable readahead for the volume",
-            "type": "boolean"
           },
           "replica_set": {
             "$ref": "#/components/schemas/apiReplicaSet"
@@ -5644,10 +5537,12 @@
           },
           "shared": {
             "description": "Shared is true if this volume can be concurrently accessed by multiple users.",
+            "format": "boolean",
             "type": "boolean"
           },
           "sharedv4": {
             "description": "Sharedv4 is true if this volume can be accessed via sharedv4.",
+            "format": "boolean",
             "type": "boolean"
           },
           "sharedv4_mount_options": {
@@ -5675,6 +5570,7 @@
           },
           "sticky": {
             "description": "Sticky volumes cannot be deleted until the flag is removed.",
+            "format": "boolean",
             "type": "boolean"
           },
           "storage_policy": {
@@ -5691,10 +5587,6 @@
             "title": "(deprecated, do not use) VolumeLabels configuration labels",
             "type": "object"
           },
-          "winshare": {
-            "description": "winshare is true if this volume can be accessed from windows pods.",
-            "type": "boolean"
-          },
           "xattr": {
             "$ref": "#/components/schemas/apiXattrValue"
           }
@@ -5708,21 +5600,25 @@
             "type": "integer"
           },
           "auto_fstrim": {
+            "format": "boolean",
             "type": "boolean"
           },
           "cos": {
             "$ref": "#/components/schemas/apiCosType"
           },
           "dedupe": {
+            "format": "boolean",
             "type": "boolean"
           },
           "encrypted": {
+            "format": "boolean",
             "type": "boolean"
           },
           "export_spec": {
             "$ref": "#/components/schemas/apiExportSpec"
           },
           "fastpath": {
+            "format": "boolean",
             "type": "boolean"
           },
           "group": {
@@ -5745,12 +5641,14 @@
             "$ref": "#/components/schemas/apiIoThrottle"
           },
           "journal": {
+            "format": "boolean",
             "type": "boolean"
           },
           "mount_opt_spec": {
             "$ref": "#/components/schemas/apiMountOptions"
           },
           "nodiscard": {
+            "format": "boolean",
             "type": "boolean"
           },
           "passphrase": {
@@ -5760,14 +5658,12 @@
             "$ref": "#/components/schemas/apiProxySpec"
           },
           "proxy_write": {
+            "format": "boolean",
             "type": "boolean"
           },
           "queue_depth": {
             "format": "int64",
             "type": "integer"
-          },
-          "readahead": {
-            "type": "boolean"
           },
           "replica_set": {
             "$ref": "#/components/schemas/apiReplicaSet"
@@ -5783,9 +5679,11 @@
             "$ref": "#/components/schemas/apiScanPolicy"
           },
           "shared": {
+            "format": "boolean",
             "type": "boolean"
           },
           "sharedv4": {
+            "format": "boolean",
             "type": "boolean"
           },
           "sharedv4_mount_opt_spec": {
@@ -5815,6 +5713,7 @@
             "type": "string"
           },
           "sticky": {
+            "format": "boolean",
             "type": "boolean"
           },
           "volume_labels": {
@@ -5823,9 +5722,6 @@
             },
             "title": "VolumeLabels configuration labels",
             "type": "object"
-          },
-          "winshare": {
-            "type": "boolean"
           }
         },
         "title": "VolumeSpecPolicy provides a method to set volume storage policy",
@@ -5834,18 +5730,21 @@
       "apiVolumeSpecUpdate": {
         "properties": {
           "auto_fstrim": {
+            "format": "boolean",
             "type": "boolean"
           },
           "cos": {
             "$ref": "#/components/schemas/apiCosType"
           },
           "dedupe": {
+            "format": "boolean",
             "type": "boolean"
           },
           "export_spec": {
             "$ref": "#/components/schemas/apiExportSpec"
           },
           "fastpath": {
+            "format": "boolean",
             "type": "boolean"
           },
           "group": {
@@ -5865,6 +5764,7 @@
             "$ref": "#/components/schemas/apiIoThrottle"
           },
           "journal": {
+            "format": "boolean",
             "type": "boolean"
           },
           "mount_opt_spec": {
@@ -5874,6 +5774,7 @@
             "$ref": "#/components/schemas/apiNearSyncReplicationStrategy"
           },
           "nodiscard": {
+            "format": "boolean",
             "type": "boolean"
           },
           "ownership": {
@@ -5886,14 +5787,12 @@
             "$ref": "#/components/schemas/apiProxySpec"
           },
           "proxy_write": {
+            "format": "boolean",
             "type": "boolean"
           },
           "queue_depth": {
             "format": "int64",
             "type": "integer"
-          },
-          "readahead": {
-            "type": "boolean"
           },
           "replica_set": {
             "$ref": "#/components/schemas/apiReplicaSet"
@@ -5906,9 +5805,11 @@
             "$ref": "#/components/schemas/apiScanPolicy"
           },
           "shared": {
+            "format": "boolean",
             "type": "boolean"
           },
           "sharedv4": {
+            "format": "boolean",
             "type": "boolean"
           },
           "sharedv4_mount_opt_spec": {
@@ -5932,9 +5833,7 @@
             "type": "string"
           },
           "sticky": {
-            "type": "boolean"
-          },
-          "winshare": {
+            "format": "boolean",
             "type": "boolean"
           },
           "xattr": {
@@ -5982,6 +5881,7 @@
             "type": "string"
           },
           "local_cloud_snapshot": {
+            "format": "boolean",
             "title": "set to true if this volume is snapshot created by cloudbackups",
             "type": "boolean"
           },
@@ -6049,64 +5949,6 @@
         ],
         "title": "- STATUS_MAX: Add statuses before MAX and update the number for MAX",
         "type": "string"
-      },
-      "protobufAny": {
-        "properties": {
-          "type_url": {
-            "type": "string"
-          },
-          "value": {
-            "format": "byte",
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
-      "runtimeError": {
-        "properties": {
-          "code": {
-            "format": "int32",
-            "type": "integer"
-          },
-          "details": {
-            "items": {
-              "$ref": "#/components/schemas/protobufAny"
-            },
-            "type": "array"
-          },
-          "error": {
-            "type": "string"
-          },
-          "message": {
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
-      "runtimeStreamError": {
-        "properties": {
-          "details": {
-            "items": {
-              "$ref": "#/components/schemas/protobufAny"
-            },
-            "type": "array"
-          },
-          "grpc_code": {
-            "format": "int32",
-            "type": "integer"
-          },
-          "http_code": {
-            "format": "int32",
-            "type": "integer"
-          },
-          "http_status": {
-            "type": "string"
-          },
-          "message": {
-            "type": "string"
-          }
-        },
-        "type": "object"
       }
     },
     "securitySchemes": {
@@ -6119,14 +5961,14 @@
   },
   "info": {
     "title": "OpenStorage SDK",
-    "version": "0.163.0"
+    "version": "0.101.37"
   },
   "openapi": "3.0.0",
   "paths": {
     "/v1/alerts": {
       "post": {
         "description": "#### Delete\nDelete allows 3 different types of queries as defined below:\n\n* Query that takes only resource type as input\n* Query that takes resource type and alert type as input and\n* Query that takes resource id, alert type and resource type as input.\n\n#### Input\nSdkAlertsDeleteRequest takes a list of such queries and all alerts\nthat match at least one of the queries are deleted.",
-        "operationId": "OpenStorageAlerts_Delete",
+        "operationId": "Delete",
         "requestBody": {
           "content": {
             "application/json": {
@@ -6146,17 +5988,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Delete alerts",
@@ -6167,8 +5999,8 @@
     },
     "/v1/alerts/filters": {
       "post": {
-        "description": "EnumerateWithFilters allows 3 different types of queries as defined below:\n\n* Query that takes only resource type as input\n* Query that takes resource type and alert type as input and\n* Query that takes resource id, alert type and resource type as input.\n\n#### Input\nSdkAlertsEnumerateRequest takes a list of such queries and the returned\noutput is a collective output from each of these queries. In that sense,\nthe filtering of these queries has a behavior of OR operation.\nEach query also has a list of optional options. These options allow\nnarrowing down the scope of alerts search. These options have a\nbehavior of an AND operation.\n\n#### Examples\nTo search by a resource type in a given time window would require\ninitializing SdkAlertsResourceTypeQuery query and pass in\nSdkAlertsTimeSpan option into SdkAlertsQuery struct and finally\npacking any other such queries into SdkAlertsEnumerateRequest object.\nAlternatively, to search by both resource type and alert type, use\nSdkAlertsAlertTypeQuery as query builder.\nFinally to search all alerts of a given resource type and some\nalerts of another resource type but with specific alert type,\nuse two queries, first initialized with SdkAlertsResourceTypeQuery\nand second initialized with SdkAlertsAlertTypeQuery and both\neventually packed as list in SdkAlertsEnumerateRequest.",
-        "operationId": "OpenStorageAlerts_EnumerateWithFilters",
+        "description": "EnumerateWithFilters allows 3 different types of queries as defined below:\n\n* Query that takes only resource type as input\n* Query that takes resource type and alert type as input and\n* Query that takes resource id, alert type and resource type as input.\n\n#### Input\nSdkAlertsEnumerateRequest takes a list of such queries and the returned\noutput is a collective ouput from each of these queries. In that sense,\nthe filtering of these queries has a behavior of OR operation.\nEach query also has a list of optional options. These options allow\nnarrowing down the scope of alerts search. These options have a\nbehavior of an AND operation.\n\n#### Examples\nTo search by a resource type in a given time window would require\ninitializing SdkAlertsResourceTypeQuery query and pass in\nSdkAlertsTimeSpan option into SdkAlertsQuery struct and finally\npacking any other such queries into SdkAlertsEnumerateRequest object.\nAlternatively, to search by both resource type and alert type, use\nSdkAlertsAlertTypeQuery as query builder.\nFinally to search all alerts of a given resource type and some\nalerts of another resource type but with specific alert type,\nuse two queries, first initialized with SdkAlertsResourceTypeQuery\nand second initialized with SdkAlertsAlertTypeQuery and both\neventually packed as list in SdkAlertsEnumerateRequest.",
+        "operationId": "EnumerateWithFilters",
         "requestBody": {
           "content": {
             "application/json": {
@@ -6184,30 +6016,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "properties": {
-                    "error": {
-                      "$ref": "#/components/schemas/runtimeStreamError"
-                    },
-                    "result": {
-                      "$ref": "#/components/schemas/apiSdkAlertsEnumerateWithFiltersResponse"
-                    }
-                  },
-                  "title": "Stream result of apiSdkAlertsEnumerateWithFiltersResponse",
-                  "type": "object"
+                  "$ref": "#/components/schemas/apiSdkAlertsEnumerateWithFiltersResponse"
                 }
               }
             },
-            "description": "A successful response.(streaming responses)"
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": "(streaming responses)"
           }
         },
         "summary": "Allows querying alerts.",
@@ -6218,7 +6031,7 @@
     },
     "/v1/bucket": {
       "post": {
-        "operationId": "OpenStorageBucket_Create",
+        "operationId": "Create",
         "requestBody": {
           "content": {
             "application/json": {
@@ -6238,17 +6051,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "tags": [
@@ -6258,10 +6061,9 @@
     },
     "/v1/bucket/access/{bucket_id}": {
       "post": {
-        "operationId": "OpenStorageBucket_GrantAccess",
+        "operationId": "GrantAccess",
         "parameters": [
           {
-            "description": "Id of the bucket",
             "in": "path",
             "name": "bucket_id",
             "required": true,
@@ -6289,17 +6091,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "tags": [
@@ -6309,10 +6101,9 @@
     },
     "/v1/bucket/revoke/{bucket_id}": {
       "post": {
-        "operationId": "OpenStorageBucket_RevokeAccess",
+        "operationId": "RevokeAccess",
         "parameters": [
           {
-            "description": "Id of bucket to delete",
             "in": "path",
             "name": "bucket_id",
             "required": true,
@@ -6340,17 +6131,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "tags": [
@@ -6360,10 +6141,9 @@
     },
     "/v1/bucket/{bucket_id}": {
       "delete": {
-        "operationId": "OpenStorageBucket_Delete",
+        "operationId": "Delete",
         "parameters": [
           {
-            "description": "Id of bucket to delete",
             "in": "path",
             "name": "bucket_id",
             "required": true,
@@ -6395,6 +6175,7 @@
             "name": "clear_bucket",
             "required": false,
             "schema": {
+              "format": "boolean",
               "type": "boolean"
             }
           }
@@ -6408,17 +6189,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "tags": [
@@ -6429,7 +6200,7 @@
     "/v1/cloudbackups": {
       "post": {
         "description": "Requires access AccessType.Read of volume",
-        "operationId": "OpenStorageCloudBackup_Create",
+        "operationId": "Create",
         "requestBody": {
           "content": {
             "application/json": {
@@ -6449,17 +6220,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Creates a backup request for a specified volume. Use\nOpenStorageCloudBackup.Status() to get the current status of the\nbackup request.",
@@ -6470,10 +6231,9 @@
     },
     "/v1/cloudbackups/backup/{backup_id}": {
       "delete": {
-        "operationId": "OpenStorageCloudBackup_Delete",
+        "operationId": "Delete",
         "parameters": [
           {
-            "description": "ID is the ID of the cloud backup",
             "in": "path",
             "name": "backup_id",
             "required": true,
@@ -6496,6 +6256,7 @@
             "name": "force",
             "required": false,
             "schema": {
+              "format": "boolean",
               "type": "boolean"
             }
           },
@@ -6518,17 +6279,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Deletes a backup stored in the cloud. If the backup is an incremental\nbackup and other backups are dependent on it, it will not be able to be deleted.",
@@ -6539,7 +6290,7 @@
     },
     "/v1/cloudbackups/catalog": {
       "post": {
-        "operationId": "OpenStorageCloudBackup_Catalog",
+        "operationId": "Catalog",
         "requestBody": {
           "content": {
             "application/json": {
@@ -6559,17 +6310,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Catalog returns a list of the contents in the backup",
@@ -6580,7 +6321,7 @@
     },
     "/v1/cloudbackups/deleteall": {
       "post": {
-        "operationId": "OpenStorageCloudBackup_DeleteAll",
+        "operationId": "DeleteAll",
         "requestBody": {
           "content": {
             "application/json": {
@@ -6600,17 +6341,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "DeleteAll deletes all the backups in the cloud for the specified volume.",
@@ -6621,7 +6352,7 @@
     },
     "/v1/cloudbackups/enumerate/filters": {
       "post": {
-        "operationId": "OpenStorageCloudBackup_EnumerateWithFilters",
+        "operationId": "EnumerateWithFilters",
         "requestBody": {
           "content": {
             "application/json": {
@@ -6641,17 +6372,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Return a list of backups for the specified volume",
@@ -6663,7 +6384,7 @@
     "/v1/cloudbackups/group": {
       "post": {
         "description": "This will only backup volumes which the user has read_access to.",
-        "operationId": "OpenStorageCloudBackup_GroupCreate",
+        "operationId": "GroupCreate",
         "requestBody": {
           "content": {
             "application/json": {
@@ -6683,17 +6404,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Creates a group backup request for a specified group. Use\nOpenStorageCloudBackup.Status() to get the current status of the\nbackup request.",
@@ -6704,10 +6415,9 @@
     },
     "/v1/cloudbackups/history/{src_volume_id}": {
       "get": {
-        "operationId": "OpenStorageCloudBackup_History",
+        "operationId": "History",
         "parameters": [
           {
-            "description": "This optional value defines which history of backups is being\nrequested. If not provided, it will return the history for all volumes.",
             "in": "path",
             "name": "src_volume_id",
             "required": true,
@@ -6725,17 +6435,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "History returns a list of backups for a specified volume",
@@ -6746,7 +6446,7 @@
     },
     "/v1/cloudbackups/restore": {
       "post": {
-        "operationId": "OpenStorageCloudBackup_Restore",
+        "operationId": "Restore",
         "requestBody": {
           "content": {
             "application/json": {
@@ -6766,17 +6466,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Restore creates a new volume from a backup id. The newly created volume\nhas an ha_level (number of replicas) of only 1. To increase the number of\nreplicas, use OpenStorageVolume.Set() to change the ha_level.",
@@ -6787,7 +6477,7 @@
     },
     "/v1/cloudbackups/schedules": {
       "get": {
-        "operationId": "OpenStorageCloudBackup_SchedEnumerate",
+        "operationId": "SchedEnumerate",
         "responses": {
           "200": {
             "content": {
@@ -6797,17 +6487,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Enumerate cloud backup schedules",
@@ -6816,7 +6496,7 @@
         ]
       },
       "post": {
-        "operationId": "OpenStorageCloudBackup_SchedCreate",
+        "operationId": "SchedCreate",
         "requestBody": {
           "content": {
             "application/json": {
@@ -6836,17 +6516,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Create cloud backup schedule",
@@ -6855,7 +6525,7 @@
         ]
       },
       "put": {
-        "operationId": "OpenStorageCloudBackup_SchedUpdate",
+        "operationId": "SchedUpdate",
         "requestBody": {
           "content": {
             "application/json": {
@@ -6875,17 +6545,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Update existing cloud backup schedule",
@@ -6896,10 +6556,9 @@
     },
     "/v1/cloudbackups/schedules/{backup_schedule_id}": {
       "delete": {
-        "operationId": "OpenStorageCloudBackup_SchedDelete",
+        "operationId": "SchedDelete",
         "parameters": [
           {
-            "description": "Id of cloud backup to delete",
             "in": "path",
             "name": "backup_schedule_id",
             "required": true,
@@ -6917,17 +6576,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Delete cloud backup schedule",
@@ -6938,7 +6587,7 @@
     },
     "/v1/cloudbackups/size": {
       "get": {
-        "operationId": "OpenStorageCloudBackup_Size",
+        "operationId": "Size",
         "parameters": [
           {
             "description": "BackupId is a value which is used to get information on the\nsize of the specified backup.",
@@ -6968,17 +6617,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Size returns the size of any cloud backups of a volume",
@@ -6989,7 +6628,7 @@
     },
     "/v1/cloudbackups/statechange": {
       "post": {
-        "operationId": "OpenStorageCloudBackup_StateChange",
+        "operationId": "StateChange",
         "requestBody": {
           "content": {
             "application/json": {
@@ -7009,17 +6648,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "StateChange can be used to stop, pause, and restart a backup",
@@ -7030,7 +6659,7 @@
     },
     "/v1/cloudbackups/status": {
       "post": {
-        "operationId": "OpenStorageCloudBackup_Status",
+        "operationId": "Status",
         "requestBody": {
           "content": {
             "application/json": {
@@ -7050,17 +6679,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Status returns the status of any cloud backups of a volume",
@@ -7071,7 +6690,7 @@
     },
     "/v1/clusterdomains": {
       "get": {
-        "operationId": "OpenStorageClusterDomains_Enumerate",
+        "operationId": "Enumerate",
         "responses": {
           "200": {
             "content": {
@@ -7081,17 +6700,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Enumerate returns names of all the cluster domains in the cluster",
@@ -7102,10 +6711,9 @@
     },
     "/v1/clusterdomains/activate/{cluster_domain_name}": {
       "post": {
-        "operationId": "OpenStorageClusterDomains_Activate",
+        "operationId": "Activate",
         "parameters": [
           {
-            "description": "Name of the cluster domain to activate",
             "in": "path",
             "name": "cluster_domain_name",
             "required": true,
@@ -7123,17 +6731,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Activates a cluster domain in the cluster.\nAll the nodes which are part of an active cluster domain\nwill participate in cluster quorum calculation",
@@ -7144,10 +6742,9 @@
     },
     "/v1/clusterdomains/deactivate/{cluster_domain_name}": {
       "post": {
-        "operationId": "OpenStorageClusterDomains_Deactivate",
+        "operationId": "Deactivate",
         "parameters": [
           {
-            "description": "Name of the cluster domain to deactivate",
             "in": "path",
             "name": "cluster_domain_name",
             "required": true,
@@ -7165,17 +6762,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Deactivates a cluster domain in the cluster.\nAll the nodes which are part of a deactivated cluster domain.\nwill not participate in cluster quorum calculation",
@@ -7186,10 +6773,9 @@
     },
     "/v1/clusterdomains/inspect/{cluster_domain_name}": {
       "get": {
-        "operationId": "OpenStorageClusterDomains_Inspect",
+        "operationId": "Inspect",
         "parameters": [
           {
-            "description": "Name of the cluster domain to inspect",
             "in": "path",
             "name": "cluster_domain_name",
             "required": true,
@@ -7207,17 +6793,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Inspect returns information about a cluster domain and a\nstatus indicating whether the cluster domain is active",
@@ -7228,7 +6804,7 @@
     },
     "/v1/clusterpairs": {
       "get": {
-        "operationId": "OpenStorageClusterPair_Enumerate",
+        "operationId": "Enumerate",
         "responses": {
           "200": {
             "content": {
@@ -7238,17 +6814,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Enumerate returns list of cluster pairs",
@@ -7258,7 +6824,7 @@
       },
       "post": {
         "description": "##### Example\n{% codetabs name=\"Golang\", type=\"go\" -%}\nid, err := client.Create(context.Background(), \u0026api.SdkClusterPairCreateRequest {\n  Request : \u0026api.ClusterPairCreateRequest {\n                 RemoteClusterIp: \"127.0.0.1\",\n                 RemoteClusterPort: 12345,\n                 RemoteClusterToken: \"\u003cAuth-Token\u003e\",\n                 SetDefault: true,\n             }\n       })\n{%- endcodetabs %}",
-        "operationId": "OpenStorageClusterPair_Create",
+        "operationId": "Create",
         "requestBody": {
           "content": {
             "application/json": {
@@ -7278,17 +6844,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Creates Pair with a remote cluster and returns details about the remote cluster",
@@ -7299,10 +6855,9 @@
     },
     "/v1/clusterpairs/inspect/{id}": {
       "get": {
-        "operationId": "OpenStorageClusterPair_Inspect",
+        "operationId": "Inspect",
         "parameters": [
           {
-            "description": "ID of the cluster, if empty gets the default pair",
             "in": "path",
             "name": "id",
             "required": true,
@@ -7320,17 +6875,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Inspect information about a cluster pair",
@@ -7341,7 +6886,7 @@
     },
     "/v1/clusterpairs/token": {
       "get": {
-        "operationId": "OpenStorageClusterPair_GetToken",
+        "operationId": "GetToken",
         "responses": {
           "200": {
             "content": {
@@ -7351,17 +6896,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "GetToken returns a auth token",
@@ -7370,7 +6905,7 @@
         ]
       },
       "post": {
-        "operationId": "OpenStorageClusterPair_ResetToken",
+        "operationId": "ResetToken",
         "requestBody": {
           "content": {
             "application/json": {
@@ -7390,17 +6925,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "ResetToken returns a auth token",
@@ -7411,10 +6936,9 @@
     },
     "/v1/clusterpairs/{cluster_id}": {
       "delete": {
-        "operationId": "OpenStorageClusterPair_Delete",
+        "operationId": "Delete",
         "parameters": [
           {
-            "description": "ID of the cluster pair to be deleted",
             "in": "path",
             "name": "cluster_id",
             "required": true,
@@ -7432,17 +6956,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Delete a cluster pair",
@@ -7453,7 +6967,7 @@
     },
     "/v1/clusters/inspectcurrent": {
       "get": {
-        "operationId": "OpenStorageCluster_InspectCurrent",
+        "operationId": "InspectCurrent",
         "responses": {
           "200": {
             "content": {
@@ -7463,17 +6977,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "InspectCurrent returns information about the current cluster",
@@ -7484,7 +6988,7 @@
     },
     "/v1/credentials": {
       "get": {
-        "operationId": "OpenStorageCredentials_Enumerate",
+        "operationId": "Enumerate",
         "responses": {
           "200": {
             "content": {
@@ -7494,17 +6998,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Enumerate returns a list of credential ids",
@@ -7514,7 +7008,7 @@
       },
       "post": {
         "description": "##### Example\n{% codetabs name=\"Golang\", type=\"go\" -%}\nid, err := client.Create(context.Background(), \u0026api.SdkCredentialCreateRequest{\n    Name: \"awscred\",\n    UseProxy: false,\n    CredentialType: \u0026api.SdkCredentialCreateRequest_AwsCredential{\n      AwsCredential: \u0026api.SdkAwsCredentialRequest{\n      AccessKey: \"dummy-access\",\n      SecretKey: \"dummy-secret\",\n      Endpoint:  \"dummy-endpoint\",\n      Region:    \"dummy-region\",\n    },\n  },\n})\n{%- language name=\"Python\", type=\"py\" -%}\nen_resp = client.Create(api_pb2.SdkCredentialCreateRequest(\n  name='awscred',\n  aws_credential=api_pb2.SdkAwsCredentialRequest(\n    access_key='dummy-access',\n    secret_key='dumm-secret',\n    endpoint='dummy-endpoint',\n    region='dummy-region')))\n{%- endcodetabs %}",
-        "operationId": "OpenStorageCredentials_Create",
+        "operationId": "Create",
         "requestBody": {
           "content": {
             "application/json": {
@@ -7534,17 +7028,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Create is used to submit cloud credentials. It will return an\nid of the credentials once they are verified to work.",
@@ -7555,10 +7039,9 @@
     },
     "/v1/credentials/inspect/{credential_id}": {
       "get": {
-        "operationId": "OpenStorageCredentials_Inspect",
+        "operationId": "Inspect",
         "parameters": [
           {
-            "description": "Id of the credential",
             "in": "path",
             "name": "credential_id",
             "required": true,
@@ -7576,17 +7059,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Inspect returns the information about a credential, but does not return the secret key.",
@@ -7597,10 +7070,9 @@
     },
     "/v1/credentials/references/{credential_id}": {
       "delete": {
-        "operationId": "OpenStorageCredentials_DeleteReferences",
+        "operationId": "DeleteReferences",
         "parameters": [
           {
-            "description": "Id of the credentials",
             "in": "path",
             "name": "credential_id",
             "required": true,
@@ -7618,17 +7090,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "DeleteReferences is used to remove references to credentials",
@@ -7639,10 +7101,9 @@
     },
     "/v1/credentials/validate/{credential_id}": {
       "get": {
-        "operationId": "OpenStorageCredentials_Validate",
+        "operationId": "Validate",
         "parameters": [
           {
-            "description": "Id of the credentials",
             "in": "path",
             "name": "credential_id",
             "required": true,
@@ -7660,17 +7121,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Validate is used to validate credentials",
@@ -7681,10 +7132,9 @@
     },
     "/v1/credentials/{credential_id}": {
       "delete": {
-        "operationId": "OpenStorageCredentials_Delete",
+        "operationId": "Delete",
         "parameters": [
           {
-            "description": "Id for credentials",
             "in": "path",
             "name": "credential_id",
             "required": true,
@@ -7702,17 +7152,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Delete a specified credential",
@@ -7721,7 +7161,7 @@
         ]
       },
       "put": {
-        "operationId": "OpenStorageCredentials_Update",
+        "operationId": "Update",
         "parameters": [
           {
             "in": "path",
@@ -7751,17 +7191,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "input is very same as credential create",
@@ -7772,7 +7202,7 @@
     },
     "/v1/diags": {
       "post": {
-        "operationId": "OpenStorageDiags_Collect",
+        "operationId": "Collect",
         "requestBody": {
           "content": {
             "application/json": {
@@ -7792,17 +7222,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Collect starts a job to collect diagnostics from set of nodes that are selected based on the selectors provided\nin the SdkDiagsCollectRequest. See SdkDiagsCollectRequest for more details on how to select the nodes\nReturns SdkDiagsCollectResponse which has the job that is responsible for collecting the diags.",
@@ -7813,7 +7233,7 @@
     },
     "/v1/filesystem-check/start": {
       "post": {
-        "operationId": "OpenStorageFilesystemCheck_Start",
+        "operationId": "Start",
         "requestBody": {
           "content": {
             "application/json": {
@@ -7833,17 +7253,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Start a filesystem-check background operation on a unmounted volume.",
@@ -7854,7 +7264,7 @@
     },
     "/v1/filesystem-check/status": {
       "get": {
-        "operationId": "OpenStorageFilesystemCheck_Status",
+        "operationId": "Status",
         "parameters": [
           {
             "description": "Id of the volume.",
@@ -7875,17 +7285,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Get Status of a filesystem-check background operation on an unmounted\nvolume, if any",
@@ -7896,7 +7296,7 @@
     },
     "/v1/filesystem-check/stop": {
       "post": {
-        "operationId": "OpenStorageFilesystemCheck_Stop",
+        "operationId": "Stop",
         "requestBody": {
           "content": {
             "application/json": {
@@ -7916,17 +7316,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Stop a filesystem check background operation on an unmounted volume, if any",
@@ -7937,7 +7327,7 @@
     },
     "/v1/filesystem-trim/auto-fstrim-pop": {
       "post": {
-        "operationId": "OpenStorageFilesystemTrim_AutoFSTrimPop",
+        "operationId": "AutoFSTrimPop",
         "requestBody": {
           "content": {
             "application/json": {
@@ -7957,17 +7347,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Pop a auto filesystem Trim job from the queue",
@@ -7978,7 +7358,7 @@
     },
     "/v1/filesystem-trim/auto-fstrim-push": {
       "post": {
-        "operationId": "OpenStorageFilesystemTrim_AutoFSTrimPush",
+        "operationId": "AutoFSTrimPush",
         "requestBody": {
           "content": {
             "application/json": {
@@ -7998,17 +7378,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Push a auto filesystem Trim job into the queue",
@@ -8019,7 +7389,7 @@
     },
     "/v1/filesystem-trim/auto-fstrim-status": {
       "get": {
-        "operationId": "OpenStorageFilesystemTrim_AutoFSTrimStatus",
+        "operationId": "AutoFSTrimStatus",
         "responses": {
           "200": {
             "content": {
@@ -8029,17 +7399,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "tags": [
@@ -8049,7 +7409,7 @@
     },
     "/v1/filesystem-trim/auto-fstrim-usage": {
       "get": {
-        "operationId": "OpenStorageFilesystemTrim_AutoFSTrimUsage",
+        "operationId": "AutoFSTrimUsage",
         "responses": {
           "200": {
             "content": {
@@ -8059,17 +7419,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Usage of a filesystem Trim background operation on all locally mounted\nvolume",
@@ -8080,7 +7430,7 @@
     },
     "/v1/filesystem-trim/start": {
       "post": {
-        "operationId": "OpenStorageFilesystemTrim_Start",
+        "operationId": "Start",
         "requestBody": {
           "content": {
             "application/json": {
@@ -8100,17 +7450,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Start a filesystem Trim background operation on a mounted volume",
@@ -8121,7 +7461,7 @@
     },
     "/v1/filesystem-trim/status": {
       "get": {
-        "operationId": "OpenStorageFilesystemTrim_Status",
+        "operationId": "Status",
         "parameters": [
           {
             "description": "Id of the volume.",
@@ -8151,17 +7491,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Status of a filesystem Trim background operation on a mounted\nvolume, if any",
@@ -8172,7 +7502,7 @@
     },
     "/v1/filesystem-trim/stop": {
       "post": {
-        "operationId": "OpenStorageFilesystemTrim_Stop",
+        "operationId": "Stop",
         "requestBody": {
           "content": {
             "application/json": {
@@ -8192,17 +7522,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Stop a filesystem Trim background operation on a mounted volume, if any",
@@ -8213,7 +7533,7 @@
     },
     "/v1/identities/capabilities": {
       "get": {
-        "operationId": "OpenStorageIdentity_Capabilities",
+        "operationId": "Capabilities",
         "responses": {
           "200": {
             "content": {
@@ -8223,17 +7543,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Capabilities returns the supported services by the cluster.\nThis allows SDK implementations to advertise their supported\nservices as the API matures. With this information, clients\ncan determine supported services from storage clusters at\ndifferent versions.",
@@ -8244,7 +7554,7 @@
     },
     "/v1/identities/version": {
       "get": {
-        "operationId": "OpenStorageIdentity_Version",
+        "operationId": "Version",
         "responses": {
           "200": {
             "content": {
@@ -8254,17 +7564,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Version returns version information about the system.",
@@ -8275,7 +7575,7 @@
     },
     "/v1/jobs": {
       "get": {
-        "operationId": "OpenStorageJob_Enumerate",
+        "operationId": "Enumerate",
         "parameters": [
           {
             "description": "Type if specified will list the jobs of the provided type.\n\n - UNSPECIFIED_TYPE: Unspecified\n - NONE: None\n - DRAIN_ATTACHMENTS: Job for draining volume attachments\n - CLOUD_DRIVE_TRANSFER: Job for transferring cloud drives between nodes\n - COLLECT_DIAGS: Job for collecting diags from the cluster nodes",
@@ -8304,17 +7604,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Enumerate returns all the jobs currently known to the system",
@@ -8325,10 +7615,9 @@
     },
     "/v1/jobs/{id}": {
       "get": {
-        "operationId": "OpenStorageJob_GetStatus",
+        "operationId": "GetStatus",
         "parameters": [
           {
-            "description": "ID of the job",
             "in": "path",
             "name": "id",
             "required": true,
@@ -8363,17 +7652,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "GetStatus gets the status of a job",
@@ -8382,10 +7661,9 @@
         ]
       },
       "put": {
-        "operationId": "OpenStorageJob_Update",
+        "operationId": "Update",
         "parameters": [
           {
-            "description": "ID of the job",
             "in": "path",
             "name": "id",
             "required": true,
@@ -8413,17 +7691,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Update updates an existing job's state\nOnly acceptable state values are\nJobState_PAUSED - acceptable only from running state\nJobState_CANCELLED - acceptable only from running/pause state\nJobState_RUNNING - acceptable only from pause state",
@@ -8435,7 +7703,7 @@
     "/v1/mountattach/attach": {
       "post": {
         "description": "Requires access AccessType.Write of volume",
-        "operationId": "OpenStorageMountAttach_Attach",
+        "operationId": "Attach",
         "requestBody": {
           "content": {
             "application/json": {
@@ -8455,17 +7723,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Attach attaches device to the host that the client is communicating with.",
@@ -8477,7 +7735,7 @@
     "/v1/mountattach/detach": {
       "post": {
         "description": "Requires access AccessType.Write of volume",
-        "operationId": "OpenStorageMountAttach_Detach",
+        "operationId": "Detach",
         "requestBody": {
           "content": {
             "application/json": {
@@ -8497,17 +7755,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Detaches a the volume from the host",
@@ -8519,7 +7767,7 @@
     "/v1/mountattach/mount": {
       "post": {
         "description": "Requires access AccessType.Write of volume",
-        "operationId": "OpenStorageMountAttach_Mount",
+        "operationId": "Mount",
         "requestBody": {
           "content": {
             "application/json": {
@@ -8539,17 +7787,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Mount mounts an attached volume in the host that the client is communicating with",
@@ -8561,7 +7799,7 @@
     "/v1/mountattach/unmount": {
       "post": {
         "description": "Requires access AccessType.Write of volume",
-        "operationId": "OpenStorageMountAttach_Unmount",
+        "operationId": "Unmount",
         "requestBody": {
           "content": {
             "application/json": {
@@ -8581,17 +7819,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Unmount unmounts a mounted volume in the host that the client is communicating with",
@@ -8602,7 +7830,7 @@
     },
     "/v1/nodes": {
       "get": {
-        "operationId": "OpenStorageNode_Enumerate",
+        "operationId": "Enumerate",
         "responses": {
           "200": {
             "content": {
@@ -8612,17 +7840,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Enumerate returns the ids of all the nodes in the current cluster",
@@ -8633,10 +7851,9 @@
     },
     "/v1/nodes/attachments/disable/{node_id}": {
       "put": {
-        "operationId": "OpenStorageNode_CordonAttachments",
+        "operationId": "CordonAttachments",
         "parameters": [
           {
-            "description": "Node ID on which any further volume attachments will be disabled",
             "in": "path",
             "name": "node_id",
             "required": true,
@@ -8664,17 +7881,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "CordonAttachments disables any new volume attachments\nfrom the provided node in the cluster. Existing volume attachments\nwill stay on the node.",
@@ -8685,10 +7892,9 @@
     },
     "/v1/nodes/attachments/drain/{node_id}": {
       "put": {
-        "operationId": "OpenStorageNode_DrainAttachments",
+        "operationId": "DrainAttachments",
         "parameters": [
           {
-            "description": "Id of the node to drain",
             "in": "path",
             "name": "node_id",
             "required": true,
@@ -8716,17 +7922,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "DrainAttachments creates a task to drain volume attachments\nfrom the provided node in the cluster.",
@@ -8737,10 +7933,9 @@
     },
     "/v1/nodes/attachments/enable/{node_id}": {
       "put": {
-        "operationId": "OpenStorageNode_UncordonAttachments",
+        "operationId": "UncordonAttachments",
         "parameters": [
           {
-            "description": "Node ID on which any further volume attachments will be enabled",
             "in": "path",
             "name": "node_id",
             "required": true,
@@ -8768,17 +7963,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "UncordonAttachments re-enables volume attachments\non the provided node in the cluster.",
@@ -8787,50 +7972,9 @@
         ]
       }
     },
-    "/v1/nodes/bytesused": {
-      "post": {
-        "operationId": "OpenStorageNode_VolumeBytesUsedByNode",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/apiSdkVolumeBytesUsedRequest"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/apiSdkVolumeBytesUsedResponse"
-                }
-              }
-            },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
-          }
-        },
-        "summary": "Returns bytes used of multiple volumes for a give node",
-        "tags": [
-          "OpenStorageNode"
-        ]
-      }
-    },
     "/v1/nodes/filters": {
       "get": {
-        "operationId": "OpenStorageNode_EnumerateWithFilters",
+        "operationId": "EnumerateWithFilters",
         "responses": {
           "200": {
             "content": {
@@ -8840,17 +7984,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "EnumerateWithFilters returns all the nodes in the current cluster",
@@ -8861,10 +7995,9 @@
     },
     "/v1/nodes/inspect/{node_id}": {
       "get": {
-        "operationId": "OpenStorageNode_Inspect",
+        "operationId": "Inspect",
         "parameters": [
           {
-            "description": "Id of node to inspect",
             "in": "path",
             "name": "node_id",
             "required": true,
@@ -8882,17 +8015,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Inspect returns information about the specified node",
@@ -8903,7 +8026,7 @@
     },
     "/v1/nodes/inspectcurrent": {
       "get": {
-        "operationId": "OpenStorageNode_InspectCurrent",
+        "operationId": "InspectCurrent",
         "responses": {
           "200": {
             "content": {
@@ -8913,17 +8036,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "InspectCurrent returns information about the storage node\nwhere the client is currently connected to.",
@@ -8934,10 +8047,9 @@
     },
     "/v1/nodes/usage/{node_id}": {
       "get": {
-        "operationId": "OpenStorageNode_RelaxedReclaimPurge",
+        "operationId": "VolumeUsageByNode",
         "parameters": [
           {
-            "description": "Id of the node to trigger the purge",
             "in": "path",
             "name": "node_id",
             "required": true,
@@ -8951,24 +8063,14 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/apiSdkNodeRelaxedReclaimPurgeResponse"
+                  "$ref": "#/components/schemas/apiSdkNodeVolumeUsageByNodeResponse"
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
-        "summary": "Triggers RelaxedReclaim purge for a give node",
+        "summary": "Returns capacity usage of all volumes/snaps for a give node",
         "tags": [
           "OpenStorageNode"
         ]
@@ -8976,7 +8078,7 @@
     },
     "/v1/objectstores": {
       "post": {
-        "operationId": "OpenStorageObjectstore_Create",
+        "operationId": "Create",
         "requestBody": {
           "content": {
             "application/json": {
@@ -8996,17 +8098,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Creates creates an object store endpoint on specified volume",
@@ -9017,10 +8109,9 @@
     },
     "/v1/objectstores/inspect/{objectstore_id}": {
       "get": {
-        "operationId": "OpenStorageObjectstore_Inspect",
+        "operationId": "Inspect",
         "parameters": [
           {
-            "description": "Id of the object store",
             "in": "path",
             "name": "objectstore_id",
             "required": true,
@@ -9038,17 +8129,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Inspect returns information about the object store endpoint",
@@ -9059,10 +8140,9 @@
     },
     "/v1/objectstores/{objectstore_id}": {
       "delete": {
-        "operationId": "OpenStorageObjectstore_Delete",
+        "operationId": "Delete",
         "parameters": [
           {
-            "description": "Id of the object store to delete",
             "in": "path",
             "name": "objectstore_id",
             "required": true,
@@ -9080,17 +8160,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Delete destroys the object store endpoint on the volume",
@@ -9099,10 +8169,9 @@
         ]
       },
       "put": {
-        "operationId": "OpenStorageObjectstore_Update",
+        "operationId": "Update",
         "parameters": [
           {
-            "description": "Objectstore Id to update",
             "in": "path",
             "name": "objectstore_id",
             "required": true,
@@ -9130,17 +8199,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Updates provided objectstore status.\nThis call can be used to stop and start the server while maintaining the same\nobject storage id.",
@@ -9151,7 +8210,7 @@
     },
     "/v1/roles": {
       "get": {
-        "operationId": "OpenStorageRole_Enumerate",
+        "operationId": "Enumerate",
         "responses": {
           "200": {
             "content": {
@@ -9161,17 +8220,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "List all roles",
@@ -9180,7 +8229,7 @@
         ]
       },
       "post": {
-        "operationId": "OpenStorageRole_Create",
+        "operationId": "Create",
         "requestBody": {
           "content": {
             "application/json": {
@@ -9200,17 +8249,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Create a role for users in the system",
@@ -9219,7 +8258,7 @@
         ]
       },
       "put": {
-        "operationId": "OpenStorageRole_Update",
+        "operationId": "Update",
         "requestBody": {
           "content": {
             "application/json": {
@@ -9239,17 +8278,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Update an existing role",
@@ -9260,10 +8289,9 @@
     },
     "/v1/roles/inspect/{name}": {
       "get": {
-        "operationId": "OpenStorageRole_Inspect",
+        "operationId": "Inspect",
         "parameters": [
           {
-            "description": "Name of role",
             "in": "path",
             "name": "name",
             "required": true,
@@ -9281,17 +8309,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Get information about a role",
@@ -9302,7 +8320,7 @@
     },
     "/v1/roles/{name}": {
       "delete": {
-        "operationId": "OpenStorageRole_Delete",
+        "operationId": "Delete",
         "parameters": [
           {
             "in": "path",
@@ -9322,17 +8340,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Delete an existing role",
@@ -9343,7 +8351,7 @@
     },
     "/v1/schedulepolicies": {
       "get": {
-        "operationId": "OpenStorageSchedulePolicy_Enumerate",
+        "operationId": "Enumerate",
         "responses": {
           "200": {
             "content": {
@@ -9353,17 +8361,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Enumerate returns a list of schedules",
@@ -9372,7 +8370,7 @@
         ]
       },
       "post": {
-        "operationId": "OpenStorageSchedulePolicy_Create",
+        "operationId": "Create",
         "requestBody": {
           "content": {
             "application/json": {
@@ -9392,17 +8390,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Create creates a new snapshot schedule. They can be setup daily,\nweekly, or monthly.",
@@ -9411,7 +8399,7 @@
         ]
       },
       "put": {
-        "operationId": "OpenStorageSchedulePolicy_Update",
+        "operationId": "Update",
         "requestBody": {
           "content": {
             "application/json": {
@@ -9431,17 +8419,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Update a snapshot schedule",
@@ -9452,10 +8430,9 @@
     },
     "/v1/schedulepolicies/inspect/{name}": {
       "get": {
-        "operationId": "OpenStorageSchedulePolicy_Inspect",
+        "operationId": "Inspect",
         "parameters": [
           {
-            "description": "Name of the schedule Policy",
             "in": "path",
             "name": "name",
             "required": true,
@@ -9473,17 +8450,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Inspect returns information about a specified schedule",
@@ -9494,10 +8461,9 @@
     },
     "/v1/schedulepolicies/{name}": {
       "delete": {
-        "operationId": "OpenStorageSchedulePolicy_Delete",
+        "operationId": "Delete",
         "parameters": [
           {
-            "description": "Name of the schedule policy",
             "in": "path",
             "name": "name",
             "required": true,
@@ -9515,17 +8481,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Delete removes a snapshot schedule",
@@ -9536,7 +8492,7 @@
     },
     "/v1/storagepolicies": {
       "get": {
-        "operationId": "OpenStoragePolicy_Enumerate",
+        "operationId": "Enumerate",
         "responses": {
           "200": {
             "content": {
@@ -9546,17 +8502,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Enumerate returns a list of storage policies",
@@ -9565,7 +8511,7 @@
         ]
       },
       "post": {
-        "operationId": "OpenStoragePolicy_Create",
+        "operationId": "Create",
         "requestBody": {
           "content": {
             "application/json": {
@@ -9585,17 +8531,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Creates a storage policy",
@@ -9604,7 +8540,7 @@
         ]
       },
       "put": {
-        "operationId": "OpenStoragePolicy_Update",
+        "operationId": "Update",
         "requestBody": {
           "content": {
             "application/json": {
@@ -9624,17 +8560,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Updates specified storage policy",
@@ -9645,7 +8571,7 @@
     },
     "/v1/storagepolicies/default": {
       "get": {
-        "operationId": "OpenStoragePolicy_DefaultInspect",
+        "operationId": "DefaultInspect",
         "responses": {
           "200": {
             "content": {
@@ -9655,17 +8581,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "DefaultInspect return default storage policy if any, otherwise\nempty response",
@@ -9676,10 +8592,9 @@
     },
     "/v1/storagepolicies/default/{name}": {
       "post": {
-        "operationId": "OpenStoragePolicy_SetDefault",
+        "operationId": "SetDefault",
         "parameters": [
           {
-            "description": "name of policy to set as default storage policy\nfor volume creation\nThis policy will be used to validate/update volume configuration",
             "in": "path",
             "name": "name",
             "required": true,
@@ -9707,17 +8622,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Set specified storage policy as default policy",
@@ -9728,10 +8633,9 @@
     },
     "/v1/storagepolicies/inspect/{name}": {
       "get": {
-        "operationId": "OpenStoragePolicy_Inspect",
+        "operationId": "Inspect",
         "parameters": [
           {
-            "description": "name of storage policy to retrive",
             "in": "path",
             "name": "name",
             "required": true,
@@ -9749,17 +8653,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Inspect returns information about a specified storage policy",
@@ -9770,7 +8664,7 @@
     },
     "/v1/storagepolicies/release": {
       "post": {
-        "operationId": "OpenStoragePolicy_Release",
+        "operationId": "Release",
         "requestBody": {
           "content": {
             "application/json": {
@@ -9790,17 +8684,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Release specified storage policy constraint for volume\ncreation",
@@ -9811,10 +8695,9 @@
     },
     "/v1/storagepolicies/{name}": {
       "delete": {
-        "operationId": "OpenStoragePolicy_Delete",
+        "operationId": "Delete",
         "parameters": [
           {
-            "description": "name of storage policy to delete",
             "in": "path",
             "name": "name",
             "required": true,
@@ -9832,17 +8715,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Deletes specified storage policy",
@@ -9853,7 +8726,7 @@
     },
     "/v1/storagepools/rebalance": {
       "put": {
-        "operationId": "OpenStoragePool_Rebalance",
+        "operationId": "Rebalance",
         "responses": {
           "200": {
             "content": {
@@ -9863,17 +8736,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Rebalance creates a new rebalance task",
@@ -9884,7 +8747,7 @@
     },
     "/v1/storagepools/rebalance/job": {
       "get": {
-        "operationId": "OpenStoragePool_EnumerateRebalanceJobs",
+        "operationId": "EnumerateRebalanceJobs",
         "responses": {
           "200": {
             "content": {
@@ -9894,17 +8757,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "EnumerateRebalanceJobs returns all rebalance jobs currently known to the system",
@@ -9915,10 +8768,9 @@
     },
     "/v1/storagepools/rebalance/job/{id}": {
       "get": {
-        "operationId": "OpenStoragePool_GetRebalanceJobStatus",
+        "operationId": "GetRebalanceJobStatus",
         "parameters": [
           {
-            "description": "ID of the rebalance job",
             "in": "path",
             "name": "id",
             "required": true,
@@ -9936,17 +8788,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "GetRebalanceJobStatus returns rebalance status for specified job",
@@ -9955,10 +8797,9 @@
         ]
       },
       "put": {
-        "operationId": "OpenStoragePool_UpdateRebalanceJobState",
+        "operationId": "UpdateRebalanceJobState",
         "parameters": [
           {
-            "description": "ID of the rebalance job",
             "in": "path",
             "name": "id",
             "required": true,
@@ -9976,17 +8817,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "UpdateRebalanceJobState updates existing rebalance task state.\nOnly acceptable values are\nStorageRebalanceJobState_PAUSED - acceptable only from running state\nStorageRebalanceJobState_CANCELLED - acceptable only from running/pause state\nStorageRebalanceJobState_RUNNING - acceptable only from pause state",
@@ -9997,10 +8828,9 @@
     },
     "/v1/storagepools/resize/{uuid}": {
       "put": {
-        "operationId": "OpenStoragePool_Resize",
+        "operationId": "Resize",
         "parameters": [
           {
-            "description": "UUID of the storage pool to inspect",
             "in": "path",
             "name": "uuid",
             "required": true,
@@ -10018,17 +8848,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Resize expands the specified storage pool based on the request parameters",
@@ -10039,7 +8859,7 @@
     },
     "/v1/volume/catalog": {
       "post": {
-        "operationId": "OpenStorageVolume_VolumeCatalog",
+        "operationId": "VolumeCatalog",
         "requestBody": {
           "content": {
             "application/json": {
@@ -10059,17 +8879,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Gets the volume catalog of an attached and mounted volume.\nReturns the entire tree up to \"n\"  depth (default is all of it)\nTakes a path that can be used as the new root for the catalog request.",
@@ -10080,7 +8890,7 @@
     },
     "/v1/volumemigrate": {
       "get": {
-        "operationId": "OpenStorageMigrate_Status",
+        "operationId": "Status",
         "parameters": [
           {
             "description": "Task id for which to return status.",
@@ -10110,17 +8920,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Status for migration operation.\nIf status request is empty, status for all migration operation will be returned.",
@@ -10129,7 +8929,7 @@
         ]
       },
       "post": {
-        "operationId": "OpenStorageMigrate_Start",
+        "operationId": "Start",
         "requestBody": {
           "content": {
             "application/json": {
@@ -10149,17 +8949,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Start a migration operation",
@@ -10170,7 +8960,7 @@
     },
     "/v1/volumemigrate/cancel": {
       "post": {
-        "operationId": "OpenStorageMigrate_Cancel",
+        "operationId": "Cancel",
         "requestBody": {
           "content": {
             "application/json": {
@@ -10190,17 +8980,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Cancel a migration operation",
@@ -10211,7 +8991,7 @@
     },
     "/v1/volumes": {
       "get": {
-        "operationId": "OpenStorageVolume_Enumerate",
+        "operationId": "Enumerate",
         "responses": {
           "200": {
             "content": {
@@ -10221,17 +9001,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Enumerate returns a list of volume ids",
@@ -10241,7 +9011,7 @@
       },
       "post": {
         "description": "Requires access AccessType.Read when cloning from a parent volume.\n\n##### Example\n{% codetabs name=\"Golang\", type=\"go\" -%}\nid, err := client.Create(context.Background(), \u0026api.SdkVolumeCreateRequest{\n  Name: \"volume-12345-east\",\n  Spec: \u0026api.VolumeSpec {\n    Size: 1234567,\n  },\n})\n{%- language name=\"Python\", type=\"py\" -%}\nen_resp = client.Create(api_pb2.SdkVolumeCreateRequest(\n  name=\"volume-12345-east\",\n  spec=api_pb2.VolumeSpec(size=1234567)))\n{%- endcodetabs %}",
-        "operationId": "OpenStorageVolume_Create",
+        "operationId": "Create",
         "requestBody": {
           "content": {
             "application/json": {
@@ -10261,17 +9031,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Create creates a volume according to the specification provided",
@@ -10283,7 +9043,7 @@
     "/v1/volumes/clone": {
       "post": {
         "description": "Requires access AccessType.Read of volume",
-        "operationId": "OpenStorageVolume_Clone",
+        "operationId": "Clone",
         "requestBody": {
           "content": {
             "application/json": {
@@ -10303,17 +9063,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Clone creates a new writable volume cloned from an existing volume",
@@ -10324,7 +9074,7 @@
     },
     "/v1/volumes/filters": {
       "post": {
-        "operationId": "OpenStorageVolume_EnumerateWithFilters",
+        "operationId": "EnumerateWithFilters",
         "requestBody": {
           "content": {
             "application/json": {
@@ -10344,17 +9094,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Enumerate returns a list of volume ids that match the labels if any are provided.",
@@ -10366,10 +9106,9 @@
     "/v1/volumes/inspect/{volume_id}": {
       "get": {
         "description": "Requires access AccessType.Read of volume",
-        "operationId": "OpenStorageVolume_Inspect",
+        "operationId": "Inspect",
         "parameters": [
           {
-            "description": "Id of volume to inspect",
             "in": "path",
             "name": "volume_id",
             "required": true,
@@ -10383,6 +9122,7 @@
             "name": "options.deep",
             "required": false,
             "schema": {
+              "format": "boolean",
               "type": "boolean"
             }
           }
@@ -10396,17 +9136,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Inspect returns information about a volume",
@@ -10417,7 +9147,7 @@
     },
     "/v1/volumes/inspectwithfilters": {
       "post": {
-        "operationId": "OpenStorageVolume_InspectWithFilters",
+        "operationId": "InspectWithFilters",
         "requestBody": {
           "content": {
             "application/json": {
@@ -10437,17 +9167,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Returns information for a list of volumes that match a filter.\nThis call is a helper function like calling\n`OpenStorageVolume.EnumerateWithFilters` then having it\nreturn the contents of each of those volumes\n`OpenStorageVolume.Inspect()`. Take care in using this call\nwhen requesting large number of volumes because it will\nblock until it has all the information requested before\nreturning.",
@@ -10459,10 +9179,9 @@
     "/v1/volumes/snapshot/schedules/{volume_id}": {
       "post": {
         "description": "Requires access AccessType.Write of volume",
-        "operationId": "OpenStorageVolume_SnapshotScheduleUpdate",
+        "operationId": "SnapshotScheduleUpdate",
         "parameters": [
           {
-            "description": "Id of volume",
             "in": "path",
             "name": "volume_id",
             "required": true,
@@ -10490,17 +9209,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Sets the snapshot schedules. This information is saved in the VolumeSpec.snapshot_schedule\nas `policy=\u003cname\u003e,...`. This function will overwrite any policy values\nin the volume. To delete the policies in the volume send no policies.",
@@ -10511,7 +9220,7 @@
     },
     "/v1/volumes/snapshots": {
       "get": {
-        "operationId": "OpenStorageVolume_SnapshotEnumerate",
+        "operationId": "SnapshotEnumerate",
         "parameters": [
           {
             "description": "Get the snapshots for this volume id.",
@@ -10532,17 +9241,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "SnapshotEnumerate returns a list of snapshots for a specific volume",
@@ -10552,7 +9251,7 @@
       },
       "post": {
         "description": "Requires access AccessType.Read of volume",
-        "operationId": "OpenStorageVolume_SnapshotCreate",
+        "operationId": "SnapshotCreate",
         "requestBody": {
           "content": {
             "application/json": {
@@ -10572,17 +9271,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "SnapshotCreate creates a snapshot of a volume. This creates an immutable (read-only),\npoint-in-time snapshot of a volume. To create a new writable volume from\na snapshot, please use OpenStorageVolume.Clone().",
@@ -10593,10 +9282,9 @@
     },
     "/v1/volumes/snapshots/filters/{volume_id}": {
       "post": {
-        "operationId": "OpenStorageVolume_SnapshotEnumerateWithFilters",
+        "operationId": "SnapshotEnumerateWithFilters",
         "parameters": [
           {
-            "description": "(optional) Get the snapshots for this volume id",
             "in": "path",
             "name": "volume_id",
             "required": true,
@@ -10624,20 +9312,10 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
-        "summary": "SnapshotEnumerate returns a list of snapshots.\nTo filter all the snapshots for a specific volume which may no longer exist,\nspecify a volume id.\nLabels can also be used to filter the snapshot list.\nIf neither are provided all snapshots will be returned.",
+        "summary": "SnapshotEnumerate returns a list of snapshots.\nTo filter all the snapshots for a specific volume which may no longer exist,\nspecifiy a volume id.\nLabels can also be used to filter the snapshot list.\nIf neither are provided all snapshots will be returned.",
         "tags": [
           "OpenStorageVolume"
         ]
@@ -10646,7 +9324,7 @@
     "/v1/volumes/snapshots/restore": {
       "post": {
         "description": "Requires access AccessType.Write of volume",
-        "operationId": "OpenStorageVolume_SnapshotRestore",
+        "operationId": "SnapshotRestore",
         "requestBody": {
           "content": {
             "application/json": {
@@ -10666,17 +9344,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "SnapshotRestore restores a volume to a specified snapshot",
@@ -10688,10 +9356,9 @@
     "/v1/volumes/stats/{volume_id}": {
       "get": {
         "description": "Requires access AccessType.Read of volume",
-        "operationId": "OpenStorageVolume_Stats",
+        "operationId": "Stats",
         "parameters": [
           {
-            "description": "Id of the volume to get statistics",
             "in": "path",
             "name": "volume_id",
             "required": true,
@@ -10705,6 +9372,7 @@
             "name": "not_cumulative",
             "required": false,
             "schema": {
+              "format": "boolean",
               "type": "boolean"
             }
           }
@@ -10718,17 +9386,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Stats returns the statistics for the requested volume",
@@ -10740,10 +9398,9 @@
     "/v1/volumes/usage/{volume_id}": {
       "get": {
         "description": "Requires access AccessType.Read of volume\n\n##### Error codes:\n\n* codes.Aborted : Command was aborted and only total_bytes field is valid\n* code.Unimmplemented : Command is not suported this kernel.Only total_bytes\nfield is valid;",
-        "operationId": "OpenStorageVolume_CapacityUsage",
+        "operationId": "CapacityUsage",
         "parameters": [
           {
-            "description": "Id of the snapshot/volume to get capacity usage details",
             "in": "path",
             "name": "volume_id",
             "required": true,
@@ -10761,17 +9418,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "CapacityUsage returns volume/snapshot's capacity usage details",
@@ -10783,10 +9430,9 @@
     "/v1/volumes/{volume_id}": {
       "delete": {
         "description": "Requires access AccessType.Admin of volume",
-        "operationId": "OpenStorageVolume_Delete",
+        "operationId": "Delete",
         "parameters": [
           {
-            "description": "Id of volume to delete",
             "in": "path",
             "name": "volume_id",
             "required": true,
@@ -10804,17 +9450,7 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Delete deletes the provided volume",
@@ -10824,10 +9460,9 @@
       },
       "put": {
         "description": "Requires access AccessType.Write of volume",
-        "operationId": "OpenStorageVolume_Update",
+        "operationId": "Update",
         "parameters": [
           {
-            "description": "Id of the volume to update",
             "in": "path",
             "name": "volume_id",
             "required": true,
@@ -10855,73 +9490,12 @@
                 }
               }
             },
-            "description": "A successful response."
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
+            "description": ""
           }
         },
         "summary": "Update provides a method for manipulating the specification and attributes of a volume.\nSet can be used to resize a volume, update labels, change replica count, and much more.",
         "tags": [
           "OpenStorageVolume"
-        ]
-      }
-    },
-    "/v1/watch": {
-      "post": {
-        "description": "Requires access AccessType.Read",
-        "operationId": "OpenStorageWatch_Watch",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/apiSdkWatchRequest"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "error": {
-                      "$ref": "#/components/schemas/runtimeStreamError"
-                    },
-                    "result": {
-                      "$ref": "#/components/schemas/apiSdkWatchResponse"
-                    }
-                  },
-                  "title": "Stream result of apiSdkWatchResponse",
-                  "type": "object"
-                }
-              }
-            },
-            "description": "A successful response.(streaming responses)"
-          },
-          "default": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/runtimeError"
-                }
-              }
-            },
-            "description": "An unexpected error response."
-          }
-        },
-        "summary": "Watch on resources managed by the driver and receive them as a stream of events.",
-        "tags": [
-          "OpenStorageWatch"
         ]
       }
     }

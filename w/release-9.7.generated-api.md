@@ -25,7 +25,6 @@
     - [OpenStorageRole](#serviceopenstorageapiopenstoragerole)
     - [OpenStorageSchedulePolicy](#serviceopenstorageapiopenstorageschedulepolicy)
     - [OpenStorageVolume](#serviceopenstorageapiopenstoragevolume)
-    - [OpenStorageWatch](#serviceopenstorageapiopenstoragewatch)
   
 
 
@@ -152,6 +151,7 @@
     - [SdkAzureCredentialResponse](#sdkazurecredentialresponse)
     - [SdkCloudBackupCatalogRequest](#sdkcloudbackupcatalogrequest)
     - [SdkCloudBackupCatalogResponse](#sdkcloudbackupcatalogresponse)
+    - [SdkCloudBackupClusterType](#sdkcloudbackupclustertype)
     - [SdkCloudBackupCreateRequest](#sdkcloudbackupcreaterequest)
     - [SdkCloudBackupCreateRequest.LabelsEntry](#sdkcloudbackupcreaterequestlabelsentry)
     - [SdkCloudBackupCreateResponse](#sdkcloudbackupcreateresponse)
@@ -278,8 +278,6 @@
     - [SdkNodeInspectCurrentResponse](#sdknodeinspectcurrentresponse)
     - [SdkNodeInspectRequest](#sdknodeinspectrequest)
     - [SdkNodeInspectResponse](#sdknodeinspectresponse)
-    - [SdkNodeRelaxedReclaimPurgeRequest](#sdknoderelaxedreclaimpurgerequest)
-    - [SdkNodeRelaxedReclaimPurgeResponse](#sdknoderelaxedreclaimpurgeresponse)
     - [SdkNodeUncordonAttachmentsRequest](#sdknodeuncordonattachmentsrequest)
     - [SdkNodeUncordonAttachmentsResponse](#sdknodeuncordonattachmentsresponse)
     - [SdkNodeVolumeUsageByNodeRequest](#sdknodevolumeusagebynoderequest)
@@ -353,8 +351,6 @@
     - [SdkVolumeAttachRequest](#sdkvolumeattachrequest)
     - [SdkVolumeAttachRequest.DriverOptionsEntry](#sdkvolumeattachrequestdriveroptionsentry)
     - [SdkVolumeAttachResponse](#sdkvolumeattachresponse)
-    - [SdkVolumeBytesUsedRequest](#sdkvolumebytesusedrequest)
-    - [SdkVolumeBytesUsedResponse](#sdkvolumebytesusedresponse)
     - [SdkVolumeCapacityUsageRequest](#sdkvolumecapacityusagerequest)
     - [SdkVolumeCapacityUsageResponse](#sdkvolumecapacityusageresponse)
     - [SdkVolumeCatalogRequest](#sdkvolumecatalogrequest)
@@ -406,11 +402,6 @@
     - [SdkVolumeUpdateRequest](#sdkvolumeupdaterequest)
     - [SdkVolumeUpdateRequest.LabelsEntry](#sdkvolumeupdaterequestlabelsentry)
     - [SdkVolumeUpdateResponse](#sdkvolumeupdateresponse)
-    - [SdkVolumeWatchRequest](#sdkvolumewatchrequest)
-    - [SdkVolumeWatchRequest.LabelsEntry](#sdkvolumewatchrequestlabelsentry)
-    - [SdkVolumeWatchResponse](#sdkvolumewatchresponse)
-    - [SdkWatchRequest](#sdkwatchrequest)
-    - [SdkWatchResponse](#sdkwatchresponse)
     - [Sharedv4FailoverStrategy](#sharedv4failoverstrategy)
     - [Sharedv4ServiceSpec](#sharedv4servicespec)
     - [Sharedv4Spec](#sharedv4spec)
@@ -438,8 +429,6 @@
     - [TopologyRequirement.LabelsEntry](#topologyrequirementlabelsentry)
     - [Volume](#volume)
     - [Volume.AttachInfoEntry](#volumeattachinfoentry)
-    - [VolumeBytesUsed](#volumebytesused)
-    - [VolumeBytesUsedByNode](#volumebytesusedbynode)
     - [VolumeConsumer](#volumeconsumer)
     - [VolumeCreateRequest](#volumecreaterequest)
     - [VolumeCreateResponse](#volumecreateresponse)
@@ -503,7 +492,7 @@
     - [RestoreParamBoolType](#restoreparambooltype)
     - [ScanPolicy.ScanAction](#scanpolicyscanaction)
     - [ScanPolicy.ScanTrigger](#scanpolicyscantrigger)
-    - [SdkCloudBackupClusterType](#sdkcloudbackupclustertype)
+    - [SdkCloudBackupClusterType.Value](#sdkcloudbackupclustertypevalue)
     - [SdkCloudBackupOpType](#sdkcloudbackupoptype)
     - [SdkCloudBackupRequestedState](#sdkcloudbackuprequestedstate)
     - [SdkCloudBackupStatusType](#sdkcloudbackupstatustype)
@@ -511,7 +500,6 @@
     - [SdkStoragePool.OperationStatus](#sdkstoragepooloperationstatus)
     - [SdkStoragePool.OperationType](#sdkstoragepooloperationtype)
     - [SdkStoragePool.ResizeOperationType](#sdkstoragepoolresizeoperationtype)
-    - [SdkStorageRebalanceRequest.Mode](#sdkstoragerebalancerequestmode)
     - [SdkTimeWeekday](#sdktimeweekday)
     - [SdkVersion.Version](#sdkversionversion)
     - [SeverityType](#severitytype)
@@ -556,7 +544,7 @@ EnumerateWithFilters allows 3 different types of queries as defined below:
 
 #### Input
 SdkAlertsEnumerateRequest takes a list of such queries and the returned
-output is a collective output from each of these queries. In that sense,
+output is a collective ouput from each of these queries. In that sense,
 the filtering of these queries has a behavior of OR operation.
 Each query also has a list of optional options. These options allow
 narrowing down the scope of alerts search. These options have a
@@ -1175,12 +1163,6 @@ EnumerateWithFilters returns all the nodes in the current cluster
     [SdkNodeVolumeUsageByNodeResponse](#sdknodevolumeusagebynoderesponse)
 
 Returns capacity usage of all volumes/snaps for a give node
-## RelaxedReclaimPurge {#methodopenstorageapiopenstoragenoderelaxedreclaimpurge}
-
-> **rpc** RelaxedReclaimPurge([SdkNodeRelaxedReclaimPurgeRequest](#sdknoderelaxedreclaimpurgerequest))
-    [SdkNodeRelaxedReclaimPurgeResponse](#sdknoderelaxedreclaimpurgeresponse)
-
-Triggers RelaxedReclaim purge for a give node
 ## DrainAttachments {#methodopenstorageapiopenstoragenodedrainattachments}
 
 > **rpc** DrainAttachments([SdkNodeDrainAttachmentsRequest](#sdknodedrainattachmentsrequest))
@@ -1203,12 +1185,6 @@ will stay on the node.
 
 UncordonAttachments re-enables volume attachments
 on the provided node in the cluster.
-## VolumeBytesUsedByNode {#methodopenstorageapiopenstoragenodevolumebytesusedbynode}
-
-> **rpc** VolumeBytesUsedByNode([SdkVolumeBytesUsedRequest](#sdkvolumebytesusedrequest))
-    [SdkVolumeBytesUsedResponse](#sdkvolumebytesusedresponse)
-
-Returns bytes used of multiple volumes for a give node
  <!-- end methods -->
 
 # OpenStorageObjectstore {#serviceopenstorageapiopenstorageobjectstore}
@@ -1563,7 +1539,7 @@ SnapshotEnumerate returns a list of snapshots for a specific volume
 
 SnapshotEnumerate returns a list of snapshots.
 To filter all the snapshots for a specific volume which may no longer exist,
-specify a volume id.
+specifiy a volume id.
 Labels can also be used to filter the snapshot list.
 If neither are provided all snapshots will be returned.
 ## SnapshotScheduleUpdate {#methodopenstorageapiopenstoragevolumesnapshotscheduleupdate}
@@ -1584,19 +1560,6 @@ Requires access AccessType.Write of volume
 Gets the volume catalog of an attached and mounted volume.
 Returns the entire tree up to "n"  depth (default is all of it)
 Takes a path that can be used as the new root for the catalog request.
- <!-- end methods -->
-
-# OpenStorageWatch {#serviceopenstorageapiopenstoragewatch}
-OpenStorageWatcher is a service that provides APIs for watching on resources and receive them as a stream of events.
-
-## Watch {#methodopenstorageapiopenstoragewatchwatch}
-
-> **rpc** Watch([SdkWatchRequest](#sdkwatchrequest))
-    [SdkWatchResponse](#sdkwatchresponse)
-
-Watch on resources managed by the driver and receive them as a stream of events.
-
-Requires access AccessType.Read
  <!-- end methods -->
  <!-- end services -->
 
@@ -1648,9 +1611,9 @@ Alert is a structure that represents an alert object
 | severity | [ SeverityType](#severitytype) | Severity of the Alert |
 | alert_type | [ int64](#int64) | AlertType user defined alert type |
 | message | [ string](#string) | Message describing the Alert |
-| timestamp | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | Timestamp when Alert occurred |
-| resource_id | [ string](#string) | ResourceId where Alert occurred |
-| resource | [ ResourceType](#resourcetype) | Resource where Alert occurred |
+| timestamp | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | Timestamp when Alert occured |
+| resource_id | [ string](#string) | ResourceId where Alert occured |
+| resource | [ ResourceType](#resourcetype) | Resource where Alert occured |
 | cleared | [ bool](#bool) | Cleared Flag |
 | ttl | [ uint64](#uint64) | Time-to-live in seconds for this Alert |
 | unique_tag | [ string](#string) | UniqueTag helps identify a unique alert for a given resouce |
@@ -1774,7 +1737,7 @@ Empty response
 ## CapacityUsageInfo {#capacityusageinfo}
 Provides details on exclusive and shared storage used by
 snapshot/volume specifically for copy-on-write(COW) snapshots. Deletion
-of snapshots and overwrite of volume will affect the exclusive storage
+of snapshots and overwirte of volume will affect the exclusive storage
 used by the other dependent snaps and parent volume.
 
 
@@ -1970,7 +1933,7 @@ Response for a pair request
 
 
 ## ClusterPairGetResponse {#clusterpairgetresponse}
-Response to get a cluster pair
+Reponse to get a cluster pair
 
 
 | Field | Type | Description |
@@ -2698,7 +2661,6 @@ coded - for clustered storage arrays
 | ----- | ---- | ----------- |
 | nodes | [repeated string](#string) | none |
 | pool_uuids | [repeated string](#string) | Unique IDs of the storage pools for this replica set |
-| id | [ uint32](#uint32) | ID is the unique ID of this replica set |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -2775,7 +2737,6 @@ inherit corresponding field value from backup's spec.
 | sharedv4_spec | [ Sharedv4Spec](#sharedv4spec) | Sharedv4Spec specifies common properties of sharedv4 and sharedv4 service volumes |
 | auto_fstrim | [ RestoreParamBoolType](#restoreparambooltype) | Autofstrim is true if automatic fstrim is enabled for the volume |
 | io_throttle | [ IoThrottle](#iothrottle) | IoThrottle specifies maximum io(iops/bandwidth) this volume is restricted to |
-| readahead | [ RestoreParamBoolType](#restoreparambooltype) | Enable readahead for the volume |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -2987,8 +2948,8 @@ SdkAlertsTimeSpan to store time window information.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| start_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | Start timestamp when Alert occurred |
-| end_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | End timestamp when Alert occurred |
+| start_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | Start timestamp when Alert occured |
+| end_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | End timestamp when Alert occured |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3181,6 +3142,12 @@ Defines a response containing the contents of a backup stored by a cloud provide
  <!-- end HasFields -->
 
 
+## SdkCloudBackupClusterType {#sdkcloudbackupclustertype}
+CloudBackup owner cluster
+
+ <!-- end HasFields -->
+
+
 ## SdkCloudBackupCreateRequest {#sdkcloudbackupcreaterequest}
 Defines a request to create a backup of a volume to the cloud
 
@@ -3192,7 +3159,7 @@ Defines a request to create a backup of a volume to the cloud
 | full | [ bool](#bool) | Full indicates if full backup is desired even though incremental is possible |
 | task_id | [ string](#string) | TaskId of the task performing this backup. This value can be used for idempotency. |
 | labels | [map SdkCloudBackupCreateRequest.LabelsEntry](#sdkcloudbackupcreaterequestlabelsentry) | Labels are list of key value pairs to tag the cloud backup. These labels are stored in the metadata associated with the backup. |
-| full_backup_frequency | [ uint32](#uint32) | FullBackupFrequency indicates number of incremental backup after which a fullbackup must be created. This is to override the default value for manual/user triggerred backups and not applicable for scheduled backups Value of 0 retains the default behavior. |
+| full_backup_frequency | [ uint32](#uint32) | FullBackupFrequency indicates number of incremental backup after whcih a fullbackup must be created. This is to override the default value for manual/user triggerred backups and not applicable for scheduled backups Value of 0 retains the default behavior. |
 | delete_local | [ bool](#bool) | DeleteLocal indicates if local snap created for backup must be deleted after the backup is complete |
 | near_sync_migrate | [ bool](#bool) | Indicates if this is a near sync migrate |
  <!-- end Fields -->
@@ -3372,7 +3339,7 @@ specific volume
 
 
 ## SdkCloudBackupHistoryRequest {#sdkcloudbackuphistoryrequest}
-Defines a request to retrieve the history of the backups for
+Defines a request to retreive the history of the backups for
 a specific volume to a cloud provider
 
 
@@ -3406,7 +3373,7 @@ SdkCloudBackupInfo has information about a backup stored by a cloud provider
 | timestamp | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | Timestamp is the timestamp at which the source volume was backed up to cloud |
 | metadata | [map SdkCloudBackupInfo.MetadataEntry](#sdkcloudbackupinfometadataentry) | Metadata associated with the backup |
 | status | [ SdkCloudBackupStatusType](#sdkcloudbackupstatustype) | Status indicates the status of the backup |
-| cluster_type | [ SdkCloudBackupClusterType](#sdkcloudbackupclustertype) | cluster indicates if the cloudbackup belongs to current cluster, with older cluster this value may be unknown |
+| cluster_type | [ SdkCloudBackupClusterType.Value](#sdkcloudbackupclustertypevalue) | indicates if the cloudbackup belongs to current cluster, with older cluster this value may be unknown |
 | namespace | [ string](#string) | k8s namespace to which this backup belongs to |
  <!-- end Fields -->
  <!-- end HasFields -->
@@ -3646,7 +3613,7 @@ SdkCloudBackupStatus defines the status of a backup stored by a cloud provider
 
 
 ## SdkCloudBackupStatusRequest {#sdkcloudbackupstatusrequest}
-Defines a request to retrieve the status of a backup or restore for a
+Defines a request to retreive the status of a backup or restore for a
 specified volume
 
 
@@ -4144,7 +4111,6 @@ nodes based on both and also handle overlaps
 | issuer | [ string](#string) | Issuer is an optional user friendly name for the caller invoking the API |
 | timeout_mins | [ int64](#int64) | TimeoutMins is the timeout in minutes for the job. This is an optional field and if not provided, the implementation of the SDK will use a sane default |
 | live | [ bool](#bool) | Live is an optional flag if true will collect live cores from running processes of the driver |
-| filename | [ string](#string) | Filename is an optional flag only to be used for testing purposes. |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -4418,12 +4384,12 @@ Empty request
 
 
 ## SdkIdentityCapabilitiesResponse {#sdkidentitycapabilitiesresponse}
-Defines a response containing the capabilities of the cluster
+Defines a response containing the capabilites of the cluster
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| capabilities | [repeated SdkServiceCapability](#sdkservicecapability) | Provides all the capabilities supported by the cluster |
+| capabilities | [repeated SdkServiceCapability](#sdkservicecapability) | Provides all the capabilites supported by the cluster |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -4589,29 +4555,6 @@ Defines a response when inspecting a node
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | node | [ StorageNode](#storagenode) | Node information |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkNodeRelaxedReclaimPurgeRequest {#sdknoderelaxedreclaimpurgerequest}
-Defines request to trigger RelaxedReclaim purge
-for a given node
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| node_id | [ string](#string) | Id of the node to trigger the purge |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkNodeRelaxedReclaimPurgeResponse {#sdknoderelaxedreclaimpurgeresponse}
-Defines response containing status of the trigger
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| status | [ RelaxedReclaimPurge](#relaxedreclaimpurge) | status returns true on successful purge |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -5291,7 +5234,6 @@ Defines a response when resizing a storage pool
 | target_pool_selector | [repeated LabelSelectorRequirement](#labelselectorrequirement) | TargetPoolSelector allows selecting pools to which trigger thresholds will apply as target |
 | max_duration_minutes | [ uint64](#uint64) | MaxDurationMinutes defines how long operation should run when started at schedule. 0 values means no limit on duration |
 | remove_repl_1_snapshots | [ bool](#bool) | RemoveRepl1Snapshots if true will instruct rebalance job to remove repl-1 snapshots |
-| mode | [ SdkStorageRebalanceRequest.Mode](#sdkstoragerebalancerequestmode) | Mode specifies the mode of the volume reorg job |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -5408,30 +5350,6 @@ Defines a response from the node which received the request to attach
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | device_path | [ string](#string) | Device path where device is exported |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkVolumeBytesUsedRequest {#sdkvolumebytesusedrequest}
-SdkVolumeBytesUsedRequest defines a request for fetching per volume utilization
-from multiple volume in a given node
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| node_id | [ string](#string) | machine uuid of targeted node |
-| ids | [repeated uint64](#uint64) | volume ids to be found in usage response, can be empty |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkVolumeBytesUsedResponse {#sdkvolumebytesusedresponse}
-SdkVolumeBytesUsedResponse defines a response to fetch multiple volume util from a given node
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| vol_util_info | [ VolumeBytesUsedByNode](#volumebytesusedbynode) | Provides vol util of multiple requested volumes from a given node |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -5907,7 +5825,7 @@ Empty response
 
 
 ## SdkVolumeStatsRequest {#sdkvolumestatsrequest}
-Defines a request to retrieve volume statistics
+Defines a request to retreive volume statistics
 
 
 | Field | Type | Description |
@@ -6008,64 +5926,6 @@ Empty response
  <!-- end HasFields -->
 
 
-## SdkVolumeWatchRequest {#sdkvolumewatchrequest}
-Defines the request to watch an openstorage volume event for the given label
-if the label is empty, it returns all the volume events
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| labels | [map SdkVolumeWatchRequest.LabelsEntry](#sdkvolumewatchrequestlabelsentry) | labels to filter out the volumes to watch on |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkVolumeWatchRequest.LabelsEntry {#sdkvolumewatchrequestlabelsentry}
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| key | [ string](#string) | none |
-| value | [ string](#string) | none |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkVolumeWatchResponse {#sdkvolumewatchresponse}
-Defines the response containing an volume with a state changed
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| volume | [ Volume](#volume) | Information about the volume |
-| name | [ string](#string) | Name of volume |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkWatchRequest {#sdkwatchrequest}
-Defines the request to watch an openstorage event. An event can be a volume, a node, a disk, etc
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) event_type.volume_event | [ SdkVolumeWatchRequest](#sdkvolumewatchrequest) | watch request for volume event |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## SdkWatchResponse {#sdkwatchresponse}
-Defines the response to watch an openstorage event. An event can be a volume, a node, a disk, etc
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) event_type.volume_event | [ SdkVolumeWatchResponse](#sdkvolumewatchresponse) | none |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
 ## Sharedv4FailoverStrategy {#sharedv4failoverstrategy}
 Sharedv4FailoverStrategy specifies how long to wait before failing over to a new server.
 
@@ -6081,7 +5941,6 @@ a sharedv4 volume.
 | ----- | ---- | ----------- |
 | name | [ string](#string) | Name of the service. If not provided the name of the volume will be used for setting up a service |
 | type | [ Sharedv4ServiceSpec.ServiceType](#sharedv4servicespecservicetype) | Indicates what kind of service would be created for this volume. |
-| external_access | [ bool](#bool) | Indicates whether the service needs to be accessed outside of the cluster |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -6153,9 +6012,6 @@ Stats is a structure that represents last collected stats for a volume
 | io_ms | [ uint64](#uint64) | Time spent doing IOs ms |
 | bytes_used | [ uint64](#uint64) | BytesUsed |
 | interval_ms | [ uint64](#uint64) | Interval in ms during which stats were collected |
-| discards | [ uint64](#uint64) | Discards completed successfully |
-| discard_ms | [ uint64](#uint64) | Time spent in discards in ms |
-| discard_bytes | [ uint64](#uint64) | Number of bytes discarded |
 | unique_blocks | [ uint64](#uint64) | Unique Blocks |
  <!-- end Fields -->
  <!-- end HasFields -->
@@ -6484,30 +6340,6 @@ Volume represents an abstract storage volume.
  <!-- end HasFields -->
 
 
-## VolumeBytesUsed {#volumebytesused}
-VolumeBytesUsed defines volume utilization
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| volume_id | [ string](#string) | id for the volume/snapshot |
-| total_bytes | [ uint64](#uint64) | size in bytes by the volume/snapshot |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
-## VolumeBytesUsedByNode {#volumebytesusedbynode}
-VolumeBytesUsedByNode defines volume utilization for multiple volumes in a given node
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| node_id | [ string](#string) | machine uuid |
-| vol_usage | [repeated VolumeBytesUsed](#volumebytesused) | VolumeBytesUsed for each requested volume on the given node |
- <!-- end Fields -->
- <!-- end HasFields -->
-
-
 ## VolumeConsumer {#volumeconsumer}
 VolumeConsumer identifies a consumer for a Volume. An example of a VolumeConsumer
 would be a Pod in Kubernetes who has mounted the PersistentVolumeClaim for the
@@ -6801,10 +6633,7 @@ VolumeSpec has the properties needed to create a volume.
 | sharedv4_spec | [ Sharedv4Spec](#sharedv4spec) | Sharedv4Spec specifies common properties of sharedv4 and sharedv4 service volumes |
 | auto_fstrim | [ bool](#bool) | Autofstrim indicates that fstrim would be run on this volume automatically, without user intervention |
 | io_throttle | [ IoThrottle](#iothrottle) | IoThrottle specifies maximum io(iops/bandwidth) this volume is restricted to |
-| number_of_chunks | [ uint32](#uint32) | NumberOfChunks indicates how many chunks must be created, 0 and 1 both mean 1 |
-| readahead | [ bool](#bool) | Enable readahead for the volume |
 | topology_requirement | [ TopologyRequirement](#topologyrequirement) | TopologyRequirement topology requirement for this volume |
-| winshare | [ bool](#bool) | winshare is true if this volume can be accessed from windows pods. |
 | fa_create_options | [ string](#string) | Filesystem create options to be honored. |
 | near_sync | [ bool](#bool) | NearSync specifies the volume has a near-sync replica |
 | near_sync_replication_strategy | [ NearSyncReplicationStrategy](#nearsyncreplicationstrategy) | NearSyncReplicationStrategy is replication strategy for near sync volumes |
@@ -6866,8 +6695,6 @@ VolumeSpecPolicy provides a method to set volume storage policy
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) sharedv4_spec_opt.sharedv4_spec | [ Sharedv4Spec](#sharedv4spec) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) auto_fstrim_opt.auto_fstrim | [ bool](#bool) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) io_throttle_opt.io_throttle | [ IoThrottle](#iothrottle) | none |
-| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) readahead_opt.readahead | [ bool](#bool) | none |
-| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) winshare_opt.winshare | [ bool](#bool) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -6921,8 +6748,6 @@ VolumeSpecUpdate provides a method to set any of the VolumeSpec of an existing v
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) sharedv4_spec_opt.sharedv4_spec | [ Sharedv4Spec](#sharedv4spec) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) auto_fstrim_opt.auto_fstrim | [ bool](#bool) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) io_throttle_opt.io_throttle | [ IoThrottle](#iothrottle) | none |
-| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) readahead_opt.readahead | [ bool](#bool) | none |
-| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) winshare_opt.winshare | [ bool](#bool) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) near_sync_replication_strategy_opt.near_sync_replication_strategy | [ NearSyncReplicationStrategy](#nearsyncreplicationstrategy) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
@@ -7134,10 +6959,10 @@ ExportProtocol defines how the device is exported..
 | Name | Number | Description |
 | ---- | ------ | ----------- |
 | INVALID | 0 | Invalid uninitialized value |
-| PXD | 1 | PXD the volume is exported over Portworx block interface. |
+| PXD | 1 | PXD the volume is exported over Portworx block interace. |
 | ISCSI | 2 | ISCSI the volume is exported over ISCSI. |
 | NFS | 3 | NFS the volume is exported over NFS. |
-| CUSTOM | 4 | Custom the volume is exported over custom interface. |
+| CUSTOM | 4 | Custom the volume is exported over custom interace. |
 
 
 
@@ -7273,8 +7098,6 @@ OpenStorageFilesystemTrim service APIs()
 | IO_PROFILE_SYNC_SHARED | 5 | none |
 | IO_PROFILE_AUTO | 6 | none |
 | IO_PROFILE_NONE | 7 | none |
-| IO_PROFILE_JOURNAL | 8 | none |
-| IO_PROFILE_AUTO_JOURNAL | 9 | none |
 
 
 
@@ -7430,14 +7253,14 @@ ProxyProtocol defines the protocol used for proxy.
 
 
 
-## SdkCloudBackupClusterType {#sdkcloudbackupclustertype}
-CloudBackup operations types
+## SdkCloudBackupClusterType.Value {#sdkcloudbackupclustertypevalue}
+
 
 | Name | Number | Description |
 | ---- | ------ | ----------- |
-| SdkCloudBackupClusterUnknown | 0 | Unknown |
-| SdkCloudBackupClusterCurrent | 1 | Beongs to this cluster |
-| SdkCloudBackupClusterOther | 2 | not this. other cluster |
+| UNKNOWN | 0 | Unknown |
+| CURRENT_CLUSTER | 1 | Belongs to this cluster |
+| OTHER_CLUSTER | 2 | belongs to other cluster |
 
 
 
@@ -7479,7 +7302,7 @@ CloudBackup status types
 
 | Name | Number | Description |
 | ---- | ------ | ----------- |
-| SdkCloudBackupStatusTypeUnknown | 0 | Unknown |
+| SdkCloudBackupStatusTypeUnknown | 0 | Unkonwn |
 | SdkCloudBackupStatusTypeNotStarted | 1 | Not started |
 | SdkCloudBackupStatusTypeDone | 2 | Done |
 | SdkCloudBackupStatusTypeAborted | 3 | Aborted |
@@ -7558,17 +7381,6 @@ Defines the operation types available to resize a storage pool
 
 
 
-## SdkStorageRebalanceRequest.Mode {#sdkstoragerebalancerequestmode}
-Mode is an enum that defines the mode of the volume reorg job
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| STORAGE_REBALANCE | 0 | StorageRebalance mode: rebalance pools based on provisioned/used space (the default mode) |
-| VOLUME_PLACEMENT_FIX | 1 | VolumePlacementFix mode: scan all volumes for incorrect placement and fix them |
-
-
-
-
 ## SdkTimeWeekday {#sdktimeweekday}
 Defines times of day
 
@@ -7593,8 +7405,8 @@ client and server applications
 | ---- | ------ | ----------- |
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
-| Minor | 163 | SDK version minor value of this specification |
-| Patch | 0 | SDK version patch value of this specification |
+| Minor | 101 | SDK version minor value of this specification |
+| Patch | 36 | SDK version patch value of this specification |
 
 
 
@@ -7684,7 +7496,7 @@ of services supported by container orchestrators such as Kubernetes.
 | UNSPECIFIED | 0 | Security status type is unknown |
 | UNSECURED | 1 | Node is unsecure |
 | SECURED | 2 | Node is secured with authentication and authorization |
-| SECURED_ALLOW_SECURITY_REMOVAL | 3 | Node is secured, but in the process of removing security. This state allows other unsecured nodes to join the cluster since the cluster is in the process of removing security authentication and authorization. |
+| SECURED_ALLOW_SECURITY_REMOVAL | 3 | Node is secured, but in the process of removing security. This state allows other unsecured nodes to join the cluster since the cluster is in the process of removing secuirty authenticaiton and authorization. |
 
 
 
@@ -7731,7 +7543,7 @@ Type is an enum that defines the type fo the trigger threshold
 | Name | Number | Description |
 | ---- | ------ | ----------- |
 | ABSOLUTE_PERCENT | 0 | AbsolutePercent indicates absolute percent comparison. Example, 75 % used of capacity, or 50 % provisioned of capacity. |
-| DELTA_MEAN_PERCENT | 1 | DeltaMeanPercent indicates mean percent comparison threshold. Example, 10 % more than mean for cluster. |
+| DELTA_MEAN_PERCENT | 1 | DeltaMeanPercent indicates mean percent comparision threshold. Example, 10 % more than mean for cluster. |
 
 
 

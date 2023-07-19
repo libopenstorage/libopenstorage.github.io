@@ -72,7 +72,7 @@
     <link rel="next" href="master.changelog.html" />
     
     
-    <link rel="prev" href="release-9.7.changelog.html" />
+    <link rel="prev" href="release-9.8.changelog.html" />
     
 
     </head>
@@ -359,9 +359,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.5" data-path="release-9.7.generated-api.html">
+        <li class="chapter " data-level="1.5.5" data-path="release-9.8.generated-api.html">
             
-                <a href="release-9.7.generated-api.html">
+                <a href="release-9.8.generated-api.html">
             
                     
                         <b>1.5.5.</b>
@@ -375,9 +375,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.5.5.1" data-path="release-9.7.changelog.html">
+        <li class="chapter " data-level="1.5.5.1" data-path="release-9.8.changelog.html">
             
-                <a href="release-9.7.changelog.html">
+                <a href="release-9.8.changelog.html">
             
                     
                         <b>1.5.5.1.</b>
@@ -506,6 +506,7 @@
 <li><a href="#serviceopenstorageapiopenstoragerole">OpenStorageRole</a></li>
 <li><a href="#serviceopenstorageapiopenstorageschedulepolicy">OpenStorageSchedulePolicy</a></li>
 <li><a href="#serviceopenstorageapiopenstoragevolume">OpenStorageVolume</a></li>
+<li><a href="#serviceopenstorageapiopenstoragewatch">OpenStorageWatch</a></li>
 </ul>
 </li>
 </ul>
@@ -887,6 +888,11 @@
 <li><a href="#sdkvolumeupdaterequest">SdkVolumeUpdateRequest</a></li>
 <li><a href="#sdkvolumeupdaterequestlabelsentry">SdkVolumeUpdateRequest.LabelsEntry</a></li>
 <li><a href="#sdkvolumeupdateresponse">SdkVolumeUpdateResponse</a></li>
+<li><a href="#sdkvolumewatchrequest">SdkVolumeWatchRequest</a></li>
+<li><a href="#sdkvolumewatchrequestlabelsentry">SdkVolumeWatchRequest.LabelsEntry</a></li>
+<li><a href="#sdkvolumewatchresponse">SdkVolumeWatchResponse</a></li>
+<li><a href="#sdkwatchrequest">SdkWatchRequest</a></li>
+<li><a href="#sdkwatchresponse">SdkWatchResponse</a></li>
 <li><a href="#sharedv4failoverstrategy">Sharedv4FailoverStrategy</a></li>
 <li><a href="#sharedv4servicespec">Sharedv4ServiceSpec</a></li>
 <li><a href="#sharedv4spec">Sharedv4Spec</a></li>
@@ -988,6 +994,7 @@
 <li><a href="#sdkstoragepooloperationstatus">SdkStoragePool.OperationStatus</a></li>
 <li><a href="#sdkstoragepooloperationtype">SdkStoragePool.OperationType</a></li>
 <li><a href="#sdkstoragepoolresizeoperationtype">SdkStoragePool.ResizeOperationType</a></li>
+<li><a href="#sdkstoragerebalancerequestmode">SdkStorageRebalanceRequest.Mode</a></li>
 <li><a href="#sdktimeweekday">SdkTimeWeekday</a></li>
 <li><a href="#sdkversionversion">SdkVersion.Version</a></li>
 <li><a href="#severitytype">SeverityType</a></li>
@@ -1972,6 +1979,16 @@ in the volume. To delete the policies in the volume send no policies.</p>
 <p>Gets the volume catalog of an attached and mounted volume.
 Returns the entire tree up to &quot;n&quot;  depth (default is all of it)
 Takes a path that can be used as the new root for the catalog request.
+ <!-- end methods --></p>
+<h1 id="serviceopenstorageapiopenstoragewatch">OpenStorageWatch </h1>
+<p>OpenStorageWatcher is a service that provides APIs for watching on resources and receive them as a stream of events.</p>
+<h2 id="methodopenstorageapiopenstoragewatchwatch">Watch </h2>
+<blockquote>
+<p><strong>rpc</strong> Watch(<a href="#sdkwatchrequest">SdkWatchRequest</a>)
+    <a href="#sdkwatchresponse">SdkWatchResponse</a></p>
+</blockquote>
+<p>Watch on resources managed by the driver and receive them as a stream of events.</p>
+<p>Requires access AccessType.Read
  <!-- end methods -->
  <!-- end services --></p>
 <h1 id="messages">Messages</h1>
@@ -9259,6 +9276,11 @@ rules followed</p>
 <td><a href="#bool"> bool</a></td>
 <td>RemoveRepl1Snapshots if true will instruct rebalance job to remove repl-1 snapshots</td>
 </tr>
+<tr>
+<td>mode</td>
+<td><a href="#sdkstoragerebalancerequestmode"> SdkStorageRebalanceRequest.Mode</a></td>
+<td>Mode specifies the mode of the volume reorg job</td>
+</tr>
 </tbody>
 </table>
  <!-- end Fields -->
@@ -10650,6 +10672,116 @@ to update any labels on the volume.</p>
  <!-- end HasFields -->
 <h2 id="sdkvolumeupdateresponse">SdkVolumeUpdateResponse </h2>
 <p>Empty response</p>
+ <!-- end HasFields -->
+<h2 id="sdkvolumewatchrequest">SdkVolumeWatchRequest </h2>
+<p>Defines the request to watch an openstorage volume event for the given label
+if the label is empty, it returns all the volume events</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>labels</td>
+<td><a href="#sdkvolumewatchrequestlabelsentry">map SdkVolumeWatchRequest.LabelsEntry</a></td>
+<td>labels to filter out the volumes to watch on</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkvolumewatchrequestlabelsentry">SdkVolumeWatchRequest.LabelsEntry </h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+<tr>
+<td>value</td>
+<td><a href="#string"> string</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkvolumewatchresponse">SdkVolumeWatchResponse </h2>
+<p>Defines the response containing an volume with a state changed</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volume</td>
+<td><a href="#volume"> Volume</a></td>
+<td>Information about the volume</td>
+</tr>
+<tr>
+<td>name</td>
+<td><a href="#string"> string</a></td>
+<td>Name of volume</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkwatchrequest">SdkWatchRequest </h2>
+<p>Defines the request to watch an openstorage event. An event can be a volume, a node, a disk, etc</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> event_type.volume_event</td>
+<td><a href="#sdkvolumewatchrequest"> SdkVolumeWatchRequest</a></td>
+<td>watch request for volume event</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
+ <!-- end HasFields -->
+<h2 id="sdkwatchresponse">SdkWatchResponse </h2>
+<p>Defines the response to watch an openstorage event. An event can be a volume, a node, a disk, etc</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://developers.google.com/protocol-buffers/docs/proto3#oneof" target="_blank"><strong>oneof</strong></a> event_type.volume_event</td>
+<td><a href="#sdkvolumewatchresponse"> SdkVolumeWatchResponse</a></td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+ <!-- end Fields -->
  <!-- end HasFields -->
 <h2 id="sharedv4failoverstrategy">Sharedv4FailoverStrategy </h2>
 <p>Sharedv4FailoverStrategy specifies how long to wait before failing over to a new server.</p>
@@ -13939,6 +14071,16 @@ OpenStorageFilesystemTrim service APIs()</p>
 <td>7</td>
 <td>none</td>
 </tr>
+<tr>
+<td>IO_PROFILE_JOURNAL</td>
+<td>8</td>
+<td>none</td>
+</tr>
+<tr>
+<td>IO_PROFILE_AUTO_JOURNAL</td>
+<td>9</td>
+<td>none</td>
+</tr>
 </tbody>
 </table>
 <h2 id="jobstate">Job.State </h2>
@@ -14700,6 +14842,29 @@ to or from a cloud provider</p>
 </tr>
 </tbody>
 </table>
+<h2 id="sdkstoragerebalancerequestmode">SdkStorageRebalanceRequest.Mode </h2>
+<p>Mode is an enum that defines the mode of the volume reorg job</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>STORAGE_REBALANCE</td>
+<td>0</td>
+<td>StorageRebalance mode: rebalance pools based on provisioned/used space (the default mode)</td>
+</tr>
+<tr>
+<td>VOLUME_PLACEMENT_FIX</td>
+<td>1</td>
+<td>VolumePlacementFix mode: scan all volumes for incorrect placement and fix them</td>
+</tr>
+</tbody>
+</table>
 <h2 id="sdktimeweekday">SdkTimeWeekday </h2>
 <p>Defines times of day</p>
 <table>
@@ -14772,7 +14937,7 @@ client and server applications</p>
 </tr>
 <tr>
 <td>Minor</td>
-<td>159</td>
+<td>163</td>
 <td>SDK version minor value of this specification</td>
 </tr>
 <tr>
@@ -15497,7 +15662,7 @@ of services supported by container orchestrators such as Kubernetes.</p>
 
             
                 
-                <a href="release-9.7.changelog.html" class="navigation navigation-prev " aria-label="Previous page: Changelog">
+                <a href="release-9.8.changelog.html" class="navigation navigation-prev " aria-label="Previous page: Changelog">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -15513,7 +15678,7 @@ of services supported by container orchestrators such as Kubernetes.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Nightly","level":"1.5.6","depth":2,"next":{"title":"Changelog","level":"1.5.6.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.5.1","depth":3,"path":"release-9.7.changelog.md","ref":"release-9.7.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"master.generated-api.md","mtime":"2023-05-02T17:39:47.760Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-05-02T17:39:52.904Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Nightly","level":"1.5.6","depth":2,"next":{"title":"Changelog","level":"1.5.6.1","depth":3,"path":"master.changelog.md","ref":"master.changelog.md","articles":[]},"previous":{"title":"Changelog","level":"1.5.5.1","depth":3,"path":"release-9.8.changelog.md","ref":"release-9.8.changelog.md","articles":[]},"dir":"ltr"},"config":{"plugins":["codetabs","toggle-chapters","toggle-headers","edit-link","prism","github","page-toc","-highlight","-sharing"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/libopenstorage/openstorage/"},"search":{},"page-toc":{"position":"top","selector":".markdown-section h1, .markdown-section h2","showByDefault":false},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"toggle-headers":{},"fontsettings":{"theme":"white","family":"sans","size":2},"edit-link":{"label":"Edit this page","base":"https://github.com/libopenstorage/libopenstorage.github.io/tree/master/docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"OpenStorage API","gitbook":">=3.2.1"},"file":{"path":"master.generated-api.md","mtime":"2023-07-19T20:49:27.674Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-07-19T20:49:31.991Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
