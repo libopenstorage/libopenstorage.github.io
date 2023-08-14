@@ -2,6 +2,13 @@
 
 ## Releases
 
+### v0.101.39 - (08/1/2023)
+
+* Add auto-journal IO profile
+
+### v0.101.38 - (07/27/2023)
+
+* Add serverSideEncryption field to aws credentials
 
 ### v0.101.37 - (06/21/2023)
 

@@ -3076,6 +3076,7 @@ Defines credentials for Aws/S3 endpoints
 | region | [ string](#string) | Region |
 | disable_ssl | [ bool](#bool) | (optional) Disable SSL connection |
 | disable_path_style | [ bool](#bool) | (optional) Disable path-style access |
+| server_side_encryption | [ string](#string) | (optional) server side encryption |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3092,6 +3093,7 @@ Defines the response for AWS/S3 credentials
 | disable_ssl | [ bool](#bool) | (optional) Disable SSL connection |
 | disable_path_style | [ bool](#bool) | (optional) Disable path-style access |
 | s3_storage_class | [ string](#string) | (optional) Storage class for s3 puts |
+| server_side_encryption | [ string](#string) | (optional) server side encryption |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -7099,6 +7101,7 @@ OpenStorageFilesystemTrim service APIs()
 | IO_PROFILE_AUTO | 6 | none |
 | IO_PROFILE_NONE | 7 | none |
 | IO_PROFILE_JOURNAL | 8 | none |
+| IO_PROFILE_AUTO_JOURNAL | 9 | none |
 
 
 
@@ -7407,7 +7410,7 @@ client and server applications
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
 | Minor | 101 | SDK version minor value of this specification |
-| Patch | 37 | SDK version patch value of this specification |
+| Patch | 39 | SDK version patch value of this specification |
 
 
 

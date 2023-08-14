@@ -3115,6 +3115,7 @@ Defines credentials for Aws/S3 endpoints
 | region | [ string](#string) | Region |
 | disable_ssl | [ bool](#bool) | (optional) Disable SSL connection |
 | disable_path_style | [ bool](#bool) | (optional) Disable path-style access |
+| server_side_encryption | [ string](#string) | (optional) server side encryption |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3131,6 +3132,7 @@ Defines the response for AWS/S3 credentials
 | disable_ssl | [ bool](#bool) | (optional) Disable SSL connection |
 | disable_path_style | [ bool](#bool) | (optional) Disable path-style access |
 | s3_storage_class | [ string](#string) | (optional) Storage class for s3 puts |
+| server_side_encryption | [ string](#string) | (optional) server side encryption |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -7593,7 +7595,7 @@ client and server applications
 | ---- | ------ | ----------- |
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
-| Minor | 163 | SDK version minor value of this specification |
+| Minor | 164 | SDK version minor value of this specification |
 | Patch | 0 | SDK version patch value of this specification |
 
 
