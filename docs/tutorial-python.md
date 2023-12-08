@@ -19,7 +19,7 @@ $ pip3 install libopenstorage-openstorage
 You will now have access to the OpenStorage SDK Python client which was
 generated from the protobuf file [`api.proto`](https://github.com/libopenstorage/openstorage/blob/master/api/api.proto).
 
-With the [`mock-sdk-server`](tutorial.html#setting-up-the-mock-sdk-server)
+With the [`mock-sdk-server`](tutorial.md#setting-up-the-mock-sdk-server)
 running, the following steps will provide an introduction to programming
 with the OpenStorage SDK.
 
@@ -52,7 +52,7 @@ c = connector.Connector('localhost:9100')
 
 ## Cluster operations
 Now that we have made a connection, we can use the `channel` object to create
-clients for each of the services we would like to use. Let's use the [OpenStorageCluster](generated-api.html#openstorageapiopenstoragecluster)
+clients for each of the services we would like to use. Let's use the [OpenStorageCluster](master.generated-api.md#openstorageapiopenstoragecluster)
 service to print the `id` of the cluster:
 
 ```python
@@ -69,7 +69,7 @@ except grpc.RpcError as e:
 ```
 
 Notice the `except` above. As mentioned in the
-[Architecture](arch.html#error-handling) all errors are encoded using the
+[Architecture](arch.md#error-handling) all errors are encoded using the
 standard gRPC status. To gain access to the error code and its message you
 must use `except grpc.RpcError as e` which decodes the error value and the message.
 
@@ -124,7 +124,7 @@ the storage system to save the backup in the cloud.
     print('Credential id is {0}'.format(cred_resp.credential_id))
 ```
 
-Notice above the [`api_pb2.SdkCredentialCreateRequest`](https://libopenstorage.github.io/w/generated-api.html#sdkcredentialcreaterequest).
+Notice above the [`api_pb2.SdkCredentialCreateRequest`](https://libopenstorage.github.io/w/generated-api.md#sdkcredentialcreaterequest).
 This struct in protobuf uses [`oneof`](https://developers.google.com/protocol-buffers/docs/proto3#oneof).
 Oneof states that _one of these types_ will be used. In SdkCredentialCreateRequest,
 only `aws_credential` is set, showing the server which type of credentials
@@ -144,7 +144,7 @@ credential id:
 ```
 
 This request will not block while the backup is running. Instead you should
-call [OpenStorageCloudBackup.Status()](https://libopenstorage.github.io/w/generated-api.html#methodstatus)
+call [OpenStorageCloudBackup.Status()](https://libopenstorage.github.io/w/generated-api.md#methodstatus)
 to get information about the backup:
 
 ```python

@@ -6,10 +6,12 @@ images:
 	$(MAKE) -C docs/images
 
 build: api images docs/reference.md
-	gitbook build docs/ w
+	bash -c "source venv/bin/activate && \
+		mkdocs build"
 
 serve: api images docs/reference.md
-	gitbook serve docs/ w
+	bash -c "source venv/bin/activate && \
+		mkdocs serve"
 
 api:
 ifndef DOCKER_PROTO

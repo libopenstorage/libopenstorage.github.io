@@ -3076,6 +3076,7 @@ Defines credentials for Aws/S3 endpoints
 | region | [ string](#string) | Region |
 | disable_ssl | [ bool](#bool) | (optional) Disable SSL connection |
 | disable_path_style | [ bool](#bool) | (optional) Disable path-style access |
+| server_side_encryption | [ string](#string) | (optional) server side encryption |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3092,6 +3093,7 @@ Defines the response for AWS/S3 credentials
 | disable_ssl | [ bool](#bool) | (optional) Disable SSL connection |
 | disable_path_style | [ bool](#bool) | (optional) Disable path-style access |
 | s3_storage_class | [ string](#string) | (optional) Storage class for s3 puts |
+| server_side_encryption | [ string](#string) | (optional) server side encryption |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -6634,6 +6636,7 @@ VolumeSpec has the properties needed to create a volume.
 | auto_fstrim | [ bool](#bool) | Autofstrim indicates that fstrim would be run on this volume automatically, without user intervention |
 | io_throttle | [ IoThrottle](#iothrottle) | IoThrottle specifies maximum io(iops/bandwidth) this volume is restricted to |
 | topology_requirement | [ TopologyRequirement](#topologyrequirement) | TopologyRequirement topology requirement for this volume |
+| winshare | [ bool](#bool) | winshare is true if this volume can be accessed from windows pods. |
 | fa_create_options | [ string](#string) | Filesystem create options to be honored. |
 | near_sync | [ bool](#bool) | NearSync specifies the volume has a near-sync replica |
 | near_sync_replication_strategy | [ NearSyncReplicationStrategy](#nearsyncreplicationstrategy) | NearSyncReplicationStrategy is replication strategy for near sync volumes |
@@ -6695,6 +6698,7 @@ VolumeSpecPolicy provides a method to set volume storage policy
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) sharedv4_spec_opt.sharedv4_spec | [ Sharedv4Spec](#sharedv4spec) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) auto_fstrim_opt.auto_fstrim | [ bool](#bool) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) io_throttle_opt.io_throttle | [ IoThrottle](#iothrottle) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) winshare_opt.winshare | [ bool](#bool) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -6749,6 +6753,7 @@ VolumeSpecUpdate provides a method to set any of the VolumeSpec of an existing v
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) auto_fstrim_opt.auto_fstrim | [ bool](#bool) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) io_throttle_opt.io_throttle | [ IoThrottle](#iothrottle) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) near_sync_replication_strategy_opt.near_sync_replication_strategy | [ NearSyncReplicationStrategy](#nearsyncreplicationstrategy) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) winshare_opt.winshare | [ bool](#bool) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -7098,6 +7103,8 @@ OpenStorageFilesystemTrim service APIs()
 | IO_PROFILE_SYNC_SHARED | 5 | none |
 | IO_PROFILE_AUTO | 6 | none |
 | IO_PROFILE_NONE | 7 | none |
+| IO_PROFILE_JOURNAL | 8 | none |
+| IO_PROFILE_AUTO_JOURNAL | 9 | none |
 
 
 
@@ -7406,7 +7413,7 @@ client and server applications
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
 | Minor | 101 | SDK version minor value of this specification |
-| Patch | 36 | SDK version patch value of this specification |
+| Patch | 39 | SDK version patch value of this specification |
 
 
 

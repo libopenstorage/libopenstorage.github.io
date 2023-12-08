@@ -12,9 +12,7 @@ access to `api.pb.go`:
 
 #### Depedencies
 ```
-go get -v github.com/libopenstorage/openstorage-sdk-clients/sdk/golang
-go get -v github.com/golang/protobuf/...
-go get -v google.golang.org/grpc
+go get github.com/libopenstorage/openstorage-sdk-clients/sdk/golang@<release version>
 ```
 
 #### Imports
@@ -31,7 +29,7 @@ Once you have imported this library into your project, you will have access
 to the OpenStorage SDK Golang client which was generated from the protobuf
 file [`api.proto`](https://github.com/libopenstorage/openstorage/blob/master/api/api.proto).
 
-With the [`mock-sdk-server`](tutorial.html#setting-up-the-mock-sdk-server)
+With the [`mock-sdk-server`](tutorial.md#setting-up-the-mock-sdk-server)
 running, the following steps will provide an introduction to programming
 with the OpenStorage SDK.
 
@@ -53,12 +51,12 @@ the OpenStorage SDK server:
 ```
 
 > **NOTE**: Notice the call [`grpc.WithInsecure()`](https://grpc.io/docs/guides/auth.html). The mock-sdk-server
-currently supports HTTPS and authentication starting at v0.38.0. See [Tutorial](tutorial.html)
+currently supports HTTPS and authentication starting at v0.38.0. See [Tutorial](tutorial.md)
 for more information.
 
 ## Cluster operations
 Now that we have made a connection, we can use the `conn` object to create
-clients for each of the services we would like to use. Let's use the [OpenStorageCluster](generated-api.html#openstorageapiopenstoragecluster)
+clients for each of the services we would like to use. Let's use the [OpenStorageCluster](master.generated-api.md#openstorageapiopenstoragecluster)
 service to print the `id` of the cluster:
 
 ```go
@@ -80,7 +78,7 @@ service to print the `id` of the cluster:
 ```
 
 Notice the `status.FromError()` call above. As mentioned in the
-[Architecture](arch.html#error-handling) all errors are encoded using the
+[Architecture](arch.md#error-handling) all errors are encoded using the
 standard gRPC status. To gain access to the error code and its message you
 must use `status.FromError()` which decodes the error value and the message.
 

@@ -24,6 +24,7 @@
     - [OpenStoragePool](#serviceopenstorageapiopenstoragepool)
     - [OpenStorageRole](#serviceopenstorageapiopenstoragerole)
     - [OpenStorageSchedulePolicy](#serviceopenstorageapiopenstorageschedulepolicy)
+    - [OpenStorageVerifyChecksum](#serviceopenstorageapiopenstorageverifychecksum)
     - [OpenStorageVolume](#serviceopenstorageapiopenstoragevolume)
     - [OpenStorageWatch](#serviceopenstorageapiopenstoragewatch)
   
@@ -71,6 +72,7 @@
     - [ClusterPairsEnumerateResponse.PairsEntry](#clusterpairsenumerateresponsepairsentry)
     - [ClusterResponse](#clusterresponse)
     - [CollectDiagsJob](#collectdiagsjob)
+    - [DefragJob](#defragjob)
     - [DiagsCollectionStatus](#diagscollectionstatus)
     - [DiagsNodeSelector](#diagsnodeselector)
     - [DiagsVolumeSelector](#diagsvolumeselector)
@@ -79,6 +81,8 @@
     - [FastpathConfig](#fastpathconfig)
     - [FastpathReplState](#fastpathreplstate)
     - [FilesystemCheck](#filesystemcheck)
+    - [FilesystemCheckSnapInfo](#filesystemchecksnapinfo)
+    - [FilesystemCheckVolInfo](#filesystemcheckvolinfo)
     - [FilesystemTrim](#filesystemtrim)
     - [FstrimVolumeUsageInfo](#fstrimvolumeusageinfo)
     - [GraphDriverChanges](#graphdriverchanges)
@@ -112,6 +116,7 @@
     - [ProxySpec](#proxyspec)
     - [PureBlockSpec](#pureblockspec)
     - [PureFileSpec](#purefilespec)
+    - [RebalanceScheduleInfo](#rebalancescheduleinfo)
     - [RelaxedReclaimPurge](#relaxedreclaimpurge)
     - [ReplicaPlacementSpec](#replicaplacementspec)
     - [ReplicaSet](#replicaset)
@@ -222,6 +227,8 @@
     - [SdkClusterPairInspectResponse](#sdkclusterpairinspectresponse)
     - [SdkClusterPairResetTokenRequest](#sdkclusterpairresettokenrequest)
     - [SdkClusterPairResetTokenResponse](#sdkclusterpairresettokenresponse)
+    - [SdkCreateRebalanceScheduleRequest](#sdkcreaterebalanceschedulerequest)
+    - [SdkCreateRebalanceScheduleResponse](#sdkcreaterebalancescheduleresponse)
     - [SdkCredentialCreateRequest](#sdkcredentialcreaterequest)
     - [SdkCredentialCreateResponse](#sdkcredentialcreateresponse)
     - [SdkCredentialDeleteReferencesRequest](#sdkcredentialdeletereferencesrequest)
@@ -236,12 +243,22 @@
     - [SdkCredentialUpdateResponse](#sdkcredentialupdateresponse)
     - [SdkCredentialValidateRequest](#sdkcredentialvalidaterequest)
     - [SdkCredentialValidateResponse](#sdkcredentialvalidateresponse)
+    - [SdkDeleteRebalanceScheduleRequest](#sdkdeleterebalanceschedulerequest)
+    - [SdkDeleteRebalanceScheduleResponse](#sdkdeleterebalancescheduleresponse)
     - [SdkDiagsCollectRequest](#sdkdiagscollectrequest)
     - [SdkDiagsCollectResponse](#sdkdiagscollectresponse)
     - [SdkEnumerateJobsRequest](#sdkenumeratejobsrequest)
     - [SdkEnumerateJobsResponse](#sdkenumeratejobsresponse)
     - [SdkEnumerateRebalanceJobsRequest](#sdkenumeraterebalancejobsrequest)
     - [SdkEnumerateRebalanceJobsResponse](#sdkenumeraterebalancejobsresponse)
+    - [SdkFilesystemCheckDeleteSnapshotsRequest](#sdkfilesystemcheckdeletesnapshotsrequest)
+    - [SdkFilesystemCheckDeleteSnapshotsResponse](#sdkfilesystemcheckdeletesnapshotsresponse)
+    - [SdkFilesystemCheckListSnapshotsRequest](#sdkfilesystemchecklistsnapshotsrequest)
+    - [SdkFilesystemCheckListSnapshotsResponse](#sdkfilesystemchecklistsnapshotsresponse)
+    - [SdkFilesystemCheckListSnapshotsResponse.SnapshotsEntry](#sdkfilesystemchecklistsnapshotsresponsesnapshotsentry)
+    - [SdkFilesystemCheckListVolumesRequest](#sdkfilesystemchecklistvolumesrequest)
+    - [SdkFilesystemCheckListVolumesResponse](#sdkfilesystemchecklistvolumesresponse)
+    - [SdkFilesystemCheckListVolumesResponse.VolumesEntry](#sdkfilesystemchecklistvolumesresponsevolumesentry)
     - [SdkFilesystemCheckStartRequest](#sdkfilesystemcheckstartrequest)
     - [SdkFilesystemCheckStartResponse](#sdkfilesystemcheckstartresponse)
     - [SdkFilesystemCheckStatusRequest](#sdkfilesystemcheckstatusrequest)
@@ -258,6 +275,8 @@
     - [SdkGetJobStatusResponse](#sdkgetjobstatusresponse)
     - [SdkGetRebalanceJobStatusRequest](#sdkgetrebalancejobstatusrequest)
     - [SdkGetRebalanceJobStatusResponse](#sdkgetrebalancejobstatusresponse)
+    - [SdkGetRebalanceScheduleRequest](#sdkgetrebalanceschedulerequest)
+    - [SdkGetRebalanceScheduleResponse](#sdkgetrebalancescheduleresponse)
     - [SdkGoogleCredentialRequest](#sdkgooglecredentialrequest)
     - [SdkGoogleCredentialResponse](#sdkgooglecredentialresponse)
     - [SdkIdentityCapabilitiesRequest](#sdkidentitycapabilitiesrequest)
@@ -348,6 +367,12 @@
     - [SdkUpdateJobResponse](#sdkupdatejobresponse)
     - [SdkUpdateRebalanceJobRequest](#sdkupdaterebalancejobrequest)
     - [SdkUpdateRebalanceJobResponse](#sdkupdaterebalancejobresponse)
+    - [SdkVerifyChecksumStartRequest](#sdkverifychecksumstartrequest)
+    - [SdkVerifyChecksumStartResponse](#sdkverifychecksumstartresponse)
+    - [SdkVerifyChecksumStatusRequest](#sdkverifychecksumstatusrequest)
+    - [SdkVerifyChecksumStatusResponse](#sdkverifychecksumstatusresponse)
+    - [SdkVerifyChecksumStopRequest](#sdkverifychecksumstoprequest)
+    - [SdkVerifyChecksumStopResponse](#sdkverifychecksumstopresponse)
     - [SdkVersion](#sdkversion)
     - [SdkVolumeAttachOptions](#sdkvolumeattachoptions)
     - [SdkVolumeAttachRequest](#sdkvolumeattachrequest)
@@ -436,6 +461,7 @@
     - [StorageVersion.DetailsEntry](#storageversiondetailsentry)
     - [TopologyRequirement](#topologyrequirement)
     - [TopologyRequirement.LabelsEntry](#topologyrequirementlabelsentry)
+    - [VerifyChecksum](#verifychecksum)
     - [Volume](#volume)
     - [Volume.AttachInfoEntry](#volumeattachinfoentry)
     - [VolumeBytesUsed](#volumebytesused)
@@ -525,6 +551,7 @@
     - [StorageRebalanceTriggerThreshold.Metric](#storagerebalancetriggerthresholdmetric)
     - [StorageRebalanceTriggerThreshold.Type](#storagerebalancetriggerthresholdtype)
     - [StorageRebalanceWorkSummary.Type](#storagerebalanceworksummarytype)
+    - [VerifyChecksum.VerifyChecksumStatus](#verifychecksumverifychecksumstatus)
     - [VolumeActionParam](#volumeactionparam)
     - [VolumeSpecPolicy.PolicyOp](#volumespecpolicypolicyop)
     - [VolumeState](#volumestate)
@@ -952,6 +979,24 @@ volume, if any
     [SdkFilesystemCheckStopResponse](#sdkfilesystemcheckstopresponse)
 
 Stop a filesystem check background operation on an unmounted volume, if any
+## ListSnapshots {#methodopenstorageapiopenstoragefilesystemchecklistsnapshots}
+
+> **rpc** ListSnapshots([SdkFilesystemCheckListSnapshotsRequest](#sdkfilesystemchecklistsnapshotsrequest))
+    [SdkFilesystemCheckListSnapshotsResponse](#sdkfilesystemchecklistsnapshotsresponse)
+
+List all fsck created snapshots on volume
+## DeleteSnapshots {#methodopenstorageapiopenstoragefilesystemcheckdeletesnapshots}
+
+> **rpc** DeleteSnapshots([SdkFilesystemCheckDeleteSnapshotsRequest](#sdkfilesystemcheckdeletesnapshotsrequest))
+    [SdkFilesystemCheckDeleteSnapshotsResponse](#sdkfilesystemcheckdeletesnapshotsresponse)
+
+Delete all fsck created snapshots on volume
+## ListVolumes {#methodopenstorageapiopenstoragefilesystemchecklistvolumes}
+
+> **rpc** ListVolumes([SdkFilesystemCheckListVolumesRequest](#sdkfilesystemchecklistvolumesrequest))
+    [SdkFilesystemCheckListVolumesResponse](#sdkfilesystemchecklistvolumesresponse)
+
+List of all volumes which require fsck check/fix to be run
  <!-- end methods -->
 
 # OpenStorageFilesystemTrim {#serviceopenstorageapiopenstoragefilesystemtrim}
@@ -1337,6 +1382,24 @@ GetRebalanceJobStatus returns rebalance status for specified job
     [SdkEnumerateRebalanceJobsResponse](#sdkenumeraterebalancejobsresponse)
 
 EnumerateRebalanceJobs returns all rebalance jobs currently known to the system
+## CreateRebalanceSchedule {#methodopenstorageapiopenstoragepoolcreaterebalanceschedule}
+
+> **rpc** CreateRebalanceSchedule([SdkCreateRebalanceScheduleRequest](#sdkcreaterebalanceschedulerequest))
+    [SdkCreateRebalanceScheduleResponse](#sdkcreaterebalancescheduleresponse)
+
+CreateRebalanceSchedule creates a scheudle for the input rebalance requests
+## GetRebalanceSchedule {#methodopenstorageapiopenstoragepoolgetrebalanceschedule}
+
+> **rpc** GetRebalanceSchedule([SdkGetRebalanceScheduleRequest](#sdkgetrebalanceschedulerequest))
+    [SdkGetRebalanceScheduleResponse](#sdkgetrebalancescheduleresponse)
+
+GetRebalanceSchedule returns the information of rebalance schedule
+## DeleteRebalanceSchedule {#methodopenstorageapiopenstoragepooldeleterebalanceschedule}
+
+> **rpc** DeleteRebalanceSchedule([SdkDeleteRebalanceScheduleRequest](#sdkdeleterebalanceschedulerequest))
+    [SdkDeleteRebalanceScheduleResponse](#sdkdeleterebalancescheduleresponse)
+
+DeleteRebalanceSchedule deletes the rebalance schedule
  <!-- end methods -->
 
 # OpenStorageRole {#serviceopenstorageapiopenstoragerole}
@@ -1425,6 +1488,29 @@ Inspect returns information about a specified schedule
     [SdkSchedulePolicyDeleteResponse](#sdkschedulepolicydeleteresponse)
 
 Delete removes a snapshot schedule
+ <!-- end methods -->
+
+# OpenStorageVerifyChecksum {#serviceopenstorageapiopenstorageverifychecksum}
+
+
+## Start {#methodopenstorageapiopenstorageverifychecksumstart}
+
+> **rpc** Start([SdkVerifyChecksumStartRequest](#sdkverifychecksumstartrequest))
+    [SdkVerifyChecksumStartResponse](#sdkverifychecksumstartresponse)
+
+Start a verify checksum background operation on a volume.
+## Status {#methodopenstorageapiopenstorageverifychecksumstatus}
+
+> **rpc** Status([SdkVerifyChecksumStatusRequest](#sdkverifychecksumstatusrequest))
+    [SdkVerifyChecksumStatusResponse](#sdkverifychecksumstatusresponse)
+
+Get Status of a verify checksum background operation on a volume
+## Stop {#methodopenstorageapiopenstorageverifychecksumstop}
+
+> **rpc** Stop([SdkVerifyChecksumStopRequest](#sdkverifychecksumstoprequest))
+    [SdkVerifyChecksumStopResponse](#sdkverifychecksumstopresponse)
+
+Stop a verify checksum background operation on a volume
  <!-- end methods -->
 
 # OpenStorageVolume {#serviceopenstorageapiopenstoragevolume}
@@ -2116,6 +2202,23 @@ in: body |
  <!-- end HasFields -->
 
 
+## DefragJob {#defragjob}
+DefragJob describes a job to run defragmentation on cluster nodes
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| max_duration_hours | [ double](#double) | MaxDurationHours defines the time limit in hours |
+| max_nodes_in_parallel | [ uint32](#uint32) | MaxNodesInParallel defines the maximum number of nodes running the defrag job in parallel |
+| include_nodes | [repeated string](#string) | IncludeNodes is a list of node UUID: if provided, will only run the job on these nodes; if not provided, will run on all nodes cannot coexist with ExcludeNodes and NodeSelector |
+| exclude_nodes | [repeated string](#string) | ExcludeNodes is a list of node UUID: if provided, the job will skip these nodes; if not provided, will run on all nodes cannot coexist with IncludeNodes |
+| node_selector | [repeated string](#string) | NodeSelector is a list of node label `key=value` pairs separated by comma, which selects the nodes to be run on for the job can coexist with ExcludeNodes but cannot coexist with IncludeNodes |
+| current_running_nodes | [repeated string](#string) | CurrentRunningNodes stores the nodes on which the job is currently running |
+| schedule_id | [ string](#string) | ScheduleId is the ID of the schedule which started this job |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
 ## DiagsCollectionStatus {#diagscollectionstatus}
 
 
@@ -2198,6 +2301,7 @@ FastpathConfig part of volume
 | dirty | [ bool](#bool) | Dirty flag on volume - was attached in userspace |
 | coord_uuid | [ string](#string) | fastpath coordinator node uuid to enhance reporting |
 | force_failover | [ bool](#bool) | fastpath force failover, disable auto promote to fastpath |
+| verbose | [ string](#string) | Verbose contains detailed info on fastpath status |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -2226,6 +2330,32 @@ FastpathConfig part of volume
 ## FilesystemCheck {#filesystemcheck}
 
 
+ <!-- end HasFields -->
+
+
+## FilesystemCheckSnapInfo {#filesystemchecksnapinfo}
+FilesystemCheckSnapInfo contains the volume snapshot info for
+filesystem check list snapshots operation
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_snapshot_name | [ string](#string) | Name of the snapshot |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## FilesystemCheckVolInfo {#filesystemcheckvolinfo}
+FilesystemCheckVolInfo contains the volume info for
+filesystem check list volumes operation
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_name | [ string](#string) | Name of the volume |
+| health_status | [ FilesystemHealthStatus](#filesystemhealthstatus) | Health status of volume |
+| fs_status_msg | [ string](#string) | FS status detailed message |
+ <!-- end Fields -->
  <!-- end HasFields -->
 
 
@@ -2375,6 +2505,7 @@ messages which follow the job framework of APIs
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) job.drain_attachments | [ NodeDrainAttachmentsJob](#nodedrainattachmentsjob) | NodeDrainAttachmentsJob if selected this job desribes the task for removing volume attachments from a node |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) job.clouddrive_transfer | [ CloudDriveTransferJob](#clouddrivetransferjob) | CloudDriveTransferJob if selected describes the task to transfer a cloud driveset from one node to another |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) job.collect_diags | [ CollectDiagsJob](#collectdiagsjob) | CollectDiagsJob if selected describes the task to collect diagnostics for the cluster |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) job.defrag | [ DefragJob](#defragjob) | DefragJob if selected describes the task to run storage defragmentation on cluster nodes |
 | create_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | CreateTime is the time the job was created |
 | last_update_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | LastUpdateTime is the time the job was updated |
  <!-- end Fields -->
@@ -2659,6 +2790,19 @@ PureFileSpec is the spec for proxying a volume on pure_file backends
 | ----- | ---- | ----------- |
 | export_rules | [ string](#string) | none |
 | full_vol_name | [ string](#string) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## RebalanceScheduleInfo {#rebalancescheduleinfo}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| schedule | [ string](#string) | none |
+| rebalance_requests | [repeated SdkStorageRebalanceRequest](#sdkstoragerebalancerequest) | none |
+| create_time | [ google.protobuf.Timestamp](#googleprotobuftimestamp) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -3981,6 +4125,29 @@ Defines a response for the token request
  <!-- end HasFields -->
 
 
+## SdkCreateRebalanceScheduleRequest {#sdkcreaterebalanceschedulerequest}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| schedule | [ string](#string) | none |
+| rebalance_requests | [repeated SdkStorageRebalanceRequest](#sdkstoragerebalancerequest) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkCreateRebalanceScheduleResponse {#sdkcreaterebalancescheduleresponse}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| scheduleInfo | [ RebalanceScheduleInfo](#rebalancescheduleinfo) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
 ## SdkCredentialCreateRequest {#sdkcredentialcreaterequest}
 Defines a request to create credentials
 
@@ -4132,6 +4299,18 @@ Empty response
  <!-- end HasFields -->
 
 
+## SdkDeleteRebalanceScheduleRequest {#sdkdeleterebalanceschedulerequest}
+
+
+ <!-- end HasFields -->
+
+
+## SdkDeleteRebalanceScheduleResponse {#sdkdeleterebalancescheduleresponse}
+
+
+ <!-- end HasFields -->
+
+
 ## SdkDiagsCollectRequest {#sdkdiagscollectrequest}
 SdkDiagsCollectRequest is the request object that specifies what should be part of the diags that are collected
 User can specify both Node and Volume or just one of them. If both are provided, the implementation will select
@@ -4197,6 +4376,99 @@ Defines a response will all the known jobs
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | jobs | [repeated StorageRebalanceJob](#storagerebalancejob) | Jobs is the list of rebalance jobs in the response |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkFilesystemCheckDeleteSnapshotsRequest {#sdkfilesystemcheckdeletesnapshotsrequest}
+SdkFilesystemCheckDeleteSnapshotsRequest defines a request to delete
+snapshots created by fsck for a volume
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id | [ string](#string) | Id of the volume |
+| node_id | [ string](#string) | Node Id filter |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkFilesystemCheckDeleteSnapshotsResponse {#sdkfilesystemcheckdeletesnapshotsresponse}
+SdkFilesystemCheckDeleteSnapshotsResponse defines a respone to delete
+snapshots created by fsck for a volume
+
+ <!-- end HasFields -->
+
+
+## SdkFilesystemCheckListSnapshotsRequest {#sdkfilesystemchecklistsnapshotsrequest}
+SdkFilesystemCheckListSnapshotsRequest defines a request to list
+snapshots created by fsck for a volume
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id | [ string](#string) | Id of the volume |
+| node_id | [ string](#string) | Node Id of the volume |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkFilesystemCheckListSnapshotsResponse {#sdkfilesystemchecklistsnapshotsresponse}
+SdkFilesystemCheckListSnapshotsResponse defines a response to list
+snapshots created by fsck for a volume
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| snapshots | [map SdkFilesystemCheckListSnapshotsResponse.SnapshotsEntry](#sdkfilesystemchecklistsnapshotsresponsesnapshotsentry) | Map of volume snapshot ids and snapshot info |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkFilesystemCheckListSnapshotsResponse.SnapshotsEntry {#sdkfilesystemchecklistsnapshotsresponsesnapshotsentry}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [ string](#string) | none |
+| value | [ FilesystemCheckSnapInfo](#filesystemchecksnapinfo) | none |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkFilesystemCheckListVolumesRequest {#sdkfilesystemchecklistvolumesrequest}
+SdkFilesystemCheckListVolumesRequest defines a request to list
+all volumes needing fsck check/fix
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| node_id | [ string](#string) | Node Id filter |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkFilesystemCheckListVolumesResponse {#sdkfilesystemchecklistvolumesresponse}
+SdkFilesystemCheckListVolumesResponse defines a response to list
+all volumes needing fsck check/fix
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volumes | [map SdkFilesystemCheckListVolumesResponse.VolumesEntry](#sdkfilesystemchecklistvolumesresponsevolumesentry) | Map of volume ids and volume info |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkFilesystemCheckListVolumesResponse.VolumesEntry {#sdkfilesystemchecklistvolumesresponsevolumesentry}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [ string](#string) | none |
+| value | [ FilesystemCheckVolInfo](#filesystemcheckvolinfo) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -4386,6 +4658,23 @@ Defines the status of an existing job
 | job | [ StorageRebalanceJob](#storagerebalancejob) | Job for this rebalance |
 | summary | [ StorageRebalanceSummary](#storagerebalancesummary) | Summary summarizes the rebalance job |
 | actions | [repeated StorageRebalanceAudit](#storagerebalanceaudit) | Actions describe all the actions taken during this rebalance |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkGetRebalanceScheduleRequest {#sdkgetrebalanceschedulerequest}
+
+
+ <!-- end HasFields -->
+
+
+## SdkGetRebalanceScheduleResponse {#sdkgetrebalancescheduleresponse}
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| scheduleInfo | [ RebalanceScheduleInfo](#rebalancescheduleinfo) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -5348,6 +5637,79 @@ Defines the response for an update to an existing job
  <!-- end HasFields -->
 
 
+## SdkVerifyChecksumStartRequest {#sdkverifychecksumstartrequest}
+SdkVerifyChecksumStartRequest defines a request to start a background verify checksum operation
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id | [ string](#string) | Id of the volume |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVerifyChecksumStartResponse {#sdkverifychecksumstartresponse}
+SdkVerifyChecksumStartResponse defines the response for a
+SdkVerifyChecksumStartRequest.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| status | [ VerifyChecksum.VerifyChecksumStatus](#verifychecksumverifychecksumstatus) | Status code representing the state of the verify checksum operation |
+| message | [ string](#string) | Text blob containing ASCII text providing details of the operation |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVerifyChecksumStatusRequest {#sdkverifychecksumstatusrequest}
+SdkVerifyChecksumStatusRequest defines a request to get status of a
+background VerifyChecksum operation
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id | [ string](#string) | Id of the volume |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVerifyChecksumStatusResponse {#sdkverifychecksumstatusresponse}
+SdkVerifyChecksumStatusResponse defines the response for a
+SdkVerifyChecksumStatusRequest.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| status | [ VerifyChecksum.VerifyChecksumStatus](#verifychecksumverifychecksumstatus) | Status code representing the state of the verify checksum operation |
+| message | [ string](#string) | Text blob containing ASCII text providing details of the operation |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVerifyChecksumStopRequest {#sdkverifychecksumstoprequest}
+SdkVerifyChecksumStopRequest defines a request to stop a background
+filesystem check operation
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| volume_id | [ string](#string) | Id of the volume |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## SdkVerifyChecksumStopResponse {#sdkverifychecksumstopresponse}
+SdkVerifyChecksumStopResponse defines the response for a
+SdkVerifyChecksumStopRequest.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| message | [ string](#string) | Text blob containing ASCII text providing details of the operation |
+ <!-- end Fields -->
+ <!-- end HasFields -->
+
+
 ## SdkVersion {#sdkversion}
 SDK version in Major.Minor.Patch format. The goal of this
 message is to provide clients a method to determine the SDK
@@ -6184,6 +6546,7 @@ StorageNode describes the state of the node
 | ----- | ---- | ----------- |
 | id | [ string](#string) | Id of the node |
 | cpu | [ double](#double) | Cpu usage of the node |
+| cpu_cores | [ int64](#int64) | Number of Cpu Cores |
 | mem_total | [ uint64](#uint64) | Total memory of the node |
 | mem_used | [ uint64](#uint64) | Used memory of the node |
 | mem_free | [ uint64](#uint64) | Free memory of the node |
@@ -6199,6 +6562,7 @@ StorageNode describes the state of the node
 | HWType | [ HardwareType](#hardwaretype) | HardwareType is the type of the hardware the node has |
 | security_status | [ StorageNode.SecurityStatus](#storagenodesecuritystatus) | Determine if the node is secured |
 | scheduler_topology | [ SchedulerTopology](#schedulertopology) | Topology information of the node in scheduler context |
+| non_quorum_member | [ bool](#bool) | Flag indicating whether the node is a quorum member or not. Using inverse value to handle intialization and upgrades. Node will always be counted as a quorum member when initializing until it reaches a point where we can definitely determine whether it is a quorum member or not. |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -6380,6 +6744,7 @@ StorageResource groups properties of a storage device.
 | metadata | [ bool](#bool) | True if dedicated for metadata. |
 | cache | [ bool](#bool) | True if dedicated as cache |
 | pool_metadata_dev | [ bool](#bool) | True if the resource is used as thin pool metadata disk |
+| cloud_drive_type | [ string](#string) | Cloud drive type |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -6429,6 +6794,12 @@ TopologyRequirement defines the topology requirement for a volume
 | key | [ string](#string) | none |
 | value | [ string](#string) | none |
  <!-- end Fields -->
+ <!-- end HasFields -->
+
+
+## VerifyChecksum {#verifychecksum}
+
+
  <!-- end HasFields -->
 
 
@@ -6810,6 +7181,8 @@ VolumeSpec has the properties needed to create a volume.
 | fa_create_options | [ string](#string) | Filesystem create options to be honored. |
 | near_sync | [ bool](#bool) | NearSync specifies the volume has a near-sync replica |
 | near_sync_replication_strategy | [ NearSyncReplicationStrategy](#nearsyncreplicationstrategy) | NearSyncReplicationStrategy is replication strategy for near sync volumes |
+| checksum_clone_id | [ string](#string) | clone created to trigger checksum verification |
+| checksummed | [ bool](#bool) | Checksummed indicates if volumed data is checksummed to provide data integrity |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -6926,6 +7299,7 @@ VolumeSpecUpdate provides a method to set any of the VolumeSpec of an existing v
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) readahead_opt.readahead | [ bool](#bool) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) winshare_opt.winshare | [ bool](#bool) | none |
 | [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) near_sync_replication_strategy_opt.near_sync_replication_strategy | [ NearSyncReplicationStrategy](#nearsyncreplicationstrategy) | none |
+| [**oneof**](https://developers.google.com/protocol-buffers/docs/proto3#oneof) checksummed_opt.checksummed | [ bool](#bool) | none |
  <!-- end Fields -->
  <!-- end HasFields -->
 
@@ -7191,7 +7565,7 @@ fastpath extensions
 
 
 ## FilesystemCheck.FilesystemCheckStatus {#filesystemcheckfilesystemcheckstatus}
-FilesystemChecktatus represents the status codes returned from
+FilesystemCheckStatus represents the status codes returned from
 OpenStorageFilesystemCheck service APIs()
 
 | Name | Number | Description |
@@ -7307,6 +7681,7 @@ Type are the supported job types
 | DRAIN_ATTACHMENTS | 2 | Job for draining volume attachments |
 | CLOUD_DRIVE_TRANSFER | 3 | Job for transferring cloud drives between nodes |
 | COLLECT_DIAGS | 4 | Job for collecting diags from the cluster nodes |
+| DEFRAG | 5 | Job for storage defragmentation on cluster nodes |
 
 
 
@@ -7595,7 +7970,7 @@ client and server applications
 | ---- | ------ | ----------- |
 | MUST_HAVE_ZERO_VALUE | 0 | Must be set in the proto file; ignore. |
 | Major | 0 | SDK version major value of this specification |
-| Minor | 164 | SDK version minor value of this specification |
+| Minor | 173 | SDK version minor value of this specification |
 | Patch | 0 | SDK version patch value of this specification |
 
 
@@ -7747,6 +8122,22 @@ Type is an enum to indicate the type of work summary
 | UnbalancedVolumes | 1 | summary for unbalanced volumes |
 | UnbalancedProvisionedSpaceBytes | 2 | summary for unbalanced provisioned space |
 | UnbalancedUsedSpaceBytes | 3 | summary for unbalanced used space |
+
+
+
+
+## VerifyChecksum.VerifyChecksumStatus {#verifychecksumverifychecksumstatus}
+VerifyChecksumStatus represents the status codes returned from
+OpenStorageVerifyChecksum service APIs()
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| VERIFY_CHECKSUM_UNKNOWN | 0 | VerifyChecksum operation is an unknown state |
+| VERIFY_CHECKSUM_NOT_RUNNING | 1 | VerifyChecksum operation is not running for the specified volume |
+| VERIFY_CHECKSUM_STARTED | 2 | VerifyChecksum operation started for the specified volume |
+| VERIFY_CHECKSUM_STOPPED | 3 | VerifyChecksum operation was stopped by the user for the specified volume |
+| VERIFY_CHECKSUM_COMPLETED | 4 | VerifyChecksum operation completed successfully for the specified volume |
+| VERIFY_CHECKSUM_FAILED | 5 | VerifyChecksum operation failed |
 
 
 

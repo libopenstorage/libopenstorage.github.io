@@ -4,5 +4,6 @@ examples/python/sdk
 examples/python/google
 docs/reference.md
 pysdkdoc
+venv
 _book
 *.swp

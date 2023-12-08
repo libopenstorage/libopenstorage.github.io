@@ -24,7 +24,7 @@
           "FS_CHECK_COMPLETED",
           "FS_CHECK_FAILED"
         ],
-        "title": "FilesystemChecktatus represents the status codes returned from\nOpenStorageFilesystemCheck service APIs()",
+        "title": "FilesystemCheckStatus represents the status codes returned from\nOpenStorageFilesystemCheck service APIs()",
         "type": "string"
       },
       "FilesystemTrimFilesystemTrimStatus": {
@@ -230,6 +230,20 @@
           "USED_SPACE"
         ],
         "title": "Metric is an enum that defines the metric to use for rebalance",
+        "type": "string"
+      },
+      "VerifyChecksumVerifyChecksumStatus": {
+        "default": "VERIFY_CHECKSUM_UNKNOWN",
+        "description": "- VERIFY_CHECKSUM_UNKNOWN: VerifyChecksum operation is an unknown state\n - VERIFY_CHECKSUM_NOT_RUNNING: VerifyChecksum operation is not running for the specified volume\n - VERIFY_CHECKSUM_STARTED: VerifyChecksum operation started for the specified volume\n - VERIFY_CHECKSUM_STOPPED: VerifyChecksum operation was stopped by the user for the specified volume\n - VERIFY_CHECKSUM_COMPLETED: VerifyChecksum operation completed successfully for the specified volume\n - VERIFY_CHECKSUM_FAILED: VerifyChecksum operation failed",
+        "enum": [
+          "VERIFY_CHECKSUM_UNKNOWN",
+          "VERIFY_CHECKSUM_NOT_RUNNING",
+          "VERIFY_CHECKSUM_STARTED",
+          "VERIFY_CHECKSUM_STOPPED",
+          "VERIFY_CHECKSUM_COMPLETED",
+          "VERIFY_CHECKSUM_FAILED"
+        ],
+        "title": "VerifyChecksumStatus represents the status codes returned from\nOpenStorageVerifyChecksum service APIs()",
         "type": "string"
       },
       "VolumeSpecPolicyPolicyOp": {
@@ -802,6 +816,54 @@
         ],
         "type": "string"
       },
+      "apiDefragJob": {
+        "properties": {
+          "current_running_nodes": {
+            "items": {
+              "type": "string"
+            },
+            "title": "CurrentRunningNodes stores the nodes on which the job is currently running",
+            "type": "array"
+          },
+          "exclude_nodes": {
+            "items": {
+              "type": "string"
+            },
+            "title": "ExcludeNodes is a list of node UUID: if provided, the job will skip these nodes;\nif not provided, will run on all nodes\ncannot coexist with IncludeNodes",
+            "type": "array"
+          },
+          "include_nodes": {
+            "items": {
+              "type": "string"
+            },
+            "title": "IncludeNodes is a list of node UUID: if provided, will only run the job on these nodes;\nif not provided, will run on all nodes\ncannot coexist with ExcludeNodes and NodeSelector",
+            "type": "array"
+          },
+          "max_duration_hours": {
+            "format": "double",
+            "title": "MaxDurationHours defines the time limit in hours",
+            "type": "number"
+          },
+          "max_nodes_in_parallel": {
+            "format": "int64",
+            "title": "MaxNodesInParallel defines the maximum number of nodes running the defrag job in parallel",
+            "type": "integer"
+          },
+          "node_selector": {
+            "items": {
+              "type": "string"
+            },
+            "title": "NodeSelector is a list of node label `key=value` pairs separated by comma, \nwhich selects the nodes to be run on for the job\ncan coexist with ExcludeNodes but cannot coexist with IncludeNodes",
+            "type": "array"
+          },
+          "schedule_id": {
+            "title": "ScheduleId is the ID of the schedule which started this job",
+            "type": "string"
+          }
+        },
+        "title": "DefragJob describes a job to run defragmentation on cluster nodes",
+        "type": "object"
+      },
       "apiDiagsCollectionStatus": {
         "properties": {
           "message": {
@@ -978,6 +1040,10 @@
           },
           "status": {
             "$ref": "#/components/schemas/apiFastpathStatus"
+          },
+          "verbose": {
+            "title": "Verbose contains detailed info on fastpath status",
+            "type": "string"
           }
         },
         "title": "FastpathConfig part of volume",
@@ -1049,6 +1115,33 @@
         ],
         "title": "fastpath extensions",
         "type": "string"
+      },
+      "apiFilesystemCheckSnapInfo": {
+        "properties": {
+          "volume_snapshot_name": {
+            "title": "Name of the snapshot",
+            "type": "string"
+          }
+        },
+        "title": "FilesystemCheckSnapInfo contains the volume snapshot info for\nfilesystem check list snapshots operation",
+        "type": "object"
+      },
+      "apiFilesystemCheckVolInfo": {
+        "properties": {
+          "fs_status_msg": {
+            "title": "FS status detailed message",
+            "type": "string"
+          },
+          "health_status": {
+            "$ref": "#/components/schemas/apiFilesystemHealthStatus"
+          },
+          "volume_name": {
+            "title": "Name of the volume",
+            "type": "string"
+          }
+        },
+        "title": "FilesystemCheckVolInfo contains the volume info for\nfilesystem check list volumes operation",
+        "type": "object"
       },
       "apiFilesystemHealthStatus": {
         "default": "FS_HEALTH_STATUS_UNKNOWN",
@@ -1179,6 +1272,9 @@
             "title": "CreateTime is the time the job was created",
             "type": "string"
           },
+          "defrag": {
+            "$ref": "#/components/schemas/apiDefragJob"
+          },
           "drain_attachments": {
             "$ref": "#/components/schemas/apiNodeDrainAttachmentsJob"
           },
@@ -1240,13 +1336,14 @@
       },
       "apiJobType": {
         "default": "UNSPECIFIED_TYPE",
-        "description": "- UNSPECIFIED_TYPE: Unspecified\n - NONE: None\n - DRAIN_ATTACHMENTS: Job for draining volume attachments\n - CLOUD_DRIVE_TRANSFER: Job for transferring cloud drives between nodes\n - COLLECT_DIAGS: Job for collecting diags from the cluster nodes",
+        "description": "- UNSPECIFIED_TYPE: Unspecified\n - NONE: None\n - DRAIN_ATTACHMENTS: Job for draining volume attachments\n - CLOUD_DRIVE_TRANSFER: Job for transferring cloud drives between nodes\n - COLLECT_DIAGS: Job for collecting diags from the cluster nodes\n - DEFRAG: Job for storage defragmentation on cluster nodes",
         "enum": [
           "UNSPECIFIED_TYPE",
           "NONE",
           "DRAIN_ATTACHMENTS",
           "CLOUD_DRIVE_TRANSFER",
-          "COLLECT_DIAGS"
+          "COLLECT_DIAGS",
+          "DEFRAG"
         ],
         "title": "Type are the supported job types",
         "type": "string"
@@ -1488,6 +1585,24 @@
           }
         },
         "title": "PureFileSpec is the spec for proxying a volume on pure_file backends",
+        "type": "object"
+      },
+      "apiRebalanceScheduleInfo": {
+        "properties": {
+          "create_time": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "rebalance_requests": {
+            "items": {
+              "$ref": "#/components/schemas/apiSdkStorageRebalanceRequest"
+            },
+            "type": "array"
+          },
+          "schedule": {
+            "type": "string"
+          }
+        },
         "type": "object"
       },
       "apiRelaxedReclaimPurge": {
@@ -2887,6 +3002,14 @@
         "title": "Defines a response for the token request",
         "type": "object"
       },
+      "apiSdkCreateRebalanceScheduleResponse": {
+        "properties": {
+          "scheduleInfo": {
+            "$ref": "#/components/schemas/apiRebalanceScheduleInfo"
+          }
+        },
+        "type": "object"
+      },
       "apiSdkCredentialCreateRequest": {
         "properties": {
           "aws_credential": {
@@ -3024,6 +3147,9 @@
         "title": "Empty response",
         "type": "object"
       },
+      "apiSdkDeleteRebalanceScheduleResponse": {
+        "type": "object"
+      },
       "apiSdkDiagsCollectRequest": {
         "properties": {
           "filename": {
@@ -3089,6 +3215,50 @@
             "type": "array"
           }
         },
+        "type": "object"
+      },
+      "apiSdkFilesystemCheckDeleteSnapshotsRequest": {
+        "properties": {
+          "node_id": {
+            "title": "Node Id filter",
+            "type": "string"
+          },
+          "volume_id": {
+            "title": "Id of the volume",
+            "type": "string"
+          }
+        },
+        "title": "SdkFilesystemCheckDeleteSnapshotsRequest defines a request to delete\nsnapshots created by fsck for a volume",
+        "type": "object"
+      },
+      "apiSdkFilesystemCheckDeleteSnapshotsResponse": {
+        "title": "SdkFilesystemCheckDeleteSnapshotsResponse defines a respone to delete\nsnapshots created by fsck for a volume",
+        "type": "object"
+      },
+      "apiSdkFilesystemCheckListSnapshotsResponse": {
+        "properties": {
+          "snapshots": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/apiFilesystemCheckSnapInfo"
+            },
+            "title": "Map of volume snapshot ids and snapshot info",
+            "type": "object"
+          }
+        },
+        "title": "SdkFilesystemCheckListSnapshotsResponse defines a response to list\nsnapshots created by fsck for a volume",
+        "type": "object"
+      },
+      "apiSdkFilesystemCheckListVolumesResponse": {
+        "properties": {
+          "volumes": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/apiFilesystemCheckVolInfo"
+            },
+            "title": "Map of volume ids and volume info",
+            "type": "object"
+          }
+        },
+        "title": "SdkFilesystemCheckListVolumesResponse defines a response to list\nall volumes needing fsck check/fix",
         "type": "object"
       },
       "apiSdkFilesystemCheckStartRequest": {
@@ -3236,6 +3406,14 @@
           },
           "summary": {
             "$ref": "#/components/schemas/apiStorageRebalanceSummary"
+          }
+        },
+        "type": "object"
+      },
+      "apiSdkGetRebalanceScheduleResponse": {
+        "properties": {
+          "scheduleInfo": {
+            "$ref": "#/components/schemas/apiRebalanceScheduleInfo"
           }
         },
         "type": "object"
@@ -4000,6 +4178,62 @@
         "type": "object"
       },
       "apiSdkUpdateRebalanceJobResponse": {
+        "type": "object"
+      },
+      "apiSdkVerifyChecksumStartRequest": {
+        "properties": {
+          "volume_id": {
+            "title": "Id of the volume",
+            "type": "string"
+          }
+        },
+        "title": "SdkVerifyChecksumStartRequest defines a request to start a background verify checksum operation",
+        "type": "object"
+      },
+      "apiSdkVerifyChecksumStartResponse": {
+        "description": "SdkVerifyChecksumStartResponse defines the response for a\nSdkVerifyChecksumStartRequest.",
+        "properties": {
+          "message": {
+            "title": "Text blob containing ASCII text providing details of the operation",
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/VerifyChecksumVerifyChecksumStatus"
+          }
+        },
+        "type": "object"
+      },
+      "apiSdkVerifyChecksumStatusResponse": {
+        "description": "SdkVerifyChecksumStatusResponse defines the response for a\nSdkVerifyChecksumStatusRequest.",
+        "properties": {
+          "message": {
+            "title": "Text blob containing ASCII text providing details of the operation",
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/VerifyChecksumVerifyChecksumStatus"
+          }
+        },
+        "type": "object"
+      },
+      "apiSdkVerifyChecksumStopRequest": {
+        "properties": {
+          "volume_id": {
+            "title": "Id of the volume",
+            "type": "string"
+          }
+        },
+        "title": "SdkVerifyChecksumStopRequest defines a request to stop a background\nfilesystem check operation",
+        "type": "object"
+      },
+      "apiSdkVerifyChecksumStopResponse": {
+        "description": "SdkVerifyChecksumStopResponse defines the response for a\nSdkVerifyChecksumStopRequest.",
+        "properties": {
+          "message": {
+            "title": "Text blob containing ASCII text providing details of the operation",
+            "type": "string"
+          }
+        },
         "type": "object"
       },
       "apiSdkVersion": {
@@ -4794,6 +5028,11 @@
             "title": "Cpu usage of the node",
             "type": "number"
           },
+          "cpu_cores": {
+            "format": "int64",
+            "title": "Number of Cpu Cores",
+            "type": "string"
+          },
           "data_ip": {
             "title": "Data IP",
             "type": "string"
@@ -4838,6 +5077,10 @@
             },
             "title": "User defined labels for the node",
             "type": "object"
+          },
+          "non_quorum_member": {
+            "description": "Flag indicating whether the node is a quorum member or not. Using inverse value\nto handle intialization and upgrades. Node will always be counted as a quorum member\nwhen initializing until it reaches a point where we can definitely determine whether\nit is a quorum member or not.",
+            "type": "boolean"
           },
           "pools": {
             "items": {
@@ -5109,6 +5352,10 @@
           "cache": {
             "title": "True if dedicated as cache",
             "type": "boolean"
+          },
+          "cloud_drive_type": {
+            "title": "Cloud drive type",
+            "type": "string"
           },
           "id": {
             "description": "Id is the LUN identifier.",
@@ -5532,6 +5779,14 @@
             "description": "Cascaded is true if this volume can be populated on any node from an external source.",
             "type": "boolean"
           },
+          "checksum_clone_id": {
+            "title": "clone created to trigger checksum verification",
+            "type": "string"
+          },
+          "checksummed": {
+            "title": "Checksummed indicates if volumed data is checksummed to provide data integrity",
+            "type": "boolean"
+          },
           "compressed": {
             "description": "Compressed is true if this volume is to be compressed.",
             "type": "boolean"
@@ -5844,6 +6099,9 @@
           "auto_fstrim": {
             "type": "boolean"
           },
+          "checksummed": {
+            "type": "boolean"
+          },
           "cos": {
             "$ref": "#/components/schemas/apiCosType"
           },
@@ -6127,7 +6385,7 @@
   },
   "info": {
     "title": "OpenStorage SDK",
-    "version": "0.164.0"
+    "version": "0.173.0"
   },
   "openapi": "3.0.0",
   "paths": {
@@ -7819,6 +8077,140 @@
         ]
       }
     },
+    "/v1/filesystem-check/delete-snapshots": {
+      "post": {
+        "operationId": "OpenStorageFilesystemCheck_DeleteSnapshots",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/apiSdkFilesystemCheckDeleteSnapshotsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/apiSdkFilesystemCheckDeleteSnapshotsResponse"
+                }
+              }
+            },
+            "description": "A successful response."
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/runtimeError"
+                }
+              }
+            },
+            "description": "An unexpected error response."
+          }
+        },
+        "summary": "Delete all fsck created snapshots on volume",
+        "tags": [
+          "OpenStorageFilesystemCheck"
+        ]
+      }
+    },
+    "/v1/filesystem-check/list-snapshots": {
+      "get": {
+        "operationId": "OpenStorageFilesystemCheck_ListSnapshots",
+        "parameters": [
+          {
+            "description": "Id of the volume.",
+            "in": "query",
+            "name": "volume_id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Node Id of the volume.",
+            "in": "query",
+            "name": "node_id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/apiSdkFilesystemCheckListSnapshotsResponse"
+                }
+              }
+            },
+            "description": "A successful response."
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/runtimeError"
+                }
+              }
+            },
+            "description": "An unexpected error response."
+          }
+        },
+        "summary": "List all fsck created snapshots on volume",
+        "tags": [
+          "OpenStorageFilesystemCheck"
+        ]
+      }
+    },
+    "/v1/filesystem-check/list-volumes": {
+      "get": {
+        "operationId": "OpenStorageFilesystemCheck_ListVolumes",
+        "parameters": [
+          {
+            "description": "Node Id filter.",
+            "in": "query",
+            "name": "node_id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/apiSdkFilesystemCheckListVolumesResponse"
+                }
+              }
+            },
+            "description": "A successful response."
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/runtimeError"
+                }
+              }
+            },
+            "description": "An unexpected error response."
+          }
+        },
+        "summary": "List of all volumes which require fsck check/fix to be run",
+        "tags": [
+          "OpenStorageFilesystemCheck"
+        ]
+      }
+    },
     "/v1/filesystem-check/start": {
       "post": {
         "operationId": "OpenStorageFilesystemCheck_Start",
@@ -8286,7 +8678,7 @@
         "operationId": "OpenStorageJob_Enumerate",
         "parameters": [
           {
-            "description": "Type if specified will list the jobs of the provided type.\n\n - UNSPECIFIED_TYPE: Unspecified\n - NONE: None\n - DRAIN_ATTACHMENTS: Job for draining volume attachments\n - CLOUD_DRIVE_TRANSFER: Job for transferring cloud drives between nodes\n - COLLECT_DIAGS: Job for collecting diags from the cluster nodes",
+            "description": "Type if specified will list the jobs of the provided type.\n\n - UNSPECIFIED_TYPE: Unspecified\n - NONE: None\n - DRAIN_ATTACHMENTS: Job for draining volume attachments\n - CLOUD_DRIVE_TRANSFER: Job for transferring cloud drives between nodes\n - COLLECT_DIAGS: Job for collecting diags from the cluster nodes\n - DEFRAG: Job for storage defragmentation on cluster nodes",
             "in": "query",
             "name": "type",
             "required": false,
@@ -8297,7 +8689,8 @@
                 "NONE",
                 "DRAIN_ATTACHMENTS",
                 "CLOUD_DRIVE_TRANSFER",
-                "COLLECT_DIAGS"
+                "COLLECT_DIAGS",
+                "DEFRAG"
               ],
               "type": "string"
             }
@@ -8345,7 +8738,7 @@
             }
           },
           {
-            "description": "Type of the job.\n\n - UNSPECIFIED_TYPE: Unspecified\n - NONE: None\n - DRAIN_ATTACHMENTS: Job for draining volume attachments\n - CLOUD_DRIVE_TRANSFER: Job for transferring cloud drives between nodes\n - COLLECT_DIAGS: Job for collecting diags from the cluster nodes",
+            "description": "Type of the job.\n\n - UNSPECIFIED_TYPE: Unspecified\n - NONE: None\n - DRAIN_ATTACHMENTS: Job for draining volume attachments\n - CLOUD_DRIVE_TRANSFER: Job for transferring cloud drives between nodes\n - COLLECT_DIAGS: Job for collecting diags from the cluster nodes\n - DEFRAG: Job for storage defragmentation on cluster nodes",
             "in": "query",
             "name": "type",
             "required": false,
@@ -8356,7 +8749,8 @@
                 "NONE",
                 "DRAIN_ATTACHMENTS",
                 "CLOUD_DRIVE_TRANSFER",
-                "COLLECT_DIAGS"
+                "COLLECT_DIAGS",
+                "DEFRAG"
               ],
               "type": "string"
             }
@@ -10003,6 +10397,95 @@
         ]
       }
     },
+    "/v1/storagepools/rebalance/schedule": {
+      "delete": {
+        "operationId": "OpenStoragePool_DeleteRebalanceSchedule",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/apiSdkDeleteRebalanceScheduleResponse"
+                }
+              }
+            },
+            "description": "A successful response."
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/runtimeError"
+                }
+              }
+            },
+            "description": "An unexpected error response."
+          }
+        },
+        "summary": "DeleteRebalanceSchedule deletes the rebalance schedule",
+        "tags": [
+          "OpenStoragePool"
+        ]
+      },
+      "get": {
+        "operationId": "OpenStoragePool_GetRebalanceSchedule",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/apiSdkGetRebalanceScheduleResponse"
+                }
+              }
+            },
+            "description": "A successful response."
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/runtimeError"
+                }
+              }
+            },
+            "description": "An unexpected error response."
+          }
+        },
+        "summary": "GetRebalanceSchedule returns the information of rebalance schedule",
+        "tags": [
+          "OpenStoragePool"
+        ]
+      },
+      "post": {
+        "operationId": "OpenStoragePool_CreateRebalanceSchedule",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/apiSdkCreateRebalanceScheduleResponse"
+                }
+              }
+            },
+            "description": "A successful response."
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/runtimeError"
+                }
+              }
+            },
+            "description": "An unexpected error response."
+          }
+        },
+        "summary": "CreateRebalanceSchedule creates a scheudle for the input rebalance requests",
+        "tags": [
+          "OpenStoragePool"
+        ]
+      }
+    },
     "/v1/storagepools/resize/{uuid}": {
       "put": {
         "operationId": "OpenStoragePool_Resize",
@@ -10042,6 +10525,130 @@
         "summary": "Resize expands the specified storage pool based on the request parameters",
         "tags": [
           "OpenStoragePool"
+        ]
+      }
+    },
+    "/v1/verify-checksum/start": {
+      "post": {
+        "operationId": "OpenStorageVerifyChecksum_Start",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/apiSdkVerifyChecksumStartRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/apiSdkVerifyChecksumStartResponse"
+                }
+              }
+            },
+            "description": "A successful response."
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/runtimeError"
+                }
+              }
+            },
+            "description": "An unexpected error response."
+          }
+        },
+        "summary": "Start a verify checksum background operation on a volume.",
+        "tags": [
+          "OpenStorageVerifyChecksum"
+        ]
+      }
+    },
+    "/v1/verify-checksum/status": {
+      "get": {
+        "operationId": "OpenStorageVerifyChecksum_Status",
+        "parameters": [
+          {
+            "description": "Id of the volume.",
+            "in": "query",
+            "name": "volume_id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/apiSdkVerifyChecksumStatusResponse"
+                }
+              }
+            },
+            "description": "A successful response."
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/runtimeError"
+                }
+              }
+            },
+            "description": "An unexpected error response."
+          }
+        },
+        "summary": "Get Status of a verify checksum background operation on a volume",
+        "tags": [
+          "OpenStorageVerifyChecksum"
+        ]
+      }
+    },
+    "/v1/verify-checksum/stop": {
+      "post": {
+        "operationId": "OpenStorageVerifyChecksum_Stop",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/apiSdkVerifyChecksumStopRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/apiSdkVerifyChecksumStopResponse"
+                }
+              }
+            },
+            "description": "A successful response."
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/runtimeError"
+                }
+              }
+            },
+            "description": "An unexpected error response."
+          }
+        },
+        "summary": "Stop a verify checksum background operation on a volume",
+        "tags": [
+          "OpenStorageVerifyChecksum"
         ]
       }
     },

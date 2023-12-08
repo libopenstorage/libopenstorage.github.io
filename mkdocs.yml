@@ -1,0 +1,95 @@
+#
+# For more information see https://squidfunk.github.io/mkdocs-material/getting-started/
+#
+
+# NOTE! This took me a while to figure out, but mkdocs does not accept any section label with a doc page
+site_name: libopenstorage.github.io
+nav:
+    - Introduction: README.md
+    - Architecture: arch.md
+    - Installation: installation.md
+    - Tutorial:
+        - Introduction: tutorial.md
+        - Golang: tutorial-golang.md
+        - Python: tutorial-python.md
+    - API Reference:
+        - Reference: reference.md
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - meta
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      normalize_issue_symbols: true
+      repo_url_shorthand: true
+      user: squidfunk
+      repo: mkdocs-material
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      auto_append:
+        - includes/mkdocs.md
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+theme: 
+    name: material
+    features:
+        - content.code.annotate
+        # - content.tabs.link
+        - content.tooltips
+        # - header.autohide
+        # - navigation.expand
+        - navigation.indexes
+        # - navigation.instant
+        # - navigation.prune
+        - navigation.sections
+        - navigation.tabs
+        # - navigation.tabs.sticky
+        - navigation.top
+        - navigation.tracking
+        - search.highlight
+        - search.share
+        - search.suggest
+        - toc.follow
+    palette:
+        - scheme: default
+          primary: indigo
+          accent: indigo
+          toggle:
+                icon: material/brightness-7
+                name: Switch to dark mode
+        - scheme: slate
+          primary: indigo
+          accent: indigo
+          toggle:
+                icon: material/brightness-4
+                name: Switch to light mode
+    font:
+        text: Roboto
+        code: Roboto Mono
+site_dir: ./w

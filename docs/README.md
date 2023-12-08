@@ -16,25 +16,30 @@ $ docker run --rm --name sdk -d -p 9100:9100 -p 9110:9110 openstorage/mock-sdk-s
 ```
 
 This container starts a tiny, in-memory OpenStorage SDK server able to be used
-for development. More information can be found in the [Tutorial](tutorial.html).
+for development. More information can be found in the [Tutorial](tutorial.md).
 
 Now we can send requests from the command line. To send requests to the gRPC
 server, we will use [Polyglot 1.x.x](https://github.com/grpc-ecosystem/polyglot/releases)
 as the gRPC client. To send requests to the gRPC REST Gateway, we will be
 sending the same request as Polyglot, but using _curl_ instead:
 
-{% codetabs name="gRPC", type="less" -%}
+**gRPC**:
+```bash
 $ wget https://github.com/grpc-ecosystem/polyglot/releases/download/v1.6.0/polyglot.jar
 $ echo {} | java -jar polyglot.jar \
   --command=call \
   --endpoint=localhost:9100 \
   --full_method=openstorage.api.OpenStorageCluster/InspectCurrent
-{%- language name="REST", type="less" -%}
-$ curl -X GET "http://localhost:9110/v1/clusters/inspectcurrent" \
-     -H "accept: application/json" \
-	 -H "Content-Type: application/json" \
-	 -d "{}"
-{%- endcodetabs %}
+```
+
+**REST**:
+```bash
+  $ curl -X GET "http://localhost:9110/v1/clusters/inspectcurrent" \
+      -H "accept: application/json" \
+    -H "Content-Type: application/json" \
+    -d "{}"
+```
+
 
 Results in:
 
@@ -57,8 +62,8 @@ UI located:
 
 Check out:
 
-* [Architecture](arch.html)
-* [Installation](installation.html)
-* [Tutorials](tutorial.html)
+* [Architecture](arch.md)
+* [Installation](installation.md)
+* [Tutorials](tutorial.md)
 
 

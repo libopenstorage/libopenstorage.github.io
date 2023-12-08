@@ -1131,7 +1131,9 @@
           "IO_PROFILE_CMS",
           "IO_PROFILE_SYNC_SHARED",
           "IO_PROFILE_AUTO",
-          "IO_PROFILE_NONE"
+          "IO_PROFILE_NONE",
+          "IO_PROFILE_JOURNAL",
+          "IO_PROFILE_AUTO_JOURNAL"
         ],
         "type": "string"
       },
@@ -2017,6 +2019,10 @@
           "secret_key": {
             "title": "Secret key",
             "type": "string"
+          },
+          "server_side_encryption": {
+            "title": "(optional) server side encryption",
+            "type": "string"
           }
         },
         "title": "Defines credentials for Aws/S3 endpoints",
@@ -2048,6 +2054,10 @@
           },
           "s3_storage_class": {
             "title": "(optional) Storage class for s3 puts",
+            "type": "string"
+          },
+          "server_side_encryption": {
+            "title": "(optional) server side encryption",
             "type": "string"
           }
         },
@@ -5586,6 +5596,11 @@
             "title": "(deprecated, do not use) VolumeLabels configuration labels",
             "type": "object"
           },
+          "winshare": {
+            "description": "winshare is true if this volume can be accessed from windows pods.",
+            "format": "boolean",
+            "type": "boolean"
+          },
           "xattr": {
             "$ref": "#/components/schemas/apiXattrValue"
           }
@@ -5721,6 +5736,10 @@
             },
             "title": "VolumeLabels configuration labels",
             "type": "object"
+          },
+          "winshare": {
+            "format": "boolean",
+            "type": "boolean"
           }
         },
         "title": "VolumeSpecPolicy provides a method to set volume storage policy",
@@ -5832,6 +5851,10 @@
             "type": "string"
           },
           "sticky": {
+            "format": "boolean",
+            "type": "boolean"
+          },
+          "winshare": {
             "format": "boolean",
             "type": "boolean"
           },
@@ -5960,7 +5983,7 @@
   },
   "info": {
     "title": "OpenStorage SDK",
-    "version": "0.101.36"
+    "version": "0.101.39"
   },
   "openapi": "3.0.0",
   "paths": {

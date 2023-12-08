@@ -17,7 +17,7 @@ $ docker run --rm --name sdk -d -p 9100:9100 -p 9110:9110 openstorage/mock-sdk-s
 ```
 
 Running this docker command will expose port `9100` for the gRPC server, and
-port `9110` for the gRPC REST Gateway connection. As shown in the [Architecture](arch.html),
+port `9110` for the gRPC REST Gateway connection. As shown in the [Architecture](arch.md),
 the gRPC REST Gateway translates simple REST requests to gRPC requets.
 
 This document assumes that you will be running the container on your system,

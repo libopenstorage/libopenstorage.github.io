@@ -2,6 +2,42 @@
 
 ## Releases
 
+### v0.173.0 - (11/13/2023)
+
+* Add DefragJob data structure
+
+### v0.172.0 - (11/07/2023)
+
+* Add new checksum flag to volume spec
+
+### v0.171.0 - (11/02/2023)
+
+* Add new CLI for filesystem check
+
+### v0.170.0 - (10/26/2023)
+
+* Add new CLI to trigger checksum validation
+
+### v0.169.0 - (10/24/2023)
+
+* Add quorum member flag to StorageNode
+
+### v0.168.0 - (09/14/2023)
+
+* Add new field cpu cores to api Node
+
+### v0.167.0 - (09/14/2023)
+
+* Add new field verbose to fastpath configuration
+
+### v0.166.0 - (09/01/2023)
+
+* Add pool rebalance schedule related APIs
+
+### v0.165.0 - (08/30/2023)
+
+* Add CloudDriveType field to StorageResource
+
 ### v0.164.0 - (07/17/2023)
 
 * Add serverSideEncryption field to aws credentials
@@ -51,7 +87,7 @@
 
 ### v0.153.0 - (11/09/2022)
 
-* Add api for autofstrim push and pop 
+* Add api for autofstrim push and pop
 
 ### v0.152.0 - (10/26/2022)
 
@@ -67,11 +103,11 @@
 
 ### v0.149.0 - (8/4/2022)
 
-* Add NFS Credential support 
+* Add NFS Credential support
 
 ### v0.148.0 - (8/2/2022)
 
-* Update SDK cloudBackup delete API 
+* Update SDK cloudBackup delete API
 
 ### v0.147.0 - (7/29/2022)
 

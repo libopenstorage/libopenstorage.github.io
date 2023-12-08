@@ -43,16 +43,21 @@ provided by the client. The SDK server expects the token to be passed in
 the metadata of the gRPC context. Here is an example of how to pass the token
 in gRPC:
 
-{% codetabs name="Go", type="go" -%}
+**Golang**:
+```go
 import "google.golang.org/grpc/metadata"
 
 md := metadata.New(map[string]string{
         "authorization": "bearer" + token,
     })
 ctx = metadata.NewOutgoingContext(context.Background(), md)
-{%- language name="Python", type="py" -%}
+```
+
+**Python**:
+```python
 md = []
 md.append(("authorization", "bearer "+token))
+```
 
 # Now add metadata to the call
 clusters = api_pb2_grpc.OpenStorageClusterStub(channel)
@@ -73,6 +78,6 @@ To pass the token using the REST Gateway, you can use the [standard header](http
 All API calls use the [standard gRPC status](https://github.com/grpc/grpc/blob/master/src/proto/grpc/status/status.proto).
 
 ## OpenStorage SDK Implementations
-In this document, examples will refer to both the [OpenStorage SDK Mock](tutorial.html)
+In this document, examples will refer to both the [OpenStorage SDK Mock](tutorial.md)
 and Portworx OpenStorage drivers.
 
