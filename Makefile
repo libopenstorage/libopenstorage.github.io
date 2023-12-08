@@ -5,11 +5,11 @@ all: build
 images:
 	$(MAKE) -C docs/images
 
-build: api images docs/reference.md
+build: ./venv api images docs/reference.md
 	bash -c "source venv/bin/activate && \
 		mkdocs build"
 
-serve: api images docs/reference.md
+serve: ./venv api images docs/reference.md
 	bash -c "source venv/bin/activate && \
 		mkdocs serve"
 
@@ -36,5 +36,10 @@ docs/reference.md: api
 update-modules:
 	cd docs && rm -rf node_modules && gitbook install
 
+./venv:
+	python3 -m venv venv
+	bash -c "source venv/bin/activate && \
+		pip3 install -r requirements.txt"
+	@echo "Type: 'source venv/bin/active' to get access to mkdocs"
 
 .PHONY: all build serve images api
