@@ -31,11 +31,6 @@ endif
 
 docs/reference.md: api
 
-# If you have updated any plugins in docs/book.json from https://plugins.gitbook.com/
-# you will need to update the modules
-update-modules:
-	cd docs && rm -rf node_modules && gitbook install
-
 ./venv:
 	python3 -m venv venv
 	bash -c "source venv/bin/activate && \

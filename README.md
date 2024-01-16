@@ -1,7 +1,5 @@
 # OpenStorage API Website
-This stores the sources and output for https://libopenstorage.github.io. This website is created using
-[gitbook](https://github.com/GitbookIO/gitbook-cli). All sources and markdown files are in the `docs` directory. The
-output html created by gitbook is located in `w` directory.
+This stores the sources and output for https://libopenstorage.github.io.
 
 ## Build the website
 
